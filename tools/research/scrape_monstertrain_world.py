@@ -824,6 +824,15 @@ MT2_PATTERN = {
                    "(unlocked by winning all three Titan Trials); each Titan has a unique rule (see pattern)."),
     "minion": "Spawned by a boss (not part of the wave list); see the parent boss.",
     "special": "Special spawn (bonus gold carrier or Trial spawn); see pattern.",
+    "ss_boss": ("Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's "
+                "first combat (two candidates per region)."),
+    "ss_flying_boss": ("Soul Savior region boss (Lifemother's child): flying boss of the region's second battle with "
+                       "three variants; defeating it grants a Soul and imposes the variant's negative mutator for the "
+                       "rest of the run (see abilities)."),
+    "ss_elite": ("'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more "
+                 "regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy."),
+    "ss_final_boss": ("Soul Savior final boss (Final Battle after all four regions); three variants with their own "
+                      "fixed waves."),
 }
 
 
@@ -1014,10 +1023,12 @@ def gamedata_index(gd):
                 events=[f.stem for f in sorted((gd / "StoryEventData").glob("*.json"))])
 
 
-def gd_char(gdi, name):
+def gd_char(gdi, name, prefix=False):
     if not gdi:
         return None
     c = gdi["chars"].get(norm(name))
+    if not c and prefix:
+        c = next((v for k, v in sorted(gdi["chars"].items()) if k.startswith(norm(name))), None)
     return c[0] if c else None
 
 
@@ -1129,6 +1140,21 @@ def scrape_mt2(gamedata=None):
         enemies.append(entry("mt2", nm, cat, "Soul Savior: " + (region or "?"), g["hp"] if g else None, None,
                              g["atk"] if g else None, g["size"] if g else None, abil, pat, waves, extra))
 
+    # ---- areas of Soul Savior enemies; standard minor bosses pair with every combat of their ring
+    ring_combats = defaultdict(list)
+    for cb in combats:
+        ring_combats[cb["ring"]].append(cb["name"])
+    for e in enemies:
+        if e["extra"].get("mode"):
+            regs = sorted({m.group(1) for w in e["waves"]
+                           for m in [re.match(r"Soul Savior: (First Battle|Final Battle|\S+'s Region)", w)] if m})
+            if regs:
+                e["area"] = "Soul Savior: " + ", ".join(regs)
+        elif e["category"] == "boss":
+            rings = [int(x) for x in re.findall(r"\d", e["area"] or "")]
+            e["waves"] = [f"R{r} boss: final wave of any Ring {r} combat ({', '.join(ring_combats[r])})"
+                          for r in rings]
+
     # ---- game-data sizes (wiki has no enemy size field) + stat cross-check
     mism = []
     if gdi:
@@ -1139,6 +1165,9 @@ def scrape_mt2(gamedata=None):
             if en["size"] is None:
                 en["size"] = g["size"]
                 en["extra"]["size_source"] = "game-data dump"
+            if en["attack"] is None and g["atk"] is not None and en["extra"].get("stats_source") is None:
+                en["attack"] = g["atk"]
+                en["extra"]["attack_source"] = "game-data dump (wiki infobox gives no attack)"
             if en["extra"].get("mode") is None and en["hp"]["base"] is not None and g["hp"] is not None and \
                     (en["hp"]["base"] != g["hp"] or (en["attack"] is not None and en["attack"] != g["atk"])):
                 mism.append(f"{en['name']} wiki {en['attack']}/{en['hp']['base']} vs data {g['atk']}/{g['hp']}")
@@ -1190,18 +1219,20 @@ def scrape_mt2(gamedata=None):
 
 
 def mt2_region_boss_text(pages):
-    """Soul Savior region pages -> {boss name: ['Variant: mechanic text']} for bosses without infobox."""
-    out = defaultdict(list)
+    """Soul Savior region pages -> ({boss name: ['Variant: mechanic text']}, {region boss names})."""
+    out, region_bosses = defaultdict(list), set()
     for t in MT2_SS_PAGES[1:]:
         txt = pages.get(t, {}).get("text", "")
         boss = re.search(r"home to \[\[([^\]|]+)", txt)
         boss = boss.group(1) if boss else None
+        if boss:
+            region_bosses.add(boss)
         bc = section(txt, "Boss Combat")
         for title, body in sections(bc, 3):
             intro = body.split("<tabber>")[0]
             intro = re.sub(r"^:\s*''.*$", "", intro, flags=re.M)
             if boss:
-                out[boss].append(f"{title}: {cut(clean(intro), 300)}")
+                out[boss].append(f"{title}: {prose(intro, 300)}")
         fc = section(txt, "First Combat")
         m = re.search(r"possible bosses are \[\[([^\]|]+)\]\] and \[\[([^\]|]+)\]\]", fc)
         if m:
@@ -1210,7 +1241,7 @@ def mt2_region_boss_text(pages):
     fb = pages.get("First Battle", {}).get("text", "")
     if "Astrael" in fb:
         out.setdefault("Astrael the First Reborn", [])
-    return out
+    return out, region_bosses
 
 
 def mt2_enemy_standard(name, pr, page, blurb, roles, navc, wave_idx, boss_variant_rows, vocab, gdi):
@@ -1253,12 +1284,11 @@ def mt2_enemy_standard(name, pr, page, blurb, roles, navc, wave_idx, boss_varian
     if blurb:
         pattern += " Wiki: " + blurb
     waves = sorted(set(wave_idx.get(name, [])))
-    if not waves:
-        combats_txt = [clean(pr[k]) for k in sorted(pr) if re.fullmatch(r"ring\d", k) and clean(pr[k])]
-        waves = [f"R{k[4:]}: {clean(pr[k])}" for k in sorted(pr) if re.fullmatch(r"ring\d", k) and clean(pr[k])] \
-            if combats_txt else []
-    extra = OrderedDict(mode=None, wiki_page=page, roles=roles or None, titan=clean(pr.get("titan", "")) or None,
-                        keywords=tag_keywords(abil, vocab))
+    if not waves:  # bosses/minions/Collector: the infobox's per-ring combat field
+        waves = [f"R{k[4:]}: {cell(pr[k])}" for k in sorted(pr) if re.fullmatch(r"ring\d", k) and clean(pr[k])]
+    titan = clean(pr.get("titan", ""))
+    extra = OrderedDict(mode=None, wiki_page=page, roles=roles or None,
+                        titan=None if titan in ("", "None", "N/A") else titan, keywords=tag_keywords(abil, vocab))
     if len(rows0) > 1 or (rows0 and rows0[0][0]):
         extra["variants"] = [OrderedDict(variant=v, attack=a, health=h) for v, a, h, _ in rows0]
     area = (f"Ring {rings[0]}" if len(rings) == 1 else f"Rings {', '.join(map(str, rings))}") if rings else None
@@ -1292,9 +1322,7 @@ def mt2_enemy_ss(name, pr, tpl, page, blurb, wave_idx, vocab, gdi):
                 abil += [f"[{lab}] {x}" for x in split_lines(pr[k])]
         boss = any(x in name for x in ("Astrael", "Athane the Fallen", "Korin the Judged"))
         cat = "boss" if boss else ("elite" if name.startswith("Mother's") else "normal")
-    pattern = (MT2_PATTERN[cat] if cat != "elite" else
-               "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. "
-               + MT2_PATTERN["normal"])
+    pattern = MT2_PATTERN[cat if cat == "normal" else "ss_" + cat]
     if blurb:
         pattern += " Wiki: " + blurb
     extra = OrderedDict(mode="Soul Savior (Destiny of the Railforged DLC)", wiki_page=page,
@@ -1331,8 +1359,13 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
             body = re.search(r"<onlyinclude>(.*?)</onlyinclude>", p["text"], re.S)
             nav_arts.update(x for x in links(body.group(1) if body else p["text"]) if x != "Artifacts")
     have = {a["name"] for a in artifacts}
+    clan_words = {c for c, _ in sections(ap, 2)} | {"Endless Mode", "Clanless", "Boss Artifacts"}
+    nav_arts = {x for x in nav_arts if x not in clan_words and not x.startswith("Template:")}
+    curses = sorted(x for x in nav_arts if x.startswith("Curse of"))
+    nav_arts -= set(curses)
     checks.append(f"artifacts: Artifacts page {len(artifacts)} rows vs <Clan>Artifacts nav templates {len(nav_arts)} "
-                  f"names -> nav-only {sorted(nav_arts - have) or 'none'}, page-only {sorted(have - nav_arts) or 'none'}")
+                  f"names -> nav-only {sorted(nav_arts - have) or 'none'}, page-only {sorted(have - nav_arts) or 'none'}"
+                  f" (+ {len(curses)} Endless-mode curses listed in the nav, kept under rules.endless_mode)")
     if gdi:
         rel = {norm(r["name"]): r for r in gdi["relics"]}
         for a in artifacts:
@@ -1357,8 +1390,8 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
         node = smt.split_params(smt.find_templates(txt, "Node")[0]) if smt.find_templates(txt, "Node") else {}
         servs = OrderedDict()
         for st, sb in sections(txt, 3):
-            if st not in ("Greetings", "Chatter", "Thanks", "Bothered"):
-                servs[st] = cut(clean(strip_divs(sb)), 700)
+            if st not in ("Greetings", "Chatter", "Thanks", "Bothered", "Merchant Quotes", "Notes"):
+                servs[st] = prose(sb, 900, t)
         merchants.append(OrderedDict(name=t, description=clean(node.get("description", "")),
                                      guaranteed_rings=clean(node.get("guaranteed", "")) or None,
                                      possible_rings=clean(node.get("possible", "")) or None,
@@ -1368,17 +1401,15 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
     for tb in tables(up):
         cap = re.search(r"^\|\+\s*(.+)$", tb, re.M)
         cap = clean(cap.group(1)) if cap else ""
-        head = [clean(h) for h in re.findall(r"^!\s*(.+)$", tb, re.M)]
-        head = [x for h in head for x in h.split(" !! ")] if len(head) == 1 else head
-        hdr = re.search(r"^!(.+)$", tb, re.M)
-        cols = [clean(c) for c in hdr.group(1).split("!!")] if hdr else []
+        prs = parse_rows(tb)
+        cols = next(([cell(c) for c in cs] for cs, fl in prs if all(fl)), [])
         for cells in rows(tb):
-            if len(cells) < 2 or cells[0].startswith("!") or not links(cells[0]):
+            if len(cells) < 2 or not links(cells[0]):
                 continue
             rec = OrderedDict(name=links(cells[0])[-1], table=cap or None)
             for ci, c in enumerate(cells[1:], start=1):
                 key = (cols[ci] if ci < len(cols) else f"col{ci}").lower().replace(" ", "_") or f"col{ci}"
-                rec[key] = clean(c)
+                rec[key] = cell(c)
             upgrades.append(rec)
     if gdi:
         en = {norm(r["name"]) for r in gdi["enhancers"]}
@@ -1387,9 +1418,9 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
                       f"-> game-data-only {sorted(r['name'] for r in gdi['enhancers'] if norm(r['name']) not in wk)}; "
                       f"wiki-only {sorted(u['name'] for u in upgrades if norm(u['name']) not in en)}")
     merch = OrderedDict(
-        overview=cut(clean(re.split(r"^==", mp, flags=re.M)[0]), 400),
+        overview=prose(re.split(r"\{\|", own_text(mp))[0], 400, "Merchants"),
         reroll=clean(section(mp, "Re-roll", 3)), purge_costs=removal, merchants=merchants,
-        upgrade_slots=cut(clean(re.split(r"\{\|", re.sub(r"\{\{Unfinished[^}]*\}\}", "", up))[0]), 700),
+        upgrade_slots=prose(re.split(r"\{\|", re.sub(r"\{\{Unfinished[^}]*\}\}", "", up))[0], 700, "Upgrades"),
         upgrades=upgrades)
 
     # ---- events + nodes
@@ -1427,21 +1458,23 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
         ph = smt.find_templates(p["text"], "PyreHeart") if p["ns"] == 0 and not p["redirect"] else []
         if ph:
             pr = smt.split_params(ph[0])
-            st = pr.get("stats", "")
-            a, h = (st.split("/") + [None])[:2] if "/" in st else (None, None)
+            nums = re.findall(r"\d+", pr.get("stats", ""))
+            a, h = (nums + [None, None])[:2]
             hearts.append(OrderedDict(name=t, attack=to_int(a), pyre_health=to_int(h),
                                       effect=clean(pr.get("effects", "")), unlock=clean(pr.get("unlock", "")),
-                                      ring3_increase=clean(pr.get("ring3_stat_increase", "")),
-                                      ring6_increase=clean(pr.get("ring6_stat_increase", ""))))
+                                      ring3_increase="/".join(re.findall(r"[+-]?\d+", pr.get("ring3_stat_increase", ""))),
+                                      ring6_increase="/".join(re.findall(r"[+-]?\d+", pr.get("ring6_stat_increase", "")))))
     hearts.sort(key=lambda x: x["name"])
     if gdi:
         checks.append(f"Pyre Hearts: wiki {len(hearts)} vs game-data PyreArtifactData {len(gdi['pyre'])} "
                       f"({[r['id'] for r in gdi['pyre']]})")
     pyre = OrderedDict(
-        summary=cut(clean(re.split(r"\{\|", T("Pyre Hearts"))[0]), 600),
-        combat_rules=cut(clean(section(T("Combat"), "Floors", 3)), 900),
+        summary=prose(re.split(r"\{\|", T("Pyre Hearts"))[0], 600, "Pyre Hearts"),
+        stat_note="attack/pyre_health = base; ring3_increase/ring6_increase = attack/health added by the boss "
+                  "artifact taken after Ring 3 / Ring 6 (depends on the heart).",
+        combat_rules=prose(section(T("Combat"), "Floors", 3), 900),
         pyre_hearts=hearts,
-        boss_artifacts=cut(clean(re.sub(r"\{\{\w+Artifacts\}\}", "", T("Boss artifacts"))), 700),
+        boss_artifacts=prose(re.sub(r"\{\{\w+Artifacts\}\}", "", T("Boss artifacts")), 700, "Boss artifacts"),
         boss_artifact_list=[a for a in artifacts if a["clan"] in ("Boss Artifacts",)])
 
     # ---- rules
@@ -1463,7 +1496,7 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
         nodes_txt = re.sub(r"\{\|.*?\n\|\}", "", body, flags=re.S)
         nodes_txt = re.sub(r"^(:|'').*$", "", nodes_txt, flags=re.M)
         rings.append(OrderedDict(ring=int(num.group(1)) if num else None, name=re.sub(r"\s*\(Ring \d\)", "", title),
-                                 flavor=clean(flav.group(1)) if flav else None, nodes=cut(clean(nodes_txt), 900),
+                                 flavor=clean(flav.group(1)) if flav else None, nodes=prose(nodes_txt, 900),
                                  combats=cbs, trials=trs or None, bosses=bs))
     node_summary = []
     ms = section(rp, "Map Node Summary")
@@ -1499,6 +1532,8 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
     dims = []
     dp = T("Dimensional Challenges")
     for title, body in sections(dp, 2):
+        if title in ("History", "Notes"):
+            continue
         mods = []
         for tb in tables(body):
             for cells in rows(tb):
@@ -1534,7 +1569,7 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
     ssp = T("Soul Savior")
     soul_savior = OrderedDict(
         summary=lead(ssp, 900, "Soul Savior"),
-        map_nodes=cut(clean(section(ssp, "Map Nodes")), 1500),
+        map_nodes=prose(section(ssp, "Map Nodes"), 1800),
         souls=lead(souls_pg, 800, "Souls") + " " + prose(section(souls_pg, "Acquiring Souls"), 600),
         soul_list=soul_names,
         combats=ss_combats)
@@ -1543,16 +1578,16 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
                       f"(= souls x upgrade tiers)")
     flying = OrderedDict()
     for title, body in sections(T("Flying Bosses"), 2) + sections(T("Flying Bosses"), 3):
-        flying[title] = cut(clean(body), 1500)
+        flying[title] = prose(own_text(body), 1500)
     combat_pg = T("Combat")
-    battle = OrderedDict(overview=cut(clean(section(combat_pg, "Overview")).split("Turns")[0], 600))
+    battle = OrderedDict(overview=prose(own_text(section(combat_pg, "Overview")), 600))
     for title, body in sections(combat_pg, 3):
-        battle[title] = cut(clean(body), 1500)
-    battle["Battles"] = cut(clean(re.split(r"^==", T("Battles"), flags=re.M)[0]), 600)
-    battle["Deployment Phase"] = cut(clean(strip_divs(T("Deployment Phase"))), 1500)
+        battle[title] = prose(body, 1500)
+    battle["Battles"] = prose(own_text(T("Battles")), 600, "Battles")
+    battle["Deployment Phase"] = prose(T("Deployment Phase"), 1500, "Deployment Phase")
     score = OrderedDict(summary=lead(T("Score"), 500, "Score"))
     for title, body in sections(T("Score"), 3):
-        score[title] = cut(clean(body), 500)
+        score[title] = prose(body, 500)
     clan_lv = [clean(x) for x in re.findall(r"^\*\s*(.+)$", T("Clan Level"), re.M)]
     ga = T("The Great Abyss")
     structure = OrderedDict(
@@ -1578,17 +1613,16 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
                          "Solace / Heaven's Light: Pyre stat boost + ember/draw/capacity). Optional Trial before each "
                          "battle for gold (Rings 1-2, 4-5, 7) or Titan Essence (Rings 3, 6, 8)."),
                 rings=rings, map_node_summary=node_summary,
-                lead=cut(clean(re.split(r"^==", rp, flags=re.M)[0]), 500)),
+                lead=prose(own_text(rp), 500, "Rings")),
             battle=battle,
             flying_bosses=flying,
             combats=combats,
             covenant=cov,
-            covenant_note=cut(clean(re.split(r"^==", T("Covenant Ranks"), flags=re.M)[0]), 500),
+            covenant_note=prose(own_text(T("Covenant Ranks")), 500, "Covenant Ranks"),
             trials=OrderedDict(summary=lead(tt, 500, "Trials"), regular=trials, boss_variants=boss_variant_rows_all(tt),
                                rewards=trial_rewards),
-            titans=OrderedDict(unlock=cut(clean(section(ga, "Unlocking")), 600),
-                               clash=cut(clean(re.split(r"^===", section(ga, "Clash with the Titans"),
-                                                        flags=re.M)[0]), 1500)),
+            titans=OrderedDict(unlock=prose(section(ga, "Unlocking"), 600),
+                               clash=prose(own_text(section(ga, "Clash with the Titans")), 1500)),
             clan_levels=OrderedDict(summary=lead(T("Clan Level"), 600, "Clan Level"), thresholds=clan_lv),
             card_mastery=lead(T("Card Mastery"), 400, "Card Mastery"),
             equipment_and_rooms=(lead(T("Equipment"), 600, "Equipment") + " Rooms: card type installed on a floor for a "

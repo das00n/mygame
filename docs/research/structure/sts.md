@@ -82,7 +82,7 @@
 | 인공물(디버프 무효) | 8 | 5 | Sentry, Bronze Automaton 3, Donu·Deca, Mecha Knight 3 | 디버프 덱을 늦춘다 |
 | 소환·하수인 | 8 | 9 | Gremlin Leader, Collector, Reptomancer 단검, Fabricator, Fogmog | 광역 공격, 표적 우선순위 |
 | HP 문턱 형태 변화 | 8 | 7 | Slime Boss 분열(50%), Guardian 형태 전환, Champ 분노, Ceremonial Beast·Terror Eel 문턱 기절 | 폭딜 타이밍 맞추기 |
-| 카드 사용 처벌 | 4 | 2 | Time Eater(12장 쓰면 턴 종료), Heart 박동(장당 피해), Awakened One 파워마다 근력, Gremlin Nob 스킬마다 근력, Ceremonial Beast Ringing(1장만), Aeonglass 6장마다 Wither | 카드 수가 많은 덱을 견제 |
+| 카드 사용 처벌 | 4 | 2 | Time Eater(일정 장수마다 턴 종료), Heart 박동(장당 피해), Awakened One 파워마다 근력, Gremlin Nob 스킬마다 근력, Ceremonial Beast Ringing(1장만), Aeonglass 6장마다 Wither | 카드 수가 많은 덱을 견제 |
 | 피해 상한·무형 | 2 | 4 | Heart 무적 300/턴, Nemesis 격턴 무형, Vantom Slippery, Skulking Colony 턴당 20 | 한 방 몰아치기 견제 → 꾸준한 피해 |
 | 시한·도주 | 5 | 6 | Looter·Mugger 골드 훔쳐 도주, Transient 소멸, Insatiable 모래구덩이(X턴 뒤 사망), Waterfall Giant 사망 시 폭발 | 빨리 결판내기 |
 | 잠/기상 | Lagavulin | Lagavulin Matriarch, Bygone Effigy | 처음 몇 턴 무행동, 맞으면 깸 | 준비 턴과 선제 피해 사이의 선택 |
@@ -104,16 +104,16 @@
 | 보스 | 장치 | 시험하는 것 |
 |---|---|---|
 | Slime Boss (S1·1막) | 3턴 순환(점액 → 준비 → 35 강타). 50%에서 현재 HP로 대형 슬라임 2마리로 분열 | 분열 직전 HP 조절, 광역 |
-| The Guardian (S1·1막) | 30피해(A19: 40)마다 방어 형태로 전환 + 가시 피부 | 공격량 조절, 다단 공격 처벌 |
+| The Guardian (S1·1막) | 누적 30 피해(A9 35·A19 40)를 받으면 방어 형태로 전환 + 가시 피부(공격할 때마다 반사) | 공격량 조절, 다단 공격 처벌 |
 | Hexaghost (S1·1막) | 2턴째 Divider = (플레이어 HP/12 + 1)×6. 이후 7턴 순환 중 화상 강화 | HP 관리, 상태이상 처리 |
-| Bronze Automaton (S1·2막) | 구체 2개가 가장 희귀한 카드를 빼앗음 + 5턴째 HYPER BEAM 45 | 하수인 우선 처치, 예고된 대형 공격 대비 |
+| Bronze Automaton (S1·2막) | 구체 2개가 가장 희귀한 카드를 빼앗음 + 6턴째 HYPER BEAM 45 | 하수인 우선 처치, 예고된 대형 공격 대비 |
 | Awakened One (S1·3막) | 파워 카드 쓸 때마다 근력. 0 HP에서 부활해 2단계 | 파워 덱 견제, 두 번 죽이기 |
-| Time Eater (S1·3막) | 12장 쓰면 턴이 끝나고 근력 +2. 50%에서 정화 + 회복 | 적은 장수로 큰 효과 |
+| Time Eater (S1·3막) | 일정 장수(게임에선 12장, 위키 미기재)를 쓰면 턴이 끝나고 근력 증가. 50% 아래에서 정화 + 50%까지 회복 | 적은 장수로 큰 효과 |
 | Corrupt Heart (S1·4막) | 장당 피해(Beat of Death), 턴당 300 피해 상한, 3턴마다 성장 | 장기전 화력 + 생존 동시에 |
 | Ceremonial Beast (S2·1막) | HP 문턱(150)에서 기절 + 근력 소실. 2단계는 Ringing(그 턴 카드 1장) | 문턱 타이밍, 카드 1장 턴 대비 |
 | The Insatiable (S2·2막) | 모래구덩이 X턴 뒤 사망(플레이어별) + 탈출 카드 6장 투입 | 시한 안에 해결 |
 | Kaiser Crab (S2·2막) | 두 부위(Crusher·Rocket). 등 뒤 공격 +50%. 한쪽이 죽으면 다른 쪽이 근력 6·방어 99 | 균등 딜 vs 집중 딜 |
-| Queen (S2·3막) | 아군 Amalgam이 사는 동안 방어만. 죽으면 분노 루프. 시작에 약화·취약·손상 99 | 순서 결정: 하수인을 먼저 vs 본체를 먼저 |
+| Queen (S2·3막) | 아군 Amalgam이 사는 동안 방어·버프만. 죽으면 분노 루프. 2턴째 약화·취약·손상 99 | 순서 결정: 하수인을 먼저 vs 본체를 먼저 |
 | Test Subject (S2·3막) | 100 → 200 → 300 HP 3단계 부활. 단계마다 능력이 바뀜 | 자원 배분 |
 
 엘리트에서 쓸 만한 장치:
@@ -150,4 +150,4 @@
 - 적 패턴(`pattern`)은 위키 문장을 평문으로 옮긴 것이다(최대 3000자). 수치는 `(A2: 12)`처럼 승천 값을 함께 적었다.
 - `damage`·`hits`는 기본 난이도 값이다. 공식형 피해(Hexaghost Divider, Transient)는 null이다.
 - 4절 표는 키워드 매칭 대략치다. 정밀 분류가 필요하면 `moves[].intent`와 `effect`로 다시 센다.
-- StS1 카드 강화 확률(2막 25%·3막 50%)과 지도 생성 제약은 StS1 위키에 없다. StS2 문서와 일반 지식으로 보충했다.
+- StS1 카드 강화 확률(2막 25%·3막 50%), 지도 생성 제약, Time Eater 장수(12)는 StS1 위키에 없다. StS2 문서와 일반 지식으로 보충했다.
