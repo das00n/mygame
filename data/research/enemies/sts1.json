@@ -1,0 +1,3291 @@
+{
+ "game": "Slay the Spire",
+ "source": "https://slaythespire.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 2500 chars. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Completeness check: {\"scraped_by_category\": {\"boss\": 11, \"elite\": 11, \"event\": 3, \"minion\": 3, \"normal\": 38}, \"wiki_cargo_Enemies_by_type\": {\"boss\": 11, \"elite\": 11, \"event\": 3, \"minion\": 3, \"normal\": 38}, \"wiki_module_enemy_entries\": 66, \"scraped_not_in_cargo\": [], \"cargo_not_scraped\": [], \"scraped_not_in_module\": [], \"module_not_scraped\": []}",
+ "enemies": [
+  {
+   "id": "sts1.acid_slime_l",
+   "name": "Acid Slime (L)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     65,
+     69
+    ],
+    "ascension": [
+     68,
+     72
+    ]
+   },
+   "moves": [
+    {
+     "name": "Corrosive Spit",
+     "intent": "attack_debuff",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A2: 12) damage. Adds 2 Slimed into your discard pile.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Lick",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Weak.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A2: 18) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Split",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Disappears and spawns 2 Acid Slimes (M) with its current HP.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Has a 30% (A17: 40%) chance of using Corrosive Spit, a 40% (A17: 30%) chance of using Tackle and a 30% chance of using Lick every turn. Cannot use Tackle (A17) twice in a row and cannot use other moves three times in a row. Once its HP reaches 50% or lower, its current Intent will be interrupted and changed to Split.",
+   "passives": [
+    "Split — When its HP is at or below 50%, it will split into 2 smaller Slimes with its current HP."
+   ],
+   "encounters": [
+    "Act 1 hard: Large Slime"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.acid_slime_m",
+   "name": "Acid Slime (M)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     28,
+     32
+    ],
+    "ascension": [
+     29,
+     34
+    ]
+   },
+   "moves": [
+    {
+     "name": "Corrosive Spit",
+     "intent": "attack_debuff",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A2: 8) damage. Adds a Slimed into your discard pile.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Lick",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Weak.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 12) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Identical pattern to Acid Slime (L) but it cannot Split. On Ascension 17: Every turn it has a 40% change of using Corrosive Spit, a 40% chance of using Tackle, and a 20% chance of using Lick. Lick cannot be used twice in a row and other moves cannot be used 3 times in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Small Slimes",
+    "Act 1 hard: Exordium Thugs",
+    "Act 1 hard: Exordium Wildlife"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.acid_slime_s",
+   "name": "Acid Slime (S)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     8,
+     12
+    ],
+    "ascension": [
+     9,
+     13
+    ]
+   },
+   "moves": [
+    {
+     "name": "Lick",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Weak.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 (A2: 4) damage.",
+     "intent_icons": "Attack1"
+    }
+   ],
+   "pattern": "",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Small Slimes",
+    "Act 1 hard: Swarm of Slimes"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.blue_slaver",
+   "name": "Blue Slaver",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     46,
+     50
+    ],
+    "ascension": [
+     48,
+     52
+    ]
+   },
+   "moves": [
+    {
+     "name": "Stab",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A2: 13) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Rake",
+     "intent": "attack_debuff",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A2: 8) damage. Applies 1 (A17: 2) Weak.",
+     "intent_icons": "DebuffAttack2"
+    }
+   ],
+   "pattern": "Each turn, Blue Slaver has a 60% chance to use Stab and a 40% chance to use Rake. The same attack cannot be used three times in a row. On Ascension 17, Blue Slaver will never use Rake twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Blue Slaver",
+    "Act 1 hard: Exordium Thugs"
+   ],
+   "wiki_page": "Slavers"
+  },
+  {
+   "id": "sts1.cultist",
+   "name": "Cultist",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     48,
+     54
+    ],
+    "ascension": [
+     50,
+     56
+    ]
+   },
+   "moves": [
+    {
+     "name": "Incantation",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 A2: 4 (A17: 5) Ritual.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Dark Strike",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always starts with Incantation, then uses Dark Strike every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Cultist",
+    "Act 1 hard: Exordium Thugs",
+    "Act 2 hard: Cultist and Chosen",
+    "Act 2 hard: 3 Cultists"
+   ],
+   "wiki_page": "Cultist"
+  },
+  {
+   "id": "sts1.fat_gremlin",
+   "name": "Fat Gremlin",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     13,
+     17
+    ],
+    "ascension": [
+     14,
+     18
+    ]
+   },
+   "moves": [
+    {
+     "name": "Smash",
+     "intent": "attack_debuff",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A2: 5) damage. Applies 1 Weak(.; and A17: 1 Frail.)",
+     "intent_icons": "DebuffAttack1"
+    }
+   ],
+   "pattern": "Fat Gremlin uses Smash every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins"
+   ],
+   "wiki_page": "Gremlins"
+  },
+  {
+   "id": "sts1.fungi_beast",
+   "name": "Fungi Beast",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     22,
+     28
+    ],
+    "ascension": [
+     24,
+     28
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Grow",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 A2: 4 (A17: 5) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Fungi Beast will use one of the following attacks each turn: * Bite (60% chance) * Grow (40% chance) Fungi Beast will not use Bite 3 times in a row or Grow twice in a row.",
+   "passives": [
+    "Spore Cloud 2 — On death, applies X Vulnerable."
+   ],
+   "encounters": [
+    "Act 1 hard: 2 Fungi Beasts",
+    "Act 1 hard: Exordium Wildlife",
+    "Act 2 hard: Shelled Parasite and Fungi"
+   ],
+   "wiki_page": "Fungi Beast"
+  },
+  {
+   "id": "sts1.green_louse",
+   "name": "Green Louse",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     11,
+     17
+    ],
+    "ascension": [
+     12,
+     18
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals N damage. N = Number between 5-7 (A2: 6-8), chosen at the start of combat.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Spit Web",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Weak.",
+     "intent_icons": "Debuff"
+    }
+   ],
+   "pattern": "Has a 25% chance to use Spit Web and a 75% chance of using Bite. It cannot use the same move three times in a row. On Ascension 17 it cannot use Spit Web any more than twice in a row.",
+   "passives": [
+    "Curl Up N, where N is random between 3-7 (A7: 4-8 A17: 9-12) — Gains X Block upon first receiving attack damage."
+   ],
+   "encounters": [
+    "Act 1 easy: 2 Louse",
+    "Act 1 hard: 3 Louse",
+    "Act 1 hard: Exordium Thugs",
+    "Act 1 hard: Exordium Wildlife"
+   ],
+   "wiki_page": "Louses"
+  },
+  {
+   "id": "sts1.gremlin_wizard",
+   "name": "Gremlin Wizard",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     21,
+     25
+    ],
+    "ascension": [
+     22,
+     26
+    ]
+   },
+   "moves": [
+    {
+     "name": "Charging",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Ultimate Blast",
+     "intent": "attack",
+     "damage": 25,
+     "hits": 1,
+     "effect": "Deals 25 (A2: 30) damage.",
+     "intent_icons": "Attack6"
+    }
+   ],
+   "pattern": "Gremlin Wizard will always start by using Charging twice in a row, then using Ultimate Blast. After that and for the rest of combat, Gremlin Wizard will use Charging three times in a row before using Ultimate Blast. On Ascension 17, Gremlin Wizard will use Charging twice in a row, then use Ultimate Blast every turn for the rest of combat.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins"
+   ],
+   "wiki_page": "Gremlins"
+  },
+  {
+   "id": "sts1.jaw_worm",
+   "name": "Jaw Worm",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     40,
+     44
+    ],
+    "ascension": [
+     42,
+     46
+    ]
+   },
+   "moves": [
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A2: 12) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Bellow",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 A2: 4 (A17: 5) Strength. Gains 6 (A17: 9) Block.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Thrash",
+     "intent": "attack_defend",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 damage. Gains 5 Block.",
+     "intent_icons": "DefendAttack2"
+    }
+   ],
+   "pattern": "Always starts with Chomp. If it is found in Act 3, it starts with the effects of Bellow, and for its first action it has a 45% chance of starting with Bellow, a 30% chance of Thrash and a 25% chance of using Chomp * After using Chomp, it has a 59% chance of using Bellow and a 41% of Thrash * After using Bellow, it has a 56% chance of using Thrash and a 44% of using Chomp * After using Thrash, it has a 45% chance of using Bellow, a 30% chance of using Thrash and a 25% chance of using Chomp. Unless Thrash has been used 2 turns in a row, then it has a 64% chance of using Bellow, and a 36% of using Chomp",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Jaw Worm",
+    "Act 1 hard: Exordium Wildlife",
+    "Act 3 hard: Jaw Worm Horde"
+   ],
+   "wiki_page": "Jaw Worm"
+  },
+  {
+   "id": "sts1.looter",
+   "name": "Looter",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     44,
+     48
+    ],
+    "ascension": [
+     46,
+     50
+    ]
+   },
+   "moves": [
+    {
+     "name": "Mug",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 11) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Lunge",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A2: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Smoke Bomb",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 6 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Escape",
+     "intent": "escape",
+     "damage": null,
+     "hits": null,
+     "effect": "Flees combat with your Gold.",
+     "intent_icons": "Escape"
+    }
+   ],
+   "pattern": "* Uses Mug for the first 2 turns. * Has a 50% chance to use Lunge or 50% chance to use Smoke Bomb. ** If Lunge is used on its third turn, it will then use Smoke Bomb next. * The turn after Smoke Bomb has been used, it will Escape.",
+   "passives": [
+    "Thievery 15 (A17: 20) — Steals X Gold whenever it attacks. Stolen gold is returned if this enemy is killed."
+   ],
+   "encounters": [
+    "Act 1 hard: Exordium Thugs",
+    "Act 1 hard: Looter",
+    "Act 2 easy: 2 Thieves"
+   ],
+   "wiki_page": "Thieves"
+  },
+  {
+   "id": "sts1.mad_gremlin",
+   "name": "Mad Gremlin",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     20,
+     24
+    ],
+    "ascension": [
+     21,
+     25
+    ]
+   },
+   "moves": [
+    {
+     "name": "Scratch",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A2: 5) damage.",
+     "intent_icons": "Attack1"
+    }
+   ],
+   "pattern": "Mad Gremlin uses Scratch every turn.",
+   "passives": [
+    "Angry 1 (A17: 2) — Upon receiving attack damage, gains X Strength."
+   ],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins"
+   ],
+   "wiki_page": "Gremlins"
+  },
+  {
+   "id": "sts1.red_louse",
+   "name": "Red Louse",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     10,
+     15
+    ],
+    "ascension": [
+     11,
+     16
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals N damage. N = Number between 5-7 (A2: 6-8), chosen at the start of combat.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Grow",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A17: 4) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Has a 25% chance to use Grow and a 75% chance of using Bite. It cannot use the same move three times in a row. On Ascension 17 it cannot use Grow any more than twice in a row.",
+   "passives": [
+    "Curl Up N, where N is random between 3-7 (A7: 4-8 A17: 9-12) — Gains X Block upon first receiving attack damage."
+   ],
+   "encounters": [
+    "Act 1 easy: 2 Louse",
+    "Act 1 hard: 3 Louse",
+    "Act 1 hard: Exordium Thugs",
+    "Act 1 hard: Exordium Wildlife"
+   ],
+   "wiki_page": "Louses"
+  },
+  {
+   "id": "sts1.red_slaver",
+   "name": "Red Slaver",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     46,
+     50
+    ],
+    "ascension": [
+     48,
+     52
+    ]
+   },
+   "moves": [
+    {
+     "name": "Stab",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A2: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Scrape",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A2: 9) damage. Applies 1 (A17: 2) Vulnerable.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Entangle",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Entangled.",
+     "intent_icons": "DebuffStrong"
+    }
+   ],
+   "pattern": "Red Slaver will always start the battle with Stab. If Red Slaver has not used Entangle yet, it has a 25% chance to be used each turn. Red Slaver will repeat the pattern of Scrape, Scrape, Stab until Entangle is used. After using Entangle, Red Slaver has a 55% chance of using Stab and a 45% chance of using Scrape. Red Slaver cannot use the same attack three times in a row, and can only use Entangle once per combat. On Ascension 17, Red Slaver will repeat the pattern of Scrape, Stab until Entangle is used. After Entangle is used, Red Slaver cannot use Scrape twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Red Slaver",
+    "Act 1 hard: Exordium Thugs"
+   ],
+   "wiki_page": "Slavers"
+  },
+  {
+   "id": "sts1.shield_gremlin",
+   "name": "Shield Gremlin",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     12,
+     15
+    ],
+    "ascension": [
+     13,
+     17
+    ]
+   },
+   "moves": [
+    {
+     "name": "Protect",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Random enemy gains 7 A2: 8 (A17: 11) Block. Only chooses self if alone.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Shield Bash",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A2: 8) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Shield Gremlin uses Protect every turn. If it is the only enemy left, it will switch to using Shield Bash every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins"
+   ],
+   "wiki_page": "Gremlins"
+  },
+  {
+   "id": "sts1.sneaky_gremlin",
+   "name": "Sneaky Gremlin",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     10,
+     14
+    ],
+    "ascension": [
+     11,
+     15
+    ]
+   },
+   "moves": [
+    {
+     "name": "Puncture",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A2: 10) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Sneaky Gremlin uses Puncture every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins"
+   ],
+   "wiki_page": "Gremlins"
+  },
+  {
+   "id": "sts1.spike_slime_l",
+   "name": "Spike Slime (L)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     64,
+     70
+    ],
+    "ascension": [
+     67,
+     73
+    ]
+   },
+   "moves": [
+    {
+     "name": "Lick",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 (A17: 3) Frail.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Flame Tackle",
+     "intent": "attack_debuff",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A2: 18) damage. Adds 2 Slimed into your discard pile.",
+     "intent_icons": "DebuffAttack4"
+    },
+    {
+     "name": "Split",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Disappears and spawns 2 Spike Slimes (M) with its current HP.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Has a 30% chance of using Flame Tackle and a 70% chance of using Lick. Cannot use the same move three times in a row. On Ascension 17, it cannot use Lick twice in a row. Once its HP reaches 50% or lower, its current Intent will be interrupted and changed to Split.",
+   "passives": [
+    "Split — When its HP is at or below 50%, it will split into 2 smaller Slimes with its current HP."
+   ],
+   "encounters": [
+    "Act 1 hard: Large Slime"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.spike_slime_m",
+   "name": "Spike Slime (M)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     28,
+     32
+    ],
+    "ascension": [
+     29,
+     34
+    ]
+   },
+   "moves": [
+    {
+     "name": "Lick",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Frail.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Flame Tackle",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A2: 10) damage. Adds a Slimed into your discard pile.",
+     "intent_icons": "DebuffAttack2"
+    }
+   ],
+   "pattern": "Identical to Spike Slime (L) but it cannot Split.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Small Slimes",
+    "Act 1 hard: Exordium Thugs",
+    "Act 1 hard: Exordium Wildlife"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.spike_slime_s",
+   "name": "Spike Slime (S)",
+   "category": "normal",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     10,
+     14
+    ],
+    "ascension": [
+     11,
+     15
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 1,
+     "effect": "Deals 5 (A2: 6) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Small Slimes",
+    "Act 1 hard: Swarm of Slimes"
+   ],
+   "wiki_page": "Slimes"
+  },
+  {
+   "id": "sts1.byrd",
+   "name": "Byrd",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     25,
+     31
+    ],
+    "ascension": [
+     26,
+     33
+    ]
+   },
+   "moves": [
+    {
+     "name": "Peck",
+     "intent": "attack",
+     "damage": 1,
+     "hits": 5,
+     "effect": "Deals 1×5 (A2: 1×6) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Caw",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 1 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Swoop",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A2: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Stunned",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Stunned"
+    },
+    {
+     "name": "Headbutt",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Go Airborne",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A17: 4) Flying.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Byrd never starts with Swoop. While it has Flying, Byrd will use one of the following actions each turn: * Peck (50% chance) * Caw (30% chance) * Swoop (20% chance) Byrd cannot use Caw and Swoop twice in a row, or Peck three times in a row.",
+   "passives": [
+    "Flying 3 (A17: 4) — Takes 50% less attack damage. Cancelled if dealt attack damage X times in one turn. Resets charges at the start of next turn if not fully removed."
+   ],
+   "encounters": [
+    "Act 2 easy: 3 Byrds",
+    "Act 2 hard: Chosen and Byrds"
+   ],
+   "wiki_page": "Byrd"
+  },
+  {
+   "id": "sts1.centurion",
+   "name": "Centurion",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     76,
+     80
+    ],
+    "ascension": [
+     78,
+     83
+    ]
+   },
+   "moves": [
+    {
+     "name": "Slash",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A2: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Protect",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Mystic gains 15 (A17: 20) Block. If alone, instead gains 15 (A17: 20) Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Fury",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 3,
+     "effect": "Deals 6×3 (A2: 7×3) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Centurion will use one of the following actions each turn if the Mystic is alive: * Slash (65% chance) * Protect (35% chance) If the Mystic is dead, Centurion will replace Protect with Fury. Centurion will never use any move three times in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Centurion and Mystic"
+   ],
+   "wiki_page": "Centurion and Mystic"
+  },
+  {
+   "id": "sts1.chosen",
+   "name": "Chosen",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     95,
+     99
+    ],
+    "ascension": [
+     98,
+     103
+    ]
+   },
+   "moves": [
+    {
+     "name": "Poke",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5×2 (A2: 6×2) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Hex",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies Hex.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Debilitate",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 12) damage. Applies 2 Vulnerable.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Drain",
+     "intent": "defend_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 Weak. Gain 3 Strength.",
+     "intent_icons": "DebuffDefend"
+    },
+    {
+     "name": "Zap",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A2: 21) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Always starts with Poke followed by Hex. After that, repeats the following pattern for the rest of the combat: #Debilitate (50% chance) or Drain (50% chance) #Poke (60% chance) or Zap (40% chance) On Ascension 17, Chosen always starts with Hex instead of Poke.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Gang of Gremlins",
+    "Act 2 easy: Chosen",
+    "Act 2 hard: Chosen and Byrds",
+    "Act 2 hard: Cultist and Chosen",
+    "Act 3 easy: 3 Shapes",
+    "Act 3 hard: 4 Shapes",
+    "Act 3 hard: Spheric Guardian + 2 Shapes"
+   ],
+   "wiki_page": "Chosen"
+  },
+  {
+   "id": "sts1.mugger",
+   "name": "Mugger",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     48,
+     52
+    ],
+    "ascension": [
+     50,
+     54
+    ]
+   },
+   "moves": [
+    {
+     "name": "Mug",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 11) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Lunge",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A2: 18) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Smoke Bomb",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 11 (A17: 17) Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Escape",
+     "intent": "escape",
+     "damage": null,
+     "hits": null,
+     "effect": "Flees combat with your Gold.",
+     "intent_icons": "Escape"
+    }
+   ],
+   "pattern": "Mugger has the same pattern as Looter.",
+   "passives": [
+    "Thievery 15 (A17: 20) — Steals X Gold whenever it attacks. Stolen gold is returned if this enemy is killed."
+   ],
+   "encounters": [
+    "Act 2 easy: 2 Thieves"
+   ],
+   "wiki_page": "Thieves"
+  },
+  {
+   "id": "sts1.mystic",
+   "name": "Mystic",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     48,
+     56
+    ],
+    "ascension": [
+     50,
+     58
+    ]
+   },
+   "moves": [
+    {
+     "name": "Attack",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A2: 9) damage. Applies 2 Frail.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Buff",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 2 A2: 3 (A17: 4) Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Heal",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies heal 16 (A17: 20) HP.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "If an enemy is missing 16 (A19: 21) or more HP, Mystic will use Heal, up to twice in a row. Otherwise, Mystic will use one of the following actions each turn: * Attack (60% chance) * Buff (40% chance) Mystic will never use Attack or Buff three times in a row. On Ascension 17, Mystic will never use Attack twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Centurion and Mystic"
+   ],
+   "wiki_page": "Centurion and Mystic"
+  },
+  {
+   "id": "sts1.shelled_parasite",
+   "name": "Shelled Parasite",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     68,
+     72
+    ],
+    "ascension": [
+     70,
+     75
+    ]
+   },
+   "moves": [
+    {
+     "name": "Double Strike",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 2,
+     "effect": "Deals 6×2 (A2: 7×2) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Life Suck",
+     "intent": "attack_buff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 12) damage. Heals HP equal to unblocked damage dealt.",
+     "intent_icons": "BuffAttack3"
+    },
+    {
+     "name": "Fell",
+     "intent": "attack_debuff",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A2: 21) damage. Applies 2 Frail.",
+     "intent_icons": "DebuffAttack4"
+    },
+    {
+     "name": "Stunned",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Stunned"
+    }
+   ],
+   "pattern": "Shelled Parasite cannot use Fell on its first turn, except on Ascension 17 when it will always start with Fell. After that, it will use one of the following attacks each turn: * Double Strike (40% chance) * Life Suck (40% chance) * Fell (20% chance) Shelled Parasite cannot use Double Strike or Life Suck three times in a row, or Fell twice in a row. If all of its Plated Armor is broken, Shelled Parasite will change its current Intent to Stunned. This can only happen once per combat.",
+   "passives": [
+    "Plated Armor 14"
+   ],
+   "encounters": [
+    "Act 2 easy: Shelled Parasite",
+    "Act 2 hard: Shelled Parasite and Fungi"
+   ],
+   "wiki_page": "Shelled Parasite"
+  },
+  {
+   "id": "sts1.snake_plant",
+   "name": "Snake Plant",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     75,
+     79
+    ],
+    "ascension": [
+     78,
+     82
+    ]
+   },
+   "moves": [
+    {
+     "name": "Chomp Chomp",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 3,
+     "effect": "Deals 7×3 (A2: 8×3) damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Enfeebling Spores",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Frail and 2 Weak.",
+     "intent_icons": "DebuffStrong"
+    }
+   ],
+   "pattern": "Every turn: * Chomp Chomp 65% chance * Enfeebling Spores 35% chance Cannot use Chomp Chomp three times in a row and cannot use Enfeebling Spores twice in a row. On Ascension 17, when it uses Enfeebling Spores for the first time, its pattern changes to: * Chomp Chomp * Chomp Chomp * Enfeebling Spores",
+   "passives": [
+    "Malleable 3"
+   ],
+   "encounters": [
+    "Act 2 hard: Snake Plant"
+   ],
+   "wiki_page": "Snake Plant"
+  },
+  {
+   "id": "sts1.snecko",
+   "name": "Snecko",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     114,
+     120
+    ],
+    "ascension": [
+     120,
+     125
+    ]
+   },
+   "moves": [
+    {
+     "name": "Perplexing Glare",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies Confused.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A2: 18) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Tail Whip",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A2: 10) damage. Applies 2 Vulnerable(.; and A17: 2 Weak).",
+     "intent_icons": "DebuffAttack2"
+    }
+   ],
+   "pattern": "Always starts with Perplexing Glare, then uses one of the following actions each turn: * Bite (60% chance) * Tail Whip (40% chance) Snecko will not use Bite three times in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Snecko"
+   ],
+   "wiki_page": "Snecko"
+  },
+  {
+   "id": "sts1.spheric_guardian",
+   "name": "Spheric Guardian",
+   "category": "normal",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     20,
+     20
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Activate",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 25 (A17: 35) Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Debuff Attack",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 11) damage. Applies 5 Frail.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Slam",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 2,
+     "effect": "Deals 10×2 (A2: 11×2) damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Harden",
+     "intent": "attack_defend",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 11) damage. Gains 15 Block.",
+     "intent_icons": "DefendAttack3"
+    }
+   ],
+   "pattern": "Spheric Guardian always starts with Activate, then uses Debuff Attack. Afterwards, Spheric Guardian alternates between using Slam and Harden for the rest of the battle.",
+   "passives": [
+    "Artifact 3",
+    "Block 40",
+    "Barricade"
+   ],
+   "encounters": [
+    "Act 2 easy: Spheric Guardian",
+    "Act 2 hard: Sentry and Spheric Guardian",
+    "Act 3 hard: Spheric Guardian + 2 Shapes"
+   ],
+   "wiki_page": "Spheric Guardian"
+  },
+  {
+   "id": "sts1.darkling",
+   "name": "Darkling",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     48,
+     56
+    ],
+    "ascension": [
+     50,
+     59
+    ]
+   },
+   "moves": [
+    {
+     "name": "Harden",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 12 Block(; and A17: 2 Strength).",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Nip",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals N damage. N = Number between 7-11 (A2: 9-13), chosen at the start of combat.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 2,
+     "effect": "Deals 8×2 (A2: 9×2) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Regrowing...",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Reincarnate",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Revives with 50% HP.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "On turn one all Darklings have a 50/50 chance of using either Nip or Harden. The middle Darkling continues this pattern but cannot use Chomp. The outer two Darklings on all other turns: * Nip 30% chance * Chomp 40% chance * Harden 30% chance Neither Harden nor Chomp can be used twice in a row. Nip cannot be used three times in a row. After its HP reaches 0, its current intent changes to Regrowing... and cannot be targeted. On the next turn it will use Reincarnate.",
+   "passives": [
+    "Life Link — If other Darklings are still alive, revives in 2 turns."
+   ],
+   "encounters": [
+    "Act 3 easy: 3 Darklings",
+    "Act 3 hard: 3 Darklings"
+   ],
+   "wiki_page": "Darkling"
+  },
+  {
+   "id": "sts1.exploder",
+   "name": "Exploder",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     30,
+     30
+    ],
+    "ascension": [
+     30,
+     35
+    ]
+   },
+   "moves": [
+    {
+     "name": "Attack",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A2: 11) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Explode",
+     "intent": "unknown",
+     "damage": 30,
+     "hits": 1,
+     "effect": "Deals 30 damage. Dies.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Always uses this pattern: * Attack * Attack * Explode",
+   "passives": [
+    "Explosive 3 — Explodes after X turns, dealing some amount of damage."
+   ],
+   "encounters": [
+    "Act 3 easy: 3 Shapes",
+    "Act 3 hard: 4 Shapes",
+    "Act 3 hard: Spheric Guardian + 2 Shapes"
+   ],
+   "wiki_page": "Shapes"
+  },
+  {
+   "id": "sts1.jaw_worm_hard",
+   "name": "Jaw Worm (Hard)",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     40,
+     44
+    ],
+    "ascension": [
+     42,
+     46
+    ]
+   },
+   "moves": [
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A2: 12) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Bellow",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 A2: 4 (A17: 5) Strength. Gains 6 (A17: 9) Block.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Thrash",
+     "intent": "attack_defend",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 damage. Gains 5 Block.",
+     "intent_icons": "DefendAttack2"
+    }
+   ],
+   "pattern": "Always starts with Chomp. If it is found in Act 3, it starts with the effects of Bellow, and for its first action it has a 45% chance of starting with Bellow, a 30% chance of Thrash and a 25% chance of using Chomp * After using Chomp, it has a 59% chance of using Bellow and a 41% of Thrash * After using Bellow, it has a 56% chance of using Thrash and a 44% of using Chomp * After using Thrash, it has a 45% chance of using Bellow, a 30% chance of using Thrash and a 25% chance of using Chomp. Unless Thrash has been used 2 turns in a row, then it has a 64% chance of using Bellow, and a 36% of using Chomp",
+   "passives": [
+    "Strength 3 (A2: 4/A17: 5)",
+    "Block 6 (A17: 9)"
+   ],
+   "encounters": [],
+   "wiki_page": "Jaw Worm"
+  },
+  {
+   "id": "sts1.orb_walker",
+   "name": "Orb Walker",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     90,
+     96
+    ],
+    "ascension": [
+     92,
+     102
+    ]
+   },
+   "moves": [
+    {
+     "name": "Laser",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 11) damage. Adds a Burn into your draw pile, and another Burn into your discard pile.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Claw",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A2: 16) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Orb Walker will use one of the following actions each turn: * Laser (60% chance) * Claw (40% chance) Orb Walker cannot use either action three times in a row.",
+   "passives": [
+    "Strength Up 3 (A17: 5) — At the end of its turn, gains Strength."
+   ],
+   "encounters": [
+    "Act 3 easy: Orb Walker"
+   ],
+   "wiki_page": "Orb Walker"
+  },
+  {
+   "id": "sts1.repulsor",
+   "name": "Repulsor",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     29,
+     35
+    ],
+    "ascension": [
+     31,
+     38
+    ]
+   },
+   "moves": [
+    {
+     "name": "Daze",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Adds 2 Dazed into your draw pile.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Attack",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A2: 13) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "On all turns: * Attack 20% chance * Daze 80% chance Cannot use Attack twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 3 easy: 3 Shapes",
+    "Act 3 hard: 4 Shapes",
+    "Act 3 hard: Spheric Guardian + 2 Shapes"
+   ],
+   "wiki_page": "Shapes"
+  },
+  {
+   "id": "sts1.spiker",
+   "name": "Spiker",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     42,
+     56
+    ],
+    "ascension": [
+     44,
+     60
+    ]
+   },
+   "moves": [
+    {
+     "name": "Attack",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A2: 9) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Buff Thorns",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Thorns.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "On every turn, it has a 50/50 chance of using either Attack or Buff Thorns. Cannot use Attack twice in a row. Cannot use Buff Thorns once it has been used 6 times and will instead using Attack.",
+   "passives": [
+    "Thorns 3 (A2: 4 A17: 7)"
+   ],
+   "encounters": [
+    "Act 3 easy: 3 Shapes",
+    "Act 3 hard: 4 Shapes",
+    "Act 3 hard: Spheric Guardian + 2 Shapes"
+   ],
+   "wiki_page": "Shapes"
+  },
+  {
+   "id": "sts1.spire_growth",
+   "name": "Spire Growth",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     170,
+     170
+    ],
+    "ascension": [
+     190,
+     190
+    ]
+   },
+   "moves": [
+    {
+     "name": "Constrict",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 10 (A2: 12) Constricted.,",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Quick Tackle",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A2: 18) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Smash",
+     "intent": "attack",
+     "damage": 22,
+     "hits": 1,
+     "effect": "Deals 22 (A2: 25) damage.",
+     "intent_icons": "Attack5"
+    }
+   ],
+   "pattern": "Each turn, it has a 50/50 chance to use either Quick Tackle or Constrict. If Constrict was used last turn or the player already has Constricted, it uses Smash instead. Cannot use either attack three times in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Spire Growth"
+   ],
+   "wiki_page": "Spire Growth"
+  },
+  {
+   "id": "sts1.the_maw",
+   "name": "The Maw",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     300,
+     300
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Roar",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 (A17: 5) Weak and 3 (A17: 5) Frail.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Slam",
+     "intent": "attack",
+     "damage": 25,
+     "hits": 1,
+     "effect": "Deals 25 (A2: 30) damage.",
+     "intent_icons": "Attack6"
+    },
+    {
+     "name": "Nom Nom",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals 5×N damage. N = Current turn, divided by two (rounded up).",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Drool",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A17: 5) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Always starts with Roar. Afterwards it has a 50/50 chance of using either Slam or Nom Nom. After using Drool: 50/50 split between Slam and Nom Nom. After using Slam: 50/50 split between Nom Nom and Drool. After using Nom Nom: Always uses Drool.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: The Maw"
+   ],
+   "wiki_page": "The Maw"
+  },
+  {
+   "id": "sts1.transient",
+   "name": "Transient",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     999,
+     999
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Attack",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals 20+N (A2: 30+N) damage. N = Current turn, multiplied by 10.",
+     "intent_icons": "Attack7"
+    }
+   ],
+   "pattern": "",
+   "passives": [
+    "Fading 5 (A17: 6) — Dies in X turns.",
+    "Shifting — Upon losing HP, loses that much Strength until the end of the turn."
+   ],
+   "encounters": [
+    "Act 3 hard: Transient"
+   ],
+   "wiki_page": "Transient"
+  },
+  {
+   "id": "sts1.writhing_mass",
+   "name": "Writhing Mass",
+   "category": "normal",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     160,
+     160
+    ],
+    "ascension": [
+     175,
+     175
+    ]
+   },
+   "moves": [
+    {
+     "name": "Multi Hit",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 3,
+     "effect": "Deals 7×3 (A2: 9×3) damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Debuff Attack",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 12) damage. Applies 2 Weak and 2 Vulnerable.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Big Hit",
+     "intent": "attack",
+     "damage": 32,
+     "hits": 1,
+     "effect": "Deals 32 (A2: 38) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Block Attack",
+     "intent": "attack_defend",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A2: 16) damage. Gains 16 Block.",
+     "intent_icons": "DefendAttack4"
+    },
+    {
+     "name": "Parasite",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Permanently adds a Parasite to your deck.",
+     "intent_icons": "DebuffStrong"
+    }
+   ],
+   "pattern": "On its first turn, it has an (approximately) equal chance to use Multi Hit, Big Hit, or Debuff Attack. Afterwards: * Parasite 10% chance * Block Attack 30% chance * Debuff Attack 20% chance * Multi Hit 30% chance * Big Hit 10% chance Parasite can only be used once. The same move cannot be used (or rerolled via Reactive) twice in a row. {| class=\"wikitable\" style=\"text-align: center; margin:left\" |+ Percent Chance based on last used move |-! Intent\\Used!! Parasite!! Block!! Debuff!! Multi Hit!! Big Hit |-! Parasite | - || ~14% || 12.5% || ~14% || ~11% |-! Block | ~33% || - || 37.5% || ~43% || ~33% |-! Debuff | ~22% || ~29% || - || ~29% || ~22% |-! Multi Hit | ~33% || ~43% || 37.5% || - || ~33% |-! Big Hit | ~11% || ~14% || 12.5% || ~14% || - |}",
+   "passives": [
+    "Malleable 4",
+    "Reactive — Upon receiving attack damage, changes its Intent."
+   ],
+   "encounters": [
+    "Act 3 hard: Writhing Mass"
+   ],
+   "wiki_page": "Writhing Mass"
+  },
+  {
+   "id": "sts1.gremlin_nob",
+   "name": "Gremlin Nob",
+   "category": "elite",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     82,
+     86
+    ],
+    "ascension": [
+     85,
+     90
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bellow",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A18: 3) Enrage.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Skull Bash",
+     "intent": "attack_debuff",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A3: 8) damage. Applies 2 Vulnerable.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Bull Rush",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A3: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Always starts with Bellow then has a 33% chance of using Skull Bash and a 67% chance of using Bull Rush. Cannot use Bull Rush three times in a row. At Ascension 18, Gremlin Nob uses Skull Bash on the 2nd turn and uses Bull Rush twice afterwards, then repeats this pattern for the rest of the fight.",
+   "passives": [],
+   "encounters": [
+    "Act 1 elite: Gremlin Nob"
+   ],
+   "wiki_page": "Gremlin Nob"
+  },
+  {
+   "id": "sts1.lagavulin",
+   "name": "Lagavulin",
+   "category": "elite",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     109,
+     111
+    ],
+    "ascension": [
+     112,
+     115
+    ]
+   },
+   "moves": [
+    {
+     "name": "Sleep",
+     "intent": "sleep",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Sleep"
+    },
+    {
+     "name": "Stunned",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Stunned"
+    },
+    {
+     "name": "Attack",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A3: 20) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Siphon Soul",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies -1 (A18: -2) Dexterity and -1 (A18: -2) Strength.",
+     "intent_icons": "DebuffStrong"
+    }
+   ],
+   "pattern": "",
+   "passives": [
+    "Metallicize 8",
+    "Block 8"
+   ],
+   "encounters": [
+    "Act 1 elite: Lagavulin"
+   ],
+   "wiki_page": "Lagavulin"
+  },
+  {
+   "id": "sts1.sentry",
+   "name": "Sentry",
+   "category": "elite",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     38,
+     42
+    ],
+    "ascension": [
+     39,
+     45
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bolt",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Adds 2 (A18: 3) Dazed into your discard pile.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Beam",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A3: 10) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Uses Bolt followed by Beam, repeating for the rest of the combat. In the Elite encounter, the middle Sentry instead uses Beam followed by Bolt.",
+   "passives": [
+    "Artifact 1"
+   ],
+   "encounters": [
+    "Act 1 elite: Sentries",
+    "Act 2 hard: Sentry and Spheric Guardian"
+   ],
+   "wiki_page": "Sentry"
+  },
+  {
+   "id": "sts1.book_of_stabbing",
+   "name": "Book of Stabbing",
+   "category": "elite",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     160,
+     164
+    ],
+    "ascension": [
+     168,
+     172
+    ]
+   },
+   "moves": [
+    {
+     "name": "Multi Stab",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals 6×N (A3: 7×N) damage. (N = Number of times Multi Stab was used this combat, plus 2.; On A18, N = Current turn, plus 1.)",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Big Stab",
+     "intent": "attack",
+     "damage": 21,
+     "hits": 1,
+     "effect": "Deals 21 (A3: 24) damage.",
+     "intent_icons": "Attack5"
+    }
+   ],
+   "pattern": "15% chance to use Big Stab and an 85% chance to use Multi Stab. Cannot use Multi Stab 3 times in a row and cannot use Big Stab twice in a row.",
+   "passives": [
+    "Painful Stabs — Whenever you receive attack damage from this enemy, add X Wounds into your discard pile."
+   ],
+   "encounters": [
+    "Act 2 elite: Book of Stabbing"
+   ],
+   "wiki_page": "Book of Stabbing"
+  },
+  {
+   "id": "sts1.gremlin_leader",
+   "name": "Gremlin Leader",
+   "category": "elite",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     140,
+     148
+    ],
+    "ascension": [
+     145,
+     155
+    ]
+   },
+   "moves": [
+    {
+     "name": "Encourage",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 3 A3: 4 (A18: 5) Strength. Other enemies gain 6 (A18: 10) Block.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Stab",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 3,
+     "effect": "Deals 6×3 damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Rally!",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Summon 2 random Gremlins.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Depending on the amount of enemies in battle, Gremlin Leader will use one of the following actions each turn:",
+   "passives": [],
+   "encounters": [
+    "Act 2 elite: Gremlin Leader"
+   ],
+   "wiki_page": "Gremlin Leader"
+  },
+  {
+   "id": "sts1.taskmaster",
+   "name": "Taskmaster",
+   "category": "elite",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     54,
+     60
+    ],
+    "ascension": [
+     57,
+     64
+    ]
+   },
+   "moves": [
+    {
+     "name": "Scouring Whip",
+     "intent": "attack_debuff",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 damage. Adds 1 Wound A2: 2 (A18: 3 Wounds) into your discard pile. (;Gains A18: 1 Strength.)",
+     "intent_icons": "DebuffAttack2"
+    }
+   ],
+   "pattern": "",
+   "passives": [],
+   "encounters": [
+    "Act 2 elite: Taskmaster"
+   ],
+   "wiki_page": "Taskmaster"
+  },
+  {
+   "id": "sts1.giant_head",
+   "name": "Giant Head",
+   "category": "elite",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     500,
+     500
+    ],
+    "ascension": [
+     520,
+     520
+    ]
+   },
+   "moves": [
+    {
+     "name": "Count",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Glare",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Weak.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "It Is Time",
+     "intent": "attack",
+     "damage": 30,
+     "hits": 1,
+     "effect": "Deals 30 (A3: 40) damage, increased by 5 for each time It Is Time has been used this combat up to a maximum of 60 (A3: 70) damage.",
+     "intent_icons": "Attack7"
+    }
+   ],
+   "pattern": "For the first 4 (A18: 3) turns, it has a 50/50 chance to use either Count or Glare. Cannot use either move three times in a row. Afterwards, it repeats It Is Time for the rest of combat.",
+   "passives": [
+    "Slow — Whenever you play a card, target receives 10% more damage from Attacks this turn. (Receives (X+10)% more damage)"
+   ],
+   "encounters": [
+    "Act 3 elite: Giant Head"
+   ],
+   "wiki_page": "Giant Head"
+  },
+  {
+   "id": "sts1.nemesis",
+   "name": "Nemesis",
+   "category": "elite",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     185,
+     185
+    ],
+    "ascension": [
+     200,
+     200
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tri Attack",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 3,
+     "effect": "Deals 6×3 (A3: 7×3) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Tri Burn",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Adds 3 (A18: 5) Burns into your discard pile.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Scythe",
+     "intent": "attack",
+     "damage": 45,
+     "hits": 1,
+     "effect": "Deals 45 damage.",
+     "intent_icons": "Attack7"
+    }
+   ],
+   "pattern": "On its first turn has a 50/50 chance of using either Tri Burn or Tri Attack. Afterwards it has approximately these chances: * Tri Burn (35% chance) * Tri Attack (35% chance) * Scythe (30% chance) Cannot use Tri Burn or Scythe twice in a row. Cannot use Tri Attack three times in a row.",
+   "passives": [
+    "Intangible every other turn"
+   ],
+   "encounters": [
+    "Act 3 elite: Nemesis"
+   ],
+   "wiki_page": "Nemesis"
+  },
+  {
+   "id": "sts1.reptomancer",
+   "name": "Reptomancer",
+   "category": "elite",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     180,
+     190
+    ],
+    "ascension": [
+     190,
+     200
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spawn Dagger",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons 1 Dagger (A18: 2 Daggers) (up to a maximum of 4).",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Big Bite",
+     "intent": "attack",
+     "damage": 30,
+     "hits": 1,
+     "effect": "Deals 30 (A3: 34) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Snake Strike",
+     "intent": "attack_debuff",
+     "damage": 13,
+     "hits": 2,
+     "effect": "Deals 13×2 (A3: 16×2) damage. Applies 1 Weak.",
+     "intent_icons": "DebuffAttack6"
+    }
+   ],
+   "pattern": "Always starts with Spawn Dagger. Afterward it has an approximately equal chance of using Snake Strike, Big Bite, and Spawn Dagger. Cannot use Snake Strike or Big Bite twice in a row. Cannot use Spawn Dagger three times in a row. Only 4 Daggers can be in play at any time. If Spawn Dagger was chosen with 4 Daggers in play, it will use Snake Strike instead.",
+   "passives": [],
+   "encounters": [
+    "Act 3 elite: Reptomancer"
+   ],
+   "wiki_page": "Reptomancer"
+  },
+  {
+   "id": "sts1.spire_shield",
+   "name": "Spire Shield",
+   "category": "elite",
+   "area": "Act 4 / The Ending",
+   "hp": {
+    "base": [
+     110,
+     110
+    ],
+    "ascension": [
+     125,
+     125
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bash",
+     "intent": "attack_debuff",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A3: 14) damage. If the Player has an Orb Slot, there is 50% chance to apply -1 Focus. Otherwise applies -1 Strength.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Fortify",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 30 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Smash",
+     "intent": "attack_defend",
+     "damage": 34,
+     "hits": 1,
+     "effect": "Deals 34 (A3: 38) damage. (Gains Block equal to damage dealt.; Gains A18: 99 Block.)",
+     "intent_icons": "DefendAttack7"
+    }
+   ],
+   "pattern": "Every three turns, starting from turn 3, it uses Smash. Otherwise has a 50/50 chance of using: * Bash followed by Fortify * Fortify followed by Bash",
+   "passives": [
+    "Artifact 1 (A18: 2)"
+   ],
+   "encounters": [
+    "Act 4 elite: Spire Shield and Spire Spear"
+   ],
+   "wiki_page": "Spire Shield and Spire Spear"
+  },
+  {
+   "id": "sts1.spire_spear",
+   "name": "Spire Spear",
+   "category": "elite",
+   "area": "Act 4 / The Ending",
+   "hp": {
+    "base": [
+     160,
+     160
+    ],
+    "ascension": [
+     180,
+     180
+    ]
+   },
+   "moves": [
+    {
+     "name": "Burn Strike",
+     "intent": "attack_debuff",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5×2 (A3: 6×2) damage. (Adds 2 Burns into your discard pile.; Adds 2 Burns A18.)",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Skewer",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 3,
+     "effect": "Deals 10×3 (A3: 10×4) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Piercer",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 2 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Always starts with Burn Strike. Every 3 turns, starting from turn 2, it uses Skewer. Otherwise has a 50/50 chance of using: * Burn Strike followed by Piercer * Piercer followed by Burn Strike",
+   "passives": [
+    "Artifact 1 (A18: 2)"
+   ],
+   "encounters": [
+    "Act 4 elite: Spire Shield and Spire Spear"
+   ],
+   "wiki_page": "Spire Shield and Spire Spear"
+  },
+  {
+   "id": "sts1.hexaghost",
+   "name": "Hexaghost",
+   "category": "boss",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     250,
+     250
+    ],
+    "ascension": [
+     264,
+     264
+    ]
+   },
+   "moves": [
+    {
+     "name": "Activate",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Divider",
+     "intent": "attack",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals (N+1)×6 damage. N = Player's HP at the start of the turn, divided by 12 (rounded down).",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Sear",
+     "intent": "attack_debuff",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 damage. Adds 1 (A19: 2) Burns into your discard pile.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5×2 (A4: 6×2) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Inflame",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 12 Block and 2 (A19: 3) Strength.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Inferno",
+     "intent": "attack_debuff",
+     "damage": 2,
+     "hits": 6,
+     "effect": "Deals 2×6 (A4: 3×6) damage. Adds 3 Burns+ into your discard pile. Upgrades all Burns. For the rest of combat, any Burn created by Sear will be upgraded.",
+     "intent_icons": "DebuffAttack5"
+    }
+   ],
+   "pattern": "Always starts with Activate followed by Divider. For the rest of combat, repeats the following pattern: # Sear # Tackle # Sear # Inflame # Tackle # Sear # Inferno",
+   "passives": [],
+   "encounters": [
+    "Act 1 boss: Hexaghost"
+   ],
+   "wiki_page": "Hexaghost"
+  },
+  {
+   "id": "sts1.slime_boss",
+   "name": "Slime Boss",
+   "category": "boss",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     140,
+     140
+    ],
+    "ascension": [
+     150,
+     150
+    ]
+   },
+   "moves": [
+    {
+     "name": "Goop Spray",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Adds 3 (A19: 5) Slimed into your discard pile.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Preparing",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Slam",
+     "intent": "attack",
+     "damage": 35,
+     "hits": 1,
+     "effect": "Deals 35 (A4: 38) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Split",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Disappears and spawns 1 Acid Slime (L) and 1 Spike Slime (L) with its current HP.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Repeats the following pattern: #Goop Spray #Preparing #Slam Once its HP reaches 50% or lower, its current Intent will be immediately changed to Split.",
+   "passives": [
+    "Split"
+   ],
+   "encounters": [
+    "Act 1 boss: Slime Boss"
+   ],
+   "wiki_page": "Slime Boss"
+  },
+  {
+   "id": "sts1.the_guardian",
+   "name": "The Guardian",
+   "category": "boss",
+   "area": "Act 1 / Exordium",
+   "hp": {
+    "base": [
+     240,
+     240
+    ],
+    "ascension": [
+     250,
+     250
+    ]
+   },
+   "moves": [
+    {
+     "name": "Charging Up",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 9 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Fierce Bash",
+     "intent": "attack",
+     "damage": 32,
+     "hits": 1,
+     "effect": "Deals 32 (A4: 36) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Vent Steam",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Weak and 2 Vulnerable.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Whirlwind",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 4,
+     "effect": "Deals 5×4 damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Defensive Mode",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A19: 4) Sharp Hide.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Roll Attack",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A4: 10) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Twin Slam",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 2,
+     "effect": "Deals 8×2 damage. Loses Sharp Hide. Gains 30 A9: 35 (A19: 40) Mode Shift, increased by 10 for each time Mode Shift triggered this combat.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Repeats the following pattern: #Charging Up #Fierce Bash #Vent Steam #Whirlwind When Guardian triggers Mode Shift the current Intent is replaced with Defensive Mode. After Defensive Mode, Guardian uses Roll Attack, followed by Twin Slam and Whirlwind. Then the initial pattern restarts.",
+   "passives": [
+    "Mode Shift 30 (A9: 35 A19: 40) — After losing X HP, gains 20 Block and changes current Intent to Defensive Mode."
+   ],
+   "encounters": [
+    "Act 1 boss: The Guardian"
+   ],
+   "wiki_page": "The Guardian"
+  },
+  {
+   "id": "sts1.bronze_automaton",
+   "name": "Bronze Automaton",
+   "category": "boss",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     300,
+     300
+    ],
+    "ascension": [
+     320,
+     320
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spawn Orbs",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons 2 Bronze Orbs.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Flail",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 2,
+     "effect": "Deals 7×2 (A4: 8x2) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Boost",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A4: 4) Strength and 9 (A9: 12) Block.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "HYPER BEAM",
+     "intent": "attack",
+     "damage": 45,
+     "hits": 1,
+     "effect": "Deals 45 (A4: 50) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Stunned",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    }
+   ],
+   "pattern": "Always starts with Spawn Orbs, then repeats the following pattern: #Flail #Boost #Flail #Boost #HYPER BEAM #Stunned On Ascension 19, Bronze Automaton will always use Boost in place of Stunned.",
+   "passives": [
+    "Artifact 3"
+   ],
+   "encounters": [
+    "Act 2 boss: Bronze Automaton"
+   ],
+   "wiki_page": "Bronze Automaton"
+  },
+  {
+   "id": "sts1.the_champ",
+   "name": "The Champ",
+   "category": "boss",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     420,
+     420
+    ],
+    "ascension": [
+     440,
+     440
+    ]
+   },
+   "moves": [
+    {
+     "name": "Heavy Slash",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A4: 18) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Face Slap",
+     "intent": "attack_debuff",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A4: 14) damage. Applies 2 Frail and 2 Vulnerable",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Defensive Stance",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 15 A9: 18 (A19: 20) Block and 5 A9: 6 (A19: 7) Metallicize.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Gloat",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 A4: 3 (A19: 4) Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Taunt",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Weak and 2 Vulnerable.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Anger",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Removes all Debuffs. Gains 6 A4: 9 (A19: 12) Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Execute",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 2,
+     "effect": "Deals 10×2 damage.",
+     "intent_icons": "Attack7"
+    }
+   ],
+   "pattern": "",
+   "passives": [],
+   "encounters": [
+    "Act 2 boss: The Champ"
+   ],
+   "wiki_page": "The Champ"
+  },
+  {
+   "id": "sts1.the_collector",
+   "name": "The Collector",
+   "category": "boss",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     282,
+     282
+    ],
+    "ascension": [
+     300,
+     300
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spawn",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons up to 2 Torch Heads.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Fireball",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A4: 21) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Buff",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 3 A4: 4 (A19: 5) Strength. Gains 15 A9: 18 (A19: 23) Block.",
+     "intent_icons": "DefendBuff"
+    },
+    {
+     "name": "Mega Debuff",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 (A19: 5) Weak, 3 (A19: 5) Vulnerable and 3 (A19: 5) Frail.",
+     "intent_icons": "DebuffStrong"
+    }
+   ],
+   "pattern": "Always starts with Spawn and always uses Mega Debuff on turn 4. Can only have two Torch Heads summoned at a time. If there are 0-1 Torch Heads alive: * Spawn 25% chance * Fireball 45% chance * Buff 30% chance If both Torch Heads are alive: * Fireball 70% chance * Buff 30% chance She cannot use Buff twice in a row and cannot use Fireball 3 times in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 boss: The Collector"
+   ],
+   "wiki_page": "The Collector"
+  },
+  {
+   "id": "sts1.awakened_one",
+   "name": "Awakened One",
+   "category": "boss",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     300,
+     300
+    ],
+    "ascension": [
+     320,
+     320
+    ]
+   },
+   "moves": [
+    {
+     "name": "Slash",
+     "intent": "attack",
+     "damage": 20,
+     "hits": 1,
+     "effect": "Deals 20 damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Soul Strike",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 4,
+     "effect": "Deals 6×4 damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Rebirth",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Heals to full HP. Removes all Debuffs. Loses Curiosity.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Dark Echo",
+     "intent": "attack",
+     "damage": 40,
+     "hits": 1,
+     "effect": "Deals 40 damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Sludge",
+     "intent": "attack_debuff",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 damage. Adds a Void into your draw pile.",
+     "intent_icons": "DebuffAttack4"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 3,
+     "effect": "Deals 10×3 damage.",
+     "intent_icons": "Attack7"
+    }
+   ],
+   "pattern": "",
+   "passives": [
+    "Regenerate 10 (A19: 15) — At the end of its turn, heals X HP.",
+    "Curiosity 1 (A19: 2) — Whenever you play a Power card, gains X Strength.",
+    "(Strength 2 A4)"
+   ],
+   "encounters": [
+    "Act 3 boss: Awakened One"
+   ],
+   "wiki_page": "Awakened One"
+  },
+  {
+   "id": "sts1.deca",
+   "name": "Deca",
+   "category": "boss",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     250,
+     250
+    ],
+    "ascension": [
+     265,
+     265
+    ]
+   },
+   "moves": [
+    {
+     "name": "Beam",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 2,
+     "effect": "Deals 10×2 (A4: 12×2) damage. Adds 2 Dazed into your discard pile.",
+     "intent_icons": "DebuffAttack5"
+    },
+    {
+     "name": "Square of Protection",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 16 Block(; and A19: 3 Plated Armor).",
+     "intent_icons": "Defend"
+    }
+   ],
+   "pattern": "Alternates between Beam and Square of Protection.",
+   "passives": [
+    "Artifact 2 (A19: 3)"
+   ],
+   "encounters": [
+    "Act 3 boss: Donu and Deca"
+   ],
+   "wiki_page": "Donu and Deca"
+  },
+  {
+   "id": "sts1.donu",
+   "name": "Donu",
+   "category": "boss",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     250,
+     250
+    ],
+    "ascension": [
+     265,
+     265
+    ]
+   },
+   "moves": [
+    {
+     "name": "Circle of Power",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 3 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Beam",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 2,
+     "effect": "Deals 10×2 (A4: 12×2) damage.",
+     "intent_icons": "Attack6"
+    }
+   ],
+   "pattern": "Alternates between Circle of Power and Beam.",
+   "passives": [
+    "Artifact 2 (A19: 3)"
+   ],
+   "encounters": [
+    "Act 3 boss: Donu and Deca"
+   ],
+   "wiki_page": "Donu and Deca"
+  },
+  {
+   "id": "sts1.time_eater",
+   "name": "Time Eater",
+   "category": "boss",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     456,
+     456
+    ],
+    "ascension": [
+     480,
+     480
+    ]
+   },
+   "moves": [
+    {
+     "name": "Reverberate",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 3,
+     "effect": "Deals 7×3 (A4: 8×3) damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Head Slam",
+     "intent": "attack_debuff",
+     "damage": 26,
+     "hits": 1,
+     "effect": "Deals 26 (A4: 32) damage. Applies 1 Draw Reduction. (;Adds A19: 2 Slimed into your discard pile.)",
+     "intent_icons": "DebuffAttack6"
+    },
+    {
+     "name": "Ripple",
+     "intent": "defend_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 20 Block. Applies 1 Vulnerable, 1 Weak(.; and A19: 1 Frail.)",
+     "intent_icons": "DebuffDefend"
+    },
+    {
+     "name": "Haste",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Removes all Debuffs. Heals to 50% HP. (;Gains A19: 32 Block.)",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Time Eater will always use Haste when it is reduced to below half HP. Haste can only be used once per combat. Time Eater will use one of the following three attacks each turn: * Reverberate (45% chance) * Head Slam (35% chance) * Ripple (20% chance) Time Eater will not use Reverberate three times in a row, or Head Slam/Ripple twice in a row.",
+   "passives": [
+    "Time Warp — Whenever you play a certain number of cards, ends your turn and gains X Strength."
+   ],
+   "encounters": [
+    "Act 3 boss: Time Eater"
+   ],
+   "wiki_page": "Time Eater"
+  },
+  {
+   "id": "sts1.corrupt_heart",
+   "name": "Corrupt Heart",
+   "category": "boss",
+   "area": "Act 4 / The Ending",
+   "hp": {
+    "base": [
+     750,
+     750
+    ],
+    "ascension": [
+     800,
+     800
+    ]
+   },
+   "moves": [
+    {
+     "name": "Debilitate",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Vulnerable, 2 Weak and 2 Frail. Adds 1 Burn, 1 Dazed, 1 Slimed, 1 Void and 1 Wound into your draw pile.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Blood Shots",
+     "intent": "attack",
+     "damage": 2,
+     "hits": 12,
+     "effect": "Deals 2×12 (A4: 2×15) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Echo",
+     "intent": "attack",
+     "damage": 40,
+     "hits": 1,
+     "effect": "Deals 40 (A4: 45) damage.",
+     "intent_icons": "Attack7"
+    },
+    {
+     "name": "Buff",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Loses all negative Strength, then gains 2 Strength. Gains an additional Buff: * 1st buff: 2 Artifact * 2nd buff: 1 Beat of Death * 3rd buff: Painful Stabs * 4th buff: 10 Strength * 5th buff: 50 Strength",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Always starts with Debilitate. Uses Buff every 3 turns starting from turn 4. On all other turns it has a 50/50 chance to use either Blood Shots followed by Echo or Echo followed by Blood Shots",
+   "passives": [
+    "Beat of Death 1 (A19: 2) — Whenever you play a card, take X damage.",
+    "Invincible 300 (A19: 200) — Can only lose X more HP this turn."
+   ],
+   "encounters": [
+    "Act 4 boss: Corrupt Heart"
+   ],
+   "wiki_page": "Corrupt Heart"
+  },
+  {
+   "id": "sts1.bronze_orb",
+   "name": "Bronze Orb",
+   "category": "minion",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     52,
+     58
+    ],
+    "ascension": [
+     54,
+     60
+    ]
+   },
+   "moves": [
+    {
+     "name": "Stasis",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Steals a random card of the highest rarity from your draw pile (or discard pile, if the draw pile is empty). On death, returns the card to your hand.",
+     "intent_icons": "DebuffStrong"
+    },
+    {
+     "name": "Support Beam",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Bronze Automaton gains 12 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Beam",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Each Bronze Orb can only use Stasis once per combat. Stasis has a 75% chance to be used each turn until it has been picked. After using Stasis Bronze Orb has a 70% chance to use Support Beam and a 30% chance to use Beam each turn. Bronze Orb cannot use the same attack thrice in a row.",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 2 boss: Bronze Automaton"
+   ],
+   "wiki_page": "Bronze Automaton"
+  },
+  {
+   "id": "sts1.torch_head",
+   "name": "Torch Head",
+   "category": "minion",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     38,
+     40
+    ],
+    "ascension": [
+     40,
+     45
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 2 boss: The Collector"
+   ],
+   "wiki_page": "The Collector"
+  },
+  {
+   "id": "sts1.dagger",
+   "name": "Dagger",
+   "category": "minion",
+   "area": "Act 3 / The Beyond",
+   "hp": {
+    "base": [
+     20,
+     25
+    ],
+    "ascension": [
+     20,
+     25
+    ]
+   },
+   "moves": [
+    {
+     "name": "Wound",
+     "intent": "attack_debuff",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 damage. Adds a Wound into your discard pile.",
+     "intent_icons": "DebuffAttack2"
+    },
+    {
+     "name": "Explode",
+     "intent": "attack",
+     "damage": 25,
+     "hits": 1,
+     "effect": "Deals 25 damage. Dies",
+     "intent_icons": "Attack6"
+    }
+   ],
+   "pattern": "Uses Wound and then Explode.",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 3 elite: Reptomancer"
+   ],
+   "wiki_page": "Reptomancer"
+  },
+  {
+   "id": "sts1.bear",
+   "name": "Bear",
+   "category": "event",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     38,
+     42
+    ],
+    "ascension": [
+     40,
+     44
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bear Hug",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies -2 (A17: -4) Dexterity.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Lunge",
+     "intent": "attack_defend",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A2: 10) damage. Gains 9 Block.",
+     "intent_icons": "DefendAttack2"
+    },
+    {
+     "name": "Maul",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A2: 20) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Always starts with Bear Hug, then alternates between Lunge and Maul.",
+   "passives": [],
+   "encounters": [],
+   "wiki_page": "Masked Bandits"
+  },
+  {
+   "id": "sts1.pointy",
+   "name": "Pointy",
+   "category": "event",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     30,
+     30
+    ],
+    "ascension": [
+     34,
+     34
+    ]
+   },
+   "moves": [
+    {
+     "name": "Pointy Special",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5×2 (A2: 6×2) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Uses Pointy Special every turn.",
+   "passives": [],
+   "encounters": [],
+   "wiki_page": "Masked Bandits"
+  },
+  {
+   "id": "sts1.romeo",
+   "name": "Romeo",
+   "category": "event",
+   "area": "Act 2 / The City",
+   "hp": {
+    "base": [
+     35,
+     39
+    ],
+    "ascension": [
+     37,
+     41
+    ]
+   },
+   "moves": [
+    {
+     "name": "Mock",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Unknown"
+    },
+    {
+     "name": "Agonizing Slash",
+     "intent": "attack_debuff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A2: 12) damage. Applies 2 (A17: 3) Weak.",
+     "intent_icons": "DebuffAttack3"
+    },
+    {
+     "name": "Cross Slash",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A2: 17) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Always starts with Mock, then alternates between Agonizing Slash and Cross Slash. On Ascension 17, starts with Mock, then repeats the pattern of Agonizing Slash, Cross Slash, Cross Slash.",
+   "passives": [],
+   "encounters": [],
+   "wiki_page": "Masked Bandits"
+  }
+ ]
+}

@@ -1,0 +1,3830 @@
+{
+ "game": "Slay the Spire 2",
+ "source": "https://slaythespire.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "relics/potions from the wiki Cargo tables; events from the wiki's event data modules + each event page's Options section (choices are condensed plain text, capped). encounters: per act, pools easy/hard (StS1 with the wiki's encounter weights), elite, boss, event; enemies = matched enemy names. rules: condensed from the mechanics pages named in each 'source'; anything marked 'not on wiki' comes from general game knowledge and is unverified. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Completeness check: {\"relics\": {\"scraped_relics\": 298, \"wiki_Module_Relics_data (renders Relics List)\": 298, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Ancient\": 102, \"Common\": 30, \"Event\": 35, \"Rare\": 50, \"Shop\": 30, \"Special\": 1, \"Starter\": 10, \"Uncommon\": 40}}, \"potions\": {\"scraped_potions\": 64, \"wiki_Module_Potions_data (renders Potions List)\": 64, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Common\": 20, \"Rare\": 20, \"Special\": 4, \"Uncommon\": 20}}, \"events\": {\"scraped_events\": 57, \"wiki_Category_Events_pages\": 57, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"wiki_Module_Events_data (renders Events List)\": 57}}",
+ "relics": [
+  {
+   "name": "Alchemical Coffer",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 4 Potion slots filled with random Potion.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Arcane Scroll",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain a random Rare Card to add to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Archaic Tooth",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Transform a starter card into an ancient version.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Astrolabe",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Transform 3 cards, then Upgrade them.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Beautiful Bracelet",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Enchant 4 random cards in your Deck with Swift 2.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Biiig Hug",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 4 cards from your Deck. Whenever you shuffle your Draw Pile, add a Soot into your Draw Pile.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Black Star",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Elites drop an additional Relic when defeated.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Blessed Antler",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. At the start of each combat, shuffle 3 Dazed into your Draw Pile.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Blood-Soaked Rose",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Enthralled to your Deck. Gain [E] at the start of each turn.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Booming Conch",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of Elite combats, draw 2 additional cards and gain [E].",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Brilliant Scarf",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "The 5th card you play from your hand each turn is free.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Calling Bell",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain a unique Curse and 3 Relics.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Choices Paradox",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of each combat, add 1 of 5 random cards into your Hand. Add Retain to the chosen card.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Claws",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Transform up to 6 cards into Maul.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Crossbow",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, add a random Attack into your Hand. It's free to play this turn.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Cursed Pearl",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, receive Greed. Gain 333 Gold.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Delicate Frond",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of each combat, fill all empty Potion slots with random Potions.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Diamond Diadem",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Start combat with 20 Block. Your Block is not removed at the start of your 2nd turn.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Distinguished Cape",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 2 random Curses and 3 Apparitions to your Deck.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Dowsing Rod",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Dowsing to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Driftwood",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "You may reroll each card reward once.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Dusty Tome",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain an Ancient Card.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Ectoplasm",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "You can no longer gain Gold. Gain [E] at the start of each turn.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Electric Shrymp",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Enchant a Skill with Imbued.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Empty Cage",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 2 cards from your Deck.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Fiddle",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of each turn, draw 2 additional cards. You may not draw cards during your turn.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Fishing Rod",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Every 3 normal combats, Upgrade a random card in your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Fur Coat",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, mark 8 random combats. Enemies in those rooms have 1 HP.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Glass Eye",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain 2 Common cards, 2 Uncommon cards, and 1 Rare card.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Glitter",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Enchant all card rewards with Glam.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Golden Compass",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, replace the Act 2 Map with a single special path.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Golden Pearl",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 150 Gold.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Hefty Tablet",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Choose 1 of 3 Rare cards to add to your Deck. Add 1 Injury to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Iron Club",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Every 4 cards you play, draw 1 card.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Jeweled Mask",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of each combat put a random Power from your Draw Pile into your Hand. It's free to play this combat.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Jewelry Box",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Apotheosis to your Deck.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Kaleidoscope",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain 2 card rewards from other characters.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Large Capsule",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain 2 random Relics. Add an additional Strike and Defend to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Lava Rock",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "The Act 1 Boss drops 2 Relics.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Lead Paperweight",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, choose 1 of 2 Colorless cards to add to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Leafy Poultice",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Transform 1 of your Strikes and 1 of your Defends and lose 12 Max HP.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Looming Fruit",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 31.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Lord's Parasol",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "When you encounter the Merchant, immediately obtain EVERYTHING he sells.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Lost Coffer",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 1 card reward and procure 1 random Potion.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Massive Scroll",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, choose 1 of 3 Multiplayer Cards to add to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Meat Cleaver",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "You may Cook at Rest Sites.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Music Box",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Create an Ethereal copy of the first Attack you play each turn.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Neow's Bones",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 2 random Neow Relics. Add 1 random Curse to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Neow's Sacrifice",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, procure 1 Ambergris and 1 Guilty to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Neow's Talisman",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Upgrade 1 of your Strikes and 1 of your Defends.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Neow's Torment",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Neow's Fury to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "New Leaf",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Transform 1 card.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Nutritious Oyster",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 11.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Nutritious Soup",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Enchant all Strikes in your Deck with Tezcatara's Ember.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Pael's Blood",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, draw 1 additional card.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Claw",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Enchant all Defends with Goopy.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Eye",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "The first time each combat you end your turn without playing cards, Exhaust your Hand, and take an extra turn.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Flesh",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain an additional [E] at the start of your 3rd turn, and every turn after that.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Growth",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Enchant a card with Clone.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Horn",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 2 Relax to your Deck.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Legion",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Doubles Block gained from a card, then goes to sleep for 2 turns.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Tears",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "If you end your turn with unspent [E], gain an additional [E] [E] next turn.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Tooth",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 5 cards from your Deck. After each combat, randomly add 1 back Upgraded.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pael's Wing",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "You may sacrifice card rewards to Pael. Every 2 sacrifices, obtain a Relic.",
+   "ancient": "Pael"
+  },
+  {
+   "name": "Pandora's Box",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Transform ALL Strikes and Defends.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Phial Holster",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 1 potion slot and procure 2 random Potion.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Philosopher's Stone",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. ALL enemies start combat with 1 Strength.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Pomander",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Upgrade a card.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Precarious Shears",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 2 cards from your Deck and take 16 damage.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Precise Scissors",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 1 card from your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Preserved Fog",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, remove 3 cards from your Deck. Add Folly to your Deck.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Prismatic Gem",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. Card rewards now contain cards from other colors.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Pumpkin Candle",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. Extinguishes after 5 combats. Can be Kindled at Rest Sites.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Radiant Pearl",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of each combat, add 1 Luminesce into your Hand.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Runic Pyramid",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the end of your turn, you no longer discard your Hand.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Sai",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, gain 7 Block.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Sand Castle",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Upgrade 6 random cards.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Scroll Boxes",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Choose 1 of 2 packs of cards to add to your Deck.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Sea Glass",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "See 15 cards from another character. Choose any number of them to add to your Deck.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Seal of Gold",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, spend 3 Gold to gain [E].",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Sere Talon",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, lose 9 Max HP. Add 3 Wishes to your Deck.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Signet Ring",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, gain 888 Gold.",
+   "ancient": "Nonupeipe"
+  },
+  {
+   "name": "Silken Tress",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, lose all Gold. Enchant all cards in your first card reward with Glam.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Silver Crucible",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "The first 3 card rewards you see are Upgraded. The first Treasure Chest you open is empty.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Small Capsule",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain a random Relic.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Snecko Eye",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, draw 2 additional cards. Start each combat Confused.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Sozu",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. You can no longer obtain Potions.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Spiked Gauntlets",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. Powers cost 1 more [E].",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Stone Humidifier",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Whenever you Rest at a Rest Site, raise your Max HP by 5.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Storybook",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Brightest Flame to your Deck.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Tanx's Whistle",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, add 1 Whistle to your Deck.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Throwing Axe",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "The first card you play each combat is played an extra time.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Toasty Mittens",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "At the start of your turn, Exhaust 1 card from your Hand and gain 1 Strength.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Touch of Orobas",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, replace your starter Relic with an Ancient version.",
+   "ancient": "Orobas"
+  },
+  {
+   "name": "Toy Box",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, obtain 5 Wax Relics. Every 3 combats, your left-most Wax Relic will melt away.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Tri-Boomerang",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Choose 3 Attacks in your Deck. Enchant them with Instinct.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Velvet Choker",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. You cannot play more than 6 cards per turn.",
+   "ancient": "Darv"
+  },
+  {
+   "name": "Very Hot Cocoa",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Start each combat with an additional 4[E].",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "War Hammer",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Whenever you kill an Elite, Upgrade 4 random cards.",
+   "ancient": "Tanx"
+  },
+  {
+   "name": "Whispering Earring",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Gain [E] at the start of each turn. Vakuu plays your first turn for you.",
+   "ancient": "Vakuu"
+  },
+  {
+   "name": "Winged Boots",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "You may ignore paths when choosing the next rooms to travel to 3 times.",
+   "ancient": "Neow"
+  },
+  {
+   "name": "Yummy Cookie",
+   "rarity": "Ancient",
+   "character": null,
+   "effect": "Upon pickup, Upgrade 4 cards.",
+   "ancient": "Tezcatara"
+  },
+  {
+   "name": "Amethyst Aubergine",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Enemies drop 15 additional Gold."
+  },
+  {
+   "name": "Anchor",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Start each combat with 10 Block."
+  },
+  {
+   "name": "Bag of Marbles",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of each combat, apply 1 Vulnerable to ALL enemies."
+  },
+  {
+   "name": "Bag of Preparation",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of each combat, draw 2 additional cards."
+  },
+  {
+   "name": "Blood Vial",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of each combat, heal 2 HP."
+  },
+  {
+   "name": "Bone Flute",
+   "rarity": "Common",
+   "character": "Necrobinder",
+   "effect": "Whenever Osty attacks, gain 2 Block."
+  },
+  {
+   "name": "Book of Five Rings",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Every 5 cards you add to your Deck, heal 20 HP."
+  },
+  {
+   "name": "Bronze Scales",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Start each combat with 3 Thorns."
+  },
+  {
+   "name": "Centennial Puzzle",
+   "rarity": "Common",
+   "character": null,
+   "effect": "The first time you lose HP each combat, draw 3 cards."
+  },
+  {
+   "name": "Data Disk",
+   "rarity": "Common",
+   "character": "Defect",
+   "effect": "Start each combat with 1 Focus."
+  },
+  {
+   "name": "Fencing Manual",
+   "rarity": "Common",
+   "character": "Regent",
+   "effect": "At the start of each combat, Forge 10."
+  },
+  {
+   "name": "Festive Popper",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of each combat, deal 9 damage to ALL enemies."
+  },
+  {
+   "name": "Gorget",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of each combat, gain 4 Plating."
+  },
+  {
+   "name": "Happy Flower",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Every 3 turns, gain [E]."
+  },
+  {
+   "name": "Juzu Bracelet",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Regular enemy combats are no longer encountered in? Rooms."
+  },
+  {
+   "name": "Lantern",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Start each combat with an additional [E]."
+  },
+  {
+   "name": "Meal Ticket",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Whenever you enter a shop room, heal 15 HP."
+  },
+  {
+   "name": "Oddly Smooth Stone",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Start each combat with 1 Dexterity."
+  },
+  {
+   "name": "Pendulum",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Every 3 turns, draw 1 card."
+  },
+  {
+   "name": "Potion Belt",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Upon pickup, gain 2 potion slots."
+  },
+  {
+   "name": "Red Mask",
+   "rarity": "Common",
+   "character": null,
+   "effect": "At the start of combat, apply 1 Weak to ALL enemies."
+  },
+  {
+   "name": "Red Skull",
+   "rarity": "Common",
+   "character": "Ironclad",
+   "effect": "While your HP is at or below 50%, you have 3 additional Strength."
+  },
+  {
+   "name": "Regal Pillow",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Whenever you Rest, heal an additional 15 HP.",
+   "requirements": "Can only be obtained below floor 49."
+  },
+  {
+   "name": "Snecko Skull",
+   "rarity": "Common",
+   "character": "Silent",
+   "effect": "Whenever you apply Poison, apply an additional 1 Poison."
+  },
+  {
+   "name": "Strawberry",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 7."
+  },
+  {
+   "name": "Strike Dummy",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Cards containing “Strike” deal 3 additional damage."
+  },
+  {
+   "name": "Vajra",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Start each combat with 1 Strength."
+  },
+  {
+   "name": "Venerable Tea Set",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Whenever you enter a Rest Site, start the next combat with an additional [E] [E]."
+  },
+  {
+   "name": "War Paint",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Upon pickup, Upgrade 2 random Skills."
+  },
+  {
+   "name": "Whetstone",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Upon pickup, Upgrade 2 random Attacks."
+  },
+  {
+   "name": "Anchor???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Start each combat with 4 Block.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Big Mushroom",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 20. At the start of each combat, draw 2 fewer cards.",
+   "event": "Hungry for Mushrooms"
+  },
+  {
+   "name": "Bing Bong",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you add a card to your Deck, add one additional copy.",
+   "event": "Doll Room"
+  },
+  {
+   "name": "Blood Vial???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of each combat, heal 1 HP.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Bone Tea",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of the next combat, Upgrade your starting hand.",
+   "event": "Tea Master"
+  },
+  {
+   "name": "Byrdpip",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Upon pickup, gain the card Byrd Swoop. A Byrdpip will accompany you in battles.",
+   "event": "Byrdonis Nest"
+  },
+  {
+   "name": "Darkstone Periapt",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you obtain a Curse, raise your Max HP by 6.",
+   "event": "Trash Heap"
+  },
+  {
+   "name": "Daughter of the Wind",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you play an Attack, gain 1 Block.",
+   "event": "Doll Room"
+  },
+  {
+   "name": "Dream Catcher",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you Rest, you may add a card to your Deck.",
+   "event": "Trash Heap"
+  },
+  {
+   "name": "Ember Tea",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of the next 5 combats, gain 2 Strength.",
+   "event": "Tea Master"
+  },
+  {
+   "name": "Forgotten Soul",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you Exhaust a card, deal 1 damage to a random enemy.",
+   "event": "Grave of the Forgotten"
+  },
+  {
+   "name": "Fragrant Mushroom",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Upon pickup, lose 15 HP and Upgrade 2 random cards.",
+   "event": "Hungry for Mushrooms"
+  },
+  {
+   "name": "Fresnel Lens",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you add a card that gains Block to your Deck, Enchant it with Nimble 2.",
+   "event": "Drowning Beacon"
+  },
+  {
+   "name": "Hand Drill",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you break an enemy's Block, apply 2 Vulnerable.",
+   "event": "Trash Heap"
+  },
+  {
+   "name": "Happy Flower???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Every 5 turns, gain [E].",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "History Course",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of your turn, play a copy of your last played Attack.",
+   "event": "War Historian, Repy"
+  },
+  {
+   "name": "Lee's Waffle???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Upon pickup, heal 10% of your HP.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Lost Wisp",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you play a Power, deal 8 damage to ALL enemies.",
+   "event": "The Lost Wisp"
+  },
+  {
+   "name": "Mango???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 3.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Maw Bank",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you climb a floor, gain 12 Gold. No longer works when you spend any Gold at the shop.",
+   "event": "Trash Heap"
+  },
+  {
+   "name": "Mr. Struggles",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of your turn, deal damage equal to the turn number to ALL enemies.",
+   "event": "Doll Room"
+  },
+  {
+   "name": "Orichalcum???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "If you end your turn without Block, gain 3 Block.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Pollinous Core",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Every 4 turns, draw 2 additional cards.",
+   "event": "Colossal Flower"
+  },
+  {
+   "name": "Royal Poison",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of each combat, lose 4 HP.",
+   "event": "The Round Tea Party"
+  },
+  {
+   "name": "Snecko Eye???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Start each combat Confused.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Strike Dummy???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Cards containing “Strike” deal 1 additional damage.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Sword of Jade",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Start each combat with 3 Strength.",
+   "event": "The Sunken Statue"
+  },
+  {
+   "name": "Sword of Stone",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Transforms into a powerful Relic after defeating 5 Elites.",
+   "event": "The Sunken Statue"
+  },
+  {
+   "name": "Tea of Discourtesy",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the start of the next combat, shuffle 2 Dazed into your Draw Pile.",
+   "event": "Tea Master"
+  },
+  {
+   "name": "The Boot",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you would deal 4 or less unblocked attack damage, increase it to 5.",
+   "event": "Trash Heap"
+  },
+  {
+   "name": "The Chosen Cheese",
+   "rarity": "Event",
+   "character": null,
+   "effect": "At the end of combat, gain 1 Max HP.",
+   "event": "Room Full of Cheese"
+  },
+  {
+   "name": "The Merchant's Rug???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Poor imitation. Does nothing.",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Venerable Tea Set???",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Whenever you enter a Rest Site, start the next combat with an additional [E].",
+   "event": "The Merchant???"
+  },
+  {
+   "name": "Wongo Customer Appreciation Badge",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Does nothing.",
+   "event": "Welcome to Wongo's"
+  },
+  {
+   "name": "Wongo's Mystery Ticket",
+   "rarity": "Event",
+   "character": null,
+   "effect": "Receive 3 random Relics after 5 combats.",
+   "event": "Welcome to Wongo's"
+  },
+  {
+   "name": "Art of War",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "If you do not play any Attacks during your turn, gain an additional [E] next turn."
+  },
+  {
+   "name": "Beating Remnant",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "You cannot lose more than 20 HP in a single turn."
+  },
+  {
+   "name": "Bellows",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "The first Hand you draw each combat is Upgraded."
+  },
+  {
+   "name": "Big Hat",
+   "rarity": "Rare",
+   "character": "Necrobinder",
+   "effect": "At the start of each combat, add 2 random Ethereal cards into your Hand."
+  },
+  {
+   "name": "Bookmark",
+   "rarity": "Rare",
+   "character": "Necrobinder",
+   "effect": "At the end of each turn, lower the cost of a random Retained card by 1 until played."
+  },
+  {
+   "name": "Captain's Wheel",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the start of your 3rd turn, gain 18 Block."
+  },
+  {
+   "name": "Chandelier",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the start of your 3rd turn, gain [E] [E] [E]."
+  },
+  {
+   "name": "Charon's Ashes",
+   "rarity": "Rare",
+   "character": "Ironclad",
+   "effect": "Whenever you Exhaust a card, deal 3 damage to ALL enemies."
+  },
+  {
+   "name": "Cloak Clasp",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the end of your turn, gain 1 Block for each card in your Hand."
+  },
+  {
+   "name": "Demon Tongue",
+   "rarity": "Rare",
+   "character": "Ironclad",
+   "effect": "The first time you lose HP on your turn, heal HP equal to the amount lost."
+  },
+  {
+   "name": "Emotion Chip",
+   "rarity": "Rare",
+   "character": "Defect",
+   "effect": "If you lost HP during the previous turn, trigger the passive ability of all Orbs at the start of your turn."
+  },
+  {
+   "name": "Frozen Egg",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you add a Power into your Deck, Upgrade it."
+  },
+  {
+   "name": "Gambling Chip",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the start of each combat, discard any number of cards then draw that many."
+  },
+  {
+   "name": "Game Piece",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you play a Power, draw 1 card."
+  },
+  {
+   "name": "Girya",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "You can now gain Strength at Rest Site. (3 times max)"
+  },
+  {
+   "name": "Helical Dart",
+   "rarity": "Rare",
+   "character": "Silent",
+   "effect": "Whenever you play a Shiv, gain 1 Dexterity this turn."
+  },
+  {
+   "name": "Ice Cream",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Energy is now conserved between turns."
+  },
+  {
+   "name": "Intimidating Helmet",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you play a card that costs [E] [E] or more, gain 4 Block."
+  },
+  {
+   "name": "Ivory Tile",
+   "rarity": "Rare",
+   "character": "Necrobinder",
+   "effect": "Whenever you play a card that costs [E][E][E] or more, gain [E]."
+  },
+  {
+   "name": "Kunai",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Every time you play 3 Attacks in a single turn, gain 1 Dexterity."
+  },
+  {
+   "name": "Lizard Tail",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "When your HP would be reduced to 0, heal to 50% of your Max HP instead (works once)."
+  },
+  {
+   "name": "Lunar Pastry",
+   "rarity": "Rare",
+   "character": "Regent",
+   "effect": "At the end of your turn, gain [Star]."
+  },
+  {
+   "name": "Mango",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 14."
+  },
+  {
+   "name": "Meat on the Bone",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "If your HP is at or below 50% at the end of combat, heal 12 HP."
+  },
+  {
+   "name": "Metronome",
+   "rarity": "Rare",
+   "character": "Defect",
+   "effect": "The first time you Channel 7 Orbs each combat, deal 30 damage to ALL enemies."
+  },
+  {
+   "name": "Mini Regent",
+   "rarity": "Rare",
+   "character": "Regent",
+   "effect": "The first time you spend [Star] each turn, gain 1 Strength."
+  },
+  {
+   "name": "Molten Egg",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you add an Attack card to your Deck, Upgrade it."
+  },
+  {
+   "name": "Mummified Hand",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you play a Power, a random card in your Hand is free to play that turn."
+  },
+  {
+   "name": "Old Coin",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Upon pickup, gain 300 Gold."
+  },
+  {
+   "name": "Orange Dough",
+   "rarity": "Rare",
+   "character": "Regent",
+   "effect": "At the start of each combat, add 2 random Colorless cards into your Hand."
+  },
+  {
+   "name": "Paper Krane",
+   "rarity": "Rare",
+   "character": "Silent",
+   "effect": "Enemies with Weak deal 40% less damage to you rather than 25%."
+  },
+  {
+   "name": "Pocketwatch",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you play 3 or fewer cards during your turn, draw 3 additional cards at the start of your next turn."
+  },
+  {
+   "name": "Power Cell",
+   "rarity": "Rare",
+   "character": "Defect",
+   "effect": "At the start of each combat, add 2 zero-cost cards from your Draw Pile into your Hand."
+  },
+  {
+   "name": "Prayer Wheel",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Normal enemies drop an additional card reward."
+  },
+  {
+   "name": "Rainbow Ring",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "The first time you play an Attack, Skill, and Power each turn, gain 1 Strength and 1 Dexterity."
+  },
+  {
+   "name": "Razor Tooth",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Every time you play an Attack or Skill, Upgrade it for the remainder of combat."
+  },
+  {
+   "name": "Ruined Helmet",
+   "rarity": "Rare",
+   "character": "Ironclad",
+   "effect": "The first time you gain Strength each combat, double the amount gained."
+  },
+  {
+   "name": "Shovel",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "You can now dig at Rest Site to obtain a random Relic."
+  },
+  {
+   "name": "Shuriken",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Every time you play 3 Attacks in a single turn, gain 1 Strength."
+  },
+  {
+   "name": "Stone Calendar",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the end of turn 7, deal 52 damage to ALL enemies."
+  },
+  {
+   "name": "Sturdy Clamp",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Up to 10 Block persists across turns."
+  },
+  {
+   "name": "The Courier",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "The merchant no longer runs out of cards, relics, or Potion and his prices are reduced by 20%."
+  },
+  {
+   "name": "Tough Bandages",
+   "rarity": "Rare",
+   "character": "Silent",
+   "effect": "Whenever you discard a card during your turn, gain 3 Block."
+  },
+  {
+   "name": "Toxic Egg",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you add a Skill into your Deck, Upgrade it."
+  },
+  {
+   "name": "Tungsten Rod",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you would lose HP, lose 1 less."
+  },
+  {
+   "name": "Unceasing Top",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Whenever you have no cards in Hand during your turn, draw a card."
+  },
+  {
+   "name": "Unsettling Lamp",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Each combat, the first time you play a card that Debuffs an enemy, double its effect."
+  },
+  {
+   "name": "Vexing Puzzlebox",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "At the start of each combat, add a random card into your Hand. It's free to play this turn."
+  },
+  {
+   "name": "White Beast Statue",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Potions always appear in combat rewards."
+  },
+  {
+   "name": "White Star",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Elites drop an additional Rare card reward."
+  },
+  {
+   "name": "Belt Buckle",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "While you have no Potions, you have 2 additional Dexterity."
+  },
+  {
+   "name": "Bread",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "At the start of your first turn, lose [E][E]. At the start of all other turns, gain [E]."
+  },
+  {
+   "name": "Brimstone",
+   "rarity": "Shop",
+   "character": "Ironclad",
+   "effect": "At the start of your turn, gain 2 Strength and ALL enemies gain 1 Strength."
+  },
+  {
+   "name": "Burning Sticks",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "The first time each combat you Exhaust a Skill, add a copy of it into your Hand."
+  },
+  {
+   "name": "Cauldron",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, brews 5 random Potion."
+  },
+  {
+   "name": "Chemical X",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "The effects of your cost X cards are increased by 2."
+  },
+  {
+   "name": "Dingy Rug",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Card rewards can now contain Colorless cards."
+  },
+  {
+   "name": "Dolly's Mirror",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, obtain an additional copy of a card in your Deck."
+  },
+  {
+   "name": "Dragon Fruit",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Whenever you gain Gold, raise your Max HP by 1."
+  },
+  {
+   "name": "Ghost Seed",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Strikes and Defends gain Ethereal."
+  },
+  {
+   "name": "Gnarled Hammer",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, Enchant up to 3 Attacks with Sharp 3."
+  },
+  {
+   "name": "Kifuda",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, Enchant up to 3 cards with Adroit."
+  },
+  {
+   "name": "Lava Lamp",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "At the end of combat, Upgrade all card rewards if you took no damage."
+  },
+  {
+   "name": "Lee's Waffle",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 7 and heal all of your HP."
+  },
+  {
+   "name": "Membership Card",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "50% discount on all products!"
+  },
+  {
+   "name": "Miniature Tent",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "You may choose any number of options at Rest Sites."
+  },
+  {
+   "name": "Mystic Lighter",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Enchanted Attacks deal 9 additional damage."
+  },
+  {
+   "name": "Ninja Scroll",
+   "rarity": "Shop",
+   "character": "Silent",
+   "effect": "At the start of each combat, add 3 Shivs into your Hand."
+  },
+  {
+   "name": "Orrery",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, gain 5 card rewards."
+  },
+  {
+   "name": "Punch Dagger",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, Enchant an Attack with Momentum 5."
+  },
+  {
+   "name": "Ringing Triangle",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Retain your Hand on the first turn of combat."
+  },
+  {
+   "name": "Royal Stamp",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Upon pickup, choose an Attack or Skill in your Deck to Enchant with Royally Approved."
+  },
+  {
+   "name": "Runic Capacitor",
+   "rarity": "Shop",
+   "character": "Defect",
+   "effect": "Start each combat with 3 additional Orb Slots."
+  },
+  {
+   "name": "Screaming Flagon",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "If you end your turn with no cards in your Hand, deal 20 damage to ALL enemies."
+  },
+  {
+   "name": "Sling of Courage",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Start each Elite combat with 2 Strength."
+  },
+  {
+   "name": "The Abacus",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "Whenever you shuffle your Draw Pile, gain 6 Block."
+  },
+  {
+   "name": "Toolbox",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "At the start of each combat, choose 1 of 3 random Colorless cards and add the chosen card into your Hand."
+  },
+  {
+   "name": "Undying Sigil",
+   "rarity": "Shop",
+   "character": "Necrobinder",
+   "effect": "Enemies with at least as much Doom as HP deal 50% less damage."
+  },
+  {
+   "name": "Vitruvian Minion",
+   "rarity": "Shop",
+   "character": "Regent",
+   "effect": "Cards containing \"Minion\" deal double damage and gain double Block."
+  },
+  {
+   "name": "Wing Charm",
+   "rarity": "Shop",
+   "character": null,
+   "effect": "A random card in each card reward is Enchanted with Swift 1."
+  },
+  {
+   "name": "Circlet",
+   "rarity": "Special",
+   "character": null,
+   "effect": "It's a circlet."
+  },
+  {
+   "name": "Black Blood",
+   "rarity": "Starter",
+   "character": "Ironclad",
+   "effect": "At the end of combat, heal 12 HP."
+  },
+  {
+   "name": "Bound Phylactery",
+   "rarity": "Starter",
+   "character": "Necrobinder",
+   "effect": "At the start of your turn, Summon 1."
+  },
+  {
+   "name": "Burning Blood",
+   "rarity": "Starter",
+   "character": "Ironclad",
+   "effect": "At the end of combat, heal 6 HP."
+  },
+  {
+   "name": "Cracked Core",
+   "rarity": "Starter",
+   "character": "Defect",
+   "effect": "At the start of each combat, Channel 1 Lightning."
+  },
+  {
+   "name": "Divine Destiny",
+   "rarity": "Starter",
+   "character": "Regent",
+   "effect": "At the start of each combat, gain [Star][Star][Star][Star][Star][Star][Star]."
+  },
+  {
+   "name": "Divine Right",
+   "rarity": "Starter",
+   "character": "Regent",
+   "effect": "At the start of each combat, gain [Star][Star][Star]."
+  },
+  {
+   "name": "Infused Core",
+   "rarity": "Starter",
+   "character": "Defect",
+   "effect": "At the start of each combat, Channel 3 Lightning. Lightning Orbs deal 1 additional damage."
+  },
+  {
+   "name": "Phylactery Unbound",
+   "rarity": "Starter",
+   "character": "Necrobinder",
+   "effect": "At the start of each combat, Summon 5. At the start of your turn, Summon 2."
+  },
+  {
+   "name": "Ring of the Drake",
+   "rarity": "Starter",
+   "character": "Silent",
+   "effect": "At the start of your first 3 turns, draw 2 additional cards."
+  },
+  {
+   "name": "Ring of the Snake",
+   "rarity": "Starter",
+   "character": "Silent",
+   "effect": "At the start of each combat, draw 2 additional cards."
+  },
+  {
+   "name": "Akabeko",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of each combat, gain 8 Vigor."
+  },
+  {
+   "name": "Book Repair Knife",
+   "rarity": "Uncommon",
+   "character": "Necrobinder",
+   "effect": "Whenever a non-Minion enemy dies to Doom, heal 3 HP."
+  },
+  {
+   "name": "Bowler Hat",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain 25% additional Gold."
+  },
+  {
+   "name": "Candelabra",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of your 2nd turn, gain [E] [E]."
+  },
+  {
+   "name": "Eternal Feather",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "For every 5 cards in your Deck, heal 3 HP whenever you enter a Rest Site."
+  },
+  {
+   "name": "Funerary Mask",
+   "rarity": "Uncommon",
+   "character": "Necrobinder",
+   "effect": "At the start of each combat, add 3 Souls into your Draw Pile."
+  },
+  {
+   "name": "Galactic Dust",
+   "rarity": "Uncommon",
+   "character": "Regent",
+   "effect": "For every 10 [Star] spent, gain 10 Block."
+  },
+  {
+   "name": "Gold-Plated Cables",
+   "rarity": "Uncommon",
+   "character": "Defect",
+   "effect": "Your rightmost Orb triggers its passive an additional time."
+  },
+  {
+   "name": "Gremlin Horn",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Whenever an enemy dies, gain [E] and draw 1 card."
+  },
+  {
+   "name": "Horn Cleat",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of your 2nd turn, gain 14 Block."
+  },
+  {
+   "name": "Joss Paper",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every 5 times you Exhaust a card, draw 1 card."
+  },
+  {
+   "name": "Kusarigama",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every time you play 3 Attacks in a single turn, deal 6 damage to a random enemy."
+  },
+  {
+   "name": "Lasting Candy",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every other combat, your card rewards gain an additional Power."
+  },
+  {
+   "name": "Letter Opener",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every time you play 3 Skills in a single turn, deal 5 damage to ALL enemies."
+  },
+  {
+   "name": "Lucky Fysh",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Whenever you add a card to your Deck, gain 15 Gold."
+  },
+  {
+   "name": "Mercury Hourglass",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of your turn, deal 3 damage to ALL enemies."
+  },
+  {
+   "name": "Miniature Cannon",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Upgraded Attacks deal 3 additional damage."
+  },
+  {
+   "name": "Nunchaku",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every time you play 10 Attacks, gain [E]."
+  },
+  {
+   "name": "Orichalcum",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "If you end your turn without Block, gain 6 Block."
+  },
+  {
+   "name": "Ornamental Fan",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every time you play 3 Attacks in a single turn, gain 4 Block."
+  },
+  {
+   "name": "Pantograph",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of each Boss combat, heal 25 HP."
+  },
+  {
+   "name": "Paper Phrog",
+   "rarity": "Uncommon",
+   "character": "Ironclad",
+   "effect": "Enemies with Vulnerable take 75% more damage rather than 50%."
+  },
+  {
+   "name": "Parrying Shield",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "If you end a turn with at least 10 Block, deal 6 damage to a random enemy."
+  },
+  {
+   "name": "Pear",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Upon pickup, raise your Max HP by 10."
+  },
+  {
+   "name": "Pen Nib",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every 10th Attack you play deals double damage."
+  },
+  {
+   "name": "Permafrost",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "The first time you play a Power each combat, gain 7 Block."
+  },
+  {
+   "name": "Petrified Toad",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of each combat, procure a Potion-Shaped Rock."
+  },
+  {
+   "name": "Planisphere",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Whenever you enter a? room, heal 5 HP."
+  },
+  {
+   "name": "Regalite",
+   "rarity": "Uncommon",
+   "character": "Regent",
+   "effect": "The first time you create a card each turn, gain 4 Block."
+  },
+  {
+   "name": "Reptile Trinket",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Whenever you use a Potion, gain 3 Strength this turn."
+  },
+  {
+   "name": "Ripple Basin",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "If you did not play any Attacks during your turn, gain 4 Block."
+  },
+  {
+   "name": "Self-Forming Clay",
+   "rarity": "Uncommon",
+   "character": "Ironclad",
+   "effect": "Whenever you lose HP in combat, gain 3 Block next turn."
+  },
+  {
+   "name": "Sparkling Rouge",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of your 3rd turn, gain 1 Strength and 1 Dexterity."
+  },
+  {
+   "name": "Stone Cracker",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "At the start of combat, Upgrade 2 random cards in your Draw Pile for the rest of combat."
+  },
+  {
+   "name": "Symbiotic Virus",
+   "rarity": "Uncommon",
+   "character": "Defect",
+   "effect": "At the start of each combat, Channel 1 Dark."
+  },
+  {
+   "name": "Tingsha",
+   "rarity": "Uncommon",
+   "character": "Silent",
+   "effect": "Whenever you discard a card during your turn, deal 3 damage to a random enemy for each card discarded."
+  },
+  {
+   "name": "Tiny Mailbox",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Whenever you Rest, procure 2 random Potions."
+  },
+  {
+   "name": "Tuning Fork",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Every time you play 10 Skills, gain 7 Block."
+  },
+  {
+   "name": "Twisted Funnel",
+   "rarity": "Uncommon",
+   "character": "Silent",
+   "effect": "At the start of each combat, apply 4 Poison to ALL enemies."
+  },
+  {
+   "name": "Vambrace",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "The first time you gain Block from a card each combat, double the amount gained."
+  }
+ ],
+ "potions": [
+  {
+   "name": "Attack Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Choose 1 of 3 random Attack cards to add into your Hand. It's free to play this turn."
+  },
+  {
+   "name": "Block Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain 12 Block."
+  },
+  {
+   "name": "Blood Potion",
+   "rarity": "Common",
+   "character": "Ironclad",
+   "effect": "Heal for 20% of your Max HP."
+  },
+  {
+   "name": "Colorless Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Choose 1 of 3 random Colorless cards to add into your Hand. It's free to play this turn."
+  },
+  {
+   "name": "Dexterity Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain 2 Dexterity."
+  },
+  {
+   "name": "Energy Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain [E] [E]."
+  },
+  {
+   "name": "Explosive Ampoule",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Deal 10 damage to ALL enemies."
+  },
+  {
+   "name": "Fire Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Deal 20 damage."
+  },
+  {
+   "name": "Flex Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain 5 Strength. At the end of your turn, lose 5 Strength."
+  },
+  {
+   "name": "Focus Potion",
+   "rarity": "Common",
+   "character": "Defect",
+   "effect": "Gain 2 Focus."
+  },
+  {
+   "name": "Poison Potion",
+   "rarity": "Common",
+   "character": "Silent",
+   "effect": "Apply 6 Poison."
+  },
+  {
+   "name": "Potion of Doom",
+   "rarity": "Common",
+   "character": "Necrobinder",
+   "effect": "Apply 33 Doom."
+  },
+  {
+   "name": "Power Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Choose 1 of 3 random Power cards to add into your Hand. It's free to play this turn."
+  },
+  {
+   "name": "Skill Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Choose 1 of 3 random Skill cards to add into your Hand. It's free to play this turn."
+  },
+  {
+   "name": "Speed Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain 5 Dexterity. At the end of your turn, lose 5 Dexterity."
+  },
+  {
+   "name": "Star Potion",
+   "rarity": "Common",
+   "character": "Regent",
+   "effect": "Gain [Star][Star][Star]."
+  },
+  {
+   "name": "Strength Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Gain 2 Strength."
+  },
+  {
+   "name": "Swift Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Draw 3 cards."
+  },
+  {
+   "name": "Vulnerable Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Apply 3 Vulnerable."
+  },
+  {
+   "name": "Weak Potion",
+   "rarity": "Common",
+   "character": null,
+   "effect": "Apply 3 Weak."
+  },
+  {
+   "name": "Beetle Juice",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Enemy's attacks deal 30% less damage for the next 4 turns."
+  },
+  {
+   "name": "Bottled Potential",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Shuffle ALL your cards into your Draw Pile. Draw 5 cards."
+  },
+  {
+   "name": "Cosmic Concoction",
+   "rarity": "Rare",
+   "character": "Regent",
+   "effect": "Add 3 Upgraded Colorless cards into your Hand."
+  },
+  {
+   "name": "Distilled Chaos",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Play the top 3 cards of your Draw Pile."
+  },
+  {
+   "name": "Droplet of Precognition",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Choose a card in your Draw Pile and add it into your Hand."
+  },
+  {
+   "name": "Entropic Brew",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Fill all your empty potion slots with random potions."
+  },
+  {
+   "name": "Essence of Darkness",
+   "rarity": "Rare",
+   "character": "Defect",
+   "effect": "Channel a Dark for each of your Orb Slots."
+  },
+  {
+   "name": "Fairy in a Bottle",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "When your HP would be reduced to 0, instead this potion is discarded and you heal to 30% of your Max HP."
+  },
+  {
+   "name": "Fruit Juice",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Gain 5 Max HP."
+  },
+  {
+   "name": "Ghost in a Jar",
+   "rarity": "Rare",
+   "character": "Silent",
+   "effect": "Gain 1 Intangible."
+  },
+  {
+   "name": "Gigantification Potion",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "The next Attack you play deals triple damage."
+  },
+  {
+   "name": "Liquid Memories",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Put a card from your Discard Pile into your Hand. It costs 0 [E] this turn."
+  },
+  {
+   "name": "Lucky Tonic",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Gain 1 Buffer."
+  },
+  {
+   "name": "Mazaleth's Gift",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Gain 1 Ritual."
+  },
+  {
+   "name": "Orobic Acid",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Add a random Attack, Skill, and Power into your Hand. They're free to play this turn."
+  },
+  {
+   "name": "Pot of Ghouls",
+   "rarity": "Rare",
+   "character": "Necrobinder",
+   "effect": "Add 2 Souls into your Hand."
+  },
+  {
+   "name": "Shackling Potion",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "ALL enemies lose 7 Strength this turn."
+  },
+  {
+   "name": "Ship in a Bottle",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Gain 10 Block. Next turn, gain 10 Block."
+  },
+  {
+   "name": "Snecko Oil",
+   "rarity": "Rare",
+   "character": null,
+   "effect": "Draw 7 cards. Randomize the cost of cards in your Hand this turn."
+  },
+  {
+   "name": "Soldier's Stew",
+   "rarity": "Rare",
+   "character": "Ironclad",
+   "effect": "All cards containing Strike gain 1 Replay this combat."
+  },
+  {
+   "name": "Ambergris",
+   "rarity": "Special",
+   "character": null,
+   "effect": "Heal for 50% of your max HP. If used in combat, take an extra turn."
+  },
+  {
+   "name": "Foul Potion",
+   "rarity": "Special",
+   "character": null,
+   "effect": "Deal 12 damage to EVERYONE. Can be thrown at the Merchant for 100 Gold instead."
+  },
+  {
+   "name": "Glowwater Potion",
+   "rarity": "Special",
+   "character": null,
+   "effect": "Exhaust your Hand. Draw 10 cards."
+  },
+  {
+   "name": "Potion-Shaped Rock",
+   "rarity": "Special",
+   "character": null,
+   "effect": "Deal 15 damage."
+  },
+  {
+   "name": "Ashwater",
+   "rarity": "Uncommon",
+   "character": "Ironclad",
+   "effect": "Exhaust any number of cards in your Hand."
+  },
+  {
+   "name": "Blessing of the Forge",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Upgrade all cards in your Hand for the rest of combat."
+  },
+  {
+   "name": "Bone Brew",
+   "rarity": "Uncommon",
+   "character": "Necrobinder",
+   "effect": "Summon 15."
+  },
+  {
+   "name": "Clarity Extract",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Draw 1 card. At the start of your next 3 turns, draw 1 additional card."
+  },
+  {
+   "name": "Cunning Potion",
+   "rarity": "Uncommon",
+   "character": "Silent",
+   "effect": "Add 3 Upgraded Shivs into your Hand."
+  },
+  {
+   "name": "Cure All",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain [E]. Draw 2 cards."
+  },
+  {
+   "name": "Duplicator",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "This turn, your next card is played an extra time."
+  },
+  {
+   "name": "Fortifier",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Triple your Block."
+  },
+  {
+   "name": "Fysh Oil",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain 1 Strength and 1 Dexterity."
+  },
+  {
+   "name": "Gambler's Brew",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Discard any number of cards, then draw that many."
+  },
+  {
+   "name": "Heart of Iron",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain 7 Plating."
+  },
+  {
+   "name": "King's Courage",
+   "rarity": "Uncommon",
+   "character": "Regent",
+   "effect": "Forge 15."
+  },
+  {
+   "name": "Liquid Bronze",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain 3 Thorns."
+  },
+  {
+   "name": "Potion of Binding",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Apply 1 Weak and 1 Vulnerable to ALL enemies."
+  },
+  {
+   "name": "Potion of Capacity",
+   "rarity": "Uncommon",
+   "character": "Defect",
+   "effect": "Gain 2 Orb Slots."
+  },
+  {
+   "name": "Powdered Demise",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Enemy loses 9 HP at the end of each of its turns."
+  },
+  {
+   "name": "Radiant Tincture",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain [E]. Gain an additional [E] at the start of your next 3 turns."
+  },
+  {
+   "name": "Regen Potion",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Gain 5 Regen."
+  },
+  {
+   "name": "Stable Serum",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Retain your Hand for 2 turns."
+  },
+  {
+   "name": "Touch of Insanity",
+   "rarity": "Uncommon",
+   "character": null,
+   "effect": "Choose a card in your Hand. It is free to play this combat."
+  }
+ ],
+ "events": [
+  {
+   "name": "Abyssal Baths",
+   "area": "Act 1 - Underdocks",
+   "summary": "You find a secluded area with a strange pool of liquid. You can either immerse yourself in it, increasing your Max HP at the cost of taking damage as many times as you wish, or gather the salts around the pool to recover some HP.",
+   "choices": [
+    "Immerse: Gain 2 Max HP. Take 3 damage.",
+    "Abstain: Heal 10 HP."
+   ]
+  },
+  {
+   "name": "Amalgamator",
+   "area": "Act 2 - Hive",
+   "summary": "You discover and enter a workshop where a strange figure was waiting for you. You may combine two of your Strikes or Defends into an Ultimate Strike or Defend respectively.",
+   "choices": [
+    "Combine Strikes: Remove 2 Strikes. Add Ultimate Strike to your Deck.",
+    "Combine Defends: Remove 2 Defends. Add Ultimate Defend to your Deck."
+   ]
+  },
+  {
+   "name": "Aroma of Chaos",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You begin hallucinating upon smelling a strange mix of scents in the air. You may either let the illusions cloud your mind to transform a card in your deck, or resist them to upgrade a card in your deck.",
+   "choices": [
+    "Let Go: Transform a card in your Deck.",
+    "Maintain Control: Upgrade a card in your Deck."
+   ]
+  },
+  {
+   "name": "Battleworn Dummy",
+   "area": "Act 3 - Glory",
+   "summary": "You approach a training dummy when it suddenly activates, offering a selection of battle options for you to test your might on. You have 3 turns to defeat the dummy, and if you fail to defeat them in that time, you get nothing. If you win, you gain a reward depending on the option you chose.",
+   "choices": [
+    "Setting 1: Fight a 75 HP dummy. Procure 1 random Potion.",
+    "Setting 2: Fight a 150 HP dummy. Upgrade 2 random cards.",
+    "Setting 3: Fight a 300 HP dummy. Obtain a random Relic."
+   ]
+  },
+  {
+   "name": "Brain Leech",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive",
+   "summary": "You contract a Brain Leech seeking knowledge. You may choose to share knowledge with it to add 1 of 5 cards to your deck, or rip it out to earn a colorless card reward at the cost of some HP.",
+   "choices": [
+    "Share Knowledge: Choose 1 of 5 random cards to add to your deck.",
+    "Rip the Leech Off: Lose 5 HP. Gain a Colorless card reward."
+   ]
+  },
+  {
+   "name": "Bugslayer",
+   "area": "Act 2 - Hive",
+   "summary": "You fight a group of insects when a warrior offers his assistance. After the fight, he offers to teach you one of his techniques, allowing you to add one of two special cards to your deck.",
+   "choices": [
+    "Learn Extermination Technique: Add Exterminate to your Deck.",
+    "Learn Squash Technique: Add Squash to your Deck."
+   ]
+  },
+  {
+   "name": "Byrdonis Nest",
+   "area": "Act 1 - Overgrowth",
+   "summary": "A large byrd flees from an enormous beast, leaving its nest and egg unattended for you to sneak in and steal from. You may either consume the egg to increase your Max HP, or stash it away to add it into your deck.",
+   "choices": [
+    "Eat the Egg: Gain 7 Max HP.",
+    "Take the Egg: Add Byrdonis Egg to deck."
+   ]
+  },
+  {
+   "name": "Colorful Philosophers",
+   "area": "Act 2 - Hive",
+   "summary": "You stumble upon a group of colored statues arguing over which color is the best. You may join in and obtain three card rewards of varying rarities from a different character of your choice.",
+   "choices": []
+  },
+  {
+   "name": "Colossal Flower",
+   "area": "Act 2 - Hive",
+   "summary": "You come across an enormous flower with sharp, venomous petals growing on a mountain of bones. You can grab the nectar dripping off of it to obtain some gold, or climb deeper into it to obtain more at the cost of some HP, or obtain the unique Pollinous Core relic.",
+   "choices": [
+    "Extract Nectar: Gain 35 Gold.",
+    "Reach Deeper: Lose 5 HP. Advance to the next level."
+   ]
+  },
+  {
+   "name": "Crystal Sphere",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "You meet a Fortune Teller offering to divine your future. you pick a plan to Uncover your] Future and earn rewards.",
+   "choices": [
+    "Uncover Future: Pay 51-99 Gold. Divine 3 times.",
+    "Payment Plan: Gain a Debt. Divine 6 times. === Mechanics === The event first presents the player with a choice between two options. Both of them lead to the same minigame in which the player uncovers a crystal sphere for rewards. In the center of the screen is an 11x11 ..."
+   ]
+  },
+  {
+   "name": "Dense Vegetation",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You get lost in the jungle, while exhaustion sets in. You can either press onwards to either remove a card from your deck, or gain some gold at the cost of some HP, or take a rest and battle a group of Wrigglers.",
+   "choices": [
+    "Trudge On: Gain 61-99 gold Lose 8 HP.",
+    "Rest: Heal HP (rest site amount). Fight 4 Wrigglers."
+   ]
+  },
+  {
+   "name": "Doll Room",
+   "area": "Act 2 - Hive",
+   "summary": "You stumbled upon a room of dolls. You may pick one at random to obtain either Bing Bong, Daughter of the Wind, or Mr. Struggles, or take the time to make a decision to give yourself a choice of which at the cost of some HP.",
+   "choices": [
+    "Pick at Random: Obtain a random Doll Relic",
+    "Take Some Time: Lose 5 HP. Choose 1 of 2 Doll Relics",
+    "Examine Each and Make the Best Choice: Lose 15 HP. Choose 1 of 3 Doll Relics"
+   ]
+  },
+  {
+   "name": "Doors of Light and Dark",
+   "area": "Act 1 - Underdocks",
+   "summary": "You enter into a doorway that takes you to a mysterious plane with an equally mysterious doorman. You may either enter the light door to upgrade 2 random cards, or enter the dark door to remove a card from your deck.",
+   "choices": [
+    "Light Door: Upgrade 2 random cards.",
+    "Dark Door: Remove 1 card from Deck."
+   ]
+  },
+  {
+   "name": "Drowning Beacon",
+   "area": "Act 1 - Underdocks",
+   "summary": "You come across a sinking lighthouse that emits anti-light from the lens at the top. You can either bottle the water around the lighthouse to obtain a Glowwater Potion, or pry the lens out of the lighthouse to obtain the unique Fresnel Lens relic at the cost of some max HP.",
+   "choices": [
+    "Bottle: Procure 1 Glowwater Potion.",
+    "Climb: Lose 13 Max HP. Obtain Fresnel Lens (relic)."
+   ]
+  },
+  {
+   "name": "Endless Conveyor",
+   "area": "Act 1 - Underdocks",
+   "summary": "You find a shack where a chef is skillfully preparing food and placing it onto a conveyor belt. You can either pay gold to gain various benefits as many times as you wish, or hold back and upgrade a card instead.",
+   "choices": [
+    "Grab Something Off the Belt: Pay 40 Gold. Receive a random dish (see below).",
+    "Observe the Chef: Upgrade a random card. === Dishes === Each grab serves a random dish from the belt (40 Gold each, except Golden Fysh which is free): {| class=\"wikitable\" style=\"width: 650px;\"! Dish!! Effect!! Weight!! Notes |- | Caviar || Gain 4 Max HP. || 6 || |- | Clam ..."
+   ]
+  },
+  {
+   "name": "Field of Man-Sized Holes",
+   "area": "Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Enter Your Hole: Enchant a card with Perfect Fit.",
+    "Resist: Remove 2 cards from your Deck. Add Normality (curse) to your Deck."
+   ]
+  },
+  {
+   "name": "Grave of the Forgotten",
+   "area": "Act 3 - Glory",
+   "summary": "You sight a grave with the soul of a warrior who still longs for battle. You may either take it with you as a unique Relic, or confront it with the truth of the matter to add a highly powerful enchantment to a card that Exhausts, at the cost of become Cursed.",
+   "choices": [
+    "Accept the Forgotten Soul: Obtain Forgotten Soul (relic).",
+    "Confront with Truth: Add Decay (curse) to your Deck. Enchant a card that Exhausts with Soul's Power."
+   ]
+  },
+  {
+   "name": "Hungry for Mushrooms",
+   "area": "Act 3 - Glory",
+   "summary": "",
+   "choices": [
+    "Big Mushroom: Obtain Big Mushroom (relic).",
+    "Fragrant Mushroom: Obtain Fragrant Mushroom (relic)."
+   ]
+  },
+  {
+   "name": "Infested Automaton",
+   "area": "Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Study: Obtain a random 2.",
+    "Touch the Core: Obtain a random 0 cost card."
+   ]
+  },
+  {
+   "name": "Jungle Maze Adventure",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You encounter a group of adventurers gearing up to head into a dangerous dungeon. You may either join forces with them to gain a small amount of gold, or enter alone to gain more at the cost of some HP.",
+   "choices": [
+    "Solo Quest: Gain 135-165 Gold. Lose 18 HP.",
+    "Join Forces: Gain 35-65 Gold."
+   ]
+  },
+  {
+   "name": "Luminous Choir",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You discover a patch of glowing, singing mushrooms, noticing a relic within them. You may try reaching into the mushrooms to remove two cards for your deck while adding a curse in the process, or pay a sum of gold to obtain the relic.",
+   "choices": [
+    "Reach into the Flesh: Remove 2 cards from Deck. Add Spore Mind (curse) to Deck.",
+    "Offer Tribute: Pay 100-149 Gold. Obtain a random Relic."
+   ]
+  },
+  {
+   "name": "Morphic Grove",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You enter a crystaline forest inhabited by crystal spirits that excitedly hover around you. You may interact with the group to transform two cards in your deck at the cost of all your gold, or interact with the lone one away from the group to gain some Max HP.",
+   "choices": [
+    "Group: Lose ALL of your Gold. Transform 2 cards.",
+    "Loner: Gain 5 Max HP."
+   ]
+  },
+  {
+   "name": "Potion Courier",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "You discover the corpse of a courier who has a batch of particularly foul potions by his body, along with a note intending for the recipient to be the Merchant. You may take the Foul Potions, or ransack his bag to obtain a random uncommon potion.",
+   "choices": [
+    "Grab Potions: Procure 3 2.",
+    "Ransack: Procure 1 random Uncommon Potion."
+   ]
+  },
+  {
+   "name": "Punch Off",
+   "area": "Act 1 - Underdocks",
+   "summary": "You find two Punch Constructs in a fighting match over a Relic. You can either steal the relic, adding a curse into your deck in the process, or enter combat against them to obtain it with various other rewards.",
+   "choices": [
+    "Nab: Add Injury (curse) to Deck. Obtain a random Relic.",
+    "I Can Take Them: Enter combat against 2 2 for greater rewards."
+   ]
+  },
+  {
+   "name": "Ranwid the Elder",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "You meet an extremely old person that recognizes you, despite you having no recollection of knowing them. You may trade a random potion or 100 gold to obtain a random relic, or exchange a relic for two random relics.",
+   "choices": [
+    "Give Potion: Obtain a random Relic.",
+    "Give 100 Gold: Obtain a random Relic.",
+    "Give: Obtain 2 random Relics."
+   ]
+  },
+  {
+   "name": "Reflections snoitcelfeR",
+   "area": "Act 3 - Glory",
+   "summary": "",
+   "choices": [
+    "Touch a Mirror: Downgrade 2 random cards. Upgrade 4 random cards.",
+    "Shatter: Duplicate your entire Deck. Add Bad Luck (curse) to your Deck."
+   ]
+  },
+  {
+   "name": "Relic Trader",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "You meet a man who offers to trade his collection of relics with yours. You may select one of three trade offers, losing a relic and obtaining one in return.",
+   "choices": [
+    "Take the Top One: Trade for.",
+    "Take the Middle One: Trade for.",
+    "Take the Bottom One: Trade for."
+   ]
+  },
+  {
+   "name": "Room Full of Cheese",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive",
+   "summary": "You stumble into a room made completely out of cheese. You may gorge yourself on the cheese to obtain 2 common cards out of a pool of 8, or search the strange room to obtain the unique Chosen Cheese relic at the cost of some HP.",
+   "choices": [
+    "Gorge: Choose 2 of 8 random Common cards to add to your Deck.",
+    "Search: Lose 14 HP. Obtain The Chosen Cheese (relic)."
+   ]
+  },
+  {
+   "name": "Sapphire Seed",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You barely avoid stepping on a magical seed thought to have gone extinct. You can consume the seed to heal some HP and upgrade a card, or nurture it to apply a unique enchantment to a card in your deck.",
+   "choices": [
+    "Consume: Heal 9 HP. Upgrade a card in your Deck.",
+    "Plant and Nourish: Enchant a card with Sown."
+   ]
+  },
+  {
+   "name": "Self-Help Book",
+   "area": "?",
+   "summary": "You stumble upon a bloody book. You may study its contents to enchant an Attack, Skill, or Power card in your deck.",
+   "choices": [
+    "Read the Back: Choose an Attack to Enchant with Sharp 2.",
+    "Read a Random Passage: Choose a Skill to Enchant with Nimble 2.",
+    "Read the Entire Book: Choose a Power to Enchant with Swift 2.",
+    "Move On: Nothing happens."
+   ]
+  },
+  {
+   "name": "Slippery Bridge",
+   "area": "?",
+   "summary": "You cross a rickety bridge only to be threatened by a sudden tempest attempting to blow you away. You must overcome this obstacle by sacrificing a random card in your deck, or hang on to randomize which card to lose.",
+   "choices": [
+    "Overcome: [Specific card] is removed from your deck.",
+    "Hold On: Lose 3 HP. The card in the above option is randomized. === Mechanics ==="
+   ]
+  },
+  {
+   "name": "Spiraling Whirlpool",
+   "area": "Act 1 - Underdocks",
+   "summary": "You encounter and are captivated by a beautiful, pristine whirlpool. You can take in its beauty to enchant a Strike or Defend in your deck, or drink from the water to recover some HP.",
+   "choices": [
+    "Observe: Enchant a Basic Strike or Defend with Spiral.",
+    "Drink: Heal 33% of Max HP."
+   ]
+  },
+  {
+   "name": "Spirit Grafter",
+   "area": "Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Let It In: Heal 25 HP. Add Metamorphosis to Deck.",
+    "Rejection: Lose 10 HP. Upgrade a card."
+   ]
+  },
+  {
+   "name": "Stone of All Time",
+   "area": "Act 2 - Hive",
+   "summary": "You come across an enormous boulder in an abandoned courtyard. You can attempt to lift the boulder, increasing your max HP while losing a potion, or push it to enchant an attack in your deck at the cost of some HP.",
+   "choices": [
+    "Drink and Lift: Lose a random potion. Gain 10 max HP.",
+    "Push: Lose 6 HP. Enchant an attack with Vigorous 8."
+   ]
+  },
+  {
+   "name": "Sunken Treasury",
+   "area": "Act 1 - Underdocks",
+   "summary": "You discover a sunken vault with two treasure chests and a fragile key. You can open the small chest to get a bit of gold, or the large chest to get a lot of gold while adding a permanent curse to your deck.",
+   "choices": [
+    "First Chest: Gain 52-68 Gold.",
+    "Second Chest: Gain 303-363 Gold. Add Greed (curse) to Deck."
+   ]
+  },
+  {
+   "name": "Symbiote",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "",
+   "choices": [
+    "Approach: Enchant an Attack with Corrupted.",
+    "Kill with Fire: Choose a card to Transform."
+   ]
+  },
+  {
+   "name": "Tablet of Truth",
+   "area": "Act 1 - Overgrowth",
+   "summary": "Swiftly defeating some foes, you discover a mysterious tablet. You may decipher its language to upgrade cards in your deck at the cost of increasing amounts of Max HP, or break it to recover some health.",
+   "choices": [
+    "Smash: Heal 20 HP.",
+    "Decipher: Lose 3 Max HP. Upgrade a random card."
+   ]
+  },
+  {
+   "name": "Tea Master",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Bone Tea: Pay 50 Gold. At the start of the next combat, Upgrade your starting hand.",
+    "Ember Tea: Pay 150 Gold. At the start of the next 5 combats, gain 2 Strength.",
+    "Tea of Discourtesy: At the start of the next combat, shuffle 2 Dazed into your Draw Pile."
+   ]
+  },
+  {
+   "name": "The Future of Potions?",
+   "area": "?",
+   "summary": "You discover a strange machine that can transform a potion into a card reward depending on its rarity.",
+   "choices": [
+    "Insert Common Potion: Lose a specified Common potion. Obtain an Upgraded Common [Attack/Skill] card reward.",
+    "Insert Uncommon Potion: Lose a specified Uncommon potion. Obtain an Upgraded Uncommon [Attack/Skill/Power] card reward.",
+    "Insert Rare Potion: Lose a specified Rare potion. Obtain an Upgraded Rare [Attack/Skill/Power] card reward.",
+    "Insert Event Potion: Lose a specified Event potion. Obtain an Upgraded Rare [Attack/Skill/Power] card reward.",
+    "Insert Token Potion: Lose a specified Token potion. Obtain an Upgraded Common [Attack/Skill] card reward. === Mechanics ==="
+   ]
+  },
+  {
+   "name": "The Lantern Key",
+   "area": "Act 2 - Hive",
+   "summary": "You stumble upon a strange key when a heavily armored knight asks you to give it to them. You may oblige and obtain some gold, or take the key by force by facing the knight head-on.",
+   "choices": [
+    "Return the Key: Gain 100 Gold.",
+    "Keep the Key: Enter combat against a Mysterious Knight for the Lantern Key card."
+   ]
+  },
+  {
+   "name": "The Legends Were True",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks",
+   "summary": "You enter a suspicious chamber with a light shining on a treasure map sitting on a pedestal. You may take the map, adding it to your deck to obtain its treasure later, or look around the room, resulting in the chamber collapsing, obtaining a potion at the cost of some HP in the process.",
+   "choices": [
+    "Nab the Map: Receive the Spoils Map.",
+    "Slowly Find an Exit: Lose 8 HP. Procure 1 random Potion."
+   ]
+  },
+  {
+   "name": "The Lost Wisp",
+   "area": "Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Capture the Wisp: Add Decay (curse) to Deck. Obtain the Lost Wisp (relic).",
+    "Search the Nearby Area: Gain 45-75 Gold."
+   ]
+  },
+  {
+   "name": "The Merchant???",
+   "area": "Act 2 - Hive, Act 3 - Glory",
+   "summary": "You meet a strange man selling a variety of cheap imitations of various Relics. If you have a Foul Potion, you can throw it at them to start a fight with them for great rewards.",
+   "choices": []
+  },
+  {
+   "name": "The Round Tea Party",
+   "area": "Act 3 - Glory",
+   "summary": "You show up to a tea party in the stead of a knight with a party of powerful figures. You can either drink the tea, fully healing you, but giving you a negative relic for the rest of the run, or start a fight to obtain a relic at the cost of some HP.",
+   "choices": [
+    "Enjoy Your Tea: Obtain Royal Poison (relic). Heal to full HP.",
+    "Pick a Fight: Lose 11 HP. Obtain a random Relic."
+   ]
+  },
+  {
+   "name": "The Sunken Statue",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks",
+   "summary": "You find a crumbling stone statue submerged in the waters of the Underdocks, clutching a sword of stone. You can either take the sword as a unique relic, or claim the offerings of gold at the foot of the statue at the cost of some HP.",
+   "choices": [
+    "Grab the Sword: Obtain Sword of Stone (relic).",
+    "Dive into the Water: Gain 101-121 Gold. Lose 7 HP."
+   ]
+  },
+  {
+   "name": "The Trial",
+   "area": "Act 3 - Glory",
+   "summary": "You join a line of people and are forced into becoming the judge for a trial that you may not refuse. You may either declare the defendant guilty or innocent to obtain various rewards, though most often also resulting in you becoming Cursed.",
+   "choices": [
+    "Accept: Serve as today's Decider. ===== Merchant Trial =====",
+    "DECIDE: Guilty: Add Regret (curse) to your Deck. Obtain 2 random Relics.",
+    "DECIDE: Innocent: Add Shame (curse) to your Deck. Upgrade 2 cards. ==== Noble Trial ====",
+    "DECIDE: Guilty: Heal 10 HP.",
+    "DECIDE: Innocent: Add Regret (curse) to your Deck. Gain 300 Gold. ==== Nondescript Trial ====",
+    "DECIDE: Guilty: Add Doubt (curse) to your Deck. Gain 2 card rewards.",
+    "DECIDE: Innocent: Add Doubt (curse) to your Deck. Transform 2 cards. === Reject ===",
+    "Reject: You are not allowed to Reject.",
+    "Double Down: Face lethal repercussions."
+   ]
+  },
+  {
+   "name": "This or That?",
+   "area": "?",
+   "summary": "Two arms suddenly burst out from a hole in the wall, carrying a bag of gold in one hand and a relic in another. You can take the gold at the cost of some HP, or the relic at the cost of becoming cursed.",
+   "choices": [
+    "This: Lose 6 HP. Gain 41-68 Gold.",
+    "That: Add Clumsy to your Deck. Obtain a random Relic."
+   ]
+  },
+  {
+   "name": "Tinker Time",
+   "area": "Act 3 - Glory",
+   "summary": "You meet a scientist who offers to create you a powerful card of your chosing. You can 2 of 3 categories of cards, and then 2 of 3 unique effects added onto the card.",
+   "choices": []
+  },
+  {
+   "name": "Trash Heap",
+   "area": "Act 1 - Underdocks",
+   "summary": "You find an enormous tower of discarded matter. You can rummage through the waste to obtain one of several unique Relics at the cost of some HP, or scavenge around the garbage to obtain some gold and add a unique card to your deck.",
+   "choices": [
+    "Dive In: Lose 8 HP. Obtain a random Relic.",
+    "Grab Random Junk: Gain 100 Gold. Obtain a random card."
+   ]
+  },
+  {
+   "name": "Unrest Site",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You start a fire to take a rest when the fire grows and flickers towards a forest of oil-soaked trees. You may either sleep anyways to fully heal yourself at the cost of adding a curse to your deck, or destroy the trees to obtain a relic at the cost of some Max HP.",
+   "choices": [
+    "Rest Anyways: Heal to full HP. Receive Poor Sleep (curse).",
+    "Kill the Trees: Lose 8 Max HP. Obtain a random Relic."
+   ]
+  },
+  {
+   "name": "War Historian, Repy",
+   "area": "Act 3 - Glory",
+   "summary": "You find someone trapped in a cage next to a chest filled with loot. You may either unlock the chest to obtain its loot or free the scholar for the powerful History Course Relic.",
+   "choices": [
+    "Unlock the Cage: Lose Lantern Key. Obtain History Course.",
+    "Unlock the Chest: Lose Lantern Key. Procure 2 random Potions. Obtain 2 random Relics."
+   ]
+  },
+  {
+   "name": "Waterlogged Scriptorium",
+   "area": "Act 1 - Underdocks",
+   "summary": "You discover a small, run-down shop filled with various scrolls and trinkets. You can pay gold to enchant 1 or 2 cards with an enchantment that allows you to retain the card, or you may not buy anything and get a boost to Max HP instead.",
+   "choices": [
+    "Bloody Ink: Gain 6 Max HP.",
+    "Tentacle Quill: Pay 55 Gold. Enchant a card with Steady.",
+    "Prickly Sponge: Pay 99 Gold. Enchant 2 cards with Steady."
+   ]
+  },
+  {
+   "name": "Welcome to Wongo's",
+   "area": "Act 2 - Hive",
+   "summary": "You meet an extremely unenthusiastic clerk in a shop selling a variety of Relics. You can purchase a random common relic, a specific rare relic, or a ticket that gives you multiple random relics after enough combat encounters. You may also refuse to purchase anything, downgrading a card in the process.",
+   "choices": [
+    "Wongo's Bargain Bin: Pay 100 Gold. Obtain 1 random Common Relic.",
+    "Wongo's Featured Item: Pay 200 Gold. Obtain [Rare Relic].",
+    "Wongo's Mystery Box: Pay 300 Gold. Obtain 3 random Relics after 5 combats.",
+    "Leave: Downgrade a random card. === Wongo Points === After any purchase, the player will receive Wongo Points based on which purchase they selected. Wongo Points persist between all of the player's runs on their profile (across all characters), and the event text ..."
+   ]
+  },
+  {
+   "name": "Wellspring",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You follow a low rumble to its source to encounter a spring with emerald-colored water. You can bottle up the water to gain a random potion, or bathe in it to remove a card from your deck at the cost of adding a temporary curse to your deck.",
+   "choices": [
+    "Bottle: Procure 1 random Potion.",
+    "Bathe: Remove 1 card from Deck. Add 1 Guilty (curse) to Deck."
+   ]
+  },
+  {
+   "name": "Whispering Hollow",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You discover a creepy, whispering tree with clay vessels hanging from its branches. You may give some gold to the tree to obtain two potions, or hug the tree to transform a card in your deck at the cost of some HP.",
+   "choices": [
+    "Exchange Gold: Lose 26-44 Gold. Procure 2 random Potions.",
+    "Hug the Tree: Lose 9 HP. Choose a card to Transform."
+   ]
+  },
+  {
+   "name": "Wood Carvings",
+   "area": "Act 1 - Overgrowth",
+   "summary": "You open a with three wooden carvings next to a pedestal indented with the shape of the carvings. You can transform a starter card into a unique attack or skill card, or enchant a card with an enchantment that randomizes its cost.",
+   "choices": [
+    "Bird: Choose 1 starter card to Transform into Peck.",
+    "Snake: Enchant 1 card with Slither. (Locked if no cards can be enchanted with Slither)",
+    "Torus: Choose 1 starter card to Transform into Toric Toughness."
+   ]
+  },
+  {
+   "name": "Zen Weaver",
+   "area": "Act 2 - Hive",
+   "summary": "",
+   "choices": [
+    "Breathing Techniques: Pay 50 Gold. Add 2 Enlightenment to your Deck.",
+    "Emotional Awareness: Pay 125 Gold. Remove 1 card from your Deck.",
+    "Arachnid Acupuncture: Pay 250 Gold. Remove 2 cards from your Deck."
+   ]
+  }
+ ],
+ "encounters": {
+  "Act 1 / Overgrowth": {
+   "easy": [
+    {
+     "name": "A Lone Nibbit",
+     "enemies": [
+      "Nibbit"
+     ],
+     "details": "A single Nibbit"
+    },
+    {
+     "name": "Group of Slimes",
+     "enemies": [
+      "Leaf Slime (S)",
+      "Leaf Slime (M)",
+      "Twig Slime (S)",
+      "Twig Slime (M)"
+     ],
+     "details": "1 Leaf Slime (S) + 1 random medium slime (Leaf Slime (M) or Twig Slime (M)) + 1 Twig Slime (S)."
+    },
+    {
+     "name": "Shrinker Beetle",
+     "enemies": [
+      "Shrinker Beetle"
+     ],
+     "details": "A single Shrinker Beetle."
+    },
+    {
+     "name": "Fuzzy Wurm Crawler",
+     "enemies": [
+      "Fuzzy Wurm Crawler"
+     ],
+     "details": "A single Fuzzy Wurm Crawler."
+    }
+   ],
+   "hard": [
+    {
+     "name": "Inklets",
+     "enemies": [
+      "Inklet"
+     ],
+     "details": "3 Inklets."
+    },
+    {
+     "name": "Mawler",
+     "enemies": [
+      "Mawler"
+     ],
+     "details": "A single Mawler."
+    },
+    {
+     "name": "A Pair of Nibbits",
+     "enemies": [
+      "Nibbit"
+     ],
+     "details": "2 Nibbits."
+    },
+    {
+     "name": "Ruby Raiders",
+     "enemies": [
+      "Assassin Raider",
+      "Crossbow Raider",
+      "Tracker Raider",
+      "Brute Raider",
+      "Axe Raider"
+     ],
+     "details": "3 Ruby Raiders randomly chosen from Axe Raider, Assassin Raider, Brute Raider, Crossbow Raider, and Tracker Raider (each type can appear at most once)."
+    },
+    {
+     "name": "Swarm of Slimes",
+     "enemies": [
+      "Leaf Slime (S)",
+      "Leaf Slime (M)",
+      "Twig Slime (S)",
+      "Twig Slime (M)"
+     ],
+     "details": "1 Leaf Slime (M) + 1 Twig Slime (M) + 1 Leaf Slime (S) + 1 Twig Slime (S)"
+    },
+    {
+     "name": "Shroom and Slime",
+     "enemies": [
+      "Leaf Slime (M)",
+      "Twig Slime (M)",
+      "Flyconid"
+     ],
+     "details": "1 random medium slime (Leaf Slime (M) or Twig Slime (M)) + 1 Flyconid"
+    },
+    {
+     "name": "Overgrowth Flora",
+     "enemies": [
+      "Snapping Jaxfruit",
+      "Flyconid"
+     ],
+     "details": "1 Snapping Jaxfruit + 1 Flyconid"
+    },
+    {
+     "name": "Fogmog",
+     "enemies": [
+      "Eye With Teeth",
+      "Fogmog"
+     ],
+     "details": "A single Fogmog (can summon Eye With Teeth during combat)."
+    },
+    {
+     "name": "Cubex Construct",
+     "enemies": [
+      "Cubex Construct"
+     ],
+     "details": "A single Cubex Construct"
+    },
+    {
+     "name": "Vine Shambler",
+     "enemies": [
+      "Vine Shambler"
+     ],
+     "details": "A single Vine Shambler"
+    },
+    {
+     "name": "Overgrowth Crawlers",
+     "enemies": [
+      "Fuzzy Wurm Crawler",
+      "Shrinker Beetle"
+     ],
+     "details": "1 Shrinker Beetle + 1 Fuzzy Wurm Crawler"
+    },
+    {
+     "name": "Strangler and Friend",
+     "enemies": [
+      "Slithering Strangler",
+      "Snapping Jaxfruit",
+      "Leaf Slime (S)",
+      "Twig Slime (S)",
+      "Leaf Slime (M)",
+      "Twig Slime (M)"
+     ],
+     "details": "One of: (1 Snapping Jaxfruit, 1 random medium slime, or 1 Leaf Slime (S) + 1 Twig Slime (S)) + 1 Slithering Strangler."
+    }
+   ],
+   "elite": [
+    {
+     "name": "Bygone Effigy",
+     "enemies": [
+      "Bygone Effigy"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Byrdonis",
+     "enemies": [
+      "Byrdonis"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Phrog Parasite",
+     "enemies": [
+      "Phrog Parasite"
+     ],
+     "details": ""
+    }
+   ],
+   "boss": [
+    {
+     "name": "Ceremonial Beast",
+     "enemies": [
+      "Ceremonial Beast"
+     ],
+     "details": ""
+    },
+    {
+     "name": "The Kin",
+     "enemies": [
+      "Kin Priest",
+      "Kin Follower"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Vantom",
+     "enemies": [
+      "Vantom"
+     ],
+     "details": ""
+    }
+   ],
+   "event": [
+    {
+     "name": "Dense Vegetation",
+     "enemies": [
+      "Wriggler"
+     ],
+     "details": "4 Wriggler"
+    }
+   ]
+  },
+  "Act 1 / Underdocks": {
+   "easy": [
+    {
+     "name": "Corpse Slugs",
+     "enemies": [
+      "Corpse Slug"
+     ],
+     "details": "2 Corpse Slugs."
+    },
+    {
+     "name": "Seapunk",
+     "enemies": [
+      "Seapunk"
+     ],
+     "details": "A single Seapunk."
+    },
+    {
+     "name": "Sludge Spinner",
+     "enemies": [
+      "Sludge Spinner"
+     ],
+     "details": "A single Sludge Spinner."
+    },
+    {
+     "name": "Toadpoles",
+     "enemies": [
+      "Toadpole"
+     ],
+     "details": "2 Toadpoles."
+    }
+   ],
+   "hard": [
+    {
+     "name": "Many Corpse Slugs",
+     "enemies": [
+      "Corpse Slug"
+     ],
+     "details": "3 Corpse Slugs."
+    },
+    {
+     "name": "Cultists",
+     "enemies": [
+      "Calcified Cultist",
+      "Damp Cultist"
+     ],
+     "details": "1 Calcified Cultist + 1 Damp Cultist"
+    },
+    {
+     "name": "Living Fog",
+     "enemies": [
+      "Living Fog",
+      "Gas Bomb"
+     ],
+     "details": "A single Living Fog (can summon Gas Bombs during combat)."
+    },
+    {
+     "name": "Fossil Stalker",
+     "enemies": [
+      "Fossil Stalker"
+     ],
+     "details": "A single Fossil Stalker."
+    },
+    {
+     "name": "Two Gremlins in a Trenchcoat",
+     "enemies": [
+      "Sneaky Gremlin",
+      "Gremlin Merc",
+      "Fat Gremlin"
+     ],
+     "details": "A single Gremlin Merc (can summon Fat Gremlin and Sneaky Gremlin allies)."
+    },
+    {
+     "name": "Haunted Ship",
+     "enemies": [
+      "Haunted Ship"
+     ],
+     "details": "A single Haunted Ship."
+    },
+    {
+     "name": "Punch Construct",
+     "enemies": [
+      "Punch Construct"
+     ],
+     "details": "A single Punch Construct."
+    },
+    {
+     "name": "Sewer Clam",
+     "enemies": [
+      "Sewer Clam"
+     ],
+     "details": "A single Sewer Clam."
+    },
+    {
+     "name": "Underdocks Wildlife",
+     "enemies": [
+      "Calcified Cultist",
+      "Seapunk"
+     ],
+     "details": "1 Calcified Cultist + 1 Seapunk."
+    },
+    {
+     "name": "Two-Tailed Rats",
+     "enemies": [
+      "Two-Tailed Rat"
+     ],
+     "details": "3 Two-Tailed Rats (can summon up to 3 more Two-Tailed Rats)."
+    }
+   ],
+   "elite": [
+    {
+     "name": "Skulking Colony",
+     "enemies": [
+      "Skulking Colony"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Phantasmal Gardener",
+     "enemies": [
+      "Phantasmal Gardener"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Terror Eel",
+     "enemies": [
+      "Terror Eel"
+     ],
+     "details": ""
+    }
+   ],
+   "boss": [
+    {
+     "name": "Waterfall Giant",
+     "enemies": [
+      "Waterfall Giant"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Soul Fysh",
+     "enemies": [
+      "Soul Fysh"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Lagavulin Matriarch",
+     "enemies": [
+      "Lagavulin Matriarch"
+     ],
+     "details": ""
+    }
+   ],
+   "event": [
+    {
+     "name": "Punch Off",
+     "enemies": [
+      "Punch Construct"
+     ],
+     "details": "2 Punch Constructs"
+    }
+   ]
+  },
+  "Act 2 / Hive": {
+   "easy": [
+    {
+     "name": "Bowlbugs",
+     "enemies": [
+      "Bowlbug (Nectar)",
+      "Bowlbug (Rock)",
+      "Bowlbug (Egg)"
+     ],
+     "details": "1 Bowlbug (Rock) + 1 random worker (Bowlbug (Egg) or Bowlbug (Nectar))."
+    },
+    {
+     "name": "Exoskeletons",
+     "enemies": [
+      "Exoskeleton"
+     ],
+     "details": "3 Exoskeletons."
+    },
+    {
+     "name": "Thieving Hopper",
+     "enemies": [
+      "Thieving Hopper"
+     ],
+     "details": "A single Thieving Hopper."
+    },
+    {
+     "name": "Tunneler",
+     "enemies": [
+      "Tunneler"
+     ],
+     "details": "A single Tunneler."
+    }
+   ],
+   "hard": [
+    {
+     "name": "Bowlbug Swarm",
+     "enemies": [
+      "Bowlbug (Nectar)",
+      "Bowlbug (Rock)",
+      "Bowlbug (Silk)",
+      "Bowlbug (Egg)"
+     ],
+     "details": "1 Bowlbug (Rock) + 2 random workers (Bowlbug (Egg), Bowlbug (Silk) or Bowlbug (Nectar) (max 1 of each type))."
+    },
+    {
+     "name": "An Automaton Pair",
+     "enemies": [
+      "Chomper"
+     ],
+     "details": "2 Chompers"
+    },
+    {
+     "name": "Many Exoskeletons",
+     "enemies": [
+      "Exoskeleton"
+     ],
+     "details": "4 Exoskeletons."
+    },
+    {
+     "name": "Hunter Killer",
+     "enemies": [
+      "Hunter Killer"
+     ],
+     "details": "A single Hunter Killer."
+    },
+    {
+     "name": "Louse Progenitor",
+     "enemies": [
+      "Louse Progenitor"
+     ],
+     "details": "A single Louse Progenitor"
+    },
+    {
+     "name": "Mass of Mytes",
+     "enemies": [
+      "Myte"
+     ],
+     "details": "2 Mytes."
+    },
+    {
+     "name": "Ovicopter",
+     "enemies": [
+      "Ovicopter",
+      "Tough Egg"
+     ],
+     "details": "A single Ovicopter (can summon Tough Eggs during combat)."
+    },
+    {
+     "name": "Slumber Party",
+     "enemies": [
+      "Slumbering Beetle",
+      "Bowlbug (Rock)",
+      "Bowlbug (Silk)"
+     ],
+     "details": "1 Bowlbug (Rock) + 1 Bowlbug (Silk) + 1 Slumbering Beetle."
+    },
+    {
+     "name": "Spiny Toad",
+     "enemies": [
+      "Spiny Toad"
+     ],
+     "details": "A single Spiny Toad"
+    },
+    {
+     "name": "The Obscura",
+     "enemies": [
+      "The Obscura",
+      "Parafright"
+     ],
+     "details": "A single The Obscura (summons a Parafright during combat)."
+    }
+   ],
+   "elite": [
+    {
+     "name": "Decimillipede",
+     "enemies": [
+      "Decimillipede"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Entomancer",
+     "enemies": [
+      "Entomancer"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Infested Prism",
+     "enemies": [
+      "Infested Prism"
+     ],
+     "details": ""
+    }
+   ],
+   "boss": [
+    {
+     "name": "The Insatiable",
+     "enemies": [
+      "The Insatiable"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Knowledge Demon",
+     "enemies": [
+      "Knowledge Demon"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Kaiser Crab",
+     "enemies": [
+      "Crusher",
+      "Rocket"
+     ],
+     "details": ""
+    }
+   ],
+   "event": [
+    {
+     "name": "The Lantern Key",
+     "enemies": [
+      "Mysterious Knight"
+     ],
+     "details": "A single Mysterious Knight"
+    },
+    {
+     "name": "The Merchant???",
+     "enemies": [
+      "The Merchant???"
+     ],
+     "details": "The Merchant???"
+    }
+   ]
+  },
+  "Act 3 / Glory": {
+   "easy": [
+    {
+     "name": "Devoted Sculptor",
+     "enemies": [
+      "Devoted Sculptor"
+     ],
+     "details": "A single Devoted Sculptor"
+    },
+    {
+     "name": "Scrolls of Biting",
+     "enemies": [
+      "Scroll of Biting"
+     ],
+     "details": "3 Scroll of Biting."
+    },
+    {
+     "name": "Turret Operator",
+     "enemies": [
+      "Turret Operator",
+      "Living Shield"
+     ],
+     "details": "1 Living Shield + 1 Turret Operator"
+    }
+   ],
+   "hard": [
+    {
+     "name": "Axebot",
+     "enemies": [
+      "Axebot"
+     ],
+     "details": "A single Axebot"
+    },
+    {
+     "name": "Construct Menagerie",
+     "enemies": [
+      "Cubex Construct",
+      "Punch Construct"
+     ],
+     "details": "1 Punch Construct + 2 Cubex Constructs."
+    },
+    {
+     "name": "Fabricator",
+     "enemies": [
+      "Fabricator",
+      "Guardbot",
+      "Noisebot",
+      "Stabbot",
+      "Zapbot"
+     ],
+     "details": "A single Fabricator (spawns Guardbots, Noisebots, Stabbots, and Zapbots during combat)."
+    },
+    {
+     "name": "Frog Knight",
+     "enemies": [
+      "Frog Knight"
+     ],
+     "details": "A single Frog Knight."
+    },
+    {
+     "name": "A Lone Globe Head",
+     "enemies": [
+      "Globe Head"
+     ],
+     "details": "A single Globe Head."
+    },
+    {
+     "name": "Owl Magistrate",
+     "enemies": [
+      "Owl Magistrate"
+     ],
+     "details": "A single Owl Magistrate."
+    },
+    {
+     "name": "Many Scrolls of Biting",
+     "enemies": [
+      "Scroll of Biting"
+     ],
+     "details": "4 Scrolls of Biting."
+    },
+    {
+     "name": "Slimed Berserker",
+     "enemies": [
+      "Slimed Berserker"
+     ],
+     "details": "A single Slimed Berserker."
+    },
+    {
+     "name": "Lost and Forgotten",
+     "enemies": [
+      "The Forgotten",
+      "The Lost"
+     ],
+     "details": "1 The Lost + 1 The Forgotten."
+    }
+   ],
+   "elite": [
+    {
+     "name": "Knight Gang",
+     "enemies": [
+      "Flail Knight",
+      "Spectral Knight",
+      "Magi Knight"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Mecha Knight",
+     "enemies": [
+      "Mecha Knight"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Soul Nexus",
+     "enemies": [
+      "Soul Nexus"
+     ],
+     "details": ""
+    }
+   ],
+   "boss": [
+    {
+     "name": "Queen",
+     "enemies": [
+      "Queen",
+      "Torch Head Amalgam"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Test Subject",
+     "enemies": [
+      "Test Subject",
+      "Test Subject (Phase 2)",
+      "Test Subject (Phase 3)"
+     ],
+     "details": ""
+    },
+    {
+     "name": "Aeonglass",
+     "enemies": [
+      "Aeonglass"
+     ],
+     "details": ""
+    }
+   ],
+   "event": [
+    {
+     "name": "The Merchant???",
+     "enemies": [
+      "The Merchant???"
+     ],
+     "details": "The Merchant???"
+    },
+    {
+     "name": "Battleworn Dummy",
+     "enemies": [
+      "Battle Friend"
+     ],
+     "details": "A single Battle Friend"
+    }
+   ]
+  }
+ },
+ "rules": {
+  "run": {
+   "source": "Acts, Mechanics, Ancients, Bosses",
+   "acts": "3 acts. Act 1 is randomly Overgrowth or Underdocks; Act 2 Hive; Act 3 Glory. Every act starts with an Ancient (Act 1 always Neow) and ends with a boss: floors 17 / 33 / 48 (A10: second boss on 49). Victory = beating the Act 3 boss (no Act 4 / keys).",
+   "start": "99 Gold, 3 potion slots (A4: 2), starter relic, 10-12 card deck (5 characters), 3 Energy, draw 5.",
+   "act_transition": "Act 1/2 boss -> 100 Gold (A3: 75) + 3 Rare card choice + maybe potion. No boss relic chest: the next act opens with an Ancient that heals 100% of missing HP (A2: 80%) and offers 3 Ancient relics (must take one; cannot skip)."
+  },
+  "map": {
+   "source": "Map Locations, Monsters, Elites, Unknown Location, Rest Sites (update history)",
+   "layout": "Same 7 room types as StS1 (Monster, Elite, Rest, Unknown, Treasure, Merchant, Boss); the wiki's Map Generation page is empty. Treasure at the act midpoint; a Rest Site always precedes the boss; Act 1/2 have about 6-7 rest sites (patch notes).",
+   "monster_pools": "First 3 fights in Act 1 (2 in Acts 2-3) from the easy pool (StS2 Act 1 lists 3-4 easy encounters, 3 picked per run), then the normal pool with equal probability. The same encounter never repeats within an act.",
+   "elite_rules": "All 3 elites of the act must be met before any repeats; never the same elite twice in a row.",
+   "unknown_room": "Base Monster 10%, Treasure 2%, Shop 3%, Event 85%; non-rolled types grow by their base value, reset when rolled and at each new act. No Shop right after a Shop. Each event can occur once per run."
+  },
+  "rewards": {
+   "source": "Cards, Gold, Potions, Relics, Elites, Map Locations",
+   "card_reward": "Choose 1 of 3. Base C/U/R normal 60/37/3%, elite 50/40/10%, shop 54/37/9%. Rare offset starts -5%, +1% per non-Rare card generated (A7: +0.5%, base Rare halved), max +40%, reset on Rare; skipped rewards still count. Boss rewards are all Rare. Upgraded non-rare reward cards: Act 1 0%, Act 2 25%, Act 3 50% (A7: halved).",
+   "gold": "Normal 10-20 (A3: 7-15), Elite 35-45 (A3: 26-34), Boss 100 (A3: 75), chest 42-53 (A3: 32-40). Start 99.",
+   "potion_drop": "40% at run start, -10% after a drop / +10% after none; elites +12.5%. Rarity 65/25/10%.",
+   "elite": "Relic (C/U/R 50/33/17%) + 35-45 Gold + card reward + maybe potion.",
+   "chests": "One relic (50/33/17%) + 42-53 Gold. Character-specific relics never appear in chests (multiplayer fairness). Skipped chest relics return to the pool.",
+   "ancients": "Replace StS1 boss relics: 8 Ancients (Neow Act 1; Orobas/Pael/Tezcatara Act 2; Nonupeipe/Tanx/Vakuu Act 3; Darv Act 2 or 3) each with relic pools; Neow offers 1 relic from a Curse pool (upside with downside) + 2 from a Positive pool."
+  },
+  "shop": {
+   "source": "The Merchant",
+   "stock": "Same layout as StS1: 5 class cards (2A/2S/1P, one 50% off), 2 colorless (U + R, +15%), 3 relics (rightmost a Shop relic), 3 potions, 1 card removal.",
+   "prices": {
+    "card_common": "48-53",
+    "card_uncommon": "71-79",
+    "card_rare": "143-158",
+    "colorless_uncommon": "82-90",
+    "colorless_rare": "164-181",
+    "potion": "48-53 / 71-79 / 95-105 (C/U/R)",
+    "relic": "Shop 170-230, Common 149-201, Uncommon 191-259, Rare 234-316",
+    "removal": "75 +25 per use (A6: 100 +50)"
+   },
+   "fake_merchant": "The Merchant??? event sells cheap fake relics; can be fought with a Foul Potion."
+  },
+  "rest_site": {
+   "source": "Rest Sites",
+   "options": "Rest (heal 30%) or Smith (upgrade). Relic/quest options: Train (Girya), Dig (Shovel), Cook (Meat Cleaver: remove 2 cards, +5 Max HP), Kindle (Pumpkin Candle), Clone (Clone enchantment), Hatch (Byrdonis Egg quest). Multiplayer adds Mend (heal an ally 30%). Miniature Tent allows every option at one site."
+  },
+  "new_systems": {
+   "source": "Mechanics, Cards, Ancients, Multiplayer",
+   "enchantments": "Permanent card modifiers (one per card) from relics/events/Ancients.",
+   "afflictions": "Negative per-combat modifiers enemies put on your cards.",
+   "quest_cards": "Unplayable deck cards with delayed rewards (Byrdonis Egg, Dowsing, Lantern Key, Spoils Map).",
+   "eternal": "Curses that cannot be removed or transformed.",
+   "alternate_acts": "Act 1 is one of two themed acts (more planned)."
+  },
+  "multiplayer": {
+   "source": "Multiplayer",
+   "rule": "Co-op for up to 4 players. Map: vote, ties resolved randomly weighted by votes; every act is 1 floor shorter (bosses on 16/31/45). Combat: shared enemies, simultaneous turns (turn ends when all players end); enemies attack/debuff ALL players at once, each player blocks individually; enemy debuffs (Weak/Vulnerable) apply for everyone. Dead players revive at 1 HP next floor if someone survived. Potions can be thrown to allies. Separate card rewards and shops; chests offer one relic per player (rock-paper-scissors on conflicts); Ancients offer each player their own picks. 37 multiplayer-only cards.",
+   "enemy_scaling": "Enemy HP = base x players x act factor (Act 1 1.1, Act 2/3 1.2, Act 3 boss 1.3), e.g. 4 players in Act 2 = x4.8. Enemy Block and most stacking buffs scale the same way; Plating x(2p-1); Artifact +(p-1); Slippery xp. Enemy damage, debuffs and status cards do NOT scale (but hit everyone)."
+  },
+  "elites_bosses": {
+   "source": "Elites, Bosses",
+   "rule": "3 elites and 3 bosses per act variant. A10: two different Act 3 bosses back to back. Act 3 boss gives no rewards."
+  },
+  "ascension": [
+   {
+    "level": 1,
+    "effect": "Elites spawn more often.",
+    "name": "2}}",
+    "detail": "Swarming Elites"
+   },
+   {
+    "level": 2,
+    "effect": "Ancients only heal 80% of your missing HP.",
+    "name": "2}}",
+    "detail": "Weary Traveler"
+   },
+   {
+    "level": 3,
+    "effect": "Enemies and Treasure Chests drop 25% less Gold.",
+    "name": "2}}",
+    "detail": "Poverty"
+   },
+   {
+    "level": 4,
+    "effect": "Start each run with 1 less potion slot.",
+    "name": "2}}",
+    "detail": "Tight Belt"
+   },
+   {
+    "level": 5,
+    "effect": "Start each run cursed.",
+    "name": "2}}",
+    "detail": "Ascender's Bane"
+   },
+   {
+    "level": 6,
+    "effect": "Removing cards from your deck at the Merchant is more expensive.",
+    "name": "2}}",
+    "detail": "Inflation"
+   },
+   {
+    "level": 7,
+    "effect": "Rare and Upgraded cards appear less often.",
+    "name": "2}}",
+    "detail": "Scarcity"
+   },
+   {
+    "level": 8,
+    "effect": "All enemies are harder to kill.",
+    "name": "2}}",
+    "detail": "Tough Enemies"
+   },
+   {
+    "level": 9,
+    "effect": "All enemies have deadlier attacks.",
+    "name": "2}}",
+    "detail": "Deadly Enemies"
+   },
+   {
+    "level": 10,
+    "effect": "(Max Level) Fight two Bosses at the end of Act 3.",
+    "name": "2}}",
+    "detail": "(MAX Level) Double Boss."
+   }
+  ]
+ },
+ "ancients": [
+  {
+   "name": "Neow",
+   "title": "Mother of Resurrection (Exiled)",
+   "acts": "Act 1",
+   "relic_offers": [
+    "Arcane Scroll",
+    "Booming Conch",
+    "Cursed Pearl",
+    "Dowsing Rod",
+    "Fishing Rod",
+    "Golden Pearl",
+    "Hefty Tablet",
+    "Kaleidoscope",
+    "Large Capsule",
+    "Lava Rock",
+    "Lead Paperweight",
+    "Leafy Poultice",
+    "Lost Coffer",
+    "Massive Scroll",
+    "Neow's Bones",
+    "Neow's Sacrifice",
+    "Neow's Talisman",
+    "Neow's Torment",
+    "New Leaf",
+    "Nutritious Oyster",
+    "Phial Holster",
+    "Pomander",
+    "Precarious Shears",
+    "Precise Scissors",
+    "Scroll Boxes",
+    "Silken Tress",
+    "Silver Crucible",
+    "Small Capsule",
+    "Stone Humidifier",
+    "Winged Boots"
+   ]
+  },
+  {
+   "name": "Tezcatara",
+   "title": "It Which Feeds the Fire",
+   "acts": "Act 2",
+   "relic_offers": [
+    "Biiig Hug",
+    "Golden Compass",
+    "Nutritious Soup",
+    "Pumpkin Candle",
+    "Seal of Gold",
+    "Storybook",
+    "Toasty Mittens",
+    "Toy Box",
+    "Very Hot Cocoa",
+    "Yummy Cookie"
+   ]
+  },
+  {
+   "name": "Orobas",
+   "title": "Living Rainbow",
+   "acts": "Act 2",
+   "relic_offers": [
+    "Alchemical Coffer",
+    "Archaic Tooth",
+    "Driftwood",
+    "Electric Shrymp",
+    "Glass Eye",
+    "Prismatic Gem",
+    "Radiant Pearl",
+    "Sand Castle",
+    "Sea Glass",
+    "Touch of Orobas"
+   ]
+  },
+  {
+   "name": "Pael",
+   "title": "Melting Dragon",
+   "acts": "Act 2",
+   "relic_offers": [
+    "Pael's Blood",
+    "Pael's Claw",
+    "Pael's Eye",
+    "Pael's Flesh",
+    "Pael's Growth",
+    "Pael's Horn",
+    "Pael's Legion",
+    "Pael's Tears",
+    "Pael's Tooth",
+    "Pael's Wing"
+   ]
+  },
+  {
+   "name": "Darv",
+   "title": "The Hoarder",
+   "acts": "Act 2 and 3",
+   "relic_offers": [
+    "Astrolabe",
+    "Black Star",
+    "Calling Bell",
+    "Dusty Tome",
+    "Ectoplasm",
+    "Empty Cage",
+    "Pandora's Box",
+    "Philosopher's Stone",
+    "Runic Pyramid",
+    "Snecko Eye",
+    "Sozu",
+    "Velvet Choker"
+   ]
+  },
+  {
+   "name": "Vakuu",
+   "title": "The First Demon",
+   "acts": "Act 3",
+   "relic_offers": [
+    "Blood-Soaked Rose",
+    "Choices Paradox",
+    "Distinguished Cape",
+    "Fiddle",
+    "Jeweled Mask",
+    "Lord's Parasol",
+    "Music Box",
+    "Preserved Fog",
+    "Sere Talon",
+    "Whispering Earring"
+   ]
+  },
+  {
+   "name": "Nonupeipe",
+   "title": "Serendipity Incarnate",
+   "acts": "Act 3",
+   "relic_offers": [
+    "Beautiful Bracelet",
+    "Blessed Antler",
+    "Brilliant Scarf",
+    "Delicate Frond",
+    "Diamond Diadem",
+    "Fur Coat",
+    "Glitter",
+    "Jewelry Box",
+    "Looming Fruit",
+    "Signet Ring"
+   ]
+  },
+  {
+   "name": "Tanx",
+   "title": "Khimera King",
+   "acts": "Act 3",
+   "relic_offers": [
+    "Claws",
+    "Crossbow",
+    "Iron Club",
+    "Meat Cleaver",
+    "Sai",
+    "Spiked Gauntlets",
+    "Tanx's Whistle",
+    "Throwing Axe",
+    "Tri-Boomerang",
+    "War Hammer"
+   ]
+  }
+ ]
+}

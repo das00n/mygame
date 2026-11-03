@@ -1,0 +1,5092 @@
+{
+ "game": "Slay the Spire 2",
+ "source": "https://slaythespire.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 2500 chars. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Excluded deprecated: Doormaker. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Completeness check: {\"scraped_by_category\": {\"boss\": 15, \"elite\": 14, \"event\": 1, \"minion\": 13, \"normal\": 63}, \"wiki_cargo_Enemies_by_type\": {\"boss\": 15, \"elite\": 14, \"event\": 1, \"minion\": 13, \"normal\": 63}, \"wiki_module_enemy_entries\": 109, \"scraped_not_in_cargo\": [], \"cargo_not_scraped\": [], \"scraped_not_in_module\": [\"Battle Friend\", \"Hatchling\"], \"module_not_scraped\": [\"Battle Friend V1.0\", \"Battle Friend V2.0\", \"Battle Friend V3.0\", \"Doormaker\", \"Knight Gang\"]}",
+ "enemies": [
+  {
+   "id": "sts2.assassin_raider",
+   "name": "Assassin Raider",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     18,
+     23
+    ],
+    "ascension": [
+     19,
+     24
+    ]
+   },
+   "moves": [
+    {
+     "name": "Killshot",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Uses Killshot every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Ruby Raiders"
+   ],
+   "wiki_page": "Slay the Spire 2:Ruby Raiders"
+  },
+  {
+   "id": "sts2.axe_raider",
+   "name": "Axe Raider",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     20,
+     22
+    ],
+    "ascension": [
+     21,
+     23
+    ]
+   },
+   "moves": [
+    {
+     "name": "Swing",
+     "intent": "attack_defend",
+     "damage": 5,
+     "hits": 1,
+     "effect": "Deals 5 (A9: 6) damage. Gains 5 (A9: 6) Block.",
+     "intent_icons": "Attack2, Defend"
+    },
+    {
+     "name": "Big Swing",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 13) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Repeats a fixed cycle: * Swing * Swing * Big Swing",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Ruby Raiders"
+   ],
+   "wiki_page": "Slay the Spire 2:Ruby Raiders"
+  },
+  {
+   "id": "sts2.brute_raider",
+   "name": "Brute Raider",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     30,
+     33
+    ],
+    "ascension": [
+     31,
+     34
+    ]
+   },
+   "moves": [
+    {
+     "name": "Beat",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Clap",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Alternates between Beat and Clap, starting with Beat.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Ruby Raiders"
+   ],
+   "wiki_page": "Slay the Spire 2:Ruby Raiders"
+  },
+  {
+   "id": "sts2.crossbow_raider",
+   "name": "Crossbow Raider",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     18,
+     21
+    ],
+    "ascension": [
+     19,
+     22
+    ]
+   },
+   "moves": [
+    {
+     "name": "Reload",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Fire!",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Alternates between Reload and Fire!, starting with Reload.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Ruby Raiders"
+   ],
+   "wiki_page": "Slay the Spire 2:Ruby Raiders"
+  },
+  {
+   "id": "sts2.cubex_construct",
+   "name": "Cubex Construct",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     65,
+     65
+    ],
+    "ascension": [
+     70,
+     70
+    ]
+   },
+   "moves": [
+    {
+     "name": "Charge Up",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Repeater Blast",
+     "intent": "attack_buff",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage. Gains 2 Strength.",
+     "intent_icons": "Attack2, Buff"
+    },
+    {
+     "name": "Expel Blast",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5 (A9: 6) damage ×2.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "After it 2 it repeats this pattern for the remainder of fight: * Repeater Blast * Repeater Blast * Expel Blast",
+   "passives": [
+    "Artifact 1"
+   ],
+   "encounters": [
+    "Act 1 hard: Cubex Construct",
+    "Act 3 hard: Construct Menagerie"
+   ],
+   "wiki_page": "Slay the Spire 2:Cubex Construct"
+  },
+  {
+   "id": "sts2.flyconid",
+   "name": "Flyconid",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     47,
+     49
+    ],
+    "ascension": [
+     51,
+     53
+    ]
+   },
+   "moves": [
+    {
+     "name": "Weakening Spores",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Vulnerable.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Frail Spores",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 2 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Smash",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 12) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "On its first turn, it randomly picks Frail Spores (2/3 chance) or Smash (1/3 chance). After that, each turn it randomly picks one of three moves: Weakening Spores (3/6 chance), Frail Spores (2/6 chance), or Smash (1/6 chance). It cannot use the same move twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Shroom and Slime",
+    "Act 1 hard: Overgrowth Flora"
+   ],
+   "wiki_page": "Slay the Spire 2:Flyconid"
+  },
+  {
+   "id": "sts2.fogmog",
+   "name": "Fogmog",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     74,
+     74
+    ],
+    "ascension": [
+     78,
+     78
+    ]
+   },
+   "moves": [
+    {
+     "name": "Illusory Spores",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons an Eye With Teeth.",
+     "intent_icons": "Summon"
+    },
+    {
+     "name": "Thwack",
+     "intent": "attack_buff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Gains 1 Strength.",
+     "intent_icons": "Attack2, Buff"
+    },
+    {
+     "name": "Headbutt",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Fogmog always opens with Illusory Spores to summon an Eye With Teeth, then uses Thwack. After that, it randomly picks Thwack (40%) or Headbutt (60%), and cannot pick the same one twice in a row. After a random Thwack, it always follows up with Headbutt. After Headbutt, it always follows up with Thwack, then returns to the random pick.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Fogmog"
+   ],
+   "wiki_page": "Slay the Spire 2:Fogmog"
+  },
+  {
+   "id": "sts2.fuzzy_wurm_crawler",
+   "name": "Fuzzy Wurm Crawler",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     55,
+     57
+    ],
+    "ascension": [
+     58,
+     59
+    ]
+   },
+   "moves": [
+    {
+     "name": "Acid Goop",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A9: 6) damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Inhale",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 7 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Repeats a fixed three-turn cycle: # Acid Goop # Inhale # Acid Goop Then the cycle starts over.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Fuzzy Wurm Crawler",
+    "Act 1 hard: Overgrowth Crawlers"
+   ],
+   "wiki_page": "Slay the Spire 2:Fuzzy Wurm Crawler"
+  },
+  {
+   "id": "sts2.inklet",
+   "name": "Inklet",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     11,
+     17
+    ],
+    "ascension": [
+     12,
+     18
+    ]
+   },
+   "moves": [
+    {
+     "name": "Jab",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 (A9: 4) damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Whirlwind",
+     "intent": "attack",
+     "damage": 2,
+     "hits": 3,
+     "effect": "Deals 2 (A9: 3) damage ×3.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Piercing Gaze",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "The two outer Inklets open with Jab. The middle Inklet always opens with Whirlwind. Alternates between Jab and a random choice (equal chance) between Piercing Gaze or Whirlwind.",
+   "passives": [
+    "Slippery 1"
+   ],
+   "encounters": [
+    "Act 1 hard: Inklets"
+   ],
+   "wiki_page": "Slay the Spire 2:Inklet"
+  },
+  {
+   "id": "sts2.leaf_slime_m",
+   "name": "Leaf Slime (M)",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     32,
+     35
+    ],
+    "ascension": [
+     33,
+     36
+    ]
+   },
+   "moves": [
+    {
+     "name": "Clump Shot",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Sticky Shot",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 2 Slimed into your discard pile.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Always starts with Sticky Shot, then alternates between Clump Shot and Sticky Shot.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Group of Slimes",
+    "Act 1 hard: Swarm of Slimes",
+    "Act 1 hard: Shroom and Slime",
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Slimes"
+  },
+  {
+   "id": "sts2.leaf_slime_s",
+   "name": "Leaf Slime (S)",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     11,
+     15
+    ],
+    "ascension": [
+     12,
+     16
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 (A9: 4) damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Goop",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 1 Slimed into your discard pile.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Randomly picks Tackle or Goop each turn. Cannot use the same move twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Group of Slimes",
+    "Act 1 hard: Swarm of Slimes",
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Slimes"
+  },
+  {
+   "id": "sts2.mawler",
+   "name": "Mawler",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     72,
+     72
+    ],
+    "ascension": [
+     76,
+     76
+    ]
+   },
+   "moves": [
+    {
+     "name": "Rip and Tear",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Roar",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 Vulnerable.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Claw",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 2,
+     "effect": "Deals 4 (A9: 5) damage ×2.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always opens with Claw. After that, each turn it randomly picks one of three moves with equal chance: Rip and Tear, Roar, or Claw. It cannot use the same move twice in a row, and Roar can only be used once per fight.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Mawler"
+   ],
+   "wiki_page": "Slay the Spire 2:Mawler"
+  },
+  {
+   "id": "sts2.nibbit",
+   "name": "Nibbit",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     42,
+     46
+    ],
+    "ascension": [
+     44,
+     48
+    ]
+   },
+   "moves": [
+    {
+     "name": "Butt",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 13) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Hesitant Slice",
+     "intent": "attack_defend",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage. Gains 5 (A8: 6) Block.",
+     "intent_icons": "Attack2, Defend"
+    },
+    {
+     "name": "Hiss",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Intent cycles in order. After Hiss their intent wraps back around to Butt, followed by Hesitant Slice and then Hiss again. Starting intent is encounter dependent.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: A Lone Nibbit",
+    "Act 1 hard: A Pair of Nibbits"
+   ],
+   "wiki_page": "Slay the Spire 2:Nibbit"
+  },
+  {
+   "id": "sts2.shrinker_beetle",
+   "name": "Shrinker Beetle",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     38,
+     40
+    ],
+    "ascension": [
+     40,
+     42
+    ]
+   },
+   "moves": [
+    {
+     "name": "Shrinker",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies Shrink.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Stomp",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 14) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Always opens with Shrinker, then alternates between Chomp and Stomp.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Shrinker Beetle",
+    "Act 1 hard: Overgrowth Crawlers"
+   ],
+   "wiki_page": "Slay the Spire 2:Shrinker Beetle"
+  },
+  {
+   "id": "sts2.slithering_strangler",
+   "name": "Slithering Strangler",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     53,
+     55
+    ],
+    "ascension": [
+     54,
+     56
+    ]
+   },
+   "moves": [
+    {
+     "name": "Constrict",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 Constrict.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Thwack",
+     "intent": "attack_defend",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage. Gains 5 Block.",
+     "intent_icons": "Attack2, Defend"
+    },
+    {
+     "name": "Lash",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 13) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Always opens with Constrict. After that, it randomly picks Thwack or Lash (equal chance, can repeat). After either attack, it always uses Constrict again, then returns to the random pick. The pattern is: * Constrict * 50/50 chance to use Lash or Thwack * Constrict * 50/50 chance to use Lash or Thwack",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Slithering Strangler"
+  },
+  {
+   "id": "sts2.snapping_jaxfruit",
+   "name": "Snapping Jaxfruit",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     31,
+     33
+    ],
+    "ascension": [
+     34,
+     36
+    ]
+   },
+   "moves": [
+    {
+     "name": "Energy Orb",
+     "intent": "attack_buff",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 (A9: 4) damage. Gains 2 Strength.",
+     "intent_icons": "Attack1, Buff"
+    }
+   ],
+   "pattern": "Uses Energy Orb every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Overgrowth Flora",
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Snapping Jaxfruit"
+  },
+  {
+   "id": "sts2.tracker_raider",
+   "name": "Tracker Raider",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     21,
+     25
+    ],
+    "ascension": [
+     22,
+     26
+    ]
+   },
+   "moves": [
+    {
+     "name": "Track",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Frail.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Unleash the Hounds",
+     "intent": "attack",
+     "damage": 1,
+     "hits": 8,
+     "effect": "Deals 1 damage x8 (A9: x9).",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Opens with Track, then uses Unleash the Hounds every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Ruby Raiders"
+   ],
+   "wiki_page": "Slay the Spire 2:Ruby Raiders"
+  },
+  {
+   "id": "sts2.twig_slime_m",
+   "name": "Twig Slime (M)",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     26,
+     28
+    ],
+    "ascension": [
+     27,
+     29
+    ]
+   },
+   "moves": [
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 12) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Sticky Shot",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 1 Slimed into your discard pile.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Always starts with Sticky Shot. After that, each turn it randomly picks Chomp (67%) or Sticky Shot (33%). Cannot use Sticky Shot twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Group of Slimes",
+    "Act 1 hard: Swarm of Slimes",
+    "Act 1 hard: Shroom and Slime",
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Slimes"
+  },
+  {
+   "id": "sts2.twig_slime_s",
+   "name": "Twig Slime (S)",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     7,
+     11
+    ],
+    "ascension": [
+     8,
+     12
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A9: 5) damage.",
+     "intent_icons": "Attack1"
+    }
+   ],
+   "pattern": "Uses Tackle every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Group of Slimes",
+    "Act 1 hard: Swarm of Slimes",
+    "Act 1 hard: Strangler and Friend"
+   ],
+   "wiki_page": "Slay the Spire 2:Slimes"
+  },
+  {
+   "id": "sts2.vine_shambler",
+   "name": "Vine Shambler",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     61,
+     61
+    ],
+    "ascension": [
+     64,
+     64
+    ]
+   },
+   "moves": [
+    {
+     "name": "Swipe",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 2,
+     "effect": "Deals 6 (A9: 7) damage ×2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Grasping Vines",
+     "intent": "attack_debuff_card",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Tangled.",
+     "intent_icons": "Attack2, CardDebuff"
+    },
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 18) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Follows a fixed repeating cycle: # Swipe # Grasping Vines # Chomp # Back to Swipe",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Vine Shambler"
+   ],
+   "wiki_page": "Slay the Spire 2:Vine Shambler"
+  },
+  {
+   "id": "sts2.wriggler",
+   "name": "Wriggler",
+   "category": "normal",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     17,
+     21
+    ],
+    "ascension": [
+     18,
+     22
+    ]
+   },
+   "moves": [
+    {
+     "name": "Nasty Bite",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Wriggle",
+     "intent": "buff_status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 1 Infection into your discard pile. Gains 2 Strength.",
+     "intent_icons": "Buff, StatusCard"
+    }
+   ],
+   "pattern": "Wrigglers alternate between Nasty Bite and Wriggle. When multiple Wrigglers are present, they start offset from each other: odd-numbered Wrigglers begin with Nasty Bite and even-numbered Wrigglers begin with Wriggle. When summoned by Phrog Parasite (via Infested), each Wriggler spends its first turn Stunned before beginning its pattern. In the Dense Vegetation event, 4 Wrigglers appear at once, starting their patterns immediately (not Stunned).",
+   "passives": [],
+   "encounters": [
+    "Act 1 event: Dense Vegetation"
+   ],
+   "wiki_page": "Slay the Spire 2:Phrog Parasite"
+  },
+  {
+   "id": "sts2.calcified_cultist",
+   "name": "Calcified Cultist",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     38,
+     41
+    ],
+    "ascension": [
+     39,
+     42
+    ]
+   },
+   "moves": [
+    {
+     "name": "Incantation",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Ritual.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Dark Strike",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 11) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always uses Incantation first, then Dark Strike every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Cultists",
+    "Act 1 hard: Underdocks Wildlife"
+   ],
+   "wiki_page": "Slay the Spire 2:Cultists"
+  },
+  {
+   "id": "sts2.corpse_slug",
+   "name": "Corpse Slug",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     25,
+     27
+    ],
+    "ascension": [
+     27,
+     29
+    ]
+   },
+   "moves": [
+    {
+     "name": "Whip Slap",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 2,
+     "effect": "Deals 3 damage ×2.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Glomp",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Goop",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 2 Frail.",
+     "intent_icons": "Debuff"
+    }
+   ],
+   "pattern": "Cycles through its moves in a fixed order: # Whip Slap # Glomp # Goop # Back to Whip Slap Each Corpse Slug in the encounter starts on a different move in the cycle, so they are staggered.",
+   "passives": [
+    "Ravenous 4 (A9: 5) — When an enemy dies, Corpse Slug immediately eats it, becoming Stunned and gaining X Strength."
+   ],
+   "encounters": [
+    "Act 1 easy: Corpse Slugs",
+    "Act 1 hard: Many Corpse Slugs"
+   ],
+   "wiki_page": "Slay the Spire 2:Corpse Slug"
+  },
+  {
+   "id": "sts2.damp_cultist",
+   "name": "Damp Cultist",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     51,
+     53
+    ],
+    "ascension": [
+     52,
+     54
+    ]
+   },
+   "moves": [
+    {
+     "name": "Incantation",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 5 (A9: 6) Ritual.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Dark Strike",
+     "intent": "attack",
+     "damage": 1,
+     "hits": 1,
+     "effect": "Deals 1 (A9: 3) damage.",
+     "intent_icons": "Attack1"
+    }
+   ],
+   "pattern": "Always uses Incantation first, then Dark Strike every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Cultists"
+   ],
+   "wiki_page": "Slay the Spire 2:Cultists"
+  },
+  {
+   "id": "sts2.fossil_stalker",
+   "name": "Fossil Stalker",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     51,
+     53
+    ],
+    "ascension": [
+     54,
+     56
+    ]
+   },
+   "moves": [
+    {
+     "name": "Latch",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack_debuff",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 11) damage. Applies 1 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Lash",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 2,
+     "effect": "Deals 3 (A9: 4) damage ×2.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always starts with Latch. After any move, the next move is chosen randomly with equal probability: * 33% chance of Latch * 33% chance of Tackle * 33% chance of Lash No restriction on repeating the same move consecutively.",
+   "passives": [
+    "Suck 3 — Whenever it deals unblocked attack damage, it gains X Strength."
+   ],
+   "encounters": [
+    "Act 1 hard: Fossil Stalker"
+   ],
+   "wiki_page": "Slay the Spire 2:Fossil Stalker"
+  },
+  {
+   "id": "sts2.gremlin_merc",
+   "name": "Gremlin Merc",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     47,
+     49
+    ],
+    "ascension": [
+     51,
+     53
+    ]
+   },
+   "moves": [
+    {
+     "name": "Gimme",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 2,
+     "effect": "Deals 7x2 (A8: 8x2) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Double Smash",
+     "intent": "attack_debuff",
+     "damage": 6,
+     "hits": 2,
+     "effect": "Deals 6x2 (A8: 7x2) damage. Applies 2 Weak.",
+     "intent_icons": "Attack3, Debuff"
+    },
+    {
+     "name": "Hehe",
+     "intent": "attack_buff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A8: 9) damage. Gains 2 Strength.",
+     "intent_icons": "Attack2, Buff"
+    }
+   ],
+   "pattern": "Cycles through its moves in a fixed order: # Gimme # Double Smash # Hehe # Back to Gimme When the Gremlin Merc dies, its Surprise power triggers, summoning a Fat Gremlin and a Sneaky Gremlin. The Fat Gremlin inherits the stolen gold via Heist.",
+   "passives": [
+    "Surprise — Something is off about this creature...",
+    "Thievery 20 — Steals X Gold when Attacking."
+   ],
+   "encounters": [
+    "Act 1 hard: Two Gremlins in a Trenchcoat"
+   ],
+   "wiki_page": "Slay the Spire 2:Gremlin Merc"
+  },
+  {
+   "id": "sts2.haunted_ship",
+   "name": "Haunted Ship",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     63,
+     63
+    ],
+    "ascension": [
+     67,
+     67
+    ]
+   },
+   "moves": [
+    {
+     "name": "Haunt",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 5 Dazed into your discard pile. Applies 3 Weak.",
+     "intent_icons": "StatusCard"
+    },
+    {
+     "name": "Swipe",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Stomp",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 3,
+     "effect": "Deals 4 (A9: 5) damage ×3.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Always uses Haunt first. From the second turn onward, alternates between Swipe and Stomp, always starting with Swipe.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Haunted Ship"
+   ],
+   "wiki_page": "Slay the Spire 2:Haunted Ship"
+  },
+  {
+   "id": "sts2.living_fog",
+   "name": "Living Fog",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     80,
+     80
+    ],
+    "ascension": [
+     82,
+     82
+    ]
+   },
+   "moves": [
+    {
+     "name": "Advanced Gas",
+     "intent": "attack_debuff_card",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Smoggy.",
+     "intent_icons": "Attack2, CardDebuff"
+    },
+    {
+     "name": "Bloat",
+     "intent": "attack_summon",
+     "damage": 5,
+     "hits": 1,
+     "effect": "Deals 5 (A9: 6) damage. Summons 1 2.",
+     "intent_icons": "Attack2, Summon"
+    },
+    {
+     "name": "Super Gas Blast",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always uses Advanced Gas first, then alternates between Bloat and Super Gas Blast.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Living Fog"
+   ],
+   "wiki_page": "Slay the Spire 2:Living Fog"
+  },
+  {
+   "id": "sts2.punch_construct",
+   "name": "Punch Construct",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     55,
+     55
+    ],
+    "ascension": [
+     60,
+     60
+    ]
+   },
+   "moves": [
+    {
+     "name": "READY",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 10 Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Fast Punch",
+     "intent": "attack_debuff",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5 (A9: 6) damage ×2. Applies 1 Frail.",
+     "intent_icons": "Attack3, Debuff"
+    },
+    {
+     "name": "Strong Punch",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Cycles through its moves in a fixed order: # READY # Fast Punch # Strong Punch",
+   "passives": [
+    "Artifact 1"
+   ],
+   "encounters": [
+    "Act 1 hard: Punch Construct",
+    "Act 1 event: Punch Off",
+    "Act 3 hard: Construct Menagerie"
+   ],
+   "wiki_page": "Slay the Spire 2:Punch Construct"
+  },
+  {
+   "id": "sts2.seapunk",
+   "name": "Seapunk",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     44,
+     46
+    ],
+    "ascension": [
+     47,
+     49
+    ]
+   },
+   "moves": [
+    {
+     "name": "Sea Kick",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 13) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Spinning Kick",
+     "intent": "attack",
+     "damage": 2,
+     "hits": 4,
+     "effect": "Deals 2 damage ×4.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Bubble Burp",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 7 (A8: 8) Block and 1 (A9: 2) Strength.",
+     "intent_icons": "Buff, Defend"
+    }
+   ],
+   "pattern": "Cycles through its moves in a fixed order: # Sea Kick # Spinning Kick # Bubble Burp # Back to Sea Kick",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Seapunk",
+    "Act 1 hard: Underdocks Wildlife"
+   ],
+   "wiki_page": "Slay the Spire 2:Seapunk"
+  },
+  {
+   "id": "sts2.sewer_clam",
+   "name": "Sewer Clam",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     56,
+     56
+    ],
+    "ascension": [
+     58,
+     58
+    ]
+   },
+   "moves": [
+    {
+     "name": "Jet",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Pressurize",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 4 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Always uses Jet first. Then alternates between Pressurize and Jet every turn.",
+   "passives": [
+    "Plating 8 (A8: 9)"
+   ],
+   "encounters": [
+    "Act 1 hard: Sewer Clam"
+   ],
+   "wiki_page": "Slay the Spire 2:Sewer Clam"
+  },
+  {
+   "id": "sts2.sludge_spinner",
+   "name": "Sludge Spinner",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     37,
+     39
+    ],
+    "ascension": [
+     41,
+     42
+    ]
+   },
+   "moves": [
+    {
+     "name": "Oil Spray",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Weak.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Slam",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 12) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Rage",
+     "intent": "attack_buff",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage. Gains 3 Strength.",
+     "intent_icons": "Attack2, Buff"
+    }
+   ],
+   "pattern": "Always uses Oil Spray first. After that, randomly uses one of its three moves each turn. Cannot use the same move twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Sludge Spinner"
+   ],
+   "wiki_page": "Slay the Spire 2:Sludge Spinner"
+  },
+  {
+   "id": "sts2.toadpole",
+   "name": "Toadpole",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     21,
+     25
+    ],
+    "ascension": [
+     22,
+     26
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spike Spit",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 3,
+     "effect": "Deals 3 (A9: 4) damage ×3. Removes 2 Thorns from self.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Whirl",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Spiken",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Thorns.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Cycles through its moves in a fixed order: Whirl, then Spiken, then Spike Spit, repeating. In the Toadpoles (Weak) encounter, the front Toadpole starts with Spiken instead.",
+   "passives": [],
+   "encounters": [
+    "Act 1 easy: Toadpoles"
+   ],
+   "wiki_page": "Slay the Spire 2:Toadpole"
+  },
+  {
+   "id": "sts2.two_tailed_rat",
+   "name": "Two-Tailed Rat",
+   "category": "normal",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     17,
+     21
+    ],
+    "ascension": [
+     18,
+     22
+    ]
+   },
+   "moves": [
+    {
+     "name": "Scratch",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Disease Bite",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Screech",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Frail.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Call for Backup",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons a new Two-Tailed Rat.",
+     "intent_icons": "Summon"
+    }
+   ],
+   "pattern": "Each rat starts with a different move: one uses Scratch, one uses Disease Bite, and one uses Screech. After the first turn, each rat randomly picks from Scratch, Disease Bite, or Screech each turn. Cannot use the same move twice in a row. After at least two turns, a rat may use Call for Backup to summon a new rat. Each rat can only summon once, and the group can summon up to three times total.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Two-Tailed Rats"
+   ],
+   "wiki_page": "Slay the Spire 2:Two-Tailed Rat"
+  },
+  {
+   "id": "sts2.bowlbug_egg",
+   "name": "Bowlbug (Egg)",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     21,
+     22
+    ],
+    "ascension": [
+     23,
+     24
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack_defend",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage. Gains 7 (A9: 8) Block.",
+     "intent_icons": "Attack2, Defend"
+    }
+   ],
+   "pattern": "Uses Bite every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 2 easy: Bowlbugs",
+    "Act 2 hard: Bowlbug Swarm"
+   ],
+   "wiki_page": "Slay the Spire 2:Bowlbugs"
+  },
+  {
+   "id": "sts2.bowlbug_nectar",
+   "name": "Bowlbug (Nectar)",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     35,
+     38
+    ],
+    "ascension": [
+     36,
+     39
+    ]
+   },
+   "moves": [
+    {
+     "name": "Thrash",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Buff",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 15 (A9: 16) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Opens with Thrash, then uses Buff once, then uses Thrash every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 2 easy: Bowlbugs",
+    "Act 2 hard: Bowlbug Swarm"
+   ],
+   "wiki_page": "Slay the Spire 2:Bowlbugs"
+  },
+  {
+   "id": "sts2.bowlbug_rock",
+   "name": "Bowlbug (Rock)",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     45,
+     48
+    ],
+    "ascension": [
+     46,
+     49
+    ]
+   },
+   "moves": [
+    {
+     "name": "Headbutt",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Dizzy",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Stunned. Does nothing.",
+     "intent_icons": "Stun"
+    }
+   ],
+   "pattern": "Uses Headbutt every turn. However, if Headbutt's damage is fully prevented by a player, the Bowlbug (Rock) becomes Stunned and uses Dizzy on its next turn, then resumes Headbutt.",
+   "passives": [
+    "Imbalanced — If the enemy's attacks are fully blocked, it becomes Stunned."
+   ],
+   "encounters": [
+    "Act 2 easy: Bowlbugs",
+    "Act 2 hard: Bowlbug Swarm",
+    "Act 2 hard: Slumber Party"
+   ],
+   "wiki_page": "Slay the Spire 2:Bowlbugs"
+  },
+  {
+   "id": "sts2.bowlbug_silk",
+   "name": "Bowlbug (Silk)",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     40,
+     43
+    ],
+    "ascension": [
+     41,
+     44
+    ]
+   },
+   "moves": [
+    {
+     "name": "Thrash",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 2,
+     "effect": "Deals 4 (A9: 5) damage x2.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Spin Web",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Weak.",
+     "intent_icons": "Debuff"
+    }
+   ],
+   "pattern": "Alternates between Spin Web and Thrash.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Bowlbug Swarm",
+    "Act 2 hard: Slumber Party"
+   ],
+   "wiki_page": "Slay the Spire 2:Bowlbugs"
+  },
+  {
+   "id": "sts2.chomper",
+   "name": "Chomper",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     60,
+     64
+    ],
+    "ascension": [
+     63,
+     67
+    ]
+   },
+   "moves": [
+    {
+     "name": "Clamp",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 2,
+     "effect": "Deals 8 (A9: 9) damage ×2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Screech",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 3 Dazed into your discard pile.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Chompers always appear in pairs. One opens with Clamp and the other opens with Screech. After that, each one alternates between Clamp and Screech every turn.",
+   "passives": [
+    "Artifact 2"
+   ],
+   "encounters": [
+    "Act 2 hard: An Automaton Pair"
+   ],
+   "wiki_page": "Slay the Spire 2:Chomper"
+  },
+  {
+   "id": "sts2.exoskeleton",
+   "name": "Exoskeleton",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     24,
+     28
+    ],
+    "ascension": [
+     26,
+     30
+    ]
+   },
+   "moves": [
+    {
+     "name": "Skitter",
+     "intent": "attack",
+     "damage": 1,
+     "hits": 3,
+     "effect": "Deals 1 damage ×3 (A9: ×4).",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Mandibles",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Enrage",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Exoskeletons appear in groups of 3 or 4. Each one's opening move depends on its position in the group: * The first uses Skitter * The second uses Mandibles * The third uses Enrage * The fourth (if present) randomly picks Skitter or Mandibles. * After Skitter, the next move is randomly Skitter or Mandibles (cannot repeat the same move twice in a row). * After Mandibles, it always uses Enrage. * After Enrage, the next move is randomly Skitter or Mandibles.",
+   "passives": [
+    "Hard to Kill 9 — Reduce all damage taken and HP lost by it to 9."
+   ],
+   "encounters": [
+    "Act 2 easy: Exoskeletons",
+    "Act 2 hard: Many Exoskeletons"
+   ],
+   "wiki_page": "Slay the Spire 2:Exoskeleton"
+  },
+  {
+   "id": "sts2.hunter_killer",
+   "name": "Hunter Killer",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     121,
+     121
+    ],
+    "ascension": [
+     126,
+     126
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tenderizing Goop",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Tender.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 19) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Puncture",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 3,
+     "effect": "Deals 7 (A9: 8) damage ×3.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Always opens with Tenderizing Goop. After that, randomly uses Bite or Puncture, with Puncture being twice as likely. Bite cannot be used twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Hunter Killer"
+   ],
+   "wiki_page": "Slay the Spire 2:Hunter Killer"
+  },
+  {
+   "id": "sts2.louse_progenitor",
+   "name": "Louse Progenitor",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     134,
+     136
+    ],
+    "ascension": [
+     138,
+     141
+    ]
+   },
+   "moves": [
+    {
+     "name": "Web Cannon",
+     "intent": "attack_debuff",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 10) damage. Applies 2 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Curl and Grow",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 14 (A8: 18) Block. Gains 5 (A9: 7) Strength.",
+     "intent_icons": "Defend, Buff"
+    },
+    {
+     "name": "Pounce",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "The Louse Progenitor repeats a fixed three-move cycle: Web Cannon, then Curl and Grow, then Pounce, and back to the start.",
+   "passives": [
+    "Curl Up 14 (A8: 18) — Gains X Block upon first being hit."
+   ],
+   "encounters": [
+    "Act 2 hard: Louse Progenitor"
+   ],
+   "wiki_page": "Slay the Spire 2:Louse Progenitor"
+  },
+  {
+   "id": "sts2.mysterious_knight",
+   "name": "Mysterious Knight",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     101,
+     101
+    ],
+    "ascension": [
+     108,
+     108
+    ]
+   },
+   "moves": [
+    {
+     "name": "Breaker",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Flail",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 2,
+     "effect": "Deals 9 (A9: 10) damage x2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Ram",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Opens with Ram, then randomly picks Breaker (equal chance), Flail (double chance), or Ram (double chance). Cannot use the same move twice in a row.",
+   "passives": [
+    "Strength 6",
+    "Plating 6"
+   ],
+   "encounters": [
+    "Act 2 event: The Lantern Key"
+   ],
+   "wiki_page": "Slay the Spire 2:The Lantern Key"
+  },
+  {
+   "id": "sts2.myte",
+   "name": "Myte",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     61,
+     67
+    ],
+    "ascension": [
+     64,
+     69
+    ]
+   },
+   "moves": [
+    {
+     "name": "Toxic Cornucopia",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Adds 2 Toxic to your hand.",
+     "intent_icons": "StatusCard"
+    },
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Suck",
+     "intent": "attack_buff",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A9: 6) damage. Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Attack1, Buff"
+    }
+   ],
+   "pattern": "Mytes always appear in pairs. One opens with Toxic Cornucopia and the other opens with Suck. Afterward, Mytes follow a fixed pattern: # Toxic Cornucopia # Bite # Suck",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Mass of Mytes"
+   ],
+   "wiki_page": "Slay the Spire 2:Myte"
+  },
+  {
+   "id": "sts2.ovicopter",
+   "name": "Ovicopter",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     124,
+     130
+    ],
+    "ascension": [
+     126,
+     132
+    ]
+   },
+   "moves": [
+    {
+     "name": "Lay Eggs",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons 3 Tough Eggs.",
+     "intent_icons": "Summon"
+    },
+    {
+     "name": "Smash",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Tenderizer",
+     "intent": "attack_debuff",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage. Applies 2 Vulnerable.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Nutritional Paste",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 (A9: 4) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Always opens with Lay Eggs to summon 3 Tough Eggs, then uses Smash, then Tenderizer. After Tenderizer, it checks how many allies it has. If it has 3 or fewer living allies, it uses Lay Eggs again. If it has more than 3, it uses Nutritional Paste instead. Then the cycle continues with Smash and Tenderizer.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Ovicopter"
+   ],
+   "wiki_page": "Slay the Spire 2:Ovicopter"
+  },
+  {
+   "id": "sts2.slumbering_beetle",
+   "name": "Slumbering Beetle",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     86,
+     86
+    ],
+    "ascension": [
+     89,
+     89
+    ]
+   },
+   "moves": [
+    {
+     "name": "Snore",
+     "intent": "sleep",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing. Asleep.",
+     "intent_icons": "Sleep"
+    },
+    {
+     "name": "Roll Out",
+     "intent": "attack_buff",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 18) damage. Gains 2 Strength.",
+     "intent_icons": "Attack3, Buff"
+    }
+   ],
+   "pattern": "The Slumbering Beetle starts asleep and uses Snore each turn while it has Slumber. Once Slumber wears off (after taking turns or losing HP 3 times), it wakes up, loses its Plating, and uses Roll Out every turn.",
+   "passives": [
+    "Plating 15 (A8: 18)",
+    "Slumber 3 — Awakens upon taking turns or losing HP X times."
+   ],
+   "encounters": [
+    "Act 2 hard: Slumber Party"
+   ],
+   "wiki_page": "Slay the Spire 2:Slumbering Beetle"
+  },
+  {
+   "id": "sts2.spiny_toad",
+   "name": "Spiny Toad",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     116,
+     119
+    ],
+    "ascension": [
+     121,
+     124
+    ]
+   },
+   "moves": [
+    {
+     "name": "Protruding Spikes",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 5 Thorns.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Spike Explosion",
+     "intent": "attack",
+     "damage": 23,
+     "hits": 1,
+     "effect": "Deals 23 (A9: 25) damage. Loses 5 Thorns.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Tongue Lash",
+     "intent": "attack",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 19) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Cycles through Protruding Spikes, Spike Explosion, Tongue Lash in order, repeating.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: Spiny Toad"
+   ],
+   "wiki_page": "Slay the Spire 2:Spiny Toad"
+  },
+  {
+   "id": "sts2.the_merchant",
+   "name": "The Merchant???",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     165,
+     165
+    ],
+    "ascension": [
+     175,
+     175
+    ]
+   },
+   "moves": [
+    {
+     "name": "Swipe",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Spew Coins",
+     "intent": "attack",
+     "damage": 2,
+     "hits": 8,
+     "effect": "Deals 2 damage ×8.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Throw Relic",
+     "intent": "attack_debuff",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 10) damage. Applies 1 Frail.",
+     "intent_icons": "Attack3, Debuff"
+    },
+    {
+     "name": "Enrage",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "* Always uses Swipe first. * Swipe, Spew Coins, and Enrage randomly lead into 1 of the 3 other possible moves ** Cannot use the same move twice in a row. * Enrage can only be chosen once every 3 turns. * Throw Relic is randomly followed up by Swipe or Spew Coins.",
+   "passives": [],
+   "encounters": [
+    "Act 2 event: The Merchant???",
+    "Act 3 event: The Merchant???"
+   ],
+   "wiki_page": "Slay the Spire 2:The Merchant???"
+  },
+  {
+   "id": "sts2.the_obscura",
+   "name": "The Obscura",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     123,
+     123
+    ],
+    "ascension": [
+     129,
+     129
+    ]
+   },
+   "moves": [
+    {
+     "name": "Illusion",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons a Parafright.",
+     "intent_icons": "Summon"
+    },
+    {
+     "name": "Piercing Gaze",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Wail",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "All enemies gain 3 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Hardening Strike",
+     "intent": "attack_defend",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage. Gains 6 (A9: 7) Block.",
+     "intent_icons": "Attack2, Defend"
+    }
+   ],
+   "pattern": "The Obscura always opens with Illusion to summon a Parafright. After that, it randomly picks one of three moves — Piercing Gaze, Wail, or Hardening Strike — and cannot use the same move twice in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 2 hard: The Obscura"
+   ],
+   "wiki_page": "Slay the Spire 2:The Obscura"
+  },
+  {
+   "id": "sts2.thieving_hopper",
+   "name": "Thieving Hopper",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     79,
+     79
+    ],
+    "ascension": [
+     84,
+     84
+    ]
+   },
+   "moves": [
+    {
+     "name": "Thievery",
+     "intent": "attack_debuff_card",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 19) damage. Swipe a card from your deck.",
+     "intent_icons": "Attack3, CardDebuff"
+    },
+    {
+     "name": "Flutter",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains Flutter (takes 50% less Attack damage, must be hit 5 times to Stun it).",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Hat Trick",
+     "intent": "attack",
+     "damage": 21,
+     "hits": 1,
+     "effect": "Deals 21 (A9: 23) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Nab",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Escape",
+     "intent": "escape",
+     "damage": null,
+     "hits": null,
+     "effect": "Flees the combat, taking any stolen cards with it.",
+     "intent_icons": "Escape"
+    }
+   ],
+   "pattern": "The Thieving Hopper follows a fixed sequence: * Thievery (stealing a card and dealing damage) * Flutter (gaining damage reduction) * Hat Trick * Nab * Escape (fleeing the fight permanently) If it escapes, any cards it stole are lost for the rest of the run. Killing it before it escapes returns the stolen cards.",
+   "passives": [
+    "Escape Artist 5 — Tries to escape the combat after X turns."
+   ],
+   "encounters": [
+    "Act 2 easy: Thieving Hopper"
+   ],
+   "wiki_page": "Slay the Spire 2:Thieving Hopper"
+  },
+  {
+   "id": "sts2.tunneler",
+   "name": "Tunneler",
+   "category": "normal",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     87,
+     87
+    ],
+    "ascension": [
+     92,
+     92
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Burrow",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains Burrowed and 32 (A8: 37) Block.",
+     "intent_icons": "Buff, Defend"
+    },
+    {
+     "name": "Attack from Below",
+     "intent": "attack",
+     "damage": 23,
+     "hits": 1,
+     "effect": "Deals 23 (A9: 26) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Emerging Strike",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Stunned. Does nothing this turn.",
+     "intent_icons": "Stun"
+    }
+   ],
+   "pattern": "Opens with Bite, then uses Burrow. While burrowed, uses Attack from Below every turn. If its Block is fully broken while burrowed, it uses Emerging Strike, then starts the cycle over with Bite.",
+   "passives": [],
+   "encounters": [
+    "Act 2 easy: Tunneler"
+   ],
+   "wiki_page": "Slay the Spire 2:Tunneler"
+  },
+  {
+   "id": "sts2.axebot",
+   "name": "Axebot",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     70,
+     78
+    ],
+    "ascension": [
+     78,
+     86
+    ]
+   },
+   "moves": [
+    {
+     "name": "Boot Up",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 10 (A8: 15) Block and 3/6 (A9: 4/8) Strength.",
+     "intent_icons": "Defend, Buff"
+    },
+    {
+     "name": "The One-Two",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 2,
+     "effect": "Deals 10 (A9: 11) damage 2 times.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Hammer Uppercut",
+     "intent": "attack_debuff",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 18) damage. Applies 2 Weak and 2 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    }
+   ],
+   "pattern": "The Axebot always cycles Hammer Uppercut thenThe One-Two then repeat. The Axebots spawned mid-fight via Stock opens with Boot Up before entering the cycle. The second spawned Axebot uses the improved version of Boot Up. Every time a new Axebot is spawned it gains +10 Max HP more than the last one (So the first respawn has 10 HP more, the second 20 HP more etc.).",
+   "passives": [
+    "Stock 2 — When killed, a new Axebot is summoned in its place."
+   ],
+   "encounters": [
+    "Act 3 hard: Axebot"
+   ],
+   "wiki_page": "Slay the Spire 2:Axebot"
+  },
+  {
+   "id": "sts2.devoted_sculptor",
+   "name": "Devoted Sculptor",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     162,
+     162
+    ],
+    "ascension": [
+     172,
+     172
+    ]
+   },
+   "moves": [
+    {
+     "name": "Forbidden Incantation",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 9 Ritual.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Savage",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 15) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Always opens with Forbidden Incantation, then uses Savage every turn afterward.",
+   "passives": [],
+   "encounters": [
+    "Act 3 easy: Devoted Sculptor"
+   ],
+   "wiki_page": "Slay the Spire 2:Devoted Sculptor"
+  },
+  {
+   "id": "sts2.fabricator",
+   "name": "Fabricator",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     150,
+     150
+    ],
+    "ascension": [
+     155,
+     155
+    ]
+   },
+   "moves": [
+    {
+     "name": "Fabricate",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Summons 1 defensive bot (Guardbot or Noisebot) and 1 aggressive bot (Zapbot or Stabbot).",
+     "intent_icons": "Summon"
+    },
+    {
+     "name": "Fabricating Strike",
+     "intent": "attack_summon",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 21) damage. Summons 1 aggressive bot (Zapbot or Stabbot).",
+     "intent_icons": "Attack3, Summon"
+    },
+    {
+     "name": "Disintegrate",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 13) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Each turn, the Fabricator checks if it has fewer than 4 living allies. If so, it randomly uses either Fabricate or Fabricating Strike (equal weight). If it already has 4 or more allies, it uses Disintegrate instead. The Fabricator avoids summoning the same bot consecutively.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Fabricator"
+   ],
+   "wiki_page": "Slay the Spire 2:Fabricator"
+  },
+  {
+   "id": "sts2.frog_knight",
+   "name": "Frog Knight",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     191,
+     191
+    ],
+    "ascension": [
+     199,
+     199
+    ]
+   },
+   "moves": [
+    {
+     "name": "Tongue Lash",
+     "intent": "attack_debuff",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 14) damage. Applies 2 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Strike Down Evil",
+     "intent": "attack",
+     "damage": 21,
+     "hits": 1,
+     "effect": "Deals 21 (A9: 23) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "For the Queen",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 5 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Beetle Charge",
+     "intent": "attack",
+     "damage": 35,
+     "hits": 1,
+     "effect": "Deals 35 (A9: 40) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Opens with Tongue Lash, then follows a repeating cycle: Strike Down Evil, For the Queen, then a conditional check. If the Frog Knight's HP is below half and it has not yet used Beetle Charge, it uses Beetle Charge once, then continues with Tongue Lash. Otherwise, it uses Tongue Lash and continues the cycle.",
+   "passives": [
+    "Plating 15 (A8: 19)"
+   ],
+   "encounters": [
+    "Act 3 hard: Frog Knight"
+   ],
+   "wiki_page": "Slay the Spire 2:Frog Knight"
+  },
+  {
+   "id": "sts2.globe_head",
+   "name": "Globe Head",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     148,
+     148
+    ],
+    "ascension": [
+     158,
+     158
+    ]
+   },
+   "moves": [
+    {
+     "name": "Shocking Slap",
+     "intent": "attack_debuff",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 14) damage. Applies 2 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Thunder Strike",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 3,
+     "effect": "Deals 6 (A9: 7) damage 3 times.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Galvanic Burst",
+     "intent": "attack_buff",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 17) damage. Gains 2 Strength.",
+     "intent_icons": "Attack3, Buff"
+    }
+   ],
+   "pattern": "Follows a fixed cycle: Shocking Slap, Thunder Strike, Galvanic Burst, then repeats.",
+   "passives": [
+    "Galvanic 6 (A9: 8) — Powers are afflicted with Galvanized."
+   ],
+   "encounters": [
+    "Act 3 hard: A Lone Globe Head"
+   ],
+   "wiki_page": "Slay the Spire 2:Globe Head"
+  },
+  {
+   "id": "sts2.living_shield",
+   "name": "Living Shield",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     55,
+     55
+    ],
+    "ascension": [
+     65,
+     65
+    ]
+   },
+   "moves": [
+    {
+     "name": "Shield Slam",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Smash",
+     "intent": "attack_buff",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 18) damage. Gains 3 Strength.",
+     "intent_icons": "Attack3, Buff"
+    }
+   ],
+   "pattern": "* Uses Shield Slam every turn while the Turret Operator is alive. ** Once the Turret Operator is killed, switches to Smash every turn.",
+   "passives": [
+    "Rampart 25 — At the start of the player's turn, Turret Operator gains X Block."
+   ],
+   "encounters": [
+    "Act 3 easy: Turret Operator"
+   ],
+   "wiki_page": "Slay the Spire 2:Turret Operator"
+  },
+  {
+   "id": "sts2.owl_magistrate",
+   "name": "Owl Magistrate",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     234,
+     234
+    ],
+    "ascension": [
+     243,
+     243
+    ]
+   },
+   "moves": [
+    {
+     "name": "Magistrate Scrutiny",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Peck Assault",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 6,
+     "effect": "Deals 4 damage x6.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Judicial Flight",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains Soar.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Verdict",
+     "intent": "attack_debuff",
+     "damage": 33,
+     "hits": 1,
+     "effect": "Deals 33 (A9: 36) damage. Applies 4 Vulnerable. Removes Soar.",
+     "intent_icons": "Attack4, Debuff"
+    }
+   ],
+   "pattern": "Follows a fixed 4-move cycle: Magistrate Scrutiny, Peck Assault, Judicial Flight, Verdict, then repeats.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Owl Magistrate"
+   ],
+   "wiki_page": "Slay the Spire 2:Owl Magistrate"
+  },
+  {
+   "id": "sts2.scroll_of_biting",
+   "name": "Scroll of Biting",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     31,
+     38
+    ],
+    "ascension": [
+     32,
+     39
+    ]
+   },
+   "moves": [
+    {
+     "name": "Chomp",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "More Teeth",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Chew",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5 (A9: 6) damage 2 times.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Each Scroll of Biting starts on a different move in the cycle. The pattern is: Chomp, then More Teeth, then Chew. After Chew, it randomly picks either Chomp (cannot repeat) or Chew (weight 2), then continues the cycle from that point.",
+   "passives": [
+    "Paper Cuts 2 — Whenever it deals unblocked attack damage to you, you lose X Max HP."
+   ],
+   "encounters": [
+    "Act 3 easy: Scrolls of Biting",
+    "Act 3 hard: Many Scrolls of Biting"
+   ],
+   "wiki_page": "Slay the Spire 2:Scroll of Biting"
+  },
+  {
+   "id": "sts2.slimed_berserker",
+   "name": "Slimed Berserker",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     266,
+     266
+    ],
+    "ascension": [
+     276,
+     276
+    ]
+   },
+   "moves": [
+    {
+     "name": "Vomit Ichor",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 10 Slimed into the discard pile.",
+     "intent_icons": "StatusCard"
+    },
+    {
+     "name": "Furious Pummeling",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 4,
+     "effect": "Deals 4 (A9: 5) damage x4.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Leeching Hug",
+     "intent": "buff_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 Weak. Gains 3 Strength.",
+     "intent_icons": "Debuff, Buff"
+    },
+    {
+     "name": "Smother",
+     "intent": "attack",
+     "damage": 30,
+     "hits": 1,
+     "effect": "Deals 30 (A9: 33) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Follows a fixed 4-move cycle: # Vomit Ichor # Furious Pummeling # Leeching Hug # Smother",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Slimed Berserker"
+   ],
+   "wiki_page": "Slay the Spire 2:Slimed Berserker"
+  },
+  {
+   "id": "sts2.the_forgotten",
+   "name": "The Forgotten",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     106,
+     106
+    ],
+    "ascension": [
+     111,
+     111
+    ]
+   },
+   "moves": [
+    {
+     "name": "Miasma",
+     "intent": "defend_buff_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Removes 2 Dexterity from the player. Gains 8 Block and 2 Dexterity.",
+     "intent_icons": "Debuff, Defend, Buff"
+    },
+    {
+     "name": "Dread",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage plus the amount of Dexterity the Forgotten has.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Alternates between Miasma and Dread, starting with Miasma.",
+   "passives": [
+    "Possess Speed — When killed, return all stolen Dexterity to the player."
+   ],
+   "encounters": [
+    "Act 3 hard: Lost and Forgotten"
+   ],
+   "wiki_page": "Slay the Spire 2:The Lost and Forgotten"
+  },
+  {
+   "id": "sts2.the_lost",
+   "name": "The Lost",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     93,
+     93
+    ],
+    "ascension": [
+     99,
+     99
+    ]
+   },
+   "moves": [
+    {
+     "name": "Debilitating Smog",
+     "intent": "buff_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Removes 2 Strength from the player and gains 2 Strength.",
+     "intent_icons": "Debuff, Buff"
+    },
+    {
+     "name": "Eye Lasers",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 2,
+     "effect": "Deals 4 (A9: 5) damage x2.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Alternates between Debilitating Smog and Eye Lasers, starting with Debilitating Smog.",
+   "passives": [
+    "Possess Strength — When killed, return all stolen Strength to the player."
+   ],
+   "encounters": [
+    "Act 3 hard: Lost and Forgotten"
+   ],
+   "wiki_page": "Slay the Spire 2:The Lost and Forgotten"
+  },
+  {
+   "id": "sts2.turret_operator",
+   "name": "Turret Operator",
+   "category": "normal",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     41,
+     41
+    ],
+    "ascension": [
+     51,
+     51
+    ]
+   },
+   "moves": [
+    {
+     "name": "Unload!",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 5,
+     "effect": "Deals 3 (A9: 4) damage x5.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Loading",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 1 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Follows a fixed 3-move cycle: # Unload! # Unload! # Loading",
+   "passives": [],
+   "encounters": [
+    "Act 3 easy: Turret Operator"
+   ],
+   "wiki_page": "Slay the Spire 2:Turret Operator"
+  },
+  {
+   "id": "sts2.bygone_effigy",
+   "name": "Bygone Effigy",
+   "category": "elite",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     127,
+     127
+    ],
+    "ascension": [
+     132,
+     132
+    ]
+   },
+   "moves": [
+    {
+     "name": "Sleep",
+     "intent": "sleep",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing. Asleep.",
+     "intent_icons": "Sleep"
+    },
+    {
+     "name": "Wake",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 10 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Slashes",
+     "intent": "attack",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "The Bygone Effigy starts asleep and follows this sequence: # Sleep — does nothing on its first turn. # Wake — wakes up and gains 10 Strength. # Slashes every turn after.",
+   "passives": [
+    "Slow — Whenever you play a card, this enemy receives 10% more damage from Attacks this turn."
+   ],
+   "encounters": [
+    "Act 1 elite: Bygone Effigy"
+   ],
+   "wiki_page": "Slay the Spire 2:Bygone Effigy"
+  },
+  {
+   "id": "sts2.byrdonis",
+   "name": "Byrdonis",
+   "category": "elite",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     81,
+     84
+    ],
+    "ascension": [
+     90,
+     90
+    ]
+   },
+   "moves": [
+    {
+     "name": "Swoop",
+     "intent": "attack",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 19) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Peck",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 3,
+     "effect": "Deals 3x3 (A9: 4x3) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Byrdonis alternates between its two moves in a fixed pattern: # Swoop. # Peck. # Back to Swoop, and so on.",
+   "passives": [
+    "Territorial 1 — At the end of its turn, gains X Strength."
+   ],
+   "encounters": [
+    "Act 1 elite: Byrdonis"
+   ],
+   "wiki_page": "Slay the Spire 2:Byrdonis"
+  },
+  {
+   "id": "sts2.phrog_parasite",
+   "name": "Phrog Parasite",
+   "category": "elite",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     61,
+     64
+    ],
+    "ascension": [
+     66,
+     68
+    ]
+   },
+   "moves": [
+    {
+     "name": "Infect",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 3 Infection into your discard pile.",
+     "intent_icons": "StatusCard"
+    },
+    {
+     "name": "Lash",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 4,
+     "effect": "Deals 4 (A9: 5) damage ×4.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Phrog Parasite alternates between its two moves: # Infect # Lash # Back to Infect, and so on. When Phrog Parasite dies, Infested triggers and 4 2 are summoned. They will be Stunned and do nothing on their first turn. The fight continues until all Wrigglers are defeated.",
+   "passives": [
+    "Infested — Upon dying, summons... something."
+   ],
+   "encounters": [
+    "Act 1 elite: Phrog Parasite"
+   ],
+   "wiki_page": "Slay the Spire 2:Phrog Parasite"
+  },
+  {
+   "id": "sts2.phantasmal_gardener",
+   "name": "Phantasmal Gardener",
+   "category": "elite",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     26,
+     31
+    ],
+    "ascension": [
+     27,
+     32
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 1,
+     "effect": "Deals 5 damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Lash",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Flail",
+     "intent": "attack",
+     "damage": 1,
+     "hits": 3,
+     "effect": "Deals 1 damage ×3.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Enlarge",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "All four Gardeners cycle through the same four moves in a fixed order: # Bite # Lash # Flail # Enlarge From the left, the first Gardener starts with Flail, the second with Bite, the third with Lash, and the fourth with Enlarge.",
+   "passives": [
+    "Skittish 6 (A8: 7) — The first time it is hit each turn, it gains X Block."
+   ],
+   "encounters": [
+    "Act 1 elite: Phantasmal Gardener"
+   ],
+   "wiki_page": "Slay the Spire 2:Phantasmal Gardener"
+  },
+  {
+   "id": "sts2.skulking_colony",
+   "name": "Skulking Colony",
+   "category": "elite",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     75,
+     75
+    ],
+    "ascension": [
+     80,
+     80
+    ]
+   },
+   "moves": [
+    {
+     "name": "Zoom",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Inertia",
+     "intent": "attack_buff",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 11) damage and gains 2 (A9: 4) Strength.",
+     "intent_icons": "Attack2, Buff"
+    },
+    {
+     "name": "Piercing Stabs",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 2,
+     "effect": "Deals 7x2 (A9: 8x2) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "The Skulking Colony repeats the same four moves in order: # Zoom # Zoom # Inertia # Piercing Stabs",
+   "passives": [
+    "Hardened Shell 20 — It cannot lose more than X HP each turn."
+   ],
+   "encounters": [
+    "Act 1 elite: Skulking Colony"
+   ],
+   "wiki_page": "Slay the Spire 2:Skulking Colony"
+  },
+  {
+   "id": "sts2.terror_eel",
+   "name": "Terror Eel",
+   "category": "elite",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     140,
+     140
+    ],
+    "ascension": [
+     150,
+     150
+    ]
+   },
+   "moves": [
+    {
+     "name": "Crash",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 18) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Thrash",
+     "intent": "attack_buff",
+     "damage": 3,
+     "hits": 3,
+     "effect": "Deals 3x3 (A9: 4x3) damage. Gains 6 Vigor.",
+     "intent_icons": "Attack2, Buff"
+    },
+    {
+     "name": "Stun",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Stunned. Does nothing.",
+     "intent_icons": "Stun"
+    },
+    {
+     "name": "Terror",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 99 Vulnerable.",
+     "intent_icons": "Debuff"
+    }
+   ],
+   "pattern": "The Terror Eel alternates between Crash and Thrash, starting with Crash. Because Thrash gives the Terror Eel 6 Vigor, Crash always deals 22(A9: 24) damage from turn 3 onwards. When its HP drops to its Shriek threshold (70, or A8: 75), it becomes Stunned and then uses Terror before resuming the Crash/Thrash cycle. * Terror applies 99 Vulnerable, which effectively makes the player take 50% more damage from attacks for the rest of the fight.",
+   "passives": [
+    "Shriek 70 (A8: 75) — The first time this enemy's HP reaches X or below, it becomes Stunned."
+   ],
+   "encounters": [
+    "Act 1 elite: Terror Eel"
+   ],
+   "wiki_page": "Slay the Spire 2:Terror Eel"
+  },
+  {
+   "id": "sts2.decimillipede",
+   "name": "Decimillipede",
+   "category": "elite",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     40,
+     46
+    ],
+    "ascension": [
+     46,
+     52
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bulk",
+     "intent": "attack_buff",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage. Gains 2 Strength.",
+     "intent_icons": "Attack2, Buff"
+    },
+    {
+     "name": "Writhe",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 2,
+     "effect": "Deals 5x2 (A9: 6x2) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Outgas",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Weak.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Reattach",
+     "intent": "heal",
+     "damage": null,
+     "hits": null,
+     "effect": "Revives with 25 HP (if other segments are alive).",
+     "intent_icons": "Heal"
+    }
+   ],
+   "pattern": "Each segment cycles through the following pattern: # Bulk # Writhe # Outgas Each segment starts on a different move, which will remain the case until one or more of them is killed. * When a segment is killed, it uses Reattach to revive with 25 HP provided at least one other segment is still alive. After reviving, it resumes with a random move. which may disrupt their prior synchrony.",
+   "passives": [
+    "Reattach 25 — If other segments are still alive, revives in 2 turns with X HP."
+   ],
+   "encounters": [
+    "Act 2 elite: Decimillipede"
+   ],
+   "wiki_page": "Slay the Spire 2:Decimillipede"
+  },
+  {
+   "id": "sts2.entomancer",
+   "name": "Entomancer",
+   "category": "elite",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     145,
+     145
+    ],
+    "ascension": [
+     165,
+     165
+    ]
+   },
+   "moves": [
+    {
+     "name": "Beeeees!",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 7,
+     "effect": "Deals 3 damage ×7 (A9: ×8).",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Spear!",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 20) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Pheromone Spit",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 1 Personal Hive and 1 Strength. If Personal Hive is already at 3, gains 2 Strength instead.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "The Entomancer repeats a fixed three-move cycle: Beeeees!, then Spear!, then Pheromone Spit, and back to the start.",
+   "passives": [
+    "Personal Hive 1 — Whenever this enemy is hit by an Attack, add X Dazed into your Draw Pile."
+   ],
+   "encounters": [
+    "Act 2 elite: Entomancer"
+   ],
+   "wiki_page": "Slay the Spire 2:Entomancer"
+  },
+  {
+   "id": "sts2.infested_prism",
+   "name": "Infested Prism",
+   "category": "elite",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     161,
+     161
+    ],
+    "ascension": [
+     171,
+     171
+    ]
+   },
+   "moves": [
+    {
+     "name": "Jab",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 17) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Radiate",
+     "intent": "attack_defend",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 13) damage. Gains 16 (A9: 18) Block.",
+     "intent_icons": "Attack3, Defend"
+    },
+    {
+     "name": "Whirlwind",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 3,
+     "effect": "Deals 5 (A9: 6) damage ×3.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Pulsate",
+     "intent": "attack_defend_buff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deal 8 (A9: 10) damage. Gains 20 (A8: 22) Block and Vital Spark 2 (A9: 3).",
+     "intent_icons": "Attack3, Buff, Defend"
+    }
+   ],
+   "pattern": "The Infested Prism repeats a fixed four-move cycle: # Jab # Radiate # Whirlwind # Pulsate",
+   "passives": [
+    "Vital Spark 2(A9: 3) — All Skills are Tainted X."
+   ],
+   "encounters": [
+    "Act 2 elite: Infested Prism"
+   ],
+   "wiki_page": "Slay the Spire 2:Infested Prism"
+  },
+  {
+   "id": "sts2.flail_knight",
+   "name": "Flail Knight",
+   "category": "elite",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     101,
+     101
+    ],
+    "ascension": [
+     108,
+     108
+    ]
+   },
+   "moves": [
+    {
+     "name": "Breaker",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 3 Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Flail",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 2,
+     "effect": "Deals 9 (A9: 10) damage ×2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Ram",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Opens with Ram, then randomly uses Breaker, Flail, or Ram each turn. Breaker cannot be used two turns in a row.",
+   "passives": [],
+   "encounters": [
+    "Act 3 elite: Knight Gang"
+   ],
+   "wiki_page": "Slay the Spire 2:Knight Gang"
+  },
+  {
+   "id": "sts2.magi_knight",
+   "name": "Magi Knight",
+   "category": "elite",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     82,
+     82
+    ],
+    "ascension": [
+     89,
+     89
+    ]
+   },
+   "moves": [
+    {
+     "name": "Power Shield",
+     "intent": "attack_defend",
+     "damage": 6,
+     "hits": 1,
+     "effect": "Deals 6 (A9: 7) damage. Gains 5 (A8: 9) Block.",
+     "intent_icons": "Attack1, Defend"
+    },
+    {
+     "name": "Dampen",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies Dampen. While Magi Knight is alive, all your cards are Downgraded.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Ram",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Prep",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 5 (A8: 9) Block.",
+     "intent_icons": "Defend"
+    },
+    {
+     "name": "Magic Bomb",
+     "intent": "attack",
+     "damage": 35,
+     "hits": 1,
+     "effect": "Deals 35 (A9: 40) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Starts with Power Shield, followed by Dampen. Then repeatedly uses Ram, Prep, and Magic Bomb in that order.",
+   "passives": [],
+   "encounters": [
+    "Act 3 elite: Knight Gang"
+   ],
+   "wiki_page": "Slay the Spire 2:Knight Gang"
+  },
+  {
+   "id": "sts2.mecha_knight",
+   "name": "Mecha Knight",
+   "category": "elite",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     300,
+     300
+    ],
+    "ascension": [
+     320,
+     320
+    ]
+   },
+   "moves": [
+    {
+     "name": "Charge",
+     "intent": "attack",
+     "damage": 25,
+     "hits": 1,
+     "effect": "Deals 25 (A9: 30) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Flamethrower",
+     "intent": "attack_status_card",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 12) damage. Adds 4 Burn to your hand.",
+     "intent_icons": "Attack4, StatusCard"
+    },
+    {
+     "name": "Windup",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 15 Block and 5 Strength.",
+     "intent_icons": "Defend, Buff"
+    },
+    {
+     "name": "Heavy Cleave",
+     "intent": "attack",
+     "damage": 35,
+     "hits": 1,
+     "effect": "Deals 35 (A9: 40) damage.",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Starts with Charge and then repeats this cycle for the rest of combat: * Flamethrower * Windup * Heavy Cleave",
+   "passives": [
+    "Artifact 3"
+   ],
+   "encounters": [
+    "Act 3 elite: Mecha Knight"
+   ],
+   "wiki_page": "Slay the Spire 2:Mecha Knight"
+  },
+  {
+   "id": "sts2.soul_nexus",
+   "name": "Soul Nexus",
+   "category": "elite",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     234,
+     234
+    ],
+    "ascension": [
+     254,
+     254
+    ]
+   },
+   "moves": [
+    {
+     "name": "Soul Burn",
+     "intent": "attack",
+     "damage": 29,
+     "hits": 1,
+     "effect": "Deals 29 (A9: 31) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Maelstrom",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 4,
+     "effect": "Deals 6 (A9: 7) damage ×4.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Drain Life",
+     "intent": "attack_debuff",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 19) damage. Applies 2 Vulnerable and 2 Weak.",
+     "intent_icons": "Attack3, Debuff"
+    }
+   ],
+   "pattern": "Opens with Soul Burn, then randomly uses Soul Burn, Maelstrom, or Drain Life each turn. No move can be used two turns in a row. All three moves are equally weighted.",
+   "passives": [],
+   "encounters": [
+    "Act 3 elite: Soul Nexus"
+   ],
+   "wiki_page": "Slay the Spire 2:Soul Nexus"
+  },
+  {
+   "id": "sts2.spectral_knight",
+   "name": "Spectral Knight",
+   "category": "elite",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     93,
+     93
+    ],
+    "ascension": [
+     97,
+     97
+    ]
+   },
+   "moves": [
+    {
+     "name": "Hex",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies Hex.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Soul Slash",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Soul Flame",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 3,
+     "effect": "Deals 3 (A9: 4) damage ×3.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Opens with Hex. After that, alternates between Soul Slash and Soul Flame.",
+   "passives": [],
+   "encounters": [
+    "Act 3 elite: Knight Gang"
+   ],
+   "wiki_page": "Slay the Spire 2:Knight Gang"
+  },
+  {
+   "id": "sts2.ceremonial_beast",
+   "name": "Ceremonial Beast",
+   "category": "boss",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     252,
+     252
+    ],
+    "ascension": [
+     262,
+     262
+    ]
+   },
+   "moves": [
+    {
+     "name": "Stamp",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains Plow 150 (A9: 160). When its HP drops to that amount, it becomes Stunned and loses all Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Plow",
+     "intent": "attack_buff",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 20) damage. Gains 2 Strength.",
+     "intent_icons": "Attack3, Buff"
+    },
+    {
+     "name": "Stun",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Stunned. Does nothing.",
+     "intent_icons": "Stun"
+    },
+    {
+     "name": "Beast Cry",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 1 Ringing.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Stomp",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Crush",
+     "intent": "attack_buff",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 19) damage. Gains 3 (A9: 4) Strength.",
+     "intent_icons": "Attack3, Buff"
+    }
+   ],
+   "pattern": "The Ceremonial Beast has two distinct phases. Phase 1: * Uses Stamp on the first turn, gaining Plow. * Then uses Plow every turn. When its HP drops to the Plow threshold (150, or A9: 160), it immediately becomes Stunned and loses all Strength. Phase 2: After being stunned, repeats this three-move cycle: # Beast Cry # Stomp # Crush",
+   "passives": [],
+   "encounters": [
+    "Act 1 boss: Ceremonial Beast"
+   ],
+   "wiki_page": "Slay the Spire 2:Ceremonial Beast"
+  },
+  {
+   "id": "sts2.kin_priest",
+   "name": "Kin Priest",
+   "category": "boss",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     190,
+     190
+    ],
+    "ascension": [
+     199,
+     199
+    ]
+   },
+   "moves": [
+    {
+     "name": "Orb of Frailty",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Orb of Weakness",
+     "intent": "attack_debuff",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Applies 1 Weak.",
+     "intent_icons": "Attack2, Debuff"
+    },
+    {
+     "name": "Soul Beam",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 3,
+     "effect": "Deals 3 damage ×3.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Dark Ritual",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "The Kin Priest cycles through four moves in a fixed order: # Orb of Frailty # Orb of Weakness # Soul Beam # Dark Ritual",
+   "passives": [],
+   "encounters": [
+    "Act 1 boss: The Kin"
+   ],
+   "wiki_page": "Slay the Spire 2:The Kin"
+  },
+  {
+   "id": "sts2.vantom",
+   "name": "Vantom",
+   "category": "boss",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     173,
+     173
+    ],
+    "ascension": [
+     183,
+     183
+    ]
+   },
+   "moves": [
+    {
+     "name": "Ink Blot",
+     "intent": "attack",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Inky Lance",
+     "intent": "attack",
+     "damage": 6,
+     "hits": 2,
+     "effect": "Deals 6 (A9: 7) damage ×2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Dismember",
+     "intent": "attack_status_card",
+     "damage": 27,
+     "hits": 1,
+     "effect": "Deals 27 (A9: 30) damage. Shuffles 3 Wounds into your discard pile.",
+     "intent_icons": "Attack4, StatusCard"
+    },
+    {
+     "name": "Prepare",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "The Vantom cycles through its four moves in a fixed order, repeating forever: # Ink Blot # Inky Lance # Dismember # Prepare",
+   "passives": [
+    "Slippery 9 — The next X times it loses HP, it only loses 1 HP instead."
+   ],
+   "encounters": [
+    "Act 1 boss: Vantom"
+   ],
+   "wiki_page": "Slay the Spire 2:Vantom"
+  },
+  {
+   "id": "sts2.lagavulin_matriarch",
+   "name": "Lagavulin Matriarch",
+   "category": "boss",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     222,
+     222
+    ],
+    "ascension": [
+     233,
+     233
+    ]
+   },
+   "moves": [
+    {
+     "name": "Sleep",
+     "intent": "sleep",
+     "damage": null,
+     "hits": null,
+     "effect": "Asleep. Does nothing.",
+     "intent_icons": "Sleep"
+    },
+    {
+     "name": "Slash",
+     "intent": "attack",
+     "damage": 19,
+     "hits": 1,
+     "effect": "Deals 19 (A9: 21) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Disembowel",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 2,
+     "effect": "Deals 9 (A9: 10) damage x2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Slash2",
+     "intent": "attack_defend",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 14) damage. Gains 12 (A8: 14) Block.",
+     "intent_icons": "Attack3, Defend"
+    },
+    {
+     "name": "Soul Siphon",
+     "intent": "buff_debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Removes 2 Strength and 2 Dexterity from the player. Gains 2 Strength.",
+     "intent_icons": "Debuff, Buff"
+    }
+   ],
+   "pattern": "The Lagavulin Matriarch starts Asleep with 12 Plating. It sleeps for 3 turns or until it takes unblocked damage, whichever comes first. When it wakes up, it loses its Plating. After waking, it repeats this four-move cycle: # Slash # Disembowel # Slash2 # Soul Siphon",
+   "passives": [
+    "Plating 12",
+    "Asleep 3 — Awakens upon losing HP or after X turns."
+   ],
+   "encounters": [
+    "Act 1 boss: Lagavulin Matriarch"
+   ],
+   "wiki_page": "Slay the Spire 2:Lagavulin Matriarch"
+  },
+  {
+   "id": "sts2.soul_fysh",
+   "name": "Soul Fysh",
+   "category": "boss",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     211,
+     211
+    ],
+    "ascension": [
+     221,
+     221
+    ]
+   },
+   "moves": [
+    {
+     "name": "Beckon",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 2 Beckon into your deck (1 into draw pile, 1 into discard pile).",
+     "intent_icons": "StatusCard"
+    },
+    {
+     "name": "De-Gas",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 18) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Gaze",
+     "intent": "attack_status_card",
+     "damage": 7,
+     "hits": 1,
+     "effect": "Deals 7 (A9: 8) damage. Shuffles 1 Beckon into your discard pile.",
+     "intent_icons": "Attack2, StatusCard"
+    },
+    {
+     "name": "Fade",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Intangible.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Scream",
+     "intent": "attack_debuff",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 15) damage. Applies 3 Vulnerable.",
+     "intent_icons": "Attack3, Debuff"
+    }
+   ],
+   "pattern": "The Soul Fysh repeats the same five moves in order: # Beckon # De-Gas # Gaze # Fade # Scream",
+   "passives": [],
+   "encounters": [
+    "Act 1 boss: Soul Fysh"
+   ],
+   "wiki_page": "Slay the Spire 2:Soul Fysh"
+  },
+  {
+   "id": "sts2.waterfall_giant",
+   "name": "Waterfall Giant",
+   "category": "boss",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     240,
+     240
+    ],
+    "ascension": [
+     250,
+     250
+    ]
+   },
+   "moves": [
+    {
+     "name": "Pressurize",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 15 (A9: 20) Steam Eruption.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Stomp",
+     "intent": "attack_buff_debuff",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 16) damage. Applies 1 Weak. Gains 3 Steam Eruption.",
+     "intent_icons": "Attack3, Debuff, Buff"
+    },
+    {
+     "name": "Ram",
+     "intent": "attack_buff",
+     "damage": 10,
+     "hits": 1,
+     "effect": "Deals 10 (A9: 11) damage. Gains 3 Steam Eruption.",
+     "intent_icons": "Attack3, Buff"
+    },
+    {
+     "name": "Siphon",
+     "intent": "buff_heal",
+     "damage": null,
+     "hits": null,
+     "effect": "Heals 10 (A8: 15) HP per player. Gains 3 Steam Eruption.",
+     "intent_icons": "Heal, Buff"
+    },
+    {
+     "name": "Pressure Gun",
+     "intent": "attack_buff",
+     "damage": 20,
+     "hits": 1,
+     "effect": "Deals 20 (A9: 23) damage (increases by 5 each use). Gains 3 Steam Eruption.",
+     "intent_icons": "Attack4, Buff"
+    },
+    {
+     "name": "Pressure Up",
+     "intent": "attack_buff",
+     "damage": 13,
+     "hits": 1,
+     "effect": "Deals 13 (A9: 14) damage. Gains 3 Steam Eruption.",
+     "intent_icons": "Attack3, Buff"
+    },
+    {
+     "name": "About To Blow",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Becomes invulnerable. Removes Steam Eruption and prepares to explode.",
+     "intent_icons": "Stun"
+    },
+    {
+     "name": "Explode",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Deals damage equal to its stored Steam Eruption amount, then dies.",
+     "intent_icons": "DeathBlow"
+    }
+   ],
+   "pattern": "The Waterfall Giant uses Pressurize on its first turn, then follows a repeating cycle: # Stomp # Ram # Siphon # Pressure Gun # Pressure Up # Back to Stomp Almost every move also adds 3 Steam Eruption. When the Waterfall Giant is killed while it has Steam Eruption, it becomes invulnerable and uses About To Blow, cleansing all its buffs and debuffs. Next turn it will use Explode, dealing damage equal to its accumulated Steam Eruption before dying. * If the Waterfall Giant is killed when it has no Steam Eruption (e.g. via Doom), it dies normally without triggering the explosion sequence.",
+   "passives": [],
+   "encounters": [
+    "Act 1 boss: Waterfall Giant"
+   ],
+   "wiki_page": "Slay the Spire 2:Waterfall Giant"
+  },
+  {
+   "id": "sts2.crusher",
+   "name": "Crusher",
+   "category": "boss",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     209,
+     209
+    ],
+    "ascension": [
+     219,
+     219
+    ]
+   },
+   "moves": [
+    {
+     "name": "Thrash",
+     "intent": "attack",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 14) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Enlarging Strike",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Bug Sting",
+     "intent": "attack_debuff",
+     "damage": 6,
+     "hits": 2,
+     "effect": "Deals 6x2 (A9: 7x2) damage. Applies 2 Weak and 2 Frail.",
+     "intent_icons": "Attack3, Debuff"
+    },
+    {
+     "name": "Adapt",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Guarded Strike",
+     "intent": "attack_defend",
+     "damage": 12,
+     "hits": 1,
+     "effect": "Deals 12 (A9: 14) damage. Gains 18 Block.",
+     "intent_icons": "Attack3, Defend"
+    }
+   ],
+   "pattern": "Crusher repeats a fixed five-move cycle: # Thrash # Enlarging Strike # Bug Sting # Adapt # Guarded Strike",
+   "passives": [
+    "Back Attack — Deals 50% more damage when it is attacking you from behind.",
+    "Crab Rage — When an ally dies, it gains 6 Strength and 99 Block."
+   ],
+   "encounters": [
+    "Act 2 boss: Kaiser Crab"
+   ],
+   "wiki_page": "Slay the Spire 2:Kaiser Crab"
+  },
+  {
+   "id": "sts2.knowledge_demon",
+   "name": "Knowledge Demon",
+   "category": "boss",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     379,
+     379
+    ],
+    "ascension": [
+     399,
+     399
+    ]
+   },
+   "moves": [
+    {
+     "name": "Curse of Knowledge",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Each player chooses one of two debuffs to receive. The options change each time this move is used.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Slap",
+     "intent": "attack",
+     "damage": 17,
+     "hits": 1,
+     "effect": "Deals 17 (A9: 18) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Knowledge Overwhelming",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 3,
+     "effect": "Deals 8 (A9: 9) damage ×3.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Ponder",
+     "intent": "attack_buff_heal",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 13) damage. Heals 30 HP per player. Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Attack3, Heal, Buff"
+    }
+   ],
+   "pattern": "Knowledge Demon repeats a fixed four-move cycle: # Curse of Knowledge # Slap # Knowledge Overwhelming # Ponder After the third Curse of Knowledge (once all three status sets have been offered), the cycle changes: Curse of Knowledge is skipped, and the remaining three moves repeat in order.",
+   "passives": [],
+   "encounters": [
+    "Act 2 boss: Knowledge Demon"
+   ],
+   "wiki_page": "Slay the Spire 2:Knowledge Demon"
+  },
+  {
+   "id": "sts2.rocket",
+   "name": "Rocket",
+   "category": "boss",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     199,
+     199
+    ],
+    "ascension": [
+     209,
+     209
+    ]
+   },
+   "moves": [
+    {
+     "name": "Targeting Reticle",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 1,
+     "effect": "Deals 3 (A9: 4) damage.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Precision Beam",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 20) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Charge Up",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    },
+    {
+     "name": "Laser",
+     "intent": "attack",
+     "damage": 31,
+     "hits": 1,
+     "effect": "Deals 31 (A9: 35) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Recharge",
+     "intent": "sleep",
+     "damage": null,
+     "hits": null,
+     "effect": "Does nothing.",
+     "intent_icons": "Sleep"
+    }
+   ],
+   "pattern": "Rocket repeats a fixed five-move cycle: # Targeting Reticle # Precision Beam # Charge Up # Laser # Recharge",
+   "passives": [
+    "Back Attack — Deals 50% more damage when it is attacking you from behind.",
+    "Crab Rage — When an ally dies, it gains 6 Strength and 99 Block."
+   ],
+   "encounters": [
+    "Act 2 boss: Kaiser Crab"
+   ],
+   "wiki_page": "Slay the Spire 2:Kaiser Crab"
+  },
+  {
+   "id": "sts2.the_insatiable",
+   "name": "The Insatiable",
+   "category": "boss",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     321,
+     321
+    ],
+    "ascension": [
+     341,
+     341
+    ]
+   },
+   "moves": [
+    {
+     "name": "Liquify Ground",
+     "intent": "buff_status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 4 Sandpit (counted separately for each player). Shuffles 6 Frantic Escape into each player's deck (3 into draw pile, 3 into discard pile).",
+     "intent_icons": "Buff, StatusCard"
+    },
+    {
+     "name": "Thrash",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 2,
+     "effect": "Deals 8 (A9: 9) damage ×2.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Lunging Bite",
+     "intent": "attack",
+     "damage": 28,
+     "hits": 1,
+     "effect": "Deals 28 (A9: 31) damage.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Salivate",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "The Insatiable always opens with Liquify Ground, then repeats the following cycle: # Thrash # Lunging Bite # Salivate # Thrash # Back to the first 2",
+   "passives": [],
+   "encounters": [
+    "Act 2 boss: The Insatiable"
+   ],
+   "wiki_page": "Slay the Spire 2:The Insatiable"
+  },
+  {
+   "id": "sts2.aeonglass",
+   "name": "Aeonglass",
+   "category": "boss",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     512,
+     512
+    ],
+    "ascension": [
+     535,
+     535
+    ]
+   },
+   "moves": [
+    {
+     "name": "Ebb",
+     "intent": "attack_defend",
+     "damage": 22,
+     "hits": 1,
+     "effect": "Deals 22 (A9: 26) damage. Gains 33 Block.",
+     "intent_icons": "Attack4, Defend"
+    },
+    {
+     "name": "Eye Lasers",
+     "intent": "attack",
+     "damage": 11,
+     "hits": 2,
+     "effect": "Deals 11 (A9: 12) damage x2.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Increasing Intensity",
+     "intent": "buff_status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 1 (A9: 2) Wither+X into your discard pile. Gains 2 (A9: 3) + X Strength. Upgrade all Withers. Withering Presence effect now creates Withers + X.",
+     "intent_icons": "StatusCard, Buff"
+    }
+   ],
+   "pattern": "The Aeonglass follows a repeating cycle: # Ebb # Eye Lasers # Increasing Intensity X equals the amount of times Increasing Intensity has been used. Withering Presence adds the Withers to your hand after the card's effect has been resolved completely. When an exhaust card like Scavenge triggers Withering Presence, it cannot remove the status card whose creation it triggered.",
+   "passives": [
+    "{{BD2|Withering Presence|Withering",
+    "Presence}}",
+    "Artifact 3"
+   ],
+   "encounters": [
+    "Act 3 boss: Aeonglass"
+   ],
+   "wiki_page": "Slay the Spire 2:Aeonglass"
+  },
+  {
+   "id": "sts2.queen",
+   "name": "Queen",
+   "category": "boss",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     400,
+     400
+    ],
+    "ascension": [
+     419,
+     419
+    ]
+   },
+   "moves": [
+    {
+     "name": "Puppet Strings",
+     "intent": "debuff_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 3 Chains of Binding to all players.",
+     "intent_icons": "CardDebuff"
+    },
+    {
+     "name": "You're Mine",
+     "intent": "debuff",
+     "damage": null,
+     "hits": null,
+     "effect": "Applies 99 Frail, 99 Weak, and 99 Vulnerable to all players.",
+     "intent_icons": "Debuff"
+    },
+    {
+     "name": "Burn Bright for Me",
+     "intent": "defend_buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gives 1 Strength to Torch Head Amalgam. Gains 20 Block.",
+     "intent_icons": "Buff, Defend"
+    },
+    {
+     "name": "Off with Your Head",
+     "intent": "attack",
+     "damage": 3,
+     "hits": 5,
+     "effect": "Deals 3 (A9: 4) damage x5.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Execution",
+     "intent": "attack",
+     "damage": 15,
+     "hits": 1,
+     "effect": "Deals 15 (A9: 18) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Enrage",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "The Queen's pattern depends on whether the Torch Head Amalgam is alive: Opening (always): # Puppet Strings # You're Mine While the Amalgam is alive:: Repeats Burn Bright for Me. After the Amalgam dies:: If the Queen is currently using Burn Bright for Me, she immediately switches to Enrage, then enters the enraged loop: # Off with Your Head # Execution # Enrage # Back to Off with Your Head * Keep in mind that Queen will have gained 2 Strength and that the player will likely be permanently Vulnerable from You're Mine, making these the actual damage amounts: ** Off with Your Head: 7x5 / A9: 9x5 ** Execution: 25 / A9: 30",
+   "passives": [],
+   "encounters": [
+    "Act 3 boss: Queen"
+   ],
+   "wiki_page": "Slay the Spire 2:Queen"
+  },
+  {
+   "id": "sts2.test_subject",
+   "name": "Test Subject",
+   "category": "boss",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     100,
+     100
+    ],
+    "ascension": [
+     111,
+     111
+    ]
+   },
+   "moves": [
+    {
+     "name": "Bite",
+     "intent": "attack",
+     "damage": 20,
+     "hits": 1,
+     "effect": "Deals 20 (A9: 22) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Skull Bash",
+     "intent": "attack_debuff",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage. Applies 1 Vulnerable.",
+     "intent_icons": "Attack3, Debuff"
+    }
+   ],
+   "pattern": "Starts with Adaptable and Enrage 2 (A9: 3). Alternates between Bite and Skull Bash. When reduced to 0 HP, Adaptable prevents death and it revives into Phase 2. |-|Phase 2=",
+   "passives": [
+    "Adaptable, Enrage 2 (A9: 3) — When it would be defeated, it instead revives even stronger."
+   ],
+   "encounters": [
+    "Act 3 boss: Test Subject"
+   ],
+   "wiki_page": "Slay the Spire 2:Test Subject"
+  },
+  {
+   "id": "sts2.test_subject_phase_2",
+   "name": "Test Subject (Phase 2)",
+   "category": "boss",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     200,
+     200
+    ],
+    "ascension": [
+     212,
+     212
+    ]
+   },
+   "moves": [
+    {
+     "name": "Multi-Claw",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 3,
+     "effect": "Deals 10 (A9: 11) damage x3 (increases by 1 hit each use).",
+     "intent_icons": "Attack4"
+    }
+   ],
+   "pattern": "Revives with 200 (A8: 212) HP, gains Painful Stabs and loses Enrage. Uses Multi-Claw every turn. Multi-Claw starts at 3 hits and gains +1 hit each use. When reduced to 0 HP again, it revives into Phase 3. |-|Phase 3=",
+   "passives": [
+    "Adaptable, Painful Stabs — When it would be defeated, it instead revives even stronger."
+   ],
+   "encounters": [
+    "Act 3 boss: Test Subject"
+   ],
+   "wiki_page": "Slay the Spire 2:Test Subject"
+  },
+  {
+   "id": "sts2.test_subject_phase_3",
+   "name": "Test Subject (Phase 3)",
+   "category": "boss",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     300,
+     300
+    ],
+    "ascension": [
+     313,
+     313
+    ]
+   },
+   "moves": [
+    {
+     "name": "Lacerate",
+     "intent": "attack",
+     "damage": 10,
+     "hits": 3,
+     "effect": "Deals 10 (A9: 11) damage x3.",
+     "intent_icons": "Attack4"
+    },
+    {
+     "name": "Big Pounce",
+     "intent": "attack",
+     "damage": 45,
+     "hits": 1,
+     "effect": "Deals 45 damage.",
+     "intent_icons": "Attack5"
+    },
+    {
+     "name": "Burning Growl",
+     "intent": "buff_status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 3 (A9: 5) Burn into discard pile. Gains 2 (A9: 3) Strength.",
+     "intent_icons": "StatusCard, Buff"
+    }
+   ],
+   "pattern": "Revives with 300 (A8: 313) HP, gains Nemesis, and loses Adaptable and Painful Stabs. Cycles through: # Lacerate # Big Pounce # Burning Growl # Back to Lacerate",
+   "passives": [
+    "Nemesis — At the end of every other turn, gains Intangible 1.",
+    "Intangible 1"
+   ],
+   "encounters": [
+    "Act 3 boss: Test Subject"
+   ],
+   "wiki_page": "Slay the Spire 2:Test Subject"
+  },
+  {
+   "id": "sts2.eye_with_teeth",
+   "name": "Eye With Teeth",
+   "category": "minion",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     6,
+     6
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Distract",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 3 Dazed into your discard pile.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Uses Distract every turn.",
+   "passives": [
+    "Illusion"
+   ],
+   "encounters": [
+    "Act 1 hard: Fogmog"
+   ],
+   "wiki_page": "Slay the Spire 2:Fogmog"
+  },
+  {
+   "id": "sts2.kin_follower",
+   "name": "Kin Follower",
+   "category": "minion",
+   "area": "Act 1 / Overgrowth",
+   "hp": {
+    "base": [
+     58,
+     59
+    ],
+    "ascension": [
+     62,
+     63
+    ]
+   },
+   "moves": [
+    {
+     "name": "Quick Slash",
+     "intent": "attack",
+     "damage": 5,
+     "hits": 1,
+     "effect": "Deals 5 damage.",
+     "intent_icons": "Attack2"
+    },
+    {
+     "name": "Boomerang",
+     "intent": "attack",
+     "damage": 2,
+     "hits": 2,
+     "effect": "Deals 2 damage ×2.",
+     "intent_icons": "Attack1"
+    },
+    {
+     "name": "Power Dance",
+     "intent": "buff",
+     "damage": null,
+     "hits": null,
+     "effect": "Gains 2 (A9: 3) Strength.",
+     "intent_icons": "Buff"
+    }
+   ],
+   "pattern": "Each Kin Follower cycles through three moves in a fixed order: # Quick Slash # Boomerang # Power Dance The two Kin Followers start offset from each other: one begins with Quick Slash and the other begins with Power Dance.",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 1 boss: The Kin"
+   ],
+   "wiki_page": "Slay the Spire 2:The Kin"
+  },
+  {
+   "id": "sts2.fat_gremlin",
+   "name": "Fat Gremlin",
+   "category": "minion",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     13,
+     17
+    ],
+    "ascension": [
+     14,
+     18
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spawned",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Wakes up. Does nothing.",
+     "intent_icons": "Stun"
+    },
+    {
+     "name": "Flee",
+     "intent": "escape",
+     "damage": null,
+     "hits": null,
+     "effect": "Flees from combat with any stolen gold.",
+     "intent_icons": "Escape"
+    }
+   ],
+   "pattern": "Uses Spawned on its first turn (does nothing), then uses Flee every turn after, escaping with the stolen gold.",
+   "passives": [
+    "Heist — When killed, returns all the stolen Gold."
+   ],
+   "encounters": [
+    "Act 1 hard: Two Gremlins in a Trenchcoat"
+   ],
+   "wiki_page": "Slay the Spire 2:Gremlin Merc"
+  },
+  {
+   "id": "sts2.gas_bomb",
+   "name": "Gas Bomb",
+   "category": "minion",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     7,
+     7
+    ],
+    "ascension": [
+     8,
+     8
+    ]
+   },
+   "moves": [
+    {
+     "name": "Explode",
+     "intent": "unknown",
+     "damage": 8,
+     "hits": 1,
+     "effect": "Deals 8 (A9: 9) damage. Dies.",
+     "intent_icons": "DeathBlow"
+    }
+   ],
+   "pattern": "Uses Explode every turn, dealing damage and killing itself.",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 1 hard: Living Fog"
+   ],
+   "wiki_page": "Slay the Spire 2:Living Fog"
+  },
+  {
+   "id": "sts2.sneaky_gremlin",
+   "name": "Sneaky Gremlin",
+   "category": "minion",
+   "area": "Act 1 / Underdocks",
+   "hp": {
+    "base": [
+     10,
+     14
+    ],
+    "ascension": [
+     11,
+     15
+    ]
+   },
+   "moves": [
+    {
+     "name": "Spawned",
+     "intent": "stun",
+     "damage": null,
+     "hits": null,
+     "effect": "Wakes up. Does nothing.",
+     "intent_icons": "Stun"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 9,
+     "hits": 1,
+     "effect": "Deals 9 (A9: 10) damage.",
+     "intent_icons": "Attack2"
+    }
+   ],
+   "pattern": "Uses Spawned on its first turn (does nothing), then uses Tackle every turn after.",
+   "passives": [],
+   "encounters": [
+    "Act 1 hard: Two Gremlins in a Trenchcoat"
+   ],
+   "wiki_page": "Slay the Spire 2:Gremlin Merc"
+  },
+  {
+   "id": "sts2.hatchling",
+   "name": "Hatchling",
+   "category": "minion",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     19,
+     22
+    ],
+    "ascension": [
+     20,
+     23
+    ]
+   },
+   "moves": [
+    {
+     "name": "Nibble",
+     "intent": "attack",
+     "damage": 4,
+     "hits": 1,
+     "effect": "Deals 4 (A9: 5) damage.",
+     "intent_icons": "Attack1"
+    }
+   ],
+   "pattern": "Uses Nibble every turn.",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [],
+   "wiki_page": "Slay the Spire 2:Ovicopter"
+  },
+  {
+   "id": "sts2.parafright",
+   "name": "Parafright",
+   "category": "minion",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     21,
+     21
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Slam",
+     "intent": "attack",
+     "damage": 16,
+     "hits": 1,
+     "effect": "Deals 16 (A9: 17) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Uses Slam every turn.",
+   "passives": [
+    "Illusion"
+   ],
+   "encounters": [
+    "Act 2 hard: The Obscura"
+   ],
+   "wiki_page": "Slay the Spire 2:The Obscura"
+  },
+  {
+   "id": "sts2.tough_egg",
+   "name": "Tough Egg",
+   "category": "minion",
+   "area": "Act 2 / Hive",
+   "hp": {
+    "base": [
+     14,
+     18
+    ],
+    "ascension": [
+     15,
+     19
+    ]
+   },
+   "moves": [
+    {
+     "name": "Hatch",
+     "intent": "summon",
+     "damage": null,
+     "hits": null,
+     "effect": "Hatches into a Hatchling. Removes all powers except Minion.",
+     "intent_icons": "Summon"
+    }
+   ],
+   "pattern": "The Tough Egg waits while its Hatch timer counts down. When the timer expires, it uses Hatch to transform into a Hatchling with new HP.",
+   "passives": [
+    "Minion Hatch 2"
+   ],
+   "encounters": [
+    "Act 2 hard: Ovicopter"
+   ],
+   "wiki_page": "Slay the Spire 2:Ovicopter"
+  },
+  {
+   "id": "sts2.guardbot",
+   "name": "Guardbot",
+   "category": "minion",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     16,
+     20
+    ],
+    "ascension": [
+     17,
+     21
+    ]
+   },
+   "moves": [
+    {
+     "name": "Guard",
+     "intent": "defend",
+     "damage": null,
+     "hits": null,
+     "effect": "Gives the Fabricator 15 Block.",
+     "intent_icons": "Defend"
+    }
+   ],
+   "pattern": "Uses Guard every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Fabricator"
+   ],
+   "wiki_page": "Slay the Spire 2:Fabricator"
+  },
+  {
+   "id": "sts2.noisebot",
+   "name": "Noisebot",
+   "category": "minion",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     18,
+     23
+    ],
+    "ascension": [
+     19,
+     24
+    ]
+   },
+   "moves": [
+    {
+     "name": "Noise",
+     "intent": "status_card",
+     "damage": null,
+     "hits": null,
+     "effect": "Shuffles 2 Dazed into the player's draw and discard piles.",
+     "intent_icons": "StatusCard"
+    }
+   ],
+   "pattern": "Uses Noise every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Fabricator"
+   ],
+   "wiki_page": "Slay the Spire 2:Fabricator"
+  },
+  {
+   "id": "sts2.stabbot",
+   "name": "Stabbot",
+   "category": "minion",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     18,
+     23
+    ],
+    "ascension": [
+     19,
+     24
+    ]
+   },
+   "moves": [
+    {
+     "name": "Stab",
+     "intent": "attack_debuff",
+     "damage": 11,
+     "hits": 1,
+     "effect": "Deals 11 (A9: 12) damage. Applies 1 Frail.",
+     "intent_icons": "Attack2, Debuff"
+    }
+   ],
+   "pattern": "Uses Stab every turn.",
+   "passives": [],
+   "encounters": [
+    "Act 3 hard: Fabricator"
+   ],
+   "wiki_page": "Slay the Spire 2:Fabricator"
+  },
+  {
+   "id": "sts2.torch_head_amalgam",
+   "name": "Torch Head Amalgam",
+   "category": "minion",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     199,
+     199
+    ],
+    "ascension": [
+     211,
+     211
+    ]
+   },
+   "moves": [
+    {
+     "name": "Strong Tackle",
+     "intent": "attack",
+     "damage": 26,
+     "hits": 1,
+     "effect": "Deals 26 (A9: 32) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Tackle",
+     "intent": "attack",
+     "damage": 18,
+     "hits": 1,
+     "effect": "Deals 18 (A9: 22) damage.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Beam",
+     "intent": "attack",
+     "damage": 8,
+     "hits": 3,
+     "effect": "Deals 8 damage x3.",
+     "intent_icons": "Attack3"
+    },
+    {
+     "name": "Weak Tackle",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 16) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "The Torch Head Amalgam follows a fixed sequence: # Strong Tackle # Tackle # Beam # Weak Tackle # Weak Tackle # Back to Beam (repeats steps 3-5)",
+   "passives": [
+    "Minion"
+   ],
+   "encounters": [
+    "Act 3 boss: Queen"
+   ],
+   "wiki_page": "Slay the Spire 2:Queen"
+  },
+  {
+   "id": "sts2.zapbot",
+   "name": "Zapbot",
+   "category": "minion",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     18,
+     23
+    ],
+    "ascension": [
+     19,
+     24
+    ]
+   },
+   "moves": [
+    {
+     "name": "Zap",
+     "intent": "attack",
+     "damage": 14,
+     "hits": 1,
+     "effect": "Deals 14 (A9: 15) damage.",
+     "intent_icons": "Attack3"
+    }
+   ],
+   "pattern": "Uses Zap every turn.",
+   "passives": [
+    "High Voltage 2 — At the start of its turn, it gains X Strength."
+   ],
+   "encounters": [
+    "Act 3 hard: Fabricator"
+   ],
+   "wiki_page": "Slay the Spire 2:Fabricator"
+  },
+  {
+   "id": "sts2.battle_friend",
+   "name": "Battle Friend",
+   "category": "event",
+   "area": "Act 3 / Glory",
+   "hp": {
+    "base": [
+     75,
+     75
+    ],
+    "ascension": null
+   },
+   "moves": [
+    {
+     "name": "Nothing",
+     "intent": "unknown",
+     "damage": null,
+     "hits": null,
+     "effect": "Does Nothing."
+    }
+   ],
+   "pattern": "Always does nothing.",
+   "passives": [
+    "Time Limit 3 — You have X more turns to defeat the Battleworn Dummy."
+   ],
+   "encounters": [
+    "Act 3 event: Battleworn Dummy"
+   ],
+   "wiki_page": "Slay the Spire 2:Battle Friend"
+  }
+ ]
+}
