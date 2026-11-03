@@ -1,0 +1,3966 @@
+{
+ "game": "Monster Train 2",
+ "source": "https://monstertrain2.miraheze.org (CC BY-SA) via archive.org backup miraheze-wiki-monstertrain2wiki-20260907",
+ "retrieved": "2026-11-03",
+ "notes": "Version: MT2 as documented on the community wiki (patches through 2.2.1; DLC Destiny of the Railforged adds the Soul Savior mode). Read from Miraheze's archive.org backup because the live wiki serves a bot challenge. Standard-mode enemies = every {{Enemy}} infobox (also the Chosen elites, cherubs, Fleshling and Chosen Prayerstone sections inside parent pages); Soul Savior enemies = {{EnemySS}}/{{FlyingBossSS}} infoboxes + names that only appear in the SS nav or region wave tables (extra.mode set). category: normal (wave enemy; extra.roles = wiki role categories), elite (Covenant 10 'Chosen' / Soul Savior 'Mother's' versions), boss (minor ring boss), flying_boss (Rings 3/6/8; Stryx & Hallow are a duo), final_boss (Ring 9 Titans / The Lifemother), minion (boss-spawned), special (Collector, Skull Collector, Penitent Prayerstone trial spawn). hp.base/attack = baseline (Covenant 0) stats; hp.covenant = the infobox's Covenant 1/4/8 rows (Soul Savior: Tangle/Overgrowth difficulty rows). Flying-boss variants keep per-variant stats in extra.variants. size = game-data dump (the wiki has no enemy size). waves = ring/region page wave tables, all covenant tabs merged. Completeness: standard mode: 71 enemies from {{Enemy}} infoboxes vs Template:EnemiesNav 56 names -> nav-only none | Soul Savior: 43 enemies (19 with a wiki infobox, the rest named only in Template:EnemiesNavSS / region wave tables) | vs game-data ScenarioData (names of characters referenced by non-test battles: 111): game-data-only ['The Lifemother - Cycle Ender', 'The Lifemother - Swarmhost', 'The Lifemother - Undying Bloom']; wiki-only (not referenced directly by a scenario: boss-spawned minions, trial spawns, endless-only) ['Category:Nav Templates', 'Chosen Prayerstone', 'Fleshling', 'Penitent Prayerstone', 'Skull Collector', 'The Lifemother'] | wiki vs game-data base stats differ for 10 standard enemies (wiki often lists the in-game tooltip incl. multistrike/variant; examples: ['Chosen Flagellant wiki 3/110 vs data 3/90', 'Chosen Supplicant wiki 5/35 vs data 3/35', 'Chosen Shieldbearer wiki 1/100 vs data 0/100', 'Chosen Zealot wiki 4/310 vs data 4/250', 'Sharp-Eye Sniper wiki 7/3 vs data 5/2', 'Chosen Sniper wiki 10/75 vs data 9/75', 'Chosen Bastion wiki 9/50 vs data 8/50', 'Chosen Herald wiki 1/60 vs data 0/60', 'Chosen Assassin wiki 7/50 vs data 5/50', 'Fleshling wiki 3/3 vs data 5/5']) | standard enemies absent from every ring wave table: [] (bosses are written as 'Boss' in the tables; minions/Chosen/trial spawns are added by rules)",
+ "enemies": [
+  {
+   "id": "mt2.forsaken",
+   "name": "Forsaken",
+   "category": "normal",
+   "area": "Rings 1, 2, 3",
+   "hp": {
+    "base": 1,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Forsaken is an enemy in Monster Train 2. It is a weak early-game enemy that can appear in the Mark of Invasion trial in Rings 1 and 2.",
+   "waves": [
+    "R1 Forsaken Few (wave 1, 2, 3, 4)",
+    "R3 More Mass (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Forsaken",
+    "roles": [
+     "horde",
+     "trial spawn"
+    ],
+    "titan": "None",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.savage_spearman",
+   "name": "Savage Spearman",
+   "category": "normal",
+   "area": "Rings 2, 3",
+   "hp": {
+    "base": 2,
+    "covenant": "cov 8+: 6/2"
+   },
+   "attack": 5,
+   "size": 1,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Savage Spearman is an enemy in Monster Train 2. It is a basic backline enemy in Rings 2-3.",
+   "waves": [
+    "R2 Flagellant's March (wave 1, 2, 4)",
+    "R2 Knights of Entropy (wave 1, 2, 4)",
+    "R2 March of the Supplicants (wave 1, 2)",
+    "R2 Quicksilver Cherubs (wave 1, 2, 4)",
+    "R3 Corrupted Mass (wave 1, 2, 3, 4, 5, 6)",
+    "R3 Furious Frenzy (wave 1, 2, 4, 5)",
+    "R3 Hard Headed (wave 1, 2, 4, 5)",
+    "R3 Pyre Hunter (wave 1, 2, 4, 5)",
+    "R3 Spiked Mass (wave 1, 2, 3, 4, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Savage Spearman",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Savagery",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.fallen_champion",
+   "name": "Fallen Champion",
+   "category": "normal",
+   "area": "Rings 1, 2, 3",
+   "hp": {
+    "base": 45,
+    "covenant": "cov 1+: 4/60; cov 8+: 4/65"
+   },
+   "attack": 4,
+   "size": 2,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Fallen Champion is an enemy in Monster Train 2. It is the basic frontline enemy in Rings 1-3.",
+   "waves": [
+    "R1 Dominion's Preservation (wave 1, 2, 3)",
+    "R1 Forsaken Few (wave 1)",
+    "R1 Heavenly Toll (wave 2, 3)",
+    "R2 March of the Supplicants (wave 1, 2, 3)",
+    "R2 Quicksilver Cherubs (wave 1, 2, 3)",
+    "R3 Corrupted Mass (wave 1, 3, 5)",
+    "R3 Furious Frenzy (wave 1, 3, 5)",
+    "R3 Hard Headed (wave 1, 3, 5)",
+    "R3 More Mass (wave 5)",
+    "R3 Pyre Hunter (wave 1, 3, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Fallen Champion",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Savagery",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.ominous_acolyte",
+   "name": "Ominous Acolyte",
+   "category": "normal",
+   "area": "Rings 1, 2, 3",
+   "hp": {
+    "base": 1,
+    "covenant": null
+   },
+   "attack": null,
+   "size": 1,
+   "abilities": [
+    "Recover: Restore 15 Health to enemy units after combat."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Ominous Acolyte is an enemy in Monster Train 2. It is a backline healer in Rings 1-3.",
+   "waves": [
+    "R1 Dominion's Preservation (wave 1, 2, 3, 4)",
+    "R2 Flagellant's March (wave 1, 2, 3, 4)",
+    "R2 Knights of Entropy (wave 2, 3, 4)",
+    "R3 Corrupted Mass (wave 3, 4, 5, 6)",
+    "R3 Furious Frenzy (wave 1, 2)",
+    "R3 Hard Headed (wave 1, 2)",
+    "R3 More Mass (wave 4, 5)",
+    "R3 Pyre Hunter (wave 1, 2)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ominous Acolyte",
+    "roles": [
+     "cleric"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Recover"
+    ],
+    "variants": [
+     {
+      "variant": "15[[file",
+      "attack": null,
+      "health": 1
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_acolyte",
+   "name": "Chosen Acolyte",
+   "category": "elite",
+   "area": "Ring 3",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": null,
+   "size": 1,
+   "abilities": [
+    "Recover: Restore 20 Health to enemy units after combat."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Acolytes are added to the Ring 3 Furious Frenzy and More Mass combats. Chosen Acolytes have significantly more Health and heal slightly more.",
+   "waves": [
+    "R3 Furious Frenzy (wave 1, 3, 5)",
+    "R3 More Mass (wave 4, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ominous Acolyte",
+    "roles": [
+     "cleric"
+    ],
+    "titan": null,
+    "keywords": [
+     "Recover"
+    ],
+    "variants": [
+     {
+      "variant": "20[[file",
+      "attack": null,
+      "health": 30
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.cowering_sycophant",
+   "name": "Cowering Sycophant",
+   "category": "normal",
+   "area": "Rings 1, 3",
+   "hp": {
+    "base": 5,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 3,
+   "abilities": [
+    "Spikes 2."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Cowering Sycophant is an enemy in Monster Train 2. It does not attack, but starts with high Armor and Spikes which damage your units when attacked.",
+   "waves": [
+    "R1 Heavenly Toll (wave 1, 2, 4)",
+    "R3 Furious Frenzy (wave 4, 6)",
+    "R3 Hard Headed (wave 4, 6)",
+    "R3 Pyre Hunter (wave 4, 6)",
+    "R3 Spiked Mass (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Cowering Sycophant",
+    "roles": [
+     "shieldguard"
+    ],
+    "titan": "None",
+    "keywords": [
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.lurking_miscreant",
+   "name": "Lurking Miscreant",
+   "category": "normal",
+   "area": "Rings 1, 2, 3",
+   "hp": {
+    "base": 1,
+    "covenant": "cov 8+: 2/1"
+   },
+   "attack": 1,
+   "size": 2,
+   "abilities": [
+    "Resolve: Add a Chime of Despair card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Lurking Miscreant is an enemy in Monster Train 2. It is a backline enemy in Rings 1-3 that pollutes your draw with Chime of Despair.",
+   "waves": [
+    "R1 Heavenly Toll (wave 1, 2, 3)",
+    "R2 March of the Supplicants (wave 1, 2, 3, 4)",
+    "R3 Spiked Mass (wave 2, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Lurking Miscreant",
+    "roles": [
+     "mage"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.flagellant",
+   "name": "Flagellant",
+   "category": "normal",
+   "area": "Rings 2, 3",
+   "hp": {
+    "base": 90,
+    "covenant": "cov 1+: 3/105; cov 8+: 3/110"
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Resolve: +4 Attack and take 20 damage."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Flagellant is an enemy in Monster Train 2. It grows stronger as it ascends, but it also deals constant damage to itself.",
+   "waves": [
+    "R2 Flagellant's March (wave 1, 2, 3)",
+    "R3 Corrupted Mass (wave 2, 4, 5, 6)",
+    "R3 Furious Frenzy (wave 2, 4)",
+    "R3 Hard Headed (wave 2, 4)",
+    "R3 Pyre Hunter (wave 2, 3, 4, 5)",
+    "R3 Spiked Mass (wave 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Flagellant",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_flagellant",
+   "name": "Chosen Flagellant",
+   "category": "elite",
+   "area": "Ring 3",
+   "hp": {
+    "base": 110,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Multistrike 1. Resolve: +4 Attack and take 20 damage."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Flagellants replace two of the Fallen Champions in the Ring 3 Pyre Hunter combat, and a Fallen Champion and a Flagellant in the Corrupted Mass and Spiked Mass combats. Chosen Flagellants have the same stats as normal Flagellants, but also have Multistrike, increasing their damage significantly as they ascend.",
+   "waves": [
+    "R3 Corrupted Mass (wave 4, 5)",
+    "R3 Spiked Mass (wave 3, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Flagellant",
+    "roles": [
+     "heavy"
+    ],
+    "titan": null,
+    "keywords": [
+     "Multistrike",
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.sloven_knight",
+   "name": "Sloven Knight",
+   "category": "normal",
+   "area": "Rings 2, 3",
+   "hp": {
+    "base": 50,
+    "covenant": "cov 1+: 2/65; cov 8+: 2/70"
+   },
+   "attack": 2,
+   "size": 2,
+   "abilities": [
+    "Vanguard: +8 Attack."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Sloven Knight is an enemy in Monster Train 2. It is weak, but has high Health and gains +8 Attack if no other enemies are in front of it.",
+   "waves": [
+    "R2 Knights of Entropy (wave 1, 2, 3)",
+    "R3 More Mass (wave 4, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Sloven Knight",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Vanguard"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.energizing_flautist",
+   "name": "Energizing Flautist",
+   "category": "normal",
+   "area": "Rings 2, 6",
+   "hp": {
+    "base": 1,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Haste. Enchant: Grant enemy units Haste."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Energizing Flautist is an enemy in Monster Train 2. It grants allied enemies Haste, causing them to move from the bottom floor directly to the top floor.",
+   "waves": [
+    "R2 Quicksilver Cherubs (wave 1, 2, 3)",
+    "R6 Inevitability (wave 1, 3, 4, 5, 7)",
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 3)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 1, 3)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Energizing Flautist",
+    "roles": [
+     "enchanter"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Enchant",
+     "Haste"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.arkion_scion_of_savagery",
+   "name": "Arkion, Scion of Savagery",
+   "category": "flying_boss",
+   "area": "Ring 3",
+   "hp": {
+    "base": 425,
+    "covenant": "cov 1+: Furious Frenzy: 7/625; Hard Headed: 13/625; Pyre Hunter: 4/625; cov 4+: Furious Frenzy: 7/725; Hard Headed: 13/725; Pyre Hunter: 4/725; cov 8+: Furious Frenzy: 7/825; Hard Headed: 13/825; Pyre Hunter: 4/825"
+   },
+   "attack": 7,
+   "size": 1,
+   "abilities": [
+    "Furious Frenzy:",
+    "Siphon: Gain Rage 2.",
+    "Hard Headed:",
+    "Strike: Push the attacked unit to the back.",
+    "Pyre Hunter:",
+    "Multistrike 1.",
+    "Resolve: If you have no units on the floor, deals 5 damage to the Pyre."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Hard Headed Arkion pushes attacked units to the back. | Pyre Hunter If you have no units on the floor, Arkion deals damage to the Pyre. | Furious Frenzy Arkion gains Rage 2 on Siphon. | Hard Headed II Arkion pushes attacked units to the back. Arkion has +150 Health. | Pyre Hunter II If you have no units on the floor, Arkion deals damage to the Pyre. Arkion has +5 Attack. | Furious Frenzy II Arkion gains Rage 4 on Siphon. Wiki: Arkion, Scion of Savagery is a major boss of Ring 3. He appears as one of three variants.",
+   "waves": [
+    "R3: Any combat titled Arkion, Scion of Savagery"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Arkion, Scion of Savagery",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Multistrike",
+     "Rage",
+     "Resolve",
+     "Siphon",
+     "Strike"
+    ],
+    "variants": [
+     {
+      "variant": "Furious Frenzy",
+      "attack": 7,
+      "health": 425
+     },
+     {
+      "variant": "Hard Headed",
+      "attack": 13,
+      "health": 425
+     },
+     {
+      "variant": "Pyre Hunter",
+      "attack": 4,
+      "health": 425
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.cael_lord_of_the_cherubs",
+   "name": "Cael, Lord of the Cherubs",
+   "category": "flying_boss",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1800,
+    "covenant": "cov 1+: 22/2500; cov 4+: 22/2800; cov 8+: 22/3100"
+   },
+   "attack": 22,
+   "size": 6,
+   "abilities": [
+    "Holy Feed:",
+    "Resolve: Grant Damage Shield 1 to the front non-boss enemy unit.",
+    "Nourishing Feed:",
+    "Resolve: Grant +35 Health and Spikes 4 to the front non-boss enemy unit.",
+    "Vampiric Feed:",
+    "Resolve: Grant +7 Attack and Lifesteal 1 to the front non-boss enemy unit."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Holy Feed Cael and his cherubs grant Damage Shield 1 to enemy units. | Nourishing Feed Cael and his cherubs grant +35 Health and Spikes 4 to enemy units. | Vampiric Feed Cael and his cherubs grant +7 Attack and Lifesteal 1 to enemy units. | Holy Feed II Cael and his cherubs grant Damage Shield 1 and Spell Shield 1 to enemy units. | Nourishing Feed II Cael and his cherubs grant +50 Health and Spikes 6 to enemy units. | Vampiric Feed II Cael and his cherubs grant +12 Attack and Lifesteal 1 to enemy units. Wiki: Cael, Lord of the Cherubs is a major boss in Monster Train 2, and can be fought in Ring 6. He summons Cherubs which cannot attack, but provide buffs to other units by being Eaten, similar to Morsels. Cael himself can both eat Cherubs and provide buffs to other units. Cael and his Cherubs appears as one of three variants.",
+   "waves": [
+    "R6: Any combat titled Cael, Lord of the Cherubs"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Cael, Lord of the Cherubs",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Damage Shield",
+     "Lifesteal",
+     "Resolve",
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.holy_cherub",
+   "name": "Holy Cherub",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 60,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Buffet 3.",
+    "Eaten: Grant Damage Shield 1. Deal 20 damage to self."
+   ],
+   "pattern": "Spawned by a boss (not part of the wave list); see the parent boss. Wiki: In this variant, Cael and his Holy Cherubs grant Damage Shield 1 to enemy units. If the Titan Trial is activated, they also grant Spell Shield 1.",
+   "waves": [
+    "R6 Holy Feed (wave 1, 2, 3, 4, 5, 6, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Cael, Lord of the Cherubs",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Buffet",
+     "Damage Shield",
+     "Eaten"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.nourishing_cherub",
+   "name": "Nourishing Cherub",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Buffet 3.",
+    "Eaten: Grant 35 Health and Spikes 4. Deal 10 damage to self."
+   ],
+   "pattern": "Spawned by a boss (not part of the wave list); see the parent boss. Wiki: In this variant, Cael and his Nourishing Cherubs grant 35 Health and Spikes 4 to enemy units. If the Titan Trial is activated, they grant 50 Health and Spikes 6.",
+   "waves": [
+    "R6 Nourishing Feed (wave 1, 2, 3, 4, 5, 6, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Cael, Lord of the Cherubs",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Buffet",
+     "Eaten",
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.vampiric_cherub",
+   "name": "Vampiric Cherub",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Buffet 3.",
+    "Eaten: Grant +7 Attack and Lifesteal 1. Deal 10 damage to self."
+   ],
+   "pattern": "Spawned by a boss (not part of the wave list); see the parent boss. Wiki: In this variant, Cael and his Vampiric Cherubs grant +7 Attack and Lifesteal 1 to enemy units. If the Titan Trial is activated, they grant +12 Attack instead.",
+   "waves": [
+    "R6 Vampiric Feed (wave 1, 2, 3, 4, 5, 6, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Cael, Lord of the Cherubs",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Buffet",
+     "Eaten",
+     "Lifesteal"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.scarred_sentinel",
+   "name": "Scarred Sentinel",
+   "category": "normal",
+   "area": "Rings 4, 6, 8, 9",
+   "hp": {
+    "base": 80,
+    "covenant": "cov 1+: 6/110; cov 8+: 6/140"
+   },
+   "attack": 6,
+   "size": 2,
+   "abilities": [
+    "Resolve: Gain Titanskin 5."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Scarred Sentinel is an enemy in Monster Train 2. It is a tanky enemy that gains Titanskin as it ascends the train.",
+   "waves": [
+    "R4 Dire Defenses (wave 1, 2, 3, 4, 5, 6)",
+    "R6 Inevitability (wave 2, 3, 5, 6, 8)",
+    "R6 Vampiric Feed (wave 2, 4, 6)",
+    "R8 Harbinger of Entropy (wave 2, 6, 8)",
+    "R9 Clash with the Titans (wave 5, 9)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Scarred Sentinel",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Resolve",
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.vicious_axethrower",
+   "name": "Vicious Axethrower",
+   "category": "normal",
+   "area": "Rings 4, 5, 6",
+   "hp": {
+    "base": 3,
+    "covenant": "cov 1+: 7/3; cov 8+: 8/3"
+   },
+   "attack": 6,
+   "size": 1,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Vicious Axethrower is an enemy in Monster Train 2. It is a basic backline enemy in Rings 4-6.",
+   "waves": [
+    "R4 Dire Defenses (wave 1, 2, 3, 4, 5)",
+    "R4 Savagery's Hunters (wave 1, 3, 4, 5, 6)",
+    "R5 Relentless Zealots (wave 2, 3, 4, 5)",
+    "R6 Bloody Harvest (wave 2, 3, 5, 8)",
+    "R6 Inevitability (wave 1, 2, 4, 5, 7, 8)",
+    "R6 Vampiric Feed (wave 1, 3, 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Vicious Axethrower",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Savagery",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.disciple_of_ruin",
+   "name": "Disciple of Ruin",
+   "category": "normal",
+   "area": "Rings 4, 6",
+   "hp": {
+    "base": 5,
+    "covenant": null
+   },
+   "attack": null,
+   "size": 1,
+   "abilities": [
+    "Recover: Restore 25 Health to enemy units after combat."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Disciple of Ruin is an enemy in Monster Train 2. It is a backline healer, essentially a more powerful Ominous Acolyte.",
+   "waves": [
+    "R4 Dire Defenses (wave 2, 4, 5, 6)",
+    "R6 Bloody Harvest (wave 2, 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Disciple of Ruin",
+    "roles": [
+     "cleric"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Recover"
+    ],
+    "variants": [
+     {
+      "variant": "25[[file",
+      "attack": null,
+      "health": 5
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.misshapen_fiend",
+   "name": "Misshapen Fiend",
+   "category": "normal",
+   "area": "Rings 3, 4, 5, 6, 8, 9",
+   "hp": {
+    "base": 3,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [
+    "Extinguish: Apply Corruption 3 to your front unit."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Misshapen Fiend is an enemy in Monster Train 2. They always spawn in groups, and apply Corruption 3 to your front unit on death. They appear in the Mark of Invasion trial in Rings 4 and 5.",
+   "waves": [
+    "R3 Corrupted Mass (wave 3, 4, 5)",
+    "R4 Hordes of Heaven (wave 1, 3, 6)",
+    "R6 Nourishing Feed (wave 1, 3, 6)",
+    "R8 Chosen of Dominion (wave 1, 2, 3, 4, 5, 6, 8)",
+    "R9 Clash with the Titans (wave 2)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Misshapen Fiend",
+    "roles": [
+     "horde",
+     "trial spawn"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Corruption",
+     "Extinguish"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.fallen_executioner",
+   "name": "Fallen Executioner",
+   "category": "normal",
+   "area": "Rings 4, 5, 6",
+   "hp": {
+    "base": 120,
+    "covenant": "cov 1+: 6/150; cov 8+: 6/180"
+   },
+   "attack": 6,
+   "size": 2,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Fallen Executioner is an enemy in Monster Train 2. It is a basic tank enemy in Rings 4-6.",
+   "waves": [
+    "R4 Hordes of Heaven (wave 2, 4, 5)",
+    "R4 Penance Seekers (wave 1, 2, 3)",
+    "R5 Unholy Alliances (wave 1, 2, 3, 4, 5)",
+    "R6 Doombringers (wave 3, 5)",
+    "R6 Holy Feed (wave 1, 2, 3, 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Fallen Executioner",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Savagery",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.malevolent_hunter",
+   "name": "Malevolent Hunter",
+   "category": "normal",
+   "area": "Rings 4, 5, 6",
+   "hp": {
+    "base": 2,
+    "covenant": "cov 1+: 5/2; cov 8+: 6/2"
+   },
+   "attack": 4,
+   "size": 1,
+   "abilities": [
+    "Haste."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Malevolent Hunter is an enemy in Monster Train 2. It is a backline enemy that enters with Haste.",
+   "waves": [
+    "R4 Hordes of Heaven (wave 2, 4, 5)",
+    "R5 Unholy Alliances (wave 1, 2, 4)",
+    "R6 Bloody Harvest (wave 1, 4, 7)",
+    "R6 Holy Feed (wave 1)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Malevolent Hunter",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Haste"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.profane_supplicant",
+   "name": "Profane Supplicant",
+   "category": "normal",
+   "area": "Rings 4, 6, 9",
+   "hp": {
+    "base": 4,
+    "covenant": "cov 1+: 4/4; cov 8+: 5/4"
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Resolve: Add a Discordant Toll card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Profane Supplicant is an enemy in Monster Train 2. It is a backline enemy that pollutes your draw with Discordant Toll.",
+   "waves": [
+    "R4 Penance Seekers (wave 1, 2, 3, 4, 5, 6)",
+    "R6 Nourishing Feed (wave 2, 4, 5, 7)",
+    "R9 Clash with the Titans (wave 2)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Profane Supplicant",
+    "roles": [
+     "mage"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_supplicant",
+   "name": "Chosen Supplicant",
+   "category": "elite",
+   "area": "Rings 6, 8, 9",
+   "hp": {
+    "base": 35,
+    "covenant": null
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [
+    "Resolve: Add a Discordant Toll card to the top of your draw pile and to a random location in your draw pile."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Supplicants replace the first two Profane Supplicants in Nourishing Feed. A total of five Chosen Supplicants appear in Chosen of Dominion - two appearing as extra, and three replacing Discordant Heretics. It also replaces the Profane Supplicant in Clash with the Titans. The Chosen Supplicant has much higher Health and shuffles two Discordant Tolls into your deck instead of just one.",
+   "waves": [
+    "R6 Nourishing Feed (wave 2, 4)",
+    "R8 Chosen of Dominion (wave 2, 4, 5, 6, 7, 8)",
+    "R9 Clash with the Titans (wave 2)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Profane Supplicant",
+    "roles": [
+     "mage"
+    ],
+    "titan": null,
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.adamant_shieldbearer",
+   "name": "Adamant Shieldbearer",
+   "category": "normal",
+   "area": "Rings 4, 5, 6",
+   "hp": {
+    "base": 30,
+    "covenant": "cov 8+: 1/30"
+   },
+   "attack": 0,
+   "size": 3,
+   "abilities": [
+    "Incant: Apply Sap 2 to your units."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Adamant Shieldbearer is an enemy in Monster Train 2. They are tanky enemies that appear in the frontlines, and apply Sap to your units if you Incant on their floor.",
+   "waves": [
+    "R4 Penance Seekers (wave 2, 4, 5)",
+    "R5 Corrupted Crusade (wave 2, 4, 5)",
+    "R5 Relentless Zealots (wave 1, 3, 6)",
+    "R5 Undying Minions (wave 2, 4, 5)",
+    "R6 Doombringers (wave 2, 5, 6, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Adamant Shieldbearer",
+    "roles": [
+     "shieldguard"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Incant",
+     "Sap"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_shieldbearer",
+   "name": "Chosen Shieldbearer",
+   "category": "elite",
+   "area": "Rings 3, 6",
+   "hp": {
+    "base": 100,
+    "covenant": null
+   },
+   "attack": 1,
+   "size": 3,
+   "abilities": [
+    "Incant: Apply Sap 2 to your units and an additional Sap 2 to your champion."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Shieldbearers replace two frontline enemies in the Ring 3 Hard Headed combat, and two Adamant Shieldbearers in the Ring 6 Doombringers combat. They have much higher Health than Adamant Shieldbearers, making Piercing spells less effective. They also apply additional Sap to your Champion if it is on the floor.",
+   "waves": [
+    "R3 Hard Headed (wave 2, 5)",
+    "R6 Doombringers (wave 2, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Adamant Shieldbearer",
+    "roles": [
+     "shieldguard"
+    ],
+    "titan": null,
+    "keywords": [
+     "Incant",
+     "Sap"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.ravenous_zealot",
+   "name": "Ravenous Zealot",
+   "category": "normal",
+   "area": "Rings 4, 5, 6, 9",
+   "hp": {
+    "base": 110,
+    "covenant": "cov 1+: 3/140; cov 8+: 3/170"
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Multistrike 1.",
+    "Harvest: +1 Attack."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Ravenous Zealot is an enemy in Monster Train 2 that primarily appears in Rings 4-6. It is a tanky enemy that can deal very high damage if allowed to Harvest.",
+   "waves": [
+    "R4 Savagery's Hunters (wave 1, 2, 3, 4, 5)",
+    "R5 Relentless Zealots (wave 1, 2, 3, 4, 5)",
+    "R5 Undying Minions (wave 1, 2, 3, 4, 5, 6)",
+    "R6 Bloody Harvest (wave 2, 3, 5, 6, 8)",
+    "R6 Vampiric Feed (wave 1, 3, 5, 7)",
+    "R8 Champion of Savagery (wave 5)",
+    "R9 Clash with the Titans (wave 3, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ravenous Zealot",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Harvest",
+     "Multistrike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_zealot",
+   "name": "Chosen Zealot",
+   "category": "elite",
+   "area": "Rings 6, 8, 9",
+   "hp": {
+    "base": 310,
+    "covenant": null
+   },
+   "attack": 4,
+   "size": 2,
+   "abilities": [
+    "Multistrike 2.",
+    "Harvest: +2 Attack."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Zealots appear in the Bloody Harvest fight, the Champion of Savagery fight, and the Titans fight. They have much higher Health, an additional stack of Multistrike, and gain more Attack on Harvest.",
+   "waves": [
+    "R6 Bloody Harvest (wave 3, 6)",
+    "R8 Champion of Savagery (wave 2, 6)",
+    "R9 Clash with the Titans (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ravenous Zealot",
+    "roles": [
+     "heavy"
+    ],
+    "titan": null,
+    "keywords": [
+     "Harvest",
+     "Multistrike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.sharp_eye_sniper",
+   "name": "Sharp-Eye Sniper",
+   "category": "normal",
+   "area": "Rings 4, 5, 6, 9",
+   "hp": {
+    "base": 3,
+    "covenant": "cov 1+: 8/3; cov 8+: 9/3"
+   },
+   "attack": 7,
+   "size": 1,
+   "abilities": [
+    "Slay: Gain Rage 3."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Sharp-Eye Sniper is an enemy in Monster Train 2. It is a backline enemy that gets stronger on Slay.",
+   "waves": [
+    "R4 Savagery's Hunters (wave 2, 3, 4)",
+    "R5 Corrupted Crusade (wave 1, 2, 4)",
+    "R6 Doombringers (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "R6 Holy Feed (wave 2, 3, 4, 5, 6, 7)",
+    "R6 Inevitability (wave 3, 6)",
+    "R9 Clash with the Titans (wave 6)",
+    "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 3)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Sharp-Eye Sniper",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Rage",
+     "Slay"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_sniper",
+   "name": "Chosen Sniper",
+   "category": "elite",
+   "area": "Rings 6, 9",
+   "hp": {
+    "base": 75,
+    "covenant": null
+   },
+   "attack": 10,
+   "size": 1,
+   "abilities": [
+    "Rage 2. Slay: Gain Rage 4."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Snipers replace some Sharp-Eye Snipers in Holy Feed and Inevitability, and the Sharp-Eye Sniper in Clash with the Titans. The Chosen Sniper has much higher Health than the Sharp-Eye Sniper, starts with Rage 2, and gets slightly more Rage on Slay.",
+   "waves": [
+    "R6 Holy Feed (wave 2, 4, 6)",
+    "R6 Inevitability (wave 3, 6)",
+    "R9 Clash with the Titans (wave 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Sharp-Eye Sniper",
+    "roles": [
+     "attacker"
+    ],
+    "titan": null,
+    "keywords": [
+     "Rage",
+     "Slay"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.blightbound_guardian",
+   "name": "Blightbound Guardian",
+   "category": "normal",
+   "area": "Rings 5, 6, 8, 9",
+   "hp": {
+    "base": 70,
+    "covenant": "cov 1+: 3/100; cov 8+: 3/130"
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Strike: Apply Corruption 3."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Blightbound Guardian is an enemy in Monster Train 2. It is a relatively tanky enemy that applies Corruption to your front unit on Strike.",
+   "waves": [
+    "R5 Corrupted Crusade (wave 1, 2, 3, 4, 5, 6)",
+    "R6 Nourishing Feed (wave 1, 2, 3, 4, 5, 6, 7)",
+    "R8 Chosen of Dominion (wave 1, 2, 4, 5, 6, 7, 8)",
+    "R9 Clash with the Titans (wave 2, 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Blightbound Guardian",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Corruption",
+     "Strike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.undying_wretch",
+   "name": "Undying Wretch",
+   "category": "normal",
+   "area": "Ring 5",
+   "hp": {
+    "base": 4,
+    "covenant": null
+   },
+   "attack": 4,
+   "size": 1,
+   "abilities": [
+    "Reanimate 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Undying Wretch is an enemy in Monster Train 2. It cannot be killed in a single hit due to Reanimate.",
+   "waves": [
+    "R5 Undying Minions (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Undying Wretch",
+    "roles": [
+     "horde"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Reanimate"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.harpist_protector",
+   "name": "Harpist Protector",
+   "category": "normal",
+   "area": "Rings 5, 6, 8",
+   "hp": {
+    "base": 10,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Enchant: Grant enemy units Titanskin 5."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Harpist Protector is an enemy in Monster Train 2. It grants enemy units Titanskin 5.",
+   "waves": [
+    "R5 Unholy Alliances (wave 1, 2, 3, 4, 5, 6)",
+    "R6 Doombringers (wave 2, 4, 6, 7)",
+    "R8 Champion of Savagery (wave 2, 4, 5, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Harpist Protector",
+    "roles": [
+     "enchanter"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Enchant",
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.celestial_bastion",
+   "name": "Celestial Bastion",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 3,
+   "abilities": [
+    "Titanskin 10."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Celestial Bastion is an enemy in Monster Train 2. It is a tanky frontline enemy with Titanskin 10, making low-damage units and spells ineffective.",
+   "waves": [
+    "R7 Armored Legion (wave 1, 3, 4, 7)",
+    "R7 Dominion's Disdain (wave 1, 3, 4)",
+    "R7 Draining Ardents (wave 1, 3, 4, 7)",
+    "R8 Harbinger of Entropy (wave 1, 3, 5, 6, 7)",
+    "R9 Clash with the Titans (wave 5, 9)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Celestial Bastion",
+    "roles": [
+     "shieldguard"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_bastion",
+   "name": "Chosen Bastion",
+   "category": "elite",
+   "area": "Rings 6, 8",
+   "hp": {
+    "base": 50,
+    "covenant": null
+   },
+   "attack": 9,
+   "size": 3,
+   "abilities": [
+    "Titanskin 15.",
+    "Enchant: Grant enemy units Titanskin 5."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Bastions replace two Scarred Sentinels in the Vampiric Feed fight and two Celestial Bastions in the Harbinger of Entropy fight. Unlike Celestial Bastions, Chosen Bastions have a respectable 9 Attack. They also are tankier and grant Titanskin to the floor.",
+   "waves": [
+    "R6 Vampiric Feed (wave 2, 4)",
+    "R8 Harbinger of Entropy (wave 5, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Celestial Bastion",
+    "roles": [
+     "shieldguard"
+    ],
+    "titan": null,
+    "keywords": [
+     "Enchant",
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.deformed_duo",
+   "name": "Deformed Duo",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 10,
+    "covenant": "cov 1+: 8/10; cov 8+: 9/10"
+   },
+   "attack": 7,
+   "size": 1,
+   "abilities": [
+    "Reanimate 2.",
+    "Strike: Apply Corruption 6."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Deformed Duo is an enemy in Monster Train 2. It is a resilient backline enemy with Reanimate that applies Corruption on Strike.",
+   "waves": [
+    "R7 Armored Legion (wave 1, 2, 3, 4, 5, 6)",
+    "R7 Dominion's Disdain (wave 1, 4, 5, 6)",
+    "R7 Draining Ardents (wave 1, 2, 4, 5, 6)",
+    "R8 Chosen of Dominion (wave 2, 3, 4, 5, 6, 7, 8)",
+    "R9 Clash with the Titans (wave 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Deformed Duo",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Corruption",
+     "Reanimate",
+     "Strike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.discordant_heretic",
+   "name": "Discordant Heretic",
+   "category": "normal",
+   "area": "Rings 7, 8",
+   "hp": {
+    "base": 20,
+    "covenant": "cov 1+: 5/20; cov 8+: 6/20"
+   },
+   "attack": 4,
+   "size": 2,
+   "abilities": [
+    "Resolve: Add a Resonant Ruin card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Discordant Heretic is an enemy in Monster Train 2. It is a backline enemy that pollutes your draw with Resonant Ruin.",
+   "waves": [
+    "R7 Dominion's Disdain (wave 1, 2, 3, 4, 5, 6, 7)",
+    "R8 Chosen of Dominion (wave 1, 3, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Discordant Heretic",
+    "roles": [
+     "mage"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.avowed_gladiator",
+   "name": "Avowed Gladiator",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 325,
+    "covenant": "cov 1+: 8/375; cov 8+: 9/500"
+   },
+   "attack": 8,
+   "size": 2,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Avowed Gladiator is an enemy in Monster Train 2. They are a common tank enemy in Rings 7-9, and have the highest Health of any non-boss enemy in the game.",
+   "waves": [
+    "R7 Armored Legion (wave 2, 3, 5, 6)",
+    "R7 Dominion's Disdain (wave 2, 3, 4, 5, 6)",
+    "R7 Draining Ardents (wave 2, 3, 5, 6)",
+    "R7 Purified Hordes (wave 3, 4, 5, 6)",
+    "R7 Savagery's Final Assault (wave 1, 3, 4)",
+    "R8 Champion of Savagery (wave 1, 3, 4, 5, 6, 7)",
+    "R8 Chosen of Dominion (wave 3, 4, 5, 6, 7, 8)",
+    "R8 Harbinger of Entropy (wave 3, 4, 5, 6, 7, 8)",
+    "R9 Clash with the Titans (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Avowed Gladiator",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Savagery",
+    "keywords": [],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.purified_soul",
+   "name": "Purified Soul",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 1,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 1,
+   "abilities": [
+    "Spell Shield 2."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Purified Soul is an enemy in Monster Train 2. They always spawn in groups and appear in the Mark of Invasion trial in Ring 7. Despite being extremely fragile at only 1 Health, their Spell Shield 2 greatly limits your options for killing them.",
+   "waves": [
+    "R7 Purified Hordes (wave 1, 2, 3, 4, 5, 7)",
+    "R8 Harbinger of Entropy (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "R9 Clash with the Titans (wave 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Purified Soul",
+    "roles": [
+     "horde",
+     "trial spawn"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Spell Shield"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.deafening_herald",
+   "name": "Deafening Herald",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 8,
+    "covenant": "cov 8+: 1/8"
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Enchant: Grant your units Silence."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Deafening Herald is an enemy in Monster Train 2. It is a backline unit that applies Silence to your units on its floor, preventing them from using Triggers, Abilities, and Enchant effects.",
+   "waves": [
+    "R7 Purified Hordes (wave 1, 4, 6)",
+    "R8 Harbinger of Entropy (wave 2, 5, 7)",
+    "R9 Clash with the Titans (wave 9)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Deafening Herald",
+    "roles": [
+     "enchanter"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Enchant",
+     "Silence"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_herald",
+   "name": "Chosen Herald",
+   "category": "elite",
+   "area": "Ring 9",
+   "hp": {
+    "base": 60,
+    "covenant": null
+   },
+   "attack": 1,
+   "size": 1,
+   "abilities": [
+    "Stealth 2.",
+    "Enchant: Grant your units Silence."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, the Deafening Herald in Clash with the Titans is replaced by a Chosen Herald. The Chosen Herald has significantly more Health and enters with Stealth 2, making it much harder to kill.",
+   "waves": [
+    "R9 Clash with the Titans (wave 9)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Deafening Herald",
+    "roles": [
+     "enchanter"
+    ],
+    "titan": null,
+    "keywords": [
+     "Enchant",
+     "Silence",
+     "Stealth"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.enthralled_ardent",
+   "name": "Enthralled Ardent",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 15,
+    "covenant": null
+   },
+   "attack": null,
+   "size": 2,
+   "abilities": [
+    "Recover: Restore 40 Health to enemy units after combat.",
+    "Incant: Grant non-boss enemy units 5 Attack."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Enthralled Ardent is an enemy in Monster Train 2. It is a backline healer that applies Attack to enemy units when you Incant on its floor.",
+   "waves": [
+    "R7 Draining Ardents (wave 1, 3, 5, 7)",
+    "R7 Purified Hordes (wave 2, 3, 5)",
+    "R8 Harbinger of Entropy (wave 1, 3, 4, 6, 8)",
+    "R9 Clash with the Titans (wave 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Enthralled Ardent",
+    "roles": [
+     "cleric"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Incant",
+     "Recover"
+    ],
+    "variants": [
+     {
+      "variant": "40[[file",
+      "attack": null,
+      "health": 15
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_ardent",
+   "name": "Chosen Ardent",
+   "category": "elite",
+   "area": "Rings 8, 9",
+   "hp": {
+    "base": 120,
+    "covenant": null
+   },
+   "attack": null,
+   "size": 2,
+   "abilities": [
+    "Recover: Restore 50 Health to enemy units after combat.",
+    "Incant: Grant non-boss enemy units on all floors 5 Attack."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, Chosen Ardents replace some of the Enthralled Ardents in Harbinger of Entropy and the Enthralled Ardent in Clash with the Titans. They have significantly more Health and buff the Attack of all enemies on the train instead of just on their floor.",
+   "waves": [
+    "R8 Harbinger of Entropy (wave 2, 4, 6, 8)",
+    "R9 Clash with the Titans (wave 5)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Enthralled Ardent",
+    "roles": [
+     "cleric"
+    ],
+    "titan": null,
+    "keywords": [
+     "Incant",
+     "Recover"
+    ],
+    "variants": [
+     {
+      "variant": "50[[file",
+      "attack": null,
+      "health": 120
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.ragewing_assassin",
+   "name": "Ragewing Assassin",
+   "category": "normal",
+   "area": "Rings 7, 8, 9",
+   "hp": {
+    "base": 5,
+    "covenant": "cov 1+: 6/5; cov 8+: 7/5"
+   },
+   "attack": 5,
+   "size": 1,
+   "abilities": [
+    "Sweep."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Ragewing Assassin is an enemy in Monster Train 2. It is a backline enemy notable for its Sweep ability.",
+   "waves": [
+    "R7 Savagery's Final Assault (wave 1, 2, 4, 5, 6, 7)",
+    "R8 Champion of Savagery (wave 1, 2, 3, 4, 5, 6, 7)",
+    "R9 Clash with the Titans (wave 3, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ragewing Assassin",
+    "roles": [
+     "attacker"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Sweep"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_assassin",
+   "name": "Chosen Assassin",
+   "category": "elite",
+   "area": "Rings 8, 9",
+   "hp": {
+    "base": 50,
+    "covenant": null
+   },
+   "attack": 7,
+   "size": 1,
+   "abilities": [
+    "Sweep. Multistrike 1.",
+    "Strike: Gain Rage 1."
+   ],
+   "pattern": "Covenant 10 'Chosen' elite: a much tougher version of a wave enemy added to the flying-boss battles (Rings 3, 6, 8); behaves like a normal wave enemy. Wiki: At Covenant 10, four Chosen Assassins are added to the Champion of Savagery fight, and one Ragewing Assassin is replaced with a Chosen Assassin in the third wave of Clash with the Titans. Chosen Assassins have significantly more Health and deal significantly more damage to your units.",
+   "waves": [
+    "R8 Champion of Savagery (wave 1, 4, 7, 8)",
+    "R9 Clash with the Titans (wave 3)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ragewing Assassin",
+    "roles": [
+     "attacker"
+    ],
+    "titan": null,
+    "keywords": [
+     "Multistrike",
+     "Rage",
+     "Strike",
+     "Sweep"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.terrifying_amalgam",
+   "name": "Terrifying Amalgam",
+   "category": "normal",
+   "area": "Rings 7, 8",
+   "hp": {
+    "base": 250,
+    "covenant": "cov 1+: 5/300; cov 8+: 6/425"
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [
+    "Resolve: If you have no units on the floor, deals 5 damage to the Pyre."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Terrifying Amalgam is an enemy in Monster Train 2. It is a tanky enemy that unavoidably deals 5 damage to the Pyre on Resolve if no friendly units survive on the floor.",
+   "waves": [
+    "R7 Savagery's Final Assault (wave 2, 3, 5, 6, 7)",
+    "R8 Champion of Savagery (wave 2, 3, 5, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Terrifying Amalgam",
+    "roles": [
+     "heavy"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.yorael_the_first_blessed",
+   "name": "Yorael the First-Blessed",
+   "category": "boss",
+   "area": "Ring 1",
+   "hp": {
+    "base": 125,
+    "covenant": "cov 1+: 8/305; cov 4+: 8/325"
+   },
+   "attack": 7,
+   "size": 5,
+   "abilities": [
+    "Relentless.",
+    "[Covenant 4+] Rage 3. Slay: Gain Rage 1."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Yorael the First-Blessed is one of the possible Ring 1 Bosses. He is a simple, no-frills boss with high immediate damage output.",
+   "waves": [
+    "R1: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Yorael the First-Blessed",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Rage",
+     "Relentless",
+     "Slay"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.astreal_the_lost",
+   "name": "Astreal the Lost",
+   "category": "boss",
+   "area": "Ring 1",
+   "hp": {
+    "base": 180,
+    "covenant": "cov 1+: 9/360; cov 8+: 9/380"
+   },
+   "attack": 8,
+   "size": 5,
+   "abilities": [
+    "Relentless. Sap 6.",
+    "[Covenant 4+] Resolve: Gain Sap 1 and restore 30 Health."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Astreal the Lost is one of the possible Ring 1 Bosses. He cannot attack at first due to his Sap 6, but as combat is dragged out he will quickly become deadly.",
+   "waves": [
+    "R1: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Astreal the Lost",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Relentless",
+     "Resolve",
+     "Sap"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.elebor_the_wall",
+   "name": "Elebor the Wall",
+   "category": "boss",
+   "area": "Ring 2",
+   "hp": {
+    "base": 260,
+    "covenant": "cov 1+: 8/440; cov 8+: 8/460"
+   },
+   "attack": 7,
+   "size": 5,
+   "abilities": [
+    "Relentless.",
+    "Action: Gain Armor 5.",
+    "[Covenant 4+] Titanskin 2.",
+    "[Covenant 4+] Resolve: Gain Damage Shield 1."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Elebor the Wall is one of the possible Ring 2 Bosses. He continually gains Armor while battled, making high damage output paramount.",
+   "waves": [
+    "R2: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Elebor the Wall",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Action",
+     "Armor",
+     "Damage Shield",
+     "Relentless",
+     "Resolve",
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.legion",
+   "name": "Legion",
+   "category": "boss",
+   "area": "Ring 2",
+   "hp": {
+    "base": 260,
+    "covenant": "cov 1+: 5/440; cov 8+: 5/460"
+   },
+   "attack": 4,
+   "size": 5,
+   "abilities": [
+    "Relentless. Spikes 3.",
+    "[Covenant 4+] Resolve: Gain Spikes 1."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Legion is one of the possible Ring 2 Bosses. He starts with Spikes, and gains more of them as he ascends the train, making him very dangerous to fragile backline units.",
+   "waves": [
+    "R2: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Legion",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Relentless",
+     "Resolve",
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.ajax_the_unyielding",
+   "name": "Ajax the Unyielding",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 550,
+    "covenant": "cov 1+: 12/800; cov 4+: 12/900; cov 8+: 12/1000"
+   },
+   "attack": 9,
+   "size": 4,
+   "abilities": [
+    "Relentless. Action: Apply Sap 3 to your units.",
+    "[Covenant 4+] Strike: Apply Sap 3."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Ajax the Unyielding is one of the possible Ring 4 Bosses. He applies significant amounts of Sap to your units in combat.",
+   "waves": [
+    "R4: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Ajax the Unyielding",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Action",
+     "Relentless",
+     "Sap",
+     "Strike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.korin_the_judge",
+   "name": "Korin the Judge",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 600,
+    "covenant": "cov 1+: 11/850; cov 4+: 11/950; cov 8+: 11/1050"
+   },
+   "attack": 8,
+   "size": 4,
+   "abilities": [
+    "Relentless. Summon: Descend all friendly units to this floor and Retreat.",
+    "[Covenant 4+] Summon: Apply Multistrike 1 to all enemy units."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Korin the Judge is one of the possible Ring 4 Bosses. When she appears, all enemies still alive on the train will come to her defense.",
+   "waves": [
+    "R4: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Korin the Judge",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Descend",
+     "Multistrike",
+     "Relentless",
+     "Retreat",
+     "Summon"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.qel_the_corruptor",
+   "name": "Qel the Corruptor",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 700,
+    "covenant": "cov 1+: 15/950; cov 4+: 15/1050; cov 8+: 15/1150"
+   },
+   "attack": 12,
+   "size": 4,
+   "abilities": [
+    "Relentless.",
+    "Incant: Apply Corruption 3 to your units.",
+    "[Covenant 4+] Summon: Apply Corruption 5 to all your units."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Qel the Corruptor is one of the possible Ring 4 Bosses. He applies Corruption to your units on Incant. At Covenant 4 and above, he also applies Corruption to all of your units on all floors as soon as he enters the train.",
+   "waves": [
+    "R4: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Qel the Corruptor",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Corruption",
+     "Incant",
+     "Relentless",
+     "Summon"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.dominion",
+   "name": "Dominion",
+   "category": "final_boss",
+   "area": "Ring 9",
+   "hp": {
+    "base": 1555,
+    "covenant": "cov 4+: 3/2055"
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [
+    "Fate Link. Immobile. Pyre Bound. Spell Shield 4.",
+    "Resolve: Add Pyre Light to your hand. Apply Corruption 5 to your front unit on all floors."
+   ],
+   "pattern": "Ring 9 Titan, fought together with the other two Titans in 'Clash with the Titans' (unlocked by winning all three Titan Trials); each Titan has a unique rule (see pattern). Wiki: Dominion is one of the three Titans battled in Ring 9, and one of the main antagonists of the game. He is themed around control and manipulation. Dominion and the enemies he blesses feature numerous eyes and many green arms. Unlike most major bosses, he does not fly and instead stays within the Pyre Room due to having the status effect Pyre Bound.",
+   "waves": [
+    "R9: Clash with the Titans"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Dominion",
+    "roles": [
+     "boss"
+    ],
+    "titan": "N/A",
+    "keywords": [
+     "Corruption",
+     "Fate Link",
+     "Immobile",
+     "Pyre Bound",
+     "Resolve",
+     "Spell Shield"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.entropy",
+   "name": "Entropy",
+   "category": "final_boss",
+   "area": "Ring 9",
+   "hp": {
+    "base": 3500,
+    "covenant": "cov 4+: 20/4500"
+   },
+   "attack": 15,
+   "size": 6,
+   "abilities": [
+    "Fate Link.",
+    "Immobile.",
+    "Resolve: Add a Curse of Entropy to your deck."
+   ],
+   "pattern": "Ring 9 Titan, fought together with the other two Titans in 'Clash with the Titans' (unlocked by winning all three Titan Trials); each Titan has a unique rule (see pattern). Wiki: Entropy is one of the three Titans battled in Ring 9, and one of the main antagonists of the game. It is themed around inevitability and the void. Entropy and the enemies it blesses feature purple crystals, grey stone or metal elements, and depictions of voids surrounded by accretion disks.",
+   "waves": [
+    "R9: Clash with the Titans"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Entropy",
+    "roles": [
+     "boss"
+    ],
+    "titan": "N/A",
+    "keywords": [
+     "Fate Link",
+     "Immobile",
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.savagery",
+   "name": "Savagery",
+   "category": "final_boss",
+   "area": "Ring 9",
+   "hp": {
+    "base": 2750,
+    "covenant": "cov 4+: 15/3250"
+   },
+   "attack": 10,
+   "size": 1,
+   "abilities": [
+    "Fate Link.",
+    "Live to Fight.",
+    "Trample.",
+    "Resolve: Gain Rage 2. If you have no units on the floor, deals 5 damage to the Pyre.",
+    "Loop: Gain Multistrike 1."
+   ],
+   "pattern": "Ring 9 Titan, fought together with the other two Titans in 'Clash with the Titans' (unlocked by winning all three Titan Trials); each Titan has a unique rule (see pattern). Wiki: Savagery is one of the three Titans battled in Ring 9, and one of the main antagonists of the game. He is themed around rage and combat. Savagery and the enemies he blesses feature heavy armor and fleshy appendages, often with weapons attached. Unlike most major bosses, he does not fly between different floors.",
+   "waves": [
+    "R9 Clash with the Titans (wave 1, 4, 7)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Savagery",
+    "roles": [
+     "boss"
+    ],
+    "titan": "N/A",
+    "keywords": [
+     "Fate Link",
+     "Live to Fight",
+     "Loop",
+     "Multistrike",
+     "Rage",
+     "Resolve",
+     "Trample"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.quoto_the_absolute",
+   "name": "Quoto the Absolute",
+   "category": "boss",
+   "area": "Ring 5",
+   "hp": {
+    "base": 900,
+    "covenant": "cov 1+: 19/1150; cov 4+: 19/1250; cov 8+: 19/1350"
+   },
+   "attack": 16,
+   "size": 4,
+   "abilities": [
+    "Relentless.",
+    "Titanskin 40.",
+    "Revenge: Lose Titanskin 1.",
+    "[Covenant 4+] Resolve: Gain Titanskin 5."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Quoto the Absolute is one of the possible Ring 5 Bosses. He is a tanky boss with a huge amount of Titanskin, but he loses a stack each time he's hit.",
+   "waves": [
+    "R5: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Quoto the Absolute",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Relentless",
+     "Resolve",
+     "Revenge",
+     "Titanskin"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.the_undying_one",
+   "name": "The Undying One",
+   "category": "boss",
+   "area": "Ring 5",
+   "hp": {
+    "base": 500,
+    "covenant": "cov 1+: 20/750; cov 4+: 20/850; cov 8+: 20/950"
+   },
+   "attack": 17,
+   "size": 4,
+   "abilities": [
+    "Relentless. Reanimate 8.",
+    "[Covenant 4+] Resolve: Gain Reanimate 6."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: The Undying One is one of the possible Ring 5 Bosses. They enter with 8 stacks of Reanimate, prolonging the fight even after they have been \"killed.\"",
+   "waves": [
+    "R5: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "The Undying One",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Reanimate",
+     "Relentless",
+     "Resolve"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.athane_last_to_fall",
+   "name": "Athane, Last to Fall",
+   "category": "boss",
+   "area": "Ring 7",
+   "hp": {
+    "base": 1100,
+    "covenant": "cov 1+: 17/1475; cov 4+: 17/1725; cov 8+: 17/2125"
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Relentless.",
+    "Incant: Apply Spikes 1 to enemy units.",
+    "Ascension: Spawn a Chosen Prayerstone."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Athane, Last to Fall is one of the possible Ring 7 Bosses. She protects herself with a Chosen Prayerstone and grants Spikes to enemy units on Incant.",
+   "waves": [
+    "R7: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Athane, Last to Fall",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Incant",
+     "Relentless",
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.chosen_prayerstone",
+   "name": "Chosen Prayerstone",
+   "category": "minion",
+   "area": "Ring 7",
+   "hp": {
+    "base": 250,
+    "covenant": "cov 4+: 0/325; cov 8+: 0/400"
+   },
+   "attack": 0,
+   "size": 3,
+   "abilities": [
+    "Immobile.",
+    "Spikes 7.",
+    "Revenge: Grant boss units on the train +4 Attack.",
+    "[Covenant 4+] Resolve: Grant boss units on the train +15 Attack and +300 Armor."
+   ],
+   "pattern": "Spawned by a boss (not part of the wave list); see the parent boss. Wiki: Athane spawns a tanky Chosen Prayerstone in front of her at the start of each turn. In addition to having Spikes, the Prayerstone grants Attack to Athane whenever it takes damage. At Covenant 4 and above, if the Prayerstone survives combat, it grants Athane additional Attack and Armor.",
+   "waves": [
+    "R7: Any combat accompanying Athane, Last to Fall"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Athane, Last to Fall",
+    "roles": [
+     "boss"
+    ],
+    "titan": "None",
+    "keywords": [
+     "Armor",
+     "Immobile",
+     "Resolve",
+     "Revenge",
+     "Spikes"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.rax_the_overblessed",
+   "name": "Rax the Overblessed",
+   "category": "normal",
+   "area": "Ring 7",
+   "hp": {
+    "base": 1100,
+    "covenant": "cov 1+: 14/1475; cov 4+: 14/1725; cov 8+: 14/2125"
+   },
+   "attack": 9,
+   "size": 5,
+   "abilities": [
+    "Multistrike 1.",
+    "Rage 8",
+    "Regen 20.",
+    "Spell Shield 2.",
+    "Resolve: Gain Rage 8, Regen 20, and Spell Shield 2.",
+    "[Covenant 4+] Resolve: Gain Multistrike 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Rax the Overblessed is one of the possible Ring 7 Bosses. He deals very high damage, strikes twice, and gets even stronger if allowed to Resolve.",
+   "waves": [
+    "R7: Any combat"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Rax the Overblessed",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy, Dominion, Savagery",
+    "keywords": [
+     "Multistrike",
+     "Rage",
+     "Regen",
+     "Resolve",
+     "Spell Shield"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.seraph_aeternus_the_savage",
+   "name": "Seraph Aeternus-The Savage",
+   "category": "flying_boss",
+   "area": "Ring 8",
+   "hp": {
+    "base": 3000,
+    "covenant": "cov 1+: 30/4000; cov 4+: 30/5500; cov 8+: 30/6500"
+   },
+   "attack": 30,
+   "size": 6,
+   "abilities": [
+    "Relentless.",
+    "Enchant: Grant enemy units Rage 3."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Champion of Savagery Seraph enchants enemy units with Rage 3. Your units enter with Melee Weakness 1. | Champion of Savagery II Seraph enchants enemy units with Rage 6. Your units enter with Melee Weakness 2. Wiki: Seraph Aeternus-The Savage is the flying boss of the Ring 8 Champion of Savagery fight. He grants Rage 3 to enemy units on his floor. Additionally, your units enter with Melee Weakness 1. If the Titan Trial is activated, he instead grants Rage 6 and your units enter with Melee Weakness 2.",
+   "waves": [
+    "R8 Champion of Savagery (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Seraph Aeternus-The Savage",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Enchant",
+     "Rage",
+     "Relentless"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.seraph_aeternus_the_dominant",
+   "name": "Seraph Aeternus-The Dominant",
+   "category": "flying_boss",
+   "area": "Ring 8",
+   "hp": {
+    "base": 2800,
+    "covenant": "cov 1+: 20/3800; cov 4+: 20/5300; cov 8+: 20/6300"
+   },
+   "attack": 20,
+   "size": 6,
+   "abilities": [
+    "Relentless.",
+    "Strike: Double Corruption on the attacked unit.",
+    "Action: Apply Corruption 2 to your units."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Chosen of Dominion Seraph applies Corruption 2 to your units each turn and doubles Corruption on Strike. | Chosen of Dominion II Seraph applies Corruption 4 to your units each turn and doubles Corruption on Strike. Wiki: Seraph Aeternus-The Dominant is the flying boss of the Ring 8 Chosen of Dominion fight. He applies Corruption 2 to your units on Action and doubles Corruption on Strike. If the Titan Trial is activated, his Action instead applies Corruption 4. During the Relentless phase, his Action trigger is disabled, but his Strike trigger remains active.",
+   "waves": [
+    "R8 Chosen of Dominion (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Seraph Aeternus-The Dominant",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Action",
+     "Corruption",
+     "Relentless",
+     "Strike"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.seraph_aeternus_the_entropic",
+   "name": "Seraph Aeternus-The Entropic",
+   "category": "flying_boss",
+   "area": "Ring 8",
+   "hp": {
+    "base": 3800,
+    "covenant": "cov 1+: 35/4800; cov 4+: 35/6300; cov 8+: 35/7300"
+   },
+   "attack": 35,
+   "size": 6,
+   "abilities": [
+    "Relentless.",
+    "Resolve: Add a Curse of Entropy card to your deck.",
+    "Enchant: Grant your units Sap 5."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Harbinger of Entropy Seraph enchants your units with Sap 5 and adds a Curse of Entropy to your deck on Resolve. | Harbinger of Entropy II Seraph enchants your units with Sap 10 and adds a Curse of Entropy to your deck on Resolve. Wiki: Seraph Aeternus-The Entropic is the flying boss of the Ring 8 Harbinger of Entropy fight. He pollutes your draw with Curse of Entropy and applies Sap to your units on his floor.",
+   "waves": [
+    "R8 Harbinger of Entropy (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Seraph Aeternus-The Entropic",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Enchant",
+     "Relentless",
+     "Resolve",
+     "Sap"
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.collector",
+   "name": "Collector",
+   "category": "special",
+   "area": "Rings 1, 2, 4, 5, 7",
+   "hp": {
+    "base": 1,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 2,
+   "abilities": [
+    "Resolve: Flees from battle if not Rooted or Dazed.",
+    "Rings 1-2: Extinguish: Gain 50 Gold.",
+    "Rings 4-5: Extinguish: Gain 75 Gold.",
+    "Ring 7: Extinguish: Gain 100 Gold."
+   ],
+   "pattern": "Special spawn (bonus gold carrier or Trial spawn); see pattern. Wiki: The Collector is a special enemy that always appears in Rings 1, 2, 4, 5, and 7. At the start of turn 2 or turn 3 of combat, he spawns at the back of a random enemy floor. Killing him grants between 50 and 100 Gold depending on the Ring. Otherwise, he disappears from combat at the end of the turn. He can also be Rooted or Dazed to prevent him from fleeing. If Dazed, he will not ascend and will instead end up in the front of the floor.",
+   "waves": [
+    "R1: All combats",
+    "R2: All combats",
+    "R4: All combats",
+    "R5: All combats",
+    "R7: All combats"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Collector",
+    "roles": null,
+    "titan": "None",
+    "keywords": [
+     "Dazed",
+     "Extinguish",
+     "Resolve",
+     "Rooted"
+    ],
+    "variants": [
+     {
+      "variant": "Rings 1-2",
+      "attack": 0,
+      "health": 1
+     },
+     {
+      "variant": "Rings 4-5",
+      "attack": 0,
+      "health": 3
+     },
+     {
+      "variant": "Ring 7",
+      "attack": 0,
+      "health": 5
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.penitent_prayerstone",
+   "name": "Penitent Prayerstone",
+   "category": "special",
+   "area": "Rings 4, 5, 7",
+   "hp": {
+    "base": 100,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 3,
+   "abilities": [
+    "Immobile.",
+    "Rings 4-5: Spikes 4.",
+    "Ring 7: Spikes 6."
+   ],
+   "pattern": "Special spawn (bonus gold carrier or Trial spawn); see pattern. Wiki: The Penitent Prayerstone is a special enemy featured in the Thorn Guard trial on Rings 4, 5, and 7. At the start of combat, a Prayerstone spawns at the front of each floor. The Prayerstones have high Health and Spikes. Most units will be forced to fight through them before being reaching the enemy waves, taking Spikes damage in the process.",
+   "waves": [
+    "R4: Thorn Guard",
+    "R5: Thorn Guard",
+    "R7: Thorn Guard"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Penitent Prayerstone",
+    "roles": [
+     "trial spawn"
+    ],
+    "titan": "None",
+    "keywords": [
+     "Immobile",
+     "Spikes"
+    ],
+    "variants": [
+     {
+      "variant": "Rings 4-5",
+      "attack": 0,
+      "health": 100
+     },
+     {
+      "variant": "Ring 7",
+      "attack": 0,
+      "health": 200
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.skull_collector",
+   "name": "Skull Collector",
+   "category": "special",
+   "area": "Rings 1, 2, 4, 5, 7",
+   "hp": {
+    "base": 11,
+    "covenant": null
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [
+    "Rings 1-2: Extinguish: Gain 50 Gold.",
+    "Rings 4-5: Extinguish: Gain 75 Gold.",
+    "Ring 7: Extinguish: Gain 100 Gold."
+   ],
+   "pattern": "Special spawn (bonus gold carrier or Trial spawn); see pattern. Wiki: The Skull Collector is a special enemy that replaces the Collector when the Skull Collectors Mutator is enabled. Its behavior is identical to the Collector, but it never retreats from combat and it has increased stats.",
+   "waves": [
+    "R1: All combats",
+    "R2: All combats",
+    "R4: All combats",
+    "R5: All combats",
+    "R7: All combats"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Skull Collector",
+    "roles": null,
+    "titan": "None",
+    "keywords": [
+     "Extinguish"
+    ],
+    "variants": [
+     {
+      "variant": "Rings 1-2",
+      "attack": 5,
+      "health": 11
+     },
+     {
+      "variant": "Rings 4-5",
+      "attack": 10,
+      "health": 23
+     },
+     {
+      "variant": "Ring 7",
+      "attack": 15,
+      "health": 35
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.fleshweaver",
+   "name": "Fleshweaver",
+   "category": "flying_boss",
+   "area": "Ring 3",
+   "hp": {
+    "base": 500,
+    "covenant": "cov 1+: Corrupted Mass: 7/680; Spiked Mass: 7/680; More Mass: 7/780; cov 4+: Corrupted Mass: 7/680; Spiked Mass: 7/680; More Mass: 7/780; cov 8+: Corrupted Mass: 7/700; Spiked Mass: 7/700; More Mass: 7/800"
+   },
+   "attack": 6,
+   "size": 6,
+   "abilities": [
+    "Mass 5. Revenge: Create a Fleshling and lose Mass 1.",
+    "Corrupted Mass: -",
+    "Spiked Mass: -",
+    "More Mass: Mass 3."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): More Mass Fleshlings have 5 Attack and 5 Health. Fleshweaver has 3 more stacks of Mass. | Corrupted Mass II Fleshlings have 5 Attack and 5 Health and apply Corruption 2 on death to the unit that killed it. Fleshweaver has 4 more stacks of Mass. | Spiked Mass II Fleshlings have 3 Attack and 9 Health and gain Spikes 2. Fleshweaver has 4 more stacks of Mass. | More Mass II Fleshlings have 7 Attack and 7 Health. Fleshweaver has 7 more stacks of Mass. Wiki: Fleshweaver is a major boss of Ring 3. He starts with many stacks of Mass, which raise his Attack, and which are lost on taking damage to spawn Fleshlings. He appears as one of three variants.",
+   "waves": [
+    "R3 Corrupted Mass (wave 6)",
+    "R3 More Mass (wave 6)",
+    "R3 Spiked Mass (wave 6)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Fleshweaver",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Mass",
+     "Revenge"
+    ],
+    "variants": [
+     {
+      "variant": "Corrupted Mass",
+      "attack": 6,
+      "health": 500
+     },
+     {
+      "variant": "Spiked Mass",
+      "attack": 6,
+      "health": 500
+     },
+     {
+      "variant": "More Mass",
+      "attack": 6,
+      "health": 600
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.fleshling",
+   "name": "Fleshling",
+   "category": "minion",
+   "area": "Ring 3",
+   "hp": {
+    "base": 3,
+    "covenant": "cov 4+: Corrupted Mass: 3/3; Spiked Mass: 2/5; More Mass: 5/5; cov 8+: Corrupted Mass: 3/3; Spiked Mass: 2/5; More Mass: 5/5"
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [
+    "Corrupted Mass: Rooted 1. Extinguish: Apply Corruption 1 to the unit that killed it.",
+    "Spiked Mass: Rooted 1. Spikes 1.",
+    "More Mass: Rooted 1."
+   ],
+   "pattern": "Spawned by a boss (not part of the wave list); see the parent boss.",
+   "waves": [
+    "R3: Any combat accompanying Fleshweaver"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Fleshweaver",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Dominion",
+    "keywords": [
+     "Corruption",
+     "Extinguish",
+     "Mass",
+     "Rooted",
+     "Spikes"
+    ],
+    "variants": [
+     {
+      "variant": "Corrupted Mass",
+      "attack": 3,
+      "health": 3
+     },
+     {
+      "variant": "Spiked Mass",
+      "attack": 2,
+      "health": 5
+     },
+     {
+      "variant": "More Mass",
+      "attack": 5,
+      "health": 5
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.stryx",
+   "name": "Stryx",
+   "category": "flying_boss",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1100,
+    "covenant": "cov 1+: Bloody Harvest: 16/1350; Doombringers: 16/1350; Inevitability: 16/1350; cov 4+: Bloody Harvest: 16/1450; Doombringers: 16/1450; Inevitability: 16/1450; cov 8+: Bloody Harvest: 16/1550; Doombringers: 16/1550; Inevitability: 16/1550"
+   },
+   "attack": 13,
+   "size": 6,
+   "abilities": [
+    "Multistrike 1. Live to Fight. Extinguish: Hallow gains Multistrike 1. Relentless begins next turn.",
+    "Bloody Harvest: Revenge: Hallow gains +1 Attack.",
+    "Doombringers: Slay: Hallow gains +3 Attack.",
+    "Inevitability: Loop: Hallow gains +8 Attack."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Stryx is a major boss of Ring 6. She appears as one of three variants, always together with Hallow. Unlike most major bosses, she does not fly and instead moves around the train cycling back to the first floor due to having the status effect Live to Fight.",
+   "waves": [
+    "R6 Bloody Harvest (wave 1, 4, 7, 8)",
+    "R6 Doombringers (wave 1, 4, 7, 8)",
+    "R6 Inevitability (wave 1, 4, 7, 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Stryx",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Savagery",
+    "keywords": [
+     "Extinguish",
+     "Harvest",
+     "Live to Fight",
+     "Loop",
+     "Multistrike",
+     "Relentless",
+     "Revenge",
+     "Slay"
+    ],
+    "variants": [
+     {
+      "variant": "Bloody Harvest",
+      "attack": 13,
+      "health": 1100
+     },
+     {
+      "variant": "Doombringers",
+      "attack": 13,
+      "health": 1100
+     },
+     {
+      "variant": "Inevitability",
+      "attack": 13,
+      "health": 1100
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.hallow",
+   "name": "Hallow",
+   "category": "flying_boss",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1250,
+    "covenant": "cov 1+: Bloody Harvest: 14/1500; Doombringers: 14/1500; Inevitability: 14/1500; cov 4+: Bloody Harvest: 14/1600; Doombringers: 14/1600; Inevitability: 14/1600; cov 8+: Bloody Harvest: 14/1700; Doombringers: 14/1700; Inevitability: 14/1700"
+   },
+   "attack": 11,
+   "size": 6,
+   "abilities": [
+    "Titanskin 10. Extinguish: Stryx gains Titanskin 10. Relentless begins next turn.",
+    "Bloody Harvest: Siphon: Stryx gains +50 Health.",
+    "Doombringers: Incant: Stryx gains +30 Health.",
+    "Inevitability: Resolve: Stryx gains +60 Health."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Hallow is a major boss of Ring 6. He appears as one of three variants, always together with Stryx.",
+   "waves": [
+    "R6 Bloody Harvest (wave 8)",
+    "R6 Doombringers (wave 8)",
+    "R6 Inevitability (wave 8)"
+   ],
+   "extra": {
+    "mode": null,
+    "wiki_page": "Hallow",
+    "roles": [
+     "boss"
+    ],
+    "titan": "Entropy",
+    "keywords": [
+     "Extinguish",
+     "Harvest",
+     "Incant",
+     "Relentless",
+     "Resolve",
+     "Siphon",
+     "Titanskin"
+    ],
+    "variants": [
+     {
+      "variant": "Bloody Harvest",
+      "attack": 11,
+      "health": 1250
+     },
+     {
+      "variant": "Doombringers",
+      "attack": 11,
+      "health": 1250
+     },
+     {
+      "variant": "Inevitability",
+      "attack": 11,
+      "health": 1250
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.zephyrite",
+   "name": "Zephyrite",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 6,
+    "covenant": "difficulty Tangle: 12/8; Overgrowth: 16/9 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 8,
+   "size": 2,
+   "abilities": [
+    "Armor 6.",
+    "Shift: Gain Burst 1.",
+    "[Tangle] Armor 8.",
+    "[Tangle] Shift: Gain Burst 1.",
+    "[Overgrowth] Armor 9.",
+    "[Overgrowth] Shift: Gain Burst 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Zephyrite is an enemy in the Soul Savior mode of Monster Train 2 associated with Maera the Dutiful. It gains Burst 1 on Shift, including when it moves up a floor.",
+   "waves": [
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Eldest Scion (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Stern Sister (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Zephyrite",
+    "keywords": [
+     "Armor",
+     "Burst",
+     "Shift"
+    ],
+    "combats": "All combats in Maera's Region if Regions 1-3",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_zephyrite",
+   "name": "Mother's Zephyrite",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 20,
+    "covenant": "difficulty Tangle: 36/25; Overgrowth: 48/30 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 24,
+   "size": 2,
+   "abilities": [
+    "Armor 20.",
+    "Shift: Gain Burst 1.",
+    "Slay: Descend and gain Armor 10.",
+    "[Tangle] Armor 29.",
+    "[Tangle] Shift: Gain Burst 1.",
+    "[Tangle] Slay: Descend and gain Armor 15.",
+    "[Overgrowth] Armor 34.",
+    "[Overgrowth] Shift: Gain Burst 1.",
+    "[Overgrowth] Slay: Descend and gain Armor 18."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Zephyrite can appear once 2 regions have been completed and replaces Zephyrite once 3 regions have been completed. It has higher stats and an additional Slay trigger that returns it to a lower floor.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 8)",
+    "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 3, 4, 6, 8)",
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 2, 3, 4, 6)",
+    "Soul Savior: Maera's Region Eldest Scion (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Stern Sister (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Zephyrite",
+    "keywords": [
+     "Armor",
+     "Burst",
+     "Descend",
+     "Shift",
+     "Slay"
+    ],
+    "combats": "Dutiful Sentinels if Region 3 All combats in Maera's Region if Region 4 The Corpseflower The Swarmhost",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.longlash",
+   "name": "Longlash",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 4,
+    "covenant": "difficulty Tangle: 11/5; Overgrowth: 14/6 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 7,
+   "size": 2,
+   "abilities": [
+    "Sniper. Stealth 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Longlash is an enemy in the Soul Savior mode of Monster Train 2 associated with Tivi the Unruly. Its Sniper effect allows it to target and attack backline units.",
+   "waves": [
+    "Soul Savior: First Battle Mother's Flagellant (wave 1, 2, 3, 4)",
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Tivi's Region Prankster (wave 2, 3, 4)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Longlash",
+    "keywords": [
+     "Sniper",
+     "Stealth"
+    ],
+    "combats": "Mother's Flagellant Harrassing Snipers if Regions 1-2 All combats against Tivi the Unruly if Regions 1-2",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_longlash",
+   "name": "Mother's Longlash",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 12,
+    "covenant": "difficulty Tangle: 27/15; Overgrowth: 36/18 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 18,
+   "size": 2,
+   "abilities": [
+    "Sniper. Stealth 2.",
+    "Strike: Apply Emberdrain 1."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Longlash replaces Longlash once 2 regions have been completed. It has an extra stack of Stealth and applies Emberdrain on Strike.",
+   "waves": [
+    "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 5, 7)",
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Prankster (wave 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Longlash",
+    "keywords": [
+     "Emberdrain",
+     "Sniper",
+     "Stealth",
+     "Strike"
+    ],
+    "combats": "Harrassing Snipers if Regions 3-4 All combats against Tivi the Unruly if Regions 3-4 The Corpseflower",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.ossivane_sentinel",
+   "name": "Ossivane Sentinel",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": null,
+   "size": 2,
+   "abilities": [
+    "Shift: Gain Armor 15."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Ossivane Sentinel is an enemy in the Soul Savior mode of Monster Train 2. It gains Armor 15 on Shift, including when it moves up a floor.",
+   "waves": [
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Eldest Scion (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 4, 5)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Stern Sister (wave 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Ossivane Sentinel",
+    "keywords": [
+     "Armor",
+     "Shift"
+    ],
+    "combats": "All combats in Maera's Region",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.glutmass",
+   "name": "Glutmass",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 60,
+    "covenant": "difficulty Tangle: 12/75; Overgrowth: 16/90 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 8,
+   "size": 2,
+   "abilities": [
+    "Trample. Gorge: Gain Titanskin 3 and restore 20 health."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Glutmass is an enemy in the Soul Savior mode of Monster Train 2 associated with Thaddeus the Indulgent. It heals and gains Titanskin on Gorge.",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Glutmass",
+    "keywords": [
+     "Gorge",
+     "Titanskin",
+     "Trample"
+    ],
+    "combats": "All combats in Thaddeus's Region if Regions 1-3",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_glutmass",
+   "name": "Mother's Glutmass",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 250,
+    "covenant": "difficulty Tangle: 23/313; Overgrowth: 30/375 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 15,
+   "size": 2,
+   "abilities": [
+    "Trample. Infested 1. Gorge: Gain Rage 5, Titanskin 5, and restore 50 health."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Glutmass appears once 2 regions have been completed and replaces Glutmass once 3 regions have been completed. It has much higher stats, and also gains Rage in addition to more Titanskin and healing on Gorge.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 5, 6, 7)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Glutmass",
+    "keywords": [
+     "Gorge",
+     "Infested",
+     "Rage",
+     "Titanskin",
+     "Trample"
+    ],
+    "combats": "All combats in Thaddeus's Region if Regions 3-4 The Swarmhost",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.jeermask",
+   "name": "Jeermask",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 1,
+    "covenant": "difficulty Tangle: 0/2; Overgrowth: 0/2 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Revenge: Apply Dazed 2 to the attacker."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Jeermask is an enemy in the Soul Savior mode of Monster Train 2 associated with Tivi the Unruly. Whenever it is attacked, it applies Dazed to the unit which attacked it. It has no attack and cannot gain Attack.",
+   "waves": [
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Jeermask",
+    "keywords": [
+     "Dazed",
+     "Revenge"
+    ],
+    "combats": "Rabble-Rousers if Regions 1-2 All combats against Tivi the Unruly if Regions 1-3",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_jeermask",
+   "name": "Mother's Jeermask",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 1,
+    "covenant": "difficulty Tangle: 0/2; Overgrowth: 0/2 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [
+    "Spell Shield 1.",
+    "Revenge: Apply Dazed 2 and Melee Weakness 1 to the attacker."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Jeermask can appear once 2 regions have been completed and replaces Jeermask once 3 regions have been completed. It gains Spell Shield 1, and additionally applies Melee Weakness alongside Dazed.",
+   "waves": [
+    "Soul Savior: Final Battle The Undying Bloom (wave 1, 3, 5, 6, 8)",
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Jeermask",
+    "keywords": [
+     "Dazed",
+     "Melee Weakness",
+     "Revenge",
+     "Spell Shield"
+    ],
+    "combats": "Rabble-Rousers if Regions 3-4 All combats against Tivi the Unruly if Region 4 The Corpseflower",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.plaguehost",
+   "name": "Plaguehost",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 70,
+    "covenant": "difficulty Tangle: 8/88; Overgrowth: 10/105 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [
+    "Extinguish: Apply Witherbloom 3 to your front unit.",
+    "[Tangle] Extinguish: Apply Witherbloom 4 to your front unit.",
+    "[Overgrowth] Extinguish: Apply Witherbloom 5 to your front unit."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Plaguehost is an enemy in the Soul Savior mode of Monster Train 2 associated with Lylith the Spurned. It applies Witherbloom to your front unit on Extinguish.",
+   "waves": [
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Lylith's Region Plague Legion (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Plaguehost",
+    "keywords": [
+     "Extinguish",
+     "Witherbloom"
+    ],
+    "combats": "All combats in Lylith's Region if Regions 1-3",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_plaguehost",
+   "name": "Mother's Plaguehost",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 160,
+    "covenant": "difficulty Tangle: 15/200; Overgrowth: 20/240 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 10,
+   "size": 2,
+   "abilities": [
+    "Extinguish: Apply Malaise 6 and Witherbloom 6 to your front unit.",
+    "[Tangle] Extinguish: Apply Malaise? and Witherbloom? to your front unit.",
+    "[Overgrowth] Extinguish: Apply Malaise 12 and Witherbloom 12 to your front unit."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Plaguehost appears once 2 regions have been completed and replaces Plaguehost once 3 regions have been completed. It has higher stats, applies more Witherbloom, and also applies Malaise.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Lylith's Region Plague Legion (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Plaguehost",
+    "keywords": [
+     "Extinguish",
+     "Malaise",
+     "Witherbloom"
+    ],
+    "combats": "Plague Legion if Region 3 All combats in Lylith's Region if Region 4 The Undying Bloom",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.witchwarden",
+   "name": "Witchwarden",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": null,
+   "size": 1,
+   "abilities": [
+    "Witherbloom 1. Revenge: Enemy units gain Regen 3."
+   ],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Witchwarden is an enemy in Monster Train 2, found exclusively in its Soul Savior mode. It enters with Witherbloom and grants Regen whenever it is hit.",
+   "waves": [
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Lylith's Region Plague Legion (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Witchwarden",
+    "keywords": [
+     "Regen",
+     "Revenge",
+     "Witherbloom"
+    ],
+    "combats": "All combats in Lylith's Region",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.astrael_the_first_reborn",
+   "name": "Astrael the First Reborn",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": null,
+   "size": 5,
+   "abilities": [
+    "Relentless.",
+    "Sap 6.",
+    "Infested 4."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Astrael the First Reborn is a boss in Monster Train 2, found exclusively in its Soul Savior mode. It enters with Sap 6 and Infested 4.",
+   "waves": [
+    "Soul Savior: First Battle Mother's Flagellant (wave 4)",
+    "Soul Savior: First Battle Mother's Hunter (wave 4)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Astrael the First Reborn",
+    "keywords": [
+     "Infested",
+     "Relentless",
+     "Sap"
+    ],
+    "combats": "First Battle",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.athane_the_fallen",
+   "name": "Athane the Fallen",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": null,
+   "size": 5,
+   "abilities": [
+    "Relentless.",
+    "Incant: Apply Rage 1 to enemy units.",
+    "Ascension: Spawn an Ossivane Sentinel.",
+    "Strike: Retreat."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Athane the Fallen is a boss in Monster Train 2, found exclusively in its Soul Savior mode. She applies Rage 1 to enemy units on Incant.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Athane the Fallen",
+    "keywords": [
+     "Incant",
+     "Rage",
+     "Relentless",
+     "Retreat",
+     "Strike"
+    ],
+    "combats": "First combat in Maera's Region",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.korin_the_judged",
+   "name": "Korin the Judged",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": null,
+   "size": 4,
+   "abilities": [
+    "Relentless.",
+    "Summon: Descend all friendly units to this floor and Retreat."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Korin the Judged is a boss in Monster Train 2, found exclusively in its Soul Savior mode. When she appears, all enemies still alive on the train will come to her defense.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Korin the Judged",
+    "keywords": [
+     "Descend",
+     "Relentless",
+     "Retreat",
+     "Summon"
+    ],
+    "combats": "First combat in Maera's Region",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.maera_the_dutiful",
+   "name": "Maera the Dutiful",
+   "category": "flying_boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 1000,
+    "covenant": "per-variant; Tangle/Overgrowth ability values in extra.variants"
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Eldest Scion: Resolve: Enemy units gain Armor equal to their Attack.",
+    "Sibling Hierarchy: Shift: Apply Rage 3 to enemy units.",
+    "Stern Sister: Resolve: Apply Burst 1 to self and enemy units."
+   ],
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Wiki: Maera the Dutiful, one of The Lifemother's children, is the boss of Maera's Region in Soul Savior mode. She appears as one of three variants.",
+   "waves": [
+    "Soul Savior: Maera's Region Eldest Scion (wave 4, 5, 6)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 4, 5, 6)",
+    "Soul Savior: Maera's Region Stern Sister (wave 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Maera the Dutiful",
+    "keywords": [
+     "Armor",
+     "Burst",
+     "Rage",
+     "Resolve",
+     "Shift"
+    ],
+    "combats": null,
+    "variants": [
+     {
+      "variant": "Eldest Scion",
+      "attack": 12,
+      "health": 1000,
+      "abilities": [
+       "Resolve: Enemy units gain Armor equal to their Attack."
+      ]
+     },
+     {
+      "variant": "Sibling Hierarchy",
+      "attack": 15,
+      "health": 900,
+      "abilities": [
+       "Shift: Apply Rage 3 to enemy units.",
+       "Shift: Apply Rage 4 to enemy units.",
+       "Shift: Apply Rage 5 to enemy units."
+      ]
+     },
+     {
+      "variant": "Stern Sister",
+      "attack": 16,
+      "health": 800,
+      "abilities": [
+       "Resolve: Apply Burst 1 to self and enemy units."
+      ]
+     }
+    ],
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_flagellant",
+   "name": "Mother's Flagellant",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 80,
+    "covenant": "difficulty Tangle: 5/100; Overgrowth: 6/120 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [
+    "Resolve: Take 20 damage.",
+    "Revenge: Gain Burst 1."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Flagellant is an enemy in the Soul Savior mode of Monster Train 2 exclusive to the Mother's Flagellant battle. It gains Burst on Revenge, which it triggers by damaging itself on Resolve.",
+   "waves": [
+    "Soul Savior: First Battle Mother's Flagellant (wave 1, 2, 3)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Mother's Flagellant",
+    "keywords": [
+     "Burst",
+     "Resolve",
+     "Revenge"
+    ],
+    "combats": "Mother's Flagellant",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_flautist",
+   "name": "Mother's Flautist",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 5,
+    "covenant": "difficulty Tangle: 2/7; Overgrowth: 2/8 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 2,
+   "size": 1,
+   "abilities": [
+    "Haste. Enchant: Grant enemy units Haste."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Flautist is an enemy in the Soul Savior mode of Monster Train 2 associated with Maera the Dutiful. It grants allied enemies Haste, causing them to move from the bottom floor directly to the top floor.",
+   "waves": [
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 3)",
+    "Soul Savior: Maera's Region Eldest Scion (wave 1, 3, 4, 5)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 1, 3)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Maera's Region Stern Sister (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Mother's Flautist",
+    "keywords": [
+     "Enchant",
+     "Haste"
+    ],
+    "combats": "Maera's Region",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_blade",
+   "name": "Mother's Blade",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 80,
+    "covenant": "difficulty Tangle: 8/100; Overgrowth: 8/108 (attack/health; Soul Savior difficulty tiers)"
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [
+    "Infested 3."
+   ],
+   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Mother's Blade is an enemy in the Soul Savior mode of Monster Train 2 associated with Tivi the Unruly.",
+   "waves": [
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 4)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": "Mother's Blade",
+    "keywords": [
+     "Infested"
+    ],
+    "combats": "Harrassing Snipers if Regions 1-2 All combats against Tivi the Unruly if Regions 1-2",
+    "size_source": "game-data dump"
+   }
+  },
+  {
+   "id": "mt2.mother_s_fiend",
+   "name": "Mother's Fiend",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 3,
+    "covenant": null
+   },
+   "attack": 2,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 7, 8)",
+    "Soul Savior: First Battle Mother's Hunter (wave 1, 2, 3, 4)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_hunter",
+   "name": "Mother's Hunter",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 3,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: First Battle Mother's Hunter (wave 1, 2, 3, 4)",
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_zealot",
+   "name": "Mother's Zealot",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 45,
+    "covenant": null
+   },
+   "attack": 14,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 2, 4, 6, 7)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.elebor_the_unstoppable",
+   "name": "Elebor the Unstoppable",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 360,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Region mini-boss of Thaddeus's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.quoto_the_destroyer",
+   "name": "Quoto the Destroyer",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 320,
+    "covenant": null
+   },
+   "attack": 8,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Thaddeus's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.thaddeus_the_indulgent",
+   "name": "Thaddeus the Indulgent",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 1100,
+    "covenant": null
+   },
+   "attack": 13,
+   "size": 5,
+   "abilities": [
+    "Train Chomper: Thaddeus reduces Capacity by 1 and triggers Gorge on Resolve. Upon defeat, Thaddeus grants you the Glutton mutator: A random floor loses -3 Capacity.",
+    "Thick Skinned: Thaddeus enters with Titanskin 3 and gains Titanskin 3 on Gorge. Upon defeat, Thaddeus grants you the Callous mutator: Enemy units gain Titanskin 3.",
+    "Insatiable: Thaddeus triggers Gorge on Slay. Upon defeat, Thaddeus grants you the Spoiled mutator: Enemy units gain Infested 1."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Insatiable (wave 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 4, 5, 6, 7)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Gorge",
+     "Infested",
+     "Resolve",
+     "Slay",
+     "Titanskin"
+    ]
+   }
+  },
+  {
+   "id": "mt2.mother_s_supplicant",
+   "name": "Mother's Supplicant",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 20,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 2, 3, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.phalanx",
+   "name": "Phalanx",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 500,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Region mini-boss of Tivi's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.the_undying_spirit",
+   "name": "The Undying Spirit",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 250,
+    "covenant": null
+   },
+   "attack": 7,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Tivi's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.tivi_the_unruly",
+   "name": "Tivi the Unruly",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 800,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Duplicitous: Tivi creates a copy of the front enemy unit on the floor at the end of the turn. If there are no enemy units, Tivi creates a Jeermask unit. Upon defeat, Tivi grants you the Joker mutator: At the start of battle, spawn a Jeermask unit on each floor.",
+    "Mischevious Child: Tivi has Sniper and Advances the attacked unit on Strike. Upon defeat, Tivi grants you the Insecure mutator: Champions enter with Melee Weakness 3.",
+    "Prankster: Tivi adds a Tivi's Scourge to your hand on Siphon. Upon defeat, Tivi grants you the Tormentor mutator: At the start of battle, add 4 Tivi's Scourge cards to your deck."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [
+    "Soul Savior: Tivi's Region Prankster (wave 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Melee Weakness",
+     "Scourge",
+     "Siphon",
+     "Sniper",
+     "Strike"
+    ]
+   }
+  },
+  {
+   "id": "mt2.ajax_the_deathbringer",
+   "name": "Ajax the Deathbringer",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 450,
+    "covenant": null
+   },
+   "attack": 11,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Lylith's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.qel_the_malaiser",
+   "name": "Qel the Malaiser",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 380,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Lylith's Region (first combat)."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.lylith_the_spurned",
+   "name": "Lylith the Spurned",
+   "category": "boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 1000,
+    "covenant": null
+   },
+   "attack": 14,
+   "size": 5,
+   "abilities": [
+    "Plaguebringer: Lylith gains Dualism at 50% health. Upon defeat, Lylith grants you the Reclusive mutator: Champions enter with Malaise 10.",
+    "Energy Vampire: Lylith additionally applies Witherbloom X to your units on Action. Upon defeat, Lylith grants you the Masochist mutator: Enemy units gain Regen 2 when hit.",
+    "Inoculation: Lylith gains 3x Armor per Malaise on Strike. Upon defeat, Lylith grants you the Sadist mutator: Your units enter with Witherbloom 1."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
+   "waves": [
+    "Soul Savior: Lylith's Region Inoculation (wave 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Action",
+     "Armor",
+     "Dualism",
+     "Malaise",
+     "Regen",
+     "Strike",
+     "Witherbloom"
+    ]
+   }
+  },
+  {
+   "id": "mt2.mother_s_amalgam",
+   "name": "Mother's Amalgam",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 150,
+    "covenant": null
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 1, 3, 5, 7, 8)",
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_knight",
+   "name": "Mother's Knight",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 60,
+    "covenant": null
+   },
+   "attack": 10,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.the_lifemother",
+   "name": "The Lifemother",
+   "category": "final_boss",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": null
+   },
+   "attack": null,
+   "size": null,
+   "abilities": [],
+   "pattern": "Soul Savior final boss (Final Battle after all four regions); three variants (The Corpseflower, The Swarmhost, The Undying Bloom). Wiki: The Final Battle against The Lifemother in Soul Savior mode can be accessed after defeating each of the four region bosses. In the tables below, an enemy's presence depends on the difficulty, indicated as follows: • Bloom • Tangle • Overgrowth",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 8)",
+    "Soul Savior: Final Battle The Swarmhost (wave 8)",
+    "Soul Savior: Final Battle The Undying Bloom (wave 8)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": null,
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.category_nav_templates",
+   "name": "Category:Nav Templates",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": null,
+    "covenant": null
+   },
+   "attack": null,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": null,
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_ossivane_sentinel",
+   "name": "Mother's Ossivane Sentinel",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 200,
+    "covenant": null
+   },
+   "attack": 18,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 4, 5, 6, 7, 8)",
+    "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Eldest Scion (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Favored Ascent (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Sibling Hierarchy (wave 2, 3, 4, 5, 6)",
+    "Soul Savior: Maera's Region Stern Sister (wave 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_cherub",
+   "name": "Mother's Cherub",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 1, 3, 5, 6, 7)",
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 1, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.fleshfruit",
+   "name": "Fleshfruit",
+   "category": "normal",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 30,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_fleshfruit",
+   "name": "Mother's Fleshfruit",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 60,
+    "covenant": null
+   },
+   "attack": 0,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 7, 8)",
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 2, 3, 4, 5, 6, 7)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 2, 3, 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_sharp_eye_sniper",
+   "name": "Mother's Sharp-Eye Sniper",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 3,
+    "covenant": null
+   },
+   "attack": 6,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_assassin",
+   "name": "Mother's Assassin",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 8,
+    "covenant": null
+   },
+   "attack": 4,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5, 6)",
+    "Soul Savior: Lylith's Region Plague Legion (wave 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_witchwarden",
+   "name": "Mother's Witchwarden",
+   "category": "elite",
+   "area": "Soul Savior",
+   "hp": {
+    "base": 40,
+    "covenant": null
+   },
+   "attack": 22,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 2, 4, 6, 7, 8)",
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 5, 6)",
+    "Soul Savior: Lylith's Region Plague Legion (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  }
+ ]
+}

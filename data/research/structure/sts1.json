@@ -2,7 +2,49 @@
  "game": "Slay the Spire",
  "source": "https://slaythespire.wiki.gg (CC BY-SA)",
  "retrieved": "2026-11-03",
- "notes": "relics/potions from the wiki Cargo tables; events from the wiki's event data modules + each event page's Options section (choices are condensed plain text, capped). encounters: per act, pools easy/hard (StS1 with the wiki's encounter weights), elite, boss, event; enemies = matched enemy names. rules: condensed from the mechanics pages named in each 'source'; anything marked 'not on wiki' comes from general game knowledge and is unverified. StS1 is a finished game (last content patch 2020). Completeness check: {\"relics\": {\"scraped_relics\": 193, \"wiki_Module_Relics_data (renders Relics List)\": 193, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Blight\": 13, \"Boss\": 30, \"Common\": 36, \"Event\": 18, \"Rare\": 34, \"Shop\": 20, \"Special\": 2, \"Starter\": 4, \"Uncommon\": 36}}, \"potions\": {\"scraped_potions\": 42, \"wiki_Module_Potions_data (renders Potions List)\": 42, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Common\": 20, \"Rare\": 10, \"Uncommon\": 12}}, \"events\": {\"scraped_events\": 51, \"wiki_Category_Events_pages\": 53, \"missing_vs_wiki\": [\"Golden Idol (Event)\", \"Neow\", \"Vampires\"], \"extra_vs_wiki\": [\"Vampires(?)\"], \"wiki_Module_Events_data (renders Events List)\": 51}}",
+ "notes": "relics/potions from the wiki Cargo tables; events from the wiki's event data modules + each event page's Options section (choices are condensed plain text, capped). encounters: per act, pools easy/hard (StS1 with the wiki's encounter weights), elite, boss, event; enemies = matched enemy names. rules: condensed from the mechanics pages named in each 'source'; anything marked 'not on wiki' comes from general game knowledge and is unverified. StS1 is a finished game (last content patch 2020). Relic rarity 'Blight' = Endless-mode blights (13); 'Special' = Circlet / Red Circlet; potions effect_doubled = value with Sacred Bark. Completeness: relic, potion and event counts are compared with the wiki data modules that render the Relics/Potions/Events List pages; see 'completeness'.",
+ "completeness": {
+  "relics": {
+   "scraped_relics": 193,
+   "wiki_Module_Relics_data (renders Relics List)": 193,
+   "missing_vs_wiki": [],
+   "extra_vs_wiki": [],
+   "by_rarity": {
+    "Blight": 13,
+    "Boss": 30,
+    "Common": 36,
+    "Event": 18,
+    "Rare": 34,
+    "Shop": 20,
+    "Special": 2,
+    "Starter": 4,
+    "Uncommon": 36
+   }
+  },
+  "potions": {
+   "scraped_potions": 42,
+   "wiki_Module_Potions_data (renders Potions List)": 42,
+   "missing_vs_wiki": [],
+   "extra_vs_wiki": [],
+   "by_rarity": {
+    "Common": 20,
+    "Rare": 10,
+    "Uncommon": 12
+   }
+  },
+  "events": {
+   "scraped_events": 51,
+   "wiki_Category_Events_pages": 52,
+   "missing_vs_wiki": [
+    "Neow"
+   ],
+   "extra_vs_wiki": [],
+   "wiki_Module_Events_data (renders Events List)": 51,
+   "explanations": [
+    "Neow is in Category:Events but is the run-start blessing (see rules.neow), not a ? room event."
+   ]
+  }
+ },
  "relics": [
   {
    "name": "Accursed",
@@ -1218,7 +1260,8 @@
    "name": "Attack Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Choose 1 of 3 random Attack cards to add(;two copies of it) to your hand. (It costs;They cost) 0 this turn."
+   "effect": "Choose 1 of 3 random Attack cards to add to your hand. It costs 0 this turn.",
+   "effect_doubled": "Choose 1 of 3 random Attack cards to add two copies of it to your hand. They cost 0 this turn."
   },
   {
    "name": "Blessing of the Forge",
@@ -1230,109 +1273,127 @@
    "name": "Block Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (12;24) Block."
+   "effect": "Gain 12 Block.",
+   "effect_doubled": "Gain 24 Block."
   },
   {
    "name": "Blood Potion",
    "rarity": "Common",
    "character": "Ironclad",
-   "effect": "Heal for (20%;40%) of your Max HP."
+   "effect": "Heal for 20% of your Max HP.",
+   "effect_doubled": "Heal for 40% of your Max HP."
   },
   {
    "name": "Bottled Miracle",
    "rarity": "Common",
    "character": "Watcher",
-   "effect": "Add (2;4) Miracles to your hand."
+   "effect": "Add 2 Miracles to your hand.",
+   "effect_doubled": "Add 4 Miracles to your hand."
   },
   {
    "name": "Colorless Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Choose 1 of 3 random Colorless cards to add(;2 copies of) to your hand. (It costs;They cost) 0 this turn."
+   "effect": "Choose 1 of 3 random Colorless cards to add to your hand. It costs 0 this turn.",
+   "effect_doubled": "Choose 1 of 3 random Colorless cards to add 2 copies of to your hand. They cost 0 this turn."
   },
   {
    "name": "Dexterity Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (2;4) Dexterity."
+   "effect": "Gain 2 Dexterity.",
+   "effect_doubled": "Gain 4 Dexterity."
   },
   {
    "name": "Energy Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (2;4) Energy."
+   "effect": "Gain 2 Energy.",
+   "effect_doubled": "Gain 4 Energy."
   },
   {
    "name": "Explosive Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Deal (10;20) damage to all enemies."
+   "effect": "Deal 10 damage to all enemies.",
+   "effect_doubled": "Deal 20 damage to all enemies."
   },
   {
    "name": "Fear Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Apply (3;6) Vulnerable to target enemy."
+   "effect": "Apply 3 Vulnerable to target enemy.",
+   "effect_doubled": "Apply 6 Vulnerable to target enemy."
   },
   {
    "name": "Fire Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Deal (20;40) damage to target enemy."
+   "effect": "Deal 20 damage to target enemy.",
+   "effect_doubled": "Deal 40 damage to target enemy."
   },
   {
    "name": "Flex Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (5;10) Strength. At the end of your turn, lose (5;10) Strength."
+   "effect": "Gain 5 Strength. At the end of your turn, lose 5 Strength.",
+   "effect_doubled": "Gain 10 Strength. At the end of your turn, lose 10 Strength."
   },
   {
    "name": "Focus Potion",
    "rarity": "Common",
    "character": "Defect",
-   "effect": "Gain (2;4) Focus."
+   "effect": "Gain 2 Focus.",
+   "effect_doubled": "Gain 4 Focus."
   },
   {
    "name": "Poison Potion",
    "rarity": "Common",
    "character": "Silent",
-   "effect": "Apply (6;12) Poison to target enemy."
+   "effect": "Apply 6 Poison to target enemy.",
+   "effect_doubled": "Apply 12 Poison to target enemy."
   },
   {
    "name": "Power Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Choose 1 of 3 random Power cards to add(;two copies of it) to your hand. (It costs;They cost) 0 this turn."
+   "effect": "Choose 1 of 3 random Power cards to add to your hand. It costs 0 this turn.",
+   "effect_doubled": "Choose 1 of 3 random Power cards to add two copies of it to your hand. They cost 0 this turn."
   },
   {
    "name": "Skill Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Choose 1 of 3 random Skill cards to add(;two copies of) to your hand. (It costs;They cost) 0 this turn."
+   "effect": "Choose 1 of 3 random Skill cards to add to your hand. It costs 0 this turn.",
+   "effect_doubled": "Choose 1 of 3 random Skill cards to add two copies of to your hand. They cost 0 this turn."
   },
   {
    "name": "Speed Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (5;10) Dexterity. At the end of your turn, lose (5;10) Dexterity."
+   "effect": "Gain 5 Dexterity. At the end of your turn, lose 5 Dexterity.",
+   "effect_doubled": "Gain 10 Dexterity. At the end of your turn, lose 10 Dexterity."
   },
   {
    "name": "Strength Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Gain (2;4) Strength."
+   "effect": "Gain 2 Strength.",
+   "effect_doubled": "Gain 4 Strength."
   },
   {
    "name": "Swift Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Draw (3;6) cards."
+   "effect": "Draw 3 cards.",
+   "effect_doubled": "Draw 6 cards."
   },
   {
    "name": "Weak Potion",
    "rarity": "Common",
    "character": null,
-   "effect": "Apply (3;6) Weak to target enemy."
+   "effect": "Apply 3 Weak to target enemy.",
+   "effect_doubled": "Apply 6 Weak to target enemy."
   },
   {
    "name": "Ambrosia",
@@ -1344,7 +1405,8 @@
    "name": "Cultist Potion",
    "rarity": "Rare",
    "character": null,
-   "effect": "Gain (1;2) Ritual."
+   "effect": "Gain 1 Ritual.",
+   "effect_doubled": "Gain 2 Ritual."
   },
   {
    "name": "Entropic Brew",
@@ -1356,31 +1418,36 @@
    "name": "Essence of Darkness",
    "rarity": "Rare",
    "character": "Defect",
-   "effect": "Channel (1;2) Dark for each orb slot."
+   "effect": "Channel 1 Dark for each orb slot.",
+   "effect_doubled": "Channel 2 Dark for each orb slot."
   },
   {
    "name": "Fairy in a Bottle",
    "rarity": "Rare",
    "character": null,
-   "effect": "When you would die, heal to (30%;60%) of your Max HP instead and discard this potion."
+   "effect": "When you would die, heal to 30% of your Max HP instead and discard this potion.",
+   "effect_doubled": "When you would die, heal to 60% of your Max HP instead and discard this potion."
   },
   {
    "name": "Fruit Juice",
    "rarity": "Rare",
    "character": null,
-   "effect": "Gain (5;10) Max HP."
+   "effect": "Gain 5 Max HP.",
+   "effect_doubled": "Gain 10 Max HP."
   },
   {
    "name": "Ghost in a Jar",
    "rarity": "Rare",
    "character": "Silent",
-   "effect": "Gain (1;2) Intangible."
+   "effect": "Gain 1 Intangible.",
+   "effect_doubled": "Gain 2 Intangible."
   },
   {
    "name": "Heart of Iron",
    "rarity": "Rare",
    "character": "Ironclad",
-   "effect": "Gain (6;12) Metallicize."
+   "effect": "Gain 6 Metallicize.",
+   "effect_doubled": "Gain 12 Metallicize."
   },
   {
    "name": "Smoke Bomb",
@@ -1392,31 +1459,36 @@
    "name": "Snecko Oil",
    "rarity": "Rare",
    "character": null,
-   "effect": "Draw (5;10) Cards. Randomize the cost of cards in your hand"
+   "effect": "Draw 5 Cards. Randomize the cost of cards in your hand",
+   "effect_doubled": "Draw 10 Cards. Randomize the cost of cards in your hand"
   },
   {
    "name": "Ancient Potion",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Gain (1;2) Artifact."
+   "effect": "Gain 1 Artifact.",
+   "effect_doubled": "Gain 2 Artifact."
   },
   {
    "name": "Cunning Potion",
    "rarity": "Uncommon",
    "character": "Silent",
-   "effect": "Add (3;6) Shivs+ to your hand."
+   "effect": "Add 3 Shivs+ to your hand.",
+   "effect_doubled": "Add 6 Shivs+ to your hand."
   },
   {
    "name": "Distilled Chaos",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Play the top (3;6) cards of your draw pile."
+   "effect": "Play the top 3 cards of your draw pile.",
+   "effect_doubled": "Play the top 6 cards of your draw pile."
   },
   {
    "name": "Duplication Potion",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "This turn, your next (card is;two cards are) played twice."
+   "effect": "This turn, your next card is played twice.",
+   "effect_doubled": "This turn, your next two cards are played twice."
   },
   {
    "name": "Elixir",
@@ -1428,7 +1500,8 @@
    "name": "Essence of Steel",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Gain (4;8) Plated Armor."
+   "effect": "Gain 4 Plated Armor.",
+   "effect_doubled": "Gain 8 Plated Armor."
   },
   {
    "name": "Gambler's Brew",
@@ -1440,25 +1513,29 @@
    "name": "Liquid Bronze",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Gain (3;6) Thorns."
+   "effect": "Gain 3 Thorns.",
+   "effect_doubled": "Gain 6 Thorns."
   },
   {
    "name": "Liquid Memories",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Choose (a card;2 cards) in your discard pile and return it to your hand. (It costs;They cost) 0 this turn."
+   "effect": "Choose a card in your discard pile and return it to your hand. It costs 0 this turn.",
+   "effect_doubled": "Choose 2 cards in your discard pile and return it to your hand. They cost 0 this turn."
   },
   {
    "name": "Potion of Capacity",
    "rarity": "Uncommon",
    "character": "Defect",
-   "effect": "Gain (2;4) Orb Slots."
+   "effect": "Gain 2 Orb Slots.",
+   "effect_doubled": "Gain 4 Orb Slots."
   },
   {
    "name": "Regen Potion",
    "rarity": "Uncommon",
    "character": null,
-   "effect": "Gain (5;10) Regen."
+   "effect": "Gain 5 Regen.",
+   "effect_doubled": "Gain 10 Regen."
   },
   {
    "name": "Stance Potion",
@@ -1473,8 +1550,8 @@
    "area": "All acts",
    "summary": "You find a note containing a card. You may choose to Take the stored card and Give a card in your deck in return, leaving it with a note so that you may have a chance to retrieve it in another run.",
    "choices": [
-    "Take and Give: Receive and Store a Card",
-    "Ignore: Nothing happens. You are then given the option to Leave."
+    "Take and Give: Receive and Store a Card Receive a card that you had stored previously, and store a card in your deck in return.",
+    "Ignore: Nothing happens."
    ],
    "shrine": true
   },
@@ -1484,7 +1561,7 @@
    "summary": "You encounter a wall covered with the writing of the ancients. You can either remove a single card from your deck or Upgrade all Strikes and Defends.",
    "choices": [
     "Elegance: Remove a card from your deck.",
-    "Simplicity: Upgrade all Strikes and Defends."
+    "Simplicity: Upgrade all Strikes and Defends. Only includes Basic cards."
    ]
   },
   {
@@ -1492,9 +1569,9 @@
    "area": "Act 2",
    "summary": "A shady man approaches who wants to do an experiment on you. You choose between J.A.X., transforming two cards in your deck, and Mutagenic Strength.",
    "choices": [
-    "Test J.A.X.: Get JAXXED.",
-    "Become Test Subject: Transform 2 cards.",
-    "Ingest Mutagens: Obtain a special relic."
+    "Test J.A.X.: Get JAXXED. Adds J.A.X. to the player's deck.",
+    "Become Test Subject: Transform 2 cards. Read more on Transform rules here.",
+    "Ingest Mutagens: Obtain a special relic. Rewards the player with Mutagenic Strength."
    ]
   },
   {
@@ -1502,9 +1579,9 @@
    "area": "Act 1",
    "summary": "You choose between a reward of max health, healing, or a relic. However, choosing the relic Curses you.",
    "choices": [
-    "Banana: Heal 1/3 of your max HP.",
-    "Donut: Max HP +5.",
-    "Box: Obtain a Relic. Become Cursed - Regret. You are then given the option to Leave."
+    "Banana: Heal 1/3 of your max HP. If the player's HP is not divisble by 3, the HP gain is rounded down.",
+    "Donut: Max HP +5. Like all HP gain, the extra hit points are healed when you get them.",
+    "Box: Obtain a Relic. Become Cursed - Regret. The Relic is a randomly selected Common, Uncommon, or Rare Relic."
    ]
   },
   {
@@ -1512,7 +1589,7 @@
    "area": "All acts",
    "summary": "You come across a bonfire surrounded by spirits. You may choose to Offer a card to the spirits and receive a reward according to its rarity.",
    "choices": [
-    "Offer: Receive a reward based on the offer."
+    "Offer: Receive a reward based on the offer. Offer a card in your deck to remove. The reward you receive depends on the rarity of the card you give."
    ],
    "shrine": true
   },
@@ -1521,8 +1598,8 @@
    "area": "Act 2",
    "summary": "A group of apparitions approaches you. One of them offers a taste of their power. You can refuse, or obtain 3 Apparitions and lose half of your max health.",
    "choices": [
-    "Accept: Receive 5 A15: (3) Apparitions. Lose X Max HP.",
-    "Refuse: Nothing happens. You are then given the option to Leave."
+    "Accept: Receive 5 A15: (3) Apparitions. Lose X Max HP. X is equal to 50% of the player's Max HP, rounded up.",
+    "Refuse: Nothing happens."
    ]
   },
   {
@@ -1534,9 +1611,11 @@
     "Continue: Lose 1 HP.",
     "Continue: Lose 2 HP.",
     "Continue: Lose 3 HP.",
-    "Take: Obtain the book. Lose 10 (15) HP.",
+    "Take: Obtain the book. Lose 10 (15) HP. The book may be Enchiridion, Nilry's Codex, or Necronomicon. The player does not know which book they will get until after they choose Take and lose their HP.",
     "Stop: Lose 3 HP.",
-    "Leave: Nothing happens. === Practical Options === Because the player can choose to leave the event immediately and lose 0 HP instead of selecting Continue 3 times and then backing out with Stop while losing a total of 9 HP, there are really only 2 practical ways to ..."
+    "Leave: Nothing happens.",
+    "Read: , then all 3 Continue, and finally Take Obtain the book. Lose 16 (21) HP.",
+    "Leave: Nothing happens."
    ]
   },
   {
@@ -1544,7 +1623,7 @@
    "area": "Act 1",
    "summary": "You come across an adventurer killed by an elite enemy. You can choose to search for a relic or some gold with the chance that the creature will return.",
    "choices": [
-    "Search: Find Loot. 25% A15: (35%): monster returns.",
+    "Search: Find Loot. 25% A15: (35%): monster returns. Each Search attempt will either cause an Act 1 Elite to return and fight the player, or yield one of the following rewards:",
     "Leave: Nothing happens."
    ]
   },
@@ -1553,8 +1632,8 @@
    "area": "Act 2, Act 3",
    "summary": "You encounter a snobby shop owner who reluctantly offers his services. His services can Upgrade, Transform, or remove some cards from your deck.",
    "choices": [
-    "Adjustments: Lose 40 (50) Gold. One of the following rewards appears.",
-    "Clean Up: Lose 60 (75) Gold. One of the following rewards appears.",
+    "Adjustments: Lose 40 (50) Gold. One of the following rewards appears. Upgrade a card.",
+    "Clean Up: Lose 60 (75) Gold. One of the following rewards appears. Remove a card.",
     "Full Service: Lose 90 (110) Gold. Remove a card, then upgrade a random card.",
     "Punch: Lose 3 (5) HP."
    ],
@@ -1575,8 +1654,8 @@
    "area": "Act 1, Act 2",
    "summary": "You encounter a strange man who offers a selection of face relics. You can also choose to touch the man, gaining gold in exchange for health.",
    "choices": [
-    "Touch: Lose X HP, gain 75 A15: (50) Gold.",
-    "Trade: 50%: Good Face. 50%: Bad Face.",
+    "Touch: Lose X HP, gain 75 A15: (50) Gold. X is equal to 10% of the player's Max HP, rounded down.",
+    "Trade: 50%: Good Face. 50%: Bad Face. Receive one of the following special Relics:",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1586,9 +1665,9 @@
    "area": "Act 3",
    "summary": "You slip off one of the floating platforms in the Beyond. In order to land safely, you are forced to sacrifice a card.",
    "choices": [
-    "Land: Lose (a random Skill)",
-    "Channel: Lose (a random Power)",
-    "Strike: Lose (a random Attack) If the player somehow manages to lack even a single eligible card (e.g. they have a very small deck containing only bottled cards), then the only option listed is a special Land option that has no description."
+    "Land: Lose (a random Skill) Cannot be a Skill targeted by Bottled Lightning.",
+    "Channel: Lose (a random Power) Cannot be a Power targeted by Bottled Tornado.",
+    "Strike: Lose (a random Attack) If the player somehow manages to lack even a single eligible card (e.g. they have a very small deck containing only bottled cards), then the only option listed is a special Land option that has no description. Cannot be an Attack ..."
    ]
   },
   {
@@ -1596,16 +1675,23 @@
    "area": "Act 2",
    "summary": "You find a statue that requires an offering. Your options are to offer Golden Idol in exchange for Bloody Idol, gain max health but become damaged, or desecrate it and become Cursed.",
    "choices": [
-    "Offer: Golden Idol: Obtain a special Relic. Lose Golden Idol.",
-    "Sacrifice: Gain 5 Max HP. Lose X HP.",
-    "Desecrate: Become Cursed -Decay."
+    "Offer: Golden Idol: Obtain a special Relic. Lose Golden Idol. If the player does not have Golden Idol, this option is replaced with Locked Requires: Golden Idol.",
+    "Sacrifice: Gain 5 Max HP. Lose X HP. X is equal to 25% A15: (35%) of the player's Max HP.",
+    "Desecrate: Become Cursed -Decay. Decay - Unplayable. At the end of your turn, take 2 damage."
    ]
   },
   {
    "name": "Golden Idol",
    "area": "Act 1",
    "summary": "You come across a golden idol. You can choose to walk past, or grab it and choose how to defend yourself.",
-   "choices": []
+   "choices": [
+    "Take: Obtain Golden Idol. Trigger a trap.",
+    "Outrun: Become Cursed - Injury.",
+    "Smash: Take X Damage. X is equal to 25% A15: (35%) of the player's Max HP.",
+    "Hide: Lose X Max HP. X is equal to 8% A15: (10%) of the player's Max HP.",
+    "Leave: Nothing happens."
+   ],
+   "wiki_page": "Golden Idol (Event)"
   },
   {
    "name": "Golden Shrine",
@@ -1613,7 +1699,7 @@
    "summary": "You encounter a shrine made of gold. You can choose to pray for gold or destroy it for more and become Cursed.",
    "choices": [
     "Pray: Gain 100 Gold.",
-    "Desecrate: Gain 275 Gold. Become Cursed - Regret.",
+    "Desecrate: Gain 275 Gold. Become Cursed - Regret. Regret - Unplayable. At the end of your turn, lose HP equal to the number of cards in your hand.",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1623,8 +1709,8 @@
    "area": "Act 1",
    "summary": "You find an area full of brightly colored mushrooms. You can choose to eat one to heal but obtain a Curse or fight Fungi Beasts to obtain a special Relic.",
    "choices": [
-    "Stomp: Anger the Mushrooms.",
-    "Eat: Heal X HP. Become Cursed - Parasite."
+    "Stomp: Anger the Mushrooms. Enter a battle against 3 Fungi Beasts. Winning grants the exclusive Relic Odd Mushroom along with regular combat rewards.",
+    "Eat: Heal X HP. Become Cursed - Parasite. X is equal to 25% of the player's max HP."
    ]
   },
   {
@@ -1632,10 +1718,10 @@
    "area": "Act 2",
    "summary": "You encounter a talking skull that can grant many rewards in exchange for health.",
    "choices": [
-    "A Pick Me Up?: Get a Potion. Lose X HP.",
+    "A Pick Me Up?: Get a Potion. Lose X HP. A random Potion is immediately added to the player's left-most empty potion slot.",
     "Riches?: Gain 90 Gold. Lose X HP.",
-    "Success?: Get a Colorless card. Lose X HP.",
-    "How do I leave?: Lose X HP."
+    "Success?: Get a Colorless card. Lose X HP. A random Uncommon Colorless card is added to the player's deck.",
+    "How do I leave?: Lose X HP. This event repeats until this option is chosen."
    ],
    "shrine": true
   },
@@ -1644,7 +1730,7 @@
    "area": "All acts",
    "summary": "You find a lab filled with potions, collecting 3 of them.",
    "choices": [
-    "Search: Find some Potions!"
+    "Search: Find some Potions! Opens a rewards menu with three (A15: two) random Potions. These can be skipped."
    ],
    "shrine": true
   },
@@ -1664,7 +1750,7 @@
    "summary": "A group of bandits stops you and forces you to pay all of your gold to pass. You can fight the bandits for Red Mask, or pay up to skip the fight.",
    "choices": [
     "Pay: Lose ALL of your Gold.",
-    "Fight!"
+    "Fight!: Starts a combat against the three bandits (Pointy, Romeo, and Bear). Upon winning, obtain regular card rewards, 25 - 35 Gold, and Red Mask."
    ]
   },
   {
@@ -1672,7 +1758,7 @@
    "area": "All acts",
    "summary": "You are forced to play a card matching game. You get 5 attempts, any cards you match will be added to your deck, even Curses.",
    "choices": [
-    "Play"
+    "Play: Play a matching game for cards. Match pairs of cards to add them to your deck. There is always a pair of one Colorless card and one Curse."
    ],
    "shrine": true
   },
@@ -1681,10 +1767,10 @@
    "area": "Act 3",
    "summary": "Your imagination manifests into reality. In this ephemeral moment, all your wishes can come true, though not without consequences.",
    "choices": [
-    "I am War: Fight a Boss from Act 1. Obtain a Rare Relic.",
-    "I am Awake: Upgrade all cards. You can no longer heal.",
-    "I am Rich: Gain 999 Gold. Cursed - 2 Normality.",
-    "I am Healthy: Heal to full HP. Cursed - Doubt."
+    "I am War: Fight a Boss from Act 1. Obtain a Rare Relic. The boss is selected at random. It can be the same boss that the player actually fought in Act 1, or one of the two that they did not encounter.",
+    "I am Awake: Upgrade all cards. You can no longer heal. Obtain Mark of the Bloom.",
+    "I am Rich: Gain 999 Gold. Cursed - 2 Normality. This option only appears on floors 35 to 40.",
+    "I am Healthy: Heal to full HP. Cursed - Doubt. This option replaces I am Rich on floor 41 and above."
    ]
   },
   {
@@ -1692,7 +1778,7 @@
    "area": "Act 3",
    "summary": "You come across a treasure encased in a sphere of bone, with automatons guarding it.",
    "choices": [
-    "Open Sphere: Fight. Reward: Rare Relic.",
+    "Open Sphere: Fight. Reward: Rare Relic. The player enters combat with the 2 Orb Walkers. In addition to the Rare Relic, the combat rewards also yield 45-55 Gold, a normal card reward, and potentially a Potion just like a normal combat.",
     "Leave: Nothing happens."
    ]
   },
@@ -1702,7 +1788,7 @@
    "summary": "A strange creature offers you a gift in exchange for a relic for him to feed on.",
    "choices": [
     "Offer: Relic A: Lose this relic. Obtain a special relic.",
-    "Offer: Relic B: Lose this relic. Obtain a special relic.",
+    "Offer: Relic B: Lose this relic. Obtain a special relic. Rewards the player with N'loth's Gift.",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1722,7 +1808,7 @@
    "summary": "You come across a forge, you can choose to Upgrade a card or obtain a Relic along with a Curse.",
    "choices": [
     "Forge: Upgrade a card in your deck.",
-    "Rummage: Obtain a special relic. Become Cursed - Pain.",
+    "Rummage: Obtain a special relic. Become Cursed - Pain. Warped Tongs - At the start of your turn, Upgrade a random card in your hand for the rest of combat.",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1732,7 +1818,7 @@
    "area": "Act 2",
    "summary": "You encounter a homeless beggar who offers a Relic in exchange for gold. You can also rob him of it and become Cursed, or leave.",
    "choices": [
-    "Offer Gold: 85 Gold: Obtain a Relic.",
+    "Offer Gold: 85 Gold: Obtain a Relic. If the player does not have enough Gold, this option will be greyed out.",
     "Rob: Obtain a Relic. Become Cursed - Shame.",
     "Leave: Nothing happens."
    ]
@@ -1752,7 +1838,7 @@
    "area": "Act 1",
    "summary": "You come across a slime creature who has eaten large amounts of metal scrap. You can choose to pass it, or spend health for a chance to obtain a Relic.",
    "choices": [
-    "Reach Inside: Lose 3 A15: (5) HP. 25% chance to find a Relic.",
+    "Reach Inside: Lose 3 A15: (5) HP. 25% chance to find a Relic. If you fail to find a Relic, you can try again until you find one. Each time you fail, the HP loss is increased by 1 and the chance to gain a Relic increases by 10%.",
     "Leave: Nothing happens."
    ]
   },
@@ -1761,7 +1847,7 @@
    "area": "Act 3",
    "summary": "You encounter a strange mystical portal with the power to send you directly to the boss of the Beyond.",
    "choices": [
-    "Enter the Portal: IMMEDIATELY travel to the boss.",
+    "Enter the Portal: IMMEDIATELY travel to the boss. The player is put directly into combat with the Act 3 boss at the end of the act.",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1781,7 +1867,7 @@
    "area": "Act 1",
    "summary": "You come across a mass of bright light. You can either pass or spend health to Upgrade two cards.",
    "choices": [
-    "Enter: Upgrade 2 random cards. Lose X HP.",
+    "Enter: Upgrade 2 random cards. Lose X HP. X is equal to 20% A15: (30%) of the player's max HP.",
     "Leave: Nothing happens."
    ]
   },
@@ -1790,7 +1876,7 @@
    "area": "Act 1",
    "summary": "You come across a loud and friendly cleric who you can pay to heal you or remove a card from your deck.",
    "choices": [
-    "Heal: 35 Gold: Heal X HP.",
+    "Heal: 35 Gold: Heal X HP. X is equal to 25% of the player's Max HP, rounded down.",
     "Purify: 50 A15: (75) Gold: Remove a card from your deck.",
     "Leave: Nothing happens."
    ]
@@ -1800,9 +1886,9 @@
    "area": "Act 2",
    "summary": "You are kidnapped and trapped in an arena, forced to fight two Slavers. Afterwards, you can either leave or fight a Taskmaster and a Gremlin Nob together for 100 Gold, a card reward, an Uncommon Relic and a Rare Relic.",
    "choices": [
-    "Fight: After the fight ends, a choice has to be made:",
+    "Fight: The player enters a fight with a Blue Slaver and Red Slaver. This fight gives no rewards.",
     "COWARDICE: Escape.",
-    "VICTORY: A powerful fight with many rewards."
+    "VICTORY: A powerful fight with many rewards. The player enters a fight with Taskmaster and Gremlin Nob."
    ]
   },
   {
@@ -1831,13 +1917,13 @@
    "summary": "You encounter an ornate library. You can rest to restore your health, or choose from a selection of 20 cards to add to your deck.",
    "choices": [
     "Read: Choose 1 of 20 cards to add to your deck.",
-    "Sleep: Heal X HP."
+    "Sleep: Heal X HP. X is equal to 33% A15: (20%) of the player's Max HP."
    ]
   },
   {
    "name": "The Mausoleum",
    "area": "Act 2",
-   "summary": "You find a large sarcophagus with black goo leaking out of it. You can either leave safely, or open it for a Relic and possibly (A15) become Cursed with Writhe.",
+   "summary": "You find a large sarcophagus with black goo leaking out of it. You can either leave safely, or open it for a Relic and possibly (A15: definitely) become Cursed with Writhe.",
    "choices": [
     "Open Coffin: Obtain a Relic. 50% A15: (100%): Become Cursed - Writhe",
     "Leave: Nothing happens."
@@ -1848,8 +1934,8 @@
    "area": "Act 3",
    "summary": "An oddly placed Moai head is along your path. It is covered with depictions of people throwing themselves into its mouth. You can choose to do the same, or offer Golden Idol for riches.",
    "choices": [
-    "Jump Inside: Heal to full HP. Lose X Max HP.",
-    "Offer: {{R: }} Receive 333 Gold. Lose Golden Idol.",
+    "Jump Inside: Heal to full HP. Lose X Max HP. X is equal to 12.5% A15: (18%) of the player's Max HP.",
+    "Offer: {{R: }} Receive 333 Gold. Lose Golden Idol. If the player lacks Golden Idol, this option is replaced with Locked Requires: Golden Idol.",
     "Leave: Nothing happens."
    ]
   },
@@ -1868,7 +1954,7 @@
    "summary": "You come across a serpent who tempts you to give in to your greed. You can choose to leave, or gain gold and become Cursed.",
    "choices": [
     "Agree: Gain 175 A15: (150) Gold. Become Cursed - Doubt.",
-    "Disagree: Nothing happens. You are then given the option to Leave."
+    "Disagree: Nothing happens."
    ]
   },
   {
@@ -1888,10 +1974,10 @@
    "area": "Act 3",
    "summary": "You come across a mysterious tomb in the Beyond. You can offer all of your coins for the Red Mask, or put it on yourself for Gold if you already have it.",
    "choices": [
-    "Don the Red Mask: Gain 222 Gold.",
-    "Leave: Nothing happens. === If The Player Does Not Own Red Mask ===",
+    "Don the Red Mask: Gain 222 Gold. The player gets to keep Red Mask afterwards. The Gold is purely a reward for owning the relic.",
+    "Leave: Nothing happens.",
     "Locked: Requires: Red Mask",
-    "Offer: X Gold: Lose all Gold. Obtain a Relic.",
+    "Offer: X Gold: Lose all Gold. Obtain a Relic. X is equal to all of the player's Gold.",
     "Leave: Nothing happens."
    ]
   },
@@ -1900,7 +1986,7 @@
    "area": "All acts",
    "summary": "You encounter a shrine with the power to transform a card in your deck.",
    "choices": [
-    "Pray: Transform a card.",
+    "Pray: Transform a card. Read more on Transform rules here.",
     "Leave: Nothing happens."
    ],
    "shrine": true
@@ -1916,20 +2002,23 @@
    "shrine": true
   },
   {
-   "name": "Vampires(?)",
+   "name": "Vampires",
    "area": "Act 2",
    "summary": "A group of hooded figures taking part in some kind of ritual offer to let you join. Joining the ritual replaces all Strikes with Bite cards in exchange for 30% of your max HP. If you have the Blood Vial, you may exchange it instead of losing max HP.",
-   "choices": [],
-   "page_missing": true
+   "choices": [
+    "Offer: Blood Vial: Lose Blood Vial. Remove all Strikes. Receive 5 Bites. Only present if the player has Blood Vial.",
+    "Accept: Remove all Strikes. Receive 5 Bites. Lose X Max HP. X is equal to 30% of the player's max HP.",
+    "Refuse: Nothing happens."
+   ]
   },
   {
    "name": "We Meet Again!",
    "area": "All acts",
    "summary": "You encounter an eccentric man who offers a relic in exchange for gold, a potion, or a card.",
    "choices": [
-    "Give Potion: Lose a chosen potion. Obtain a Relic.",
-    "Give Gold: Lose Gold. Obtain a Relic.",
-    "Give Card: Lose a chosen card. Obtain a Relic.",
+    "Give Potion: Lose a chosen potion. Obtain a Relic. The event will randomly choose a potion upon entry and tell you which one was selected. You will be unable to drink or discard that potion until you leave the event's floor.",
+    "Give Gold: Lose Gold. Obtain a Relic. The amount of Gold lost is between 50 and 150 (or your current amount of Gold).",
+    "Give Card: Lose a chosen card. Obtain a Relic. The chosen card will not be Basic or a Curse.",
     "Attack: Nothing happens."
    ],
    "shrine": true
@@ -1939,7 +2028,7 @@
    "area": "All acts",
    "summary": "You are forced to spin a wheel to gain a prize, not all of which are positive.",
    "choices": [
-    "Play"
+    "Play: Spin a wheel containing the following \"prizes\" (clockwise starting at 12 o'clock in the image):"
    ],
    "shrine": true
   },
@@ -1948,9 +2037,9 @@
    "area": "Act 3",
    "summary": "You get lost in the ever-shifting labyrinth of the Beyond, all while disembodied whispers drive you into madness. You must choose how to proceed.",
    "choices": [
-    "Embrace Madness: Receive 2 Madness. Lose X HP.",
-    "Focus: Become Cursed - Writhe. Heal X HP.",
-    "Retrace Your Steps: Lose X Max HP."
+    "Embrace Madness: Receive 2 Madness. Lose X HP. X is equal to 12.5% A15: (18%) of the player's Max HP.",
+    "Focus: Become Cursed - Writhe. Heal X HP. X is equal to 25% A15: (20%) of the player's Max HP.",
+    "Retrace Your Steps: Lose X Max HP. X is equal to 5% of the player's Max HP."
    ]
   },
   {
@@ -1959,7 +2048,7 @@
    "summary": "You encounter an ornate wing-shaped statue. You can pray to it to remove a card in exchange for health, or destroy it for some gold.",
    "choices": [
     "Pray: Remove a card from your deck. Lose 7 HP.",
-    "Destroy: Receive 50 - 80 Gold.",
+    "Destroy: Receive 50 - 80 Gold. Requires an Attack card in the player's deck that deals 10 or more damage in a single hit (e.g. Twin Strike does not count).",
     "Leave: Nothing happens."
    ]
   },
@@ -1969,7 +2058,7 @@
    "summary": "You fall into a puddle of slime which makes you lose some of your gold. You can choose to retrieve it, damaging yourself, or leave it behind.",
    "choices": [
     "Gather Gold: Gain 75 Gold. Lose 11 HP.",
-    "Leave It: Lose X Gold."
+    "Leave It: Lose X Gold. X is a random number between 20 and 50 A15: (35 and 75) Gold. X cannot be more Gold than the player currently has."
    ]
   }
  ],
@@ -2022,8 +2111,7 @@
       "Sneaky Gremlin",
       "Gremlin Wizard",
       "Fat Gremlin",
-      "Mad Gremlin",
-      "Chosen"
+      "Mad Gremlin"
      ],
      "details": "4 randomly chosen from: [2x Fat Gremlin, 2x Sneaky Gremlin, 2x Mad Gremlin, Shield Gremlin, and Gremlin Wizard]"
     },
@@ -2049,7 +2137,8 @@
      "name": "Blue Slaver",
      "weight": 2.0,
      "enemies": [
-      "Blue Slaver"
+      "Blue Slaver",
+      "Red Slaver"
      ],
      "details": ""
     },
@@ -2057,7 +2146,8 @@
      "name": "Red Slaver",
      "weight": 1.0,
      "enemies": [
-      "Red Slaver"
+      "Red Slaver",
+      "Blue Slaver"
      ],
      "details": ""
     },
@@ -2159,6 +2249,24 @@
       "Hexaghost"
      ],
      "details": ""
+    }
+   ],
+   "event": [
+    {
+     "name": "Dead Adventurer",
+     "enemies": [
+      "Gremlin Nob",
+      "Lagavulin",
+      "Sentry"
+     ],
+     "details": "event fight: Search: Find Loot. 25% A15: (35%): monster returns. Each Search attempt will either cause an Act 1 Elite to return and fight the player, or yield one of the following rewards:"
+    },
+    {
+     "name": "Hypnotizing Colored Mushrooms",
+     "enemies": [
+      "Fungi Beast"
+     ],
+     "details": "event fight: Stomp: Anger the Mushrooms. Enter a battle against 3 Fungi Beasts. Winning grants the exclusive Relic Odd Mushroom along with regular combat rewards."
     }
    ]
   },
@@ -2324,6 +2432,27 @@
      ],
      "details": ""
     }
+   ],
+   "event": [
+    {
+     "name": "Masked Bandits",
+     "enemies": [
+      "Pointy",
+      "Romeo",
+      "Bear"
+     ],
+     "details": "event fight: Fight!: Starts a combat against the three bandits (Pointy, Romeo, and Bear). Upon winning, obtain regular card rewards, 25 - 35 Gold, and Red Mask."
+    },
+    {
+     "name": "The Colosseum",
+     "enemies": [
+      "Blue Slaver",
+      "Red Slaver",
+      "Taskmaster",
+      "Gremlin Nob"
+     ],
+     "details": "event fight: Fight: The player enters a fight with a Blue Slaver and Red Slaver. This fight gives no rewards.; VICTORY: A powerful fight with many rewards. The player enters a fight with Taskmaster and Gremlin Nob."
+    }
    ]
   },
   "Act 3 / The Beyond": {
@@ -2350,7 +2479,6 @@
      "enemies": [
       "Exploder",
       "Repulsor",
-      "Chosen",
       "Spiker"
      ],
      "details": "3 Shapes chosen from [2x Repulsor, 2x Exploder, 2x Spiker]"
@@ -2363,7 +2491,6 @@
      "enemies": [
       "Exploder",
       "Repulsor",
-      "Chosen",
       "Spiker"
      ],
      "details": "4 Shapes chosen from [2x Repulsor, 2x Exploder, 2x Spiker]"
@@ -2381,7 +2508,6 @@
      "weight": 1.0,
      "enemies": [
       "Spheric Guardian",
-      "Chosen",
       "Repulsor",
       "Exploder",
       "Spiker"
@@ -2416,7 +2542,7 @@
      "name": "Jaw Worm Horde",
      "weight": 1.0,
      "enemies": [
-      "Jaw Worm"
+      "Jaw Worm (Hard)"
      ],
      "details": "3x Jaw Worms (that start combat with the effects of Bellow) Bellow: * On Ascension 0 onwards: Gain 3 Strength and 6 Block * On Ascension 2 onwards: Gain 4 Strength and 6 Block * On Ascension 17 onwards: Gain 5 Strength and 9 Block"
     },
@@ -2476,6 +2602,15 @@
      ],
      "details": ""
     }
+   ],
+   "event": [
+    {
+     "name": "Mysterious Sphere",
+     "enemies": [
+      "Orb Walker"
+     ],
+     "details": "event fight: Open Sphere: Fight. Reward: Rare Relic. The player enters combat with the 2 Orb Walkers. In addition to the Rare Relic, the combat rewards also yield 45-55 Gold, a normal card reward, and potentially a Potion just like a"
+    }
    ]
   },
   "Act 4 / The Ending": {
@@ -2503,7 +2638,7 @@
  "rules": {
   "run": {
    "source": "Mechanics, Acts, Map Generation, Bosses",
-   "acts": "3 acts (Exordium, The City, The Beyond) of 17 floors each; optional Act 4 (The Ending, floors 52-56) needs all 3 keys. Run starts with Neow; floor counter 1-51 for acts 1-3.",
+   "acts": "3 acts (Exordium, The City, The Beyond) of 17 floors each (bosses on floors 16/33/50, A20 a second Act 3 boss on 51); optional Act 4 (The Ending: rest, shop, elite, Heart on floor 55, A20: 56) needs all 3 keys. The run starts with Neow.",
    "start": "99 Gold, 3 potion slots (A11: 2), starter relic, 10-12 card starter deck, 3 Energy, draw 5. Hand limit 10.",
    "act_transition": "Act 1/2 boss -> card reward (3 Rares) + Gold + maybe potion; next floor (17/34) is the Boss Chest (choose 1 of 3 Boss relics or skip). Heal 100% of missing HP (A5: 75%) after the boss. Act 3 boss ends the run unless all 3 keys are held."
   },
@@ -2519,14 +2654,14 @@
     "merchant": 0.05,
     "note": "A1: ~60% more elites. Treasure only on the fixed row 9 (and from ? rooms)."
    },
-   "constraints_not_on_wiki": "From the game's map generator (not stated on the wiki): no Elite/Rest below row 6, no Rest on row 14, no two Elite/Rest/Merchant in a row on a path, sibling branches from one node differ in type.",
+   "constraints_not_on_wiki": "Not on wiki (game-code knowledge, unverified): 7-column grid with 6 path starts; no Elite or Rest on floors 1-5; no Rest on floor 14; a room cannot follow a parent of the same special type (Elite, Rest, Merchant, Treasure) and branches from one node avoid repeating a special type.",
    "monster_pools": "First 3 fights in Act 1 (2 in Acts 2-3) come from the easy pool, the rest from the hard pool (weighted); the same encounter cannot recur within the next 2 fights; a few hard-pool fights are banned right after a similar easy fight.",
    "elite_rules": "Same elite may repeat within an act but never twice in a row.",
    "unknown_room": "? resolves on entry: base Monster 10%, Shop 3%, Treasure 2%, else Event; each type not rolled grows by its base value and resets when rolled (values from the StS2 wiki page; the StS1 page's odds section is empty but the game uses the same scheme). Shrine events are 25% of event rolls. Juzu Bracelet removes Monster."
   },
   "rewards": {
    "source": "Cards, Gold, Potions, Relics, Elites, Bosses, Mechanics",
-   "card_reward": "Choose 1 of 3 (or skip). Rarity base chances normal 60/37/3% (C/U/R), elite 50/40/10%, shop 54/37/9%. Rare pity: offset starts at -5%, +1% per Common rolled, resets on a Rare (first reward of an act cannot be Rare). Upgraded commons/uncommons appear from Act 2 (A12: half as often).",
+   "card_reward": "Choose 1 of 3 (or skip). Rarity base chances normal 60/37/3% (C/U/R), elite 50/40/10%, shop 54/37/9%. Rare pity: offset starts at -5%, +1% per Common rolled, resets on a Rare (first reward of an act cannot be Rare). Act 1 rewards are never upgraded; from Act 2 some reward cards come upgraded (A12: half as often) - 25%/50% in Act 2/3 per the StS2 page, assumed equal in StS1 (not on the StS1 wiki).",
    "gold": "Normal 10-20, Elite 25-35, Boss 95-105 (A13: 71-79). Start 99.",
    "potion_drop": "40% after combat; -10% after a drop, +10% after none; resets each act. Potion rarity 65/25/10% (C/U/R).",
    "elite": "Relic (C/U/R 50/33/17%) + 25-35 Gold + card reward (elite odds) + maybe potion.",

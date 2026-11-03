@@ -2,7 +2,45 @@
  "game": "Slay the Spire 2",
  "source": "https://slaythespire.wiki.gg (CC BY-SA)",
  "retrieved": "2026-11-03",
- "notes": "relics/potions from the wiki Cargo tables; events from the wiki's event data modules + each event page's Options section (choices are condensed plain text, capped). encounters: per act, pools easy/hard (StS1 with the wiki's encounter weights), elite, boss, event; enemies = matched enemy names. rules: condensed from the mechanics pages named in each 'source'; anything marked 'not on wiki' comes from general game knowledge and is unverified. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Completeness check: {\"relics\": {\"scraped_relics\": 298, \"wiki_Module_Relics_data (renders Relics List)\": 298, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Ancient\": 102, \"Common\": 30, \"Event\": 35, \"Rare\": 50, \"Shop\": 30, \"Special\": 1, \"Starter\": 10, \"Uncommon\": 40}}, \"potions\": {\"scraped_potions\": 64, \"wiki_Module_Potions_data (renders Potions List)\": 64, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"by_rarity\": {\"Common\": 20, \"Rare\": 20, \"Special\": 4, \"Uncommon\": 20}}, \"events\": {\"scraped_events\": 57, \"wiki_Category_Events_pages\": 57, \"missing_vs_wiki\": [], \"extra_vs_wiki\": [], \"wiki_Module_Events_data (renders Events List)\": 57}}",
+ "notes": "relics/potions from the wiki Cargo tables; events from the wiki's event data modules + each event page's Options section (choices are condensed plain text, capped). encounters: per act, pools easy/hard (StS1 with the wiki's encounter weights), elite, boss, event; enemies = matched enemy names. rules: condensed from the mechanics pages named in each 'source'; anything marked 'not on wiki' comes from general game knowledge and is unverified. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Relic rarity 'Ancient' = offered by an Ancient at act start (relic.ancient names it); potion rarity 'Special' = only from events/relics. See 'ancients' for each Ancient's relic pool. Completeness: relic, potion and event counts are compared with the wiki data modules that render the Relics/Potions/Events List pages; see 'completeness'.",
+ "completeness": {
+  "relics": {
+   "scraped_relics": 298,
+   "wiki_Module_Relics_data (renders Relics List)": 298,
+   "missing_vs_wiki": [],
+   "extra_vs_wiki": [],
+   "by_rarity": {
+    "Ancient": 102,
+    "Common": 30,
+    "Event": 35,
+    "Rare": 50,
+    "Shop": 30,
+    "Special": 1,
+    "Starter": 10,
+    "Uncommon": 40
+   }
+  },
+  "potions": {
+   "scraped_potions": 64,
+   "wiki_Module_Potions_data (renders Potions List)": 64,
+   "missing_vs_wiki": [],
+   "extra_vs_wiki": [],
+   "by_rarity": {
+    "Common": 20,
+    "Rare": 20,
+    "Special": 4,
+    "Uncommon": 20
+   }
+  },
+  "events": {
+   "scraped_events": 57,
+   "wiki_Category_Events_pages": 57,
+   "missing_vs_wiki": [],
+   "extra_vs_wiki": [],
+   "wiki_Module_Events_data (renders Events List)": 57,
+   "explanations": []
+  }
+ },
  "relics": [
   {
    "name": "Alchemical Coffer",
@@ -2323,7 +2361,7 @@
    "area": "Act 1 - Underdocks",
    "summary": "You find a secluded area with a strange pool of liquid. You can either immerse yourself in it, increasing your Max HP at the cost of taking damage as many times as you wish, or gather the salts around the pool to recover some HP.",
    "choices": [
-    "Immerse: Gain 2 Max HP. Take 3 damage.",
+    "Immerse: Gain 2 Max HP. Take 3 damage. After immersing, additional stages follow with escalating damage:",
     "Abstain: Heal 10 HP."
    ]
   },
@@ -2352,7 +2390,7 @@
    "choices": [
     "Setting 1: Fight a 75 HP dummy. Procure 1 random Potion.",
     "Setting 2: Fight a 150 HP dummy. Upgrade 2 random cards.",
-    "Setting 3: Fight a 300 HP dummy. Obtain a random Relic."
+    "Setting 3: Fight a 300 HP dummy. Obtain a random Relic. You have 3 turns to defeat the dummy. Failing results in no reward."
    ]
   },
   {
@@ -2386,7 +2424,13 @@
    "name": "Colorful Philosophers",
    "area": "Act 2 - Hive",
    "summary": "You stumble upon a group of colored statues arguing over which color is the best. You may join in and obtain three card rewards of varying rarities from a different character of your choice.",
-   "choices": []
+   "choices": [
+    "Red: Obtain 3 Ironclad cards.",
+    "Green: Obtain 3 Silent cards.",
+    "Blue: Obtain 3 Defect cards.",
+    "Pink: Obtain 3 Necrobinder cards.",
+    "Orange: Obtain 3 Regent cards."
+   ]
   },
   {
    "name": "Colossal Flower",
@@ -2394,7 +2438,7 @@
    "summary": "You come across an enormous flower with sharp, venomous petals growing on a mountain of bones. You can grab the nectar dripping off of it to obtain some gold, or climb deeper into it to obtain more at the cost of some HP, or obtain the unique Pollinous Core relic.",
    "choices": [
     "Extract Nectar: Gain 35 Gold.",
-    "Reach Deeper: Lose 5 HP. Advance to the next level."
+    "Reach Deeper: Lose 5 HP. Advance to the next level. Level 2: Extract Nectar Gain 75 Gold. / Reach Deeper Lose 6 HP."
    ]
   },
   {
@@ -2403,7 +2447,7 @@
    "summary": "You meet a Fortune Teller offering to divine your future. you pick a plan to Uncover your] Future and earn rewards.",
    "choices": [
     "Uncover Future: Pay 51-99 Gold. Divine 3 times.",
-    "Payment Plan: Gain a Debt. Divine 6 times. === Mechanics === The event first presents the player with a choice between two options. Both of them lead to the same minigame in which the player uncovers a crystal sphere for rewards. In the center of the screen is an 11x11 ..."
+    "Payment Plan: Gain a Debt. Divine 6 times."
    ]
   },
   {
@@ -2448,8 +2492,8 @@
    "area": "Act 1 - Underdocks",
    "summary": "You find a shack where a chef is skillfully preparing food and placing it onto a conveyor belt. You can either pay gold to gain various benefits as many times as you wish, or hold back and upgrade a card instead.",
    "choices": [
-    "Grab Something Off the Belt: Pay 40 Gold. Receive a random dish (see below).",
-    "Observe the Chef: Upgrade a random card. === Dishes === Each grab serves a random dish from the belt (40 Gold each, except Golden Fysh which is free): {| class=\"wikitable\" style=\"width: 650px;\"! Dish!! Effect!! Weight!! Notes |- | Caviar || Gain 4 Max HP. || 6 || |- | Clam ..."
+    "Grab Something Off the Belt: Pay 40 Gold. Receive a random dish (see below). After each grab, you may continue grabbing or Leave.",
+    "Observe the Chef: Upgrade a random card."
    ]
   },
   {
@@ -2475,8 +2519,8 @@
    "area": "Act 3 - Glory",
    "summary": "",
    "choices": [
-    "Big Mushroom: Obtain Big Mushroom (relic).",
-    "Fragrant Mushroom: Obtain Fragrant Mushroom (relic)."
+    "Big Mushroom: Obtain Big Mushroom (relic). Big Mushroom: Upon pickup, raise your Max HP by 20. At the start of each combat, draw 2 fewer cards.",
+    "Fragrant Mushroom: Obtain Fragrant Mushroom (relic). Fragrant Mushroom: Upon pickup, lose 15 HP and Upgrade 3 random cards."
    ]
   },
   {
@@ -2520,7 +2564,7 @@
    "area": "Act 2 - Hive, Act 3 - Glory",
    "summary": "You discover the corpse of a courier who has a batch of particularly foul potions by his body, along with a note intending for the recipient to be the Merchant. You may take the Foul Potions, or ransack his bag to obtain a random uncommon potion.",
    "choices": [
-    "Grab Potions: Procure 3 2.",
+    "Grab Potions: Procure 3 Foul Potions.",
     "Ransack: Procure 1 random Uncommon Potion."
    ]
   },
@@ -2530,7 +2574,7 @@
    "summary": "You find two Punch Constructs in a fighting match over a Relic. You can either steal the relic, adding a curse into your deck in the process, or enter combat against them to obtain it with various other rewards.",
    "choices": [
     "Nab: Add Injury (curse) to Deck. Obtain a random Relic.",
-    "I Can Take Them: Enter combat against 2 2 for greater rewards."
+    "I Can Take Them: Enter combat against 2 Punch Constructs for greater rewards. Obtain a random Relic, a random Potion, and a standard combat reward."
    ]
   },
   {
@@ -2567,8 +2611,8 @@
    "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive",
    "summary": "You stumble into a room made completely out of cheese. You may gorge yourself on the cheese to obtain 2 common cards out of a pool of 8, or search the strange room to obtain the unique Chosen Cheese relic at the cost of some HP.",
    "choices": [
-    "Gorge: Choose 2 of 8 random Common cards to add to your Deck.",
-    "Search: Lose 14 HP. Obtain The Chosen Cheese (relic)."
+    "Gorge: Choose 2 of 8 random Common cards to add to your Deck. The 8 cards will not contain any duplicates.",
+    "Search: Lose 14 HP. Obtain The Chosen Cheese (relic). The Chosen Cheese: At the end of combat, gain 1 Max HP."
    ]
   },
   {
@@ -2582,22 +2626,22 @@
   },
   {
    "name": "Self-Help Book",
-   "area": "?",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive, Act 3 - Glory",
    "summary": "You stumble upon a bloody book. You may study its contents to enchant an Attack, Skill, or Power card in your deck.",
    "choices": [
     "Read the Back: Choose an Attack to Enchant with Sharp 2.",
     "Read a Random Passage: Choose a Skill to Enchant with Nimble 2.",
     "Read the Entire Book: Choose a Power to Enchant with Swift 2.",
-    "Move On: Nothing happens."
+    "Move On: Nothing happens. Options are only available if you have a valid card to apply the enchantment to. Move On is only available if you have no valid cards."
    ]
   },
   {
    "name": "Slippery Bridge",
-   "area": "?",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive, Act 3 - Glory",
    "summary": "You cross a rickety bridge only to be threatened by a sudden tempest attempting to blow you away. You must overcome this obstacle by sacrificing a random card in your deck, or hang on to randomize which card to lose.",
    "choices": [
     "Overcome: [Specific card] is removed from your deck.",
-    "Hold On: Lose 3 HP. The card in the above option is randomized. === Mechanics ==="
+    "Hold On: Lose 3 HP. The card in the above option is randomized."
    ]
   },
   {
@@ -2651,7 +2695,8 @@
    "summary": "Swiftly defeating some foes, you discover a mysterious tablet. You may decipher its language to upgrade cards in your deck at the cost of increasing amounts of Max HP, or break it to recover some health.",
    "choices": [
     "Smash: Heal 20 HP.",
-    "Decipher: Lose 3 Max HP. Upgrade a random card."
+    "Decipher: Lose 3 Max HP. Upgrade a random card. If Decipher is chosen, additional stages follow with escalating costs:",
+    "Give Up: can be chosen at any stage to leave."
    ]
   },
   {
@@ -2666,14 +2711,14 @@
   },
   {
    "name": "The Future of Potions?",
-   "area": "?",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive, Act 3 - Glory",
    "summary": "You discover a strange machine that can transform a potion into a card reward depending on its rarity.",
    "choices": [
     "Insert Common Potion: Lose a specified Common potion. Obtain an Upgraded Common [Attack/Skill] card reward.",
     "Insert Uncommon Potion: Lose a specified Uncommon potion. Obtain an Upgraded Uncommon [Attack/Skill/Power] card reward.",
     "Insert Rare Potion: Lose a specified Rare potion. Obtain an Upgraded Rare [Attack/Skill/Power] card reward.",
-    "Insert Event Potion: Lose a specified Event potion. Obtain an Upgraded Rare [Attack/Skill/Power] card reward.",
-    "Insert Token Potion: Lose a specified Token potion. Obtain an Upgraded Common [Attack/Skill] card reward. === Mechanics ==="
+    "Insert Event Potion: Lose a specified Event potion. Obtain an Upgraded Rare [Attack/Skill/Power] card reward. The only Event potions are Foul Potion and Glowwater Potion, but for this event Ambergris is also considered an Event potion.",
+    "Insert Token Potion: Lose a specified Token potion. Obtain an Upgraded Common [Attack/Skill] card reward. The only Token potion is Potion-Shaped Rock."
    ]
   },
   {
@@ -2732,20 +2777,20 @@
    "area": "Act 3 - Glory",
    "summary": "You join a line of people and are forced into becoming the judge for a trial that you may not refuse. You may either declare the defendant guilty or innocent to obtain various rewards, though most often also resulting in you becoming Cursed.",
    "choices": [
-    "Accept: Serve as today's Decider. ===== Merchant Trial =====",
+    "Accept: Serve as today's Decider. One of three trials is randomly selected. Every trial presents two verdicts:",
     "DECIDE: Guilty: Add Regret (curse) to your Deck. Obtain 2 random Relics.",
-    "DECIDE: Innocent: Add Shame (curse) to your Deck. Upgrade 2 cards. ==== Noble Trial ====",
+    "DECIDE: Innocent: Add Shame (curse) to your Deck. Upgrade 2 cards.",
     "DECIDE: Guilty: Heal 10 HP.",
-    "DECIDE: Innocent: Add Regret (curse) to your Deck. Gain 300 Gold. ==== Nondescript Trial ====",
+    "DECIDE: Innocent: Add Regret (curse) to your Deck. Gain 300 Gold.",
     "DECIDE: Guilty: Add Doubt (curse) to your Deck. Gain 2 card rewards.",
-    "DECIDE: Innocent: Add Doubt (curse) to your Deck. Transform 2 cards. === Reject ===",
-    "Reject: You are not allowed to Reject.",
-    "Double Down: Face lethal repercussions."
+    "DECIDE: Innocent: Add Doubt (curse) to your Deck. Transform 2 cards.",
+    "Reject: You are not allowed to Reject. The player is asked again if they are willing to participate with Reject being replaced with Double Down.",
+    "Double Down: Face lethal repercussions. The player is instantly killed. Not selectable in multiplayer."
    ]
   },
   {
    "name": "This or That?",
-   "area": "?",
+   "area": "Act 1 - Overgrowth, Act 1 - Underdocks, Act 2 - Hive, Act 3 - Glory",
    "summary": "Two arms suddenly burst out from a hole in the wall, carrying a bag of gold in one hand and a relic in another. You can take the gold at the cost of some HP, or the relic at the cost of becoming cursed.",
    "choices": [
     "This: Lose 6 HP. Gain 41-68 Gold.",
@@ -2756,15 +2801,19 @@
    "name": "Tinker Time",
    "area": "Act 3 - Glory",
    "summary": "You meet a scientist who offers to create you a powerful card of your chosing. You can 2 of 3 categories of cards, and then 2 of 3 unique effects added onto the card.",
-   "choices": []
+   "choices": [
+    "Weapon: Create an Attack. (Deal 12 damage.)",
+    "Protector: Create a Skill. (Gain 8 Block.)",
+    "Gadget: Create a Power. Two of the three types are offered at random."
+   ]
   },
   {
    "name": "Trash Heap",
    "area": "Act 1 - Underdocks",
    "summary": "You find an enormous tower of discarded matter. You can rummage through the waste to obtain one of several unique Relics at the cost of some HP, or scavenge around the garbage to obtain some gold and add a unique card to your deck.",
    "choices": [
-    "Dive In: Lose 8 HP. Obtain a random Relic.",
-    "Grab Random Junk: Gain 100 Gold. Obtain a random card."
+    "Dive In: Lose 8 HP. Obtain a random Relic. The Relic is randomly chosen from among Darkstone Periapt, Dream Catcher, Hand Drill, Maw Bank, and The Boot (with equal probabilities for each).",
+    "Grab Random Junk: Gain 100 Gold. Obtain a random card. The card is randomly chosen from among Caltrops, Distraction, Outmaneuver, Clash, Dual Wield, Entrench, Hello World, Rebound, Stack, and Rip and Tear (with equal probabilities for each)."
    ]
   },
   {
@@ -2792,7 +2841,7 @@
    "choices": [
     "Bloody Ink: Gain 6 Max HP.",
     "Tentacle Quill: Pay 55 Gold. Enchant a card with Steady.",
-    "Prickly Sponge: Pay 99 Gold. Enchant 2 cards with Steady."
+    "Prickly Sponge: Pay 99 Gold. Enchant 2 cards with Steady. Tentacle Quill and Prickly Sponge are locked if you don't have enough Gold."
    ]
   },
   {
@@ -2800,10 +2849,10 @@
    "area": "Act 2 - Hive",
    "summary": "You meet an extremely unenthusiastic clerk in a shop selling a variety of Relics. You can purchase a random common relic, a specific rare relic, or a ticket that gives you multiple random relics after enough combat encounters. You may also refuse to purchase anything, downgrading a card in the process.",
    "choices": [
-    "Wongo's Bargain Bin: Pay 100 Gold. Obtain 1 random Common Relic.",
-    "Wongo's Featured Item: Pay 200 Gold. Obtain [Rare Relic].",
-    "Wongo's Mystery Box: Pay 300 Gold. Obtain 3 random Relics after 5 combats.",
-    "Leave: Downgrade a random card. === Wongo Points === After any purchase, the player will receive Wongo Points based on which purchase they selected. Wongo Points persist between all of the player's runs on their profile (across all characters), and the event text ..."
+    "Wongo's Bargain Bin: Pay 100 Gold. Obtain 1 random Common Relic. Player also receives 32 Wongo Points.",
+    "Wongo's Featured Item: Pay 200 Gold. Obtain [Rare Relic]. This relic is randomly selected from the rare relics in the standard relic pool, and will be displayed by name in the event option.",
+    "Wongo's Mystery Box: Pay 300 Gold. Obtain 3 random Relics after 5 combats. Player obtains Wongo's Mystery Ticket.",
+    "Leave: Downgrade a random card."
    ]
   },
   {
@@ -2841,7 +2890,7 @@
    "choices": [
     "Breathing Techniques: Pay 50 Gold. Add 2 Enlightenment to your Deck.",
     "Emotional Awareness: Pay 125 Gold. Remove 1 card from your Deck.",
-    "Arachnid Acupuncture: Pay 250 Gold. Remove 2 cards from your Deck."
+    "Arachnid Acupuncture: Pay 250 Gold. Remove 2 cards from your Deck. Emotional Awareness and Arachnid Acupuncture are locked if you don't have enough Gold."
    ]
   }
  ],
@@ -3548,7 +3597,7 @@
  "rules": {
   "run": {
    "source": "Acts, Mechanics, Ancients, Bosses",
-   "acts": "3 acts. Act 1 is randomly Overgrowth or Underdocks; Act 2 Hive; Act 3 Glory. Every act starts with an Ancient (Act 1 always Neow) and ends with a boss: floors 17 / 33 / 48 (A10: second boss on 49). Victory = beating the Act 3 boss (no Act 4 / keys).",
+   "acts": "3 acts. Act 1 is randomly Overgrowth or Underdocks; Act 2 Hive; Act 3 Glory. Every act starts with an Ancient (Act 1 always Neow) and ends with a boss: floors 17 / 33 / 48 (A10: second boss on 49), i.e. acts shrink 17 -> 16 -> 15 floors; multiplayer 16 / 31 / 45. Golden Compass turns Act 2 into one 2-floor-longer path. Victory = beating the Act 3 boss (no Act 4 / keys).",
    "start": "99 Gold, 3 potion slots (A4: 2), starter relic, 10-12 card deck (5 characters), 3 Energy, draw 5.",
    "act_transition": "Act 1/2 boss -> 100 Gold (A3: 75) + 3 Rare card choice + maybe potion. No boss relic chest: the next act opens with an Ancient that heals 100% of missing HP (A2: 80%) and offers 3 Ancient relics (must take one; cannot skip)."
   },
@@ -3608,62 +3657,62 @@
    {
     "level": 1,
     "effect": "Elites spawn more often.",
-    "name": "2}}",
-    "detail": "Swarming Elites"
+    "name": "Swarming Elites",
+    "detail": "~60% more Elites will spawn."
    },
    {
     "level": 2,
     "effect": "Ancients only heal 80% of your missing HP.",
-    "name": "2}}",
-    "detail": "Weary Traveler"
+    "name": "Weary Traveler",
+    "detail": "Ancients only heal 80% of your missing HP. This includes Neow at the start of the game."
    },
    {
     "level": 3,
     "effect": "Enemies and Treasure Chests drop 25% less Gold.",
-    "name": "2}}",
-    "detail": "Poverty"
+    "name": "Poverty",
+    "detail": "Enemies and Treasure Chests drop 25% less Gold."
    },
    {
     "level": 4,
     "effect": "Start each run with 1 less potion slot.",
-    "name": "2}}",
-    "detail": "Tight Belt"
+    "name": "Tight Belt",
+    "detail": "Start each run with 1 fewer potion slot."
    },
    {
     "level": 5,
     "effect": "Start each run cursed.",
-    "name": "2}}",
-    "detail": "Ascender's Bane"
+    "name": "Ascender's Bane",
+    "detail": "Start each run with an Ascender's Bane."
    },
    {
     "level": 6,
     "effect": "Removing cards from your deck at the Merchant is more expensive.",
-    "name": "2}}",
-    "detail": "Inflation"
+    "name": "Inflation",
+    "detail": "Card removes at The Merchant now start at 100 Gold instead of 75 Gold. Every subsequent card remove now costs 50 Gold more instead of only 25 Gold."
    },
    {
     "level": 7,
     "effect": "Rare and Upgraded cards appear less often.",
-    "name": "2}}",
-    "detail": "Scarcity"
+    "name": "Scarcity",
+    "detail": "Rare and Upgraded cards appear half as often. This includes combat rewards from all Enemies as well as the stock of the Merchant."
    },
    {
     "level": 8,
     "effect": "All enemies are harder to kill.",
-    "name": "2}}",
-    "detail": "Tough Enemies"
+    "name": "Tough Enemies",
+    "detail": "All Enemies have more HP."
    },
    {
     "level": 9,
     "effect": "All enemies have deadlier attacks.",
-    "name": "2}}",
-    "detail": "Deadly Enemies"
+    "name": "Deadly Enemies",
+    "detail": "All Enemies deal more damage."
    },
    {
     "level": 10,
     "effect": "(Max Level) Fight two Bosses at the end of Act 3.",
-    "name": "2}}",
-    "detail": "(MAX Level) Double Boss."
+    "name": "(MAX Level) Double Boss.",
+    "detail": "Fight two Bosses at the end of Act 3."
    }
   ]
  },

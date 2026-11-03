@@ -2,7 +2,43 @@
  "game": "Slay the Spire 2",
  "source": "https://slaythespire.wiki.gg (CC BY-SA)",
  "retrieved": "2026-11-03",
- "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 2500 chars. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Excluded deprecated: Doormaker. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Completeness check: {\"scraped_by_category\": {\"boss\": 15, \"elite\": 14, \"event\": 1, \"minion\": 13, \"normal\": 63}, \"wiki_cargo_Enemies_by_type\": {\"boss\": 15, \"elite\": 14, \"event\": 1, \"minion\": 13, \"normal\": 63}, \"wiki_module_enemy_entries\": 109, \"scraped_not_in_cargo\": [], \"cargo_not_scraped\": [], \"scraped_not_in_module\": [\"Battle Friend\", \"Hatchling\"], \"module_not_scraped\": [\"Battle Friend V1.0\", \"Battle Friend V2.0\", \"Battle Friend V3.0\", \"Doormaker\", \"Knight Gang\"]}",
+ "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 3000 chars; [Heading] marks a sub-section such as a phase. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Excluded deprecated: Doormaker. StS2 is in Early Access (since 2026-03-05); the wiki tracks the public beta branch: last Major Update V0.107.1, latest logged patch V0.111.0 (Beta Patch, 2026-08-13). Values can change between patches. Completeness: enemy counts per category equal the wiki's Cargo 'Enemies' table (106 vs 106); differences against the enemy data module are explained in 'completeness'.",
+ "completeness": {
+  "scraped_by_category": {
+   "boss": 15,
+   "elite": 14,
+   "event": 1,
+   "minion": 13,
+   "normal": 63
+  },
+  "wiki_cargo_Enemies_by_type": {
+   "boss": 15,
+   "elite": 14,
+   "event": 1,
+   "minion": 13,
+   "normal": 63
+  },
+  "wiki_module_enemy_entries": 109,
+  "scraped_not_in_cargo": [],
+  "cargo_not_scraped": [],
+  "scraped_not_in_module": [
+   "Battle Friend",
+   "Hatchling"
+  ],
+  "module_not_scraped": [
+   "Battle Friend V1.0",
+   "Battle Friend V2.0",
+   "Battle Friend V3.0",
+   "Doormaker",
+   "Knight Gang"
+  ],
+  "explanations": [
+   "Doormaker was deprecated in V0.107.1 (replaced by Aeonglass) and is excluded.",
+   "Hatchling (Ovicopter's hatched egg) has an infobox/Cargo row but no Module:Enemies entry.",
+   "Module has a group entry 'Knight Gang'; the scrape has its 3 members (Flail, Magi, Spectral Knight).",
+   "Module lists the Battleworn Dummy as 3 entries (Battle Friend V1.0/V2.0/V3.0 = 75/150/300 HP settings); the wiki page has one infobox 'Battle Friend'."
+  ]
+ },
  "enemies": [
   {
    "id": "sts2.assassin_raider",
@@ -197,7 +233,7 @@
      "intent_icons": "Attack3"
     }
    ],
-   "pattern": "After it 2 it repeats this pattern for the remainder of fight: * Repeater Blast * Repeater Blast * Expel Blast",
+   "pattern": "After it Charges Up it repeats this pattern for the remainder of fight: * Repeater Blast * Repeater Blast * Expel Blast",
    "passives": [
     "Artifact 1"
    ],
@@ -421,7 +457,7 @@
     },
     {
      "name": "Sticky Shot",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 2 Slimed into your discard pile.",
@@ -464,7 +500,7 @@
     },
     {
      "name": "Goop",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 1 Slimed into your discard pile.",
@@ -569,7 +605,7 @@
      "intent_icons": "Buff"
     }
    ],
-   "pattern": "Intent cycles in order. After Hiss their intent wraps back around to Butt, followed by Hesitant Slice and then Hiss again. Starting intent is encounter dependent.",
+   "pattern": "Intent cycles in order. After Hiss their intent wraps back around to Butt, followed by Hesitant Slice and then Hiss again. Starting intent is encounter dependent. [Solo Encounter] When alone (Nibbits Weak encounter), the Nibbit opens with Butt. It's good strategy to aim to win on one of the Butt repeats, so either turn 4 or 7. Nibbit buffs the turn prior, giving you 2 full turns to spend energy on nothing but attacks and finish the combat before the big attack lands. (table omitted) [Paired Encounter] When paired (Nibbits Normal encounter), the front Nibbit opens with Hesitant Slice and the back Nibbit opens with Hiss. (table omitted)",
    "passives": [],
    "encounters": [
     "Act 1 easy: A Lone Nibbit",
@@ -773,7 +809,7 @@
     },
     {
      "name": "Sticky Shot",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 1 Slimed into your discard pile.",
@@ -850,7 +886,7 @@
     },
     {
      "name": "Grasping Vines",
-     "intent": "attack_debuff_card",
+     "intent": "attack_affliction",
      "damage": 8,
      "hits": 1,
      "effect": "Deals 8 (A9: 9) damage. Applies 1 Tangled.",
@@ -898,7 +934,7 @@
     },
     {
      "name": "Wriggle",
-     "intent": "buff_status_card",
+     "intent": "buff_status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 1 Infection into your discard pile. Gains 2 Strength.",
@@ -1163,7 +1199,7 @@
    "moves": [
     {
      "name": "Haunt",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 5 Dazed into your discard pile. Applies 3 Weak.",
@@ -1211,7 +1247,7 @@
    "moves": [
     {
      "name": "Advanced Gas",
-     "intent": "attack_debuff_card",
+     "intent": "attack_affliction",
      "damage": 8,
      "hits": 1,
      "effect": "Deals 8 (A9: 9) damage. Applies 1 Smoggy.",
@@ -1222,7 +1258,7 @@
      "intent": "attack_summon",
      "damage": 5,
      "hits": 1,
-     "effect": "Deals 5 (A9: 6) damage. Summons 1 2.",
+     "effect": "Deals 5 (A9: 6) damage. Summons 1 Gas Bomb.",
      "intent_icons": "Attack2, Summon"
     },
     {
@@ -1721,7 +1757,7 @@
     },
     {
      "name": "Screech",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 3 Dazed into your discard pile.",
@@ -1955,7 +1991,7 @@
    "moves": [
     {
      "name": "Toxic Cornucopia",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Adds 2 Toxic to your hand.",
@@ -2263,7 +2299,7 @@
    "moves": [
     {
      "name": "Thievery",
-     "intent": "attack_debuff_card",
+     "intent": "attack_affliction",
      "damage": 17,
      "hits": 1,
      "effect": "Deals 17 (A9: 19) damage. Swipe a card from your deck.",
@@ -2780,7 +2816,7 @@
    "moves": [
     {
      "name": "Vomit Ichor",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 10 Slimed into the discard pile.",
@@ -3052,7 +3088,7 @@
    "moves": [
     {
      "name": "Infect",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 3 Infection into your discard pile.",
@@ -3067,7 +3103,7 @@
      "intent_icons": "Attack3"
     }
    ],
-   "pattern": "Phrog Parasite alternates between its two moves: # Infect # Lash # Back to Infect, and so on. When Phrog Parasite dies, Infested triggers and 4 2 are summoned. They will be Stunned and do nothing on their first turn. The fight continues until all Wrigglers are defeated.",
+   "pattern": "Phrog Parasite alternates between its two moves: # Infect # Lash # Back to Infect, and so on. When Phrog Parasite dies, Infested triggers and 4 Wrigglers are summoned. They will be Stunned and do nothing on their first turn. The fight continues until all Wrigglers are defeated.",
    "passives": [
     "Infested — Upon dying, summons... something."
    ],
@@ -3546,7 +3582,7 @@
     },
     {
      "name": "Flamethrower",
-     "intent": "attack_status_card",
+     "intent": "attack_status",
      "damage": 8,
      "hits": 1,
      "effect": "Deals 8 (A9: 12) damage. Adds 4 Burn to your hand.",
@@ -3836,7 +3872,7 @@
     },
     {
      "name": "Dismember",
-     "intent": "attack_status_card",
+     "intent": "attack_status",
      "damage": 27,
      "hits": 1,
      "effect": "Deals 27 (A9: 30) damage. Shuffles 3 Wounds into your discard pile.",
@@ -3945,7 +3981,7 @@
    "moves": [
     {
      "name": "Beckon",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 2 Beckon into your deck (1 into draw pile, 1 into discard pile).",
@@ -3961,7 +3997,7 @@
     },
     {
      "name": "Gaze",
-     "intent": "attack_status_card",
+     "intent": "attack_status",
      "damage": 7,
      "hits": 1,
      "effect": "Deals 7 (A9: 8) damage. Shuffles 1 Beckon into your discard pile.",
@@ -4065,7 +4101,7 @@
     },
     {
      "name": "Explode",
-     "intent": "unknown",
+     "intent": "deathblow",
      "damage": null,
      "hits": null,
      "effect": "Deals damage equal to its stored Steam Eruption amount, then dies.",
@@ -4287,7 +4323,7 @@
    "moves": [
     {
      "name": "Liquify Ground",
-     "intent": "buff_status_card",
+     "intent": "buff_status",
      "damage": null,
      "hits": null,
      "effect": "Gains 4 Sandpit (counted separately for each player). Shuffles 6 Frantic Escape into each player's deck (3 into draw pile, 3 into discard pile).",
@@ -4359,7 +4395,7 @@
     },
     {
      "name": "Increasing Intensity",
-     "intent": "buff_status_card",
+     "intent": "buff_status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 1 (A9: 2) Wither+X into your discard pile. Gains 2 (A9: 3) + X Strength. Upgrade all Withers. Withering Presence effect now creates Withers + X.",
@@ -4368,8 +4404,7 @@
    ],
    "pattern": "The Aeonglass follows a repeating cycle: # Ebb # Eye Lasers # Increasing Intensity X equals the amount of times Increasing Intensity has been used. Withering Presence adds the Withers to your hand after the card's effect has been resolved completely. When an exhaust card like Scavenge triggers Withering Presence, it cannot remove the status card whose creation it triggered.",
    "passives": [
-    "{{BD2|Withering Presence|Withering",
-    "Presence}}",
+    "Withering Presence — Every 6 cards you play, add a Wither to your Hand.",
     "Artifact 3"
    ],
    "encounters": [
@@ -4395,7 +4430,7 @@
    "moves": [
     {
      "name": "Puppet Strings",
-     "intent": "debuff_card",
+     "intent": "affliction",
      "damage": null,
      "hits": null,
      "effect": "Applies 3 Chains of Binding to all players.",
@@ -4482,7 +4517,7 @@
      "intent_icons": "Attack3, Debuff"
     }
    ],
-   "pattern": "Starts with Adaptable and Enrage 2 (A9: 3). Alternates between Bite and Skull Bash. When reduced to 0 HP, Adaptable prevents death and it revives into Phase 2. |-|Phase 2=",
+   "pattern": "Starts with Adaptable and Enrage 2 (A9: 3). Alternates between Bite and Skull Bash. When reduced to 0 HP, Adaptable prevents death and it revives into Phase 2. [Phase 2]",
    "passives": [
     "Adaptable, Enrage 2 (A9: 3) — When it would be defeated, it instead revives even stronger."
    ],
@@ -4516,7 +4551,7 @@
      "intent_icons": "Attack4"
     }
    ],
-   "pattern": "Revives with 200 (A8: 212) HP, gains Painful Stabs and loses Enrage. Uses Multi-Claw every turn. Multi-Claw starts at 3 hits and gains +1 hit each use. When reduced to 0 HP again, it revives into Phase 3. |-|Phase 3=",
+   "pattern": "Revives with 200 (A8: 212) HP, gains Painful Stabs and loses Enrage. Uses Multi-Claw every turn. Multi-Claw starts at 3 hits and gains +1 hit each use. When reduced to 0 HP again, it revives into Phase 3. [Phase 3]",
    "passives": [
     "Adaptable, Painful Stabs — When it would be defeated, it instead revives even stronger."
    ],
@@ -4559,7 +4594,7 @@
     },
     {
      "name": "Burning Growl",
-     "intent": "buff_status_card",
+     "intent": "buff_status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 3 (A9: 5) Burn into discard pile. Gains 2 (A9: 3) Strength.",
@@ -4591,7 +4626,7 @@
    "moves": [
     {
      "name": "Distract",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 3 Dazed into your discard pile.",
@@ -4717,7 +4752,7 @@
    "moves": [
     {
      "name": "Explode",
-     "intent": "unknown",
+     "intent": "deathblow",
      "damage": 8,
      "hits": 1,
      "effect": "Deals 8 (A9: 9) damage. Dies.",
@@ -4920,7 +4955,7 @@
    "moves": [
     {
      "name": "Noise",
-     "intent": "status_card",
+     "intent": "status",
      "damage": null,
      "hits": null,
      "effect": "Shuffles 2 Dazed into the player's draw and discard piles.",

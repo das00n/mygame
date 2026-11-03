@@ -1,0 +1,2218 @@
+{
+ "game": "Monster Train",
+ "source": "https://monster-train.fandom.com (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "Version: final MT1 (v2.x incl. The Last Divinity DLC). Enemy list = wiki Lua module Module:Enemies/Data (stats per Covenant rank, ability text, Pact-Shard ★ variant). category: flying_boss = the wiki's 'Major Boss' (Rings 3/6/8 + The Last Divinity, Ring 9), boss = minor ring boss, normal = the wiki's 'Heavy' or 'Support' wave enemy (extra.native_type keeps which), minion = only spawned by a boss (Constructed Explosive by Daedalus, Darkshards by Archus), special = Collector (gold bounty). hp.base/attack = covenant 0 row; hp.covenant lists every row ('cov N+: attack/health'); 'AxN' attack = A damage hitting N times (extra.attack_display). size: not documented on the MT1 wiki (null). pattern = generic behaviour of the category (from the wiki 'Battle' page) + the boss variant battle effects + the enemy page's lead text. waves = combat page wave tables (both covenant columns merged). extra.pact_shard_variant = the ★ version the game swaps in as Pact Shards accumulate (shard_cost = shards spent per upgraded enemy). Completeness: Module:Enemies/Data 56 entries vs Category:Enemies 56 pages -> category-only none, module-only none | Major Boss: module 6 / Category:Major Boss Enemies 6 | Boss: module 13 / Category:Boss Enemies 13 | Heavy: module 15 / Category:Heavy Enemies 15 | Support: module 22 / Category:Support Enemies 22 | combat pages parsed 38 (Category:Combats 37 + Divine Intervention); wave-table names not in the enemy module: none | enemies never listed in a wave table: ['Alabaster Guardian', 'Blinding Darkshard', 'Collector', 'Constructed Explosive', 'Looming Darkshard', 'Shattering Darkshard'] (summoned by bosses or special spawns)",
+ "enemies": [
+  {
+   "id": "mt1.daedalus_the_professor",
+   "name": "Daedalus, the Professor",
+   "category": "flying_boss",
+   "area": "Ring 3",
+   "hp": {
+    "base": 250,
+    "covenant": "cov 0+: 8/250; cov 1+: 9/450; cov 12+: 9/525; cov 21+: 9/600 (attack/health)"
+   },
+   "attack": 8,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Double Barrel: Constructed Explosives explode twice. | Explosive Sigil: Enemy units deal 1 damage to the front unit on death. | Plating Seal: Constructed Explosives enter with Damage Shield. Wiki: Daedalus is a first Major Boss in Monster Train. Every turn before the Relentless phase, he places a Constructed Explosive on the train. He is featured in the following Ring 3 combats: • Daedalus, the Professor: Double Barrel • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Plating Seal",
+   "waves": [
+    "R3 Daedalus, the Professor: Double Barrel (wave 6)",
+    "R3 Daedalus, the Professor: Explosive Sigil (wave 6)",
+    "R3 Daedalus, the Professor: Plating Seal (wave 6)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "Double Barrel:",
+      "+8 Health (every 5 Pact Shards),",
+      "+1 Attack (every 80 Pact Shards),",
+      "(Cov 10-25): +1 Attack (every 50 Pact Shards)",
+      "Explosive Sigil:",
+      "+6 Health (every 5 Pact Shards),",
+      "+1 Attack (every 20 Pact Shards),",
+      "(Cov 10-25): gain 1 Spikes (every 30 Pact Shards)",
+      "Plating Seal:",
+      "+6 Health (every 5 Pact Shards),",
+      "+1 Attack (every 20 Pact Shards),",
+      "(Cov 10-25): gain 1 Damage Shield (every 15 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.talos_the_architect",
+   "name": "Talos, the Architect",
+   "category": "flying_boss",
+   "area": "Ring 3",
+   "hp": {
+    "base": 250,
+    "covenant": "cov 0+: 6/250; cov 1+: 7/450; cov 12+: 7/525; cov 21+: 7/600 (attack/health)"
+   },
+   "attack": 6,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Empowering Offense: Enemy units enter with Rage 2. Talos attacks every turn and gains Armor on Slay. | Protective Sin: Enemy units enter with Armor 5. Talos attacks every turn and pushes attacked units back. | Soul Sucker: Friendly units enter with Sap 1. Talos attacks every turn and applies Dazed on Strike. Wiki: Talos, the Architect is one of the 2 first Major Bosses in Monster Train, who can appear in Ring 3. Unlike most other Major bosses, she attacks before the Relentless phase, with varying effects based on the combat. She is featured in the following Ring 3 combats: • Talos, the Architect: Empowering Offense • Talos, the Architect: Protective Sin • Talos, the Architect: Soul Sucker",
+   "waves": [
+    "R3 Talos, the Architect: Empowering Offense (wave 6)",
+    "R3 Talos, the Architect: Protective Sin (wave 6)",
+    "R3 Talos, the Architect: Soul Sucker (wave 6)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "Empowering Offense:",
+      "+5 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): gain 10 Armor (every 5 Pact Shards)",
+      "Protective Sin:",
+      "+5 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): +1 Attack and gain 4 Lifesteal (every 20 Pact Shards)",
+      "Soul Sucker:",
+      "+5 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): gain 1 Rage (every 20 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.fel_the_wings_of_light",
+   "name": "Fel, the Wings of Light",
+   "category": "flying_boss",
+   "area": "Ring 6",
+   "hp": {
+    "base": 700,
+    "covenant": "cov 0+: 9x2/700; cov 1+: 10x2/1300; cov 12+: 10x2/1450; cov 21+: 10x2/1600 (attack/health)"
+   },
+   "attack": 9,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Multistrike 1."
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Eternal Crest: Alabaster Guardians have Spell Shield 5. Fel empowers units with Armor. | Scouring Crest: Fel and her allies will add Scourge cards to your hand and deck. | Wrath Crest: Alabaster Guardians have Multistrike. Fel empowers units with Rage. Wiki: Fel, the Wings of Light is a second Major Boss in Monster Train. At the beginning of the fight, Alabaster Guardians are summoned on each floor. Fel will then start applying varying effects, depending on the combat. She is featured in the following Ring 6 combats: • Fel, the Wings of Light: Wrath Crest • Fel, the Wings of Light: Scouring Crest • Fel, the Wings of Light: Eternal Crest",
+   "waves": [
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 8)",
+    "R6 Fel, the Wings of Light: Scouring Crest (wave 8)",
+    "R6 Fel, the Wings of Light: Wrath Crest (wave 8)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": "9x2",
+    "keywords": [
+     "Multistrike",
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "Eternal Crest:",
+      "+9 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): +1 Attack and gain 50 Armor (every 20 Pact Shards)",
+      "Scouring Crest:",
+      "+9 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +40 Health and gain 1 Spell Shield (every 20 Pact Shards)",
+      "Wrath Crest:",
+      "+9 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): +80 Health and gain 1 Multistrike (every 50 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.archus_darkness_incarnate",
+   "name": "Archus, Darkness Incarnate",
+   "category": "flying_boss",
+   "area": "Ring 6",
+   "hp": {
+    "base": 750,
+    "covenant": "cov 0+: 20/750; cov 1+: 25/1600; cov 12+: 25/1750; cov 21+: 25/1900 (attack/health)"
+   },
+   "attack": 20,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Sin of Failure: Archus will summon Looming Darkshard and Shattering Darkshard. | Sin of Shadow: Archus will summon Blinding Darkshard and Shattering Darkshard. | Sin of Darkness: Archus will summon Blinding Darkshard and Looming Darkshard. Wiki: Archus, Darkness Incarnate is a second Major Boss in Monster Train. Before Relentless, he places varying Darkshards on the train, depending on the combat.",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 8)",
+    "R6 Archus, Darkness Incarnate: Sin of Failure (wave 8)",
+    "R6 Archus, Darkness Incarnate: Sin of Shadow (wave 8)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "Sin of Darkness:",
+      "+10 Health (every 5 Pact Shards),",
+      "gain 1 Stealth (every 15 Pact Shards),",
+      "+1 Attack and gain 1 Spell Shield (every 40 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +30 Health (every 20 Pact Shards)",
+      "Sin of Shadow",
+      "+10 Health (every 5 Pact Shards),",
+      "gain 1 Stealth (every 15 Pact Shards),",
+      "+1 Attack, +5 Health (every 20 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +30 Health (every 20 Pact Shards)",
+      "Sin of Failure:",
+      "+10 Health (every 5 Pact Shards),",
+      "+1 Attack and gain 1 Spell Shield (every 40 Pact Shards),",
+      "+1 Attack, +5 Health (every 20 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +30 Health (every 20 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.seraph",
+   "name": "Seraph",
+   "category": "flying_boss",
+   "area": "Ring 8",
+   "hp": {
+    "base": 999,
+    "covenant": "cov 0+: 9x3 OR 15/999; cov 1+: 10x3 OR 20/2300; cov 12+: 10x3 OR 20/2650; cov 21+: 10x3 OR 20/3000; cov 25+: 10x3 OR 20/4000 (attack/health)"
+   },
+   "attack": 9,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Multistrike 2.",
+    "OR Patient Version:",
+    "Relentless.",
+    "Incant: Gain +1 Attack.",
+    "Rally: Gain +3 Attack"
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Purifying Emblem: Seraph will remove half of any Buff and Debuff effect stacks (whichever favors Seraph more). | Power Drain Emblem: The first spell card played each turn gets Consume. | Rallying Emblem: Seraph attacks every turn, applies Melee Weakness to your front unit, and gains attack on Rally and Incant. | Prideful Emblem: Friendly units enter with Sap 3. Wiki: Seraph is the Final Boss in Monster Train. He will spawn 1 Lightwing every round. He is featured in the following Ring 8 combats: • Seraph the Temperant • Seraph the Chaste • Seraph the Diligent • Seraph the Patient",
+   "waves": [
+    "R8 Seraph the Chaste (wave 8)",
+    "R8 Seraph the Diligent (wave 8)",
+    "R8 Seraph the Patient (wave 8)",
+    "R8 Seraph the Temperant (wave 8)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": "9x3 OR 15",
+    "keywords": [
+     "Incant",
+     "Multistrike",
+     "Rally",
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "Temperant:",
+      "gain 20 Armor (every 15 Pact Shards),",
+      "gain 1 Multistrike (every 75 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +50 Health (every 45 Pact Shards),",
+      "(Cov 10-25): gain 1 Damage Shield (every 35 Pact Shards)",
+      "Chaste:",
+      "+20 Health (every 10 Pact Shards),",
+      "+1 Attack and gain 3 Lifesteal (every 50 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +50 Health and gain 3 Lifesteal (every 35 Pact Shards),",
+      "(Cov 10-25): gain Purify (at 140 Pact Shards)",
+      "Diligent:",
+      "+40 Health and gain 1 Stealth (every 35 Pact Shards),",
+      "+1 Attack (every 35 Pact Shards),",
+      "(Cov 10-25): +1 Attack and +40 Health and gain 1 Stealth and gain 1 Spell Shield (every 30 Pact Shards)",
+      "Patient:",
+      "+1 Attack, +55 Health (every 20 Pact Shards),",
+      "(Cov 10-25): gain 1 Rage (every 30 Pact Shards),",
+      "(Cov 10-25): gain Trample (at 130 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.the_last_divinity",
+   "name": "The Last Divinity",
+   "category": "flying_boss",
+   "area": "Ring 9",
+   "hp": {
+    "base": 2500,
+    "covenant": "cov 0+: 2|2x2|3/2500; cov 25+: 2|2x2|3/4000 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [
+    "Top section: Sweep. Purify.",
+    "Middle section: Multistrike 1. Purify.",
+    "Bottom section: Trample. Purify."
+   ],
+   "pattern": "Major boss: starts 'flying' beside one floor, moves to a different floor every turn and can be hit there by units/spells (always behind other enemies, cannot be moved within the floor, can be Ascended/Descended but not into the Pyre Room); while flying it does not attack (except Talos and Seraph the Patient) and uses its variant's special action each turn. In the final wave it lands on the bottom floor and fights as a Relentless boss without its special action; no 'Brief Respite' wave precedes it. Variants (one per run, shown on the map): Divine Intervention: The Last Divinity has different status effects on each floor and gains 7 Attack when it gains Relentless. Wiki: The Last Divinity is a Major Boss and \"the true final boss\" of The Last Divinity (DLC), fought in Ring 9, after defeating Seraph, if the DLC is active and one of the following conditions is true: • over the course of the run 100 or more Pact Shards (100 Pact Shards) have been collected. • the Game mode is Hell Rush.",
+   "waves": [
+    "R9 The Last Divinity: Divine Intervention (wave 10)"
+   ],
+   "extra": {
+    "native_type": "Major Boss",
+    "attack_display": "2|2x2|3",
+    "keywords": [
+     "Multistrike",
+     "Purify",
+     "Sweep",
+     "Trample"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+100 Health (every 10 Pact Shards)",
+      "Top:",
+      "+1 Attack (every 21 Pact Shards)",
+      "(Cov 10-25): +1 Attack (every 30 Pact Shards)",
+      "Middle:",
+      "+1 Attack (every 27 Pact Shards)",
+      "(Cov 10-25): +1 Attack (every 40 Pact Shards)",
+      "Bottom:",
+      "+1 Attack (every 21 Pact Shards)",
+      "(Cov 10-25): +1 Attack (every 25 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": "The Last Divinity"
+   }
+  },
+  {
+   "id": "mt1.chains_the_sighted",
+   "name": "Chains the Sighted",
+   "category": "boss",
+   "area": "Ring 1",
+   "hp": {
+    "base": 50,
+    "covenant": "cov 0+: 4/50; cov 1+: 4/130; cov 4+: 5/130; cov 14+: 5/140; cov 22+: 5/150 (attack/health)"
+   },
+   "attack": 4,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Resolve: Add a Weight of Contrition to the top of your draw pile."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Chains the Sighted is a Boss and a Disciple in Monster Train, that may appear on Ring 1. (DLC) It may also appear as a wave enemy on Ring 9.",
+   "waves": [
+    "Ring 1 boss: final wave of any Ring 1 combat",
+    "R9 The Last Divinity: Divine Intervention (wave 4)"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 7 Pact Shards),",
+      "+1 Attack (every 10 Pact Shards),",
+      "(Cov 10-25): gain 3 Lifesteal (every 7 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.discipled_inquisitor",
+   "name": "Discipled Inquisitor",
+   "category": "boss",
+   "area": "Ring 1",
+   "hp": {
+    "base": 50,
+    "covenant": "cov 0+: 4/50; cov 1+: 4/130; cov 4+: 5/130; cov 14+: 5/140; cov 22+: 5/150 (attack/health)"
+   },
+   "attack": 4,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Discipled Inquisitor is a Boss and a Disciple in Monster Train, that may appear on Ring 1. (DLC) It may also appear as a wave enemy on Ring 9.",
+   "waves": [
+    "Ring 1 boss: final wave of any Ring 1 combat",
+    "R9 The Last Divinity: Divine Intervention (wave 4)"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "gain 5 Armor (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): gain Trample (at 10 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.highpriest_to_the_light",
+   "name": "Highpriest to the Light",
+   "category": "boss",
+   "area": "Ring 2",
+   "hp": {
+    "base": 90,
+    "covenant": "cov 0+: 5/90; cov 1+: 5/170; cov 4+: 6/170; cov 14+: 6/180; cov 22+: 6/190 (attack/health)"
+   },
+   "attack": 5,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Sweep."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Highpriest to the Light is a Boss and a Disciple in Monster Train, that may appear on Ring 2. (DLC) It may also appear as a wave enemy on Ring 9.",
+   "waves": [
+    "Ring 2 boss: final wave of any Ring 2 combat",
+    "R9 The Last Divinity: Divine Intervention (wave 7)"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Sweep"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 7 Pact Shards),",
+      "gain 1 Spell Shield (every 20 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +5 Health (every 25 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.last_knight_of_the_disciples",
+   "name": "Last Knight of the Disciples",
+   "category": "boss",
+   "area": "Ring 2",
+   "hp": {
+    "base": 110,
+    "covenant": "cov 0+: 7/110; cov 1+: 7/190; cov 4+: 8/190; cov 14+: 8/200; cov 22+: 8/210 (attack/health)"
+   },
+   "attack": 7,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Last Knight of the Disciples is a Boss and a Disciple in Monster Train, that may appear on Ring 2. (DLC) It may also appear as a wave enemy on Ring 9.",
+   "waves": [
+    "Ring 2 boss: final wave of any Ring 2 combat",
+    "R9 The Last Divinity: Divine Intervention (wave 7)"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 5 Pact Shards),",
+      "+1 Attack (every 25 Pact Shards),",
+      "(Cov 10-25): gain 1 Rage (every 10 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.living_armor",
+   "name": "Living Armor",
+   "category": "boss",
+   "area": "Ring 7",
+   "hp": {
+    "base": 900,
+    "covenant": "cov 0+: 5/900; cov 1+: 5/1250; cov 4+: 6/1250; cov 14+: 6/1290; cov 22+: 6/1330 (attack/health)"
+   },
+   "attack": 5,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Revenge: Gain +1 Attack."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Living Armor is a Boss and a Winged in Monster Train, that may appear on Ring 7.",
+   "waves": [
+    "Ring 7 boss: final wave of any Ring 7 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Revenge"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+15 Health (every 5 Pact Shards),",
+      "(Cov 10-25): +1 Attack (every 10 Pact Shards),",
+      "(Cov 10-25): gain 15 Armor (every 5 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.nephil_the_wingless_general",
+   "name": "Nephil, the Wingless General",
+   "category": "boss",
+   "area": "Ring 7",
+   "hp": {
+    "base": 800,
+    "covenant": "cov 0+: 25/800; cov 1+: 25/1150; cov 4+: 26/1150; cov 14+: 26/1190; cov 22+: 26/1230 (attack/health)"
+   },
+   "attack": 25,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Trample."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Nephil, the Wingless General is a Boss and a Winged (although born wingless) in Monster Train, that may appear on Ring 7.",
+   "waves": [
+    "Ring 7 boss: final wave of any Ring 7 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Trample"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+10 Health (every 5 Pact Shards),",
+      "+1 Attack (every 10 Pact Shards),",
+      "(Cov 10-25): gain 1 Rage (every 10 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.pyrelight_master",
+   "name": "Pyrelight Master",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 400,
+    "covenant": "cov 0+: 6/400; cov 1+: 6/600; cov 4+: 7/600; cov 14+: 7/620; cov 22+: 7/640 (attack/health)"
+   },
+   "attack": 6,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Resolve: Gain +5 Attack."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Pyrelight Master is a Boss and a Clipped in Monster Train, that may appear on Ring 4.",
+   "waves": [
+    "Ring 4 boss: final wave of any Ring 4 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+6 Health and gain 3 Regen (every 10 Pact Shards),",
+      "+1 Attack (every 40 Pact Shards),",
+      "(Cov 10-25): gain 1 Multistrike (every 50 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.sower_of_sorrow",
+   "name": "Sower of Sorrow",
+   "category": "boss",
+   "area": "Ring 5",
+   "hp": {
+    "base": 550,
+    "covenant": "cov 0+: 8/550; cov 1+: 8/750; cov 4+: 9/750; cov 14+: 9/770; cov 22+: 9/790 (attack/health)"
+   },
+   "attack": 8,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Sweep.",
+    "Lifesteal 10."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Sower of Sorrow is a Boss and a Clipped in Monster Train, that can appear on Ring 5.",
+   "waves": [
+    "Ring 5 boss: final wave of any Ring 5 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Lifesteal",
+     "Relentless",
+     "Sweep"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+4 Health (every 5 Pact Shards),",
+      "+1 Attack (every 30 Pact Shards),",
+      "(Cov 10-25): +1 Attack, +25 Health, and gain 3 Lifesteal (every 25 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.the_crystalcloak",
+   "name": "The Crystalcloak",
+   "category": "boss",
+   "area": "Ring 5",
+   "hp": {
+    "base": 350,
+    "covenant": "cov 0+: 12/350; cov 1+: 12/550; cov 4+: 13/550; cov 14+: 13/570; cov 22+: 13/590 (attack/health)"
+   },
+   "attack": 12,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Stealth 8."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: The Crystalcloak is a Boss and a Clipped in Monster Train, that may appear on Ring 5.",
+   "waves": [
+    "Ring 5 boss: final wave of any Ring 5 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Stealth"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 10 Pact Shards),",
+      "+1 Attack (every 45 Pact Shards),",
+      "(Cov 10-25): +20 Health and gain 1 Stealth (every 40 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.the_porcupine",
+   "name": "The Porcupine",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 300,
+    "covenant": "cov 0+: 12/300; cov 1+: 12/500; cov 4+: 13/500; cov 14+: 13/520; cov 22+: 13/540 (attack/health)"
+   },
+   "attack": 12,
+   "size": null,
+   "abilities": [
+    "Relentless."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: The Porcupine is a Boss and a Clipped in Monster Train, that may appear on Ring 4.",
+   "waves": [
+    "Ring 4 boss: final wave of any Ring 4 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 5 Pact Shards),",
+      "gain 1 Spikes (every 20 Pact Shards),",
+      "(Cov 10-25): gain 1 Rage (every 12 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.the_self_made_harpy",
+   "name": "The Self-Made Harpy",
+   "category": "boss",
+   "area": "Ring 5",
+   "hp": {
+    "base": 500,
+    "covenant": "cov 0+: 4x5/500; cov 1+: 4x5/700; cov 4+: 5x5/700; cov 14+: 5x5/720; cov 22+: 5x5/740 (attack/health)"
+   },
+   "attack": 4,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Multistrike 4."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: The Self-Made Harpy is a Boss and a Clipped in Monster Train, that may appear on Ring 5.",
+   "waves": [
+    "Ring 5 boss: final wave of any Ring 5 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": "4x5",
+    "keywords": [
+     "Multistrike",
+     "Relentless"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 5 Pact Shards),",
+      "+1 Attack (every 50 Pact Shards),",
+      "(Cov 10-25): +40 Health and gain 1 Multistrike (every 35 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.the_steel_slate",
+   "name": "The Steel Slate",
+   "category": "boss",
+   "area": "Ring 2",
+   "hp": {
+    "base": 120,
+    "covenant": "cov 0+: 3/120; cov 1+: 3/200; cov 4+: 4/200; cov 14+: 4/210; cov 22+: 4/220 (attack/health)"
+   },
+   "attack": 3,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Spikes 2."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: The Steel Slate is a Boss and a Disciple in Monster Train, that may appear on Ring 2. (DLC) It may also appear as a wave enemy on Ring 9.",
+   "waves": [
+    "Ring 2 boss: final wave of any Ring 2 combat",
+    "R9 The Last Divinity: Divine Intervention (wave 7)"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Spikes"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "gain 5 Armor (every 5 Pact Shards),",
+      "+1 Attack (every 35 Pact Shards),",
+      "(Cov 10-25): gain 1 Spikes (every 20 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.thoughtbinder",
+   "name": "Thoughtbinder",
+   "category": "boss",
+   "area": "Ring 4",
+   "hp": {
+    "base": 275,
+    "covenant": "cov 0+: 10/275; cov 1+: 10/475; cov 4+: 11/475; cov 14+: 11/495; cov 22+: 11/515 (attack/health)"
+   },
+   "attack": 10,
+   "size": null,
+   "abilities": [
+    "Relentless.",
+    "Slay: Add a Self-Mutilation card to the top of your draw pile."
+   ],
+   "pattern": "Minor boss: arrives in the final wave (the wave before is 'A Brief Respite' with no enemies). Relentless: combat on its floor repeats until it or every friendly unit there is dead; it cannot be Rooted; each time it climbs, the floor it left freezes (removed for the rest of the battle). Killing it wins the battle and removes all other enemies. Wiki: Thoughtbinder is a Boss and a Clipped in Monster Train, that may appear on Ring 4.",
+   "waves": [
+    "Ring 4 boss: final wave of any Ring 4 combat"
+   ],
+   "extra": {
+    "native_type": "Boss",
+    "attack_display": null,
+    "keywords": [
+     "Relentless",
+     "Slay"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+4 Health (every 5 Pact Shards),",
+      "+1 Attack (every 15 Pact Shards),",
+      "(Cov 10-25): +50 Health and gain 1 Emberdrain (every 50 Pact Shards)"
+     ],
+     "stats": null,
+     "note": "per-Pact-Shard scaling of the boss (The Last Divinity DLC)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.alabaster_guardian",
+   "name": "Alabaster Guardian",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 70,
+    "covenant": "all covenants: 0/70 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Immobile."
+   ],
+   "pattern": "Spawned by a boss's action rather than a wave; otherwise behaves like a normal enemy (enters the train and climbs a floor per turn). Wiki: Alabaster Guardian is an Enemy in Monster Train. It is summoned at the start of combats against Fel: • Fel, the Wings of Light: Eternal Crest • Fel, the Wings of Light: Scouring Crest • Fel, the Wings of Light: Wrath Crest",
+   "waves": [],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Immobile"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+5 Health (every 15 Pact Shards)"
+     ],
+     "stats": null
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.apprentice_of_light",
+   "name": "Apprentice of Light",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 20,
+    "covenant": "cov 0+: 3/20; cov 1+: 3/35; cov 23+: 3/40 (attack/health)"
+   },
+   "attack": 3,
+   "size": null,
+   "abilities": [
+    "Slay: Gain Damage Shield."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Apprentice of Light is an Enemy and a Disciple in Monster Train. They spawn in the following combats: • Guardians of Light • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R1 Guardians of Light (wave 1, 2)",
+    "R9 The Last Divinity: Divine Intervention (wave 1)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Damage Shield",
+     "Slay"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 25,
+     "abilities": [
+      "Damage Shield 1.",
+      "Slay: Gain Damage Shield."
+     ],
+     "stats": "cov 0+: 6/50; cov 1+: 6/65; cov 23+: 6/70 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clipped_defender",
+   "name": "Clipped Defender",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 10,
+    "covenant": "all covenants: 0/10 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Armor 50."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clipped Defender is an Enemy and a Clipped in Monster Train. They appear in all Ring 4 and 5 combats, as well as on Ring 9. More specifically, they appear in the following combats: • Clipped Infiltration • Protectors of the Clipped • Clipped Guard • Clipped Tormenters • The Sycophants of Seraph • The Harpy's Guard • Hidden Assault • Harvesters of Death • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R4 Clipped Guard (wave 3, 4, 6)",
+    "R4 Clipped Infiltration (wave 1, 4)",
+    "R4 Clipped Tormenters (wave 1)",
+    "R5 Harvesters of Death (wave 3, 4)",
+    "R5 Hidden Assault (wave 2)",
+    "R4 Protectors of the Clipped (wave 3)",
+    "R5 The Harpy's Guard (wave 3)",
+    "R5 The Sycophants of Seraph (wave 3, 4, 6)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 6)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 20,
+     "abilities": [
+      "Armor 80.",
+      "Thorns 2."
+     ],
+     "stats": "all covenants: 0/60 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clipped_guardian",
+   "name": "Clipped Guardian",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 75,
+    "covenant": "cov 0+: 5/75; cov 1+: 5/95; cov 7+: 6/95; cov 23+: 6/105 (attack/health)"
+   },
+   "attack": 5,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clipped Guardian is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Clipped Infiltration • Protectors of the Clipped • Clipped Tormenters • The Sycophants of Seraph • The Harpy's Guard • Fel, the Wings of Light: Eternal Crest • Fel, the Wings of Light: Scouring Crest • Fel, the Wings of Light: Wrath Crest • Archus, Darkness Incarnate: Sin of Darkness • Archus, Darkness Incarnate: Sin…",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 4, 5)",
+    "R6 Archus, Darkness Incarnate: Sin of Failure (wave 1, 4, 5, 6, 7)",
+    "R6 Archus, Darkness Incarnate: Sin of Shadow (wave 3, 4, 5, 6, 7)",
+    "R4 Clipped Infiltration (wave 2, 3, 4)",
+    "R4 Clipped Tormenters (wave 2, 3, 4)",
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 4, 5)",
+    "R6 Fel, the Wings of Light: Scouring Crest (wave 3, 4, 5, 6, 7)",
+    "R6 Fel, the Wings of Light: Wrath Crest (wave 1, 4, 5, 6, 7)",
+    "R4 Protectors of the Clipped (wave 2, 3)",
+    "R5 The Harpy's Guard (wave 2, 4)",
+    "R5 The Sycophants of Seraph (wave 2)",
+    "R9 The Last Divinity: Divine Intervention (wave 3, 6, 9)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 22,
+     "abilities": [
+      "Resolve: Gain +1 Attack."
+     ],
+     "stats": "cov 0+: 8/150; cov 1+: 8/170; cov 7+: 9/170; cov 23+: 9/180 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clipped_reflector",
+   "name": "Clipped Reflector",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 60,
+    "covenant": "cov 0+: 4/60; cov 1+: 4/80; cov 7+: 5/80; cov 23+: 5/90 (attack/health)"
+   },
+   "attack": 4,
+   "size": null,
+   "abilities": [
+    "Incant: Gain Armor 10."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clipped Reflector is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Protectors of the Clipped • Fel, the Wings of Light: Eternal Crest • Fel, the Wings of Light: Wrath Crest • Archus, Darkness Incarnate: Sin of Darkness • Archus, Darkness Incarnate: Sin of Failure • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 2, 3)",
+    "R6 Archus, Darkness Incarnate: Sin of Failure (wave 2)",
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 2, 3)",
+    "R6 Fel, the Wings of Light: Wrath Crest (wave 2)",
+    "R4 Protectors of the Clipped (wave 1, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 6, 8)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor",
+     "Incant"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 22,
+     "abilities": [
+      "Summon: Apply Spell Shield 1 to their units.",
+      "Incant: Gain Armor 10."
+     ],
+     "stats": "cov 0+: 6/120; cov 1+: 6/140; cov 7+: 7/140; cov 23+: 7/150 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.darkwings",
+   "name": "Darkwings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 110,
+    "covenant": "cov 0+: 10/110; cov 1+: 10/130; cov 7+: 11/130; cov 23+: 11/140 (attack/health)"
+   },
+   "attack": 10,
+   "size": null,
+   "abilities": [
+    "Harvest: Gain Armor 15."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Darkwings is an Enemy and a Winged in Monster Train. They appear in the following combats: • The Winged Horde • Seraph the Temperant • Seraph the Chaste • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R8 Seraph the Chaste (wave 1)",
+    "R8 Seraph the Temperant (wave 1, 3, 5, 7, 8)",
+    "R7 The Winged Horde (wave 2, 4, 5)",
+    "R9 The Last Divinity: Divine Intervention (wave 3, 6)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor",
+     "Harvest"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 20,
+     "abilities": [
+      "Harvest: Apply Armor 15 to their units."
+     ],
+     "stats": "cov 0+: 15/210; cov 1+: 15/230; cov 7+: 16/230; cov 23+: 16/240 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.disciple_protector",
+   "name": "Disciple Protector",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 5,
+    "covenant": "all covenants: 0/5 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Armor 25."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Disciple Protector is an Enemy and a Disciple in Monster Train. They appear in the following combats: • The First Defense • Barbed Disciples • Penitent Prayers (Cov 5-25) • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Double Barrel • Daedalus, the Professor: Plating Seal • Talos, the Architect: Empowering Offense • Talos, the Architect: Soul Sucker • Talos, the Architect: Protective Sin • (DLC)…",
+   "waves": [
+    "R2 Barbed Disciples (wave 1, 4)",
+    "R3 Daedalus, the Professor: Double Barrel (wave 6)",
+    "R3 Daedalus, the Professor: Explosive Sigil (wave 6)",
+    "R3 Daedalus, the Professor: Plating Seal (wave 4, 6)",
+    "R2 Penitent Prayers (wave 2)",
+    "R3 Talos, the Architect: Empowering Offense (wave 6)",
+    "R3 Talos, the Architect: Protective Sin (wave 4, 6)",
+    "R3 Talos, the Architect: Soul Sucker (wave 6)",
+    "R1 The First Defense (wave 1)",
+    "R9 The Last Divinity: Divine Intervention (wave 4)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 20,
+     "abilities": [
+      "Spikes 1.",
+      "Armor 40."
+     ],
+     "stats": "all covenants: 0/30 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.forged_disciple",
+   "name": "Forged Disciple",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 25,
+    "covenant": "cov 0+: 2/25; cov 1+: 2/40; cov 23+: 2/45 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Forged Disciple is an Enemy and Disciple in Monster Train. They appear in the following combats: • The First Defense • Heaven's Priests • Barbed Disciples • Penitent Prayers • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Double Barrel • Daedalus, the Professor: Plating Seal • Talos, the Architect: Empowering Offense • Talos, the Architect: Soul Sucker • Talos, the Architect: Protective Sin • (D…",
+   "waves": [
+    "R2 Barbed Disciples (wave 2)",
+    "R3 Daedalus, the Professor: Double Barrel (wave 2, 3, 5)",
+    "R3 Daedalus, the Professor: Explosive Sigil (wave 2, 3, 5)",
+    "R3 Daedalus, the Professor: Plating Seal (wave 1, 3, 5)",
+    "R1 Heaven's Priests (wave 1, 2)",
+    "R2 Penitent Prayers (wave 1, 2)",
+    "R3 Talos, the Architect: Empowering Offense (wave 2, 3, 5)",
+    "R3 Talos, the Architect: Protective Sin (wave 1, 3, 5)",
+    "R3 Talos, the Architect: Soul Sucker (wave 2, 3, 5)",
+    "R1 The First Defense (wave 2)",
+    "R9 The Last Divinity: Divine Intervention (wave 9)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 22,
+     "abilities": [
+      "Sweep."
+     ],
+     "stats": "cov 0+: 4/55; cov 1+: 4/70; cov 23+: 4/75 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.gilded_wing",
+   "name": "Gilded Wing",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 130,
+    "covenant": "cov 0+: 8/130; cov 1+: 8/160; cov 7+: 10/160; cov 23+: 10/190 (attack/health)"
+   },
+   "attack": 8,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Gilded Wing is an Enemy and a Winged in Monster Train. They appear in all combats starting from Ring 7, namely: • The Pyrewings • The Winged Horde • The Penitent • Conduit Masters • The Shadewings • Seraph the Temperant • Seraph the Chaste • Seraph the Diligent • Seraph the Patient • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R7 Conduit Masters (wave 1, 2, 3, 4)",
+    "R8 Seraph the Chaste (wave 3, 4, 5, 6, 7, 8)",
+    "R8 Seraph the Diligent (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "R8 Seraph the Patient (wave 3, 4, 5, 6, 7, 8)",
+    "R8 Seraph the Temperant (wave 2, 4, 5, 6)",
+    "R7 The Penitent (wave 1, 2, 3, 4, 5)",
+    "R7 The Pyrewings (wave 2, 4)",
+    "R7 The Shadewings (wave 1, 2, 3, 5)",
+    "R7 The Winged Horde (wave 1, 3)",
+    "R9 The Last Divinity: Divine Intervention (wave 5, 9)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 18,
+     "abilities": [
+      "Rage 3."
+     ],
+     "stats": "cov 0+: 8/230; cov 1+: 8/260; cov 7+: 10/260; cov 23+: 10/290 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.light_harnesser",
+   "name": "Light Harnesser",
+   "category": "normal",
+   "area": "Ring 4",
+   "hp": {
+    "base": 35,
+    "covenant": "all covenants: 2/35 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [
+    "Resolve: Gain +3 Attack."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Light Harnesser is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Clipped Guard • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R4 Clipped Guard (wave 1, 2, 3, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 5, 9)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 17,
+     "abilities": [
+      "Regen 10.",
+      "Resolve: Gain +3 Attack."
+     ],
+     "stats": "all covenants: 8/70 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.master_of_light",
+   "name": "Master of Light",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 65,
+    "covenant": "cov 0+: 3/65; cov 1+: 3/85; cov 7+: 4/85; cov 23+: 4/95 (attack/health)"
+   },
+   "attack": 3,
+   "size": null,
+   "abilities": [
+    "Sweep.",
+    "Slay: Gain Rage 2."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Master of Light is an Enemy and a Clipped in Monster Train. They appear in the following combats: • The Harpy's Guard • Fel, the Wings of Light: Wrath Crest • Archus, Darkness Incarnate: Sin of Failure",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Failure (wave 3, 5)",
+    "R6 Fel, the Wings of Light: Wrath Crest (wave 3, 5)",
+    "R5 The Harpy's Guard (wave 1, 3)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Rage",
+     "Slay",
+     "Sweep"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 25,
+     "abilities": [
+      "Sweep.",
+      "Slay: Gain Rage 2."
+     ],
+     "stats": "cov 0+: 5/130; cov 1+: 5/150; cov 7+: 6/150; cov 23+: 6/160 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.overcharged_apprentice",
+   "name": "Overcharged Apprentice",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 25,
+    "covenant": "cov 0+: 2/25; cov 1+: 2/40; cov 23+: 2/45 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [
+    "Incant: +1 Attack"
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Overcharged Apprentice is an Enemy and a Disciple in Monster Train. They appear in the following combats: • Pyre Absorbers • Daedalus, the Professor: Plating Seal • Talos, the Architect: Protective Sin • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R3 Daedalus, the Professor: Plating Seal (wave 2, 4)",
+    "R2 Pyre Absorbers (wave 1, 2)",
+    "R3 Talos, the Architect: Protective Sin (wave 2, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 1, 4, 8)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Incant"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 25,
+     "abilities": [
+      "Armor 20.",
+      "Incant: +2 Attack"
+     ],
+     "stats": "cov 0+: 3/35; cov 1+: 3/50; cov 23+: 3/55 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.overcharged_tank",
+   "name": "Overcharged Tank",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 65,
+    "covenant": "cov 0+: 5/65; cov 1+: 5/85; cov 7+: 6/85; cov 23+: 6/95 (attack/health)"
+   },
+   "attack": 5,
+   "size": null,
+   "abilities": [
+    "Harvest: Gain Armor 10."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Overcharged Tank is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Hidden Assault • Harvesters of Death • Fel, the Wings of Light: Eternal Crest • Archus, Darkness Incarnate: Sin of Darkness • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 5, 6, 7)",
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 5, 6, 7)",
+    "R5 Harvesters of Death (wave 1, 2, 3, 4)",
+    "R5 Hidden Assault (wave 2, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 3)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor",
+     "Harvest"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 25,
+     "abilities": [
+      "Harvest: Apply Armor 10 to their units."
+     ],
+     "stats": "cov 0+: 10/130; cov 1+: 10/150; cov 7+: 11/150; cov 23+: 11/160 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.pyrewings",
+   "name": "Pyrewings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 90,
+    "covenant": "cov 0+: 2/90; cov 1+: 2/120; cov 7+: 4/120; cov 23+: 4/150 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [
+    "Sweep.",
+    "Strike: Apply Emberdrain 1 to the attacked unit."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Pyrewings is an Enemy and a Winged in Monster Train. They appear in the following combats: • The Pyrewings • Seraph the Chaste • (DLC) The Last Divinity: Divine Intervention (Cov 20-25)",
+   "waves": [
+    "R8 Seraph the Chaste (wave 2, 4, 6)",
+    "R7 The Pyrewings (wave 1, 3, 5)",
+    "R9 The Last Divinity: Divine Intervention (wave 6)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Emberdrain",
+     "Strike",
+     "Sweep"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 20,
+     "abilities": [
+      "Regen 20.",
+      "Sweep.",
+      "Strike: Apply Emberdrain 1 to the attacked unit."
+     ],
+     "stats": "cov 0+: 4/180; cov 1+: 4/210; cov 7+: 6/210; cov 23+: 6/240 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.steelwings",
+   "name": "Steelwings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 15,
+    "covenant": "all covenants: 0/15 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Armor 100."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Steelwings is an Enemy and a Winged in Monster Train. They appear in the following combats: • The Pyrewings • The Penitent • Conduit Masters • The Shadewings • Seraph the Temperant • Seraph the Chaste • Seraph the Diligent • Seraph the Patient • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R7 Conduit Masters (wave 1)",
+    "R8 Seraph the Chaste (wave 7)",
+    "R8 Seraph the Diligent (wave 7)",
+    "R8 Seraph the Patient (wave 7)",
+    "R8 Seraph the Temperant (wave 7)",
+    "R7 The Penitent (wave 2, 3, 4, 5)",
+    "R7 The Pyrewings (wave 3, 5)",
+    "R7 The Shadewings (wave 2, 4, 5)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 8)"
+   ],
+   "extra": {
+    "native_type": "Heavy",
+    "attack_display": null,
+    "keywords": [
+     "Armor"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 16,
+     "abilities": [
+      "Spikes 3.",
+      "Armor 130."
+     ],
+     "stats": "all covenants: 0/100 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.absolver",
+   "name": "Absolver",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 5,
+    "covenant": "all covenants: 1/5 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Resolve: Add a Weight of Contrition card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Absolver is an Enemy and a Clipped in Monster Train. It appears in the following combats: • Clipped Tormenters • Fel, the Wings of Light: Scouring Crest • Archus, Darkness Incarnate: Sin of Shadow • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Shadow (wave 1, 2, 3, 4, 6)",
+    "R4 Clipped Tormenters (wave 1, 3, 4, 6)",
+    "R6 Fel, the Wings of Light: Scouring Crest (wave 1, 2, 3, 4, 6)",
+    "R9 The Last Divinity: Divine Intervention (wave 9)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 17,
+     "abilities": [
+      "Strike: Apply Sap 4 to the attacked unit.",
+      "Resolve: Add a Weight of Contrition card to the top of your draw pile."
+     ],
+     "stats": "all covenants: 6/20 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.collector",
+   "name": "Collector",
+   "category": "special",
+   "area": "all rings",
+   "hp": {
+    "base": 1,
+    "covenant": "cov 0+: 0/1/3; cov 12+: 0/1/3/5 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Extinguish: Gain 50 / 75 / 100 Gold.",
+    "Resolve: Flees from battle if not Rooted or Dazed."
+   ],
+   "pattern": "Bonus enemy: enters behind the other enemies on a random floor; harmless and flees after combat unless killed for a gold bounty. Wiki: Collector is an Enemy and a Winged in Monster Train. It appears on a random floor each second wave in Ring 1,2,4,5 and 7, or all Rings that do not feature a major boss.",
+   "waves": [],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Dazed",
+     "Extinguish",
+     "Resolve",
+     "Rooted"
+    ],
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clergyman",
+   "name": "Clergyman",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 1/1 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Rage 2."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clergyman is an Enemy and a Disciple in Monster Train. They appear in Mark of Invasion trials in Rings 1 and 2, as well as the following combats: • The Gathered Clergy • Disciple Conduits • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Double Barrel • Talos, the Architect: Empowering Offense • Talos, the Architect: Soul Sucker • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R3 Daedalus, the Professor: Double Barrel (wave 1, 4)",
+    "R3 Daedalus, the Professor: Explosive Sigil (wave 1, 2, 4)",
+    "R2 Disciple Conduits (wave 1, 2, 4)",
+    "R3 Talos, the Architect: Empowering Offense (wave 1, 2, 4)",
+    "R3 Talos, the Architect: Soul Sucker (wave 1, 4)",
+    "R1 The Gathered Clergy (wave 1, 2, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 1)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Rage"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 10,
+     "abilities": [
+      "Multistrike 1.",
+      "Rage 2."
+     ],
+     "stats": "all covenants: 3x2/5 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clipped_conduit",
+   "name": "Clipped Conduit",
+   "category": "normal",
+   "area": "Ring 4",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 1/1 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Haste 1.",
+    "Enchant: Grant Haste."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clipped Conduit is an Enemy and a Clipped in Monster Train. It appears in only 1 combat, that being Clipped Infiltration.",
+   "waves": [
+    "R4 Clipped Infiltration (wave 1, 2, 3, 4, 6)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Enchant",
+     "Haste"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Damage Shield 1.",
+      "Haste.",
+      "Enchant: Grant Haste."
+     ],
+     "stats": "all covenants: 10/5 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.clipped_shaman",
+   "name": "Clipped Shaman",
+   "category": "normal",
+   "area": "Ring 4/5",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Recover: Restore 10 health to friendly units after combat."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Clipped Shaman is an Enemy and a Clipped in Monster Train. It appears in the following combats: • Clipped Infiltration • Protectors of the Clipped • Clipped Tormenters • The Harpy's Guard • Harvesters of Death • Fel, the Wings of Light: Scouring Crest • Archus, Darkness Incarnate: Sin of Shadow • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Shadow (wave 7)",
+    "R4 Clipped Infiltration (wave 3)",
+    "R4 Clipped Tormenters (wave 3)",
+    "R6 Fel, the Wings of Light: Scouring Crest (wave 7)",
+    "R5 Harvesters of Death (wave 2)",
+    "R4 Protectors of the Clipped (wave 3)",
+    "R5 The Harpy's Guard (wave 2, 3, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 8)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Recover"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 12,
+     "abilities": [
+      "Spell Shield 1.",
+      "Recover: Restore 20 health to friendly units after combat.",
+      "Extinguish: deal 5 damage to your front unit."
+     ],
+     "stats": "all covenants: 0/20 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.conduit_infiltrator",
+   "name": "Conduit Infiltrator",
+   "category": "normal",
+   "area": "Ring 2/3",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 1/1 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Haste 1.",
+    "Enchant: Grant Haste."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Conduit Infiltrator is an Enemy and a Disciple in Monster Train. It appears in the following combats: • Disciple Conduits • Daedalus, the Professor: Double Barrel • Talos, the Architect: Soul Sucker",
+   "waves": [
+    "R3 Daedalus, the Professor: Double Barrel (wave 4, 5)",
+    "R2 Disciple Conduits (wave 1, 2, 4)",
+    "R3 Talos, the Architect: Soul Sucker (wave 4, 5)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Enchant",
+     "Haste"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Damage Shield 1.",
+      "Haste.",
+      "Enchant: Grant Haste."
+     ],
+     "stats": "all covenants: 5/2 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.conduit_redirector",
+   "name": "Conduit Redirector",
+   "category": "normal",
+   "area": "Ring 2",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 1/1 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Enchant: Grant Spikes 2."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Conduit Redirector is an Enemy and a Disciple in Monster Train. It appears in the following combats: • Barbed Disciples • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R2 Barbed Disciples (wave 1, 2, 4)",
+    "R9 The Last Divinity: Divine Intervention (wave 3, 6)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Enchant",
+     "Spikes"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Spell Shield 1.",
+      "Spikes 3.",
+      "Enchant: Grant Spikes 3."
+     ],
+     "stats": "all covenants: 5/10 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.constructed_explosive",
+   "name": "Constructed Explosive",
+   "category": "minion",
+   "area": "Ring 3",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "On Turn: Despawn and deal 10 damage to the front enemy unit."
+   ],
+   "pattern": "Spawned by a boss's action rather than a wave; otherwise behaves like a normal enemy (enters the train and climbs a floor per turn). Wiki: Constructed Explosive is an Enemy in Monster Train. It is summoned by Daedalus in the following combats: • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Double Barrel • Daedalus, the Professor: Plating Seal",
+   "waves": [],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": null,
+     "abilities": [
+      "+1 Health (every 10 Pact Shards)"
+     ],
+     "stats": null
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.discipled_footsoldier",
+   "name": "Discipled Footsoldier",
+   "category": "normal",
+   "area": "Ring 1/2/3",
+   "hp": {
+    "base": 1,
+    "covenant": "cov 0+: 4/1; cov 7+: 5/1 (attack/health)"
+   },
+   "attack": 4,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Discipled Footsoldier is an Enemy and a Disciple in Monster Train. It appears in the following combats: • The First Defense • Heaven's Priests • Guardians of Light • Disciple Conduits (Cov 0-4) • Pyre Absorbers • Barbed Disciples (Cov 5-25) • Daedalus, the Professor: Double Barrel • Daedalus, the Professor: Plating Seal • Talos, the Architect: Soul Sucker • Talos, the Architect: Protective Sin",
+   "waves": [
+    "R2 Barbed Disciples (wave 1)",
+    "R3 Daedalus, the Professor: Double Barrel (wave 2)",
+    "R3 Daedalus, the Professor: Plating Seal (wave 1, 2, 4, 5)",
+    "R2 Disciple Conduits (wave 2)",
+    "R1 Guardians of Light (wave 2, 4)",
+    "R1 Heaven's Priests (wave 2)",
+    "R2 Pyre Absorbers (wave 1, 2, 4)",
+    "R3 Talos, the Architect: Protective Sin (wave 1, 2, 4, 5)",
+    "R3 Talos, the Architect: Soul Sucker (wave 2)",
+    "R1 The First Defense (wave 1, 2, 4)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Multistrike 1."
+     ],
+     "stats": "cov 0+: 8x2/5; cov 7+: 9x2/5 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.lightwings",
+   "name": "Lightwings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 3,
+    "covenant": "cov 0+: 10/3; cov 7+: 12/3; cov 19+: 15/3 (attack/health)"
+   },
+   "attack": 10,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Lightwings is an Enemy and a Winged in Monster Train. It is summoned by Seraph, and naturally appears in the following combats: • The Pyrewings • The Winged Horde • Conduit Masters • Seraph the Chaste • Seraph the Diligent • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R7 Conduit Masters (wave 4)",
+    "R8 Seraph the Chaste (wave 1, 2, 3, 5, 6, 7, 8)",
+    "R8 Seraph the Diligent (wave 1, 2, 8)",
+    "R7 The Pyrewings (wave 2, 4)",
+    "R7 The Winged Horde (wave 5)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 7)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 10,
+     "abilities": [
+      "Multistrike 1."
+     ],
+     "stats": "cov 0+: 20x2/15; cov 7+: 22x2/15; cov 19+: 25x2/15 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.purifier",
+   "name": "Purifier",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 10,
+    "covenant": "all covenants: 3/10 (attack/health)"
+   },
+   "attack": 3,
+   "size": null,
+   "abilities": [
+    "Resolve: Add a Self-Mutilation card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Purifier is an Enemy and a Winged in Monster Train. It appears in the following combats: • The Penitent • Seraph the Diligent",
+   "waves": [
+    "R8 Seraph the Diligent (wave 1, 2, 3, 5, 7)",
+    "R7 The Penitent (wave 1, 2, 3, 4, 5)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Strike: Apply Sap 5 to the attacked unit.",
+      "Resolve: Add a Self-Mutilation card to the top of your draw pile."
+     ],
+     "stats": "all covenants: 9/30 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.quill_marksman",
+   "name": "Quill Marksman",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 2,
+    "covenant": "cov 0+: 6/2; cov 7+: 7/2; cov 19+: 9/2 (attack/health)"
+   },
+   "attack": 6,
+   "size": null,
+   "abilities": [],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Quill Marksman is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Clipped Infiltration • Protectors of the Clipped • Clipped Tormenters • The Harpy's Guard • Harvesters of Death • Fel, the Wings of Light: Eternal Crest • Fel, the Wings of Light: Scouring Crest • Fel, the Wings of Light: Wrath Crest • Archus, Darkness Incarnate: Sin of Darkness • Archus, Darkness Incarnate: Sin of Shad…",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 2, 6)",
+    "R6 Archus, Darkness Incarnate: Sin of Failure (wave 1, 2, 3, 6)",
+    "R6 Archus, Darkness Incarnate: Sin of Shadow (wave 1, 3, 5, 6)",
+    "R4 Clipped Infiltration (wave 1, 2)",
+    "R4 Clipped Tormenters (wave 2, 4)",
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 2, 6)",
+    "R6 Fel, the Wings of Light: Scouring Crest (wave 1, 3, 5, 6)",
+    "R6 Fel, the Wings of Light: Wrath Crest (wave 1, 2, 3, 6)",
+    "R5 Harvesters of Death (wave 2, 3, 4)",
+    "R4 Protectors of the Clipped (wave 1, 2, 4, 6)",
+    "R5 The Harpy's Guard (wave 1, 4)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Multistrike 1."
+     ],
+     "stats": "cov 0+: 12x2/10; cov 7+: 13x2/10; cov 19+: 15x2/10 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.reconciler",
+   "name": "Reconciler",
+   "category": "normal",
+   "area": "Ring 2",
+   "hp": {
+    "base": 2,
+    "covenant": "all covenants: 1/2 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Resolve: Add a Sinner's Burden card to the top of your draw pile."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Reconciler is an Enemy and a Disciple in Monster Train. They appear exclusively in the combat Penitent Prayers.",
+   "waves": [
+    "R2 Penitent Prayers (wave 1, 2, 4)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Resolve"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 17,
+     "abilities": [
+      "Strike: Apply Sap 3 to the attacked unit.",
+      "Resolve: Add a Sinner's Burden card to the top of your draw pile."
+     ],
+     "stats": "all covenants: 3/10 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.silent_marksman",
+   "name": "Silent Marksman",
+   "category": "normal",
+   "area": "Ring 5",
+   "hp": {
+    "base": 2,
+    "covenant": "cov 0+: 7/2; cov 7+: 8/2; cov 19+: 10/2 (attack/health)"
+   },
+   "attack": 7,
+   "size": null,
+   "abilities": [
+    "Stealth 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Silent Marksman is an Enemy and a Clipped in Monster Train. They appear in the following combats: • Hidden Assault • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R5 Hidden Assault (wave 1, 2, 3, 4, 6)",
+    "R9 The Last Divinity: Divine Intervention (wave 5)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Stealth"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 17,
+     "abilities": [
+      "Stealth 2."
+     ],
+     "stats": "cov 0+: 22/15; cov 7+: 23/15; cov 19+: 25/15 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.shadewings",
+   "name": "Shadewings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 5,
+    "covenant": "cov 0+: 10x2/5; cov 7+: 12x2/5; cov 19+: 15x2/5 (attack/health)"
+   },
+   "attack": 10,
+   "size": null,
+   "abilities": [
+    "Multistrike 1.",
+    "Slay: +2 Attack and restore 5 health."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Shadewings is an Enemy and a Winged in Monster Train. They appear on the following combats: • The Shadewings • Seraph the Temperant • Seraph the Patient • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R8 Seraph the Patient (wave 1, 2, 3, 5, 6, 7, 8)",
+    "R8 Seraph the Temperant (wave 1, 2, 3, 4, 5, 6, 7, 8)",
+    "R7 The Shadewings (wave 1, 2, 3, 4, 5, 7)",
+    "R9 The Last Divinity: Divine Intervention (wave 2, 5, 7)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": "10x2",
+    "keywords": [
+     "Multistrike",
+     "Slay"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Multistrike 2.",
+      "Slay: +5 Attack and restore 20 health."
+     ],
+     "stats": "cov 0+: 10x3/25; cov 7+: 12x3/25; cov 19+: 15x3/25 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.sycophant",
+   "name": "Sycophant",
+   "category": "normal",
+   "area": "Ring 4/5/6",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 2/1 (attack/health)"
+   },
+   "attack": 2,
+   "size": null,
+   "abilities": [
+    "Extinguish: Give +2 Attack to all friendly units."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Sycophant is an Enemy and a Clipped in Monster Train. They appear in Mark of Invasion trials in Rings 4 and 5, as well as the following combats: • The Sycophants of Seraph • Harvesters of Death • Fel, the Wings of Light: Eternal Crest • Archus, Darkness Incarnate: Sin of Darkness",
+   "waves": [
+    "R6 Archus, Darkness Incarnate: Sin of Darkness (wave 1, 3, 5)",
+    "R6 Fel, the Wings of Light: Eternal Crest (wave 1, 3, 5)",
+    "R5 Harvesters of Death (wave 1)",
+    "R5 The Sycophants of Seraph (wave 1, 2, 3, 4, 6)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Extinguish"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 10,
+     "abilities": [
+      "Extinguish: Give +2 Attack to all friendly units."
+     ],
+     "stats": "all covenants: 12/10 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.wiltwings",
+   "name": "Wiltwings",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 3,
+    "covenant": "all covenants: 5/3 (attack/health)"
+   },
+   "attack": 5,
+   "size": null,
+   "abilities": [
+    "Extinguish: Deal 5 damage to the front enemy unit."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Wiltwings is an Enemy and a Winged in Monster Train. They appear in Mark of Invasion trials in Ring 7, as well as the following combats: • The Winged Horde • Conduit Masters • The Shadewings • Seraph the Diligent • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R7 Conduit Masters (wave 2, 3)",
+    "R8 Seraph the Diligent (wave 3, 4, 6)",
+    "R7 The Shadewings (wave 3, 4, 5)",
+    "R7 The Winged Horde (wave 1, 2, 3, 4, 5, 7)",
+    "R9 The Last Divinity: Divine Intervention (wave 1, 3, 6, 7, 8)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Extinguish"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 12,
+     "abilities": [
+      "Extinguish: Deal 10 damage to the front enemy unit."
+     ],
+     "stats": "all covenants: 20/15 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.trusted_priest",
+   "name": "Trusted Priest",
+   "category": "normal",
+   "area": "Ring 1/2/3/4",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Recover: Restore 5 health to friendly units after combat."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Trusted Priest is an Enemy and a Disciple in Monster Train. They appear in the following combats: • Heaven's Priests • Guardians of Light • Pyre Absorbers • Barbed Disciples (Cov 5-25) • Daedalus, the Professor: Explosive Sigil • Daedalus, the Professor: Plating Seal • Talos, the Architect: Empowering Offense • Talos, the Architect: Protective Sin • Clipped Guard (Cov 5-25)",
+   "waves": [
+    "R2 Barbed Disciples (wave 2)",
+    "R4 Clipped Guard (wave 2)",
+    "R3 Daedalus, the Professor: Explosive Sigil (wave 5)",
+    "R3 Daedalus, the Professor: Plating Seal (wave 1, 2, 4)",
+    "R1 Guardians of Light (wave 1, 2)",
+    "R1 Heaven's Priests (wave 1, 2, 4)",
+    "R2 Pyre Absorbers (wave 1, 2, 4)",
+    "R3 Talos, the Architect: Empowering Offense (wave 5)",
+    "R3 Talos, the Architect: Protective Sin (wave 1, 2, 4)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Recover"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 12,
+     "abilities": [
+      "Spell Shield 1.",
+      "Recover: Restore 10 health to friendly units after combat. Extinguish: Deal 5 damage to your front unit."
+     ],
+     "stats": "all covenants: 0/10 (attack/health)"
+    },
+    "dlc": null
+   }
+  },
+  {
+   "id": "mt1.blinding_darkshard",
+   "name": "Blinding Darkshard",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Phased.",
+    "Rally: Apply Dazed 1 to your units.",
+    "Resolve: Despawn."
+   ],
+   "pattern": "Spawned by a boss's action rather than a wave; otherwise behaves like a normal enemy (enters the train and climbs a floor per turn). Wiki: Blinding Darkshard is an Enemy in Monster Train. It is summoned by Archus in the following combats: • Archus, Darkness Incarnate: Sin of Darkness • Archus, Darkness Incarnate: Sin of Shadow",
+   "waves": [],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Dazed",
+     "Phased",
+     "Rally",
+     "Resolve"
+    ],
+    "dlc": "The Last Divinity"
+   }
+  },
+  {
+   "id": "mt1.looming_darkshard",
+   "name": "Looming Darkshard",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Phased.",
+    "Incant: Apply +1 Ember to spells in hand.",
+    "Resolve: Despawn."
+   ],
+   "pattern": "Spawned by a boss's action rather than a wave; otherwise behaves like a normal enemy (enters the train and climbs a floor per turn). Wiki: Looming Darkshard is an Enemy in Monster Train. It is summoned by Archus in the following combats: • Archus, Darkness Incarnate: Sin of Darkness • Archus, Darkness Incarnate: Sin of Failure",
+   "waves": [],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Incant",
+     "Phased",
+     "Resolve"
+    ],
+    "dlc": "The Last Divinity"
+   }
+  },
+  {
+   "id": "mt1.shattering_darkshard",
+   "name": "Shattering Darkshard",
+   "category": "minion",
+   "area": "Ring 6",
+   "hp": {
+    "base": 1,
+    "covenant": "all covenants: 0/1 (attack/health)"
+   },
+   "attack": 0,
+   "size": null,
+   "abilities": [
+    "Phased.",
+    "Hellborne Harvest: Add a Weight of Contrition card to the top of your draw pile.",
+    "Resolve: Despawn."
+   ],
+   "pattern": "Spawned by a boss's action rather than a wave; otherwise behaves like a normal enemy (enters the train and climbs a floor per turn). Wiki: Shattering Darkshard is an Enemy in Monster Train. It is summoned by Archus in the following combats: • Archus, Darkness Incarnate: Sin of Shadow • Archus, Darkness Incarnate: Sin of Failure",
+   "waves": [],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Hellborne Harvest",
+     "Phased",
+     "Resolve"
+    ],
+    "dlc": "The Last Divinity"
+   }
+  },
+  {
+   "id": "mt1.winged_conduit",
+   "name": "Winged Conduit",
+   "category": "normal",
+   "area": "Ring 7/8",
+   "hp": {
+    "base": 6,
+    "covenant": "all covenants: 1/6 (attack/health)"
+   },
+   "attack": 1,
+   "size": null,
+   "abilities": [
+    "Enchant: Grant Multistrike 1."
+   ],
+   "pattern": "Enters on the bottom floor with its wave. After you end the turn, enemies on each floor attack first (the front friendly unit unless a keyword says otherwise), then your surviving units strike back; survivors then ascend one floor. In the Pyre Room it attacks the Pyre, which retaliates against all enemies there until one side dies. Wiki: Winged Conduit is an Enemy and a Winged in Monster Train. They appear in the following combats: • Conduit Masters • (DLC) The Last Divinity: Divine Intervention",
+   "waves": [
+    "R7 Conduit Masters (wave 1, 2, 3, 4, 6)",
+    "R9 The Last Divinity: Divine Intervention (wave 6)"
+   ],
+   "extra": {
+    "native_type": "Support",
+    "attack_display": null,
+    "keywords": [
+     "Enchant",
+     "Multistrike"
+    ],
+    "pact_shard_variant": {
+     "shard_cost": 14,
+     "abilities": [
+      "Stealth 2.",
+      "Multistrike 1.",
+      "Enchant: Grant Multistrike 1."
+     ],
+     "stats": "all covenants: 5x2/20 (attack/health)"
+    },
+    "dlc": null
+   }
+  }
+ ]
+}

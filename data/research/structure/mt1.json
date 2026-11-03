@@ -1,0 +1,3652 @@
+{
+ "game": "Monster Train",
+ "source": "https://monster-train.fandom.com (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "Run structure of MT1 (v2.x incl. The Last Divinity DLC) from the community wiki. artifacts = Module:Artifacts/Data (MT1 artifacts carry a clan/source group but no rarity on the wiki; 'Concealed Caverns' = event-only, 'Major Enhancement' = boss reward after Rings 3/6; divine_effect = the DLC 'Divine' one-battle version). Completeness: artifacts module 129 vs Category:Artifacts 129; upgrades parsed 40; events parsed 45; combats 38; covenant ranks 25 (wiki list 1-25); mutators 73; expert challenges 25. Not on the wiki: clan level thresholds/unlock tables (clans level 1-10, see rules.clan_xp).",
+ "artifacts": [
+  {
+   "name": "Advanced Prototype",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Steward units cards get +5 Attack, +5 Health, Damage Shield 2 and Multistrike 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Steward units cards get +10 Attack, +10 Health, Damage Shield 4 and Multistrike 2. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Boon of the Blacksmith",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Your Pyre gets +15 Attack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Capricious Reflection",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Cards in reward packs and unit banners come with a random upgrade.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Cheater's Hand",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Draw +1 each turn, then return 1 card to the top of your draw pile.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Cleansing Water",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "50% chance to remove all Buff effects on an enemy unit when it enters your train.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "75% chance to remove all Buff effects on an enemy unit when it enters your train. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Concussive Coals",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "50% chance to apply Dazed when an enemy unit enters your train.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Apply Dazed 1 when an enemy unit enters your train. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Conscription Notice",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When you first summon your Champion, gain a random unit card with +10 Attack, +10 Health, -1 Ember, and -1 Capacity.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Faulty Loader",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Apply Dazed 3 and Melee Weakness 1 to enemy units on the bottom floor in the first wave of combat.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Forever Flame",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Units cost -2 Ember.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Units cost -4 Ember. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Golden Vault",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "As long as you have at least 25 Gold, lose 25 Gold when you take Pyre damage in combat instead of taking damage.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Guild Marker",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Merchant costs are reduced by 25%.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Hammered Chestplates",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Friendly units get +5 Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Friendly units get +10 Health. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Hell's Banners",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When you summon the second unit during a turn, gain 3 Ember.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Improved Firebox",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Gain 7 Ember on the first turn of battle.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Infused Mallet",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "25% chance to deal 5 damage when an enemy unit enters your train.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "50% chance to deal 10 damage when an enemy unit enters your train. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Iron Dropcage",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Whenever you play a spell that would Ascend or Descend an enemy unit, also apply Dazed 2.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Jackstrips",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Deal 2 damage whenever an enemy unit moves between floors.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Light's Gift",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Apply Dazed to enemy units when they enter the floor below the Pyre Room.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Lightstone Casing",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Spells gain an extra upgrade slot.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Lost Luggage",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "At the start of battle, draw until you have 10 cards.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Mark of a Champion",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When played, your Champion gains +50% attack.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": "When played, your Champion gains +100% attack. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Mark of an Exile",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When played, your Champion gains +50% max health.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": "When played, your Champion gains +100% max health. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Precious Plating",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Your Pyre gets +40 Pyre Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Pyrestone Housing",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Units gain an extra upgrade slot.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Pyrewall",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Your Pyre starts each battle with Armor 15.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Your Pyre starts the next battle with Armor 30. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Rationing Scales",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Before each battle, set Pyre health to 50. If this reduces Pyre health, gain 3 Gold for each health lost.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Refracting Lenses",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When a card with Consume is played, restore 5 Pyre health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Sinner's Salve",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Blights and Scourges cost 0 Ember.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Sketches of Salvation",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "At the start of battle, summon 4 random units from your deck onto the middle floor.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Split Anvil",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When you play a spell, spells in hand that cost less are reduced to 0 Ember for the turn.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Tempered Talisman",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "+3 Magic Power.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "+6 Magic Power. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "The First Hellpact",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "X Cost cards get +3 to their X value when played.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Traitor's Quill",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When a card with Consume is played, deal 30 damage to the front enemy unit.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "When a card with Consume is played, deal 60 damage to the front enemy unit. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Vapor Funnel",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Apply Dazed to enemy units when they enter the Pyre Room. Your Pyre gets -5 Attack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Volatile Gauge",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When you draw any non-champion card, its cost is randomized between 1 Ember and 3 Ember. Draw +3 each turn.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Wing Clippings",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Spells with Consume have a 50% chance to be discarded instead.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Winged Indulgence",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Enemies get -1 Attack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Enemy units get -2 Attack. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Winged Steel",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "When you play your third card of the turn, draw 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "When you play your third card of the turn, draw 2. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Worn Grindstone",
+   "clan": "Clanless",
+   "rarity": null,
+   "effect": "Friendly units get +5 Attack.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": "Friendly units get +10 Attack. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Ashes of the Fallen",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Summon abilities trigger an additional time.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Collection of Tails",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Rage does not decay.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Consumed Crown",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Friendly units gain +2 Attack on Slay.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Friendly units gain +4 Attack on Slay. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Grrrg's Goad",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Demon units get Multistrike 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Imp-cicle",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "At the start of your turn, add a random Imp unit to your hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Queen's Tail",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "When you summon your first Imp each turn, gain +1 Ember and draw 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Railhammer",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Grant +4 stacks of Armor each time it is applied to friendly units.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Resonant Shard",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Rage adds an additional +1 Attack per stack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Scorched Steel",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Friendly units enter with Armor 5.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Friendly units enter with Armor 10. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Scorching Restraints",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Friendly units enter with Rage 3.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Friendly units enter with Rage 6. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "The Unbroken Horn",
+   "clan": "Hellhorned",
+   "rarity": null,
+   "effect": "Conserve Ember between turns.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Channelheart",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Sting spells get +20 Magic Power.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Cursed Vines",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "At start of turn, add a Vine Grasp spell with Purge to your hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Emblem of the Exiles",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "At the start of turn, the front friendly unit on each floor gains +5 Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "At start of turn, the front friendly unit on each floor gains +10 Health. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Gnarled Root",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Friendly units get +1 Attack per stack of Spikes.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Petrified Crucible",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Spikes deal +1 damage per stack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Priory's Cloak",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "When a friendly unit is healed, deal damage to the front enemy unit equal to the amount healed.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Rootsplit Mask",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Apply Rooted to enemy units when they enter the floor below the Pyre Room.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Sap Tap",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "The first time each turn a friendly unit is healed, draw 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "The Bloating Fungus",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Regen restores +1 health per stack.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Thorn Casing",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "Sting spells get +10 Magic Power and Piercing.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Thornfruit",
+   "clan": "Awoken",
+   "rarity": null,
+   "effect": "At the start of your turn, add a Sting spell to your hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "A Forgotten Name",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "When you play your third spell of the turn, all cards gain +1 Magic Power for the rest of this battle.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "When you play your third spell of the turn, all cards gain +2 Magic Power for the rest of this battle. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Cuttlebeard",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "Grant +2 stacks of Frostbite each time it is applied. Frostbite does not decay.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Founding Seal",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "Incant abilities trigger an additional time.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Icicle Fracture",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "At the end of the turn, apply Frozen to a random card in your hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Kinstone Totem",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "When a card is discarded before the end of your turn, gain 1 Ember.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Rules of Containment",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "Enemy units enter with Frostbite 2.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Enemy units enter with Frostbite 4. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Sigiled Seaweed",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "50% chance to apply Silence when an enemy unit enters your train.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Tethys' Scales",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "50% chance to apply Spell Weakness 1 when an enemy unit enters your train.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Titan's Claws",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "At the end of the turn, Frozen cards are reduced to 0 Ember until played or discarded.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Token of a Traitor",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "Playing a spell deals 2 damage to a random enemy unit on that floor.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Playing a spell deals 4 damage to a random enemy unit on that floor. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Totem Fragment",
+   "clan": "Stygian Guard",
+   "rarity": null,
+   "effect": "Apply Spell Weakness 2 to enemy units when they enter the floor below the Pyre Room.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Abandoned Antumbra",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "At start of turn, add a common or uncommon Morsel unit to hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Chain of Gems",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "Apply Damage Shield 2 to the first friendly unit summoned each turn.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Apply Damage Shield 4 to the first friendly unit summoned each turn. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Commemorative Spike",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "At the start of battle, summon a Morsel Miner on each floor.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Fossilized Fangs",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "Gorge abilities trigger an additional time.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Mask of Penumbra",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "When you summon your first Morsel unit each turn, draw 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Mine Jacks",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "+2 Capacity on the middle floor.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Refined Void",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "Friendly units enter with Lifesteal 2.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Shadelamp",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "The first time each turn an enemy unit dies, add 2 Morsel units to hand.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Shadowbox",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "When you play your 20th Morsel unit of the battle, deal 150 damage to all enemies on all floors.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Teeth of Gold",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "Deal 3 damage to the rear enemy unit when a Morsel unit is Eaten.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Winged Technology",
+   "clan": "Umbra",
+   "rarity": null,
+   "effect": "Morsel units get Damage Shield 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Combustible Wax",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Grant +3 stacks of Burnout each time it is applied.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Encased Ember",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Gain 5 Ember when a Tomb unit dies.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Exploding Candle",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Deal 5 damage to enemy units when a Burnout unit dies.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": "Deal 5 damage to enemy units when a friendly unit dies. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Fade's First Blade",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Friendly units gain Rage 3 whenener they lose a stack of Burnout.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Flicker's Liquor",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "When you play a unit, a random card in hand is reduced to 0 Ember until played or discarded.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Melting Spout",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Tomb units get +30 Health and Burnout 1.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Memorial Fund",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Gain 5 Gold when a friendly unit dies.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Mold Braces",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Friendly units gain Extinguish: Apply Armor 5 to the front friendly unit'.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Resin Block",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "When a friendly unit dies, apply +10 Attack to that unit.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Votive Key",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Apply Endless to the first friendly unit summoned each turn.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Waxer Snuffer",
+   "clan": "Melting Remnant",
+   "rarity": null,
+   "effect": "Extinguish abilities trigger an additional time.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Wurmtooth",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "Clan starter cards are Infused. One card in each draft pack will be Infused.",
+   "source": "Starter",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Base Charge",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "At the start of battle, add 2 Charged Echo to each floor.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Bog Slime",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "When a spell with Consume is played, gain 1 Charged Echo.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Carving Corusca",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "When a card with Extract is played, gain 1 Ember and 1 Charged Echo.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Decayed Decoy",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "Grant +1 stack of Reap each time it is applied.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Dun Echo",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "One additional card in each draft pack will be Infused.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Echo Seedling",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "The first time each battle a card with Consume is played, add 2 copies to hand.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Encased Divinity",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "At the start of battle, the top floor gains 1 Charged Echo that cannot be removed.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Hardened Hull",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "When an Egg unit is summoned, remove Shell 3 and apply Armor 30.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Mind Hoard",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "Increase Echo slot by 1 on each floor.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Notice Stone",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "When a card with Consume is played, all cards gain +1 Magic Power for the rest of this battle.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": "When you play a card with Consume, all cards gain +2 Magic Power for the rest of this battle. Remove this artifact after 1 battle."
+  },
+  {
+   "name": "Serrated Mandibles",
+   "clan": "Wurmkin",
+   "rarity": null,
+   "effect": "When one or more Charged Echo are added to a floor, apply Reap 1 to a random enemy unit, twice.",
+   "source": null,
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Abandoned Stave",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "+1 Ember per turn for every 2 Blight cards in your deck.",
+   "source": "Ember Deposits",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Blank Pages",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "At start of turn, if you do not have a Champion in your hand, add a random one to your hand.",
+   "source": "Let's give 'em Hell.",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Blood for Blood",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "When your Pyre kills a unit, restore 5 Pyre health.",
+   "source": "Train Graveyard",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Broken Wheel",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "When a non-Champion unit dies, it is Purged.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Corrupted Cloud",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "At end of turn, deal 4 damage to friendly units.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Cracked Helmet",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Damage spells get Piercing.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Dante's Cloak",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "+2 Magic Power for every Blight card in your deck.",
+   "source": "Mysterious Figure",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Ember Stasis",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Playing a Blight card deals 120 damage to the front enemy unit.",
+   "source": "Penance Yard",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Frozen Nostalgia",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "-1 Capacity on each floor. +15 Magic Power.",
+   "source": "Iceberg",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Heaven's Gold",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Your Pyre gets +1 Attack for every 10 Gold you have.",
+   "source": "The Historian",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "History of the World",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "+3 Capacity on a random floor.",
+   "source": "Iceberg",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Hope for Peace",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Spells with Purge have Consume instead.",
+   "source": "Armageddon Battlefield",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Immortality Potion",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Friendly non-Morsel units get Endless.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Judgemental Fittings",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Enemy units enter with Damage Shield 1.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Penitent Remains",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "When summoned friendly units get +2 Attack for every Blight card in your deck.",
+   "source": "Penance Yard",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Petrified Heart",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Friendly units get +10 Health and Heartless.",
+   "source": "Train Graveyard",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Railforger's Hammer",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "+1 Capacity on each floor.",
+   "source": "Iceberg",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Shard of Divinity",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "Your Pyre starts each battle with Armor 100.",
+   "source": "Let's give 'em Hell.",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Vial of Tears",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "At end of turn, restore 5 health to friendly units.",
+   "source": "Malicka Mutator",
+   "dlc": "The Last Divinity",
+   "divine_effect": null
+  },
+  {
+   "name": "Weathered Coldstones",
+   "clan": "Concealed Caverns",
+   "rarity": null,
+   "effect": "When you play a Blight card, restore 5 Pyre health.",
+   "source": "Penance Yard",
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Fel's Remorse",
+   "clan": "Major Enhancement",
+   "rarity": null,
+   "effect": "+1 Ember per turn. Your Pyre gets +10 Attack and +30 Pyre Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Herzal's Compound",
+   "clan": "Major Enhancement",
+   "rarity": null,
+   "effect": "Draw +1 each turn. Your Pyre gets +10 Attack and +30 Pyre Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  },
+  {
+   "name": "Light of Seraph",
+   "clan": "Major Enhancement",
+   "rarity": null,
+   "effect": "+1 Capacity on each floor. Your Pyre gets +10 Attack and +30 Pyre Health.",
+   "source": null,
+   "dlc": null,
+   "divine_effect": null
+  }
+ ],
+ "merchants_and_upgrades": {
+  "overview": "Merchants are an Overworld Event that allows the player to spend gold in exchange for purging Cards from their deck, upgrading units or spells and obtaining Artifacts.",
+  "prices": "Each Merchant will sell three items at a time. Their inventory can be re-rolled once per Merchant for a cost of 50 Gold. Merchant prices increase at certain Covenant Ranks: • At Covenant 11, re-roll costs 20% more. The cost becomes 60 Gold. • At Covenant 16, card removal costs 20% more. The initial cost becomes 60 Gold, increasing each time it is used, to a maximum of 300 Gold. • At Covenant 18, goods cost 20% more. At Merchants of Magic or Steel, Common upgrades cost 25 Gold and Rare upgrades cost between 95 Gold and 120 Gold. At Merchant of Trinkets, Artifacts cost between 195 Gold and 245 Gold. [verify] See: Upgrades for a list of available upgrades",
+  "card_removal": "All Merchants allow removing cards from the deck. The initial cost is 50 Gold, increasing each time it is used, to a maximum of 250 Gold. The removal cost is shared by all Merchants through the run.",
+  "card_removal_costs": [
+   {
+    "covenant": "0-15",
+    "costs": [
+     "50 (40)",
+     "75 (55)",
+     "100 (75)",
+     "150 (115)",
+     "200 (150)",
+     "250 (190)"
+    ]
+   },
+   {
+    "covenant": "16-25",
+    "costs": [
+     "60 (50)",
+     "90 (70)",
+     "120 (95)",
+     "180 (145)",
+     "240 (190)",
+     "300 (240)"
+    ]
+   }
+  ],
+  "merchants": [
+   {
+    "name": "Merchant of Steel",
+    "sells": "The Merchant of Steel sells 2 different Common upgrades for 20 Gold and 1 Rare upgrade between 80 Gold and 95 Gold. Each item is randomly selected from the possible choices. There are three Common and four Rare upgrades which may be offered in any run.",
+    "stock": [
+     "Common Upgrades (general): • Strengthstone: +10 Attack • Heartstone: +25 Health • Battlestone: +5 Attack +10 Health",
+     "Common Upgrades (clan-specific): • Furystone: Rage 7. • Thornstone: +10 Health and Spikes 3. • Runestone: Incant: Gain Armor 2. • Shieldstone: Damage Shield 3. • Wickstone: Burnout 1, +5 Attack +5 Health • +3 Attack per Charged Echo. (DLC)",
+     "Rare Upgrades: • Largestone: +1 Capacity +15 Attack +40 Health • Frenzystone: Multistrike 1. • Immortalstone: Endless. • Speedstone: Quick."
+    ]
+   },
+   {
+    "name": "Merchant of Magic",
+    "sells": "The Merchant of Magic sells 2 Common upgrades for 20 Gold and 1 Rare upgrade between 80 Gold and 100 Gold. The first upgrade offered is always Emberstone. The second Common upgrade is either Powerstone or Surgestone. The Rare upgrade is random.",
+    "stock": [
+     "Emberstone: -1 Ember | Either: • Powerstone: +10 Magic Power. • Surgestone: +20 Magic Power, Consume. | Any of: • Eternalstone: Remove Consume, +1 Ember • Freezestone: Permafrost. • Keepstone: Holdover. • Stackstone: Doublestack, +1 Ember"
+    ]
+   },
+   {
+    "name": "Merchant of Trinkets",
+    "sells": "The Merchant of Trinkets sells three Artifacts. Prices range between 160 Gold and 220 Gold. [verify]",
+    "stock": []
+   }
+  ],
+  "divine_temple": "Divine Temple is an Overworld Event. Accept Pact Shards in exchange for upgrading spells or combining units. Here, you may take to left upgrade for +10 Pact Shards, take the right upgrade for +15 Pact Shards, or engage the Pact for +25 Pact Shards. Left Upgrades (10 Pact Shards) | • Seekstone: Intrinsic • Truestone: +10 magic Power and Piercing • Purgestone: Purge and -1 Ember.; Right Upgrades (15 Pact Shards) | • Twinstone: Spellchain • Valuestone: -2 Ember • Extremestone: +30 Magic Power Engage Pact: You can sacrifice one unit to infuse its essence into another unit, for +25 Pact Shards. This option can only be used once per Temple, and a non-champion unit can only be infused with up to one essence. The essence of the first chosen unit will be applied to the second chosen unit.",
+  "engage_pact": "At Divine Temples, a unit can be sacrificed in order to infuse its essence into another unit, at the cost of +25 Pact Shards. A unit can be infused with another unit's essence only once.",
+  "upgrades": [
+   {
+    "name": "Strengthstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +10 Attack.",
+    "acquired_from": "Merchant / Shards of the Pyre"
+   },
+   {
+    "name": "Heartstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +25 Health.",
+    "acquired_from": "Merchant / Train Graveyard"
+   },
+   {
+    "name": "Battlestone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +5 Attack and +10 Health.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Furystone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Rage 7.",
+    "acquired_from": "Merchant / (Hellhorned only)"
+   },
+   {
+    "name": "Thornstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +10 Health and Spikes 3.",
+    "acquired_from": "Merchant / (Awoken only)"
+   },
+   {
+    "name": "Runestone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Incant: Gain Armor 2.",
+    "acquired_from": "Merchant / (Stygian Guard only)"
+   },
+   {
+    "name": "Shieldstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Damage Shield 3.",
+    "acquired_from": "Merchant / (Umbra only)"
+   },
+   {
+    "name": "Wickstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Burnout 1, +5 Attack and +5 Health.",
+    "acquired_from": "Merchant / (Melting Remnant only)"
+   },
+   {
+    "name": "Echo Stone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with '+3 Attack per Charged Echo'.",
+    "acquired_from": "Merchant / (DLC) (Wurmkin only)"
+   },
+   {
+    "name": "Largestone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +1 Capacity, +15 Attack, and +40 Health.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Frenzystone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Multistrike 1.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Immortalstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Endless.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Speedstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Quick.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Heaven's Aid",
+    "kind": "unit",
+    "effect": "(One of these) • +20 Health. Revenge: +1 Attack. • +5 Attack and apply Endless. • Extinguish: Deal 40 damage to the front enemy unit.",
+    "acquired_from": "Heaven's Aid"
+   },
+   {
+    "name": "Heaven's Finest",
+    "kind": "unit",
+    "effect": "(One of these) • +30 Health. Revenge: +1 Attack to all friendly units. • +10 Attack and apply Endless. Reduce cost to 0 Ember. • Quick. Extinguish: Deal 60 damage to the front enemy unit.",
+    "acquired_from": "Heaven's Finest"
+   },
+   {
+    "name": "Major Refraction",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +2 Capacity, +30 Attack, and +30 Health.",
+    "acquired_from": "Crystals"
+   },
+   {
+    "name": "Minor Refraction",
+    "kind": "unit",
+    "effect": "Upgrade a unit with 1 Capacity.",
+    "acquired_from": "Crystals"
+   },
+   {
+    "name": "Monster Railspike",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +20 Attack and +20 Health and add Purge.",
+    "acquired_from": "Rail of the Covenant"
+   },
+   {
+    "name": "Sunderstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Strike: Apply Melee Weakness 1.'",
+    "acquired_from": "(DLC) Concealed Caverns"
+   },
+   {
+    "name": "Sapstone",
+    "kind": "unit",
+    "effect": "Upgrade a unit with Summon: Apply Sap 4 to enemy units.'",
+    "acquired_from": "(DLC) Concealed Caverns"
+   },
+   {
+    "name": "Heph's Consolation",
+    "kind": "unit",
+    "effect": "Upgrade a unit with +10 Attack and -1 Capacity.",
+    "acquired_from": "(DLC) Concealed Caverns."
+   },
+   {
+    "name": "Made to Fit",
+    "kind": "unit",
+    "effect": "-3 Capacity",
+    "acquired_from": "(DLC) Comes innately with Heph the Blacksmith."
+   },
+   {
+    "name": "Emberstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to cost -1 Ember.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Powerstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell with +10 Magic Power.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Surgestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell with +20 Magic Power and Consume.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Eternalstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to remove Consume and cost +1 Ember.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Freezestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Permafrost.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Keepstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Holdover.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Stackstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Doublestack and cost +1 Ember.",
+    "acquired_from": "Merchant"
+   },
+   {
+    "name": "Seekstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Intrinsic.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Truestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell with +10 Magic Power and Piercing.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Purgestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Purge and cost -1 Ember.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Twinstone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to gain Spellchain.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Valuestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell to cost -2 Ember.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Extremestone",
+    "kind": "spell",
+    "effect": "Upgrade a spell with +30 Magic Power.",
+    "acquired_from": "(DLC) Divine Temple"
+   },
+   {
+    "name": "Heaven's Aid",
+    "kind": "spell",
+    "effect": "(One of these) • Reserve: Restore 2 health to your Pyre. • Gain 25 Gold. • Add a copy of this card to your discard pile.",
+    "acquired_from": "Heaven's Aid"
+   },
+   {
+    "name": "Heaven's Finest",
+    "kind": "spell",
+    "effect": "(One of these) • Reserve: Restore 5 health to your Pyre. • Gain 35 Gold. 0 Ember. • Add a copy of this card to your discard pile. 0 Ember.",
+    "acquired_from": "Heaven's Finest"
+   },
+   {
+    "name": "Spell Railspike",
+    "kind": "spell",
+    "effect": "Increase Magic Power by 20 and add Purge. Reduce cost to 0 Ember.",
+    "acquired_from": "Rail of the Covenant"
+   },
+   {
+    "name": "Improved Railspike",
+    "kind": "spell",
+    "effect": "Upgrade all copies of Automatic Railspikes with +10 Magic Power and Consume.",
+    "acquired_from": "Heph the Blacksmith"
+   },
+   {
+    "name": "Unhinged Power",
+    "kind": "spell",
+    "effect": "Reduce cost to 0 Ember and apply Purge.",
+    "acquired_from": "(DLC)Concealed Caverns"
+   }
+  ]
+ },
+ "events": [
+  {
+   "name": "Unstable Vortex",
+   "type": "map node",
+   "summary": "Select and remove up to 2 cards from your deck. You can remove 1 or 0 cards and come back later if needed."
+  },
+  {
+   "name": "Hellvent",
+   "type": "map node",
+   "summary": "Duplicate any card except your Champion. Duplicating a unit with an essence will also give +15 Pact Shards. Duplicating a spell with upgrades from a Divine Temple will also give Pact Shards: +5 Pact Shards for each(?) left upgrade and +10 Pact Shards(?) for each(?) right upgrade."
+  },
+  {
+   "name": "Unit Banner",
+   "type": "map node",
+   "summary": "Gain a Primary or Secondary clan Banner Unit from a selection of 2-3. Two unit banners cannot appear on the same side. The same type of unit banner cannot appear on both sides of the Rail."
+  },
+  {
+   "name": "Herzal's Hoard",
+   "type": "map node",
+   "summary": "Gain an artifact. Can be declined (Skip) for +25 Gold."
+  },
+  {
+   "name": "Forgotten Boons",
+   "type": "map node",
+   "summary": "Gain 75 Gold."
+  },
+  {
+   "name": "Pyre Remains",
+   "type": "map node",
+   "summary": "Restore 20 Pyre health."
+  },
+  {
+   "name": "Dark Forge",
+   "type": "map node",
+   "summary": "Main: Champions Upgrade your Champion. You can upgrade your Champion from a choice of 2 out of 3 upgrade paths that get randomly picked at every forge. The upgrades you pick are guaranteed to appear in later forges, which means you'll be locked out of getting all 3 upgrades on your Champion in any given run."
+  },
+  {
+   "name": "Divine Temple",
+   "type": "map node",
+   "summary": "See: Divine Temple (DLC Exclusive) Accept shards in exchange for upgrading spells or combining units. Here, you may take the left upgrade for +10 Pact Shards, take the right upgrade for +15 Pact Shards, or engage the Pact for +25 Pact Shards."
+  },
+  {
+   "name": "Divine Boons",
+   "type": "map node",
+   "summary": "(DLC Exclusive) Gain 100 Gold for 10 Pact Shards."
+  },
+  {
+   "name": "Divine Hoard",
+   "type": "map node",
+   "summary": "(DLC Exclusive) Gain an artifact for 15 Pact Shards. You may choose from 3 Artifacts, or skip for +25 Gold."
+  },
+  {
+   "name": "Merchants (Steel / Magic / Trinkets)",
+   "type": "map node",
+   "summary": "Shops; see merchants_and_upgrades."
+  },
+  {
+   "name": "Abandoned Train",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Choice of three different clans: Get a random Clan consumable card. / There is a chance to take a second card from the other two clans. / There is a low chance to take the third card. / Leave"
+  },
+  {
+   "name": "Abandoned Winged",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Here's a helping hand: Purge a unit. Get an upgraded version later. / Here's some spare magic: Purge a spell. Get an upgraded version later. / Leave"
+  },
+  {
+   "name": "Armageddon Battlefield",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Hope for Peace: Get Hope for Peace."
+  },
+  {
+   "name": "Bone Dog",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Pet Bone Dog: Get Bone Dog's Favor. / Leave Something behind: Purge 1 card. / Leave"
+  },
+  {
+   "name": "Cave of a Thousand Eyes",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Offer wealth: Pay 25 coins. 10/25/50/75% chance to gain an artifact. / Offer life: Lose 5 Health. 10/25/50/75% chance to gain an artifact. / Leave / The artifact will be a random Clanless, Primary or Secondary artifact. / If the chance fails, you can pay the cost again with an increased chance. The chance is shared for both costs."
+  },
+  {
+   "name": "Chaos Portal",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Throw something in: Purge a card, gain a rare card. / Gain a random Rare Card from your choice of primary or allied clan. / Leave"
+  },
+  {
+   "name": "Crystals",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "The large one: Get Major Refraction. / The small one: Get Minor Refraction. / Leave"
+  },
+  {
+   "name": "Ember Deposits",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Take the Protrusion: Get Abandoned Stave. Gain 2 Vengeful Shard. / Clear the rubble: Get 3 Calcified Ember now. Get upgraded versions later. / The Calcified Ember will be replaced with Excavated Ember after two battles. Only the Calcified Ember that you do not Purge in battle will be replaced. Note that if you duplicate the Calcified Ember the duplicate(s) will also be replaced."
+  },
+  {
+   "name": "Fissure",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Absorb from afar: Copy a card. / Throw something in: Copy a card 5 times. / Leave"
+  },
+  {
+   "name": "Glowing Brands",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Choice of three different clans: Get a Rare Clan draft pick. / Leave / Note: Wurmkin is excluded from this event."
+  },
+  {
+   "name": "Heph the Blacksmith",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Take the Railspike: Get Automatic Railspikes. / After getting 4 or more copies of the card in your deck, Heph comes back to give all copies +10 Magic Power and Consume, and removes the slay effect. / Take the Raildriver: Get Spikedriver Colony. / After getting 4 or more copies of the card in your deck, Heph comes back to give all copies +20 Attack, and removes the extinguish effect. / Leave"
+  },
+  {
+   "name": "Historian's Records",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Choice of three random clans: Take the tome. / Leave"
+  },
+  {
+   "name": "Iceberg",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Leave"
+  },
+  {
+   "name": "Mysterious Figure",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "I'll take the dangerous ones: Get 3 Dante's Candle. Get something later. / Leave"
+  },
+  {
+   "name": "Ornate Chests",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Pickpocket both: [If player has Petty Theft from Historian event] Purge Petty Theft. Get 175 coins. / Yes, a lot: Lose 25 Pyre health, Get 150 coins. / Just a little: Lose 5 Pyre health, Get 25 coins. / Leave"
+  },
+  {
+   "name": "Penance Yard",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Leave"
+  },
+  {
+   "name": "Rail of the Covenant",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Enhance a unit: Get Monster Railspike. / Enhance my magical power: Get Spell Railspike. / Leave"
+  },
+  {
+   "name": "Railspikes",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Choice of three random clans: Take a Railspike. / Leave / Wurmkin Spike is also a Clan-specific Railspike, but is not obtainable in this event. Other types of Clanless Railspikes can be found in other events (Rail of the Covenant, Heph the Blacksmith)."
+  },
+  {
+   "name": "Shards of the Pyre",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Leave"
+  },
+  {
+   "name": "The Historian",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": ""
+  },
+  {
+   "name": "Train Graveyard",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "Leave"
+  },
+  {
+   "name": "Trainyard",
+   "type": "Concealed Caverns event",
+   "dlc": null,
+   "summary": "The Doors: Get Trap Chute. / The Hook: Get Steel Pulleyclaw. / Leave"
+  },
+  {
+   "name": "Heaven's Aid",
+   "type": "Concealed Caverns event (follow-up)",
+   "dlc": null,
+   "summary": "I'll take it now: Get upgraded Card (Heaven's Aid Upgrade) / Hold onto it (Get Heaven's Finest event later)"
+  },
+  {
+   "name": "Heaven's Finest",
+   "type": "Concealed Caverns event (follow-up)",
+   "dlc": null,
+   "summary": "Take Heaven's gift: Get upgraded Card (Heaven's Finest Upgrade)"
+  },
+  {
+   "name": "Mysterious Figure Returns",
+   "type": "Concealed Caverns event (follow-up)",
+   "dlc": null,
+   "summary": "We will have you: Get Dante's Cloak and Dante the Deceptive. / Leave (Candles will not be removed)"
+  },
+  {
+   "name": "Abandoned Winged (Divinity)",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Option 1: Get For the Greater Good. / Option 2: Choose a unit upgrade: Sunderstone or Sapstone."
+  },
+  {
+   "name": "Arcane Machine",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Category 1: Primary Effect / Three choices from the following options, can appear as first or second choice: / Category 2: Status Effect / Three choices from the following options, can appear as first or second choice: / Category 3: Movement / Three choices from the following options, can appear as second or third choice: / Category 4: Other / Two choices from the following options, can only appear as a third choice:"
+  },
+  {
+   "name": "Divine Artifact",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Divine Artifact Low: 10 pact shards by Ring 3, at least 1 previous Divine Victory with your current primary clan. / Divine Artifact Mid: 50 pact shards by Ring 5, at least 2 previous Divine Victories with your current primary clan. / Divine Artifact High: 75 pact shards by Ring 8, at least 3 previous Divine Victories with your current primary clan. / Each Divine Artifact event has it's own pool of Divine artifacts to draw from. / Option 1: Choose from 3 Divine Artifacts to obtain."
+  },
+  {
+   "name": "Good Ol'Wingmaker",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Fine-Tuning is my middle name.: Get Good Ol' Wingmaker. (Heph may return later.) / That's a little outside my comfort zone.: Get Offered Heph's Consolation."
+  },
+  {
+   "name": "Let's give 'em Hell.",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "45% chance that the event can be triggered at all, determined at the start of run / Minimum of 150 pact shards acquired after defeating Seraph / At least 5 Divine Victories obtained with your current primary clan as the primary clan in previous runs. / Whether Blank Pages or Shard of Divinity offered is a completely random 50-50 roll, and is not dependent on seeing other events like the Wingmaker event. / Let's give 'em Hell.: Get (Get Shard of Divinity.) or (Get Blank Pages.) / Leave"
+  },
+  {
+   "name": "Malicka Mutator",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "In this event, which occurs randomly after combat (not in a Concealed Cavern) one is offered 3 negative Artifacts. One may take any number of them. For taking the Artifacts, one will be able trade them for positive Artifacts after 2 combats."
+  },
+  {
+   "name": "Malicka Purge",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Event 1 / Restore 10 Health and gain 5 Pact Shards. / Event 2 / Restore 20 Health and gain 10 Pact Shards. / Event 3 / Restore 30 Health and gain 15 Pact Shards. / Event 4 / Restore all Health and gain 20 Pact Shards."
+  },
+  {
+   "name": "Nexus Spike",
+   "type": "Concealed Caverns event",
+   "dlc": "The Last Divinity",
+   "summary": "Option 1: Choose 2 spells. Get a Nexus Spike with the 2 cards' effects. / Option 2: Remove a spell. Get 3 Copies with Unhinged Power. / Leave."
+  },
+  {
+   "name": "Heph Returns",
+   "type": "Concealed Caverns event (follow-up)",
+   "dlc": "The Last Divinity",
+   "summary": "Option 1: Get Heph the Blacksmith. / Leave."
+  }
+ ],
+ "pyre": {
+  "summary": "The Pyre is your main health pool. It is at the top of the Train above the three floors of the Train. The Pyre starts with 80 Pyre Health at the start of the game, increasing by 30 Pyre Health every time you defeat a Major Boss, up to a maximum of 140 Pyre Health. There are also Artifacts that can affect the health of the Pyre, such as Precious Plating, which increases the Pyre Health by 40 Pyre Health. The starting Pyre Health is further modified by the Covenant Rank. The Pyre can lose health through being attacked or having its health sacrificed in Concealed Cavern Events such as Cave of a Thousand Eyes. The Pyre, while unable to be defended directly, is capable of warding off Enemies. The Pyre has a base attack of 20 Attack and will retaliate against all enemies in the Pyre Room. Attacks from the Pyre act as if the Pyre had Sweep, attacking all enemies in the room. After you defeat a Boss, the Pyre gains 10 Attack. There are also Artifacts that can affect the attack value of the Pyre, such as Vapor Funnel, which decreases the attack of the Pyre by 5 in exchange for applying Dazed to enemies that enter the Pyre Room. It is unwise to rely on the Pyre's own battle stats, as damage taken by the Pyre carries over between fights.",
+  "note": "MT1 has a single Pyre (no Pyre Hearts). Major-boss rewards add Pyre attack/health via 'Major Enhancement' artifacts (Fel's Remorse, Herzal's Compound, Light of Seraph: +10 Attack, +30 Pyre Health each)."
+ },
+ "rules": {
+  "run_structure": {
+   "summary": "9 Rings of Hell. Rings 1-8 each end in one battle (8 battles per run); Ring 9 (The Frozen Heart) ends the run, or with The Last Divinity DLC and >= 100 Pact Shards (or Hell Rush) holds a 9th battle vs The Last Divinity. Rings after the first split into two branches: picking a node on one side locks the other side's nodes; some rings have a shared centre node. Minor bosses on Rings 1, 2, 4, 5, 7 (identity hidden until the battle, optional Trial for extra reward); major (flying) bosses on Rings 3, 6, 8 with the variant shown on the map; after Rings 3 and 6 pick a boss artifact; after the Ring 8 Seraph fight the run ends.",
+   "battle_rewards": "Each battle: gold, two card packs of three (one per clan); trial rewards per Battle Effects page: unit draft (banner), random artifact, or coins 75/150/400.",
+   "node_availability_by_ring": {
+    "Dark Forge": "YNNYNNYNN",
+    "Herzal's Hoard": "YNRRRRRNN",
+    "Merchant of Magic": "NYRRRRRYN",
+    "Merchant of Steel": "NYRRRRRYN",
+    "Merchant of Trinkets": "NNNNRRRYN",
+    "Unit Banner": "NYYYNNNNN",
+    "Forgotten Boons": "NRNYRRRYN",
+    "Concealed Caverns": "NNYNRYRNN",
+    "Hellvent": "NNRRRRRYN",
+    "Pyre Remains": "NNRYRRRYN",
+    "Unstable Vortex": "NNNYRRRYN"
+   },
+   "rings": [
+    {
+     "ring": 1,
+     "name": "Limbo",
+     "flavor": "This wasteland has always been the desolate crossing into Hell. It serves as a buffer, the first Ring of Hell, and the only separation from Heaven. The ice only turned an endless desert into an endless tundra.",
+     "nodes": "Single Path; Dark Forge: Upgrade your champion; Herzal's Hoard: Choose one of two artifacts. With the The Last Divinity DLC, either a Divine Boons or Divine Hoard will be available, letting one collect Pact Shards. You will fight a random Battle. The possible combats are: The First Defense | Heaven's Priests | The Gathered Clergy | Guardians of Light",
+     "combats": [
+      "The First Defense",
+      "Heaven's Priests",
+      "The Gathered Clergy",
+      "Guardians of Light"
+     ],
+     "bosses": [
+      "Chains the Sighted",
+      "Discipled Inquisitor"
+     ]
+    },
+    {
+     "ring": 2,
+     "name": "The Cliffs of Fallen Souls",
+     "flavor": "These sharp cliffs have led to the demise of many souls. Most who come to Hell hope to bring their previous wealth, but material riches make navigation of the treacherous cliffside path a dangerous affair.",
+     "nodes": "Path A | Path B; Merchant of Magic | Merchant of Steel; Either: • One Unit Banner on each side; or • A Unit Banner (random) on the same side as the Merchant of Steel, and Forgotten Boons on the other With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight a random Battle. The possible combats are: Disciple Conduits | Pyre Absorbers | Barbed Disciples | Penitent Prayers",
+     "combats": [
+      "Disciple Conduits",
+      "Pyre Absorbers",
+      "Barbed Disciples",
+      "Penitent Prayers"
+     ],
+     "bosses": [
+      "Highpriest to the Light",
+      "Last Knight of the Disciples",
+      "The Steel Slate"
+     ]
+    },
+    {
+     "ring": 3,
+     "name": "Bogwurm's Remains",
+     "flavor": "Said to be among the great Titans that formed the Rings of Hell, the Bogwurm had long since died by the time I began to build the Rail. The Bogwurm's remains have created a Ring full of waste and ruin, perfect for the inhabitants of Hell.",
+     "nodes": "There are 2 event slots on each side. There is one shared event slot, which is always a Concealed Caverns. One random slot is guaranteed to be a Unit Banner. It will always be one of the bottom slots. The remaining three slots are randomly selected from Hellvent, Herzal's Hoard, Pyre Remains, Merchant of Magic, and Merchant of Steel. The second Unit Banner is possible but rare. Forgotten Boons, Unstable Vortex, and Merchant of Trinkets cannot appear. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight against a random version of Daedalus or Talos. You cannot take a special trial for additional rewards. Once beaten you obtain the usual rewards and a special Boss artifact of your choice. The possible combats for Daedalus are: Explosive Sigil | Double Barrel | Plating Seal The possible combats for Talos are: Empowering Offense | Soul Sucker | Protective Sin",
+     "combats": [
+      "Daedalus, the Professor: Explosive Sigil",
+      "Daedalus, the Professor: Double Barrel",
+      "Daedalus, the Professor: Plating Seal",
+      "Talos, the Architect: Empowering Offense",
+      "Talos, the Architect: Soul Sucker",
+      "Talos, the Architect: Protective Sin"
+     ],
+     "bosses": [
+      "Daedalus, the Professor",
+      "Talos, the Architect"
+     ]
+    },
+    {
+     "ring": 4,
+     "name": "The Waxen Arches",
+     "flavor": "Across this waxen landscape, ever-growing arches can be seen, made of the remains of the Melting Remnant souls who've climbed to the top in search of rumored wealth. The survivors built Votive Houses throughout the Ring. The houses serve as sanctuaries for those who hope to melt faster, or not to melt at all.",
+     "nodes": "There are 3 event slots on each sides. There is one shared event slot, which is always a Dark Forge. These events are guaranteed: • Unit Banner • This is always for the other clan than the guaranteed banner in the previous ring. There is never a second banner in this ring. This is the last Unit Banner on the map; no banners can appear on any later rings. • Unstable Vortex • Forgotten Boons • Pyre Remains Concealed Caverns and Merchant of Trinkets cannot appear. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight a random Battle. The possible combats are: Clipped Infiltration | Protectors of the Clipped | Clipped Guard | Clipped Tormenters",
+     "combats": [
+      "Clipped Infiltration",
+      "Protectors of the Clipped",
+      "Clipped Guard",
+      "Clipped Tormenters"
+     ],
+     "bosses": [
+      "Pyrelight Master",
+      "The Porcupine",
+      "Thoughtbinder"
+     ]
+    },
+    {
+     "ring": 5,
+     "name": "Frozen Styx Sea",
+     "flavor": "The Stygian Guard protects the depths of Hell from their post underneath the Styx Sea. Now frozen, the sea is covered in ice, trapping the Unnamed Titan within. The Unnamed Titan still sleeps for now, but as the ice melts, it will not stay trapped forever.",
+     "nodes": "There are 3 event slots on each sides. This is the first ring where Merchant of Trinkets can appear. There is never a Unit Banner. Events are otherwise random. Forgotten Boons, Pyre Remains, and Concealed Caverns appear more frequently than other options but are not guaranteed. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight a random Battle. The possible combats are: The Sycophants of Seraph | The Harpy's Guard | Hidden Assault | Harvesters of Death",
+     "combats": [
+      "The Sycophants of Seraph",
+      "The Harpy's Guard",
+      "Hidden Assault",
+      "Harvesters of Death"
+     ],
+     "bosses": [
+      "Sower of Sorrow",
+      "The Crystalcloak",
+      "The Self-Made Harpy"
+     ]
+    },
+    {
+     "ring": 6,
+     "name": "The Wildwood",
+     "flavor": "Massive vines took root within this Ring, creating the massive Wildwood Forest that exists today. This living forest traps unsuspecting victims within its vines to absorb their souls into its hivemind of the Awoken.",
+     "nodes": "There are 3 event slots on each sides. One random slot is guaranteed to be Concealed Caverns. Forgotten Boons, Pyre Remains, and Unstable Vortex appear more frequently than other options but are not guaranteed. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight against a random version of Fel, the Wings of Light or Archus. You cannot take a special trial for additional rewards. Once beaten you obtain the usual rewards and a special Boss artifact of your choice. The possible combats for Fel are: Eternal Crest | Scouring Crest | Wrath Crest The possible combats for Archus are: Sin of Darkness | Sin of Shadow | Sin of Failure",
+     "combats": [
+      "Fel, the Wings of Light: Eternal Crest",
+      "Fel, the Wings of Light: Scouring Crest",
+      "Fel, the Wings of Light: Wrath Crest",
+      "Archus, Darkness Incarnate: Sin of Darkness",
+      "Archus, Darkness Incarnate: Sin of Shadow",
+      "Archus, Darkness Incarnate: Sin of Failure"
+     ],
+     "bosses": [
+      "Archus, Darkness Incarnate",
+      "Fel, the Wings of Light"
+     ]
+    },
+    {
+     "ring": 7,
+     "name": "Scorched Plains",
+     "flavor": "Formed by the Pyre's awesome might, this Ring is the volcanic homeland of the Hellhorned demons. Deep fissures reveal the untold strength of the Pyre that tore them open. In these war-torn plains, the Winged invasion destroyed the last resistance of Hell in the battle now known as Armageddon.",
+     "nodes": "There are 3 event slots on each sides. There is one shared event slot, which is always a Dark Forge. Forgotten Boons, Pyre Remains, and Concealed Caverns are each extremely likely to appear, but none of them are guaranteed. Hellvent is rare. This ring has the highest change of Merchant of Trinkets appearing in a random slot; it is still less common than other events. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight a random Battle. The possible combats are: The Pyrewings | The Winged Horde | The Penitent | Conduit Masters | The Shadewings",
+     "combats": [
+      "The Pyrewings",
+      "The Winged Horde",
+      "The Penitent",
+      "Conduit Masters",
+      "The Shadewings"
+     ],
+     "bosses": [
+      "Living Armor",
+      "Nephil, the Wingless General"
+     ]
+    },
+    {
+     "ring": 8,
+     "name": "The Crucible",
+     "flavor": "Precious metals can be uncovered in the mines of the Crucible, mined by the Umbra Shroud and its Antumbra Morsels. The tunnels are far and twisting. Few living creatures know their complete range.",
+     "nodes": "There are 3 event slots on each sides. There is one shared event slot, which is always a Merchant of Trinkets. The middle slots are guaranteed to be Merchant of Steel and Merchant of Magic. The remaining slots are always Hellvent, Unstable Vortex, Forgotten Boons, and Pyre Remains, in some permutation. With the The Last Divinity DLC, either a Divine Boons, Divine Hoard, or Divine Temple will be available from both sides, letting one collect more Pact Shards. You will fight a random version of Seraph. You cannot take a special trial for additional rewards. Once beaten you will directly go to the next ring. The possible combats are: Seraph the Temperant | Seraph the Chaste | Seraph the Diligent | Seraph the Patient",
+     "combats": [
+      "Seraph the Temperant",
+      "Seraph the Chaste",
+      "Seraph the Diligent",
+      "Seraph the Patient"
+     ],
+     "bosses": [
+      "Seraph"
+     ]
+    },
+    {
+     "ring": 9,
+     "name": "The Frozen Heart",
+     "flavor": "Once the glowing seat of the Pyre, the heart of Hell has become a frozen reminder of the invasion and the destruction of the Pyre. Seraph sits on the extinguished remains, awaiting our return and hoping to wipe us out for good.",
+     "nodes": "Once you beat the 8th battle, the Boneshaker arrives to the last ring of hell and your Pyre will reignite the Frozen Heart. The screen will then fade to black and you will be shown the Run Summary. Congratulations, you won! (DLC Exclusive) However, if you have at least 100 Pact Shards, you will be confronted by one final combat: The Last Divinity: Divine Intervention.",
+     "combats": [
+      "The Last Divinity: Divine Intervention"
+     ],
+     "bosses": [
+      "The Last Divinity"
+     ]
+    }
+   ]
+  },
+  "battle": {
+   "overview": "Battles or Combats are where the player fights against the forces of Heaven in the Boneshaker. A run of Monster Train contains a total of eight battles. Five of these battles are against randomized minor bosses. For the third, sixth, and eighth battles, the player will face a specific major boss. For more details on a specific battle, refer to the Combat Navigation at the end of the article. See also: Battle Effects",
+   "Trial Selection": "Before every battle, there is a preview of the foes which will appear, including the boss and non-standard units. Some \"plain\" enemies such as Forged Disciple may appear in battle without being shown on the preview. Battles against minor bosses will also offer an optional Trial. Accepting the trial makes the fight more challenging, but grants the player extra rewards.",
+   "Floors": "The Boneshaker has four floors. Friendly units may be summoned on the lower three floors. At the beginning of each turn, Enemies will enter on the first floor. After the player ends the turn, enemies on each floor will attack the friendly units, after which the player's surviving units will attack the enemy units. Surviving enemies will then climb to the next floor and will fight the player's units there on the next turn. The Pyre is on the fourth floor. If it is destroyed, the player loses the run. Enemies which reach the Pyre will attack it immediately. The Pyre then strikes back, dealing damage to all enemies at once. Surviving units will attack again, continuing until they are killed or the Pyre is destroyed. Damage done to the Pyre is persistent: the Pyre's health does not regenerate between battles, and can only be restored through certain Spells, Artifacts, Concealed Cavern events, and Pyre Remains. Major bosses may additionally summon an extra enemy unit each turn on one of the lower three floors.",
+   "Card Flow": "At the beginning of battle, all cards in the player's deck (except their champion) are shuffled to form a draw pile. Each turn, the player draws cards to form their hand. The base number of cards drawn is 5, but this may be increased by various artifacts and temporary buffs. At the end of the turn, unused cards are discarded. When the draw pile runs out, the discard pile is reshuffled to form a new draw pile. Most spells go to the discard pile after being played. Spells with the Consume keyword instead go to the consume pile; they will not be reshuffled and cannot be used again for the battle unless specifically recovered by a card effect. Friendly units which die are also placed in the consume pile. The player's hand is limited to 10 cards. Once at the hand limit, further draws are ignored, and cards which would be added directly to the player's hand are instead placed in the discard pile.",
+   "Non-Random Draws": "The player's champion starts in their hand; it does not count against the cards drawn for that turn. The player is guaranteed to draw at least one Banner Unit each turn as long as there is at least one Banner Unit in the draw pile before any cards have been drawn. Priority draw will continue to work on subsequent shuffles, but units with priority draw will not be drawn at priority if the discard pile had to be shuffled into the draw pile in order to finish the draw step. The Banner Unit page explains this in more detail.",
+   "Collector": "On the second turn of a battle against a minor boss, the Collector will enter on the 2nd or 3rd floor. It appears behind the other enemies on that floor. This unit has minimal health, no attack, and runs away after combat. Killing the Collector gives the player a small gold bounty. The Collector does not appear during major boss fights.",
+   "Bosses": "A Boss is a strong enemy which appears in the final wave of a Battle. The player wins the battle by defeating the boss. All bosses have the Relentless effect, which forces combat on their floor to continue until the player's forces are defeated and prevents the boss from being Rooted. Combat ends immediately when the boss is killed; other enemy units are defeated when the boss dies. Whenever a boss advances to a higher floor, the lower floor is frozen and replaced with a large block of ice. The frozen floor is effectively removed from the train: neither units nor spells may be played on the floor and it cannot be reached with Descend effects. Any units which were present on the floor are killed when it freezes; note that floors frozen by a boss are usually empty, as enemy units were defeated and friendly units move with the boss.",
+   "Major Bosses": "The three major bosses always appear on rings 3, 6, and 8. Those battle spaces show a distinct icon and have special text. Each major boss has three possible variants with different abilities; the map icon and text indicate which variant the player will face. Major bosses start the battle in \"flying\" mode, hovering to the right of one of the floors of the train. Flying bosses do not attack (except Talos, the Architect and Seraph the Patient), but can use their special ability. Each turn, the boss will move to a different floor. The boss is considered to be present on its floor: it can be damaged by the player's units and targeted by spells as though it was a normal enemy unit. A flying boss cannot be moved within the floor and is always behind other units. A flying boss can be moved between floors with ascend and descend effects, although it cannot be forced into the Pyre room (the 4th floor). In the final wave, the boss will move to the bottom floor, enter the train, and begin attacking like a standard boss. It is no longer flying and will not use its special ability. Unlike with minor bosses, there is no grace period before the final wave.",
+   "Minor Bosses": "One minor boss will appear on each ring not reserved for a major boss: 1, 2, 4, 5, and 7. Their battle spaces show a generic icon and text, and the specific boss is not revealed until entering the battle. When facing a minor boss, the player is offered the choice to enable a Battle Effect from the pre-battle screen, increasing the difficulty in exchange for additional rewards. A minor boss does not appear until the final wave. The turn before the final wave is called \"A Brief Respite\", and no enemy units enter that turn."
+  },
+  "trials": [
+   {
+    "name": "Aggressive Amulet",
+    "effect": "Non-boss enemy units get +4 / +6 / +8 Attack."
+   },
+   {
+    "name": "Ancient Hate",
+    "effect": "Enemy units enter with Spell Shield 2."
+   },
+   {
+    "name": "Armor Emblem",
+    "effect": "Enemy units enter with Armor 10 / 15 / 20."
+   },
+   {
+    "name": "Retribution",
+    "effect": "Non-boss enemy units enter with Spikes 3 / 4 / 5."
+   },
+   {
+    "name": "Mark of Invasion (Clergyman)",
+    "effect": "At the start of battle, enemy units appear on each floor."
+   },
+   {
+    "name": "Mark of Invasion (Sycophant)",
+    "effect": "At the start of battle, enemy units appear on each floor."
+   },
+   {
+    "name": "Mark of Invasion (Wiltwings)",
+    "effect": "At the start of battle, enemy units appear on each floor."
+   },
+   {
+    "name": "Heaven's Seal",
+    "effect": "Non-boss enemy units restore all health when they move up a floor."
+   },
+   {
+    "name": "Seal of Aggression",
+    "effect": "Non-boss enemy units get Multistrike."
+   },
+   {
+    "name": "Double Barrel",
+    "effect": "Constructed Explosives explode twice."
+   },
+   {
+    "name": "Explosive Sigil",
+    "effect": "Enemy units deal 1 damage to the front unit on death."
+   },
+   {
+    "name": "Plating Seal",
+    "effect": "Constructed Explosives enter with Damage Shield."
+   },
+   {
+    "name": "Empowering Offense",
+    "effect": "Enemy units enter with Rage 2. Talos attacks every turn and gains Armor on Slay."
+   },
+   {
+    "name": "Protective Sin",
+    "effect": "Enemy units enter with Armor 5. Talos attacks every turn and pushes attacked units back."
+   },
+   {
+    "name": "Soul Sucker",
+    "effect": "Friendly units enter with Sap 1. Talos attacks every turn and applies Dazed on Strike."
+   },
+   {
+    "name": "Eternal Crest",
+    "effect": "Alabaster Guardians have Spell Shield 5. Fel empowers units with Armor."
+   },
+   {
+    "name": "Scouring Crest",
+    "effect": "Fel and her allies will add Scourge cards to your hand and deck."
+   },
+   {
+    "name": "Wrath Crest",
+    "effect": "Alabaster Guardians have Multistrike. Fel empowers units with Rage."
+   },
+   {
+    "name": "Sin of Failure",
+    "effect": "Archus will summon Looming Darkshard and Shattering Darkshard."
+   },
+   {
+    "name": "Sin of Shadow",
+    "effect": "Archus will summon Blinding Darkshard and Shattering Darkshard."
+   },
+   {
+    "name": "Sin of Darkness",
+    "effect": "Archus will summon Blinding Darkshard and Looming Darkshard."
+   },
+   {
+    "name": "Purifying Emblem",
+    "effect": "Seraph will remove half of any Buff and Debuff effect stacks (whichever favors Seraph more)."
+   },
+   {
+    "name": "Power Drain Emblem",
+    "effect": "The first spell card played each turn gets Consume."
+   },
+   {
+    "name": "Rallying Emblem",
+    "effect": "Seraph attacks every turn, applies Melee Weakness to your front unit, and gains attack on Rally and Incant."
+   },
+   {
+    "name": "Prideful Emblem",
+    "effect": "Friendly units enter with Sap 3."
+   },
+   {
+    "name": "Divine Intervention",
+    "effect": "The Last Divinity has different status effects on each floor and gains 7 Attack when it gains Relentless."
+   }
+  ],
+  "major_boss_variants": {
+   "Daedalus": [
+    "Double Barrel: Constructed Explosives explode twice.",
+    "Explosive Sigil: Enemy units deal 1 damage to the front unit on death.",
+    "Plating Seal: Constructed Explosives enter with Damage Shield."
+   ],
+   "Talos": [
+    "Empowering Offense: Enemy units enter with Rage 2. Talos attacks every turn and gains Armor on Slay.",
+    "Protective Sin: Enemy units enter with Armor 5. Talos attacks every turn and pushes attacked units back.",
+    "Soul Sucker: Friendly units enter with Sap 1. Talos attacks every turn and applies Dazed on Strike."
+   ],
+   "Fel, the Wings of Light": [
+    "Eternal Crest: Alabaster Guardians have Spell Shield 5. Fel empowers units with Armor.",
+    "Scouring Crest: Fel and her allies will add Scourge cards to your hand and deck.",
+    "Wrath Crest: Alabaster Guardians have Multistrike. Fel empowers units with Rage."
+   ],
+   "Archus": [
+    "Sin of Failure: Archus will summon Looming Darkshard and Shattering Darkshard.",
+    "Sin of Shadow: Archus will summon Blinding Darkshard and Shattering Darkshard.",
+    "Sin of Darkness: Archus will summon Blinding Darkshard and Looming Darkshard."
+   ],
+   "Seraph": [
+    "Purifying Emblem: Seraph will remove half of any Buff and Debuff effect stacks (whichever favors Seraph more).",
+    "Power Drain Emblem: The first spell card played each turn gets Consume.",
+    "Rallying Emblem: Seraph attacks every turn, applies Melee Weakness to your front unit, and gains attack on Rally and Incant.",
+    "Prideful Emblem: Friendly units enter with Sap 3."
+   ],
+   "The Last Divinity": [
+    "Divine Intervention: The Last Divinity has different status effects on each floor and gains 7 Attack when it gains Relentless."
+   ]
+  },
+  "covenant": [
+   {
+    "rank": 1,
+    "change": "Enemies are stronger. Add additional random cards to your starting deck. (DLC) Pact Shards are available.",
+    "details": [
+     "Major Bosses gain +1 Attack and +200 / 600 / 1301 Health.",
+     "Bosses gain +80 / 200 / 350 Health.",
+     "Heavy enemies gain +15 / 20 / 30 Health.",
+     "Certain support enemies gain +1 / 2 Attack."
+    ]
+   },
+   {
+    "rank": 2,
+    "change": "Add Deadweight to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 3,
+    "change": "Major battles now have additional enemies.",
+    "details": []
+   },
+   {
+    "rank": 4,
+    "change": "Minor bosses have increased Attack.",
+    "details": [
+     "Bosses gain +1 Attack."
+    ]
+   },
+   {
+    "rank": 5,
+    "change": "Minor battles now have additional enemies.",
+    "details": []
+   },
+   {
+    "rank": 6,
+    "change": "Add a copy of the primary clan starter card to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 7,
+    "change": "Some basic enemies have additional Attack.",
+    "details": [
+     "Certain heavy enemies gain +1 / 2 Attack.",
+     "Certain support enemies gain +1 Attack."
+    ]
+   },
+   {
+    "rank": 8,
+    "change": "Add a copy of the allied clan starter card to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 9,
+    "change": "Your Pyre takes 20 damage at the start of the run.",
+    "details": []
+   },
+   {
+    "rank": 10,
+    "change": "Apply Emberdrain 1 to the first unit played on the top floor each turn. (DLC) Boss power increased per Pact Shards.",
+    "details": []
+   },
+   {
+    "rank": 11,
+    "change": "Merchant re-roll costs 20% more.",
+    "details": []
+   },
+   {
+    "rank": 12,
+    "change": "Major bosses have increased Health.",
+    "details": [
+     "Major Bosses gain +75 / 150 / 350 Health."
+    ]
+   },
+   {
+    "rank": 13,
+    "change": "Add a copy of the primary clan starter card to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 14,
+    "change": "Minor bosses have increased Health.",
+    "details": [
+     "Bosses gain +10 / 20 / 40 Health."
+    ]
+   },
+   {
+    "rank": 15,
+    "change": "Add a copy of the allied clan starter card to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 16,
+    "change": "Merchant purge costs 20% more.",
+    "details": []
+   },
+   {
+    "rank": 17,
+    "change": "Add Deadweight to your starting deck.",
+    "details": []
+   },
+   {
+    "rank": 18,
+    "change": "Merchant goods cost 20% more.",
+    "details": []
+   },
+   {
+    "rank": 19,
+    "change": "Some basic enemies have additional Attack.",
+    "details": [
+     "Certain support enemies gain +2 / 3 Attack."
+    ]
+   },
+   {
+    "rank": 20,
+    "change": "-1 Capacity on the middle floor. (DLC) The Last Divinity battle now has additional enemies.",
+    "details": []
+   },
+   {
+    "rank": 21,
+    "change": "Major bosses have increased Health.",
+    "details": [
+     "Major Bosses gain +75 / 150 / 350 Health."
+    ]
+   },
+   {
+    "rank": 22,
+    "change": "Minor bosses have increased Health.",
+    "details": [
+     "Bosses gain +10 / 20 / 40 Health."
+    ]
+   },
+   {
+    "rank": 23,
+    "change": "Heavy enemy units have increased Health.",
+    "details": [
+     "Certain heavy enemies gain +5 / 10 / 30 Health."
+    ]
+   },
+   {
+    "rank": 24,
+    "change": "Your Pyre takes 20 damage at the start of the run.",
+    "details": []
+   },
+   {
+    "rank": 25,
+    "change": "Seraph has +1000 Health. (DLC) The Last Divinity has +1500 Health.",
+    "details": []
+   }
+  ],
+  "covenant_note": "Covenant Ranks are unlocked progressively as the player completes a run at their current highest Covenant Rank unlocked, up to 25 Covenant. Covenant mode allows for Mastering cards, a chance to increase your Best Win Streak, and setting a Best Covenant Win for each combination of clans. As the player progresses through Covenant Ranks, a progress bar on the Covenant page in the Logbook will fill. This bar also shows your friends' unlocked Covenant Ranks alongside your progress. Winning the game on 25 Covenant unlocks the game credits and Expert Challenges.",
+  "pact_shards": {
+   "summary": "Pact Shards (Pact Shards) is a new mechanic introduced in The Last Divinity (DLC). Pact Shards can be collected in DLC exclusive overworld events, primarily Divine Temples. They can also be obtained via Divine Boons, Divine Hoards, and certain other special events. Outside standard runs, there are Mutators that add shards. The more Pact Shards you collect, the harder the enemies you face will be. Collect 100 before the end of the run to unlock a final battle. As you gain more Shards, more enemies before the boss will be upgraded, and the boss itself will grow stronger. This includes bonus Attack, Health, Status Effects, and abilities.",
+   "sources": [
+    {
+     "name": "Engage Pact",
+     "location": "Divine Temple",
+     "benefit": "Infuse the essence of one unit into another",
+     "shards": "25 Pact Shards"
+    },
+    {
+     "name": "Left Spell Upgrade",
+     "location": "Divine Temple",
+     "benefit": "One of the following choices: • Seekstone: Intrinsic • Truestone: +10 magic Power and Piercing • Purgestone: Purge and -1 Ember.",
+     "shards": "10 Pact Shards"
+    },
+    {
+     "name": "Right Spell Upgrade",
+     "location": "Divine Temple",
+     "benefit": "One of the following choices: • Twinstone: Spellchain • Valuestone: -2 Ember • Extremestone: +30 Magic Power",
+     "shards": "15 Pact Shards"
+    },
+    {
+     "name": "Divine Boons",
+     "location": "Divine Boons",
+     "benefit": "Gain 100 Gold",
+     "shards": "10 Pact Shards"
+    },
+    {
+     "name": "Divine Hoard",
+     "location": "Divine Hoard",
+     "benefit": "Gain an Artifact from a choice of 3. The player may choose not to take any of the displayed artifacts and receive 25 Gold instead. The shards will be selected if the Divine Hoard is opened whether or not an artifact is taken.",
+     "shards": "15 Pact Shards"
+    },
+    {
+     "name": "Duplicating a Unit imbued with an Essence",
+     "location": "Hellvent",
+     "benefit": "The Hellvent functions as normal aside from granting Pact Shards.",
+     "shards": "15 Pact Shards"
+    },
+    {
+     "name": "Duplicating a Spell with a Divine Temple Upgrade",
+     "location": "Hellvent",
+     "benefit": "The Hellvent functions as normal aside from granting Pact Shards. The cost is increased for each Divine Temple upgrade the card has, so duplicating a spell upgraded with two Extremestones will add a total of 20 Pact Shards",
+     "shards": "5 Pact Shards per left upgrade / 10 Pact Shards per right upgrade"
+    }
+   ],
+   "shard_costs": "Every Enemy has Shard Costs, or Shard Upgrade Costs, associated with it. Each Battle, random enemies are upgraded to their ★ Version until the spent Costs approach the available Shards the player has taken. Some additional rules that are worth noting: • Enemies contained within a boss wave are excluded from shard upgrades. Flying bosses are not a part of any wave, and the waves containing the minibosses in the Last Divinity fight do not count for the purposes of this rule. • As enemy pact shard upgrades are determined at the start of combat, Lightwings spawned by Seraph and other such units will never be upgraded to their pact sharded variants. • Due to the way the list which controls the order in which enemies will be upgraded is constructed, the game attempts to upgrade one unit per each wave per iteration, resulting in a generally even distribution of pact sharded units across the waves. Anomalies can occur if there are not enough pact shards to upgrade a heavy unit, but enough left over upgrade a support unit in a later wave.",
+   "malicka_pyre_heal": "The Hero's Burden Mutator adds +15 Pact Shards after each battle. In addition to the normal sources, there is a Concealed Caverns event that can occur in Ring 3 in which Malicka will offer to allow the player to heal their Pyre in exchange for 5 Pact Shards. If this event appears, Malicka will appear again after every two fights to offer to restore your Pyre, generally at the rate of 5 Pact Shards per 10 Pyre Health restored, each event offering more than the last. If this event is encountered, Malicka will continue to appear regardless of whether the player ever heals this way. Encounters: • Concealed Caverns in Ring 3: Restore 10 Pyre Health for 5 Pact Shards • After the Ring 5 fight: Restore 20 Pyre Health for 10 Pact Shards • After the Ring 7 fight: Restore 30 Pyre Health for 15 Pact Shards • 100 Pact Shards or more: After the Seraph fight: Restore All Pyre Health for 20 Pact Shards"
+  },
+  "combats": [
+   {
+    "name": "Archus, Darkness Incarnate: Sin of Darkness",
+    "ring": 6,
+    "description": "Using unknown, ancient powers, Archus summons shards of the Divinities to halt your advance.",
+    "notes": "Archus, Darkness Incarnate: Sin of Darkness is a combat that can appear in Ring 6. In this combat, the boss, Archus, will place Darkshards on the train every turn before Relentless, applying varying effects. Darkshards are Phased, and therefore cannot be removed or nullified, but they also naturally expire after 1 turn. He alternates between the following: • Blinding Darkshard: Rally: Apply Dazed 1 to your units on this floor.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Sycophant | Sycophant | Sycophant",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Clipped Reflector | Sycophant | Sycophant",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Overcharged Tank | Sycophant",
+      "6: Overcharged Tank | Quill Marksman",
+      "7: Overcharged Tank",
+      "8: Archus, Darkness Incarnate"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Sycophant | Sycophant | Sycophant",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Clipped Reflector | Sycophant | Sycophant",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Overcharged Tank | Clipped Guardian | Sycophant",
+      "6: Overcharged Tank | Quill Marksman",
+      "7: Overcharged Tank",
+      "8: Archus, Darkness Incarnate"
+     ]
+    }
+   },
+   {
+    "name": "Archus, Darkness Incarnate: Sin of Failure",
+    "ring": 6,
+    "description": "Using unknown, ancient powers, Archus summons shards of the Divinities to halt your advance.",
+    "notes": "Archus, Darkness Incarnate: Sin of Failure is a combat that can appear in Ring 6. In this combat, the boss, Archus, will place Darkshards on the train every turn before Relentless, applying varying effects. Darkshards are Phased, and therefore cannot be removed or nullified, but they also naturally expire after 1 turn. He alternates between the following: • Looming Darkshard: Incant: Apply +1 Ember to all spells in your hand.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clipped Guardian | Quill Marksman",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Master of Light | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Master of Light",
+      "6: Clipped Guardian | Quill Marksman",
+      "7: Clipped Guardian",
+      "8: Archus, Darkness Incarnate"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clipped Guardian | Quill Marksman",
+      "2: Clipped Reflector | Quill Marksman | Quill Marksman",
+      "3: Master of Light | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Master of Light | Clipped Guardian",
+      "6: Clipped Guardian | Quill Marksman",
+      "7: Clipped Guardian",
+      "8: Archus, Darkness Incarnate"
+     ]
+    }
+   },
+   {
+    "name": "Archus, Darkness Incarnate: Sin of Shadow",
+    "ring": 6,
+    "description": "Using unknown, ancient powers, Archus summons shards of the Divinities to halt your advance.",
+    "notes": "Archus, Darkness Incarnate: Sin of Shadow is a combat that can appear in Ring 6. In this combat, the boss, Archus, will place Darkshards on the train every turn before Relentless, applying varying effects. Darkshards are Phased, and therefore cannot be removed or nullified, but they also naturally expire after 1 turn. He alternates between the following: • Blinding Darkshard: Rally: Apply Dazed 1 to your units on this floor.",
+    "waves": {
+     "Enemies (Cov 3-25)": [
+      "1: Quill Marksman | Absolver",
+      "2: Absolver | Absolver",
+      "3: Clipped Guardian | Absolver | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian | Absolver",
+      "5: Clipped Guardian | Clipped Guardian | Quill Marksman",
+      "6: Clipped Guardian | Quill Marksman | Absolver",
+      "7: Clipped Guardian | Clipped Shaman",
+      "8: Archus, Darkness Incarnate"
+     ]
+    }
+   },
+   {
+    "name": "Barbed Disciples",
+    "ring": 2,
+    "description": "These spiked foes will make direct attacks more painful. Using spells from afar will let you fight without sacrificing your units.",
+    "notes": "Barbed Disciples is a combat that can appear in Ring 2. It is the only combat to feature Conduit Redirectors. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Disciple Protector | Conduit Redirector",
+      "2: Forged Disciple | Conduit Redirector",
+      "3: A Brief Respite",
+      "4: BOSS | Disciple Protector | Conduit Redirector"
+     ],
+     "Enemies (Cov 5-25": [
+      "1: Disciple Protector | Discipled Footsoldier | Conduit Redirector",
+      "2: Forged Disciple | Trusted Priest | Conduit Redirector",
+      "3: A Brief Respite",
+      "4: BOSS | Disciple Protector | Conduit Redirector"
+     ]
+    }
+   },
+   {
+    "name": "Clipped Guard",
+    "ring": 4,
+    "description": "These Clipped grow in strength each time they ascend your train. Take them out before they become unstoppable.",
+    "notes": "Clipped Guard is a combat that can appear in Ring 4. This combat exclusively features Light Harnessers, who gain attack upon Resolve. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Light Harnesser | Light Harnesser",
+      "2: Light Harnesser | Light Harnesser",
+      "3: Clipped Defender | Light Harnesser | Light Harnesser",
+      "4: Clipped Defender | Light Harnesser | Light Harnesser",
+      "5: A Brief Respite",
+      "6: BOSS | Clipped Defender"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Light Harnesser | Light Harnesser",
+      "2: Light Harnesser | Light Harnesser | Trusted Priest",
+      "3: Clipped Defender | Light Harnesser | Light Harnesser",
+      "4: Clipped Defender | Light Harnesser | Light Harnesser",
+      "5: A Brief Respite",
+      "6: BOSS | Clipped Defender"
+     ]
+    }
+   },
+   {
+    "name": "Clipped Infiltration",
+    "ring": 4,
+    "description": "These Clipped have enlisted Conduits to help them ascend your train more quickly. Remove the Conduit and the Clipped will become more vulnerable.",
+    "notes": "Clipped Infiltration is a combat that can appear in Ring 4. It is the latest possible combat to feature Haste, being also the only combat to feature Clipped Conduits. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Clipped Defender | Quill Marksman | Clipped Conduit",
+      "2: Clipped Guardian | Clipped Conduit",
+      "3: Clipped Guardian | Clipped Conduit",
+      "4: Clipped Defender | Clipped Guardian | Clipped Conduit",
+      "5: A Brief Respite",
+      "6: BOSS | Clipped Conduit"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Clipped Defender | Quill Marksman | Clipped Conduit",
+      "2: Clipped Guardian | Quill Marksman | Clipped Conduit",
+      "3: Clipped Guardian | Clipped Conduit | Clipped Shaman",
+      "4: Clipped Defender | Clipped Guardian | Clipped Conduit",
+      "5: A Brief Respite",
+      "6: BOSS | Clipped Conduit"
+     ]
+    }
+   },
+   {
+    "name": "Clipped Tormenters",
+    "ring": 4,
+    "description": "They might be low-level recruits of the Clipped, but they'll overload you with penance if you don't take them out quickly.",
+    "notes": "Clipped Tormenters is a combat that can appear in Ring 4. This combat features Absolvers, who will add Scourges to your deck upon Resolve. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 5-25)": [
+      "1: Clipped Defender | Absolver",
+      "2: Clipped Guardian | Quill Marksman",
+      "3: Clipped Guardian | Absolver | Clipped Shaman",
+      "4: Clipped Guardian | Quill Marksman | Absolver",
+      "5: A Brief Respite",
+      "6: BOSS | Absolver | Absolver"
+     ]
+    }
+   },
+   {
+    "name": "Conduit Masters",
+    "ring": 7,
+    "description": "Winged Conduits have mastered the use of their armor and grant their allies the ability to strike multiple times. Remove the Conduits and this power will be removed too.",
+    "notes": "Conduit Masters is a combat that can appear in Ring 7. In this combat, Winged Conduits empower their allies by granting Multistrike. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 5-25)": [
+      "1: Steelwings | Gilded Wing | Winged Conduit",
+      "2: Wiltwings | Gilded Wing | Winged Conduit",
+      "3: Wiltwings | Wiltwings | Gilded Wing | Winged Conduit",
+      "4: Gilded Wing | Lightwings | Winged Conduit",
+      "5: A Brief Respite",
+      "6: BOSS | Winged Conduit"
+     ]
+    }
+   },
+   {
+    "name": "Daedalus, the Professor: Double Barrel",
+    "ring": 3,
+    "description": "Heaven's disgraced professor has improved his explosive inventions, creating better protection through technological enhancements.",
+    "notes": "Daedalus, the Professor: Double Barrel is a combat that can appear in Ring 3. As with all Daedalus combats, Daedalus places a Constructed Explosive on the train every turn. For this combat in particular, Explosives not defused that turn explode twice, dealing 10 damage to your frontmost unit on its floor per explosion. This combat also features 2 Haste-granting Conduit Infiltrators, which will allow waves to skip the middle floor if not taken care of.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clergyman | Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Discipled Footsoldier | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "5: Forged Disciple | Conduit Infiltrator",
+      "6: Daedalus, the Professor"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clergyman | Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Discipled Footsoldier | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "5: Forged Disciple | Conduit Infiltrator",
+      "6: Disciple Protector | Daedalus, the Professor"
+     ]
+    }
+   },
+   {
+    "name": "Daedalus, the Professor: Explosive Sigil",
+    "ring": 3,
+    "description": "Creator of devices used by the Disciples, this disgraced professor has arrived in Hell to support Seraph and the Winged with explosive devices.",
+    "notes": "Daedalus, the Professor: Explosive Sigil is a combat that can appear in Ring 3. As with all Daedalus combats, Daedalus places a Constructed Explosive on the train every turn, which will deal 10 damage to your frontmost unit on its floor if not defused. For this combat's signature gimmick, every enemy (excluding Explosives) has an Extinguish trigger, dealing 1 damage to your frontmost unit on the floor when killed.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Clergyman | Clergyman",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Clergyman",
+      "5: Forged Disciple | Trusted Priest",
+      "6: Daedalus, the Professor"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Clergyman | Clergyman",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Clergyman",
+      "5: Forged Disciple | Trusted Priest",
+      "6: Disciple Protector | Daedalus, the Professor"
+     ]
+    }
+   },
+   {
+    "name": "Daedalus, the Professor: Plating Seal",
+    "ring": 3,
+    "description": "Heavily armored creations protect this ex-professor in his quest to safeguard Seraph and the Winged.",
+    "notes": "Daedalus, the Professor: Plating Seal is a combat that can appear in Ring 3. As with all Daedalus combats, Daedalus places a Constructed Explosive on the train every turn, dealing 10 damage to your frontmost unit on the floor if not defused. For this combat in particular, Explosives enter with Damage Shield 1, therefore requiring 2 hits to defuse. This combat also features Overcharged Apprentices.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Forged Disciple | Discipled Footsoldier | Trusted Priest",
+      "2: Overcharged Apprentice | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Disciple Protector | Overcharged Apprentice | Discipled Footsoldier",
+      "5: Forged Disciple | Discipled Footsoldier",
+      "6: Daedalus, the Professor"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Forged Disciple | Discipled Footsoldier | Trusted Priest",
+      "2: Overcharged Apprentice | Trusted Priest | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Overcharged Apprentice | Trusted Priest | Discipled Footsoldier",
+      "5: Forged Disciple | Discipled Footsoldier",
+      "6: Disciple Protector | Daedalus, the Professor"
+     ]
+    }
+   },
+   {
+    "name": "Disciple Conduits",
+    "ring": 2,
+    "description": "Conduits use their knowledge of your train to ascend more quickly than other Disciples. Take them out before they reach your Pyre.",
+    "notes": "Disciple Conduits is a combat that can appear in Ring 2. It is the earliest possible combat to feature Haste. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "2: Clergyman | Discipled Footsoldier | Conduit Infiltrator",
+      "3: A Brief Respite",
+      "4: BOSS | Clergyman | Conduit Infiltrator"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "2: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "3: A Brief Respite",
+      "4: BOSS | Clergyman | Conduit Infiltrator"
+     ]
+    }
+   },
+   {
+    "name": "Fel, the Wings of Light: Eternal Crest",
+    "ring": 6,
+    "description": "This Clipped warrior has become Winged once more, creating statues in her former image to block your assault.",
+    "notes": "Fel, the Wings of Light: Eternal Crest is a combat that can appear in Ring 6. As is typical with all Fel combats, 3 Alabaster Guardians are spawned, one on each floor. In this combat specifically, the Alabaster Guardians enter with Spell Shield 5. Every turn before Relentless, Fel gives all enemy units on a floor Armor 10. The enemy waves in this combat feature Clipped Reflectors and Overcharged Tanks.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Sycophant | Sycophant | Sycophant",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Clipped Reflector | Sycophant | Sycophant",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Overcharged Tank | Sycophant",
+      "6: Overcharged Tank | Quill Marksman",
+      "7: Overcharged Tank",
+      "8: Fel, the Wings of Light"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Sycophant | Sycophant | Sycophant",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Clipped Reflector | Sycophant | Sycophant",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Overcharged Tank | Clipped Guardian | Sycophant",
+      "6: Overcharged Tank | Quill Marksman",
+      "7: Overcharged Tank",
+      "8: Fel, the Wings of Light"
+     ]
+    }
+   },
+   {
+    "name": "Fel, the Wings of Light: Scouring Crest",
+    "ring": 6,
+    "description": "Clipped Absolvers guard Fel to weigh you down with guilt before the warrior can make her killing blow. Remove these weights to thwart their assault.",
+    "notes": "Fel, the Wings of Light: Scouring Crest is a combat that can appear in Ring 6. As is typical with all Fel combats, 3 Alabaster Guardians are spawned, one on each floor. In this combat, Fel will add The Ultimate Penance to your hand, around every other turn. Alongside that, the enemy waves in this combat feature a large amount of Absolvers, which will also clog your card draw if not handled properly. More specifically, Fel adds The Ultimate Penance to your hand on turns 1, 3, 5, and 7.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Quill Marksman | Absolver",
+      "2: Absolver | Absolver",
+      "3: Clipped Guardian | Absolver | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian | Absolver",
+      "5: Clipped Guardian | Quill Marksman",
+      "6: Clipped Guardian | Quill Marksman | Absolver",
+      "7: Clipped Guardian | Clipped Shaman",
+      "8: Fel, the Wings of Light"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Quill Marksman | Absolver",
+      "2: Absolver | Absolver",
+      "3: Clipped Guardian | Absolver | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian | Absolver",
+      "5: Clipped Guardian | Clipped Guardian | Quill Marksman",
+      "6: Clipped Guardian | Quill Marksman | Absolver",
+      "7: Clipped Guardian | Clipped Shaman",
+      "8: Fel, the Wings of Light"
+     ]
+    }
+   },
+   {
+    "name": "Fel, the Wings of Light: Wrath Crest",
+    "ring": 6,
+    "description": "This Clipped warrior has become Winged once more, creating statues in her former image to block your assault.",
+    "notes": "Fel, the Wings of Light: Wrath Crest is a combat that can appear in Ring 6. As is typical with all Fel combats, 3 Alabaster Guardians are spawned, one on each floor. In this combat specifically, the Alabaster Guardians enter with Multistrike 1. Every turn before Relentless, Fel gives all enemy units on a floor Rage 3. The enemy waves in this combat feature Masters of Light.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clipped Guardian | Quill Marksman",
+      "2: Clipped Reflector | Quill Marksman",
+      "3: Master of Light | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Master of Light",
+      "6: Clipped Guardian | Quill Marksman",
+      "7: Clipped Guardian",
+      "8: Fel, the Wings of Light"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clipped Guardian | Quill Marksman",
+      "2: Clipped Reflector | Quill Marksman | Quill Marksman",
+      "3: Master of Light | Quill Marksman",
+      "4: Clipped Guardian | Clipped Guardian",
+      "5: Master of Light | Clipped Guardian",
+      "6: Clipped Guardian | Quill Marksman",
+      "7: Clipped Guardian",
+      "8: Fel, the Wings of Light"
+     ]
+    }
+   },
+   {
+    "name": "Guardians of Light",
+    "ring": 1,
+    "description": "These Disciples have been granted special power over the Light of Seraph, making them harder to kill than other Disciples.",
+    "notes": "Guardians of Light is a combat that can appear in Ring 1. It is the only combat in the game to include Apprentices of Light. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Apprentice of Light | Trusted Priest",
+      "2: Apprentice of Light | Discipled Footsoldier",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Apprentice of Light | Trusted Priest",
+      "2: Apprentice of Light | Discipled Footsoldier | Trusted Priest",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier"
+     ]
+    }
+   },
+   {
+    "name": "Harvesters of Death",
+    "ring": 5,
+    "description": "Death obsessed Clipped who gain strength with every kill.",
+    "notes": "Harvesters of Death is a combat that can appear in Ring 5. This combat features Overcharged Tanks, who gain Armor upon Harvest. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Sycophant | Overcharged Tank",
+      "2: Overcharged Tank | Quill Marksman | Clipped Shaman",
+      "3: Clipped Defender | Overcharged Tank | Quill Marksman",
+      "4: Clipped Defender | Overcharged Tank | Quill Marksman",
+      "5: A Brief Respite",
+      "6: BOSS"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Sycophant | Sycophant | Overcharged Tank",
+      "2: Overcharged Tank | Quill Marksman | Clipped Shaman",
+      "3: Clipped Defender | Overcharged Tank | Quill Marksman",
+      "4: Clipped Defender | Quill Marksman | Overcharged Tank | Quill Marksman",
+      "5: A Brief Respite",
+      "6: BOSS"
+     ]
+    }
+   },
+   {
+    "name": "Heaven's Priests",
+    "ring": 1,
+    "description": "These Disciples have dedicated themselves to the service of Heaven and will attempt to restore the life of their companions.",
+    "notes": "Heaven's Priests is a combat that can appear in Ring 1. It features the most Trusted Priests in a Ring 1 combat. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Forged Disciple | Trusted Priest",
+      "2: Forged Disciple | Trusted Priest",
+      "3: A Brief Respite",
+      "4: BOSS | Trusted Priest"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Forged Disciple | Trusted Priest",
+      "2: Forged Disciple | Discipled Footsoldier | Trusted Priest",
+      "3: A Brief Respite",
+      "4: BOSS | Trusted Priest"
+     ]
+    }
+   },
+   {
+    "name": "Hidden Assault",
+    "ring": 5,
+    "description": "Sneaky Clipped have infiltrated your train. Use spells and higher floors to take them out.",
+    "notes": "Hidden Assault is a combat that can appear in Ring 5. This combat exclusively features Silent Marksmen, whose Stealth prevents them from being attacked on the bottom floor. There are also 2 Overcharged Tanks as well, gaining Armor on Harvest. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Silent Marksman | Silent Marksman | Silent Marksman",
+      "2: Clipped Defender | Overcharged Tank",
+      "3: Silent Marksman | Silent Marksman | Silent Marksman",
+      "4: Silent Marksman | Overcharged Tank",
+      "5: A Brief Respite",
+      "6: BOSS | Silent Marksman | Silent Marksman"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Silent Marksman | Silent Marksman | Silent Marksman",
+      "2: Clipped Defender | Silent Marksman | Overcharged Tank",
+      "3: Silent Marksman | Silent Marksman | Silent Marksman",
+      "4: Silent Marksman | Silent Marksman | Overcharged Tank",
+      "5: A Brief Respite",
+      "6: BOSS | Silent Marksman | Silent Marksman"
+     ]
+    }
+   },
+   {
+    "name": "Penitent Prayers",
+    "ring": 2,
+    "description": "The Reconcilers have arrived in great force to make sure that you repent for the sins that Hell has brought upon the world.",
+    "notes": "Penitent Prayers is a combat that can appear in Ring 2. It is the only combat to feature Reconcilers, and is the earliest combat based heavily on Scourges. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Forged Disciple | Reconciler",
+      "2: Forged Disciple | Reconciler",
+      "3: A Brief Respite",
+      "4: BOSS | Reconciler | Reconciler"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Forged Disciple | Reconciler",
+      "2: Disciple Protector | Forged Disciple | Reconciler",
+      "3: A Brief Respite",
+      "4: BOSS | Reconciler | Reconciler"
+     ]
+    }
+   },
+   {
+    "name": "Protectors of the Clipped",
+    "ring": 4,
+    "description": "Giant slabs of stone create defensive walls that can be hard to penetrate. Crack their defenses to defeat the heavy-hitters behind.",
+    "notes": "Protectors of the Clipped is a combat that can appear in Ring 4. This combat features Clipped Reflectors, which gain Armor on Incant. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Clipped Reflector | Quill Marksman",
+      "2: Clipped Guardian | Quill Marksman",
+      "3: Clipped Guardian | Clipped Shaman",
+      "4: Clipped Reflector | Quill Marksman",
+      "5: A Brief Respite",
+      "6: BOSS | Quill Marksman | Quill Marksman"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Clipped Reflector | Quill Marksman",
+      "2: Clipped Guardian | Quill Marksman",
+      "3: Clipped Defender | Clipped Guardian | Clipped Shaman",
+      "4: Clipped Reflector | Quill Marksman | Quill Marksman",
+      "5: A Brief Respite",
+      "6: BOSS | Quill Marksman | Quill Marksman"
+     ]
+    }
+   },
+   {
+    "name": "Pyre Absorbers",
+    "ring": 2,
+    "description": "These Pyre-sensitive attackers are heavy hitters and get stronger when spells are cast. Use your spells wisely.",
+    "notes": "Pyre Absorbers is a combat that can appear in Ring 2. It is the first combat to feature Overcharged Apprentices. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Overcharged Apprentice | Trusted Priest",
+      "2: Overcharged Apprentice | Discipled Footsoldier | Trusted Priest",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier | Trusted Priest"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Overcharged Apprentice | Discipled Footsoldier | Trusted Priest",
+      "2: Overcharged Apprentice | Discipled Footsoldier | Trusted Priest",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier | Trusted Priest"
+     ]
+    }
+   },
+   {
+    "name": "Seraph the Chaste",
+    "ring": 8,
+    "description": "The end is near. This incarnation of Hell's greatest foe has the power to cleanse all units of effects which don't benefit Seraph. This fight will require more than sheer strength.",
+    "notes": "Seraph the Chaste is a boss combat that can appear in Ring 8. In this combat, Seraph will halve all of your buffs and debuffs on a floor, every turn. The combat also features Pyrewings to drain your Ember. Like all Seraph combats, Seraph places a Lightwings on the train every turn.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Darkwings | Lightwings",
+      "2: Pyrewings | Lightwings | Lightwings",
+      "3: Gilded Wing | Lightwings | Lightwings",
+      "4: Pyrewings | Gilded Wing",
+      "5: Gilded Wing | Gilded Wing | Lightwings",
+      "6: Gilded Wing | Lightwings",
+      "7: Steelwings | Gilded Wing | Lightwings",
+      "8: Gilded Wing | Lightwings | Seraph"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Darkwings | Lightwings | Lightwings",
+      "2: Pyrewings | Lightwings | Lightwings",
+      "3: Gilded Wing | Gilded Wing | Lightwings",
+      "4: Pyrewings | Gilded Wing",
+      "5: Gilded Wing | Gilded Wing | Lightwings",
+      "6: Pyrewings | Gilded Wing | Lightwings",
+      "7: Steelwings | Gilded Wing | Lightwings",
+      "8: Gilded Wing | Lightwings | Seraph"
+     ]
+    }
+   },
+   {
+    "name": "Seraph the Diligent",
+    "ring": 8,
+    "description": "The end is near. The Great Traitor will devour your spells. You better bring more of them if you hope to succeed.",
+    "notes": "Seraph the Diligent is a boss combat that can appear in Ring 8. In this combat, The first spell you play each turn Consumes. 3 Vengeful Shards are also shuffled into your deck. The combat also features Purifiers to trash your deck further. Like all Seraph combats, Seraph places a Lightwings on the train every turn.",
+    "waves": {
+     "Enemies (Cov 3-25)": [
+      "1: Gilded Wing | Purifier | Lightwings",
+      "2: Gilded Wing | Lightwings | Purifier",
+      "3: Wiltwings | Gilded Wing | Purifier",
+      "4: Wiltwings | Gilded Wing | Gilded Wing",
+      "5: Gilded Wing | Gilded Wing | Purifier",
+      "6: Wiltwings | Gilded Wing | Gilded Wing",
+      "7: Steelwings | Gilded Wing | Purifier",
+      "8: Gilded Wing | Lightwings | Seraph"
+     ]
+    }
+   },
+   {
+    "name": "Seraph the Patient",
+    "ring": 8,
+    "description": "The end is near. The Traitor has grown impatient, joining the fight immediately and gaining strength with every move you make.",
+    "notes": "Seraph the Patient is a boss combat that can appear in Ring 8. In this combat, Seraph applies Melee Weakness to one of your frontmost units at the start and end of the turn, and attacks before he enters Relentless. It also features many high damaging Shadewings. Unlike other Seraph combats, Seraph has 20 Attack, but no Multistrike. However, he has both a Rally and Incant Trigger to increase his attack, allowing him to potentially deal much greater damage.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Shadewings",
+      "2: Shadewings",
+      "3: Gilded Wing",
+      "4: Gilded Wing | Gilded Wing",
+      "5: Shadewings",
+      "6: Gilded Wing | Shadewings",
+      "7: Steelwings | Gilded Wing | Shadewings",
+      "8: Gilded Wing | Shadewings | Seraph"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Shadewings",
+      "2: Shadewings | Shadewings",
+      "3: Gilded Wing | Shadewings",
+      "4: Gilded Wing | Gilded Wing",
+      "5: Gilded Wing | Shadewings",
+      "6: Gilded Wing | Shadewings",
+      "7: Steelwings | Gilded Wing | Shadewings",
+      "8: Gilded Wing | Shadewings | Seraph"
+     ]
+    }
+   },
+   {
+    "name": "Seraph the Temperant",
+    "ring": 8,
+    "description": "The end is near. This incarnation of Hell's greatest foe will temper the strength of your units. Only the trulydetermined can survive.",
+    "notes": "Seraph the Temperant is a boss combat that can appear in Ring 8. In this combat, your units enter with Sap 3, and Seraph applies 3 Sap to your units on a floor every turn. It also features Darkwings, as well as high damaging Shadewings. Like all Seraph combats, Seraph places a Lightwings on the train every turn.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Darkwings | Shadewings",
+      "2: Gilded Wing | Shadewings",
+      "3: Darkwings | Shadewings | Shadewings",
+      "4: Gilded Wing | Gilded Wing | Shadewings",
+      "5: Darkwings | Gilded Wing | Shadewings",
+      "6: Gilded Wing | Shadewings",
+      "7: Steelwings | Darkwings | Shadewings",
+      "8: Darkwings | Shadewings | Seraph"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Darkwings | Shadewings",
+      "2: Gilded Wing | Shadewings | Shadewings",
+      "3: Darkwings | Shadewings | Shadewings",
+      "4: Gilded Wing | Gilded Wing | Shadewings",
+      "5: Darkwings | Gilded Wing | Shadewings",
+      "6: Gilded Wing | Gilded Wing | Shadewings",
+      "7: Steelwings | Darkwings | Shadewings",
+      "8: Darkwings | Shadewings | Seraph"
+     ]
+    }
+   },
+   {
+    "name": "Talos, the Architect: Empowering Offense",
+    "ring": 3,
+    "description": "The Architect of the Exodus attacks blindly and gains more protection with each unit she slays, so take her out quickly.",
+    "notes": "Talos, the Architect: Empowering Offense is a combat that can appear in Ring 3. In this combat, the boss, Talos, attacks before Relentless, gaining Armor 25 if she manages to slay a unit. Also, all enemy units enter with Rage 2.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Clergyman | Clergyman",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Clergyman",
+      "5: Forged Disciple | Trusted Priest",
+      "6: Talos, the Architect"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Clergyman | Clergyman",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Clergyman",
+      "5: Forged Disciple | Trusted Priest",
+      "6: Disciple Protector | Talos, the Architect"
+     ]
+    }
+   },
+   {
+    "name": "Talos, the Architect: Protective Sin",
+    "ring": 3,
+    "description": "Talos attacks quickly and decisively, using powerful blows to knock back whoever she hits.",
+    "notes": "Talos, the Architect: Protective Sin is a combat that can appear in Ring 3. In this combat, the boss, Talos, attacks before Relentless. Any unit she strikes is pushed to the back. Also, all enemy units enter with Armor 5. This combat also features Overcharged Apprentices.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Forged Disciple | Discipled Footsoldier | Trusted Priest",
+      "2: Overcharged Apprentice | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Disciple Protector | Overcharged Apprentice | Discipled Footsoldier",
+      "5: Forged Disciple | Discipled Footsoldier",
+      "6: Talos, the Architect"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Forged Disciple | Discipled Footsoldier | Trusted Priest",
+      "2: Overcharged Apprentice | Trusted Priest | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Overcharged Apprentice | Trusted Priest | Discipled Footsoldier",
+      "5: Forged Disciple | Discipled Footsoldier",
+      "6: Disciple Protector | Talos, the Architect"
+     ]
+    }
+   },
+   {
+    "name": "Talos, the Architect: Soul Sucker",
+    "ring": 3,
+    "description": "Talos has perfected her aggressive precision, striking swiftly to daze those she hits.",
+    "notes": "Talos, the Architect: Soul Sucker is a combat that can appear in Ring 3. In this combat, the boss, Talos, attacks before Relentless, applying Dazed 1 to any unit she strikes, stopping that unit from attacking that turn. Also, friendly units enter with Sap 1. This combat also features 2 Haste-granting Conduit Infiltrators, which will allow waves to skip the middle floor if not taken care of.",
+    "waves": {
+     "Enemies (Cov 0-2)": [
+      "1: Clergyman | Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Discipled Footsoldier | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "5: Forged Disciple | Conduit Infiltrator",
+      "6: Talos, the Architect"
+     ],
+     "Enemies (Cov 3-25)": [
+      "1: Clergyman | Clergyman | Clergyman | Clergyman",
+      "2: Forged Disciple | Discipled Footsoldier | Discipled Footsoldier",
+      "3: Forged Disciple | Forged Disciple",
+      "4: Clergyman | Clergyman | Clergyman | Conduit Infiltrator",
+      "5: Forged Disciple | Conduit Infiltrator",
+      "6: Disciple Protector | Talos, the Architect"
+     ]
+    }
+   },
+   {
+    "name": "The First Defense",
+    "ring": 1,
+    "description": "Foot soldiers of the Disciples of Seraph. Weak attackers hidden in the back line. Take them down!",
+    "notes": "The First Defense is a combat that can appear in Ring 1. It is the only Ring 1 combat to feature a Disciple Protector. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Disciple Protector | Discipled Footsoldier",
+      "2: Forged Disciple | Discipled Footsoldier",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Disciple Protector | Discipled Footsoldier",
+      "2: Forged Disciple | Discipled Footsoldier | Discipled Footsoldier",
+      "3: A Brief Respite",
+      "4: BOSS | Discipled Footsoldier"
+     ]
+    }
+   },
+   {
+    "name": "The Gathered Clergy",
+    "ring": 1,
+    "description": "",
+    "notes": "The Gathered Clergy is a combat that can appear in Ring 1. It features waves entirely of Clergymen, featuring the most enemies in a Ring 1 combat by number. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 5-25)": [
+      "1: Clergyman | Clergyman | Clergyman | Clergyman",
+      "2: Clergyman | Clergyman | Clergyman | Clergyman | Clergyman",
+      "3: A Brief Respite",
+      "4: BOSS | Clergyman | Clergyman | Clergyman"
+     ]
+    }
+   },
+   {
+    "name": "The Harpy's Guard",
+    "ring": 5,
+    "description": "Heavy-hitting Clipped Warriors will protect this Harpy at any cost. They will gain more power with any foe slain, so make sure to defeat them before they thin out your defense.",
+    "notes": "The Harpy's Guard is a combat that can appear in Ring 5. This combat features Masters of Light, whose sweeping attacks can grow stronger for every unit they slay. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Master of Light | Quill Marksman",
+      "2: Clipped Guardian | Clipped Shaman",
+      "3: Clipped Defender | Master of Light",
+      "4: Clipped Guardian | Clipped Shaman",
+      "5: A Brief Respite",
+      "6: BOSS"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Master of Light | Quill Marksman",
+      "2: Clipped Guardian | Clipped Shaman",
+      "3: Clipped Defender | Master of Light | Clipped Shaman",
+      "4: Clipped Guardian | Quill Marksman | Clipped Shaman",
+      "5: A Brief Respite",
+      "6: BOSS"
+     ]
+    }
+   },
+   {
+    "name": "The Penitent",
+    "ring": 7,
+    "description": "These Purifiers will burden you with the weight of your sins until your penance has been paid in full.",
+    "notes": "The Penitent is a combat that can appear in Ring 7. In this combat, Purifiers can clog up your card draw with Self-Mutilations while Steelwings protect the waves. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Gilded Wing | Purifier",
+      "2: Gilded Wing | Purifier",
+      "3: Steelwings | Gilded Wing | Purifier",
+      "4: Gilded Wing | Purifier",
+      "5: Steelwings | Gilded Wing",
+      "6: A Brief Respite",
+      "7: BOSS"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Gilded Wing | Purifier",
+      "2: Steelwings | Gilded Wing | Purifier",
+      "3: Steelwings | Gilded Wing | Purifier",
+      "4: Steelwings | Gilded Wing | Purifier",
+      "5: Steelwings | Gilded Wing | Purifier",
+      "6: A Brief Respite",
+      "7: BOSS"
+     ]
+    }
+   },
+   {
+    "name": "The Pyrewings",
+    "ring": 7,
+    "description": "The Winged scavengers of the Hell Pyre have learned to dampen the effectiveness of the Pyre shard if you ferry to the end of Hell.",
+    "notes": "The Pyrewings is a combat that can appear in Ring 7. This combat, as the name says, features Pyrewings, who can drain your Ember with their sweeping attacks. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Pyrewings",
+      "2: Gilded Wing | Lightwings",
+      "3: Steelwings | Pyrewings",
+      "4: Gilded Wing | Lightwings",
+      "5: Steelwings | Pyrewings",
+      "6: A Brief Respite",
+      "7: BOSS"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Pyrewings",
+      "2: Gilded Wing | Lightwings",
+      "3: Steelwings | Pyrewings",
+      "4: Gilded Wing | Lightwings | Lightwings",
+      "5: Steelwings | Steelwings | Pyrewings",
+      "6: A Brief Respite",
+      "7: BOSS"
+     ]
+    }
+   },
+   {
+    "name": "The Shadewings",
+    "ring": 7,
+    "description": "Winged acquainted with the power of death. They consume the souls of their victims to heal and grow stronger.",
+    "notes": "The Shadewings is a combat that can appear in Ring 7. This combat, as the name says, features Shadewings, which can deal massive damage if not handled properly. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Gilded Wing | Shadewings | Shadewings",
+      "2: Steelwings | Gilded Wing | Shadewings",
+      "3: Wiltwings | Gilded Wing | Shadewings",
+      "4: Wiltwings | Steelwings | Shadewings | Shadewings",
+      "5: Steelwings | Gilded Wing | Shadewings",
+      "6: A Brief Respite",
+      "7: BOSS | Shadewings"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Gilded Wing | Shadewings | Shadewings",
+      "2: Steelwings | Gilded Wing | Shadewings",
+      "3: Wiltwings | Gilded Wing | Shadewings",
+      "4: Wiltwings | Wiltwings | Steelwings | Shadewings | Shadewings",
+      "5: Wiltwings | Steelwings | Gilded Wing | Shadewings",
+      "6: A Brief Respite",
+      "7: BOSS | Shadewings | Shadewings"
+     ]
+    }
+   },
+   {
+    "name": "The Sycophants of Seraph",
+    "ring": 5,
+    "description": "Seraph has recruited many to his cause, both Winged and Clipped. These followers have grouped together to inudate you with sheer numbers.",
+    "notes": "For the enemy, see Sycophant. The Sycophants of Seraph is a combat that can appear in Ring 5. This combat features huge waves of Sycophants, which will buff their allies attack upon Extinguish. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 5-25)": [
+      "1: Sycophant | Sycophant | Sycophant | Sycophant",
+      "2: Sycophant | Sycophant | Sycophant | Sycophant | Clipped Guardian",
+      "3: Clipped Defender | Sycophant | Sycophant | Sycophant | Sycophant",
+      "4: Clipped Defender | Clipped Defender | Sycophant | Sycophant | Sycophant",
+      "5: A Brief Respite",
+      "6: BOSS | Clipped Defender | Sycophant"
+     ]
+    }
+   },
+   {
+    "name": "The Winged Horde",
+    "ring": 7,
+    "description": "Although weaker soldiers, this mob of Winged will fight with all they have, dealing damage to your unitsas they take their final breath.",
+    "notes": "The Winged Horde is a combat that can appear in Ring 7. This combat features a horde of Wiltwings, which can force a lot of damage upon death, as well as Darkwings, which gains Armor when units die, such as the horde. Like all non-boss combats, a Collector will appear on a random floor on wave 2.",
+    "waves": {
+     "Enemies (Cov 0-4)": [
+      "1: Wiltwings | Wiltwings | Wiltwings | Gilded Wing",
+      "2: Darkwings | Wiltwings | Wiltwings",
+      "3: Wiltwings | Wiltwings | Wiltwings | Gilded Wing",
+      "4: Darkwings | Wiltwings | Wiltwings | Wiltwings",
+      "5: Darkwings | Lightwings | Lightwings",
+      "6: A Brief Respite",
+      "7: BOSS"
+     ],
+     "Enemies (Cov 5-25)": [
+      "1: Wiltwings | Wiltwings | Wiltwings | Gilded Wing",
+      "2: Darkwings | Wiltwings | Wiltwings",
+      "3: Wiltwings | Wiltwings | Wiltwings | Gilded Wing",
+      "4: Darkwings | Wiltwings | Wiltwings | Wiltwings",
+      "5: Darkwings | Wiltwings | Lightwings | Lightwings",
+      "6: A Brief Respite",
+      "7: BOSS | Wiltwings | Wiltwings"
+     ]
+    }
+   },
+   {
+    "name": "The Last Divinity: Divine Intervention",
+    "ring": 9,
+    "description": "Either in victory or defeat, the Divinity's endless destruction rages on.",
+    "notes": "The Last Divinity is the true final combat, accessible if one has as at least 100 Pact Shards or the Game Mode is Hell Rush. Here, one confronts the true final boss, The Last Divinity. In the combat against The Last Divinity, all enemies spawned enhanced. There will also be minor bosses in the waves who are not Relentless. The Last Divinity itself spans all 3 floors, and attacks each floor every turn, with different status effects.",
+    "waves": {
+     "Possible Enemies (Cov 0 - 19)": [
+      "1: Overcharged Apprentice | Overcharged Apprentice | Clergyman | Clergyman  OR  Apprentice of Light | Apprentice of Light | Wiltwings",
+      "2: Clipped Defender | Shadewings | Clipped Shaman  OR  Steelwings | Lightwings | Clipped Shaman",
+      "3: Wiltwings | Overcharged Tank | Overcharged Tank | Conduit Redirector  OR  Wiltwings | Darkwings | Clipped Guardian | Conduit Redirector",
+      "4: Discipled Inquisitor  OR  Chains the Sighted",
+      "5: Gilded Wing | Light Harnesser | Light Harnesser  OR  Gilded Wing | Shadewings | Shadewings  OR  Gilded Wing | Silent Marksman | Silent Marksman",
+      "6: Clipped Defender | Clipped Reflector | Clipped Guardian | Conduit Redirector  OR  Clipped Defender | Clipped Reflector | Wiltwings | Winged Conduit",
+      "7: Last Knight of the Disciples  OR  Highpriest to the Light  OR  The Steel Slate",
+      "8: Steelwings | Overcharged Apprentice | Overcharged Apprentice | Clipped Shaman  OR  Steelwings | Wiltwings | Wiltwings | Clipped Shaman",
+      "9: Light Harnesser | Gilded Wing | Absolver | Absolver  OR  Forged Disciple | Gilded Wing | Absolver | Absolver",
+      "10: The Last Divinity"
+     ],
+     "Possible Enemies (Cov 20 - 25)": [
+      "1: Overcharged Apprentice | Overcharged Apprentice | Overcharged Apprentice | Clergyman | Clergyman  OR  Apprentice of Light | Apprentice of Light | Apprentice of Light | Wiltwings",
+      "2: Clipped Defender | Clipped Reflector | Shadewings | Clipped Shaman  OR  Steelwings | Clipped Reflector | Lightwings | Clipped Shaman",
+      "3: Wiltwings | Overcharged Tank | Overcharged Tank | Clipped Guardian | Conduit Redirector  OR  Wiltwings | Darkwings | Clipped Guardian | Clipped Guardian | Conduit Redirector",
+      "4: Overcharged Apprentice | Discipled Inquisitor  OR  Disciple Protector | Chains the Sighted",
+      "5: Gilded Wing | Gilded Wing | Light Harnesser | Light Harnesser  OR  Gilded Wing | Gilded Wing | Shadewings | Shadewings  OR  Gilded Wing | Gilded Wing | Silent Marksman | Silent Marksman",
+      "6: Clipped Defender | Pyrewings | Clipped Reflector | Clipped Guardian | Conduit Redirector  OR  Clipped Defender | Darkwings | Clipped Reflector | Wiltwings | Winged Conduit",
+      "7: Last Knight of the Disciples | Lightwings  OR  Highpriest to the Light | Wiltwings  OR  The Steel Slate | Shadewings",
+      "8: Steelwings | Clipped Reflector | Overcharged Apprentice | Overcharged Apprentice | Clipped Shaman  OR  Steelwings | Clipped Reflector | Wiltwings | Wiltwings | Clipped Shaman",
+      "9: Light Harnesser | Light Harnesser | Gilded Wing | Absolver | Absolver  OR  Forged Disciple | Clipped Guardian | Gilded Wing | Absolver | Absolver",
+      "10: The Last Divinity"
+     ]
+    }
+   }
+  ],
+  "mutators": [
+   {
+    "name": "A New Challenger",
+    "effect": "Your Champion is randomly replaced by one that is not from your primary or allied clan."
+   },
+   {
+    "name": "A Simple Plan",
+    "effect": "Non-Champion units cost +2 Ember. Start with Sketches of Salvation."
+   },
+   {
+    "name": "Acid Rain",
+    "effect": "Deal 2 damage to all units after combat."
+   },
+   {
+    "name": "Arcane Allergy",
+    "effect": "Enemy units enter with Spell Weakness 1."
+   },
+   {
+    "name": "At Your Service",
+    "effect": "Start with 2 additional Train Stewards and Advanced Prototype."
+   },
+   {
+    "name": "Big Chungus",
+    "effect": "All friendly units get +1 Capacity."
+   },
+   {
+    "name": "Bleeding Cash",
+    "effect": "Lose 1 Gold whenever a friendly unit takes damage."
+   },
+   {
+    "name": "Brawl",
+    "effect": "Friendly and enemy units get +5 Attack and +10 Health. Your Pyre gets +10 Attack."
+   },
+   {
+    "name": "Broken Valve",
+    "effect": "Start with Volatile Gauge."
+   },
+   {
+    "name": "Burn Bright",
+    "effect": "+2 Ember per turn."
+   },
+   {
+    "name": "Buying Power",
+    "effect": "Merchants provide a card duplication service."
+   },
+   {
+    "name": "Cheap Trick",
+    "effect": "Spells cost -1 Ember."
+   },
+   {
+    "name": "Come Prepared",
+    "effect": "Add 12 additional random cards to your starting deck."
+   },
+   {
+    "name": "Dante's Comedy",
+    "effect": "Start with Dante the Deceptive and 3 Dante's Candle. Dante gains Intrinsic."
+   },
+   {
+    "name": "Duality",
+    "effect": "Double stacks of all status effects."
+   },
+   {
+    "name": "Extra Pyre",
+    "effect": "Your Pyre gets +80 Health."
+   },
+   {
+    "name": "Fallen Champion",
+    "effect": "Remove the Champion from your starting deck."
+   },
+   {
+    "name": "Fast Draw",
+    "effect": "Friendly units get Quick."
+   },
+   {
+    "name": "Final Shard",
+    "effect": "Your Pyre starts the run with Fragile and Damage Shield 2."
+   },
+   {
+    "name": "Frontloaded",
+    "effect": "-3 Ember per turn. Gain 20 Ember at the beginning of each battle. Start with The Unbroken Horn."
+   },
+   {
+    "name": "Googly Eyes",
+    "effect": "All units have googly eyes in battle."
+   },
+   {
+    "name": "Gravity",
+    "effect": "At the end of the turn, Descend friendly units."
+   },
+   {
+    "name": "Hashtag Blessed",
+    "effect": "Gain a random artifact after every battle."
+   },
+   {
+    "name": "Heavy",
+    "effect": "Add 5 Deadweights to your starting deck."
+   },
+   {
+    "name": "Highly Reactive",
+    "effect": "Triggered abilities on friendly units trigger an additional time."
+   },
+   {
+    "name": "Hivemind",
+    "effect": "Friendly units count as all subtypes."
+   },
+   {
+    "name": "Hollow",
+    "effect": "Friendly units get Heartless."
+   },
+   {
+    "name": "Junked Up",
+    "effect": "Add 8 Calcified Ember to your starting deck."
+   },
+   {
+    "name": "Levity",
+    "effect": "Enemy units get Haste."
+   },
+   {
+    "name": "Luxury in Limbo",
+    "effect": "Additional unit banners appear in Limbo."
+   },
+   {
+    "name": "Magic Hand",
+    "effect": "Cards are not discarded at the end of turn."
+   },
+   {
+    "name": "Mansion",
+    "effect": "+2 Capacity on each floor."
+   },
+   {
+    "name": "Moneybags",
+    "effect": "Double Gold earned."
+   },
+   {
+    "name": "Moth Magic",
+    "effect": "When a damage spell hits a unit, Ascend it."
+   },
+   {
+    "name": "Multi-Pyre",
+    "effect": "Your Pyre gets Multistrike 1."
+   },
+   {
+    "name": "Musical Chairs",
+    "effect": "Shuffle the position of all units in the train after combat."
+   },
+   {
+    "name": "Never Say Die",
+    "effect": "Friendly units get Endless."
+   },
+   {
+    "name": "Ninja Training",
+    "effect": "Minor bosses enter with Stealth 5."
+   },
+   {
+    "name": "No Fluff",
+    "effect": "All cards have 1 fewer upgrade slot."
+   },
+   {
+    "name": "One Track Mind",
+    "effect": "The path you take on the map is chosen automatically."
+   },
+   {
+    "name": "Pain Train",
+    "effect": "Enemy units enter with Spikes 1."
+   },
+   {
+    "name": "Permadeath",
+    "effect": "Any non-Champion unit which dies is purged from your deck."
+   },
+   {
+    "name": "Protect the Pyre",
+    "effect": "Start with Boon of the Blacksmith, Precious Plating, and Pyrewall."
+   },
+   {
+    "name": "Puny Things",
+    "effect": "Friendly units start at 1 Capacity."
+   },
+   {
+    "name": "Return on Investment",
+    "effect": "Spawn an additional Collector in battles that already have a Collector."
+   },
+   {
+    "name": "Sacrificial",
+    "effect": "Apply Fragile to the first friendly unit summoned each turn."
+   },
+   {
+    "name": "Seeing Double",
+    "effect": "When the first friendly unit is summoned each turn, create a copy."
+   },
+   {
+    "name": "Shields Up",
+    "effect": "Enemy units enter with Damage Shield."
+   },
+   {
+    "name": "Small Hands",
+    "effect": "-2 cards per turn."
+   },
+   {
+    "name": "Starry Suffering",
+    "effect": "Friendly units enter with Dazed 2."
+   },
+   {
+    "name": "Strike Hard",
+    "effect": "All units get Multistrike 1."
+   },
+   {
+    "name": "The Math Challenge",
+    "effect": "Room combat previews are disabled."
+   },
+   {
+    "name": "Tissue Paper",
+    "effect": "Apply Fragile to non-boss enemy units when they enter the Pyre Room."
+   },
+   {
+    "name": "Tithe",
+    "effect": "Halve Gold earned."
+   },
+   {
+    "name": "Two for One",
+    "effect": "Each time you draft a card, gain a second copy."
+   },
+   {
+    "name": "Upgraded Drafts",
+    "effect": "Cards in reward packs and unit banners come with a random upgrade."
+   },
+   {
+    "name": "Vampiric Touch",
+    "effect": "All units enter with Lifesteal 3."
+   },
+   {
+    "name": "Volatile Spells",
+    "effect": "The targets of spells are chosen randomly."
+   },
+   {
+    "name": "Wand of Cure Light Wounds",
+    "effect": "Restore 5 health to all units after combat."
+   },
+   {
+    "name": "Yeetpocalypse",
+    "effect": "You must purge a card after every battle."
+   },
+   {
+    "name": "Zoom, Enhance",
+    "effect": "All cards have 1 additional upgrade slot."
+   },
+   {
+    "name": "Arduous Arcana",
+    "effect": "Spells cost +1 Ember."
+   },
+   {
+    "name": "Armchair General",
+    "effect": "Your Champion enters with Sap 10 and Heartless."
+   },
+   {
+    "name": "Crystal Ball",
+    "effect": "Start with Cheater's Hand."
+   },
+   {
+    "name": "Early Lead",
+    "effect": "Start with Improved Firebox and Lost Luggage."
+   },
+   {
+    "name": "Hero's Burden",
+    "effect": "Gain +15 Pact Shards after each battle."
+   },
+   {
+    "name": "If I had a Hammer",
+    "effect": "Start with Heph the Blacksmith and Good Ol' Wingmaker. Heph gains Intrinsic."
+   },
+   {
+    "name": "Life Insurance",
+    "effect": "Start with Golden Vault, Memorial Fund, and Rationing Scales."
+   },
+   {
+    "name": "My True Form",
+    "effect": "Start with Mark of a Champion and Mark of an Exile."
+   },
+   {
+    "name": "Shardless",
+    "effect": "Disable all map nodes and events that provide Pact Shards."
+   },
+   {
+    "name": "Slow and Steady",
+    "effect": "Friendly units enter with +10 Attack and Sap 7."
+   },
+   {
+    "name": "Spellpiercer",
+    "effect": "Your spells gain Piercing."
+   },
+   {
+    "name": "The Elite",
+    "effect": "Start with Hammered Chestplates, Scorched Steel, and Worn Grindstone."
+   }
+  ],
+  "expert_challenges": [
+   {
+    "name": "Controlled Chaos",
+    "description": "Start with a random deck and you can duplicate cards at merchants.",
+    "mutators": [
+     "Come Prepared",
+     "Buying Power"
+    ]
+   },
+   {
+    "name": "Stewardship",
+    "description": "Start with powered-up Train Stewards but pay for it with a Tithe.",
+    "mutators": [
+     "At Your Service",
+     "Tithe"
+    ]
+   },
+   {
+    "name": "Spellcraft",
+    "description": "A smaller hand, no discarding, and cheaper spells mean you need to make the most out of your cards.",
+    "mutators": [
+     "Small Hands",
+     "Cheap Trick",
+     "Magic Hand"
+    ]
+   },
+   {
+    "name": "True Champion",
+    "description": "You don't have a Champion and Dante will help you out instead.",
+    "mutators": [
+     "Fallen Champion",
+     "Dante's Comedy"
+    ]
+   },
+   {
+    "name": "Overcharged",
+    "description": "Your Pyre can't take damage or you lose, but on the bright side, you have extra ember and capacity.",
+    "mutators": [
+     "Final Shard",
+     "Burn Bright",
+     "Mansion"
+    ]
+   },
+   {
+    "name": "Evil Eyes",
+    "description": "Your units have Permadeath and Heartless - but on the bright side everything has googly eyes?",
+    "mutators": [
+     "Permadeath",
+     "Hollow",
+     "Googly Eyes"
+    ]
+   },
+   {
+    "name": "Arcane Focus",
+    "description": "You get fewer coins and your units are Dazed for two turns, but use spell weakness to your advantage and you might still win.",
+    "mutators": [
+     "Tithe",
+     "Arcane Allergy",
+     "Starry Suffering"
+    ]
+   },
+   {
+    "name": "Corrosive Cash",
+    "description": "All units take damage at end of turn, and your units taking damage loses you money. Toss in all units have Multistrike for fun.",
+    "mutators": [
+     "Acid Rain",
+     "Bleeding Cash",
+     "Strike Hard"
+    ]
+   },
+   {
+    "name": "Pre-Loaded",
+    "description": "Cards have one upgrade slot and it's already filled.",
+    "mutators": [
+     "No Fluff",
+     "Upgraded Drafts"
+    ]
+   },
+   {
+    "name": "Pure Chance",
+    "description": "Volatile Gauge, pre-determined paths, and a random Champion. May you be blessed.",
+    "mutators": [
+     "Broken Valve",
+     "One Track Mind",
+     "A New Challenger"
+    ]
+   },
+   {
+    "name": "Round and Round",
+    "description": "Spells hit random targets and units change spots every turn.",
+    "mutators": [
+     "Volatile Spells",
+     "Musical Chairs"
+    ]
+   },
+   {
+    "name": "No Champion No Problem",
+    "description": "Your Champion is gone, but use the extra starter unit banners along with double triggers to win anyway.",
+    "mutators": [
+     "Fallen Champion",
+     "Luxury in Limbo",
+     "Highly Reactive"
+    ]
+   },
+   {
+    "name": "Dangerous Minds",
+    "description": "All your units count as all subtypes and you'll double your drafts, but the enemy units have Haste, so you better get the most out of it.",
+    "mutators": [
+     "Hivemind",
+     "Levity",
+     "Two for One"
+    ]
+   },
+   {
+    "name": "Extra Pain Train",
+    "description": "Minor bosses have Stealth, you start with Deadweights, and enemies have Spikes. Yeah, there's nothing good about this one.",
+    "mutators": [
+     "Ninja Training",
+     "Pain Train",
+     "Heavy"
+    ]
+   },
+   {
+    "name": "Fragile Collection",
+    "description": "The first unit you play every turn has Fragile, but there's extra Collectors and extra upgrade slots to make up for how annoying that is.",
+    "mutators": [
+     "Sacrificial",
+     "Return on Investment",
+     "Zoom, Enhance"
+    ]
+   },
+   {
+    "name": "Homework",
+    "description": "Prove that you can win once with no combat previews.",
+    "mutators": [
+     "The Math Challenge"
+    ]
+   },
+   {
+    "name": "Steward Stack",
+    "description": "Powered-up Stewards that you won't want to play.",
+    "mutators": [
+     "At Your Service",
+     "A Simple Plan"
+    ]
+   },
+   {
+    "name": "Largest Lads",
+    "description": "Everything is big and getting dragged down. You can also upgrade them even more.",
+    "mutators": [
+     "Gravity",
+     "Big Chungus",
+     "Zoom, Enhance"
+    ]
+   },
+   {
+    "name": "Stealthiest Bosses",
+    "description": "Adding Duality to the Ninja Training mutator just so bosses can't get hit.",
+    "mutators": [
+     "Ninja Training",
+     "Duality"
+    ]
+   },
+   {
+    "name": "Blighted Existence",
+    "description": "Sorry.",
+    "mutators": [
+     "Heavy",
+     "Junked Up",
+     "Magic Hand"
+    ]
+   },
+   {
+    "name": "Brains Over Brawn",
+    "description": "Your champion isn't up for a fight, but they know plenty of card tricks.",
+    "mutators": [
+     "Armchair General",
+     "Magic Hand",
+     "Two for One"
+    ]
+   },
+   {
+    "name": "Truer Champion",
+    "description": "You don't have a Champion and Heph will help you out instead.",
+    "mutators": [
+     "If I had a Hammer",
+     "Fallen Champion"
+    ]
+   },
+   {
+    "name": "Make It Count",
+    "description": "You start with more cards and Ember, but your Pyre is Fragile.",
+    "mutators": [
+     "Come Prepared",
+     "Early Lead",
+     "Final Shard"
+    ]
+   },
+   {
+    "name": "The Hero We Need",
+    "description": "Your champion is amazing! Your spells... not so much.",
+    "mutators": [
+     "My True Form",
+     "Arduous Arcana"
+    ]
+   },
+   {
+    "name": "War is Hell",
+    "description": "Their forces are strong and grow ever stronger. Fortunately, your troops aren't too shabby either.",
+    "mutators": [
+     "Hero's Burden",
+     "The Elite",
+     "Brawl"
+    ]
+   }
+  ],
+  "game_modes": {
+   "hell_rush": "Hell Rush is a timed Game Mode and Custom Challenge Setting in Monster Train. Game mode: The game mode Hell Rush can be accessed through the Challenges Window. In this mode, a random seed in Covenant Rank 1 Covenant is created with Random Primary and Secondary Clans. Once the game is entered, up to 8 players are automatically matched with each other. Once 2 or more players are inside the game, a 60 second countdown starts to initiated the game start. In every Ring the players are under a time limit to visit Overworld Events as well as finish the battle. Once the time limit is up, the battles are continued but do not allow any more player's input. Once two or more players defeated Seraph or all players except one player have been defeated and that remaining player has a higher score than the dead players, the game ends and the player with the highest score is declared the winner.",
+   "daily_challenge": "The Daily Challenge is a game mode in Monster Train. Game mode: The Daily Challenge is accessible thru Challenges. It is a randomly generated game mode in Covenant Rank 1 with a semi-random selection of Mutators. Usually one good, one bad and another random Mutator is selected. Unlocks: Playing the Daily Challenge does not unlock any single player progress, such as unlocking cards or clans. Playing the Daily Challenge three days in a row however unlocks a Card Frame.",
+   "custom_challenge": "Custom Challenges or Community Challenges are a game mode for Monster Train. Community Challenges: Once opening Community Challenges, the player is greeted with a choice of playing a custom challenge from the following categories: • Featured by the Devs: A challenge hand picked by the Devs. • Most Popular: The 3 Challenges with the most registered scores. • Highest Scores: The 3 challenges with the highest overall scores. • Most Difficult: The 3 challenges with the lowest overall scores. • Discover Something New: 3 Random Challenges."
+  },
+  "champions": "Your Champion is a card in your Starter Deck determined by the Primary Clan you choose before a run. You will always draw your champion on the first turn of a Battle. You cannot permanently duplicate your champion, and the only way to upgrade them is through the Dark Forge event found during Limbo, The Waxen Arches and Scorched Plains Rings. Champions: Base Champions Exiled Champions History: See Version History The five Base Clan exiled Champions were added in the Friends and Foes (1.2) Update and the two Wurmkin Champions were included as part of the Last Divinity in 2.0",
+  "banner_units": "Banner Units (or Priority Units) are a hidden mechanic affecting the player's card draw in Monster Train. Certain units are mechanically classified as Banner Units. As long as the player's draw pile contains at least one Banner Unit, each hand they draw is guaranteed to contain at least one of those units (but may contain more). If the discard pile must be shuffled into the draw pile during the process of drawing a hand, Banner Unit draw priority does not apply for that hand, but it resumes normally on the next hand draw. Champions are not Banner Units, but intrinsic instead, meaning that they will always be the first card drawn each battle.",
+  "clan_xp": "Clans level 1-10 from run XP (score); levels unlock more of the clan's cards and artifacts (the MT1 wiki has no level table; the save-file page shows classXP with level 10 as cap). Exiled champions were added in update 1.2; Wurmkin unlocks after a Covenant 1 win.",
+  "scoring": "Scoring is a gameplay mechanic in Monster Train to compare and rank results in Multiplayer games such as Hell Rush, the Daily Challenge or Custom Challenge and to provide a comparison between different runs in general. Scoring is based on damage taken in each fight, the amount of Gold left at the end of the run, the amount of Pact Shards taken (The Last Divinity (DLC) only), the amount of Pyre Damage taken in each fight, the number of turns left when the boss in each Ring was defeated, and whether or not the trial was taken. Exact Scoring: For each Ring the score is: • Battle Won: For Rings 1-9 the Scores are: Ring | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 (DLC only); Score | 1000 | 1500 | 3000 | 2000 | 3000 | 6000 | 5000 | 9000 | 12000 • Damage Taken: -2% of the base score for every point of Pyre health lost during the battle - maximum of -50%, and minimum of 0%."
+ }
+}

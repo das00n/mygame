@@ -2,7 +2,29 @@
  "game": "Slay the Spire",
  "source": "https://slaythespire.wiki.gg (CC BY-SA)",
  "retrieved": "2026-11-03",
- "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 2500 chars. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Completeness check: {\"scraped_by_category\": {\"boss\": 11, \"elite\": 11, \"event\": 3, \"minion\": 3, \"normal\": 38}, \"wiki_cargo_Enemies_by_type\": {\"boss\": 11, \"elite\": 11, \"event\": 3, \"minion\": 3, \"normal\": 38}, \"wiki_module_enemy_entries\": 66, \"scraped_not_in_cargo\": [], \"cargo_not_scraped\": [], \"scraped_not_in_module\": [], \"module_not_scraped\": []}",
+ "notes": "One entry per {{Enemy Infobox}} (variants such as 'Jaw Worm (Hard)' are separate entries and share the base moveset). hp.base/hp.ascension are [min, max]; StS1 'ascension' HP applies from A7 (normal) / A8 (elite) / A9 (boss), StS2 from A8. Move effects keep ascension values inline as '(A2: 12)'; damage/hits are the base (A0) numbers parsed from the effect (null for non-attacks or variable damage). intent = schema label from the wiki intent icons (intent_icons keeps the raw codes). pattern = the wiki's prose under the intents table (AI rules, weights, phase changes), plain text, capped at 3000 chars; [Heading] marks a sub-section such as a phase. passives = infobox powers, with the power definition when the page has one. encounters = '<act> <pool>: <encounter>' labels from the encounter lists (pools: easy, hard, elite, boss, event). Completeness: enemy counts per category equal the wiki's Cargo 'Enemies' table (66 vs 66); differences against the enemy data module are explained in 'completeness'.",
+ "completeness": {
+  "scraped_by_category": {
+   "boss": 11,
+   "elite": 11,
+   "event": 3,
+   "minion": 3,
+   "normal": 38
+  },
+  "wiki_cargo_Enemies_by_type": {
+   "boss": 11,
+   "elite": 11,
+   "event": 3,
+   "minion": 3,
+   "normal": 38
+  },
+  "wiki_module_enemy_entries": 66,
+  "scraped_not_in_cargo": [],
+  "cargo_not_scraped": [],
+  "scraped_not_in_module": [],
+  "module_not_scraped": [],
+  "explanations": []
+ },
  "enemies": [
   {
    "id": "sts1.acid_slime_l",
@@ -53,7 +75,7 @@
      "intent_icons": "Unknown"
     }
    ],
-   "pattern": "Has a 30% (A17: 40%) chance of using Corrosive Spit, a 40% (A17: 30%) chance of using Tackle and a 30% chance of using Lick every turn. Cannot use Tackle (A17) twice in a row and cannot use other moves three times in a row. Once its HP reaches 50% or lower, its current Intent will be interrupted and changed to Split.",
+   "pattern": "Has a 30% (A17: 40%) chance of using Corrosive Spit, a 40% (A17: 30%) chance of using Tackle and a 30% chance of using Lick every turn. Cannot use Tackle (A17: Lick) twice in a row and cannot use other moves three times in a row. Once its HP reaches 50% or lower, its current Intent will be interrupted and changed to Split.",
    "passives": [
     "Split — When its HP is at or below 50%, it will split into 2 smaller Slimes with its current HP."
    ],
@@ -190,7 +212,9 @@
    "passives": [],
    "encounters": [
     "Act 1 hard: Blue Slaver",
-    "Act 1 hard: Exordium Thugs"
+    "Act 1 hard: Red Slaver",
+    "Act 1 hard: Exordium Thugs",
+    "Act 2 event: The Colosseum"
    ],
    "wiki_page": "Slavers"
   },
@@ -215,7 +239,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 3 A2: 4 (A17: 5) Ritual.",
+     "effect": "Gains 3 (A2: 4; A17: 5) Ritual.",
      "intent_icons": "Buff"
     },
     {
@@ -258,7 +282,7 @@
      "intent": "attack_debuff",
      "damage": 4,
      "hits": 1,
-     "effect": "Deals 4 (A2: 5) damage. Applies 1 Weak(.; and A17: 1 Frail.)",
+     "effect": "Deals 4 (A2: 5) damage. Applies 1 Weak. (A17: and 1 Frail.)",
      "intent_icons": "DebuffAttack1"
     }
    ],
@@ -298,7 +322,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 3 A2: 4 (A17: 5) Strength.",
+     "effect": "Gains 3 (A2: 4; A17: 5) Strength.",
      "intent_icons": "Buff"
     }
    ],
@@ -309,6 +333,7 @@
    "encounters": [
     "Act 1 hard: 2 Fungi Beasts",
     "Act 1 hard: Exordium Wildlife",
+    "Act 1 event: Hypnotizing Colored Mushrooms",
     "Act 2 hard: Shelled Parasite and Fungi"
    ],
    "wiki_page": "Fungi Beast"
@@ -332,8 +357,11 @@
     {
      "name": "Bite",
      "intent": "attack",
-     "damage": null,
-     "hits": null,
+     "damage": [
+      5,
+      7
+     ],
+     "hits": 1,
      "effect": "Deals N damage. N = Number between 5-7 (A2: 6-8), chosen at the start of combat.",
      "intent_icons": "Attack2"
     },
@@ -427,7 +455,7 @@
      "intent": "defend_buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 3 A2: 4 (A17: 5) Strength. Gains 6 (A17: 9) Block.",
+     "effect": "Gains 3 (A2: 4; A17: 5) Strength. Gains 6 (A17: 9) Block.",
      "intent_icons": "DefendBuff"
     },
     {
@@ -443,8 +471,7 @@
    "passives": [],
    "encounters": [
     "Act 1 easy: Jaw Worm",
-    "Act 1 hard: Exordium Wildlife",
-    "Act 3 hard: Jaw Worm Horde"
+    "Act 1 hard: Exordium Wildlife"
    ],
    "wiki_page": "Jaw Worm"
   },
@@ -561,8 +588,11 @@
     {
      "name": "Bite",
      "intent": "attack",
-     "damage": null,
-     "hits": null,
+     "damage": [
+      5,
+      7
+     ],
+     "hits": 1,
      "effect": "Deals N damage. N = Number between 5-7 (A2: 6-8), chosen at the start of combat.",
      "intent_icons": "Attack2"
     },
@@ -631,8 +661,10 @@
    "pattern": "Red Slaver will always start the battle with Stab. If Red Slaver has not used Entangle yet, it has a 25% chance to be used each turn. Red Slaver will repeat the pattern of Scrape, Scrape, Stab until Entangle is used. After using Entangle, Red Slaver has a 55% chance of using Stab and a 45% chance of using Scrape. Red Slaver cannot use the same attack three times in a row, and can only use Entangle once per combat. On Ascension 17, Red Slaver will repeat the pattern of Scrape, Stab until Entangle is used. After Entangle is used, Red Slaver cannot use Scrape twice in a row.",
    "passives": [],
    "encounters": [
+    "Act 1 hard: Blue Slaver",
     "Act 1 hard: Red Slaver",
-    "Act 1 hard: Exordium Thugs"
+    "Act 1 hard: Exordium Thugs",
+    "Act 2 event: The Colosseum"
    ],
    "wiki_page": "Slavers"
   },
@@ -657,7 +689,7 @@
      "intent": "defend",
      "damage": null,
      "hits": null,
-     "effect": "Random enemy gains 7 A2: 8 (A17: 11) Block. Only chooses self if alone.",
+     "effect": "Random enemy gains 7 (A2: 8; A17: 11) Block. Only chooses self if alone.",
      "intent_icons": "Defend"
     },
     {
@@ -825,7 +857,7 @@
      "intent_icons": "Attack2"
     }
    ],
-   "pattern": "",
+   "pattern": "(single move) Uses Tackle every turn.",
    "passives": [],
    "encounters": [
     "Act 1 easy: Small Slimes",
@@ -898,7 +930,7 @@
      "intent_icons": "Unknown"
     }
    ],
-   "pattern": "Byrd never starts with Swoop. While it has Flying, Byrd will use one of the following actions each turn: * Peck (50% chance) * Caw (30% chance) * Swoop (20% chance) Byrd cannot use Caw and Swoop twice in a row, or Peck three times in a row.",
+   "pattern": "Byrd never starts with Swoop. While it has Flying, Byrd will use one of the following actions each turn: * Peck (50% chance) * Caw (30% chance) * Swoop (20% chance) Byrd cannot use Caw and Swoop twice in a row, or Peck three times in a row. [Pattern While Grounded] If Byrd does not have Flying, it will use the following actions in order before returning to its regular pattern: #Stunned (replaces current Intent when Flying is lost) #Headbutt #Go Airborne",
    "passives": [
     "Flying 3 (A17: 4) — Takes 50% less attack damage. Cancelled if dealt attack damage X times in one turn. Resets charges at the start of next turn if not fully removed."
    ],
@@ -1016,13 +1048,9 @@
    "pattern": "Always starts with Poke followed by Hex. After that, repeats the following pattern for the rest of the combat: #Debilitate (50% chance) or Drain (50% chance) #Poke (60% chance) or Zap (40% chance) On Ascension 17, Chosen always starts with Hex instead of Poke.",
    "passives": [],
    "encounters": [
-    "Act 1 hard: Gang of Gremlins",
     "Act 2 easy: Chosen",
     "Act 2 hard: Chosen and Byrds",
-    "Act 2 hard: Cultist and Chosen",
-    "Act 3 easy: 3 Shapes",
-    "Act 3 hard: 4 Shapes",
-    "Act 3 hard: Spheric Guardian + 2 Shapes"
+    "Act 2 hard: Cultist and Chosen"
    ],
    "wiki_page": "Chosen"
   },
@@ -1113,7 +1141,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "All enemies gain 2 A2: 3 (A17: 4) Strength.",
+     "effect": "All enemies gain 2 (A2: 3; A17: 4) Strength.",
      "intent_icons": "Buff"
     },
     {
@@ -1270,7 +1298,7 @@
      "intent": "attack_debuff",
      "damage": 8,
      "hits": 1,
-     "effect": "Deals 8 (A2: 10) damage. Applies 2 Vulnerable(.; and A17: 2 Weak).",
+     "effect": "Deals 8 (A2: 10) damage. Applies 2 Vulnerable. (A17: and 2 Weak).",
      "intent_icons": "DebuffAttack2"
     }
    ],
@@ -1361,14 +1389,17 @@
      "intent": "defend",
      "damage": null,
      "hits": null,
-     "effect": "Gains 12 Block(; and A17: 2 Strength).",
+     "effect": "Gains 12 Block(A17: and 2 Strength).",
      "intent_icons": "Defend"
     },
     {
      "name": "Nip",
      "intent": "attack",
-     "damage": null,
-     "hits": null,
+     "damage": [
+      7,
+      11
+     ],
+     "hits": 1,
      "effect": "Deals N damage. N = Number between 7-11 (A2: 9-13), chosen at the start of combat.",
      "intent_icons": "Attack2"
     },
@@ -1480,7 +1511,7 @@
      "intent": "defend_buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 3 A2: 4 (A17: 5) Strength. Gains 6 (A17: 9) Block.",
+     "effect": "Gains 3 (A2: 4; A17: 5) Strength. Gains 6 (A17: 9) Block.",
      "intent_icons": "DefendBuff"
     },
     {
@@ -1497,7 +1528,9 @@
     "Strength 3 (A2: 4/A17: 5)",
     "Block 6 (A17: 9)"
    ],
-   "encounters": [],
+   "encounters": [
+    "Act 3 hard: Jaw Worm Horde"
+   ],
    "wiki_page": "Jaw Worm"
   },
   {
@@ -1538,7 +1571,8 @@
     "Strength Up 3 (A17: 5) — At the end of its turn, gains Strength."
    ],
    "encounters": [
-    "Act 3 easy: Orb Walker"
+    "Act 3 easy: Orb Walker",
+    "Act 3 event: Mysterious Sphere"
    ],
    "wiki_page": "Orb Walker"
   },
@@ -1708,7 +1742,7 @@
     {
      "name": "Nom Nom",
      "intent": "attack",
-     "damage": null,
+     "damage": 5,
      "hits": null,
      "effect": "Deals 5×N damage. N = Current turn, divided by two (rounded up).",
      "intent_icons": "Attack2"
@@ -1751,7 +1785,7 @@
      "intent_icons": "Attack7"
     }
    ],
-   "pattern": "",
+   "pattern": "(single move) Uses Attack every turn.",
    "passives": [
     "Fading 5 (A17: 6) — Dies in X turns.",
     "Shifting — Upon losing HP, loses that much Strength until the end of the turn."
@@ -1818,7 +1852,7 @@
      "intent_icons": "DebuffStrong"
     }
    ],
-   "pattern": "On its first turn, it has an (approximately) equal chance to use Multi Hit, Big Hit, or Debuff Attack. Afterwards: * Parasite 10% chance * Block Attack 30% chance * Debuff Attack 20% chance * Multi Hit 30% chance * Big Hit 10% chance Parasite can only be used once. The same move cannot be used (or rerolled via Reactive) twice in a row. {| class=\"wikitable\" style=\"text-align: center; margin:left\" |+ Percent Chance based on last used move |-! Intent\\Used!! Parasite!! Block!! Debuff!! Multi Hit!! Big Hit |-! Parasite | - || ~14% || 12.5% || ~14% || ~11% |-! Block | ~33% || - || 37.5% || ~43% || ~33% |-! Debuff | ~22% || ~29% || - || ~29% || ~22% |-! Multi Hit | ~33% || ~43% || 37.5% || - || ~33% |-! Big Hit | ~11% || ~14% || 12.5% || ~14% || - |}",
+   "pattern": "On its first turn, it has an (approximately) equal chance to use Multi Hit, Big Hit, or Debuff Attack. Afterwards: * Parasite 10% chance * Block Attack 30% chance * Debuff Attack 20% chance * Multi Hit 30% chance * Big Hit 10% chance Parasite can only be used once. The same move cannot be used (or rerolled via Reactive) twice in a row. (table omitted)",
    "passives": [
     "Malleable 4",
     "Reactive — Upon receiving attack damage, changes its Intent."
@@ -1872,7 +1906,9 @@
    "pattern": "Always starts with Bellow then has a 33% chance of using Skull Bash and a 67% chance of using Bull Rush. Cannot use Bull Rush three times in a row. At Ascension 18, Gremlin Nob uses Skull Bash on the 2nd turn and uses Bull Rush twice afterwards, then repeats this pattern for the rest of the fight.",
    "passives": [],
    "encounters": [
-    "Act 1 elite: Gremlin Nob"
+    "Act 1 elite: Gremlin Nob",
+    "Act 1 event: Dead Adventurer",
+    "Act 2 event: The Colosseum"
    ],
    "wiki_page": "Gremlin Nob"
   },
@@ -1925,13 +1961,14 @@
      "intent_icons": "DebuffStrong"
     }
    ],
-   "pattern": "",
+   "pattern": "[When found in an Elite encounter:] Starts off Sleeping. If it takes any damage, it will be stunned for one turn and then proceed to attack. If three turns pass without any damage taken, it will awake and immediately begin attacking. Once awoken, its Metallicize will be removed. When attacking it will repeat this pattern: * Attack * Attack * Siphon Soul [When found in the Dead Adventurer fight:] Spawns already awake and will repeat this pattern: * Siphon Soul * Attack * Attack",
    "passives": [
     "Metallicize 8",
     "Block 8"
    ],
    "encounters": [
-    "Act 1 elite: Lagavulin"
+    "Act 1 elite: Lagavulin",
+    "Act 1 event: Dead Adventurer"
    ],
    "wiki_page": "Lagavulin"
   },
@@ -1974,6 +2011,7 @@
    ],
    "encounters": [
     "Act 1 elite: Sentries",
+    "Act 1 event: Dead Adventurer",
     "Act 2 hard: Sentry and Spheric Guardian"
    ],
    "wiki_page": "Sentry"
@@ -1997,9 +2035,9 @@
     {
      "name": "Multi Stab",
      "intent": "attack",
-     "damage": null,
+     "damage": 6,
      "hits": null,
-     "effect": "Deals 6×N (A3: 7×N) damage. (N = Number of times Multi Stab was used this combat, plus 2.; On A18, N = Current turn, plus 1.)",
+     "effect": "Deals 6×N (A3: 7×N) damage. N = Number of times Multi Stab was used this combat, plus 2. (A18: On, N = Current turn, plus 1.)",
      "intent_icons": "Attack3"
     },
     {
@@ -2041,7 +2079,7 @@
      "intent": "defend_buff",
      "damage": null,
      "hits": null,
-     "effect": "All enemies gain 3 A3: 4 (A18: 5) Strength. Other enemies gain 6 (A18: 10) Block.",
+     "effect": "All enemies gain 3 (A3: 4; A18: 5) Strength. Other enemies gain 6 (A18: 10) Block.",
      "intent_icons": "DefendBuff"
     },
     {
@@ -2061,7 +2099,7 @@
      "intent_icons": "Unknown"
     }
    ],
-   "pattern": "Depending on the amount of enemies in battle, Gremlin Leader will use one of the following actions each turn:",
+   "pattern": "Depending on the amount of enemies in battle, Gremlin Leader will use one of the following actions each turn: [With 0 Gremlins] * Rally! (75% chance) * Stab (25% chance) [With 1 Gremlin] * Rally! (50% chance)* * Stab (50% chance)*:* If last used action was Encourage or * Rally! (62.5% chance)** * Encourage (37.5% chance)**:** If last used action was Stab [With 2 or more Gremlins] * Encourage (66% chance) * Stab (34% chance) Gremlin Leader cannot use any intent twice in a row. No more than 3 small Gremlins can be present at once.",
    "passives": [],
    "encounters": [
     "Act 2 elite: Gremlin Leader"
@@ -2089,14 +2127,15 @@
      "intent": "attack_debuff",
      "damage": 7,
      "hits": 1,
-     "effect": "Deals 7 damage. Adds 1 Wound A2: 2 (A18: 3 Wounds) into your discard pile. (;Gains A18: 1 Strength.)",
+     "effect": "Deals 7 damage. Adds 1 Wound (A2: 2; A18: 3 Wounds) into your discard pile. (A18: Gains 1 Strength.)",
      "intent_icons": "DebuffAttack2"
     }
    ],
-   "pattern": "",
+   "pattern": "(single move) Uses Scouring Whip every turn.",
    "passives": [],
    "encounters": [
-    "Act 2 elite: Taskmaster"
+    "Act 2 elite: Taskmaster",
+    "Act 2 event: The Colosseum"
    ],
    "wiki_page": "Taskmaster"
   },
@@ -2285,7 +2324,7 @@
      "intent": "attack_defend",
      "damage": 34,
      "hits": 1,
-     "effect": "Deals 34 (A3: 38) damage. (Gains Block equal to damage dealt.; Gains A18: 99 Block.)",
+     "effect": "Deals 34 (A3: 38) damage. Gains Block equal to damage dealt. (A18: Gains 99 Block.)",
      "intent_icons": "DefendAttack7"
     }
    ],
@@ -2319,7 +2358,7 @@
      "intent": "attack_debuff",
      "damage": 5,
      "hits": 2,
-     "effect": "Deals 5×2 (A3: 6×2) damage. (Adds 2 Burns into your discard pile.; Adds 2 Burns A18.)",
+     "effect": "Deals 5×2 (A3: 6×2) damage. Adds 2 Burns into your discard pile. (A18: Adds 2 Burns on top of your draw pile.)",
      "intent_icons": "DebuffAttack3"
     },
     {
@@ -2547,7 +2586,7 @@
      "intent": "attack",
      "damage": 8,
      "hits": 2,
-     "effect": "Deals 8×2 damage. Loses Sharp Hide. Gains 30 A9: 35 (A19: 40) Mode Shift, increased by 10 for each time Mode Shift triggered this combat.",
+     "effect": "Deals 8×2 damage. Loses Sharp Hide. Gains 30 (A9: 35; A19: 40) Mode Shift, increased by 10 for each time Mode Shift triggered this combat.",
      "intent_icons": "Attack4"
     }
    ],
@@ -2663,7 +2702,7 @@
      "intent": "defend_buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 15 A9: 18 (A19: 20) Block and 5 A9: 6 (A19: 7) Metallicize.",
+     "effect": "Gains 15 (A9: 18; A19: 20) Block and 5 (A9: 6; A19: 7) Metallicize.",
      "intent_icons": "DefendBuff"
     },
     {
@@ -2671,7 +2710,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 2 A4: 3 (A19: 4) Strength.",
+     "effect": "Gains 2 (A4: 3; A19: 4) Strength.",
      "intent_icons": "Buff"
     },
     {
@@ -2687,7 +2726,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "Removes all Debuffs. Gains 6 A4: 9 (A19: 12) Strength.",
+     "effect": "Removes all Debuffs. Gains 6 (A4: 9; A19: 12) Strength.",
      "intent_icons": "Buff"
     },
     {
@@ -2699,7 +2738,7 @@
      "intent_icons": "Attack7"
     }
    ],
-   "pattern": "",
+   "pattern": "[Phase One] Always uses Taunt every 4 turns. On all other turns: * Defensive Stance 15% chance * Gloat (Defensive Stance A19) 15% chance * Face Slap 25% chance * Heavy Slash 45% chance No move can be used twice in a row. When he attempts to use the same move again, he will instead use the next move in the list above. For example, if he used Gloat, there's a 0% chance of him using Gloat again but a 40% chance of him using Face Slap. If he used Heavy Slash, the chance of Heavy Slash will be transferred to Face Slap instead (0% chance of Heavy Slash, 70% chance of Face Slap) On Ascension 19, when Gloat is replaced with Defensive Stance, if the last move was also Defensive Stance, he will instead use Gloat. [Phase Two] When his HP drops below 50%, he will use Anger on the next turn and enter Phase Two. After using Anger he will use Execute the turn after. He will then repeat this pattern for the rest of combat: * Random Move (Same chances as Phase One) * Random Move (Same chances as Phase One) * Execute",
    "passives": [],
    "encounters": [
     "Act 2 boss: The Champ"
@@ -2743,7 +2782,7 @@
      "intent": "defend_buff",
      "damage": null,
      "hits": null,
-     "effect": "All enemies gain 3 A4: 4 (A19: 5) Strength. Gains 15 A9: 18 (A19: 23) Block.",
+     "effect": "All enemies gain 3 (A4: 4; A19: 5) Strength. Gains 15 (A9: 18; A19: 23) Block.",
      "intent_icons": "DefendBuff"
     },
     {
@@ -2827,7 +2866,7 @@
      "intent_icons": "Attack7"
     }
    ],
-   "pattern": "",
+   "pattern": "[Phase One] Always starts with Slash. Every turn after: * Soul Strike 25% chance * Slash 75% chance Slash cannot be used three times in a row. Soul Strike cannot be used twice in a row. [Phase Two] Once its HP reaches 0, it loses Curiosity and its intent changes to Rebirth. Any Strength gained from Curiosity is kept. Always starts Phase Two with Dark Echo. Afterward, it has a 50/50 chance to use Tackle or Sludge. It cannot use either of these moves three times in a row. The remaining Cultists will flee when the Awakened One is defeated in Phase Two.",
    "passives": [
     "Regenerate 10 (A19: 15) — At the end of its turn, heals X HP.",
     "Curiosity 1 (A19: 2) — Whenever you play a Power card, gains X Strength.",
@@ -2867,7 +2906,7 @@
      "intent": "defend",
      "damage": null,
      "hits": null,
-     "effect": "All enemies gain 16 Block(; and A19: 3 Plated Armor).",
+     "effect": "All enemies gain 16 Block(A19: and 3 Plated Armor).",
      "intent_icons": "Defend"
     }
    ],
@@ -2951,7 +2990,7 @@
      "intent": "attack_debuff",
      "damage": 26,
      "hits": 1,
-     "effect": "Deals 26 (A4: 32) damage. Applies 1 Draw Reduction. (;Adds A19: 2 Slimed into your discard pile.)",
+     "effect": "Deals 26 (A4: 32) damage. Applies 1 Draw Reduction. (A19: Adds 2 Slimed into your discard pile.)",
      "intent_icons": "DebuffAttack6"
     },
     {
@@ -2959,7 +2998,7 @@
      "intent": "defend_debuff",
      "damage": null,
      "hits": null,
-     "effect": "Gains 20 Block. Applies 1 Vulnerable, 1 Weak(.; and A19: 1 Frail.)",
+     "effect": "Gains 20 Block. Applies 1 Vulnerable, 1 Weak. (A19: and 1 Frail.)",
      "intent_icons": "DebuffDefend"
     },
     {
@@ -2967,7 +3006,7 @@
      "intent": "buff",
      "damage": null,
      "hits": null,
-     "effect": "Removes all Debuffs. Heals to 50% HP. (;Gains A19: 32 Block.)",
+     "effect": "Removes all Debuffs. Heals to 50% HP. (A19: Gains 32 Block.)",
      "intent_icons": "Buff"
     }
    ],
@@ -3080,7 +3119,7 @@
      "intent_icons": "Attack2"
     }
    ],
-   "pattern": "Each Bronze Orb can only use Stasis once per combat. Stasis has a 75% chance to be used each turn until it has been picked. After using Stasis Bronze Orb has a 70% chance to use Support Beam and a 30% chance to use Beam each turn. Bronze Orb cannot use the same attack thrice in a row.",
+   "pattern": "Each Bronze Orb can only use Stasis once per combat. Stasis has a 75% chance to be used each turn until it has been picked. After using Stasis Bronze Orb has a 70% chance to use Support Beam and a 30% chance to use Beam each turn. Bronze Orb cannot use the same attack thrice in a row. [Stasis] Stasis will always prioritize the highest rarity Card in your draw pile. If your draw pile is empty, Stasis will pick from your discard pile instead. Cards in Stasis will not be affected by certain variables; for example, Masterful Stab's Energy cost will not increase even if the player takes damage.",
    "passives": [
     "Minion"
    ],
@@ -3114,7 +3153,7 @@
      "intent_icons": "Attack2"
     }
    ],
-   "pattern": "",
+   "pattern": "(single move) Uses Tackle every turn.",
    "passives": [
     "Minion"
    ],
@@ -3208,7 +3247,9 @@
    ],
    "pattern": "Always starts with Bear Hug, then alternates between Lunge and Maul.",
    "passives": [],
-   "encounters": [],
+   "encounters": [
+    "Act 2 event: Masked Bandits"
+   ],
    "wiki_page": "Masked Bandits"
   },
   {
@@ -3238,7 +3279,9 @@
    ],
    "pattern": "Uses Pointy Special every turn.",
    "passives": [],
-   "encounters": [],
+   "encounters": [
+    "Act 2 event: Masked Bandits"
+   ],
    "wiki_page": "Masked Bandits"
   },
   {
@@ -3284,7 +3327,9 @@
    ],
    "pattern": "Always starts with Mock, then alternates between Agonizing Slash and Cross Slash. On Ascension 17, starts with Mock, then repeats the pattern of Agonizing Slash, Cross Slash, Cross Slash.",
    "passives": [],
-   "encounters": [],
+   "encounters": [
+    "Act 2 event: Masked Bandits"
+   ],
    "wiki_page": "Masked Bandits"
   }
  ]
