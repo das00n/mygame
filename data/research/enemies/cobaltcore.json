@@ -1,0 +1,2270 @@
+{
+ "game": "Cobalt Core",
+ "source": "https://cobaltcore.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "Every enemy ship page (Category:Enemies = pages using Template:Enemy, minus the 'Enemies' overview) plus the 10 scripted phases of the Finale page. category/area/zone come from Template:Enemies nav (the wiki's own, post-1.1 list); encounter refines category (common/elite/boss/alternate_boss/event/repair_yard/finale). Enemies have no decks: every part shows an intent; a 'move' = one turn's full set of part intents, in the order the wiki lists them. moves[].effect is the wiki text ('Attack 2 from left cannon' = that part fires straight down its lane); moves[].movement is how the ship repositions BEFORE acting ('Move any number of spaces / Aims at player' = lines its firing parts up with the player's ship); intent is a '+'-joined tag list derived by regex (attack/shield/missile/drone/card/debuff/buff/heal/move/none). pattern = the wiki's sentence on how actions are chosen. hull/shield = max values on Normal (hull_hardest/shield_hardest when the wiki gives one; *_text keeps the raw infobox). parts = Layout list (left->right) when the page has one, the parts that intents come from, and trait sentences (Weak/Brittle/Armored/Concussable/Empty). passives = infobox 'Starts with', fight modifiers/rules and environment notes. hardest = every sentence mentioning Hardest. Stub pages (wiki_stub=true) only have stats; their patch_notes are filled from Patch pages. Numbers on intents do not include accumulated Powerdrive/Overdrive.",
+ "completeness": {
+  "category_enemies_pages": 43,
+  "ship_pages": 41,
+  "template_enemy_users": 42,
+  "navbox_entries": 41,
+  "navbox_per_zone_group": {
+   "Lazuli Nebula": {
+    "Common": 8,
+    "Elite": 3,
+    "Boss": 2
+   },
+   "Sapphire Cluster": {
+    "Common": 8,
+    "Elite": 3,
+    "Boss": 2
+   },
+   "Void's Cradle": {
+    "Common": 8,
+    "Elite": 3,
+    "Boss": 1
+   },
+   "Miscellaneous": {
+    "Event": 2,
+    "Shop": 1
+   }
+  },
+  "overview_pages_in_category": [
+   "Enemies"
+  ],
+  "multi_phase_pages": [
+   "Finale"
+  ],
+  "finale_phases": 10,
+  "enemies_total": 51,
+  "wiki_stubs": [
+   "Buried(?) Relic",
+   "Crystalline Offshoot",
+   "Crystalline Takeover",
+   "DJA-2 Solar Sail",
+   "DPL-55555 \"Replicator\"",
+   "Mecha Riggs",
+   "Needler",
+   "None Of Your Business",
+   "Rail Cannon",
+   "Rogue Starnacle",
+   "Rusting Colossus",
+   "WSP-55 \"Stinger\" Drone"
+  ],
+  "no_move_data": [
+   "Crystalline Offshoot",
+   "Crystalline Takeover",
+   "DJA-2 Solar Sail",
+   "DPL-55555 \"Replicator\"",
+   "Mecha Riggs",
+   "Rail Cannon",
+   "Rogue Starnacle",
+   "WSP-55 \"Stinger\" Drone"
+  ],
+  "moves_only_as_images": [
+   "The Cobalt"
+  ],
+  "discrepancies": [
+   "'Enemies' page does not list CST-7 \"Minesweeper\" (navbox: Lazuli Nebula Common) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Enemies' page does not list Crystalline Takeover (navbox: Lazuli Nebula Boss) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Enemies' page does not list Mecha Riggs (navbox: Sapphire Cluster Boss) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Enemies' page does not list Rail Cannon (navbox: Sapphire Cluster Elite) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Common Enemy' page does not list CST-7 \"Minesweeper\" (navbox: Lazuli Nebula Common) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Common Enemy' page does not list DJA-2 Solar Sail (navbox: Sapphire Cluster Common) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Common Enemy' page does not list DPL-55555 \"Replicator\" (navbox: Void's Cradle Common) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Common Enemy' lists 00-A Mining Drill as Common but navbox says Elite -- cause: Patch 1.1 content notes name it (Mining Drill: 'upgraded from NORMAL to ELITE'); page not updated since",
+   "'Elite' page does not list 00-A Mining Drill (navbox: Void's Cradle Elite) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Elite' page does not list Rail Cannon (navbox: Sapphire Cluster Elite) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Boss' page does not list Crystalline Takeover (navbox: Lazuli Nebula Boss) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "'Boss' page does not list Mecha Riggs (navbox: Sapphire Cluster Boss) -- cause: named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since",
+   "DJA-2 Solar Sail: infobox zone 'Lazuli Nebula' vs navbox Zone 2 (navbox + Patch 1.1 agree on the navbox)",
+   "Category:Bosses lacks ['Crystalline Takeover', 'Mecha Riggs'] (alternate bosses added in Patch 1.1; category not updated)"
+  ],
+  "parse_problems": []
+ },
+ "enemies": [
+  {
+   "id": "cc.evolutionary_perfection",
+   "name": "\"Evolutionary Perfection\"",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 12,
+   "shield": 18,
+   "parts": [
+    "Intent sources: left missile bay, right missile bay, left cannon, right cannon"
+   ],
+   "moves": [
+    {
+     "intent": "drone",
+     "effect": "Launch bubbled Attack Drone Mark II from left missile bay, Launch bubbled Attack Drone Mark II from right missile bay,"
+    },
+    {
+     "intent": "missile",
+     "effect": "Launch seeker missile from left missile bay"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack 3 from left cannon, attack 2 from right cannon"
+    }
+   ],
+   "pattern": "The \"Evolutionary Perfection\" will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "The \"Evolutionary Perfection\" will generally move very far out of the player's way prior to launching either of its first two attacks before closing in for the third attack with its cannons. It can often be expected to \"run away\" in this fashion, and can even be preemptively chased down.",
+   "hardest": [],
+   "pilot": "Brac",
+   "hull_text": "12/12",
+   "hull_hardest": null,
+   "shield_text": "18/18",
+   "shield_hardest": null,
+   "description": "Carcinization is in full effect with this superior drone and missile-launching ship",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The \"Evolutionary Perfection\" is a crab-shaped ship that focuses on deploying midrow objects such as attack drones and seekers before swooping in to finish off targets with its cannons.",
+   "patch_notes": [
+    "[Patch 1.0.6] This means Brac is more dangerous! Watch out!"
+   ],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/%22Evolutionary_Perfection%22"
+  },
+  {
+   "id": "cc.sogginss_very_cool_ship",
+   "name": "\"Soggins's Very Cool Ship\"",
+   "category": "event",
+   "encounter": "event",
+   "area": "Lazuli Nebula or Sapphire Cluster",
+   "zone": null,
+   "hull": 16,
+   "shield": 0,
+   "parts": [],
+   "moves": [
+    {
+     "intent": "missile+move",
+     "effect": "Soggins will spend 6 turns firing three missiles (regular, corrosive, and seeker in sequence) followed by moving away from the player's current position."
+    }
+   ],
+   "pattern": "Soggins will spend 6 turns firing three missiles (regular, corrosive, and seeker in sequence) followed by moving away from the player's current position. Once his Missile Malfunction status runs out Soggins will retreat from combat next turn ending the encounter.",
+   "passives": [
+    "Starts with: Missile Malfunction (6)",
+    "Intro: Soggins' ship is a medium-sized ship that that is only capable of firing missiles and, thanks to having the Missile Malfunction status effect, is only capable of attacking itself."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Soggins",
+   "hull_text": "16/16",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "An optional battle with Soggin's Very Cool Ship as you try to keep the poor frog's own missiles from destroying him",
+   "fixed_first_fight": false,
+   "also_in_events": [
+    "Missile Mayhem"
+   ],
+   "alt_boss_note": null,
+   "summary": "Soggins' ship is a medium-sized ship that that is only capable of firing missiles and, thanks to having the Missile Malfunction status effect, is only capable of attacking itself.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula or Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/%22Soggins%27s_Very_Cool_Ship%22"
+  },
+  {
+   "id": "cc.the_humble_approach",
+   "name": "\"The Humble Approach\"",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 20,
+   "shield": 0,
+   "parts": [
+    "Width: 9 tiles",
+    "1. Left Wing (Hardest: Armored)",
+    "2. Cannon",
+    "3. Cannon",
+    "4. Cannon",
+    "5. Cockpit ( Brittle)",
+    "6. Cannon",
+    "7. Cannon",
+    "8. Cannon",
+    "9. Right Wing (Hardest: Armored)",
+    "Intent sources: cannon 1, cannon 2, cannon 5, cannon 6, cannon 3, cannon 4",
+    "Trait note: Note that on Hardest difficulty, its Wings will be Armored."
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Attack for 2 from cannon 1; Attack for 1 from cannon 2; Attack for 1 from cannon 5; Attack for 2 from cannon 6",
+     "movement": "Move any number of spaces; Aims at player"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack for 1 from cannon 2; Attack for 1 from cannon 3; Attack for 1 from cannon 4; Attack for 1 from cannon 5",
+     "movement": "Move any number of spaces; Aims at player"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack for 1x3 from cannon 3; Attack for 1x3 from cannon 4",
+     "movement": "Move any number of spaces; Aims at player"
+    }
+   ],
+   "pattern": "\"The Humble Approach\" will always rotate between these 3 actions, starting with the first one. Here, cannons are numbered from left to right, so the leftmost cannon is cannon 1, the second-leftmost is cannon 2, etc.",
+   "passives": [],
+   "movement": "",
+   "hardest": [
+    "Left Wing (Hardest: Armored)",
+    "Right Wing (Hardest: Armored)",
+    "Note that on Hardest difficulty, its Wings will be Armored."
+   ],
+   "pilot": "Jumbo",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "A large bounty-hunting ship loaded with cannons, but with one glaring weak point",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "\"The Humble Approach\" is a large ship with lots of cannons, that simply aims to obliterate you with high firepower and a wide area of fire. It is one of three possible Elite encounters in Lazuli Nebula. It is piloted by Jumbo.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/%22The_Humble_Approach%22"
+  },
+  {
+   "id": "cc.00_a_mining_drill",
+   "name": "00-A Mining Drill",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 18,
+   "shield": 10,
+   "parts": [
+    "Intent sources: left drill cannon, right drill cannon, cockpit, wing",
+    "Trait note: Targeting the weak wing is generally a good idea, both because of the damage increase and because of its distance from the cannons.",
+    "Trait note: The Mining Drill can scale to massive attacks, but they always deal their damage one at a time, meaning ships with an Armored Bay or other armored parts, like the inactive cannons on the Ares, still take no damage."
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Attack 1x3 from left drill cannon; Attack 1x3 from right drill cannon; These attacks permanently gain 1 repetition each time this action is used (1x4, 1x5..); This is cumulative and does not reset when the Mining Drill uses the other action",
+     "movement": "Move any number of spaces; Aim at player; Does not avoid midrow objects"
+    },
+    {
+     "intent": "shield+attack",
+     "effect": "Shield 2 from cockpit; Attack 2 from wing",
+     "movement": "Move any number of spaces; Aim at player; Avoid midrow objects"
+    }
+   ],
+   "pattern": "The Mining Drill will use the actions in the order listed below, repeating once all actions are completed. In Hardest difficulty, it will repeat the first action two turns in a row before moving on to the second action.",
+   "passives": [
+    "Starts with: Asteroid Field",
+    "Environment: The 00-A Mining Drill is an excavating drill with a scaling multiattack that punches through the asteroid fields around it to devastate enemy ships."
+   ],
+   "movement": "",
+   "hardest": [
+    "In Hardest difficulty, it will repeat the first action two turns in a row before moving on to the second action."
+   ],
+   "pilot": "Duncan",
+   "hull_text": "18/18",
+   "hull_hardest": null,
+   "shield_text": "10/10",
+   "shield_hardest": null,
+   "description": "Industrial ship for drilling through asteroid fields or opposing cockpits.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The 00-A Mining Drill is an excavating drill with a scaling multiattack that punches through the asteroid fields around it to devastate enemy ships.",
+   "patch_notes": [
+    "[Patch 1.1 (2024-06-17)] Upgraded from NORMAL to ELITE enemy. (That's because he kills players more often than any other non-boss fight! Watch out for this guy!)"
+   ],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/00-A_Mining_Drill"
+  },
+  {
+   "id": "cc.aquatic_lifeform",
+   "name": "Aquatic Lifeform",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 24,
+   "shield": 0,
+   "parts": [
+    "Intent sources: left empty slot, right empty slot",
+    "Trait note: The Aquatic Lifeform is a ray-like ship that fires Fear-inducing bolts at the player from its empty spaces."
+   ],
+   "moves": [
+    {
+     "intent": "attack+card",
+     "effect": "Attack 3 (adds 1 Fear card if it hits) from left empty slot, Attack 3 (adds 1 Fear card if it hits) from right empty slot"
+    }
+   ],
+   "pattern": "The Aquatic Lifeform only has one attack, below, which it uses every turn.",
+   "passives": [],
+   "movement": "The Aquatic Lifeform tends to shift between three positions. First, it will line up its rightmost attack with the leftmost part of the player's ship. Then, it will line up the leftmost attack with the rightmost part of the player's ship. Finally, it will center on the player's ship, attempting to hit either side with both shots at once, before repeating the process.",
+   "hardest": [],
+   "pilot": "SensorError",
+   "hull_text": "24/24",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "Terrifying lifeform that fires fear-inducing bolts from the nothingness between its wings.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Aquatic Lifeform is a ray-like ship that fires Fear-inducing bolts at the player from its empty spaces. The ship is highly mobile, often moving several spaces at once to quickly reposition.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/Aquatic_Lifeform"
+  },
+  {
+   "id": "cc.btl_86_goliath_defender",
+   "name": "BTL-86 \"Goliath\" Defender",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 15,
+   "shield": 6,
+   "parts": [
+    "Intent sources: left cannon, right cannon, missile bay, cockpit",
+    "Trait note: The BTL-86 \"Goliath\" Defender, or Goliath, is a medium-sized ship that automatically defends its brittle weak points with the substantial reactive armor provided by the Reflexive Coating buff.",
+    "Trait note: The Goliath's brittle cockpit and missile bay are great targets, but keep in mind that after the first hit, Reflexive Coating will replace the brittle with armor until the beginning of the next turn."
+   ],
+   "moves": [
+    {
+     "intent": "attack+drone",
+     "effect": "Attack 2 from left cannon, attack 2 from right cannon, launch Space Mine from missile bay"
+    },
+    {
+     "intent": "attack+shield",
+     "effect": "Attack 1x2 from left cannon, Temp Shield 2 from cockpit, attack 1x2* from right cannon"
+    }
+   ],
+   "pattern": "The Goliath will always attack in the order listed below, repeating once it completes each action. Note that multiattacks from the right cannon scale*, increasing in number by one (1x3, 1x4, etc.) each time the second attack is used.",
+   "passives": [
+    "Starts with: Reflexive Coating 99",
+    "Intro: The BTL-86 \"Goliath\" Defender, or Goliath, is a medium-sized ship that automatically defends its brittle weak points with the substantial reactive armor provided by the Reflexive Coating buff."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.09",
+   "hull_text": "15/15",
+   "hull_hardest": null,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": "Defensive ship that uses Reflexive Armor to tank hits and deploys Space Mines, with a gradually escalating multi-attack.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The BTL-86 \"Goliath\" Defender, or Goliath, is a medium-sized ship that automatically defends its brittle weak points with the substantial reactive armor provided by the Reflexive Coating buff.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/BTL-86_%22Goliath%22_Defender"
+  },
+  {
+   "id": "cc.buried_relic",
+   "name": "Buried(?) Relic",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 25,
+   "shield": 0,
+   "parts": [
+    "Intent sources: left cannon, central cannon, right cannon, right cockpit"
+   ],
+   "moves": [
+    {
+     "intent": "none+heal",
+     "effect": "Nothing (but heals for ? )",
+     "movement": "Does not move",
+     "condition": "Asleep"
+    },
+    {
+     "intent": "buff+heal+attack",
+     "effect": "Gains 15 max hull and heals for 15 upon being awakened; Attack for 1 from left cannon; Attack for 2 from central cannon; Attack for 1 from right cannon",
+     "movement": "Does not move",
+     "condition": "Awakening"
+    },
+    {
+     "intent": "attack+buff",
+     "effect": "Attack for 1 from left cannon; Attack for 4 from central cannon; Attack for 1 from right cannon; (these numbers do not factor in its Powerdrive); Gain 1 Powerdrive from right cockpit",
+     "movement": "Move any number of spaces (might be hindered by being walled-in); Aim at player",
+     "condition": "Post-awakening"
+    }
+   ],
+   "pattern": "The Buried(?) Relic does nothing before being awakened. Upon taking damage, it will gain 15 max hull after the card finishes resolving, and heal that amount, and change its intent to its awakening intent. After 2 turns of not being awakened (on Hardest) , it will awaken, gaining 15 max hull and will use its post-awakened action every turn, gaining 1 Powerdrive. On Hardest, it starts with 10/10 hull instead of 7/10.",
+   "passives": [
+    "Starts with: Walled In",
+    "Environment: Evasion is at its worst in this fight specifically, as you are walled in."
+   ],
+   "movement": "Evasion is at its worst in this fight specifically, as you are walled in. Depending on your ship profile, you may be able to dodge some attacks by moving to the opposite side of the arena, though not all ships can avoid taking damage even with infinite Evade in this fight.",
+   "hardest": [
+    "After 2 turns of not being awakened (on Hardest) , it will awaken, gaining 15 max hull and will use its post-awakened action every turn, gaining 1 Powerdrive.",
+    "On Hardest, it starts with 10/10 hull instead of 7/10."
+   ],
+   "pilot": "SensorError",
+   "hull_text": "7/10 (initially) -> 25/25",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "Relic from an ancient era that might contain riches as long as it doesn't wake back up",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Buried(?) Relic looks innocuous at first, only to become deadly once disturbed.",
+   "patch_notes": [
+    "[Patch 1.0.2] Fixed a weird niche bug where Buried Relic's self-boost could sometimes be unstunnable"
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/Buried%28%3F%29_Relic"
+  },
+  {
+   "id": "cc.ccd_19_cicada_drone",
+   "name": "CCD-19 \"Cicada\" Drone",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 8,
+   "shield": 4,
+   "parts": [
+    "Intent sources: central cannon, cockpit, missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Attack 2 from central cannon",
+     "movement": "Any number of spaces; Aims at player"
+    },
+    {
+     "intent": "buff+shield",
+     "effect": "Buff (Powerdrive 1) from cockpit; Shield 2 from missile bay",
+     "movement": "Do not move"
+    }
+   ],
+   "pattern": "The Cicada will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.09",
+   "hull_text": "8/8",
+   "hull_hardest": null,
+   "shield_text": "4/4",
+   "shield_hardest": null,
+   "description": "Medium-sized ship that powers up over time",
+   "fixed_first_fight": true,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The CCD-19 \"Cicada\" Drone, or Cicada, is a medium-sized ship that slowly grows more powerful throughout the course of the battle via its use of the Powerdrive buff. The Cicada is always the first ship encountered in every run, prior even to choosing nodes on the map.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/CCD-19_%22Cicada%22_Drone"
+  },
+  {
+   "id": "cc.ccd_62_cicada_drone_mk2",
+   "name": "CCD-62 \"Cicada\" Drone Mk2",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 10,
+   "shield": 5,
+   "parts": [
+    "Intent sources: cannon, missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Attack 3 from cannon"
+    },
+    {
+     "intent": "attack+buff",
+     "effect": "Attack 3 from cannon, buff (powerdrive 1) from missile bay"
+    }
+   ],
+   "pattern": "The Cicada Mk2 will always attack in the order listed below, repeating once it completes each action. Note that the attack values below do not account for any of the Cicada's additional powerdrive beyond the first, so they will steadily increase throughout the battle.",
+   "passives": [
+    "Starts with: Powerdrive 1"
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.07",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "5/5",
+   "shield_hardest": null,
+   "description": "Medium-sized ship that powers up over time, now improved from your last encounter with it.",
+   "fixed_first_fight": true,
+   "also_in_events": [
+    "Abandoned Shipyard"
+   ],
+   "alt_boss_note": null,
+   "summary": "The CCD-62 \"Cicada\" Drone Mk2, or Cicada Mk2, is a new-and-improved version of the Cicada from Zone 1. As before, this ship quickly scales up its attacks via use of the powerdrive buff, although it now attacks much more frequently while doing so. The Cicada Mk2 is always the first encounter of Zone 2.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/CCD-62_%22Cicada%22_Drone_Mk2"
+  },
+  {
+   "id": "cc.ccd_62_cicada_drone_mk3",
+   "name": "CCD-62 \"Cicada\" Drone Mk3",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 20,
+   "shield": 5,
+   "parts": [
+    "Intent sources: left wing, left cannon, right cannon"
+   ],
+   "moves": [
+    {
+     "intent": "shield+attack",
+     "effect": "Temp shield 3 from left wing, attack 2 from left cannon, attack 2 from right cannon"
+    },
+    {
+     "intent": "attack+buff",
+     "effect": "Attack 2 from left cannon, attack 2 from right cannon, buff (Powerdrive 1) from left wing"
+    }
+   ],
+   "pattern": "The Cicada Mk3 will always attack in the order listed below, repeating once it completes each action. Note that the attack values below do not account for any of the Cicada's additional powerdrive beyond the one it starts with, so they will steadily increase throughout the battle.",
+   "passives": [
+    "Starts with: Powerdrive 1",
+    "Intro: In addition to its usual use of the Powerdrive buff, the ship now attacks from two cannons every turn while alternately activating heavy temporary shielding and powering itself up."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.07",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "5/5",
+   "shield_hardest": null,
+   "description": "Medium-sized ship that powers up over time, back for one final encounter",
+   "fixed_first_fight": true,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The CCD-19 \"Cicada\" Drone Mk3, or Cicada Mk3, is the final iteration of the CCD-19 \"Cicada\" Drone from Zone 1. In addition to its usual use of the Powerdrive buff, the ship now attacks from two cannons every turn while alternately activating heavy temporary shielding and powering itself up. The Cicada Mk 3 is always the first encounter of Zone 3.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/CCD-62_%22Cicada%22_Drone_Mk3"
+  },
+  {
+   "id": "cc.crystalline_entity",
+   "name": "Crystalline Entity",
+   "category": "boss",
+   "encounter": "boss",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 30,
+   "shield": 0,
+   "parts": [
+    "Width: 12 tiles"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "The boss's total damage output starts at 4, and increases by 1 each turn with no limit."
+    },
+    {
+     "intent": "attack",
+     "effect": "This means that on turn 1, it could do four 1 damage attacks, one big 4 damage attack, or anything in between, all from randomly picked cannons."
+    }
+   ],
+   "pattern": "The Crystalline Entity's attacks are wildly unpredictable, as it can attack from any of its parts (except the empty ones). Its damage output starts low, but gradually increases over the course of the fight. The boss's total damage output starts at 4, and increases by 1 each turn with no limit. This damage is spread out randomly across all of its cannons. This means that on turn 1, it could do four 1 damage attacks, one big 4 damage attack, or anything in between, all from randomly picked cannons. Note that cannons won't do multishots; all of the damage assigned to a single cannon is released in one attack. On Hardest, there are less cannons for the Crystalline Entity to attack from, so the average damage of each cannon tends to be higher.",
+   "passives": [],
+   "movement": "The Crystalline Entity never moves, unless you are too far away from it. Specifically, if you have 4 or more (Hardest: 3 or more) ship parts that are not facing any of its parts, then it will move towards you to catch up. The amount of spaces it moves depends solely on how many turns have passed, no matter how many spaces away you are. On turns 1-3 it will move one space towards you to catch up. Starting on turn 4, it will move two spaces. On every 5th turn afterwards (9, 14, 19..), the amount of spaces it will move to catch up increases by 1. This amount is capped at 12 spaces (the length of the \"ship\"), which is reached on turn 54.",
+   "hardest": [
+    "It is a large mass of crystals with 30 hull (Hardest: 34 hull) and no shields.",
+    "On Hardest difficulty, three random parts are replaced with empty parts, which appear visually as clusters of tiny crystals.",
+    "On Hardest, there are less cannons for the Crystalline Entity to attack from, so the average damage of each cannon tends to be higher.",
+    "Specifically, if you have 4 or more (Hardest: 3 or more) ship parts that are not facing any of its parts, then it will move towards you to catch up.",
+    "Crystalline Entity now shuffles all of its parts at the start of each turn on Hardest difficulty."
+   ],
+   "pilot": "Crystal",
+   "hull_text": "30/30",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "Big crystal.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "Crystalline Entity is the boss of Zone 1. It is a large mass of crystals with 30 hull (Hardest: 34 hull) and no shields. It is also referred to simply as \"big crystal\".",
+   "patch_notes": [
+    "[Patch 1.0.7 (2024-05-15)] Crystalline Entity now shuffles all of its parts at the start of each turn on Hardest difficulty. (undocumented change)"
+   ],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/Crystalline_Entity"
+  },
+  {
+   "id": "cc.crystalline_offshoot",
+   "name": "Crystalline Offshoot",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 24,
+   "shield": 0,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "CrystallineEntity",
+   "hull_text": "24/24",
+   "hull_hardest": null,
+   "shield_text": "0",
+   "shield_hardest": null,
+   "description": "Scattered remnants of an earlier fight, returned to battle with quickly scaling damage",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "Crystalline Offshoot is a ship with 24 hull and 0 shields, piloted by the Crystalline Entity.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Crystalline_Offshoot"
+  },
+  {
+   "id": "cc.crystalline_takeover",
+   "name": "Crystalline Takeover",
+   "category": "boss",
+   "encounter": "alternate_boss",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 21,
+   "shield": 7,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "CrystallineEntity",
+   "hull_text": "21/21",
+   "hull_hardest": null,
+   "shield_text": "7/7",
+   "shield_hardest": null,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": "alternate Zone 1 boss added in Patch 1.1",
+   "summary": "Crystalline Takeover is a ship with 21 hull and 7 shields, piloted by the Crystalline Entity.",
+   "patch_notes": [
+    "[Patch 1.1 (2024-06-17)] Introduced"
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/Crystalline_Takeover"
+  },
+  {
+   "id": "cc.cst_7_minesweeper",
+   "name": "CST-7 \"Minesweeper\"",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 8,
+   "shield": 8,
+   "parts": [
+    "Width: 7 tiles",
+    "1. Left Missile Bay",
+    "2. Left Scaffolding (Empty)",
+    "3. Left Cockpit (Weak)",
+    "4. Cannon",
+    "5. Right Cockpit (Weak)",
+    "6. Right Scaffolding (Empty)",
+    "7. Right Missile Bay"
+   ],
+   "moves": [
+    {
+     "intent": "drone+attack",
+     "effect": "Left Missile Bay: Launch Dual Drone; Cannon: Attack for 2 damage; Right Missile Bay: Launch Dual Drone",
+     "movement": "Does not move",
+     "condition": "First turn"
+    },
+    {
+     "intent": "drone+attack",
+     "effect": "Left Missile Bay: Launch Dual Drone (unless lane is blocked); Cannon: Attack for 1 damage (+1 dmg per blocked missile bay); Right Missile Bay: Launch Dual Drone (unless lane is blocked)",
+     "movement": "Does not move",
+     "condition": "Neither missile bay is blocked; OR; One missile bay is blocked & total Dual Drones <= 5 (Hardest: 2)"
+    },
+    {
+     "intent": "attack+buff",
+     "effect": "Cannon: Attack for 2 damage; Right Cockpit: Gain 1 Temporary Payback",
+     "movement": "Aim at player ship with cannon; (avoids targeting Dual Drones)",
+     "condition": "Both missile bays are blocked; OR; One missile bay is blocked & total Dual Drones > 5 (Hardest: 2)"
+    }
+   ],
+   "pattern": "Minesweeper's behavior is rather complex, and is mainly dictated by how many Dual Drones it has on the field and whether its missile bays are blocked--that is, if they have any Midrow Objects in front of them. Note that because the Minesweeper makes its checks before any movement occurs, it will most likely buff itself after deploying Dual Drones.",
+   "passives": [
+    "Intro: It relies heavily on Dual Drones--a midrow object which attacks both ships, unique to this fight--and Payback."
+   ],
+   "movement": "",
+   "hardest": [
+    "CST-7 \"Minesweeper\" is a large ship with 8 hull and 8 shields (Hardest: 10 hull and 10 shields), piloted by Janitorbot.",
+    "One missile bay is blocked & total Dual Drones 5 (Hardest: 2)",
+    "On Hardest, gained +3 hull, +3 shields, but is no longer armored (now +2/+2 compared to normal)"
+   ],
+   "pilot": "Janitorbot",
+   "hull_text": "8/8 (Hardest: 10/10)",
+   "hull_hardest": 10,
+   "shield_text": "8/8 (Hardest: 10/10)",
+   "shield_hardest": 10,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "CST-7 \"Minesweeper\" is a large ship with 8 hull and 8 shields (Hardest: 10 hull and 10 shields), piloted by Janitorbot. It relies heavily on Dual Drones--a midrow object which attacks both ships, unique to this fight--and Payback. It will only appear if the player has played at least 3 runs and has at least 1 win.",
+   "patch_notes": [
+    "[Patch 1.1.1 Balance Changes Test (2024-07-10)] Removed 2 hull and 2 shield",
+    "[Patch 1.1 Hotfix #3 (2024-06-28)] On Hardest, gained +3 hull, +3 shields, but is no longer armored (now +2/+2 compared to normal)",
+    "[Patch 1.1 Hotfix (2024-06-21)] No longer gains 1 Temp Shield on turns it's acting more aggressive",
+    "[Patch 1.1 (2024-06-17)] Introduced."
+   ],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/CST-7_%22Minesweeper%22"
+  },
+  {
+   "id": "cc.dja_2_solar_sail",
+   "name": "DJA-2 Solar Sail",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 12,
+   "shield": 9,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Rider",
+   "hull_text": "12/12",
+   "hull_hardest": null,
+   "shield_text": "9/9",
+   "shield_hardest": null,
+   "description": "Flexible ship that has multiple armored points along with scaffold and unleashes a heavy barrage every other turn.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "DJA-2 Solar Sail is a ship with 12 hull and 9 shields, piloted by Rider.",
+   "patch_notes": [
+    "[Patch 1.1 (2024-06-17)] Introduced"
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/DJA-2_Solar_Sail"
+  },
+  {
+   "id": "cc.dpl_55555_replicator",
+   "name": "DPL-55555 \"Replicator\"",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 8,
+   "shield": 14,
+   "parts": [
+    "Width: 3 tiles",
+    "1. Left Cockpit",
+    "2. Cannon",
+    "3. Right Cockpit"
+   ],
+   "moves": [],
+   "pattern": "From strategy text (no Attacks table on the wiki): Dillian's ship will sprout two new cannons every turn, slowly creating a wall of destruction that will become increasingly difficult to mitigate. This encounter always takes place under the \"Ion Storm\" condition, which removes 2 shield from both ships every turn. All cannons aside from the original center cannon only ever deal 1 damage and, most importantly, are also concusible.",
+   "passives": [
+    "Environment: This encounter always takes place under the \"Ion Storm\" condition, which removes 2 shield from both ships every turn."
+   ],
+   "movement": "",
+   "hardest": [
+    "DPL-55555 \"Replicator\" is a small ship with 8 hull and 14 shields (Hardest: 11 hull and 14 shields), piloted by Dillian."
+   ],
+   "pilot": "Dillian",
+   "hull_text": "8/8 (Hardest: 11/11)",
+   "hull_hardest": 11,
+   "shield_text": "14/14",
+   "shield_hardest": null,
+   "description": "Petite, unassuming ship with a devious power-scaling trick up its sleeve.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "DPL-55555 \"Replicator\" is a small ship with 8 hull and 14 shields (Hardest: 11 hull and 14 shields), piloted by Dillian.",
+   "patch_notes": [
+    "[Patch 1.1 Hotfix #3 (2024-06-28)] Main cannon starts with +1 damage and can go up to 5 max damage (instead of 4)",
+    "[Patch 1.1 (2024-06-17)] Introduced."
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Void's Cradle",
+   "url": "https://cobaltcore.wiki.gg/wiki/DPL-55555_%22Replicator%22"
+  },
+  {
+   "id": "cc.dx_3_missiler",
+   "name": "DX-3 \"Missiler\"",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 20,
+   "shield": 0,
+   "parts": [
+    "Intent sources: left wing, left missile bay, central missile bay, right wing, right missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "attack+missile",
+     "effect": "Attack 1 from left wing, Launches missile from left missile bay,; launches missile from central missile bay, launches missile from; right missile bay, attack 1 from right wing"
+    },
+    {
+     "intent": "missile",
+     "effect": "Launches missile from left missile bay, launches; missile/big missile from central missile bay, launches; missile from right missile bay"
+    }
+   ],
+   "pattern": "The DX-3 will always open with the first attack listed, then use only the second attack for the remainder of the battle. Note that the DX-3 launches normal missiles for the first three turns, after which the central launch becomes a big missile for the rest of the battle.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Stardog",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "Medium-sized missile hub that launches multiple missiles each turn.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The DX-3 \"Missiler\" is a medium-sized ship that attacks almost exclusively with missiles launched from its many missile bays. The DX-3 is one of two \"Missiler\" class enemy ships in the game, not to be confused with the DX-5 \"Missiler\" of Zone 3.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/DX-3_%22Missiler%22"
+  },
+  {
+   "id": "cc.dx_5_missiler",
+   "name": "DX-5 \"Missiler\"",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 16,
+   "shield": 6,
+   "parts": [
+    "Intent sources: left missile bay, cockpit, central missile bay, right missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "attack+card+missile",
+     "effect": "Attack 2 from left missile bay, add Fumes to discard from cockpit, attack 1 from central missile bay, launch Seeker Missiles from right missile bay"
+    }
+   ],
+   "pattern": "The DX-5 only has one action, below, which it executes every turn.",
+   "passives": [],
+   "movement": "The DX-5 will consistently move to re-center its attacking cannons on your ship, keeping its weak, concussable Seeker Missile bay as far away as possible.",
+   "hardest": [],
+   "pilot": "Smiff",
+   "hull_text": "16/16",
+   "hull_hardest": null,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": "Patchwork ship that distracts with one half while firing deadly seeker missiles with the other.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The DX-5 \"Missiler\" is a ship split into two parts: one for harrying the enemy with smaller attacks and vented fumes while the other launches powerful Seeker Missiles from far away. The DX-5 is one of two \"Missiler\" class enemy ships in the game, not to be confused with the DX-3 \"Missiler\" of Zone 2.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/DX-5_%22Missiler%22"
+  },
+  {
+   "id": "cc.fireball",
+   "name": "Fireball",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 10,
+   "shield": 4,
+   "parts": [
+    "Intent sources: left cannon, right cannon, cockpit"
+   ],
+   "moves": [
+    {
+     "intent": "attack+debuff",
+     "effect": "Attack 3 from left cannon (inflicts 1 Heat); Attack 1 from right cannon (inflicts 1 Heat)",
+     "movement": "Move any number of spaces; Aims at player or asteroids"
+    },
+    {
+     "intent": "shield+attack+debuff",
+     "effect": "Shield 1 from cockpit; Attack 4 from center right cannon (inflicts 1 Heat)",
+     "movement": "Do not move"
+    },
+    {
+     "intent": "attack+debuff",
+     "effect": "Attack 2 from left cannon (inflicts 1 Heat); Attack 1 from center right cannon (inflicts 1 Heat); Attack 2 from right cannon (inflicts 1 Heat)",
+     "movement": "Move any number of spaces; Aims at player"
+    }
+   ],
+   "pattern": "The Fireball will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [
+    "Starts with: Asteroid Field",
+    "Environment: However, most fights against the Fireball take place in Asteroid Fields, providing ample cover."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "DrakeDrakebot2",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "4/4",
+   "shield_hardest": null,
+   "description": "A small pirate ship piloted by a familiar face that turns up the heat with each shot",
+   "fixed_first_fight": false,
+   "also_in_events": [
+    "Fake Distress Signal"
+   ],
+   "alt_boss_note": null,
+   "summary": "The Fireball is a medium-sized ship that relentlessly showers the enemy in shots from its many cannons, each of which inflicts Heat upon hitting. However, most fights against the Fireball take place in Asteroid Fields, providing ample cover. It is piloted by Drake, and may both appear as an elite fight, or as an event, fighting if the player refuses to hand over a non-boss artifact. If Drake is currently in the crew, fights against the Fireball may still happen: in this case, she is replaced by her answering machine/automated pirate, Drakebot.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/Fireball"
+  },
+  {
+   "id": "cc.glorious_sport_arena",
+   "name": "Glorious Sport Arena",
+   "category": "event",
+   "encounter": "event",
+   "area": "Lazuli Nebula or Sapphire Cluster",
+   "zone": null,
+   "hull": 10,
+   "shield": 0,
+   "parts": [
+    "Intent sources: central cannon, right wing, left wing"
+   ],
+   "moves": [
+    {
+     "intent": "attack+buff",
+     "effect": "Attack from central cannon; Gain 1 Autododge (Right) from right wing"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack from central cannon"
+    },
+    {
+     "intent": "buff+attack",
+     "effect": "Gain 1 Autododge (Left) from left wing; Attack from central cannon"
+    },
+    {
+     "intent": "drone",
+     "effect": "Launch a Football from central cannon",
+     "movement": "Move to the center of the field",
+     "condition": "If there is no Football"
+    },
+    {
+     "intent": "attack",
+     "effect": "Realize victory is impossible; Gain 99 Heat from left wing; Gain 99 Corrode from central cannon; Take 99 damage from right wing",
+     "movement": "Move to the center of the field",
+     "condition": "If your goal is missing"
+    }
+   ],
+   "pattern": "The enemy ship's intents cycle between the following three, though its attack damage varies. On odd turns, it's always 1 damage. On even turns, it starts at 2 and increases by 1 each time, up to 4 damage.",
+   "passives": [
+    "Starts with: Autododge (Right) (1)",
+    "Rules: Your objective is to score a Football into the enemy goal (blue), which is on the left of the field. You will lose if it gets scored into your goal (red), which is on the right. A goal is scored when a Football moves on or through it. The goals are indestructible and cannot be moved with Droneshift. A Football starts in the center of the field, 9 spaces away from each goal. It moves left when you shoot it--or to the right when the enemy shoots it--by a number of spaces equal to the damage it was hit with. You can also launch a midrow object at it to move it 2 spaces left (or 3 spaces with a Heavy Missile). Thanks to the excitement of sports, you start the fight with 1 Ace.",
+    "Penalty System: If you hit the enemy ship with an attack, Sasha will give you a Yellow Card as a penalty which temporarily clogs your deck. Get three penalties and you're kicked out of the match, with no rewards whatsoever. You only get a penalty when you hit the enemy. Triggering their Autododge and missing (even with Grazer Beam) is okay, and so are indirect sources of damage like Corrosion. Additionally, if you land multiple hits using a single card, you won't get multiple penalties, just one. If you manage to destroy the enemy ship without getting 3 penalties, you will win the match, even if the finishing blow would give you a third penalty. You can still pick a prize as normal."
+   ],
+   "movement": "The enemy ship always aims at the Football. If there are multiple balls, it'll target whichever one was released first.",
+   "hardest": [],
+   "pilot": "Sasha (not actually the pilot, just the referee)",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [
+    "Sports!"
+   ],
+   "alt_boss_note": null,
+   "summary": "The Glorious Sport Arena is a unique encounter where you play against a small ship in a game of Sports! while Sasha stands on the field as a referee and gives riveting commentary.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula or Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Glorious_Sport_Arena"
+  },
+  {
+   "id": "cc.glx_bruiser",
+   "name": "GLX Bruiser",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 14,
+   "shield": 6,
+   "parts": [
+    "Intent sources: left wing, missile bay, right wing"
+   ],
+   "moves": [
+    {
+     "intent": "missile+attack+debuff",
+     "effect": "Launch missile from left wing, attack 1 (applies Engine Stall) from missile bay, attack 2 from left wing"
+    },
+    {
+     "intent": "missile+attack+debuff",
+     "effect": "Launch big missile from left wing, attack 1 from missile bay, attack 3 (applies Engine Stall) from left wing"
+    },
+    {
+     "intent": "missile+attack+debuff",
+     "effect": "Launch seeker from left wing, attack 2x2 (applies Engine Stall) from right wing"
+    }
+   ],
+   "pattern": "The Bruiser will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Dahlia",
+   "hull_text": "14/14",
+   "hull_hardest": null,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": "Bounty-hunting ship that attempts to stall out your engine while pelting you with attacks and missiles.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The GLX Bruiser is a smaller ship whose attacks often apply Engine Stall to pin you in place for follow-up standard and missile attacks.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/GLX_Bruiser"
+  },
+  {
+   "id": "cc.gn_11_gnat_scout",
+   "name": "GN-11 \"Gnat\" Scout",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 5,
+   "shield": 3,
+   "parts": [
+    "Intent sources: cannon, left wing"
+   ],
+   "moves": [
+    {
+     "intent": "attack+buff",
+     "effect": "Attack 2 from cannon; Buff (autododge left) from left wing",
+     "movement": "Move any number of spaces; Aims at player"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack 4 from cannon; This attack permanently goes up by 1 damage each time it is used; This is cumulative and does not reset when the Gnat uses the other action",
+     "movement": "Move any number of spaces; Aims at player"
+    }
+   ],
+   "pattern": "The Gnat will randomly choose between the two following actions each turn.",
+   "passives": [
+    "Intro: The GN-11 \"Gnat\" Scout, or Gnat, is a tiny, evasive ship that makes use of the autododge buff to automatically avoid attacks."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.09",
+   "hull_text": "5/5",
+   "hull_hardest": null,
+   "shield_text": "3/3",
+   "shield_hardest": null,
+   "description": "Tiny, evasive ship that automatically dodges some attacks",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The GN-11 \"Gnat\" Scout, or Gnat, is a tiny, evasive ship that makes use of the autododge buff to automatically avoid attacks.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/GN-11_%22Gnat%22_Scout"
+  },
+  {
+   "id": "cc.grs_49_hopper_scout",
+   "name": "GRS-49 \"Hopper\" Scout",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 10,
+   "shield": 6,
+   "parts": [
+    "Intent sources: left wing, missile bay, right wing"
+   ],
+   "moves": [
+    {
+     "intent": "attack+buff+debuff",
+     "effect": "Attack 3 from left wing, buff (Autododge (Left) 1) from missile bay, attack 1 (applies Engine Stall if it hits) from right wing"
+    },
+    {
+     "intent": "attack+buff",
+     "effect": "Attack 1 from left wing, buff (Autododge (Right) 1) from missile bay, attack 3 from right wing"
+    },
+    {
+     "intent": "attack+missile",
+     "effect": "Attack 3 from left wing, launch Seeker Missile from missile bay, attack 3 from right wing"
+    }
+   ],
+   "pattern": "The Hopper has several attacks with less of a set pattern than many other enemies. The Hopper will always open the battle with the first action below, and then randomly work in the other actions it has access to. The Autododge buff can be either left or right, with a slight preference toward right.",
+   "passives": [
+    "Starts with: Autododge (left) 1",
+    "Intro: The GRS-49 \"Hopper\" Scout, or Hopper, is a tiny, evasive ship that makes heavy use of the Autododge buff in conjunction with Seeker Missiles and the Engine Stall debuff to slowly chip down enemy ships while staying clear of damage itself."
+   ],
+   "movement": "The Hopper will generally move towards the player each turn, trusting its Autododge to get it out of danger.",
+   "hardest": [],
+   "pilot": "X.09",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": "Tiny, evasive ship with plenty of tricks up its sleeve to slip out of the way damage.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The GRS-49 \"Hopper\" Scout, or Hopper, is a tiny, evasive ship that makes heavy use of the Autododge buff in conjunction with Seeker Missiles and the Engine Stall debuff to slowly chip down enemy ships while staying clear of damage itself.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/GRS-49_%22Hopper%22_Scout"
+  },
+  {
+   "id": "cc.ion_ranger",
+   "name": "Ion Ranger",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 20,
+   "shield": 3,
+   "parts": [
+    "Intent sources: left cannon, cockpit, right cannon, right wing",
+    "Trait note: On Hardest difficulty, it also uses a unique method to avoid enemy fire and aim its own shots : every turn, it switches back and forth between its classic \"Spread out\" shape, and a more \"Compact\" shape, where the wings and guns are brought closer to the cockpit, closing the gaps usually left by the empty spaces and making the ship less wide."
+   ],
+   "moves": [
+    {
+     "intent": "attack+shield+move",
+     "effect": "Attack 4 from left cannon; Shield 1 from cockpit; Attack 4 from right cannon; Both of these attacks permanently go up by 1 damage each time this action is used; This is cumulative and does not reset when the Ion Ranger uses the other action; Hardest : Mystery action from right wing; Switches between the \"Spread out\" and \"Compact\" versions of the ship.",
+     "movement": "Move any number of spaces; Aims at player"
+    },
+    {
+     "intent": "attack+debuff+shield+move",
+     "effect": "Attack 2 (applies Engine Lock if it hits) from left cannon; Shield 1 from cockpit; Attack 2 (applies Engine Lock if it hits) from right cannon; Hardest : Mystery action from right wing; Switches between the \"Spread out\" and \"Compact\" versions of the ship.",
+     "movement": "Move any number of spaces; Aims at player"
+    }
+   ],
+   "pattern": "The Ion Ranger will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "The Ion Ranger will always attempt to center on an engine-locked ship in order to hit with both of its powerful cannon attacks.",
+   "hardest": [
+    "On Hardest difficulty, it also uses a unique method to avoid enemy fire and aim its own shots : every turn, it switches back and forth between its classic \"Spread out\" shape, and a more \"Compact\" shape, where the wings and guns are brought closer to the cockpit, closing the gaps usually left by the empty spaces and making the ship less wide.",
+    "Hardest : Mystery action from right wing"
+   ],
+   "pilot": "Lira",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "3/3",
+   "shield_hardest": null,
+   "description": "Bounty hunter ready to fry its targets' engines before laying a beatdown with twin cannons.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Ion Ranger is powerful bounty-hunting ship that attempts to lock down foes' engines before launching several powerful attacks on the now-stationary ships. On Hardest difficulty, it also uses a unique method to avoid enemy fire and aim its own shots : every turn, it switches back and forth between its classic \"Spread out\" shape, and a more \"Compact\" shape, where the wings and guns are brought closer to the cockpit, closing the gaps usually left by the empty spaces and making the ship less wide.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ion_Ranger"
+  },
+  {
+   "id": "cc.lpd_77_monarch_drone_hub",
+   "name": "LPD-77 \"Monarch\" Drone Hub",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 4,
+   "shield": 8,
+   "parts": [
+    "Intent sources: right bay, left missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "drone",
+     "effect": "Release 1 Attack Drone MK2 from right bay",
+     "movement": "Move any number of spaces; Aim at empty space; (does not account for solar wind)"
+    },
+    {
+     "intent": "drone",
+     "effect": "Release 1 Shield Drone from left missile bay; Release 1 Attack Drone MK2 from right bay",
+     "movement": "Move any number of spaces; Aim at empty space; (does not account for solar wind)"
+    }
+   ],
+   "pattern": "The Monarch will always attacks in the order listed below, repeating once it completes each action.",
+   "passives": [
+    "Starts with: Shield drone",
+    "Intro: Every combat, the Monarch will start with one Shield Drone already in the midrow."
+   ],
+   "movement": "",
+   "hardest": [
+    "On Hardest difficulty, two Shield Drones start in the midrow, with an Attack Drone between them."
+   ],
+   "pilot": "X.06",
+   "hull_text": "4/4",
+   "hull_hardest": null,
+   "shield_text": "8/8",
+   "shield_hardest": null,
+   "description": "Smaller ship that produces attack and shield drones to fight",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "LPD-77 \"Monarch\" Drone Hub, or Monarch, is a small ship with a substantial shield that fights and defends via drones released from its missile bays. Every combat, the Monarch will start with one Shield Drone already in the midrow. On Hardest difficulty, two Shield Drones start in the midrow, with an Attack Drone between them.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/LPD-77_%22Monarch%22_Drone_Hub"
+  },
+  {
+   "id": "cc.mecha_riggs",
+   "name": "Mecha Riggs",
+   "category": "boss",
+   "encounter": "alternate_boss",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 25,
+   "shield": 6,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [
+    "Mecha Riggs is a ship with 25 hull and 6 shields (Hardest: 29 hull and 6 shields), piloted by \"Riggs?\"."
+   ],
+   "pilot": "RiggsBoss",
+   "hull_text": "25/25 (Hardest: 29/29)",
+   "hull_hardest": 29,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": "alternate Zone 2 boss added in Patch 1.1",
+   "summary": "Mecha Riggs is a ship with 25 hull and 6 shields (Hardest: 29 hull and 6 shields), piloted by \"Riggs?\".",
+   "patch_notes": [
+    "[Patch 1.1 (2024-06-17)] Introduced"
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Mecha_Riggs"
+  },
+  {
+   "id": "cc.needler",
+   "name": "Needler",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 6,
+   "shield": 16,
+   "parts": [
+    "Intent sources: missile bay, cockpit, cannon"
+   ],
+   "moves": [
+    {
+     "intent": "buff+shield",
+     "effect": "Gain 2 Temp Payback from Missile Bay; Gain 2 Temp Shield from Cockpit",
+     "movement": "Move any number of spaces"
+    },
+    {
+     "intent": "card+attack",
+     "effect": "Give the player a Safety Override from Missile Bay, no matter where they are; Attack 2 from cannon",
+     "movement": "Move any number of spaces; Aims at player"
+    }
+   ],
+   "pattern": "The Needler will always alternate between these two actions, starting with the first one.",
+   "passives": [
+    "Intro: The Needler is a medium-sized ship that provokes the opponent to attack using Safety Overrides, and then uses Temp Payback to punish them."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Spike",
+   "hull_text": "6/6",
+   "hull_hardest": null,
+   "shield_text": "16/16",
+   "shield_hardest": null,
+   "description": "A medium sized-ship that automatically fires back when attacked, intentional or not",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Needler is a medium-sized ship that provokes the opponent to attack using Safety Overrides, and then uses Temp Payback to punish them. It is piloted by a character initially named Spike. Eventually, with Drake in the crew, you'll be able to rename them to either George or Spike Two.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/Needler"
+  },
+  {
+   "id": "cc.none_of_your_business",
+   "name": "None Of Your Business",
+   "category": "event",
+   "encounter": "repair_yard",
+   "area": "Any zone (optional Repair Yard fight: 'Fight me')",
+   "zone": null,
+   "hull": 40,
+   "shield": 10,
+   "parts": [
+    "Intent sources: all cannons, her cockpit"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "On the first and second turn, she will fire for 6 for the cannons closest to her cockpit, 5 for the ones one step further on, 4 for the next, and so on."
+    },
+    {
+     "intent": "attack",
+     "effect": "Her total damage output on these turns is a staggering 42."
+    },
+    {
+     "intent": "missile",
+     "effect": "On the third turn, she will instead, at the start of her turn, launch Seekers Missles from all cannons except her outer cannons and from her cockpit."
+    },
+    {
+     "intent": "missile",
+     "effect": "(She is the only enemy with this behavior - all other enemies that launch Midrow Objects show you an intent before doing so.) In total, 11 missiles will be in the air at once."
+    }
+   ],
+   "pattern": "Before each turn, Cleo will center her ship on yours. On the first and second turn, she will fire for 6 for the cannons closest to her cockpit, 5 for the ones one step further on, 4 for the next, and so on. Her total damage output on these turns is a staggering 42. On the third turn, she will instead, at the start of her turn, launch Seekers Missles from all cannons except her outer cannons and from her cockpit. (She is the only enemy with this behavior - all other enemies that launch Midrow Objects show you an intent before doing so.) In total, 11 missiles will be in the air at once.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Cleo",
+   "hull_text": "40/40",
+   "hull_hardest": null,
+   "shield_text": "10/10",
+   "shield_hardest": null,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "None Of Your Business is a ship with 40 hull and 10 shields, piloted by Cleo. You can fight her by selecting \"Fight Me\" in any Repair Yard once you have 2 previous winning runs.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Any Zone",
+   "url": "https://cobaltcore.wiki.gg/wiki/None_Of_Your_Business"
+  },
+  {
+   "id": "cc.ppa_94_pupa_interceptor",
+   "name": "PPA-94 \"Pupa\" Interceptor",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 11,
+   "shield": 4,
+   "parts": [
+    "Intent sources: left cannon, right cannon, left missile bay"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Attack 2 from left cannon, attack 2 from right cannon"
+    },
+    {
+     "intent": "shield+card",
+     "effect": "Shield 1 from left missile bay, add a Trash card to discard from left cannon, add a Trash card to discard from right cannon, add a Trash card to discard from left missile bay"
+    }
+   ],
+   "pattern": "The Pupa will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.07",
+   "hull_text": "11/11",
+   "hull_hardest": null,
+   "shield_text": "4/4",
+   "shield_hardest": null,
+   "description": "Larger ship that fires off bundles of trash",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The PPA-94 \"Pupa\" Interceptor, or Pupa, is a medium-sized ship that periodically spews out trash in an attempt to bog down your deck with useless cards.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/PPA-94_%22Pupa%22_Interceptor"
+  },
+  {
+   "id": "cc.rail_cannon",
+   "name": "Rail Cannon",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 10,
+   "shield": 0,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [
+    "Intro: Rail Cannon is a ship that starts with 10 hull and 0 shields during its 3 attacking phases, piloted by X.05."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.05",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "0",
+   "shield_hardest": null,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "Rail Cannon is a ship that starts with 10 hull and 0 shields during its 3 attacking phases, piloted by X.05.",
+   "patch_notes": [
+    "[Patch_1.2.4 (2024-10-14)] Nerfed Rail Cannon slightly:",
+    "[Patch_1.2.4 (2024-10-14)] It no longer shoots a Heavy Missile on turn 1",
+    "[Patch_1.2.4 (2024-10-14)] Its Phase 1 attacks are now 2 damage, instead of 1x2 multihits",
+    "[Patch 1.1 Hotfix #3 (2024-06-28)] All multi-hit attacks now cap at 1x2 instead of 1x3",
+    "[Patch 1.1 Hotfix #2 (2024-06-26)] All phases now have 10 hp instead of 11.",
+    "[Patch 1.1 (2024-06-17)] Introduced"
+   ],
+   "wiki_stub": true,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Rail_Cannon"
+  },
+  {
+   "id": "cc.rogue_starnacle",
+   "name": "Rogue Starnacle",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 30,
+   "shield": 0,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Rogue Starnacle",
+   "hull_text": "30/30",
+   "hull_hardest": null,
+   "shield_text": "0",
+   "shield_hardest": null,
+   "description": "An aggressive ship-sized creature hides amongst the asteroid detritus it produces",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "Rogue Starnacle is a ship with 30 hull and 0 shields.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Rogue_Starnacle"
+  },
+  {
+   "id": "cc.rusting_colossus",
+   "name": "Rusting Colossus",
+   "category": "elite",
+   "encounter": "elite",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": null,
+   "shield": 0,
+   "parts": [
+    "Intent sources: left cannon, middle cannon, right cannon"
+   ],
+   "moves": [
+    {
+     "intent": "attack+debuff",
+     "effect": "Attack for 2 from left cannon.; Attack for 2 from middle cannon.; Attack for 4 from right cannon.; Self-inflict 1 Corrosion from left-most wing.",
+     "movement": "Move any number of spaces; Aim at player"
+    }
+   ],
+   "pattern": "The Rusting Colossus does just one thing: line up 3 cannons on your ship for a lot of damage. Its damage scales during the fight.",
+   "passives": [
+    "Starts with: 2 Corrosion",
+    "Intro: The Rusting Colossus rusts itself down over time."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.08",
+   "hull_text": "??/??",
+   "hull_hardest": null,
+   "shield_text": "0/0",
+   "shield_hardest": null,
+   "description": "A dilapidated old wreck rusting itself apart.. but perhaps not quickly enough",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Rusting Colossus rusts itself down over time. But it's looking to take you down with it with powerful, spread out attacks. It is one of two possible Elite encounters in Void's Cradle.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Void's Cradle",
+   "url": "https://cobaltcore.wiki.gg/wiki/Rusting_Colossus"
+  },
+  {
+   "id": "cc.scr_02_scarab_interceptor",
+   "name": "SCR-02 \"Scarab\" Interceptor",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 20,
+   "shield": 5,
+   "parts": [
+    "Intent sources: left missile bay, left cannon, right cannon, right missile bay",
+    "Trait note: The SCR-02 \"Scarab\" Interceptor, or Scarab, is a larger, armored ship that constantly runs temporary shielding while attempting to jam the communications of enemy ships before finishing them off."
+   ],
+   "moves": [
+    {
+     "intent": "shield+attack",
+     "effect": "Temp shield 1 from left missile bay, attack 3 from left cannon, attack 3 from right cannon"
+    },
+    {
+     "intent": "card+shield",
+     "effect": "Comm Jam added to discard pile from left cannon, Comm Jam added to discard pile from right cannon, temp shield 1 from right missile bay"
+    }
+   ],
+   "pattern": "The Scarab will always alternate between the two attacks listed below, starting with the topmost.",
+   "passives": [
+    "Starts with: Armor (missile bay, missile bay)"
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Gemma",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "5/5",
+   "shield_hardest": null,
+   "description": "Defensive ship designed to dismantle enemy comms before taking the upper hand in the confusion that ensues.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The SCR-02 \"Scarab\" Interceptor, or Scarab, is a larger, armored ship that constantly runs temporary shielding while attempting to jam the communications of enemy ships before finishing them off.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Zone 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/SCR-02_%22Scarab%22_Interceptor"
+  },
+  {
+   "id": "cc.spike_jr",
+   "name": "Spike Jr",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 14,
+   "shield": 6,
+   "parts": [
+    "Intent sources: left wing, missile bay, right wing",
+    "Trait note: Spike Jr, piloted by Spike himself, is a wide ship with many empty scaffolds that fires sharp harpoons in an attempt to cause oxygen leaks while harrying with a constant barrage of missiles."
+   ],
+   "moves": [
+    {
+     "intent": "attack+card+missile",
+     "effect": "Attack 1 (adds oxygen Leak card if it hits) from left wing, launch missile/seeker from missile bay, attack 1 (adds oxygen Leak card if it hits) from right wing"
+    }
+   ],
+   "pattern": "Spike Jr has only one attack, which it will execute every turn. Spike Jr launches regular missiles on the first three turns, then seekers every turn afterwards.",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": null,
+   "hull_text": "14/14",
+   "hull_hardest": null,
+   "shield_text": "6/6",
+   "shield_hardest": null,
+   "description": "Attacks with weak but hard-to-dodge attacks that give you Oxygen Leaks, while hitting you with Seeker Missiles.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "Spike Jr, piloted by Spike himself, is a wide ship with many empty scaffolds that fires sharp harpoons in an attempt to cause oxygen leaks while harrying with a constant barrage of missiles.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/Spike_Jr"
+  },
+  {
+   "id": "cc.stg_04_stag_fighter",
+   "name": "STG-04 \"Stag\" Fighter",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 16,
+   "shield": 5,
+   "parts": [
+    "Intent sources: left cannon, central cannon, right cannon, left missile bay",
+    "Trait note: The STG-04 \"Stag\" Fighter, or Stag, is a large, tanky ship with sturdy defenses punctuated by a few specific weak points.",
+    "Trait note: Both of the Stag's missile bays are weak, making them good targets for attacks as the Stag charges its shields."
+   ],
+   "moves": [
+    {
+     "intent": "attack+debuff",
+     "effect": "Attack 1 from left cannon; Attack 3 from central cannon; (Hardest : Inflicts 1 heat); Attack 1 from right cannon",
+     "movement": "Move any number of spaces; Aims at player"
+    },
+    {
+     "intent": "shield+attack+debuff",
+     "effect": "Shield 2 from left missile bay; Attack 2 from central cannon; (Hardest : Inflicts 1 heat)",
+     "movement": "Does not move"
+    }
+   ],
+   "pattern": "The Stag will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [],
+   "movement": "",
+   "hardest": [
+    "(Hardest : Inflicts 1 heat)"
+   ],
+   "pilot": "X.06",
+   "hull_text": "16/16",
+   "hull_hardest": null,
+   "shield_text": "5/5",
+   "shield_hardest": null,
+   "description": "Beefy, larger ship with weak missile bays but ample shielding capabilities",
+   "fixed_first_fight": false,
+   "also_in_events": [
+    "Artifact Smuggling"
+   ],
+   "alt_boss_note": null,
+   "summary": "The STG-04 \"Stag\" Fighter, or Stag, is a large, tanky ship with sturdy defenses punctuated by a few specific weak points. Its effective shielding and wide firing pattern means that it often tries to win battles of attrition. It is also possible to fight the Stag during the Artifact Smuggling event as the negative consequence of choosing to smuggle the artifact.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/STG-04_%22Stag%22_Fighter"
+  },
+  {
+   "id": "cc.the_cannoneer",
+   "name": "The Cannoneer",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 18,
+   "shield": 2,
+   "parts": [
+    "Intent sources: cannon a, cannon b, cannon e, cannon f, cannon c, cannon d",
+    "Trait note: Due to the location of the armor and the big missile launchers, the center of the Cannoneer is the most well-defended."
+   ],
+   "moves": [
+    {
+     "intent": "missile+attack",
+     "effect": "Launch missile from cannon A, attack 2 from cannon B, attack 2 from cannon E, launch missile from cannon F"
+    },
+    {
+     "intent": "missile+attack",
+     "effect": "Launch missile from cannon B, attack 2 from cannon C, attack 2 from cannon D, launch missile from cannon E"
+    },
+    {
+     "intent": "attack+missile",
+     "effect": "Attack 2 from cannon A, launch big missile from cannon C, launch big missile from cannon D, attack 2 from cannon F"
+    }
+   ],
+   "pattern": "The Cannoneer will always attack in the order listed below, repeating once it completes each action. Attack origins are listed as if the Cannoneer's six cannons are labeled A-F from left to right.",
+   "passives": [
+    "Starts with: Armor (cockpit)"
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Snute",
+   "hull_text": "18/18",
+   "hull_hardest": null,
+   "shield_text": "2/2",
+   "shield_hardest": null,
+   "description": "Larger ship that fires of a constant barrage of attacks and missiles.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Cannoneer, piloted by Snute, is a large ship with six cannons designed to fire off a consistent stream of missiles and regular attacks.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Cannoneer"
+  },
+  {
+   "id": "cc.the_chariot",
+   "name": "The Chariot",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 12,
+   "shield": 8,
+   "parts": [
+    "Intent sources: left missile bay, cockpit, right missile bay, cannon"
+   ],
+   "moves": [
+    {
+     "intent": "missile+buff",
+     "effect": "Launch big missile from left missile bay, buff (powerdrive 1) from cockpit, launch big missile from right missile bay"
+    },
+    {
+     "intent": "attack",
+     "effect": "Attack 3 from cannon"
+    }
+   ],
+   "pattern": "The Chariot will always attack in the order listed below, repeating once it completes each action. Attacks do not account for any Powerdrive the Chariot may have accumulated beyond the first. The missiles launched by the Chariot are always big missiles, although they cosmetically resemble flying swords.",
+   "passives": [
+    "Starts with: Armor (shield)",
+    "Intro: Before each battle, Sir Ratzo will offer a \"battle of honor\" in which he and your crew agree to not target each others' weak points (any weak or brittle sections, such as The Chariot's cockpit).",
+    "Intro: If Drake is in the party, she will sometimes automatically reject his offer.",
+    "Intro: If taken up on this offer, he will leave the battle after his hull is dropped to 4 or less by an attack (you will still get a card reward).",
+    "Intro: If his offer is not accepted or he is \"betrayed,\" he will fight to the death.",
+    "Intro: Upon being \"betrayed\", he gains 1 Powerdrive, and will always aim for a Weak or Brittle spot on your ship from that point forward."
+   ],
+   "movement": "",
+   "hardest": [],
+   "pilot": "Sir Ratzo",
+   "hull_text": "12/12",
+   "hull_hardest": null,
+   "shield_text": "8/8",
+   "shield_hardest": null,
+   "description": "Ship with an honorable pilot that might be convinced to leave after a fair duel.",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Chariot, piloted by Sir Ratzo, is a medium-sized ship that slowly powers up with the Powerdrive buff while firing powerful, sword-shaped missiles. Before each battle, Sir Ratzo will offer a \"battle of honor\" in which he and your crew agree to not target each others' weak points (any weak or brittle sections, such as The Chariot's cockpit). If Drake is in the party, she will sometimes automatically reject his offer. If taken up on this offer, he will leave the battle after his hull is dropped to 4 or less by an attack (you will still get a card reward). If his offer is not accepted or he is \"betrayed,\" he will fight to the death. Upon being \"betrayed\", he gains 1 Powerdrive, and will always aim for a Weak or Brittle spot on your ship from that point forward.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Chariot"
+  },
+  {
+   "id": "cc.the_cobalt",
+   "name": "The Cobalt",
+   "category": "boss",
+   "encounter": "boss",
+   "area": "Zone 3: Void's Cradle",
+   "zone": 3,
+   "hull": 45,
+   "shield": 15,
+   "parts": [
+    "Width: 11 tiles",
+    "Trait note: Starting from the middle ship part and going outwards, The Cobalt is comprised of a middle cannon which deals the most damage and is weak, then two armored, concussable cannons, then two empty scaffolds, two missile bays, two more cannons, and then two wings which also fire like cannons."
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Turn 1 attack: (shown only as an image on the wiki)"
+    },
+    {
+     "intent": "attack",
+     "effect": "Turn 2 attack: (shown only as an image on the wiki)"
+    },
+    {
+     "intent": "attack",
+     "effect": "Turn 3 attack: (shown only as an image on the wiki)"
+    },
+    {
+     "intent": "card+attack",
+     "effect": "The cards The Cobalt gives the player on its turn 2 attack is Trash."
+    }
+   ],
+   "pattern": "The Cobalt cycles between three attacks, pictured below. The attacks are the same on all difficulties. Turn 1 attack: (image) Turn 2 attack: (image) Turn 3 attack: (image) The cards The Cobalt gives the player on its turn 2 attack is Trash. After turn 3, the attack cycle repeats.",
+   "passives": [],
+   "movement": "The Cobalt moves 3 tiles in the same direction every turn. It either moves 3 tiles in the direction of the center of the player's ship, or if the player is perfectly adjacent to The Cobalt, it moves 3 tiles to the right. The Cobalt never squares up, which means high evasion by the player is an excellent strategy in this fight.",
+   "hardest": [],
+   "pilot": "Crystal",
+   "hull_text": "45/45",
+   "hull_hardest": null,
+   "shield_text": "15/15",
+   "shield_hardest": null,
+   "description": "The ship you've been working on for the past few months, now gone rogue",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Cobalt is the final boss, the boss of Zone 3. The Cobalt is 11 tiles wide, with 45 hull and 15 shield. The Cobalt is completely identical on all four difficulties. Starting from the middle ship part and going outwards, The Cobalt is comprised of a middle cannon which deals the most damage and is weak, then two armored, concussable cannons, then two empty scaffolds, two missile bays, two more cannons, and then two wings which also fire like cannons.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "???",
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Cobalt"
+  },
+  {
+   "id": "cc.the_dreadnought",
+   "name": "The Dreadnought",
+   "category": "boss",
+   "encounter": "boss",
+   "area": "Zone 2: Sapphire Cluster",
+   "zone": 2,
+   "hull": 20,
+   "shield": 12,
+   "parts": [
+    "Width: 12 tiles",
+    "Trait note: Its left missile bay is Weak, while its right two missile bays are Concussable."
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "The Dreadnought attacks for 7 total damage spread between its 5 cannons every turn."
+    },
+    {
+     "intent": "shield",
+     "effect": "On odd numbered turns, it gains 3 temp shield."
+    },
+    {
+     "intent": "missile",
+     "effect": "On even numbered turns, it launches 3 missiles."
+    }
+   ],
+   "pattern": "The Dreadnought attacks for 7 total damage spread between its 5 cannons every turn. On odd numbered turns, it gains 3 temp shield. On even numbered turns, it launches 3 missiles.",
+   "passives": [],
+   "movement": "The Dreadnought moves 2 tiles in the same direction per turn. It moves in the direction of where the center of your ship was at the end of its turn, or if your ship was perfectly adjacent, it moves two tiles to the right. If you end your turn with none of your ship parts adjacent to The Dreadnought, it will warn the player. On any subsequent turns where your ship has no adjacent parts to the Dreadnought, it will square up at the end of its turn and gain overheat equal to the number of tiles it moved. It will fire for 1 more damage from each cannon on the turn after it does this.",
+   "hardest": [
+    "The Dreadnought is 12 tiles wide, with 20 hull and 12 shield on Normal, Hard, and Harder, and 24 hull and 12 shield on Hardest."
+   ],
+   "pilot": "RiggsBoss",
+   "hull_text": "20/20",
+   "hull_hardest": null,
+   "shield_text": "12/12",
+   "shield_hardest": null,
+   "description": "A massive warship piloted by a.. familiar face?",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Dreadnought is the boss of Zone 2. The Dreadnought is 12 tiles wide, with 20 hull and 12 shield on Normal, Hard, and Harder, and 24 hull and 12 shield on Hardest. It has three missile bays and 5 cannons. Its left missile bay is Weak, while its right two missile bays are Concussable.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "infobox_zone": "Sapphire Cluster",
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Dreadnought"
+  },
+  {
+   "id": "cc.the_tower",
+   "name": "The Tower",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 10,
+   "shield": 5,
+   "parts": [
+    "1. Cockpit",
+    "2. Scaffolding (Empty)",
+    "3. Central Wing",
+    "4. Cannon",
+    "5. Right Wing"
+   ],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "Cannon: Attack for 2 damage",
+     "movement": "Move any number of spaces; Aims at player with cannon"
+    },
+    {
+     "intent": "debuff+card",
+     "effect": "Cockpit: Inflict Character is Missing on a random character; Central Wing: Add a Miasma card to the discard pile (Hardest: adds Miasma A instead); Right Wing: Add a Toxic card to the discard pile",
+     "movement": "Move any number of spaces; \"Aims\" at player with central wing"
+    }
+   ],
+   "pattern": "The Tower will always attack in the order listed below, repeating once it completes each action.",
+   "passives": [
+    "Modifiers: If the player has played at least 3 runs and has at least 1 win, there is a chance for an environmental modifier to appear during this fight. Specifically: 25% chance for no modifier.; 25% chance for a Solar Flare (only if you have 4 or more hull).; 25% chance for an Asteroid Field, with a fill rate of 15%.; 25% chance for Solar Wind, with a strength of 1 to the right.",
+    "Environment: However, if a Solar Flare occurs, this fight becomes much more dangerous.",
+    "Intro: Battles against The Tower will occasionally start with some dialogue, particularly if certain characters are a part of the crew."
+   ],
+   "movement": "",
+   "hardest": [
+    "Central Wing: Add a Miasma card to the discard pile (Hardest: adds Miasma A instead)"
+   ],
+   "pilot": "Wizbo",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "5/5",
+   "shield_hardest": null,
+   "description": "Medium ship piloted by a wizard who casts spells that cause malfunctions",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "The Tower, piloted by the wizard Wizbo, is a medium-sized ship with 10 hull and 5 shields. It attempts to deal steady damage while interfering with your ship's normal functions via a series of status effects and Trash. Battles against The Tower will occasionally start with some dialogue, particularly if certain characters are a part of the crew.",
+   "patch_notes": [
+    "[Patch 1.1.1 Balance Changes Test (2024-07-10)] Wizbo can no longer have Solar Flare as a fight modifier if you start the fight with 3 or less hull 🧙‍♂️ 🔥"
+   ],
+   "wiki_stub": false,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Tower"
+  },
+  {
+   "id": "cc.wsp_55_stinger_drone",
+   "name": "WSP-55 \"Stinger\" Drone",
+   "category": "normal",
+   "encounter": "common",
+   "area": "Zone 1: Lazuli Nebula",
+   "zone": 1,
+   "hull": 10,
+   "shield": 0,
+   "parts": [],
+   "moves": [],
+   "pattern": "",
+   "passives": [],
+   "movement": "",
+   "hardest": [],
+   "pilot": "X.07",
+   "hull_text": "10/10",
+   "hull_hardest": null,
+   "shield_text": "0",
+   "shield_hardest": null,
+   "description": "Small ship that pesters the player with constant shots and missiles",
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "alt_boss_note": null,
+   "summary": "WSP-55 \"Stinger\" is a ship with 10 hull and 0 shields, piloted by X.07.",
+   "patch_notes": [],
+   "wiki_stub": true,
+   "infobox_zone": "Lazuli Nebula",
+   "url": "https://cobaltcore.wiki.gg/wiki/WSP-55_%22Stinger%22_Drone"
+  },
+  {
+   "id": "cc.finale_phase_1_dizzy",
+   "name": "Finale phase 1: G72 Artemis? (Dizzy)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 1,
+   "hull_text": "1/1",
+   "shield": 3,
+   "shield_text": "3/3",
+   "pilot": "Dizzy",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "In this phase, the Artemis? shoots a laser from its central cannon, and it centers on one of the Cobalt's wings each turn."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: Defeating it adds Block Shot A to the deck.",
+    "Finale rule: The Finale is a special battle, accessible from the Memories screen after recovering all 18 Memories, in which CAT pilots The Cobalt to save her friends and end the loops.",
+    "Finale rule: It is deliberately tilted in the player's favor, and if you do manage to lose (such as by deliberately skipping turns) you will instantly restart.",
+    "Finale rule: Completing the Finale plays the credits.",
+    "Finale rule: Completing it for the first time unlocks CAT for normal play."
+   ],
+   "hardest": [],
+   "summary": "In this phase, the Artemis? shoots a laser from its central cannon, and it centers on one of the Cobalt's wings each turn. Defeating it adds Block Shot A to the deck.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_1%3A_Dizzy"
+  },
+  {
+   "id": "cc.finale_phase_2_riggs",
+   "name": "Finale phase 2: G72 Artemis? (Riggs)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 2,
+   "hull_text": "3/2",
+   "shield": 3,
+   "shield_text": "3/3",
+   "pilot": "Riggs",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "buff",
+     "effect": "In this phase, the Artemis? grants itself 3 stacks of Autododge (Right) at the beginning of each turn, which can be handily burned by the Cobalt's four cannons, especially since it actively tries to stay on the left."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: Defeating it adds Evasive Shot A to the deck."
+   ],
+   "hardest": [],
+   "summary": "In this phase, the Artemis? grants itself 3 stacks of Autododge (Right) at the beginning of each turn, which can be handily burned by the Cobalt's four cannons, especially since it actively tries to stay on the left. Defeating it adds Evasive Shot A to the deck.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_2%3A_Riggs"
+  },
+  {
+   "id": "cc.finale_phase_3_peri",
+   "name": "Finale phase 3: A-686 \"Ares\"? (Peri)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 6,
+   "hull_text": "6/6",
+   "shield": 2,
+   "shield_text": "2/2",
+   "pilot": "Peri",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "The Ares? shoots 1x3 times from each of its two armored cannons."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: Defeating it adds Multi Shot A."
+   ],
+   "hardest": [],
+   "summary": "The Ares? shoots 1x3 times from each of its two armored cannons. Defeating it adds Multi Shot A.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_3%3A_Peri"
+  },
+  {
+   "id": "cc.finale_phase_4_isaac",
+   "name": "Finale phase 4: JP-87-95 \"Jupiter\"? (Isaac)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 12,
+   "hull_text": "1/12",
+   "shield": 6,
+   "shield_text": "6/6",
+   "pilot": "Isaac",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack+drone+heal",
+     "effect": "The Jupiter?'s first action is to fire and destroy 6 Repair Kits, recovering to full health instantly."
+    },
+    {
+     "intent": "attack+drone",
+     "effect": "It fires 3 Attack Drone MK II each turn, and adds Attack Drone A."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [],
+   "hardest": [],
+   "summary": "The Jupiter?'s first action is to fire and destroy 6 Repair Kits, recovering to full health instantly. It fires 3 Attack Drone MK II each turn, and adds Attack Drone A.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_4%3A_Isaac"
+  },
+  {
+   "id": "cc.finale_phase_5_drake",
+   "name": "Finale phase 5: Fireball? (Drake)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 15,
+   "hull_text": "15/15",
+   "shield": null,
+   "shield_text": null,
+   "pilot": "Drake",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "The Fireball? has fires 2 shots each turn, which add 3 Heat if they connect."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: It adds EMP Slug A."
+   ],
+   "hardest": [],
+   "summary": "The Fireball? has fires 2 shots each turn, which add 3 Heat if they connect. It adds EMP Slug A.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_5%3A_Drake"
+  },
+  {
+   "id": "cc.finale_phase_6_max",
+   "name": "Finale phase 6: The Tiderunner? (Max)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 6,
+   "hull_text": "6/6",
+   "shield": 7,
+   "shield_text": "7/7",
+   "pilot": "Max",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack+move",
+     "effect": "In this phase, the Tiderunner? shoots 1x2 times from its only cannon, then moves 2 in a random direction."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: It adds Shuffle Shot A."
+   ],
+   "hardest": [],
+   "summary": "In this phase, the Tiderunner? shoots 1x2 times from its only cannon, then moves 2 in a random direction. It adds Shuffle Shot A.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_6%3A_Max"
+  },
+  {
+   "id": "cc.finale_phase_7_books",
+   "name": "Finale phase 7: The Tiderunner? (Books)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 6,
+   "hull_text": "6/6",
+   "shield": 7,
+   "shield_text": "7/7",
+   "pilot": "Books",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack+drone",
+     "effect": "In this phase, the Tiderunner shoots 2x2 shots from its only cannon and fires 3 Geodes, one of which is Bubbled."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: It does not add a card to the deck."
+   ],
+   "hardest": [],
+   "summary": "In this phase, the Tiderunner shoots 2x2 shots from its only cannon and fires 3 Geodes, one of which is Bubbled. It does not add a card to the deck.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_7%3A_Books"
+  },
+  {
+   "id": "cc.finale_phase_8_riggs",
+   "name": "Finale phase 8: The Dreadnought? (Riggs?)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 24,
+   "hull_text": "24/24",
+   "shield": 12,
+   "shield_text": "12/12",
+   "pilot": "Riggs?",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack+missile",
+     "effect": "The Dreadnought? has fires 1-2 damage shots from its five cannons, and missiles from its three missile bays."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [
+    "Defeat reward: It adds Missile Swarm A."
+   ],
+   "hardest": [],
+   "summary": "The Dreadnought? has fires 1-2 damage shots from its five cannons, and missiles from its three missile bays. It adds Missile Swarm A.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_8%3A_Riggs%3F"
+  },
+  {
+   "id": "cc.finale_phase_9",
+   "name": "Finale phase 9: ??? (???)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 40,
+   "hull_text": "40/40",
+   "shield": null,
+   "shield_text": null,
+   "pilot": "???",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "attack",
+     "effect": "It fires 3-damage shots from its four cannons."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [],
+   "hardest": [],
+   "summary": "This ship has 40 Hull. It fires 3-damage shots from its four cannons.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_9%3A_%3F%3F%3F"
+  },
+  {
+   "id": "cc.finale_phase_10_the_boundary",
+   "name": "Finale phase 10: ??? (The Boundary)",
+   "category": "event",
+   "encounter": "finale",
+   "area": "Finale (scripted story battle)",
+   "zone": null,
+   "hull": 36,
+   "hull_text": "36/36",
+   "shield": null,
+   "shield_text": null,
+   "pilot": "???",
+   "parts": [],
+   "moves": [
+    {
+     "intent": "buff",
+     "effect": "Its cannons take up the entire screen, and its first action is to give itself 8 Overdrive."
+    },
+    {
+     "intent": "attack",
+     "effect": "This would definitely kill you instantly, but CAT counters this attack with the power of friendship: drawing one card of every color, and then Prism, dealing 9 damage per cannon for a guaranteed OHKO."
+    }
+   ],
+   "pattern": "Scripted single behaviour per phase (see moves).",
+   "movement": "",
+   "passives": [],
+   "hardest": [],
+   "summary": "This ship(?) has 36 Hull. Its cannons take up the entire screen, and its first action is to give itself 8 Overdrive. This would definitely kill you instantly, but CAT counters this attack with the power of friendship: drawing one card of every color, and then Prism, dealing 9 damage per cannon for a guaranteed OHKO. You are forced to use Prism; only 1 Energy is available in this phase, all other cards cost more, and the End Turn button is disabled.",
+   "patch_notes": [],
+   "wiki_stub": false,
+   "description": null,
+   "fixed_first_fight": false,
+   "also_in_events": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Finale#Phase_10%3A_The_Boundary"
+  }
+ ]
+}

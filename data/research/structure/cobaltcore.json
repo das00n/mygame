@@ -1,0 +1,2004 @@
+{
+ "game": "Cobalt Core",
+ "source": "https://cobaltcore.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "Game structure for mechanic analysis. artifacts = the wiki's master table on the 'Artifact' page; owner is crew / ship / common / boss / special (owner_name = crew member or ship; 'boss' = generic boss artifact, crew- or ship-specific boss artifacts keep owner crew/ship with rarity 'Boss'; 'special' = Hardmode, event, Cleo and Finale artifacts). events = the Events page table (zones, prerequisites) + each event page's Options list, plus the special Boot Sequence. ships = pages using Template:Ship. rules = sentences and lists lifted from Locations, Common Enemy/Elite/Boss, Repair Yard, Hardmode, Hull, Boot Sequence, Characters, Starting Deck, Achievements, Mechanics, Ship Parts, Finale and Patch 1.1/1.2; gaps are listed where the wiki is silent (node counts, memory unlock rules).",
+ "completeness": {
+  "artifacts_master_table": 93,
+  "artifact_template_pages": 93,
+  "artifact_category_pages": 93,
+  "artifacts_by_owner": {
+   "common": 25,
+   "ship": 13,
+   "special": 4,
+   "boss": 6,
+   "crew": 45
+  },
+  "artifacts_by_rarity": {
+   "Starter": 9,
+   "Boss": 25,
+   "Common": 58,
+   "???": 1
+  },
+  "artifacts_by_owner_name": {
+   "Artemis": 2,
+   "Ares": 3,
+   "Jupiter": 3,
+   "Gemini": 2,
+   "Tiderunner": 3,
+   "Hard difficulty": 1,
+   "Dizzy": 6,
+   "Riggs": 5,
+   "Peri": 5,
+   "Isaac": 6,
+   "Drake": 6,
+   "Max": 7,
+   "Books": 6,
+   "CAT": 4,
+   "event: Garbage Girl Repairs": 1,
+   "Defeat Cleo": 1,
+   "The Finale": 1
+  },
+  "events_table_rows": 22,
+  "events_category_pages": 21,
+  "player_ships": 5,
+  "discrepancies": [
+   "Main Page blurb says '80 artifacts' but the master table has 93 (stale blurb, Patch 1.0.6 / 1.1 added artifacts)",
+   "in Events table but not in Category:Events: ['Garbage Girl Repairs'] (page lacks the category tag)",
+   "Events page: Codex counts 23 events, 22 unique (Fake Distress Signal has a Drake variant); table rows = 22"
+  ],
+  "parse_problems": []
+ },
+ "artifacts": [
+  {
+   "name": "Warp Prep",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Starter",
+   "requirement": "-",
+   "effect": "Gain 1 Shield and 1 Evade on the first turn.",
+   "short_effect": "Gain 1 Shield and 1 Evade on the first turn.",
+   "url": "https://cobaltcore.wiki.gg/wiki/Warp_Prep"
+  },
+  {
+   "name": "Cargo Hold",
+   "owner": "ship",
+   "owner_name": "Artemis",
+   "rarity": "Starter",
+   "requirement": "Ship: Artemis",
+   "effect": "All artifact map nodes offer 1 more option.",
+   "short_effect": "+1 option at artifact nodes",
+   "url": "https://cobaltcore.wiki.gg/wiki/Cargo_Hold"
+  },
+  {
+   "name": "Hunter Wings",
+   "owner": "ship",
+   "owner_name": "Artemis",
+   "rarity": "Boss",
+   "requirement": "Ship: Artemis",
+   "effect": "(Artemis-exclusive artifact!) If you end your turn with more than 0 Energy, your wings will retract and become Empty until your next turn starts.",
+   "short_effect": "Wings Empty if 1+ Energy at end of turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Hunter_Wings"
+  },
+  {
+   "name": "Ares Cannon",
+   "owner": "ship",
+   "owner_name": "Ares",
+   "rarity": "Starter",
+   "requirement": "Ship: Ares",
+   "effect": "Your inactive cannon is Armored. At the start of your turn, if you don't have a Toggle Cannon in your hand, gain one.",
+   "short_effect": "Get Toggle Cannon each turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ares_Cannon"
+  },
+  {
+   "name": "Control Rods",
+   "owner": "ship",
+   "owner_name": "Ares",
+   "rarity": "Starter",
+   "requirement": "Ship: Ares",
+   "effect": "Draw 1 less card each turn.",
+   "short_effect": "Draw 1 less each turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Control_Rods"
+  },
+  {
+   "name": "Ares Cannon V2",
+   "owner": "ship",
+   "owner_name": "Ares",
+   "rarity": "Boss",
+   "requirement": "Artifact: Ares Cannon",
+   "effect": "Replaces Ares Cannon. Your inactive cannon is Armored. At the start of your turn, if you don't have a War Mode in your hand, gain one.",
+   "short_effect": "Get War Mode each turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ares_Cannon_V2"
+  },
+  {
+   "name": "Jupiter Drone Hub",
+   "owner": "ship",
+   "owner_name": "Jupiter",
+   "rarity": "Starter",
+   "requirement": "Ship: Jupiter",
+   "effect": "At the start of combat, gain a Jupiter's Moons.",
+   "short_effect": "Start combat with Jupiter's Moons",
+   "url": "https://cobaltcore.wiki.gg/wiki/Jupiter_Drone_Hub"
+  },
+  {
+   "name": "Radar Subwoofer",
+   "owner": "ship",
+   "owner_name": "Jupiter",
+   "rarity": "Common",
+   "requirement": "Ship: Jupiter",
+   "effect": "(Jupiter-exclusive artifact!) Jupiter drones do 1 more damage when directly in front of your Comms.",
+   "short_effect": "Jupiter Drones in front of Comms get +1 attack",
+   "url": "https://cobaltcore.wiki.gg/wiki/Radar_Subwoofer"
+  },
+  {
+   "name": "Jupiter Drone Hub Booster",
+   "owner": "ship",
+   "owner_name": "Jupiter",
+   "rarity": "Boss",
+   "requirement": "Artifact: Jupiter Drone Hub",
+   "effect": "Gain 1 energy every time you launch a Jupiter Drone while there were no Jupiter Drones already in the midrow.",
+   "short_effect": "+1 Energy on Jupiter Drone when none exist",
+   "url": "https://cobaltcore.wiki.gg/wiki/Jupiter_Drone_Hub_Booster"
+  },
+  {
+   "name": "Gemini Core",
+   "owner": "ship",
+   "owner_name": "Gemini",
+   "rarity": "Starter",
+   "requirement": "Ship: Gemini",
+   "effect": "After you play a card, toggle both your active Cannon and Missile Bay.",
+   "short_effect": "Toggle active Cannon, Missile Bay each card play",
+   "url": "https://cobaltcore.wiki.gg/wiki/Gemini_Core"
+  },
+  {
+   "name": "Gemini Core Booster",
+   "owner": "ship",
+   "owner_name": "Gemini",
+   "rarity": "Boss",
+   "requirement": "Artifact: Gemini Core",
+   "effect": "Requires Gemini Core. Your left cannon does +1 damage. Your right cannon stuns, but does -1 damage.",
+   "short_effect": "+1 dmg. to left Cannon, -1 dmg, stun to right Cannon",
+   "url": "https://cobaltcore.wiki.gg/wiki/Gemini_Core_Booster"
+  },
+  {
+   "name": "Tide Runner",
+   "owner": "ship",
+   "owner_name": "Tiderunner",
+   "rarity": "Starter",
+   "requirement": "Ship: Tiderunner",
+   "effect": "Immediately after you play the leftmost/rightmost card in your hand, move left/right 1.",
+   "short_effect": "Play leftmost/rightmost card: move left/right 1",
+   "url": "https://cobaltcore.wiki.gg/wiki/Tide_Runner"
+  },
+  {
+   "name": "Mooring Line",
+   "owner": "ship",
+   "owner_name": "Tiderunner",
+   "rarity": "Starter",
+   "requirement": "Ship: Tiderunner",
+   "effect": "At the start of each combat, add an Anchor to your draw pile.",
+   "short_effect": "Add Anchor to deck at start of combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Mooring_Line"
+  },
+  {
+   "name": "Mooring Line V2",
+   "owner": "ship",
+   "owner_name": "Tiderunner",
+   "rarity": "Boss",
+   "requirement": "Artifact: Mooring Line",
+   "effect": "At the beginning of combat, add an Anchor A to your deck.",
+   "short_effect": "Add Anchor A to deck at start of combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Mooring_Line_V2"
+  },
+  {
+   "name": "Hardmode",
+   "owner": "special",
+   "owner_name": "Hard difficulty",
+   "rarity": "Starter",
+   "requirement": "Hard difficulty",
+   "effect": "Varies based on difficulty chosen",
+   "short_effect": "Varies",
+   "url": "https://cobaltcore.wiki.gg/wiki/Hardmode"
+  },
+  {
+   "name": "Nanofiber Hull",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Heal 1 after each combat.",
+   "short_effect": "Heal 1 after each combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Nanofiber_Hull"
+  },
+  {
+   "name": "Overcharger",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Every 4th turn, gain 1 Overdrive.",
+   "short_effect": "Gain 1 Overdrive every 4 turns",
+   "url": "https://cobaltcore.wiki.gg/wiki/Overcharger"
+  },
+  {
+   "name": "Crosslink",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Every 5th time you attack, gain 1 Evade.",
+   "short_effect": "Gain 1 Evade every 5 attacks",
+   "url": "https://cobaltcore.wiki.gg/wiki/Crosslink"
+  },
+  {
+   "name": "Shield Memory",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Your Shield lasts between combats.",
+   "short_effect": "Shield carries over between combats",
+   "url": "https://cobaltcore.wiki.gg/wiki/Shield_Memory"
+  },
+  {
+   "name": "Jumper Cables",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "At the start of each combat, gain Temp Shield equal to your missing hull.",
+   "short_effect": "Start of combat: gain Temp Shield = missing hull",
+   "url": "https://cobaltcore.wiki.gg/wiki/Jumper_Cables"
+  },
+  {
+   "name": "Hull Plating",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Permanently gain +3 max hull and heal 3 on pickup.",
+   "short_effect": "Gain 3 max hull on pickup",
+   "url": "https://cobaltcore.wiki.gg/wiki/Hull_Plating"
+  },
+  {
+   "name": "Armored Bay",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "On pickup, your missile bay gains Armored.",
+   "short_effect": "Missile Bay is Armored",
+   "url": "https://cobaltcore.wiki.gg/wiki/Armored_Bay"
+  },
+  {
+   "name": "Recalibrator",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Draw a card every time you miss a shot.",
+   "short_effect": "When you miss, draw 1",
+   "url": "https://cobaltcore.wiki.gg/wiki/Recalibrator"
+  },
+  {
+   "name": "Grazer Beam",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Every time an attack misses the enemy by exactly 1 space, the enemy takes 1 damage.",
+   "short_effect": "Miss by 1: deal 1 damage",
+   "url": "https://cobaltcore.wiki.gg/wiki/Grazer_Beam"
+  },
+  {
+   "name": "Jet Thrusters",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Gain 2 Evade on the first turn.",
+   "short_effect": "Gain 2 Evade at start of combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Jet_Thrusters"
+  },
+  {
+   "name": "Prepped Batteries",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Gain 1 extra Energy on the first turn.",
+   "short_effect": "Gain 1 Energy on the first turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Prepped_Batteries"
+  },
+  {
+   "name": "Energy Refund",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Gain 1 Energy every time you spend 3+ energy playing a card.",
+   "short_effect": "Gain 1 Energy when playing 3+ Energy card",
+   "url": "https://cobaltcore.wiki.gg/wiki/Energy_Refund"
+  },
+  {
+   "name": "Overclocked Generator",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Gain 1 Energy every third turn.",
+   "short_effect": "Gain 1 Energy every 3 turns",
+   "url": "https://cobaltcore.wiki.gg/wiki/Overclocked_Generator"
+  },
+  {
+   "name": "Cockpit Lock-On",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "All enemy cockpits start with Weak.",
+   "short_effect": "Enemy Cockpits gain Weak",
+   "url": "https://cobaltcore.wiki.gg/wiki/Cockpit_Lock-On"
+  },
+  {
+   "name": "Stun Calibrator",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "After your first attack each turn, gain 1 Stun Charge.",
+   "short_effect": "Stun Charge gained on first attack each turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Stun_Calibrator"
+  },
+  {
+   "name": "Ion Converter",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "If you end your turn with more than 0 Energy, gain 1 Shield.",
+   "short_effect": "End of turn: if 1+ Energy left, +1 Shield",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ion_Converter"
+  },
+  {
+   "name": "Fracture Detection",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "1 random enemy part is made Brittle at the start of the fight. The part is not marked as Brittle until it is damaged.",
+   "short_effect": "Random enemy Ship Part is secretly Brittle",
+   "url": "https://cobaltcore.wiki.gg/wiki/Fracture_Detection"
+  },
+  {
+   "name": "Ricochet Paddle",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "When you shoot an incoming missile, turn it around instead of destroying it.",
+   "short_effect": "Incoming hit Missiles flipped, not destroyed",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ricochet_Paddle"
+  },
+  {
+   "name": "Adaptive Plating",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Gain +1 max hull and heal 1 every time you defeat a boss or elite.",
+   "short_effect": "+1 max hull after Elites, Bosses",
+   "url": "https://cobaltcore.wiki.gg/wiki/Adaptive_Plating"
+  },
+  {
+   "name": "Piercer",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Your first attack each turn Pierces.",
+   "short_effect": "First attack each turn pierces",
+   "url": "https://cobaltcore.wiki.gg/wiki/Piercer"
+  },
+  {
+   "name": "Heal Booster",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Every time you heal, heal 1 more.",
+   "short_effect": "When you heal, heal 1 more",
+   "url": "https://cobaltcore.wiki.gg/wiki/Heal_Booster"
+  },
+  {
+   "name": "Jettison Hatch",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "You may remove 2 cards at repair yards.",
+   "short_effect": "Can remove 2 cards at Repair Yards",
+   "url": "https://cobaltcore.wiki.gg/wiki/Jettison_Hatch"
+  },
+  {
+   "name": "Sharp Edges",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Every time your discard pile is shuffled back into your draw pile, the enemy loses 1 hull. Caps at 3 damage per turn.",
+   "short_effect": "When discard shuffled to draw pile, deal 1 damage",
+   "url": "https://cobaltcore.wiki.gg/wiki/Sharp_Edges"
+  },
+  {
+   "name": "Chaff Emitters",
+   "owner": "common",
+   "owner_name": null,
+   "rarity": "Common",
+   "requirement": "-",
+   "effect": "Seeker missiles and other homing missiles can't see you if you're 2 or more spaces away from them.",
+   "short_effect": "Seeker missiles and other homing missiles can't see you if you're 2 or more spaces away from them.",
+   "url": "https://cobaltcore.wiki.gg/wiki/Chaff_Emitters"
+  },
+  {
+   "name": "Glass Cannon",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "-",
+   "effect": "Gain 1 extra Energy every turn. Your ship's cannons become Weak at the start of combat.",
+   "short_effect": "1 Energy/turn, Weak Cannons",
+   "url": "https://cobaltcore.wiki.gg/wiki/Glass_Cannon"
+  },
+  {
+   "name": "Simplicity",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "-",
+   "effect": "On pickup, remove 3 cards.",
+   "short_effect": "Remove 3 cards",
+   "url": "https://cobaltcore.wiki.gg/wiki/Simplicity"
+  },
+  {
+   "name": "Dirty Engines",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "-",
+   "effect": "Gain 1 extra Energy every turn. Add a Trash to your draw pile every 2 turns.",
+   "short_effect": "1 Energy/turn, Add Trash every 2 turns",
+   "url": "https://cobaltcore.wiki.gg/wiki/Dirty_Engines"
+  },
+  {
+   "name": "Genesis",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "-",
+   "effect": "Gain 1 of 2 common artifacts, then gain 1 of 2 common artifacts, then gain 1 of 2 common artifacts. Add 3 Genesis Canisters to your deck.",
+   "short_effect": "Gain 1 of 2 artifacts (3x), 3x Genesis Canister",
+   "url": "https://cobaltcore.wiki.gg/wiki/Genesis"
+  },
+  {
+   "name": "Hi Freq Intercom",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "-",
+   "effect": "Draw +2 cards every turn. You are offered 1 less card in post-battle card rewards. You may no longer skip any card rewards.",
+   "short_effect": "+2 cards/turn, 1 fewer card in rewards, can't skip",
+   "url": "https://cobaltcore.wiki.gg/wiki/Hi_Freq_Intercom"
+  },
+  {
+   "name": "Warp Mastery",
+   "owner": "boss",
+   "owner_name": null,
+   "rarity": "Boss",
+   "requirement": "Artifact: Warp Prep",
+   "effect": "Replaces Warp Prep. Gain 3 Shield and 3 Evade on the first turn.",
+   "short_effect": "Gain 3 Shield and 3 Evade on the first turn.",
+   "url": "https://cobaltcore.wiki.gg/wiki/Warp_Mastery"
+  },
+  {
+   "name": "Photon Condenser",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Common",
+   "requirement": "Crew: Dizzy",
+   "effect": "All of Dizzy's card attacks deal +1 damage.",
+   "short_effect": "Dizzy attacks +1 damage",
+   "url": "https://cobaltcore.wiki.gg/wiki/Photon_Condenser"
+  },
+  {
+   "name": "Shield Reserves",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Common",
+   "requirement": "Crew: Dizzy",
+   "effect": "Permanently gain +2 max shield on pickup.",
+   "short_effect": "+2 Max Shield",
+   "url": "https://cobaltcore.wiki.gg/wiki/Shield_Reserves"
+  },
+  {
+   "name": "Rebound Reagent",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Common",
+   "requirement": "Crew: Dizzy",
+   "effect": "The first time you lose hull each combat, heal 1 hull.",
+   "short_effect": "1st time losing hull: heal 1 hull",
+   "url": "https://cobaltcore.wiki.gg/wiki/Rebound_Reagent"
+  },
+  {
+   "name": "Regenerator",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Common",
+   "requirement": "Crew: Dizzy",
+   "effect": "Every 3 Dizzy cards played, gain 1 Shield.",
+   "short_effect": "Every 3 Dizzy cards played: +1 Shield",
+   "url": "https://cobaltcore.wiki.gg/wiki/Regenerator"
+  },
+  {
+   "name": "Shield Burst",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Boss",
+   "requirement": "Crew: Dizzy",
+   "effect": "Every time you gain any Shield, gain 1 Temp Shield.",
+   "short_effect": "When you get any Shield, also get 1 Temp Shield",
+   "url": "https://cobaltcore.wiki.gg/wiki/Shield_Burst"
+  },
+  {
+   "name": "Prototype 22",
+   "owner": "crew",
+   "owner_name": "Dizzy",
+   "rarity": "Boss",
+   "requirement": "Crew: Dizzy",
+   "effect": "Permanently gain +1 max shield on pickup. Gain 1 Shield at the start of every turn. If Shield was already full, take 2 hull damage.",
+   "short_effect": "+1 Shield/turn but -2 hull instead if full, 1 Max Shield on pickup",
+   "url": "https://cobaltcore.wiki.gg/wiki/Prototype_22"
+  },
+  {
+   "name": "Quickdraw",
+   "owner": "crew",
+   "owner_name": "Riggs",
+   "rarity": "Common",
+   "requirement": "Crew: Riggs",
+   "effect": "Draw 2 extra cards on the first turn.",
+   "short_effect": "1st turn: +2 cards",
+   "url": "https://cobaltcore.wiki.gg/wiki/Quickdraw"
+  },
+  {
+   "name": "Perpetual Motion Device",
+   "owner": "crew",
+   "owner_name": "Riggs",
+   "rarity": "Common",
+   "requirement": "Crew: Riggs",
+   "effect": "Whenever you have no cards, draw a card.",
+   "short_effect": "When no cards: Draw 1",
+   "url": "https://cobaltcore.wiki.gg/wiki/Perpetual_Motion_Device"
+  },
+  {
+   "name": "Caffeine Rush",
+   "owner": "crew",
+   "owner_name": "Riggs",
+   "rarity": "Common",
+   "requirement": "Crew: Riggs",
+   "effect": "Every time your discard pile is shuffled back into your draw pile, gain 1 Evade. Limit 2 per turn.",
+   "short_effect": "1 Evade when shuffling",
+   "url": "https://cobaltcore.wiki.gg/wiki/Caffeine_Rush"
+  },
+  {
+   "name": "Demon Thrusters",
+   "owner": "crew",
+   "owner_name": "Riggs",
+   "rarity": "Boss",
+   "requirement": "Crew: Riggs",
+   "effect": "Gain 1 Evade every turn. You can no longer have more than 3 Evade at a time.",
+   "short_effect": "1 Evade/turn, can only have up to 3 Evade",
+   "url": "https://cobaltcore.wiki.gg/wiki/Demon_Thrusters"
+  },
+  {
+   "name": "Flywheel",
+   "owner": "crew",
+   "owner_name": "Riggs",
+   "rarity": "Boss",
+   "requirement": "Crew: Riggs",
+   "effect": "Every 10th time you draw a card, gain 1 Energy.",
+   "short_effect": "1 Energy every 10 cards drawn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Flywheel"
+  },
+  {
+   "name": "Dakka Drum",
+   "owner": "crew",
+   "owner_name": "Peri",
+   "rarity": "Common",
+   "requirement": "Crew: Peri",
+   "effect": "Every 5 Peri cards played, gain a Chip Shot.",
+   "short_effect": "Every 5 Peri cards played: get Chip Shot",
+   "url": "https://cobaltcore.wiki.gg/wiki/Dakka_Drum"
+  },
+  {
+   "name": "Revenge Drive",
+   "owner": "crew",
+   "owner_name": "Peri",
+   "rarity": "Common",
+   "requirement": "Crew: Peri",
+   "effect": "The first time you lose hull each turn, gain 1 Overdrive.",
+   "short_effect": "1st damage each turn: 1 Overdrive",
+   "url": "https://cobaltcore.wiki.gg/wiki/Revenge_Drive"
+  },
+  {
+   "name": "Premeditation",
+   "owner": "crew",
+   "owner_name": "Peri",
+   "rarity": "Common",
+   "requirement": "Crew: Peri",
+   "effect": "At the start of combat, gain a Glissade.",
+   "short_effect": "Start of combat: get Glissade",
+   "url": "https://cobaltcore.wiki.gg/wiki/Premeditation"
+  },
+  {
+   "name": "Power Diversion",
+   "owner": "crew",
+   "owner_name": "Peri",
+   "rarity": "Boss",
+   "requirement": "Crew: Peri",
+   "effect": "Gain 1 extra Energy every turn. All non-Peri card attacks deal 1 less damage.",
+   "short_effect": "1 Energy/turn, -1 dmg. to non-Peri attacks",
+   "url": "https://cobaltcore.wiki.gg/wiki/Power_Diversion"
+  },
+  {
+   "name": "Berserker Drive",
+   "owner": "crew",
+   "owner_name": "Peri",
+   "rarity": "Boss",
+   "requirement": "Crew: Peri",
+   "effect": "At the start of combat, gain 1 Powerdrive. On the second turn of combat, your enemy also gains 1 Powerdrive.",
+   "short_effect": "Start with 1 Powerdrive; Enemies: 1 Powerdrive turn 2",
+   "url": "https://cobaltcore.wiki.gg/wiki/Berserker_Drive"
+  },
+  {
+   "name": "Wave Control",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Common",
+   "requirement": "Crew: Isaac",
+   "effect": "Gain 3 Droneshift on the first turn.",
+   "short_effect": "Start with 3 Droneshift",
+   "url": "https://cobaltcore.wiki.gg/wiki/Wave_Control"
+  },
+  {
+   "name": "Bubbler",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Common",
+   "requirement": "Crew: Isaac",
+   "effect": "Every 4 Isaac cards played, gain a bubble.",
+   "short_effect": "Bubble every 4 Isaac cards",
+   "url": "https://cobaltcore.wiki.gg/wiki/Bubbler"
+  },
+  {
+   "name": "Gravel Recycler",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Common",
+   "requirement": "Crew: Isaac",
+   "effect": "Gain 1 Temp Shield every time an asteroid is destroyed.",
+   "short_effect": "Gain 1 Temp Shield when Asteroid destroyed",
+   "url": "https://cobaltcore.wiki.gg/wiki/Gravel_Recycler"
+  },
+  {
+   "name": "Drone Piercer",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Common",
+   "requirement": "Crew: Isaac",
+   "effect": "Drones that attack the enemy ship Pierce.",
+   "short_effect": "Drone attacks pierce",
+   "url": "https://cobaltcore.wiki.gg/wiki/Drone_Piercer"
+  },
+  {
+   "name": "Radio Repeater",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Boss",
+   "requirement": "Crew: Isaac",
+   "effect": "Drones perform their actions an additional time.",
+   "short_effect": "2x Drone Turns",
+   "url": "https://cobaltcore.wiki.gg/wiki/Radio_Repeater"
+  },
+  {
+   "name": "Salvage Arm",
+   "owner": "crew",
+   "owner_name": "Isaac",
+   "rarity": "Boss",
+   "requirement": "Crew: Isaac",
+   "effect": "Gain 1 Energy every time you destroy a midrow object.",
+   "short_effect": "Energy when you destroy Midrow Object",
+   "url": "https://cobaltcore.wiki.gg/wiki/Salvage_Arm"
+  },
+  {
+   "name": "Pressure Fuse",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Common",
+   "requirement": "Crew: Drake",
+   "effect": "While your hull is under half its max, all of Drake's card attacks deal +1 damage.",
+   "short_effect": "Below 1/2 hull: +1 dmg. to Drake attacks",
+   "url": "https://cobaltcore.wiki.gg/wiki/Pressure_Fuse"
+  },
+  {
+   "name": "Subzero Heatsinks",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Common",
+   "requirement": "Crew: Drake",
+   "effect": "Heat can be reduced to -3.",
+   "short_effect": "Heat can go down to -3",
+   "url": "https://cobaltcore.wiki.gg/wiki/Subzero_Heatsinks"
+  },
+  {
+   "name": "Ignition Coil",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Common",
+   "requirement": "Crew: Drake",
+   "effect": "While at 3+ Heat all your attacks deal +1 damage.",
+   "short_effect": "3+ Heat: +1 dmg. to all attacks",
+   "url": "https://cobaltcore.wiki.gg/wiki/Ignition_Coil"
+  },
+  {
+   "name": "Heat Distiller",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Common",
+   "requirement": "Crew: Drake",
+   "effect": "Gain 1 Serenity every third turn.",
+   "short_effect": "1 Serenity every 3 turns",
+   "url": "https://cobaltcore.wiki.gg/wiki/Heat_Distiller"
+  },
+  {
+   "name": "Next Gen Insulation",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Common",
+   "requirement": "Crew: Drake",
+   "effect": "Your ship overheats at 4 instead of 3.",
+   "short_effect": "Overheating happens at 4 Heat instead of 3",
+   "url": "https://cobaltcore.wiki.gg/wiki/Next_Gen_Insulation"
+  },
+  {
+   "name": "Thermo Reactor",
+   "owner": "crew",
+   "owner_name": "Drake",
+   "rarity": "Boss",
+   "requirement": "Crew: Drake",
+   "effect": "Gain 1 extra Energy every turn. Gain 1 Heat each turn.",
+   "short_effect": "1 Energy/turn, 1 Heat/turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Thermo_Reactor"
+  },
+  {
+   "name": "Safety Lock",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Common",
+   "requirement": "Crew: Max",
+   "effect": "Choose a card with Exhaust in your deck. It no longer exhausts.",
+   "short_effect": "On pickup, choose a card with Exhaust; loses Exhaust",
+   "url": "https://cobaltcore.wiki.gg/wiki/Safety_Lock"
+  },
+  {
+   "name": "Sticky Note",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Common",
+   "requirement": "Crew: Max",
+   "effect": "Choose a card that does not Retain in your deck. It gains Retain.",
+   "short_effect": "On pickup, choose a card without Retain; gains Retain",
+   "url": "https://cobaltcore.wiki.gg/wiki/Sticky_Note"
+  },
+  {
+   "name": "Right Click",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Common",
+   "requirement": "Crew: Max",
+   "effect": "Your rightmost card does +1 damage. Your leftmost card does -1 damage.",
+   "short_effect": "Rightmost card: +1 dmg; leftmost -1 dmg",
+   "url": "https://cobaltcore.wiki.gg/wiki/Right_Click"
+  },
+  {
+   "name": "Strong Start",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Common",
+   "requirement": "Crew: Max",
+   "effect": "Gain 1 Boost at the start of your first turn of combat.",
+   "short_effect": "Start combat with 1 Boost",
+   "url": "https://cobaltcore.wiki.gg/wiki/Strong_Start"
+  },
+  {
+   "name": "Flow State",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Boss",
+   "requirement": "Crew: Max",
+   "effect": "Draw 1 less card per turn. The first three times you play a card each turn, draw a card.",
+   "short_effect": "-1 card/turn, draw 1 on first 3 card plays",
+   "url": "https://cobaltcore.wiki.gg/wiki/Flow_State"
+  },
+  {
+   "name": "Tridimensional Cockpit",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Boss",
+   "requirement": "Crew: Max",
+   "effect": "Permanently replace your Cockpit with Empty scaffolding. Lose half your max hull on pickup.",
+   "short_effect": "Replace Cockpit with Empty, lose 1/2 max hull",
+   "url": "https://cobaltcore.wiki.gg/wiki/Tridimensional_Cockpit"
+  },
+  {
+   "name": "Lightspeed Boot Disk",
+   "owner": "crew",
+   "owner_name": "Max",
+   "rarity": "Boss",
+   "requirement": "Crew: Max",
+   "effect": "On the first turn of battle, draw 1 extra card and gain 1 extra Energy. On pickup, choose a card that is not Buoyant in your deck. It gains Buoyant.",
+   "short_effect": "On pickup, choose a card without Buoyant; gains Buoyant. +1 Energy, card turn 1",
+   "url": "https://cobaltcore.wiki.gg/wiki/Lightspeed_Boot_Disk"
+  },
+  {
+   "name": "Grimoire",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Common",
+   "requirement": "Crew: Books",
+   "effect": "Gain a Crystal Shard on the first turn of each combat.",
+   "short_effect": "Gain a Crystal Shard on turn 1 each combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Grimoire"
+  },
+  {
+   "name": "Resonance Fork",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Common",
+   "requirement": "Crew: Books",
+   "effect": "Fill your Shard to max at the start of combat.",
+   "short_effect": "Start with max Shard each combat",
+   "url": "https://cobaltcore.wiki.gg/wiki/Resonance_Fork"
+  },
+  {
+   "name": "Shard Enchanter",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Common",
+   "requirement": "Crew: Books",
+   "effect": "The first time you play a Crystal Shard each turn, gain 1 Temp Shield.",
+   "short_effect": "1st Crystal Shard each turn: +1 Temp Shield",
+   "url": "https://cobaltcore.wiki.gg/wiki/Shard_Enchanter"
+  },
+  {
+   "name": "Shard Collector",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Common",
+   "requirement": "Crew: Books",
+   "effect": "You may hold 1 more Shard.",
+   "short_effect": "Shard capacity +1",
+   "url": "https://cobaltcore.wiki.gg/wiki/Shard_Collector"
+  },
+  {
+   "name": "Rock Collection",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Common",
+   "requirement": "Crew: Books",
+   "effect": "Two Geodes will always be near your ship at the start of combat.",
+   "short_effect": "2 Geodes start near ship",
+   "url": "https://cobaltcore.wiki.gg/wiki/Rock_Collection"
+  },
+  {
+   "name": "Zero Doubler",
+   "owner": "crew",
+   "owner_name": "Books",
+   "rarity": "Boss",
+   "requirement": "Crew: Books",
+   "effect": "Each turn, the first time you play a 0-cost card, do its actions twice.",
+   "short_effect": "1st 0 Energy card plays twice",
+   "url": "https://cobaltcore.wiki.gg/wiki/Zero_Doubler"
+  },
+  {
+   "name": "Standby Mode",
+   "owner": "crew",
+   "owner_name": "CAT",
+   "rarity": "Common",
+   "requirement": "Crew: CAT",
+   "effect": "At the start of your turn, gain 1 Energy if you ended your last turn with more than 0 Energy.",
+   "short_effect": "End of turn: if 1+ Energy left, +1 Energy next turn",
+   "url": "https://cobaltcore.wiki.gg/wiki/Standby_Mode"
+  },
+  {
+   "name": "Initial Booster",
+   "owner": "crew",
+   "owner_name": "CAT",
+   "rarity": "Common",
+   "requirement": "Crew: CAT",
+   "effect": "Basic Shot cards do 1 more damage.",
+   "short_effect": "+1 damage to Basic Shot",
+   "url": "https://cobaltcore.wiki.gg/wiki/Initial_Booster"
+  },
+  {
+   "name": "Multi Threading",
+   "owner": "crew",
+   "owner_name": "CAT",
+   "rarity": "Common",
+   "requirement": "Crew: CAT",
+   "effect": "The first time you get a Temporary card each combat, gain 1 Energy.",
+   "short_effect": "1st Temporary card/combat: +1 Energy",
+   "url": "https://cobaltcore.wiki.gg/wiki/Multi_Threading"
+  },
+  {
+   "name": "Summon Control",
+   "owner": "crew",
+   "owner_name": "CAT",
+   "rarity": "Boss",
+   "requirement": "Crew: CAT",
+   "effect": "After every battle, you may choose a Temporary card in your deck to become permanent.",
+   "short_effect": "After combat: choose Temporary card to make permanent",
+   "url": "https://cobaltcore.wiki.gg/wiki/Summon_Control"
+  },
+  {
+   "name": "Scrap Armor",
+   "owner": "special",
+   "owner_name": "event: Garbage Girl Repairs",
+   "rarity": "Common",
+   "requirement": "Event: Garbage Girl Repairs",
+   "effect": "A single-use repair kit! The 10th time you're hit while you have Scrap Armor, gain 2 max hull and heal to full. This only works once.",
+   "short_effect": "When hit 10 times (once), full heal, +2 max hull",
+   "url": "https://cobaltcore.wiki.gg/wiki/Scrap_Armor"
+  },
+  {
+   "name": "Broken Glasses",
+   "owner": "special",
+   "owner_name": "Defeat Cleo",
+   "rarity": "Common",
+   "requirement": "Defeat Cleo",
+   "effect": "Gain 1 extra Energy every turn. Repair yards are empty. Why did you do that?",
+   "short_effect": "1 Energy every turn; no Repair Yards",
+   "url": "https://cobaltcore.wiki.gg/wiki/Broken_Glasses"
+  },
+  {
+   "name": "The Cobalt Core",
+   "owner": "special",
+   "owner_name": "The Finale",
+   "rarity": "???",
+   "requirement": "The Finale",
+   "effect": "Careful, it's fragile. Don't lose it again.",
+   "short_effect": null,
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Cobalt_Core"
+  }
+ ],
+ "events": [
+  {
+   "name": "Exploded Ships",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Exploded Ships is an event during which your ship stumbles upon a minefield full of exploded ships that you might be able to find cool stuff in! This event can appear in Zone 1, Zone 2, or Zone 3.",
+   "summary": "Grab the first thing you can find! -> Lose 1 HP, Gain 1 Artifact | Let's look around for a bit. -> Lose 3 HP, Gain 1 of 4 Artifacts (Hard+: 1 of 3) | It's not worth it. Let's go.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Exploded_Ships"
+  },
+  {
+   "name": "Extra-Planar Being",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Extra-Planar Being is an event during which the crew is given a boon by an unknown entity in the area that matters most to them. This event can appear in Zone 1, Zone 2, or Zone 3.",
+   "summary": "Healing. -> Add a card: Ephemeral Repairs | Damage. -> Add a card: Ephemeral Blast | Evasion. -> Add a card: Ephemeral Dodge",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Extra-Planar_Being"
+  },
+  {
+   "name": "Ship Shuffler",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Ship Shuffler is an event at the Sunshine Heavy Industries ship yard, in which Selene tries to convince you to shuffle the order of your ship parts. This event can appear in Zone 1, Zone 2, or Zone 3.",
+   "summary": "Shuffle me! -> Shuffle your ship parts and gain +2 max hull (Hard+: +1 max hull) | Absolutely not.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Ship_Shuffler"
+  },
+  {
+   "name": "Garbage Girl Repairs",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "Under 70% hull",
+   "intro": "Garbage Girl Repairs is an event during which you are offered a choice of hull repair options by Garbage Girl: either a normal repair or an \"extra spicy\" one. This event can appear in Zone 1, Zone 2, or Zone 3, but only if your ship's current hull is below 70% of its max.",
+   "summary": "Extra spicy!!! -> Gain Scrap Armor | Uh, regular please. -> Heal 50% hull",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Garbage_Girl_Repairs"
+  },
+  {
+   "name": "Grandma's Bakery and Weapons Market",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Grandma's Bakery and Weapons Market is an event during which you visit Grandma's store to gain a rare card, remove a card, or (presumably) just pick up a few pastries for the road. This event can appear in Zone 1, Zone 2, or Zone 3.",
+   "summary": "One treat please! -> Gain 1 random upgraded rare card (Hard+: non-upgraded) | Can we use your trash can? -> Remove a card from your deck || Notes: Note that there is no skip option for this event.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Grandma%27s_Bakery_and_Weapons_Market"
+  },
+  {
+   "name": "High-Pitched Static",
+   "sector": "Zone 1, Zone 2, Zone 3",
+   "zones": [
+    1,
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "High-Pitched Static is an event during which a mysterious entity offers to teach you, potentially gifting you with a card from a present crew member. This event can appear in Zone 1, Zone 2, or Zone 3.",
+   "summary": "Obtain one of 3 [1st crewmember] cards. (Hard+: 1 of 2) | Obtain one of 3 [2nd crewmember] cards. (Hard+: 1 of 2) | Obtain one of 3 [3rd crewmember] cards. (Hard+: 1 of 2) | I don't trust this! || Notes: Note that if you choose to take a card offering here, you must pick a card and cannot skip it.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/High-Pitched_Static"
+  },
+  {
+   "name": "Abandoned Shipyard",
+   "sector": "Zone 1",
+   "zones": [
+    1
+   ],
+   "prerequisites": "Under 70% hull",
+   "intro": "Abandoned Shipyard is an event that involves finding an abandoned ship yard that can be used to patch the hull but there was a mysterious signal. This event can only appear in Zone 1, but only if your ship's current hull below 70% of its max.",
+   "summary": "Try to repair the ship -> 50% success chance (Hard+: 33% success chance): Heal 50% hull.; 50% failure chance (Hard+: 67% failure chance): Heal 1 hull and enter combat with CCD-62 \"Cicada\" Drone Mk2. | Let's keep moving.",
+   "combat": [
+    "CCD-62 \"Cicada\" Drone Mk2"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Abandoned_Shipyard"
+  },
+  {
+   "name": "Artifact Smuggling",
+   "sector": "Zone 1",
+   "zones": [
+    1
+   ],
+   "prerequisites": "",
+   "intro": "Artifact Smuggling is an event during which Brimford asks your crew to hold on to some contraband goods for a moment. Hopefully nobody notices… This event can appear in Zone 1.",
+   "summary": "Sure! -> Gain random Artifact; 50% chance (Hard+: 75% chance): Enter combat with STG-04 \"Stag\" Fighter | Nah.",
+   "combat": [
+    "STG-04 \"Stag\" Fighter"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Artifact_Smuggling"
+  },
+  {
+   "name": "Fake Distress Signal",
+   "sector": "Zone 1",
+   "zones": [
+    1
+   ],
+   "prerequisites": "",
+   "intro": "Fake Distress Signal is an event during which you are accosted by Drake (or, if Drake is a part of the crew at the time, Drakebot 2) as she attempts to steal one of your artifacts. This event can only appear in Zone 1.",
+   "summary": "Give her [random Artifact]. -> Lose the randomly chosen Artifact | Uh, no??? (With Drake in your crew, this changes to: Over my dead body!!!) -> Enter Combat with Fireball | We.. don't have any? -> Enter Combat with Fireball || Notes: If you have no artifacts, the following is your only option:",
+   "combat": [
+    "Fireball"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Fake_Distress_Signal"
+  },
+  {
+   "name": "Welcome Back, Commander",
+   "sector": "Zone 1",
+   "zones": [
+    1
+   ],
+   "prerequisites": "",
+   "intro": "Welcome Back, Commander is an Event where you are hailed by an unmanned ship, whose malfunctioning AI falsely recognizes you as its commander and offers to upgrade your cards. This event only appears in Zone 1.",
+   "summary": "2 random cards gain upgrade A | 2 random cards gain upgrade B | Choose a card to upgrade || Notes: X.00 approaches you and offers one of the following options for upgrades.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Welcome_Back%2C_Commander"
+  },
+  {
+   "name": "Extra Scaffold",
+   "sector": "Zone 1, Zone 2",
+   "zones": [
+    1,
+    2
+   ],
+   "prerequisites": "",
+   "intro": "Extra Scaffold is an Event at the Sunshine Heavy Industries shipyard during which Selene tries to convince you to add an empty scaffold to your ship. This event can appear in Zone 1 or Zone 2.",
+   "summary": "Sure! -> If ship parts are currently even: Add an unshootable scaffold in the middle of the ship; If ship parts are currently odd: Add an unshootable scaffold to the right of the middle ship part | No thanks. || Notes: Selene asks if you want to add a piece of scaffolding right in the middle of your ship. You may choose to take the offer or not.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Extra_Scaffold"
+  },
+  {
+   "name": "Missile Mayhem",
+   "sector": "Zone 1, Zone 2",
+   "zones": [
+    1,
+    2
+   ],
+   "prerequisites": "",
+   "intro": "Missile Mayhem is an Event during which you are hailed by a frantic frog whose missiles have turned against him. Upon deciding to help, you enter combat against Soggin's Very Cool Ship, a Missiler class ship with the Missile Malfunction debuff.",
+   "summary": "Help the toad. -> Enter.. combat? | Do not help. | This hard drive I found earlier! -> Gain Missile Malware | My precious seeker missiles! -> Gain Seeker | An artifact I found! -> Gain a random Common artifact. | Nevermind. || Notes: If you choose to help Soggins, you must prevent him from dying to his own missiles for 5 turns (Hard+: 6 turns). If you succeed, you get to pick a reward!",
+   "combat": [
+    "\"Soggins's Very Cool Ship\""
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Missile_Mayhem"
+  },
+  {
+   "name": "Sports!",
+   "sector": "Zone 1, Zone 2",
+   "zones": [
+    1,
+    2
+   ],
+   "prerequisites": "Unlock Drake",
+   "intro": "Sports! is an Event resembling a Football game (Soccer in North America), with you and an opponent ship fighting over the midrow Football. The event can be won either by shifting the Football to the left goal, or by destroying the opponent ship.",
+   "summary": "Sure, why not. -> Enter Combat with Glorious Sport Arena | We're kind of busy right now. | Got any trophies? -> Gain 1 of 3 Artifacts | We'll take the ball. -> Gain Sport Orb | Can we have the ball? -> Gain Sport Orb | No thanks.",
+   "combat": [
+    "Glorious Sport Arena"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Sports%21"
+  },
+  {
+   "name": "Upcycling Program",
+   "sector": "Zone 1, Zone 2",
+   "zones": [
+    1,
+    2
+   ],
+   "prerequisites": "",
+   "intro": "Upcycling Program is another event that takes place at the Sunshine Heavy Industries shipyard. This time, Wren offers the crew an opportunity to \"upcycle\" a card in the deck by replacing it with a random better card, or maybe to \"sidecycle\" a card to a different deck instead.",
+   "summary": "Replace a card with a random rarer card -> If the card belonged to one of your crewmembers, the new card will be from the same deck. Otherwise, it will be from a random crewmember on your ship.; Always goes up one step in rarity. (Common becomes Uncommon, Uncommon becomes Rare); Rare cards cannot be chosen. | Replace a card with a same-rarity card from another deck -> The new card will be from a different crewmember on your ship. | No thanks!",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Upcycling_Program"
+  },
+  {
+   "name": "Crystallized Crew",
+   "sector": "Zone 2",
+   "zones": [
+    2
+   ],
+   "prerequisites": "Unlock Isaac + 3 total wins",
+   "intro": "Crystallized Crew is an Event during which you stumble upon one of the other Characters, stuck inside of a crystal. You are given the option to save them at the cost of putting one of your current crew members back into stasis.",
+   "summary": "Replace [crewmember 1] with [crystallized character] | Replace [crewmember 2] with [crystallized character] | Replace [crewmember 3] with [crystallized character] | They'll be fine. || Notes: The frozen character may be any of the other characters that you've unlocked, picked at random. You'll still keep the cards and artifacts of the crewmember you remove, if you choose to do so.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Crystallized_Crew"
+  },
+  {
+   "name": "Your Old Friend Dracula",
+   "sector": "Zone 2",
+   "zones": [
+    2
+   ],
+   "prerequisites": "",
+   "intro": "Your Old Friend Dracula is an event during which your old pal, Dracula, spends some time catching up with the crew and offering to teach them some dark vampire arts. This event can only appear in Zone 2.",
+   "summary": "Just a little. -> Gain Leech | Ok, I'll take a lot. -> Gain two Leeches, but lose 30% hull (Hard+: 60% hull) | No thanks, Dracula!",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Your_Old_Friend_Dracula"
+  },
+  {
+   "name": "Black Hole",
+   "sector": "Zone 2, Zone 3",
+   "zones": [
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Black Hole is a negative Event where the crew jumps way too close to a black hole, resulting in a tough choice: jettison a possibly valuable card or lose a large chunk of the hull! This event can appear in Zone 2 or Zone 3.",
+   "summary": "Lose [randomly chosen card from crewmember 1] | Lose [randomly chosen card from crewmember 2] | Lose [randomly chosen card from crewmember 3] | Jettison part of the hull! -> Lose half of your current hull (damage is rounded down)",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Black_Hole"
+  },
+  {
+   "name": "Emporium of Wonderful Ideas",
+   "sector": "Zone 2, Zone 3",
+   "zones": [
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Emporium of Wonderful Ideas is an Event that allows you to choose a \"useless\" card from a shop full of… questionable ideas. This event can appear in Zone 2 or Zone 3.",
+   "summary": "Let's try Buckshot. -> Add a card: Buckshot | Give me Waltz. -> Add a card: Waltz | How about Bruise? -> Add a card: Bruise | Lightning in a Bottle, please! -> Add a card: Lightning in a Bottle | Yeah, no. || Notes: You may choose one of the cards below to add to your deck, or decline the offer. (Hard+: one of the card options is removed at random)",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Emporium_of_Wonderful_Ideas"
+  },
+  {
+   "name": "Offering from Another Timeline",
+   "sector": "Zone 2, Zone 3",
+   "zones": [
+    2,
+    3
+   ],
+   "prerequisites": "Unlock Isaac",
+   "intro": "Offering from Another Timeline is an event during which a mysterious entity offers aid from an alternate timeline, potentially gifting you with a card from a not-present crew member. This event can appear in Zone 2 or Zone 3, but only if Isaac is unlocked.",
+   "summary": "Take one of 3 [random non-crewmember] cards (Hard+: 1 of 2) | Take one of 3 [random non-crewmember] cards (Hard+: 1 of 2) | Take one of 3 [random non-crewmember] cards (Hard+: 1 of 2) | No thanks. || Notes: The 3 decks you can choose from are picked randomly, from characters that aren't in your crew. Note that if you have less than 6 characters unlocked in total, then only one or two options will be present.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Offering_from_Another_Timeline"
+  },
+  {
+   "name": "The Duplitron",
+   "sector": "Zone 2, Zone 3",
+   "zones": [
+    2,
+    3
+   ],
+   "prerequisites": "",
+   "intro": "The Duplitron is an Event during which you may submit to testing Dr. Bjorn's new device: the Duplitron!",
+   "summary": "Duplicate a card in your deck. | Duplicate a card in your deck four times. Lose 3 max hull. (Hard+: lose 4 max hull) | Mmm.. no thanks.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/The_Duplitron"
+  },
+  {
+   "name": "Worthwhile Trade Repairs",
+   "sector": "Zone 2, Zone 3",
+   "zones": [
+    2,
+    3
+   ],
+   "prerequisites": "Under 70% hull",
+   "intro": "Worthwhile Trade Repairs is an event that features a slug that offers you repairs for a price. This event can appear in Zone 2 or Zone 3, but only if your ship's current hull below 70% of max.",
+   "summary": "Trade away [random Artifact]. Gain 5 max hull (Hard+: 3 max hull) and heal to full. | No thanks.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Worthwhile_Trade_Repairs"
+  },
+  {
+   "name": "Annoying Debate",
+   "sector": "Zone 3",
+   "zones": [
+    3
+   ],
+   "prerequisites": "",
+   "intro": "Annoying Debate is an Event in which you may join Brimford for a bit of debate to swap some of your card upgrades. This event can only appear in Zone 3.",
+   "summary": "Turn an Upgrade A card into a B. Gain an Annoyance. (Hard+: Gain an Annoyance A) | Turn an Upgrade B card into an A. Gain an Annoyance. (Hard+: Gain an Annoyance A) | No, thanks. || Notes: Choosing to swap an upgrade will let you make another choice afterwards, and you can keep going infinitely until you decide to stop.",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Annoying_Debate"
+  },
+  {
+   "name": "Boot Sequence",
+   "sector": "Start of every loop after the first (special, always occurs)",
+   "zones": [],
+   "prerequisites": "Not the first loop",
+   "intro": "Boot Sequence is a special Event that always occurs at the start of every loop after your very first. It lets you choose from a variety of random bonuses, and if you're playing on the Hardest difficulty, forces you to pick a downside as well.",
+   "summary": "Gain 3 max hull | Gain 1 common artifact | Replace Warp Prep with a boss artifact | Remove 2 cards | Remove a card, then gain 1 of 3 common cards | Pick from 3 uncommon cards | Gain 1 random rare card | Upgrade a card | Upgrade 2 random cards to type A | Upgrade 2 random cards to type B | Gain 1 Debris | Lose 1 max shield | Lose 2 max hull || Notes: You may choose 1 of 3 bonuses picked randomly out of the following list: On Hardest, you must also choose one of the following downsides first, before you can choose a bonus:",
+   "combat": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Boot_Sequence"
+  }
+ ],
+ "ships": [
+  {
+   "name": "Ares",
+   "unlock": "Win on Hard Mode",
+   "hull": 8,
+   "max_shield": 4,
+   "width_tiles": "four",
+   "description": "A nimble warship with two cannons, which are manually toggled.",
+   "summary": "Ares is an unlockable Ship. Ares is four tiles wide and starts with Warp Prep, Ares Cannon, and Control Rods.",
+   "starting_artifacts": [
+    {
+     "name": "Warp Prep",
+     "effect": "Gain 1 Shield and 1 Evade on the first turn."
+    },
+    {
+     "name": "Ares Cannon",
+     "effect": "Your inactive cannon is Armored. At the start of your turn, if you don't have a Toggle Cannon in your hand, gain one."
+    },
+    {
+     "name": "Control Rods",
+     "effect": "Draw 1 less card each turn."
+    }
+   ],
+   "boss_artifacts": [
+    {
+     "name": "Ares Cannon V2",
+     "effect": "Replaces Ares Cannon. Your inactive cannon is Armored. At the start of your turn, if you don't have a War Mode in your hand, gain one."
+    }
+   ],
+   "gimmick": "Your inactive cannon is Armored. At the start of your turn, if you don't have a Toggle Cannon in your hand, gain one. Draw 1 less card each turn.",
+   "patch_notes": [
+    "[Patch 1.1.1 Balance Changes Test (2024-07-10)] -1 max hull, -1 max shield (from 9/5 to 8/4)"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Ares"
+  },
+  {
+   "name": "Artemis",
+   "unlock": "None, unlocked by default",
+   "hull": 12,
+   "max_shield": 4,
+   "width_tiles": "5",
+   "description": "A bulky, versatile ship with a single central cannon.",
+   "summary": "Artemis is the starting Ship, which serves as an \"all-arounder,\" allowing for any playstyle. Artemis is 5 tiles wide with a central cannon.",
+   "starting_artifacts": [
+    {
+     "name": "Warp Prep",
+     "effect": "Gain 1 Shield and 1 Evade on the first turn."
+    },
+    {
+     "name": "Cargo Hold",
+     "effect": "All artifact map nodes offer 1 more option."
+    }
+   ],
+   "boss_artifacts": [
+    {
+     "name": "Hunter Wings",
+     "effect": "(Artemis-exclusive artifact!) If you end your turn with more than 0 Energy, your wings will retract and become Empty until your next turn starts."
+    }
+   ],
+   "gimmick": "All artifact map nodes offer 1 more option.",
+   "patch_notes": [],
+   "url": "https://cobaltcore.wiki.gg/wiki/Artemis"
+  },
+  {
+   "name": "Gemini",
+   "unlock": "Win a run with none of the 3 starting characters",
+   "hull": 11,
+   "max_shield": 4,
+   "width_tiles": "five",
+   "description": "A powerful ship with dual cannons and missile bays which cycle after every card played.",
+   "summary": "Gemini is an unlockable ship. Gemini starts with Warp Prep and Gemini Core. Gemini is five tiles wide.",
+   "starting_artifacts": [
+    {
+     "name": "Warp Prep",
+     "effect": "Gain 1 Shield and 1 Evade on the first turn."
+    },
+    {
+     "name": "Gemini Core",
+     "effect": "After you play a card, toggle both your active Cannon and Missile Bay."
+    }
+   ],
+   "boss_artifacts": [
+    {
+     "name": "Gemini Core Booster",
+     "effect": "Requires Gemini Core. Your left cannon does +1 damage. Your right cannon stuns, but does -1 damage."
+    }
+   ],
+   "gimmick": "After you play a card, toggle both your active Cannon and Missile Bay.",
+   "patch_notes": [
+    "[Patch 1.0.6 (2023-12-20)] Gemini now starts with one new extra card: Basic Swap."
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Gemini"
+  },
+  {
+   "name": "Jupiter",
+   "unlock": "Discover 40 artifacts",
+   "hull": 12,
+   "max_shield": 4,
+   "width_tiles": "six",
+   "description": "A comms vessel with no cannons of its own. It launches special Jupiter Drones which channel its attacks.",
+   "summary": "The Jupiter is an unlockable ship. Jupiter is six tiles wide, with one tile being an empty scaffold. The ship part to the right of the scaffold is Weak. Jupiter starts with Warp Prep and Jupiter Drone Hub. One of its Basic Shots is replaced with a Basic Shift at the start of a run.",
+   "starting_artifacts": [
+    {
+     "name": "Warp Prep",
+     "effect": "Gain 1 Shield and 1 Evade on the first turn."
+    },
+    {
+     "name": "Jupiter Drone Hub",
+     "effect": "At the start of combat, gain a Jupiter's Moons."
+    }
+   ],
+   "boss_artifacts": [
+    {
+     "name": "Jupiter Drone Hub Booster",
+     "effect": "Gain 1 energy every time you launch a Jupiter Drone while there were no Jupiter Drones already in the midrow."
+    }
+   ],
+   "gimmick": "At the start of combat, gain a Jupiter's Moons.",
+   "patch_notes": [
+    "[Patch 1.1.1 Balance Changes Test (2024-07-10)] +2 max hull, +1 max shield"
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Jupiter"
+  },
+  {
+   "name": "Tiderunner",
+   "unlock": "Win 10 runs",
+   "hull": 7,
+   "max_shield": 3,
+   "width_tiles": "six",
+   "description": "Is this thing functional in space? It's surprisingly nimble for something made of dead trees.",
+   "summary": "Tiderunner is an unlockable ship. Tiderunner starts with Warp Prep, Tide Runner, and Mooring Line. Tiderunner is six tiles wide, with two empty scaffolds in the middle.",
+   "starting_artifacts": [
+    {
+     "name": "Warp Prep",
+     "effect": "Gain 1 Shield and 1 Evade on the first turn."
+    },
+    {
+     "name": "Tide Runner",
+     "effect": "Immediately after you play the leftmost/rightmost card in your hand, move left/right 1."
+    },
+    {
+     "name": "Mooring Line",
+     "effect": "At the start of each combat, add an Anchor to your draw pile."
+    }
+   ],
+   "boss_artifacts": [
+    {
+     "name": "Mooring Line V2",
+     "effect": "At the beginning of combat, add an Anchor A to your deck."
+    }
+   ],
+   "gimmick": "Immediately after you play the leftmost/rightmost card in your hand, move left/right 1. At the start of each combat, add an Anchor to your draw pile.",
+   "patch_notes": [
+    "[Patch 1.1.1 Balance Changes Test (2024-07-10)] -1 max hull",
+    "[Patch 1.0.6 (2023-12-20)] Tiderunner gained +1 hull.",
+    "[Patch 1.0.6 (2023-12-20)] Tiderunner's starting artifact has been split into 2 artifacts, to be easier to parse (Tide Runner and Mooring Line).",
+    "[Patch 1.0.6 (2023-12-20)] Before: Tide Runner's effect was, \"Immediately after you play the leftmost/rightmost card in your hand, move left/right 1. At the start of combat, add an Anchor to your draw pile.\" Mooring Line did not exist.",
+    "[Patch 1.0.6 (2023-12-20)] After: Tide Runner's effect became, \"Immediately after you play the leftmost/rightmost card in your hand, move left/right 1.\" Mooring Line was introduced with this effect: \"At the start of combat, add an Anchor to your draw pile.\""
+   ],
+   "url": "https://cobaltcore.wiki.gg/wiki/Tiderunner"
+  }
+ ],
+ "rules": {
+  "zones": [
+   {
+    "zone": 1,
+    "name": "Lazuli Nebula",
+    "common": [
+     "CCD-19 \"Cicada\" Drone",
+     "CST-7 \"Minesweeper\"",
+     "GN-11 \"Gnat\" Scout",
+     "LPD-77 \"Monarch\" Drone Hub",
+     "PPA-94 \"Pupa\" Interceptor",
+     "STG-04 \"Stag\" Fighter",
+     "The Tower",
+     "WSP-55 \"Stinger\" Drone"
+    ],
+    "elite": [
+     "Fireball",
+     "Needler",
+     "\"The Humble Approach\""
+    ],
+    "boss": [
+     "Crystalline Entity",
+     "Crystalline Takeover"
+    ],
+    "first_fight": "CCD-19 \"Cicada\" Drone"
+   },
+   {
+    "zone": 2,
+    "name": "Sapphire Cluster",
+    "common": [
+     "BTL-86 \"Goliath\" Defender",
+     "CCD-62 \"Cicada\" Drone Mk2",
+     "DJA-2 Solar Sail",
+     "DX-3 \"Missiler\"",
+     "GLX Bruiser",
+     "Spike Jr",
+     "The Cannoneer",
+     "The Chariot"
+    ],
+    "elite": [
+     "Crystalline Offshoot",
+     "Rail Cannon",
+     "Rogue Starnacle"
+    ],
+    "boss": [
+     "The Dreadnought",
+     "Mecha Riggs"
+    ],
+    "first_fight": "CCD-62 \"Cicada\" Drone Mk2"
+   },
+   {
+    "zone": 3,
+    "name": "Void's Cradle",
+    "common": [
+     "Aquatic Lifeform",
+     "CCD-62 \"Cicada\" Drone Mk3",
+     "DPL-55555 \"Replicator\"",
+     "DX-5 \"Missiler\"",
+     "\"Evolutionary Perfection\"",
+     "GRS-49 \"Hopper\" Scout",
+     "Ion Ranger",
+     "SCR-02 \"Scarab\" Interceptor"
+    ],
+    "elite": [
+     "00-A Mining Drill",
+     "Buried(?) Relic",
+     "Rusting Colossus"
+    ],
+    "boss": [
+     "The Cobalt"
+    ],
+    "first_fight": "CCD-62 \"Cicada\" Drone Mk3"
+   }
+  ],
+  "node_types": [
+   {
+    "name": "Common Enemy",
+    "summary": "A basic enemy encounter with a reward of a choice of cards.",
+    "details": "Common Enemies are the most common form of encounter in Cobalt Core. All Common Enemy encounters begin a battle with a hostile ship, and defeating them will always result in a card reward after the battle. The specific enemies encountered vary by zone, as shown below."
+   },
+   {
+    "name": "Elite",
+    "summary": "An unusually strong enemy encounter with card and artifact rewards.",
+    "details": "Elites are a challenging combat encounter with greater perils and greater rewards. All Elite encounters begin a difficult battle with a hostile ship, and defeating them will always result in both a card reward (with increased chances for Uncommon and Rare cards) and a choice of 3 artifacts (2 on Harder+) after the battle. Elite encounters vary by zone, as shown below. A given Elite can only be encountered at an Elite node once per zone, and map generation will ensure you cannot encounter more Elites than the zone has."
+   },
+   {
+    "name": "Boss",
+    "summary": "A very powerful entity with substantial rewards.",
+    "details": "Bosses are very challenging combat encounters at the end of each zone. All Boss encounters begin a very difficult battle with a hostile ship, and defeating them will always result in both an improved card reward and a Boss artifact reward after the battle. Boss encounters vary by zone, as shown below."
+   },
+   {
+    "name": "Event",
+    "summary": "An unknown energy signature that offers a choice.",
+    "details": "Events, marked on the map as \"unknown energy signatures,\" contain story-based, optional choices as you progress through the loop. With few exceptions, events have positive outcomes for the player and are, at worst, skippable. There are 23 total Events in the Codex, but only 22 are unique, since one event has two variations that are counted separately in the Codex. Some events are locked to a particular Zone, while others have prerequisites, such as missing a certain percentage of Hull. Each event can only trigger once per loop, so you won't come across the same event multiple times."
+   },
+   {
+    "name": "Artifact",
+    "summary": "An artifact to benefit the crew and change the rules of combat. You will receive one at random, unless you have the Artemis's Cargo Hold in which case you will be given a choice of two.",
+    "details": "Artifacts are permanent items that provide passive bonuses during the loop. About half of the artifacts are available during every loop, with the other half being restricted to specific characters or ships. Artifacts can only be lost through certain Events. You cannot be offered artifacts you already have, but you can be offered artifacts you have seen previously on this run that you didn't take. You can even be offered artifacts that you previously had but lost. Each ship begins the loop with the Warp Prep artifact, and all ships also begin with one or more additional starting artifacts. Boss artifacts can only be found as rewards after a boss battle (or traded for Warp Prep during the Boot Option start-of-loop event). A select few artifacts require special circumstances, such as a specific Events choice, in order to be acquired."
+   },
+   {
+    "name": "Repair Yard",
+    "summary": "A shop for ship repairs, card upgrades, and trash disposal.",
+    "details": "Repair Yards are a type of Location you will see often on the map, denoted by their unique icon with a green wrench & screwdriver. Each zone has two Repair Yards scattered randomly throughout the middle and one just before the Boss which you are guaranteed to stop by. Because of the randomly diverging pathways, you will sometimes be unable to visit all 3 Repair Yards in a zone. At each Repair Yard, you will find Cleo, a friendly cat who is happy to help you on your journey."
+   },
+   {
+    "name": "Exit",
+    "summary": "The exit from this zone and the entrance to the next!",
+    "details": null
+   }
+  ],
+  "node_frequencies": {
+   "repair_yard": "Each zone has two Repair Yards scattered randomly throughout the middle and one just before the Boss which you are guaranteed to stop by. Because of the randomly diverging pathways, you will sometimes be unable to visit all 3 Repair Yards in a zone.",
+   "elite": "A given Elite can only be encountered at an Elite node once per zone, and map generation will ensure you cannot encounter more Elites than the zone has.",
+   "first_fight": "The Cicada is always the first ship encountered in every run, prior even to choosing nodes on the map.",
+   "events": "Some events are locked to a particular Zone, while others have prerequisites, such as missing a certain percentage of Hull.",
+   "gap": "The wiki gives no per-zone node counts, row counts or node-type weights beyond the sentences above."
+  },
+  "map_structure": [
+   "Visiting locations forms the primary gameplay loop of Cobalt Core. Each location may contain some combination of battle, player choice, or reward. Encounters at each location generally vary based on the current zone. Broad descriptions of every available location are listed below.",
+   "Because of the randomly diverging pathways, you will sometimes be unable to visit all 3 Repair Yards in a zone.",
+   "Three zones in order: Lazuli Nebula (1) -> Sapphire Cluster (2) -> Void's Cradle (3); each ends at a Boss, then an Exit node leads to the next zone (Locations table). The Finale is a separate battle launched from the Memories screen."
+  ],
+  "rewards": {
+   "common_enemy": "Common Enemies are the most common form of encounter in Cobalt Core. All Common Enemy encounters begin a battle with a hostile ship, and defeating them will always result in a card reward after the battle. The specific enemies encountered vary by zone, as shown below.",
+   "elite": "defeating them will always result in both a card reward (with increased chances for Uncommon and Rare cards) and a choice of 3 artifacts (2 on Harder+) after the battle.",
+   "boss": "defeating them will always result in both an improved card reward and a Boss artifact reward after the battle.",
+   "artifact_node": "An artifact to benefit the crew and change the rules of combat. You will receive one at random, unless you have the Artemis's Cargo Hold in which case you will be given a choice of two.",
+   "pre_upgraded_card_offers": "reduction in pre-upgraded cards is fairly drastic (Zone 2: 50% -> 25%, and Zone 3: 100% -> 50%), it's generally not a huge deal--especially in Zone 1, where you can't get any pre-upgraded card rewards in the first place.",
+   "artifact_pool": "Artifacts are permanent items that provide passive bonuses during the loop. About half of the artifacts are available during every loop, with the other half being restricted to specific characters or ships. Artifacts can only be lost through certain Events. You cannot be offered artifacts you already have, but you can be offered artifacts you have seen previously on this run that you didn't take. You can even be offered artifacts that you previously had but lost. Each ship begins the loop with the Warp Prep artifact, and all ships also begin with one or more additional starting artifacts. Boss artifacts can only be found as rewards after a boss battle (or traded for Warp Prep during the Boot Option start-of-loop event). A select few artifacts require special circumstances, such as a specific Events choice, in order to be acquired.",
+   "max_hull_sources": [
+    {
+     "source": "Boot Sequence",
+     "change": "Gain 3",
+     "condition": "Choice"
+    },
+    {
+     "source": "Boot Sequence (Hardest)",
+     "change": "Lose 2",
+     "condition": "Choice"
+    },
+    {
+     "source": "Boss",
+     "change": "Gain 2 (1 on Harder+)",
+     "condition": "Defeat the Boss"
+    },
+    {
+     "source": "Ship Shuffler",
+     "change": "Gain 1",
+     "condition": "Choice"
+    },
+    {
+     "source": "The Duplitron",
+     "change": "Lose 3 (4 on Hard+)",
+     "condition": "Choice"
+    },
+    {
+     "source": "Worthwhile Trade Repairs",
+     "change": "Gain 3",
+     "condition": "Choice (Lose 1 random artifact)"
+    },
+    {
+     "source": "Pillage and Plunder",
+     "change": "Gain 1",
+     "condition": "Card deals final blow"
+    },
+    {
+     "source": "Hardmode (Hard)",
+     "change": "Lose 1",
+     "condition": ""
+    },
+    {
+     "source": "Hardmode (Harder+)",
+     "change": "Lose 3",
+     "condition": ""
+    },
+    {
+     "source": "Hull Plating",
+     "change": "Gain 3",
+     "condition": "On pickup"
+    },
+    {
+     "source": "Adaptive Plating",
+     "change": "Gain 1",
+     "condition": "Kill a Boss/Elite"
+    },
+    {
+     "source": "Scrap Armor",
+     "change": "Gain 2",
+     "condition": "Get hit 10 times, Single use"
+    },
+    {
+     "source": "Tridimensional Cockpit",
+     "change": "Lose 50%",
+     "condition": "On pickup"
+    }
+   ],
+   "healing_sources_non_card": [
+    {
+     "source": "Garbage Girl Repairs",
+     "amount": "Heal 50%",
+     "condition": "Choice"
+    },
+    {
+     "source": "Abandoned Ship Yard",
+     "amount": "Heal 50%",
+     "condition": "Choice (67% to enter combat w/ lesser heal)"
+    },
+    {
+     "source": "Worthwhile Trade Repairs",
+     "amount": "Heal 99",
+     "condition": "Choice (Lose 1 random artifact)"
+    },
+    {
+     "source": "Repair Kit",
+     "amount": "Heal 2",
+     "condition": "Heals its destroyer"
+    },
+    {
+     "source": "Nanofiber Hull",
+     "amount": "Heal 1",
+     "condition": "Triggers after combat"
+    },
+    {
+     "source": "Heal Booster",
+     "amount": "Heal 1",
+     "condition": "Triggers on other heals"
+    },
+    {
+     "source": "Scrap Armor",
+     "amount": "Heal to max",
+     "condition": "Single Use"
+    },
+    {
+     "source": "Rebound Reagent",
+     "amount": "Heal 1",
+     "condition": "Lose hull; Once per combat."
+    }
+   ]
+  },
+  "repair_yard": {
+   "summary": "Repair Yards are a type of Location you will see often on the map, denoted by their unique icon with a green wrench & screwdriver. Each zone has two Repair Yards scattered randomly throughout the middle and one just before the Boss which you are guaranteed to stop by. Because of the randomly diverging pathways, you will sometimes be unable to visit all 3 Repair Yards in a zone. At each Repair Yard, you will find Cleo, a friendly cat who is happy to help you on your journey.",
+   "options": [
+    "Repair X hull (Always heals 50% of your maximum hull, rounded down.)",
+    "Upgrade a card",
+    "Remove a card",
+    "[Requires the Jettison Hatch artifact] Remove two cards",
+    "[Requires 2 or more wins] Fight me - Cleo warns you and gives you the opportunity to back out. -> Mmmmaybe not. - Back out and choose something else.; Let's do this. - Enter combat against Cleo's ship. Good luck!",
+    "No thanks. - Cleo asks if you're sure you want to leave. -> Yeah, see ya! - Leave with nothing!; On second thought.. - Back out and choose something else."
+   ]
+  },
+  "difficulty": {
+   "artifact": "Hardmode (starter artifact on Hard and up; effects stack: Harder = Hard + more, Hardest = Harder + more)",
+   "levels": [
+    {
+     "level": "Normal",
+     "changes": [
+      "No Hardmode artifact; baseline rules."
+     ]
+    },
+    {
+     "level": "Hard",
+     "cumulative": false,
+     "changes": [
+      "Events are harder (less forgiving outcomes)",
+      "Start combat with a Weak cockpit",
+      "+1 Basic Shot in your starting deck",
+      "Less pre-upgraded card offerings (chances are halved)",
+      "-1 max hull"
+     ]
+    },
+    {
+     "level": "Harder",
+     "cumulative": true,
+     "changes": [
+      "+1 Corrupted Core in your starting deck, a trash card which cannot be permanently removed",
+      "-3 max hull (instead of -1)",
+      "1 less Max Hull gained from boss kills",
+      "Elites nodes only offer 2 artifacts after battle"
+     ]
+    },
+    {
+     "level": "Hardest",
+     "cumulative": true,
+     "changes": [
+      "Take a downside on boot sequence",
+      "Start combat with a Brittle cockpit (instead of Weak)",
+      "Start with 50% of your hull missing (after Max Hull reduction)",
+      "Most enemies are harder! (different behaviors, altered vulnerabilities, etc)"
+     ]
+    }
+   ]
+  },
+  "crew": {
+   "crew_size": "select 3 of the following characters to be the crew in a run/loop.",
+   "characters": [
+    {
+     "name": "Dizzy",
+     "starting": true,
+     "unlock": "Unlocked by default"
+    },
+    {
+     "name": "Riggs",
+     "starting": true,
+     "unlock": "Unlocked by default"
+    },
+    {
+     "name": "Peri",
+     "starting": true,
+     "unlock": "Unlocked by default"
+    },
+    {
+     "name": "Isaac",
+     "starting": false,
+     "unlock": "Win a run on Normal difficulty"
+    },
+    {
+     "name": "Drake",
+     "starting": false,
+     "unlock": "Win a run with Isaac"
+    },
+    {
+     "name": "Max",
+     "starting": false,
+     "unlock": "Win a run with Drake"
+    },
+    {
+     "name": "Books",
+     "starting": false,
+     "unlock": "Defeat first boss 5 times"
+    },
+    {
+     "name": "CAT",
+     "starting": false,
+     "unlock": "Unlock all memories and complete the Finale"
+    }
+   ],
+   "starting_deck": {
+    "basic": [
+     "1x Basic Block",
+     "1x Basic Dodge",
+     "2x Basic Shot (3x on HARD difficulty or above).",
+     "  On the Jupiter ship, one of the Basic Shots will be replaced with a Basic Shift instead.",
+     "If on HARDER difficulty or above: 1x Corrupted Core"
+    ],
+    "per_crew": {
+     "Dizzy": [
+      "1x Block Shot",
+      "1x Shield Surge"
+     ],
+     "Riggs": [
+      "1x Draw Shot",
+      "1x Scramble"
+     ],
+     "Peri": [
+      "1x Lunge",
+      "1x Multi Shot"
+     ],
+     "Isaac": [
+      "1x Attack Drone",
+      "1x Parallel Shift"
+     ],
+     "Drake": [
+      "1x EMP Slug",
+      "1x Heatsink"
+     ],
+     "Max": [
+      "1x Admin Deploy",
+      "1x Reroll"
+     ],
+     "Books": [
+      "1x Mage Hand",
+      "1x Unpolished Crystal"
+     ],
+     "CAT": [
+      "2 of the 7 character.exe cards below, randomly picked from the characters not in your crew:",
+      "Dizzy.EXE",
+      "Riggs.EXE",
+      "Peri.EXE",
+      "Isaac.EXE",
+      "Drake.EXE",
+      "Max.EXE",
+      "Books.EXE"
+     ]
+    }
+   },
+   "crystallized_crew_event": "You are given the option to save them at the cost of putting one of your current crew members back into stasis. If you do, you still get to keep the removed crew member's cards and artifacts."
+  },
+  "achievements": [
+   {
+    "name": "Prism",
+    "description": "Beat the finale.",
+    "condition": "Unlock and access the 'future memory.?' in the vault, for one final encounter."
+   },
+   {
+    "name": "The New Kid",
+    "description": "Unlock Isaac.",
+    "condition": "Win a run."
+   },
+   {
+    "name": "Now We're Cooking",
+    "description": "Unlock Drake.",
+    "condition": "Win a run with Isaac."
+   },
+   {
+    "name": "We're In",
+    "description": "Unlock Max.",
+    "condition": "Win a run with Drake."
+   },
+   {
+    "name": "Bookmarked",
+    "description": "Unlock Books.",
+    "condition": "Progress is made each interaction with Books after Crystalline Entity. Win a run at least once."
+   },
+   {
+    "name": "I've Been Here The Whole Time",
+    "description": "Unlock CAT.",
+    "condition": "Unlock all memories."
+   },
+   {
+    "name": "God Of War",
+    "description": "Unlock the Ares.",
+    "condition": "Win a run on HARD or harder."
+   },
+   {
+    "name": "Good Communicator",
+    "description": "Unlock the Jupiter.",
+    "condition": "Get 40 different artifacts."
+   },
+   {
+    "name": "Of Two Minds",
+    "description": "Unlock the Gemini.",
+    "condition": "Win a run without Dizzy, Riggs, or Peri."
+   },
+   {
+    "name": "Smooth Sailing",
+    "description": "Unlock the Tiderunner.",
+    "condition": "Win 10 runs in total."
+   },
+   {
+    "name": "Penchant For Punishment",
+    "description": "Win a run on the hardest difficulty.",
+    "condition": "Win a run on HARDEST."
+   },
+   {
+    "name": "Curiosity",
+    "description": "Win a fight you shouldn't have started.",
+    "condition": "Find a way to annihilate Cleo."
+   }
+  ],
+  "time_loop": {
+   "run_is_a_loop": "Each run is a 'loop' of the same three zones; the main menu tracks runs as 'Loop X' (Mechanics page note).",
+   "boot_sequence": "Boot Sequence is a special Event that always occurs at the start of every loop after your very first. It lets you choose from a variety of random bonuses, and if you're playing on the Hardest difficulty, forces you to pick a downside as well.",
+   "boot_sequence_bonuses": [
+    "Gain 3 max hull",
+    "Gain 1 common artifact",
+    "Replace Warp Prep with a boss artifact",
+    "Remove 2 cards",
+    "Remove a card, then gain 1 of 3 common cards",
+    "Pick from 3 uncommon cards",
+    "Gain 1 random rare card",
+    "Upgrade a card",
+    "Upgrade 2 random cards to type A",
+    "Upgrade 2 random cards to type B"
+   ],
+   "boot_sequence_hardest_downsides": [
+    "Gain 1 Debris",
+    "Lose 1 max shield",
+    "Lose 2 max hull"
+   ],
+   "memories_and_finale": "The Finale is a special battle, accessible from the Memories screen after recovering all 18 Memories, in which CAT pilots The Cobalt to save her friends and end the loops. It is deliberately tilted in the player's favor, and if you do manage to lose (such as by deliberately skipping turns) you will instantly restart. Completing the Finale plays the credits. Completing it for the first time unlocks CAT for normal play.",
+   "events_once_per_loop": "Each event can only trigger once per loop, so you won't come across the same event multiple times.",
+   "progress_gated_content": [
+    "all the new enemies can only show up after you've played or won a few runs.",
+    "The Tower fight modifiers (Solar Flare / Asteroid Field / Solar Wind): after 3 runs and 1 win (The Tower page).",
+    "It will only appear if the player has played at least 3 runs and has at least 1 win.",
+    "[Requires 2 or more wins] Fight me - Cleo warns you and gives you the opportunity to back out",
+    "requires you to have won at least 3 runs and unlocked Isaac.",
+    "only if Drake is unlocked.",
+    "Daily runs are available after beating the game, OR by opting in early (and accepting that dailies may contain story/mechanic spoilers!)"
+   ],
+   "daily_runs": [
+    "Added a daily mode!",
+    "Everyone playing that day's daily share a crew, a ship, and a run seed. They also share 1-3 weird modifiers that make daily runs feel pretty different from normal runs!",
+    "Dailies are scored! Compete with your friends on the Steam leaderboards!",
+    "Daily runs are available after beating the game, OR by opting in early (and accepting that dailies may contain story/mechanic spoilers!)",
+    "Here's a few examples of daily modifiers:",
+    "One character only!",
+    "Enemy ship parts are randomly shuffled at the start of every fight!",
+    "Start with extra health, but most fights take place in Solar Flare events- you're gonna need that extra health",
+    "Cards can only be upgraded to their B upgrade",
+    "Start with a free boss artifact"
+   ],
+   "patch_1_1_notes": [
+    "In the interest of keeping the game's initial learning curve the same, all the new enemies can only show up after you've played or won a few runs. Pre-existing save files that have already done this will already have access to the new enemies.",
+    "This update is live now on Steam!",
+    "Switch players, expect this patch in about a month 😊"
+   ],
+   "gaps": [
+    "Mechanics page 'Meta-Progression' and 'Codex' sections are placeholders ('Meta-progression text.'): the wiki does not document which runs unlock which of the 18 memories."
+   ]
+  },
+  "combat": {
+   "overview": [
+    "Combat in Cobalt Core boils down to strategic positioning.",
+    "There are three rows of parallel one-dimensional grids: Player row, Midrow, Enemy row.",
+    "Evasion is a mechanic that allows players and enemies to move along their respective row.",
+    "Players utilize a status effect called Evade, which acts like a consumable resource for movement.",
+    "Using 1 evade to move a unit left or right across the grid of their row.",
+    "Enemies, however, have set behaviors for evading.",
+    "See each enemy's unique behavior on their respective page.",
+    "Some enemies have set behaviors that allow them to instantly move to line up the center of their ship to the center of the player's ship.",
+    "This happens if the player's footprint ceases from being aligned to am enemy's ship part, in which they will \"square up.\" Hull is the main health attribute that the player wants to protect on their ship, and deplete on the enemy ship.",
+    "If Hull falls below 0, the respective ship is destroyed, and in the player's case, game over.",
+    "Shield is the secondary health attribute that a ship can raise to protect the Hull.",
+    "Shield acts as extra hitpoints that takes damage before the Hull.",
+    "Since Shield is easier to come by than healing, it is an important resource to mitigating Hull damage.",
+    "Players and enemies can both raise shields, but the player has ways of ignoring the enemy's shield with Piercing attacks."
+   ],
+   "ship_parts": {
+    "Cockpit": "The cockpit is where the pilot(s) are, probably. All player ships have a cockpit. Most enemy ships also have a cockpit, but there are some that don't. On Hard difficulty or above, the player's cockpit will be Weak by default, meaning it will take +1 damage from all attacks.",
+    "Cannon": "The cannon is where all attacks come out of, usually. All player ships have one cannon, with some exceptions. The Ares and Gemini both have two separate cannons which they can switch between. The Jupiter has no cannons and instead channels its attacks through Jupiter Drones.",
+    "Missile Bay": "The missile bay is where midrow objects such as missiles & drones are launched from. All player ships have one missile bay, except for the Gemini which has two missile bays that it can switch between. Some enemy ships also have missile bays. When the player launches an object, it is released into the midrow on the same lane as their missile bay.",
+    "Comms": "Comms is a part only seen on the Jupiter ship. It is Weak by default, regardless of difficulty. Other than that, it has no innate effects or properties. With the Radar Subwoofer artifact (exclusive to the Jupiter), the Comms will boost the attack of any Jupiter Drone in front of it by +1.",
+    "Wings": "The wings probably help make ships move better, although they aren't necessary parts on all ships and don't have any impact on gameplay by themselves. Of the player-controlled ships, the Artemis, Jupiter and Tiderunner are the only ones to have wings. Many enemy ships also have wings. With the Hunter Wings boss artifact (exclusive to the Artemis), the player's wings can temporarily become Empty if they end their turn with 1 or more Energy.",
+    "Empty Parts": "Some ships will have empty scaffolding in the middle of them, where attacks and missiles will pass right through them as if there was nothing there. They still act as a part of the ship otherwise. The only player-controlled ships to start with Empty parts are the Jupiter and the Tiderunner. Some enemy ships also have Empty parts."
+   }
+  },
+  "environment_modifiers": {
+   "Asteroid Field": [
+    "00-A Mining Drill: Starts with: Asteroid Field",
+    "Fireball: Starts with: Asteroid Field",
+    "Fireball: Environment: However, most fights against the Fireball take place in Asteroid Fields, providing ample cover.",
+    "The Tower: Modifiers: If the player has played at least 3 runs and has at least 1 win, there is a chance for an environmental modifier to appear during this fight. Specifically: 25% chance for no modifier.; 25% chance for a Solar Flare (only if you have 4 or more hull).; 25% chance for an Asteroid Field, with a fill rate of 15%.; 25% chance for Solar Wind, with a strength of 1 to the right."
+   ],
+   "Walled In": [
+    "Buried(?) Relic: Starts with: Walled In",
+    "Buried(?) Relic: Environment: Evasion is at its worst in this fight specifically, as you are walled in."
+   ],
+   "Ion Storm": [
+    "DPL-55555 \"Replicator\": Environment: This encounter always takes place under the \"Ion Storm\" condition, which removes 2 shield from both ships every turn."
+   ],
+   "Solar Flare": [
+    "The Tower: Modifiers: If the player has played at least 3 runs and has at least 1 win, there is a chance for an environmental modifier to appear during this fight. Specifically: 25% chance for no modifier.; 25% chance for a Solar Flare (only if you have 4 or more hull).; 25% chance for an Asteroid Field, with a fill rate of 15%.; 25% chance for Solar Wind, with a strength of 1 to the right.",
+    "The Tower: Environment: However, if a Solar Flare occurs, this fight becomes much more dangerous."
+   ],
+   "Solar Wind": [
+    "The Tower: Modifiers: If the player has played at least 3 runs and has at least 1 win, there is a chance for an environmental modifier to appear during this fight. Specifically: 25% chance for no modifier.; 25% chance for a Solar Flare (only if you have 4 or more hull).; 25% chance for an Asteroid Field, with a fill rate of 15%.; 25% chance for Solar Wind, with a strength of 1 to the right."
+   ]
+  }
+ }
+}

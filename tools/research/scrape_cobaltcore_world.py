@@ -45,11 +45,13 @@ CREW = ["Dizzy", "Riggs", "Peri", "Isaac", "Drake", "Max", "Books", "CAT"]
 def clean(s):
     """Wikitext -> plain text, keeping the meaning of the few content-bearing templates/icons."""
     s = re.sub(r"<!--.*?-->", "", s, flags=re.S)
+    s = re.sub(r"^(=+)[^\n]*\1\s*$", "", s, flags=re.M)  # section headings
     # the Hardmode artifact icon marks difficulty-specific values
     s = re.sub(r"\[\[File:ArtifactHardmode[^\]]*\]\]\s*\[\[(?:Hardmode\|)?Hardest\]\]", "Hardest", s)
     s = re.sub(r"\[\[File:ArtifactHardmode[^\]]*\]\]\s*\[\[Hardmode(?:\|[^\]]*)?\]\]", "Hard+", s)
-    s = re.sub(r"\[\[File:ArtifactHardmode[^\]]*\]\]", "Hardest", s)
-    s = re.sub(r"\[\[File:Armored\.png[^\]]*\]\]", "", s)
+    s = re.sub(r"\[\[File:ArtifactHardmode[^\]]*\]\](?=\s*:)", "Hardest", s)  # '(icon: 11/11)' = Hardest value
+    s = re.sub(r"\[\[File:ArtifactHardmode[^\]]*\]\]", "", s)
+    s = re.sub(r"\[\[(?:File:Armored\.png|Category:)[^\]]*\]\]", "", s)
     s = re.sub(r"\{\{CardLink\|([^|}]*)\|([AB])\}\}", r"\1 \2", s)
     s = re.sub(r"\{\{(?:CardLink|Parttrait|Difficulty)\|([^|}]*)[^}]*\}\}", r"\1", s)
     s = re.sub(r"\{\{(?:Textcolor|Color)\|[^|}]*\|([^}]*)\}\}", r"\1", s)
@@ -66,33 +68,68 @@ def text(s):
     return one_line(clean(s))
 
 
+def cell_text(s):
+    """Multi-line table cell -> '; '-joined lines."""
+    return "; ".join(x for x in (one_line(l) for l in clean(s).split("\n")) if x)
+
+
+def flat(wt):
+    """Wikitext -> plain lines with tables flattened to one cell per line and headings/bullets removed."""
+    wt = strip_dialogue(wt)
+    wt = re.sub(r"^\{\|.*$|^\|\}\s*$|^\|-.*$|^!.*$", "", wt, flags=re.M)
+    wt = re.sub(r"^\|\s*(?:[a-z-]+=\"[^\"]*\"\s*\|)?", "", wt, flags=re.M).replace("||", "\n")
+    wt = re.sub(r"^(=+)\s*(.*?)\s*\1\s*$", "", wt, flags=re.M)
+    wt = re.sub(r"^[*#:]+\s*", "", wt, flags=re.M)
+    return clean(wt)
+
+
+def flat_sentences(wt):
+    return [s for line in flat(wt).split("\n") for s in sentences(line)]
+
+
+def patch_bullets(sec):
+    out, head = [], None
+    for d, t in bullets(sec):
+        if d == 1:
+            head = t
+            out.append(t)
+        elif head:
+            if out and out[-1] == head:
+                out.pop()
+            out.append(f"[{head}] {t}")
+        else:
+            out.append(t)
+    return out
+
+
 def strip_dialogue(wt):
     wt = re.sub(r"\{\{Character Quote[^\n]*\}\}\n?", "", wt)
     wt = re.sub(r"\{\|[^\n]*mw-collapsed.*?\n\|\}", "", wt, flags=re.S)
     return wt
 
 
-def headings(wt):
-    """All sections at any level, flattened: [(level, title, body)] in page order."""
-    out, last = [], (0, "_intro", 0)
+def _heads(wt):
+    out, last = [], (0, "_intro", 0, 0)
     for m in re.finditer(r"^(=+)\s*(.*?)\s*\1\s*$", wt, re.M):
-        out.append((last[0], last[1], wt[last[2]:m.start()]))
-        last = (len(m.group(1)), text(m.group(2)), m.end())
-    out.append((last[0], last[1], wt[last[2]:]))
-    return out
+        out.append((last[0], last[1], last[2], m.start(), last[3]))
+        last = (len(m.group(1)), text(m.group(2)), m.end(), m.start())
+    out.append((last[0], last[1], last[2], len(wt), last[3]))
+    return out  # (level, title, body_start, body_end, heading_start)
+
+
+def headings(wt):
+    """All sections at any level, flattened: [(level, title, own body without subsections)] in page order."""
+    return [(lvl, title, wt[a:b]) for lvl, title, a, b, _ in _heads(wt)]
 
 
 def section(wt, *names, deep=True):
-    """Body of the first section whose title matches; deep=True includes its subsections."""
-    hs = headings(wt)
-    for i, (lvl, title, body) in enumerate(hs):
+    """Body of the first section whose title matches; deep=True keeps its subsections (with their headings)."""
+    hs = _heads(wt)
+    for i, (lvl, title, a, b, _) in enumerate(hs):
         if title in names:
-            if deep:
-                for lvl2, _, body2 in hs[i + 1:]:
-                    if lvl2 <= lvl:
-                        break
-                    body += body2
-            return body
+            if deep and lvl > 0:
+                b = next((h[4] for h in hs[i + 1:] if h[0] <= lvl), len(wt))
+            return wt[a:b]
     return ""
 
 
@@ -144,11 +181,11 @@ def template_block(wt, name, start=0):
     return params, i
 
 
-def wikitables(wt):
-    """Non-collapsed wikitables -> [{'headers': [...], 'rows': [[cell, ...]], 'start': idx}] (cells = wikitext)."""
+def wikitables(wt, collapsed=False):
+    """Wikitables (collapsed ones only if collapsed=True) -> [{'headers': [...], 'rows': [[cell, ...]], 'start': idx}] (cells = wikitext)."""
     out = []
     for m in re.finditer(r"^\{\|(.*?)^\|\}", wt, re.M | re.S):
-        if "mw-collapsed" in m.group(1).split("\n", 1)[0]:
+        if "mw-collapsed" in m.group(1).split("\n", 1)[0] and not collapsed:
             continue
         body = m.group(1).split("\n", 1)[1] if "\n" in m.group(1) else ""
         headers, rows = [], []
@@ -253,7 +290,8 @@ STATUS_ON_PLAYER = r"Engine Stall|Engine Lock|Heat|Missing|Corro(?:de|sion)|Shak
 CARD_NAMES = r"Trash|Miasma|Toxic|Comm Jam|Fumes|Fear|Oxygen Leak|Safety Override|Yellow Card|Debris|card"
 SELF_BUFFS = r"Powerdrive|Overdrive|Autododge|Payback|Reflexive|Ace|Survive|Mitosis|max hull"
 INTENT_RULES = [
-    ("attack", re.compile(r"\b(?:attack(?:s|ing)?\b(?!\s+drone)|fires?\b(?! like)|shoots?\b|laser|shots?\b|harpoon)", re.I)),
+    ("attack", re.compile(r"\b(?:attack(?:s|ing)?\b(?!\s+drone)|fires?\b(?! like)|shoots?\b|laser|shots?\b|harpoon|"
+                          r"damage output|\d+ damage)", re.I)),
     ("shield", re.compile(r"\b(?:temp(?:orary)?\s+)?shield\b(?!\s+drone)|\bshields? for\b", re.I)),
     ("missile", re.compile(r"\b(?:missiles?|seekers?)\b(?!\s+bay)", re.I)),
     ("drone", re.compile(r"\b(?:drones?|space mines?|mines?|asteroids?|football|geodes?|repair kits?)\b(?!\s+hub)", re.I)),
@@ -280,7 +318,8 @@ def intent_of(effect):
 
 # ---------------------------------------------------------------- enemies
 def parse_navbox(wt):
-    """Template:Enemies nav -> {enemy: {'zone','group','sub','event'}} in list order."""
+    """Template:Enemies nav -> {enemy: {'zone','group','sub','events'}}; first listing = primary, later
+    listings (Miscellaneous / Event / Reused) only add the event name."""
     out, zone, group, sub = {}, None, None, None
     for line in wt.split("\n"):
         m = re.match(r"^\s*\|\s*group\d+\s*=\s*(.*)$", line)
@@ -298,7 +337,9 @@ def parse_navbox(wt):
             for item in m.group(1).split("{{*}}"):
                 ls = links(item)
                 if ls:
-                    out.setdefault(ls[0], {"zone": zone, "group": group, "sub": sub, "event": ls[1] if len(ls) > 1 else None})
+                    e = out.setdefault(ls[0], {"zone": zone, "group": group, "sub": sub, "events": []})
+                    if len(ls) > 1:
+                        e["events"].append(ls[1])
     return out
 
 
@@ -308,7 +349,7 @@ def parse_overview(wt):
     for lvl, title, body in headings(wt):
         mz = re.match(r"Zone (\d)", title)
         if mz:
-            zone = int(mz.group(1))
+            zone, group = int(mz.group(1)), None
         if title.endswith(("Enemies", "Elites", "Bosses")) or lvl == 3:
             group = title
         for t in wikitables(body):
@@ -319,7 +360,8 @@ def parse_overview(wt):
                 if not ls:
                     continue
                 rows.append({"zone": zone, "group": group or "(page)", "link": ls[0], "details": text(cells[1]),
-                             "detail_links": links(cells[1]), "first": "¹" in cells[0]})
+                             "detail_links": links(cells[1]),
+                             "first": "¹" in cells[0] and "¹Always the first encounter" in body})
     return rows
 
 
@@ -343,11 +385,11 @@ def moves_from_tables(body):
             effect = movement = label = None
             for k, v in row.items():
                 if k.startswith(("details", "displayed")):
-                    effect = text(v)
+                    effect = cell_text(v)
                 elif k.startswith(("move", "immediate")):
-                    movement = text(v)
+                    movement = cell_text(v)
                 elif k.startswith(("description", "condition")):
-                    label = text(v)
+                    label = cell_text(v)
             if not effect:
                 continue
             mv = {"intent": intent_of(effect), "effect": effect}
@@ -357,10 +399,6 @@ def moves_from_tables(body):
                 mv["condition"] = label
             moves.append(mv)
     return moves
-
-
-PATTERN_WORDS = re.compile(r"\b(order|cycle|cycles|repeat|alternat|random|every turn|each turn|odd|even|turn \d|first|"
-                           r"then|always|only (?:has|one)|once|after|before|phase|starts? at)", re.I)
 
 
 def parse_enemy_page(title, wt, extra_patch_notes):
@@ -382,22 +420,29 @@ def parse_enemy_page(title, wt, extra_patch_notes):
     moves = moves_from_tables(attack_sec)
     if special and special not in attack_sec:
         moves += moves_from_tables(special)
-    pre = attack_sec.split("{|", 1)[0] if "{|" in attack_sec else ""
-    if moves:
-        pattern = text(pre)
-    else:  # prose-only behaviour (bosses, Cleo, Soggins, stubs)
-        prose = re.sub(r"\[\[File:[^\]]*\]\]", "[image]", attack_sec)
-        paras = [text(p) for p in re.split(r"\n\s*\n", prose) if text(p) and text(p) != "[image]"]
-        for p in paras:
-            eff = p.replace("[image]", "(shown only as an image on the wiki)").strip()
-            moves.append({"intent": intent_of(eff), "effect": eff})
-        pattern = " ".join(s for p in paras for s in sentences(p) if PATTERN_WORDS.search(s)).replace(
-            "[image]", "(image)")
+    if moves:  # prose around the tables says how the rows are chosen
+        pattern = text(re.sub(r"^\{\|.*?^\|\}", "", attack_sec, flags=re.M | re.S))
+    else:  # prose-only behaviour (bosses, Cleo, Soggins, Finale): one move per behavioural sentence
+        prose = re.sub(r"\[\[File:[^\]]*\]\]", " [image] ", attack_sec)
+        sents = [s for p in re.split(r"\n\s*\n", prose) for s in sentences(text(p)) if s != "[image]"]
+        for s in sents:
+            eff = s.replace("[image]", "(shown only as an image on the wiki)").strip()
+            if intent_of(eff) != "other" and not re.search(r"\brepeats?\b|\bcycles?\b", eff) and (
+                    re.search(r"\d", eff) or re.search(r"\b(launch\w*|gains?|gives?|adds?|inflict\w*|heals?|fires?|"
+                                                     r"shoots?|moves?)\b", eff)):
+                moves.append({"intent": intent_of(eff), "effect": eff})
+        pattern = " ".join(sents).replace("[image]", "(image)")
+    if not moves:  # stub without an Attacks section: keep what the strategy prose says about behaviour
+        beh = [s for s in flat_sentences(section(body, "Strategy", deep=False))
+               if re.search(r"\b(will|every turn|each turn|always|only ever|sprout|launch|fires?)\b", s)
+               and not re.search(r"\byou(?:r)?\b", s, re.I)]
+        if beh:
+            pattern = "From strategy text (no Attacks table on the wiki): " + " ".join(beh)
     movement = text(section(body, "Evasion") or section(body, "Movement"))
 
     layout = section(body, "Layout", deep=False)
     parts = parse_layout(layout)
-    whole = text(body.split("==Dialogue==")[0] if "==Dialogue==" in body else body)
+    whole = text(body)
     m = re.search(r"\b(\d+|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve) (?:tiles|spaces) wide", whole)
     if m:
         parts.insert(0, f"Width: {m.group(1)} tiles")
@@ -412,9 +457,10 @@ def parse_enemy_page(title, wt, extra_patch_notes):
     if srcs:
         parts.append("Intent sources: " + ", ".join(srcs))
     trait_rx = re.compile(r"\b(weak|brittle|armou?r(?:ed)?|concussable|empty|scaffold\w*|reflexive)\b", re.I)
-    for s in sentences(intro + " " + text(layout) + " " + text(section(body, "Strategy")) + " "
-                       + text(section(body, "Tips and Tricks"))):
-        if trait_rx.search(s) and not re.search(r"\byou(?:r)?\b", s, re.I) and len(s) < 400:
+    for s in flat_sentences(section(body, "_intro", deep=False) + "\n" + section(body, "Strategy", deep=False)
+                            + "\n" + section(body, "Tips and Tricks")):
+        if trait_rx.search(s) and len(s) < 400 and not re.search(
+                r"\byou(?:r)?\b|\bcards?\b|\benergy\b|\bone were\b|\b(?:" + "|".join(CREW) + r")\b", s, re.I):
             note = "Trait note: " + s
             if note not in parts:
                 parts.append(note)
@@ -423,25 +469,31 @@ def parse_enemy_page(title, wt, extra_patch_notes):
     buffs = text(info.get("buffs", ""))
     if buffs:
         passives.append("Starts with: " + buffs)
+    gal = re.search(r"<gallery>(.*?)</gallery>", info.get("image", ""), re.S)
+    if gal:
+        caps = [c.strip() for c in re.findall(r"\|([^|\n]+)$", gal.group(1), re.M)]
+        if caps:
+            passives.append("Forms shown in infobox: " + ", ".join(caps))
     for sec_name in ("Modifiers", "Rules", "Penalty System"):
         sec = section(body, sec_name, deep=False)
         if sec:
             b = [t for _, t in bullets(sec)]
             passives.append(f"{sec_name}: " + (text(sec.split("\n*", 1)[0]) + " " + "; ".join(b)).strip())
-    env_rx = re.compile(r"Ion Storm|Asteroid Field|Solar Flare|Solar Wind|Walled In|walled in|wall", re.I)
-    for s in sentences(intro + " " + text(section(body, "Strategy"))):
+    env_rx = re.compile(r"Ion Storm|Asteroid Field|Solar Flare|Solar Wind|Walled In|walled in", re.I)
+    for s in flat_sentences(section(body, "_intro", deep=False) + "\n" + section(body, "Strategy", deep=False)
+                            + "\n" + section(body, "Evasion")):
         if env_rx.search(s) and not any(s in p for p in passives):
             passives.append("Environment: " + s)
-    for s in sentences(intro):
-        if re.search(r"\b(always|before each|will leave|offer|automatically|every turn|start(?:s)? (?:with|every))\b",
-                     s, re.I) and not re.search(r"\bpiloted by\b|\bis a ship with\b", s) and s not in passives:
+    for s in flat_sentences(section(body, "_intro", deep=False)):
+        if re.search(r"\b(will leave|offer|automatically|start with|starts with|betray\w*|Payback|Reflexive|"
+                     r"itself|Survive|immune|cannot be)\b", s, re.I) and s not in passives:
             passives.append("Intro: " + s)
 
     hardest = []
-    for s in sentences(whole):
+    for s in flat_sentences(body):
         if re.search(r"\bHardest\b", s) and s not in hardest:
             hardest.append(s)
-    patch = [t for _, t in bullets(section(body, "Patch Changes"))] or extra_patch_notes
+    patch = patch_bullets(section(body, "Patch Changes")) or extra_patch_notes
     return {
         "hull": hull, "hull_text": text(info.get("hull", "")) or None, "hull_hardest": hull_h,
         "shield": shield, "shield_text": text(info.get("shield", "")) or None, "shield_hardest": shield_h,
@@ -450,6 +502,9 @@ def parse_enemy_page(title, wt, extra_patch_notes):
         "passives": passives, "hardest": hardest, "summary": intro, "patch_notes": patch,
         "wiki_stub": stub,
     }
+
+
+REWARD_RX = re.compile(r"^(?:Defeating it adds|It adds|It does not add)")
 
 
 def parse_finale(wt):
@@ -471,9 +526,11 @@ def parse_finale(wt):
             "encounter": "finale", "area": "Finale (scripted story battle)", "zone": None,
             "hull": hull, "hull_text": text(info.get("hull", "")) or None, "shield": shield,
             "shield_text": text(info.get("shield", "")) or None, "pilot": text(info.get("pilot", "")) or None,
-            "parts": [], "moves": [{"intent": intent_of(s), "effect": s} for s in sentences(prose)],
+            "parts": [], "moves": [{"intent": intent_of(s), "effect": s} for s in sentences(prose)
+                                   if intent_of(s) != "other" and not REWARD_RX.search(s)],
             "pattern": "Scripted single behaviour per phase (see moves).", "movement": "",
-            "passives": ["Finale rule: " + s for s in sentences(intro)][:4] if m.group(1) == "1" else [],
+            "passives": ["Defeat reward: " + s for s in sentences(prose) if REWARD_RX.search(s)] +
+                        (["Finale rule: " + s for s in sentences(intro)][:4] if m.group(1) == "1" else []),
             "hardest": [], "summary": prose, "patch_notes": [], "wiki_stub": False,
             "description": None, "fixed_first_fight": False, "also_in_events": [],
             "url": url("Finale") + "#" + urllib.parse.quote(title.replace(" ", "_")),
@@ -527,12 +584,25 @@ def classify_artifact(a, ship_names, ship_starters):
     if m and m.group(1) == "Ship":
         return "ship", m.group(2)
     if m and m.group(1) == "Artifact":
-        return ("ship", ship_starters[m.group(2)]) if m.group(2) in ship_starters else ("common", None)
+        if m.group(2) in ship_starters:
+            return "ship", ship_starters[m.group(2)]
+        return ("boss", None) if rar == "Boss" else ("common", None)
     if m and m.group(1) == "Event":
         return "special", "event: " + m.group(2)
     if req in ("-", ""):
         return ("boss", None) if rar == "Boss" else ("common", None)
     return "special", req
+
+
+def nested(sec):
+    """'* a\n** b\n** c' -> ['a -> b; c']"""
+    out = []
+    for d, t in bullets(sec):
+        if d == 1 or not out:
+            out.append([t])
+        else:
+            out[-1].append(t)
+    return [p[0] + (" -> " + "; ".join(p[1:]) if len(p) > 1 else "") for p in out]
 
 
 def option_summary(wt):
@@ -560,8 +630,8 @@ def parse_events(events_wt, pages, nav):
     out = []
     fights = defaultdict(list)
     for enemy, v in nav.items():
-        if v.get("event"):
-            fights[v["event"]].append(enemy)
+        for ev in v["events"]:
+            fights[ev].append(enemy)
     for cells in tbl["rows"]:
         if len(cells) < 4:
             continue
@@ -570,7 +640,7 @@ def parse_events(events_wt, pages, nav):
         wt = pages.get(name) or ""
         combat = list(fights.get(name, []))
         for m in re.finditer(r"(?:combat|fight|battle)[^.\n]*?\[\[([^\]|]+)", wt, re.I):
-            tgt = m.group(1).replace("_", " ")
+            tgt = m.group(1).replace("_", " ").replace("\u201c", '"').replace("\u201d", '"').strip()
             if tgt in nav and tgt not in combat:
                 combat.append(tgt)
         out.append({
@@ -605,13 +675,13 @@ def parse_ship(title, wt, art_by_name, boss_by_ship):
         "starting_artifacts": [{"name": n, "effect": art_by_name.get(n, {}).get("effect")} for n in starters],
         "boss_artifacts": [{"name": a["name"], "effect": a["effect"]} for a in boss_by_ship.get(title, [])],
         "gimmick": " ".join(art_by_name[n]["effect"] for n in starters if n in art_by_name and n != "Warp Prep"),
-        "patch_notes": [t for _, t in bullets(section(body, "Patch Changes"))],
+        "patch_notes": patch_bullets(section(body, "Patch Changes")),
         "url": url(title),
     }
 
 
 def first_para(wt):
-    return text(section(strip_dialogue(wt), "_intro", deep=False))
+    return text(section(strip_dialogue(wt), "_intro", deep=False).split("{|", 1)[0])
 
 
 def build_rules(p, nav, zone_firsts, enemies, problems):
@@ -642,14 +712,14 @@ def build_rules(p, nav, zone_firsts, enemies, problems):
         nodes.append({"name": name, "summary": text(cells[2]),
                       "details": first_para(p[page]) if page and p.get(page) else None})
 
-    ry_opts = [t for _, t in bullets(section(p["Repair Yard"], "Options", deep=False))]
+    ry_opts = nested(section(p["Repair Yard"], "Options", deep=False))
     hm = section(p["Hardmode"], "Effects")
     diffs = [{"level": "Normal", "changes": ["No Hardmode artifact; baseline rules."]}]
     for lvl, title, body in headings(hm):
         if title in ("Hard", "Harder", "Hardest"):
             diffs.append({"level": title, "cumulative": title != "Hard",
                           "changes": [t for _, t in bullets(body)]})
-    pre_up = find("Hardmode", r"reduction in pre-upgraded cards[^.]*\.[^.]*Zone 1[^.]*\.")
+    pre_up = find("Hardmode", r"reduction in pre-upgraded cards[^.]*Zone 1[^.]*\.")
 
     boot = p["Boot Sequence"]
     boot_opts = section(boot, "Options")
@@ -666,8 +736,7 @@ def build_rules(p, nav, zone_firsts, enemies, problems):
     heal = []
     for t in wikitables(section(p["Hull"], "Healing")):
         for cells in t["rows"]:
-            if len(cells) == 3 and not any(k in text(cells[0]) for k in ("Leech", "Bolt", "Repair ", "Compress",
-                                                                          "Bruise", "Specimen", "Heart")):
+            if len(cells) == 3 and re.search(r"EventMapNode|ShopMapNode|RepairKit|Artifact\w+\.png", cells[0]):
                 heal.append({"source": text(cells[0]), "amount": text(cells[1]), "condition": text(cells[2])})
 
     chars = p["Characters"]
@@ -694,13 +763,13 @@ def build_rules(p, nav, zone_firsts, enemies, problems):
             starting_deck["basic"].append("  " + t)
 
     ach = []
-    for t in wikitables(p["Achievements"]):
+    for t in wikitables(p["Achievements"], collapsed=True):
         for cells in t["rows"]:
             if len(cells) >= 4:
                 ach.append({"name": text(cells[1]), "description": text(cells[2]), "condition": text(cells[3])})
 
     mech = strip_dialogue(p["Mechanics"])
-    combat = [s for s in sentences(text(section(mech, "Combat"))) if not re.match(r"^\w+ text\.$", s)]
+    combat = sentences(re.sub(r"\b[A-Z][a-z]+(?: [a-z]+)? text\.", "", text(section(mech, "Combat"))))
     parts = {}
     for lvl, title, body in headings(p["Ship Parts"]):
         if lvl == 3:
@@ -757,7 +826,7 @@ def build_rules(p, nav, zone_firsts, enemies, problems):
             "common_enemy": first_para(p["Common Enemy"]),
             "elite": find("Elite", r"defeating them will always result in[^.]*\."),
             "boss": find("Boss", r"defeating them will always result in[^.]*\."),
-            "artifact_node": text(loc["rows"][4][2]) if len(loc["rows"]) > 4 else None,
+            "artifact_node": next((n["summary"] for n in nodes if n["name"] == "Artifact"), None),
             "pre_upgraded_card_offers": pre_up,
             "artifact_pool": first_para(p["Artifact"]),
             "max_hull_sources": max_hull,
@@ -809,8 +878,7 @@ def main():
         link_targets |= set(links(wt))
     rmap = resolve(link_targets)
     nav = {rmap.get(k) or k: v for k, v in nav.items()}
-    ship_pages = {t: wt for t, wt in enemy_cat.items() if wt.count("{{Enemy") == 1 and "{{Enemy\n" in wt or
-                  (wt.count("{{Enemy") == 1)}
+    ship_pages = {t: wt for t, wt in enemy_cat.items() if wt.count("{{Enemy") == 1}
     multi = {t for t, wt in enemy_cat.items() if wt.count("{{Enemy") > 1}
     overview_pages = set(enemy_cat) - set(ship_pages) - multi
     pm = patch_mentions(patch_pages, {k: v for k, v in rmap.items() if v in ship_pages})
@@ -854,7 +922,7 @@ def main():
         if title in alt_boss:
             enc = "alternate_boss"
         ov = over_by_name.get(title, [])
-        events = sorted({n2["event"] for k, n2 in nav.items() if k == title and n2.get("event")} |
+        events = sorted(set(n["events"] if n else []) |
                         {r["link"] for r in ov if rmap.get(r["link"]) not in ship_pages and r["link"] != title})
         enemies.append({
             "id": slug(title), "name": title, "category": cat, "encounter": enc, "area": area, "zone": zone,
@@ -885,7 +953,8 @@ def main():
         disc.append(f"navbox entry without enemy page: {k}")
     for k in sorted(names - set(nav)):
         disc.append(f"enemy page not in navbox: {k}")
-    p11 = p.get("Patch 1.1", "")
+    p11 = section(p.get("Patch 1.1", ""), "Content")
+    p11_enemies = {rmap.get(l) or l for l in links(p11)}
     for pg, rows in overview_rows.items():
         listed = set()
         for r in rows:
@@ -897,16 +966,17 @@ def main():
         if pg == "Enemies":
             expected = {k for k, v in nav.items() if v["zone"] in ZONES}
         for k in sorted(expected - listed):
-            cause = "added in Patch 1.1, overview page not updated" if f"[[{k}]]" in p11 or k in alt_boss else "unknown"
+            cause = ("named in Patch 1.1 content notes (new enemy, or Mining Drill NORMAL->ELITE); page not updated since"
+                     if k in p11_enemies else "unknown")
             disc.append(f"'{pg}' page does not list {k} (navbox: {nav[k]['zone']} {nav[k]['group']}) -- cause: {cause}")
         for r in rows:
             tgt = rmap.get(r["link"]) or r["link"]
             if tgt in nav and nav[tgt]["zone"] in ZONES and "Event" not in (r["group"] or ""):
                 g = nav[tgt]["group"]
                 rg = r["group"] if pg == "Enemies" else {"Common Enemy": "Common", "Elite": "Elite", "Boss": "Boss"}[pg]
-                if not rg.startswith(g[:4]) and not (g == "Common" and "Common" in rg):
-                    cause = ("Patch 1.1: Mining Drill 'upgraded from NORMAL to ELITE'" if "Mining Drill" in tgt
-                             else "unknown")
+                if not rg.startswith(g[:4]):
+                    cause = ("Patch 1.1 content notes name it (Mining Drill: 'upgraded from NORMAL to ELITE'); "
+                             "page not updated since" if tgt in p11_enemies else "unknown")
                     disc.append(f"'{pg}' lists {tgt} as {rg} but navbox says {g} -- cause: {cause}")
                 if r["zone"] and ZONES[nav[tgt]["zone"]] != r["zone"]:
                     disc.append(f"'{pg}' lists {tgt} in zone {r['zone']} but navbox says {nav[tgt]['zone']}")
