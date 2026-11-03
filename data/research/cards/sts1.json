@@ -1,0 +1,8012 @@
+{
+ "game": "Slay the Spire",
+ "source": "https://slaythespire.wiki.gg (CC BY-SA)",
+ "retrieved": "2026-11-03",
+ "notes": "Text uses [E] for one Energy icon. cost: 'X' = X-cost, 'U' = unplayable; cost_upgraded only when the upgrade changes it. text_upgraded is null for cards that cannot be upgraded (extra.no_upgrade). keywords come from the infobox GivesToPlayer/GivesToEnemy/PowerGives/InteractsWith fields plus keyword/buff templates in the description; a power named after the card itself is in extra.self_power instead. extra.keyword_roles keeps who receives each (player/enemy/...). Choice cards are folded into their parent as extra.variants (StS1 Wish options; StS2 Mad Science's 9 Tinker Time variants). Excluded removed/deprecated: Allocate, Blaster, Flux Capacitor, Nova, Venomology. StS1 is a finished game; its card pool has been stable since the Watcher's 2020 release. Curses/Statuses use owner 'Curse'/'Status'; Special-rarity entries are generated cards (Shiv, Miracle, Beta...). Completeness check vs wiki Cargo 'Cards' table (which backs the wiki's Cards List / per-character list pages): Colorless: scraped 48, wiki Cargo/Cards List 48; Curse: scraped 14, wiki Cargo/Cards List 14; Defect: scraped 75, wiki Cargo/Cards List 75, expected 75; Ironclad: scraped 75, wiki Cargo/Cards List 75, expected 75; Silent: scraped 75, wiki Cargo/Cards List 75, expected 75; Status: scraped 5, wiki Cargo/Cards List 5; Watcher: scraped 75, wiki Cargo/Cards List 75, expected 75.",
+ "keyword_glossary": {
+  "Artifact": "Negates X debuffs.",
+  "Bias": "At the start of your turn, lose X Focus.",
+  "Blasphemer": "At the start of your turn, die.",
+  "Block": "Until next turn, prevents damage.",
+  "Block Return": "When attacked, you gain X Block.",
+  "Calm": "Upon exiting this Stance, gain 2 [E] Energy.",
+  "Channel": "Channeling an Orb puts it into your first empty slot. If you have no empty slots, your first Orb is automatically Evoked to make room.",
+  "Dark": "Passive: Increase stored damage by 6 (+1 per Focus). Evoke: Deal stored damage damage to the enemy with the least HP.",
+  "Dexterity": "Increase Block gained from cards by X.",
+  "Dexterity (Negative)": "Lose X Dexterity: Block gained from cards is X lower.",
+  "Discard": "Put a card from your hand into the discard pile without playing it.",
+  "Divinity": "Upon entering this Stance, gain 3 [E] Energy. Attacks deal triple damage. Exit this Stance at the start of your next turn.",
+  "Draw": "Move cards from the top of your draw pile into your hand (the discard pile is reshuffled into it when it runs out).",
+  "Electro": "Lightning hits ALL enemies.",
+  "End Turn": "Your turn ends immediately.",
+  "Energized": "Gain X additional [E] Energy next turn.",
+  "Energy": "Energy is used to play cards from your Hand.",
+  "Ethereal": "If an Ethereal card is in your hand at the end of your turn, it is Exhausted.",
+  "Evoke": "Consume your rightmost Orb and use its Evoke effect.",
+  "Exhaust": "Removed until the end of combat.",
+  "Fatal": "Fatal effects occur when a card kills a non-minion enemy.",
+  "Focus": "Increases the effectiveness of Orbs by X.",
+  "Frail": "Gain 25% less Block from cards for X turns.",
+  "Frost": "Passive: Gain 2 (+1 per Focus) Block. Evoke: Gain 5 (+1 per Focus) Block.",
+  "Gold": "Run currency, spent at the Merchant.",
+  "Heal": "Restore HP, up to your Max HP.",
+  "Heatsink": "Whenever you play a Power card, draw X cards.",
+  "Hello": "At the start of your turn, add X random Common cards into your hand.",
+  "Innate": "Start each combat with this card in your hand.",
+  "Intangible": "Reduce ALL damage taken and HP loss to 1.",
+  "Lightning": "Passive: Deal 3 (+1 per Focus) damage to a random enemy. Evoke: Deal 8 (+1 per Focus) damage to a random enemy.",
+  "Lock-On": "Receives 50% more damage from Orbs for X turns.",
+  "Lose HP": "Lose HP directly; Block does not prevent it (self-damage costs, or damage that skips Block).",
+  "Mantra": "Whenever you gain 10 Mantra, enter Divinity.",
+  "Mark": "Whenever you play Pressure Points, lose X HP.",
+  "Next Turn Block": "Gain X Block next turn.",
+  "No Block": "You cannot gain Block from cards.",
+  "No Draw": "You cannot draw cards this turn.",
+  "Orb": "Defect resource: Channel puts an Orb into an Orb slot; each Orb has a passive effect every turn and a stronger one-shot Evoke effect when pushed out or evoked. Focus boosts both.",
+  "Orb Slot": "Orbs can be channeled into these slots. The Defect starts with 3 slots, which can be increased with cards, relics, or potions.",
+  "Plasma": "Passive: Gain 1 [E] Energy. Evoke: Gain 2 [E] Energy.",
+  "Plated Armor": "At the end of your turn, receive X Block. Receiving unblocked damage reduces Plated Armor by 1.",
+  "Poison": "At the start of its turn, loses X HP, then reduce Poison by 1.",
+  "Retain": "Retained cards are not discarded at the end of turn.",
+  "Scry": "Look at the top X cards of your draw pile. You may discard any of them.",
+  "Shackled": "At the end of its turn, gains X Strength.",
+  "Shiv": "Generated Attack card (cost 0): Deal 4 damage. Exhaust.",
+  "Simmering Rage": "Enter Wrath at the start of your turn.",
+  "Stance": "Watcher mode: Calm, Wrath or Divinity (or none). Only one at a time; cards enter/exit stances and many cards trigger on a stance change.",
+  "Strength": "Increases attack damage by X.",
+  "Strength (Negative)": "Lose X Strength (enemy or self): attacks deal X less damage.",
+  "Strength Down": "At the end of this turn, lose X Strength.",
+  "Transform": "Transformed cards become a random card of any rarity.",
+  "Unplayable": "Cannot be played from your Hand.",
+  "Upgrade": "Upgrading cards makes them more powerful. Most cards can only be upgraded once.",
+  "Vigor": "Your next attack deals X additional damage per hit.",
+  "Vulnerable": "Receive 50% more damage from Attacks for X turns.",
+  "Weak": "Attacks deal 25% less damage for X turns.",
+  "Wrath": "In this Stance, you deal and receive double attack damage."
+ },
+ "cards": [
+  {
+   "id": "sts1.bite",
+   "name": "Bite",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Heal 2 HP.",
+   "text_upgraded": "Deal 8 damage. Heal 3 HP.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.dramatic_entrance",
+   "name": "Dramatic Entrance",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Innate. Deal 8 damage to ALL enemies. Exhaust.",
+   "text_upgraded": "Innate. Deal 12 damage to ALL enemies. Exhaust.",
+   "keywords": [
+    "Innate",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.expunger",
+   "name": "Expunger",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage X times.",
+   "text_upgraded": "Deal 15 damage X times.",
+   "keywords": [],
+   "extra": {
+    "wiki_page": "Conjure Blade"
+   }
+  },
+  {
+   "id": "sts1.flash_of_steel",
+   "name": "Flash of Steel",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage. Draw 1 card.",
+   "text_upgraded": "Deal 6 damage. Draw 1 card.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.hand_of_greed",
+   "name": "Hand of Greed",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 20 damage. If Fatal, gain 20 Gold.",
+   "text_upgraded": "Deal 25 damage. If Fatal, gain 25 Gold.",
+   "keywords": [
+    "Fatal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Fatal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.mind_blast",
+   "name": "Mind Blast",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Innate. Deal damage equal to the number of cards in your draw pile.",
+   "text_upgraded": "Innate. Deal damage equal to the number of cards in your draw pile.",
+   "keywords": [
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.ritual_dagger",
+   "name": "Ritual Dagger",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 15 damage. If Fatal, permanently increase this card's damage by 3. Exhaust.",
+   "text_upgraded": "Deal 15 damage. If Fatal, permanently increase this card's damage by 5. Exhaust.",
+   "keywords": [
+    "Fatal",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Fatal",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.shiv",
+   "name": "Shiv",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage. Exhaust.",
+   "text_upgraded": "Deal 6 damage. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.smite",
+   "name": "Smite",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Retain. Deal 12 damage. Exhaust.",
+   "text_upgraded": "Retain. Deal 16 damage. Exhaust.",
+   "keywords": [
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.swift_strike",
+   "name": "Swift Strike",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage.",
+   "text_upgraded": "Deal 10 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.through_violence",
+   "name": "Through Violence",
+   "owner": "Colorless",
+   "type": "Attack",
+   "rarity": "Special",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Retain. Deal 20 damage. Exhaust.",
+   "text_upgraded": "Retain. Deal 30 damage. Exhaust.",
+   "keywords": [
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain",
+      "Exhaust"
+     ]
+    },
+    "wiki_page": "Reach Heaven"
+   }
+  },
+  {
+   "id": "sts1.magnetism",
+   "name": "Magnetism",
+   "owner": "Colorless",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "At the start of your turn, add a random Colorless card into your hand.",
+   "text_upgraded": "At the start of your turn, add a random Colorless card into your hand.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.mayhem",
+   "name": "Mayhem",
+   "owner": "Colorless",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "At the start of your turn, play the top card of your draw pile.",
+   "text_upgraded": "At the start of your turn, play the top card of your draw pile.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.omega",
+   "name": "Omega",
+   "owner": "Colorless",
+   "type": "Power",
+   "rarity": "Special",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "At the end of your turn, deal 50 damage to ALL enemies.",
+   "text_upgraded": "At the end of your turn, deal 60 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Omega"
+     ]
+    },
+    "self_power": "Omega",
+    "wiki_page": "Alpha"
+   }
+  },
+  {
+   "id": "sts1.panache",
+   "name": "Panache",
+   "owner": "Colorless",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Every time you play 5 cards in a single turn, deal 10 damage to ALL enemies.",
+   "text_upgraded": "Every time you play 5 cards in a single turn, deal 14 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.sadistic_nature",
+   "name": "Sadistic Nature",
+   "owner": "Colorless",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Whenever you apply a debuff to an enemy, they take 5 damage.",
+   "text_upgraded": "Whenever you apply a debuff to an enemy, they take 7 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.apotheosis",
+   "name": "Apotheosis",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Upgrade ALL your cards for the rest of combat. Exhaust.",
+   "text_upgraded": "Upgrade ALL your cards for the rest of combat. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Upgrade"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Upgrade"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.apparition",
+   "name": "Apparition",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Ethereal. Gain 1 Intangible. Exhaust.",
+   "text_upgraded": "Gain 1 Intangible. Exhaust.",
+   "keywords": [
+    "Ethereal",
+    "Intangible",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Ethereal",
+      "Intangible",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bandage_up",
+   "name": "Bandage Up",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Heal 4 HP. Exhaust.",
+   "text_upgraded": "Heal 6 HP. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Heal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Heal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.beta",
+   "name": "Beta",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Shuffle an Omega into draw pile. Exhaust.",
+   "text_upgraded": "Shuffle an Omega into draw pile. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    },
+    "card_refs": [
+     "Omega"
+    ],
+    "wiki_page": "Alpha"
+   }
+  },
+  {
+   "id": "sts1.blind",
+   "name": "Blind",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Apply 2 Weak.",
+   "text_upgraded": "Apply 2 Weak to ALL enemies.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.chrysalis",
+   "name": "Chrysalis",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Shuffle 3 random Skills into your draw pile. They cost 0 this combat. Exhaust.",
+   "text_upgraded": "Shuffle 5 random Skills into your draw pile. They cost 0 this combat. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dark_shackles",
+   "name": "Dark Shackles",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Enemy loses 9 Strength this turn. Exhaust.",
+   "text_upgraded": "Enemy loses 15 Strength this turn. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Shackled",
+    "Strength (Negative)",
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Shackled",
+      "Strength (Negative)"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.deep_breath",
+   "name": "Deep Breath",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Shuffle your discard pile into your draw pile. Draw 1 card.",
+   "text_upgraded": "Shuffle your discard pile into your draw pile. Draw 2 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.discovery",
+   "name": "Discovery",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. Exhaust.",
+   "text_upgraded": "Choose 1 of 3 random cards to add into your hand. It costs 0 this turn.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.enlightenment",
+   "name": "Enlightenment",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Reduce the cost of all cards in your hand to 1 this turn.",
+   "text_upgraded": "Reduce the cost of all cards in your hand to 1 this combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.finesse",
+   "name": "Finesse",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 2 Block. Draw 1 card.",
+   "text_upgraded": "Gain 4 Block. Draw 1 card.",
+   "keywords": [
+    "Block",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.forethought",
+   "name": "Forethought",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Put a card from your hand to the bottom of your draw pile. It costs 0 until played.",
+   "text_upgraded": "Put any number of cards from your hand to the bottom of your draw pile. They cost 0 until played.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.good_instincts",
+   "name": "Good Instincts",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 6 Block.",
+   "text_upgraded": "Gain 9 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.impatience",
+   "name": "Impatience",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "If you have no Attacks in your hand, draw 2 cards.",
+   "text_upgraded": "If you have no Attacks in your hand, draw 3 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.insight",
+   "name": "Insight",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Retain. Draw 2 cards. Exhaust.",
+   "text_upgraded": "Retain. Draw 3 cards. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Retain",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.j_a_x",
+   "name": "J.A.X.",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Lose 3 HP. Gain 2 Strength.",
+   "text_upgraded": "Lose 3 HP. Gain 3 Strength.",
+   "keywords": [
+    "Lose HP",
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Lose HP",
+      "Strength"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.jack_of_all_trades",
+   "name": "Jack of All Trades",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Add 1 random Colorless card into your hand. Exhaust.",
+   "text_upgraded": "Add 2 random Colorless cards into your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.madness",
+   "name": "Madness",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Reduce the cost of a random card in your hand to 0 this combat. Exhaust.",
+   "text_upgraded": "Reduce the cost of a random card in your hand to 0 this combat. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.master_of_strategy",
+   "name": "Master of Strategy",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 3 cards. Exhaust.",
+   "text_upgraded": "Draw 4 cards. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.metamorphosis",
+   "name": "Metamorphosis",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Shuffle 3 random Attacks into your draw pile. They cost 0 this combat. Exhaust.",
+   "text_upgraded": "Shuffle 5 random Attacks into your draw pile. They cost 0 this combat. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.miracle",
+   "name": "Miracle",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Retain. Gain [E]. Exhaust.",
+   "text_upgraded": "Retain. Gain [E] [E]. Exhaust.",
+   "keywords": [
+    "Energy",
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Retain",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.panacea",
+   "name": "Panacea",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 1 Artifact. Exhaust.",
+   "text_upgraded": "Gain 2 Artifact. Exhaust.",
+   "keywords": [
+    "Artifact",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Artifact",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.panic_button",
+   "name": "Panic Button",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 30 Block. You cannot gain Block from cards for 2 turns. Exhaust.",
+   "text_upgraded": "Gain 40 Block. You cannot gain Block from cards for 2 turns. Exhaust.",
+   "keywords": [
+    "Block",
+    "No Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "No Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.purity",
+   "name": "Purity",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Exhaust up to 3 cards in your hand. Exhaust.",
+   "text_upgraded": "Exhaust up to 5 cards in your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.safety",
+   "name": "Safety",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Special",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Retain. Gain 12 Block. Exhaust.",
+   "text_upgraded": "Retain. Gain 16 Block. Exhaust.",
+   "keywords": [
+    "Retain",
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain",
+      "Block",
+      "Exhaust"
+     ]
+    },
+    "wiki_page": "Deceive Reality"
+   }
+  },
+  {
+   "id": "sts1.secret_technique",
+   "name": "Secret Technique",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Put a Skill from your draw pile into your hand. Exhaust.",
+   "text_upgraded": "Put a Skill from your draw pile into your hand.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.secret_weapon",
+   "name": "Secret Weapon",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Put an Attack from your draw pile into your hand. Exhaust.",
+   "text_upgraded": "Put an Attack from your draw pile into your hand.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.the_bomb",
+   "name": "The Bomb",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "At the end of 3 turns, deal 40 damage to ALL enemies.",
+   "text_upgraded": "At the end of 3 turns, deal 50 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.thinking_ahead",
+   "name": "Thinking Ahead",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 2 cards. Put a card from your hand on top of your draw pile. Exhaust.",
+   "text_upgraded": "Draw 2 cards. Put a card from your hand on top of your draw pile.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.transmutation",
+   "name": "Transmutation",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Add X random Colorless cards into your hand. They cost 0 this turn. Exhaust.",
+   "text_upgraded": "Add X random Upgraded Colorless cards into your hand. They cost 0 this turn. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Upgrade"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Upgrade"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.trip",
+   "name": "Trip",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Apply 2 Vulnerable.",
+   "text_upgraded": "Apply 2 Vulnerable to ALL enemies.",
+   "keywords": [
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.violence",
+   "name": "Violence",
+   "owner": "Colorless",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Put 3 random Attacks from your draw pile into your hand. Exhaust.",
+   "text_upgraded": "Put 4 random Attacks from your draw pile into your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.ascender_s_bane",
+   "name": "Ascender's Bane",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Ethereal. Cannot be removed from your deck.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable",
+    "Ethereal"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable",
+      "Ethereal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.clumsy",
+   "name": "Clumsy",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Ethereal.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable",
+    "Ethereal"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable",
+      "Ethereal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.curse_of_the_bell",
+   "name": "Curse of the Bell",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Cannot be removed from your deck.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.decay",
+   "name": "Decay",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. At the end of your turn, take 2 damage.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.doubt",
+   "name": "Doubt",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. At the end of your turn, gain 1 Weak.",
+   "text_upgraded": null,
+   "keywords": [
+    "Weak",
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Weak",
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.injury",
+   "name": "Injury",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.necronomicurse",
+   "name": "Necronomicurse",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. There is no escape from this curse.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.normality",
+   "name": "Normality",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. While in hand, you cannot play more than 3 cards this turn.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.pain",
+   "name": "Pain",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. While in hand, lose 1 HP when other cards are played.",
+   "text_upgraded": null,
+   "keywords": [
+    "Lose HP",
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Lose HP",
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.parasite",
+   "name": "Parasite",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. If transformed or removed from your deck, lose 3 Max HP.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable",
+    "Transform"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ],
+     "interacts": [
+      "Transform"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.pride",
+   "name": "Pride",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Innate. At the end of your turn, put a copy of this card on top of your draw pile. Exhaust.",
+   "text_upgraded": null,
+   "keywords": [
+    "Innate",
+    "Exhaust"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.regret",
+   "name": "Regret",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. At the end of your turn, lose HP equal to the number of cards in your hand.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.shame",
+   "name": "Shame",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. At the end of your turn, gain 1 Frail.",
+   "text_upgraded": null,
+   "keywords": [
+    "Frail",
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Frail",
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.writhe",
+   "name": "Writhe",
+   "owner": "Curse",
+   "type": "Curse",
+   "rarity": "Curse",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Innate.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable",
+    "Innate"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable",
+      "Innate"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.all_for_one",
+   "name": "All for One",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage. Put all cost 0 cards from your discard pile into your hand.",
+   "text_upgraded": "Deal 14 damage. Put all cost 0 cards from your discard pile into your hand.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.ball_lightning",
+   "name": "Ball Lightning",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Channel 1 Lightning.",
+   "text_upgraded": "Deal 10 damage. Channel 1 Lightning.",
+   "keywords": [
+    "Lightning",
+    "Channel"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Lightning",
+      "Channel"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.barrage",
+   "name": "Barrage",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage for each Channeled Orb.",
+   "text_upgraded": "Deal 6 damage for each Channeled Orb.",
+   "keywords": [
+    "Channel"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Channel"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.beam_cell",
+   "name": "Beam Cell",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage. Apply 1 Vulnerable.",
+   "text_upgraded": "Deal 4 damage. Apply 2 Vulnerable.",
+   "keywords": [
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.blizzard",
+   "name": "Blizzard",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal damage equal to 2 times the number of Frost Channeled this combat to ALL enemies.",
+   "text_upgraded": "Deal damage equal to 3 times the number of Frost Channeled this combat to ALL enemies.",
+   "keywords": [
+    "Channel",
+    "Frost"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Channel",
+      "Frost"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bullseye",
+   "name": "Bullseye",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. Apply 2 Lock-On.",
+   "text_upgraded": "Deal 11 damage. Apply 3 Lock-On.",
+   "keywords": [
+    "Lock-On"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Lock-On"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.claw",
+   "name": "Claw",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage. Increase the damage of ALL Claw cards by 2 this combat.",
+   "text_upgraded": "Deal 5 damage. Increase the damage of ALL Claw cards by 2 this combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.cold_snap",
+   "name": "Cold Snap",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage. Channel 1 Frost.",
+   "text_upgraded": "Deal 9 damage. Channel 1 Frost.",
+   "keywords": [
+    "Channel",
+    "Frost"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Frost"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.compile_driver",
+   "name": "Compile Driver",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Draw 1 card for each unique Orb you have.",
+   "text_upgraded": "Deal 10 damage. Draw 1 card for each unique Orb you have.",
+   "keywords": [
+    "Draw",
+    "Orb"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ],
+     "interacts": [
+      "Orb"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.core_surge",
+   "name": "Core Surge",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 11 damage. Gain 1 Artifact. Exhaust.",
+   "text_upgraded": "Deal 15 damage. Gain 1 Artifact. Exhaust.",
+   "keywords": [
+    "Artifact",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Artifact",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.doom_and_gloom",
+   "name": "Doom and Gloom",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage to ALL enemies. Channel 1 Dark.",
+   "text_upgraded": "Deal 14 damage to ALL enemies. Channel 1 Dark.",
+   "keywords": [
+    "Channel",
+    "Dark"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Dark"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.ftl",
+   "name": "FTL",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage. If you have played less than 3 cards this turn, draw 1 card.",
+   "text_upgraded": "Deal 6 damage. If you have played less than 4 cards this turn, draw 1 card.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.go_for_the_eyes",
+   "name": "Go for the Eyes",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage. If the enemy intends to attack, apply 1 Weak.",
+   "text_upgraded": "Deal 4 damage. If the enemy intends to attack, apply 2 Weak.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.hyperbeam",
+   "name": "Hyperbeam",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 26 damage to ALL enemies. Lose 3 Focus.",
+   "text_upgraded": "Deal 34 damage to ALL enemies. Lose 3 Focus.",
+   "keywords": [
+    "Focus"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Focus"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.melter",
+   "name": "Melter",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Remove all Block from the enemy. Deal 10 damage.",
+   "text_upgraded": "Remove all Block from the enemy. Deal 14 damage.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.meteor_strike",
+   "name": "Meteor Strike",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "5",
+   "cost_upgraded": null,
+   "text": "Deal 24 damage. Channel 3 Plasma.",
+   "text_upgraded": "Deal 30 damage. Channel 3 Plasma.",
+   "keywords": [
+    "Channel",
+    "Plasma"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Plasma"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.rebound",
+   "name": "Rebound",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Put the next card you play this turn on top of your draw pile.",
+   "text_upgraded": "Deal 12 damage. Put the next card you play this turn on top of your draw pile.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.rip_and_tear",
+   "name": "Rip and Tear",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage to a random enemy twice.",
+   "text_upgraded": "Deal 9 damage to a random enemy twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.scrape",
+   "name": "Scrape",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Draw 4 cards. Discard all cards drawn this way that do not cost 0.",
+   "text_upgraded": "Deal 10 damage. Draw 5 cards. Discard all cards drawn this way that do not cost 0.",
+   "keywords": [
+    "Draw",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.streamline",
+   "name": "Streamline",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 15 damage. Reduce this card's cost by 1 this combat.",
+   "text_upgraded": "Deal 20 damage. Reduce this card's cost by 1 this combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.strike_defect",
+   "name": "Strike",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage.",
+   "text_upgraded": "Deal 9 damage.",
+   "keywords": [],
+   "extra": {
+    "wiki_name": "Strike (Defect)"
+   }
+  },
+  {
+   "id": "sts1.sunder",
+   "name": "Sunder",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Deal 24 damage. If this kills an enemy, gain [E] [E] [E].",
+   "text_upgraded": "Deal 32 damage. If this kills an enemy, gain [E] [E] [E].",
+   "keywords": [
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.sweeping_beam",
+   "name": "Sweeping Beam",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage to ALL enemies. Draw 1 card.",
+   "text_upgraded": "Deal 9 damage to ALL enemies. Draw 1 card.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.thunder_strike",
+   "name": "Thunder Strike",
+   "owner": "Defect",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage to a random enemy for each Lightning Channeled this combat.",
+   "text_upgraded": "Deal 9 damage to a random enemy for each Lightning Channeled this combat.",
+   "keywords": [
+    "Lightning",
+    "Channel"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Lightning",
+      "Channel"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.biased_cognition",
+   "name": "Biased Cognition",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 4 Focus. At the start of your turn, lose 1 Focus.",
+   "text_upgraded": "Gain 5 Focus. At the start of your turn, lose 1 Focus.",
+   "keywords": [
+    "Bias",
+    "Focus"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Bias",
+      "Focus"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.buffer",
+   "name": "Buffer",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Prevent the next time you would lose HP.",
+   "text_upgraded": "Prevent the next 2 times you would lose HP.",
+   "keywords": [],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Buffer"
+     ]
+    },
+    "self_power": "Buffer"
+   }
+  },
+  {
+   "id": "sts1.capacitor",
+   "name": "Capacitor",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 2 Orb slots.",
+   "text_upgraded": "Gain 3 Orb slots.",
+   "keywords": [
+    "Orb Slot"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Orb Slot"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.creative_ai",
+   "name": "Creative AI",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "At the start of your turn, add a random Power card into your hand.",
+   "text_upgraded": "At the start of your turn, add a random Power card into your hand.",
+   "keywords": [],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Creative AI"
+     ]
+    },
+    "self_power": "Creative AI"
+   }
+  },
+  {
+   "id": "sts1.defragment",
+   "name": "Defragment",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 1 Focus.",
+   "text_upgraded": "Gain 2 Focus.",
+   "keywords": [
+    "Focus"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Focus"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.echo_form",
+   "name": "Echo Form",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Ethereal. The first card you play each turn is played twice.",
+   "text_upgraded": "The first card you play each turn is played twice.",
+   "keywords": [
+    "Ethereal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Echo Form",
+      "Ethereal"
+     ]
+    },
+    "self_power": "Echo Form"
+   }
+  },
+  {
+   "id": "sts1.electrodynamics",
+   "name": "Electrodynamics",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Lightning now hits ALL enemies. Channel 2 Lightning.",
+   "text_upgraded": "Lightning now hits ALL enemies. Channel 3 Lightning.",
+   "keywords": [
+    "Channel",
+    "Lightning",
+    "Electro"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Lightning",
+      "Electro"
+     ],
+     "power": [
+      "Lightning"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.heatsinks",
+   "name": "Heatsinks",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you play a Power card, draw 1 card.",
+   "text_upgraded": "Whenever you play a Power card, draw 2 cards.",
+   "keywords": [
+    "Draw",
+    "Heatsink"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Draw",
+      "Heatsink"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.hello_world",
+   "name": "Hello World",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, add a random Common card into your hand.",
+   "text_upgraded": "Innate. At the start of your turn, add a random Common card into your hand.",
+   "keywords": [
+    "Innate",
+    "Hello"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Hello"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.loop",
+   "name": "Loop",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, trigger the passive ability of your next Orb 1 time.",
+   "text_upgraded": "At the start of your turn, trigger the passive ability of your next Orb 2 times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.machine_learning",
+   "name": "Machine Learning",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, draw 1 additional card.",
+   "text_upgraded": "Innate. At the start of your turn, draw 1 additional card.",
+   "keywords": [
+    "Draw",
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Innate"
+     ],
+     "power": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.self_repair",
+   "name": "Self Repair",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the end of combat, heal 7 HP.",
+   "text_upgraded": "At the end of combat, heal 10 HP.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.static_discharge",
+   "name": "Static Discharge",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you receive unblocked attack damage, Channel 1 Lightning.",
+   "text_upgraded": "Whenever you receive unblocked attack damage, Channel 2 Lightning.",
+   "keywords": [
+    "Channel",
+    "Lightning"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Channel",
+      "Lightning"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.storm",
+   "name": "Storm",
+   "owner": "Defect",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you play a Power card, Channel 1 Lightning.",
+   "text_upgraded": "Innate. Whenever you play a Power card, Channel 1 Lightning.",
+   "keywords": [
+    "Innate",
+    "Channel",
+    "Lightning"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Storm"
+     ],
+     "power": [
+      "Channel",
+      "Lightning"
+     ]
+    },
+    "self_power": "Storm"
+   }
+  },
+  {
+   "id": "sts1.aggregate",
+   "name": "Aggregate",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain [E] for every 4 cards in your draw pile.",
+   "text_upgraded": "Gain [E] for every 3 cards in your draw pile.",
+   "keywords": [
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.amplify",
+   "name": "Amplify",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "This turn, your next Power card is played twice.",
+   "text_upgraded": "This turn, your next 2 Power cards are played twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.auto_shields",
+   "name": "Auto-Shields",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "If you have no Block, gain 11 Block.",
+   "text_upgraded": "If you have no Block, gain 15 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ],
+     "interacts": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.boot_sequence",
+   "name": "Boot Sequence",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Innate. Gain 10 Block. Exhaust.",
+   "text_upgraded": "Innate. Gain 13 Block. Exhaust.",
+   "keywords": [
+    "Innate",
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.chaos",
+   "name": "Chaos",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Channel 1 random Orb.",
+   "text_upgraded": "Channel 2 random Orbs.",
+   "keywords": [
+    "Channel",
+    "Lightning",
+    "Frost",
+    "Dark",
+    "Plasma"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Lightning",
+      "Frost",
+      "Dark",
+      "Plasma"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.charge_battery",
+   "name": "Charge Battery",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block. Next turn, gain [E].",
+   "text_upgraded": "Gain 10 Block. Next turn, gain [E].",
+   "keywords": [
+    "Energized",
+    "Block",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energized",
+      "Block"
+     ],
+     "power": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.chill",
+   "name": "Chill",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Channel 1 Frost for each enemy in combat. Exhaust.",
+   "text_upgraded": "Innate. Channel 1 Frost for each enemy in combat. Exhaust.",
+   "keywords": [
+    "Innate",
+    "Channel",
+    "Frost",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Channel",
+      "Frost",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.consume",
+   "name": "Consume",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 2 Focus. Lose 1 Orb Slot.",
+   "text_upgraded": "Gain 3 Focus. Lose 1 Orb Slot.",
+   "keywords": [
+    "Focus",
+    "Orb Slot"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Focus",
+      "Orb Slot"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.coolheaded",
+   "name": "Coolheaded",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Channel 1 Frost. Draw 1 card.",
+   "text_upgraded": "Channel 1 Frost. Draw 2 cards.",
+   "keywords": [
+    "Draw",
+    "Channel",
+    "Frost"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Channel",
+      "Frost"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.darkness",
+   "name": "Darkness",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Channel 1 Dark.",
+   "text_upgraded": "Channel 1 Dark. Trigger the passive ability of ALL Dark orbs.",
+   "keywords": [
+    "Channel",
+    "Dark"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Dark"
+     ],
+     "interacts": [
+      "Dark"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.defend_defect",
+   "name": "Defend",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block.",
+   "text_upgraded": "Gain 8 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "wiki_name": "Defend (Defect)",
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.double_energy",
+   "name": "Double Energy",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Double your Energy. Exhaust.",
+   "text_upgraded": "Double your Energy. Exhaust.",
+   "keywords": [
+    "Energy",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Exhaust"
+     ],
+     "interacts": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dualcast",
+   "name": "Dualcast",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Evoke your next Orb twice.",
+   "text_upgraded": "Evoke your next Orb twice.",
+   "keywords": [
+    "Evoke"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Evoke"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.equilibrium",
+   "name": "Equilibrium",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 13 Block. Retain your hand this turn.",
+   "text_upgraded": "Gain 16 Block. Retain your hand this turn.",
+   "keywords": [
+    "Block",
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Equilibrium"
+     ],
+     "power": [
+      "Retain"
+     ]
+    },
+    "self_power": "Equilibrium"
+   }
+  },
+  {
+   "id": "sts1.fission",
+   "name": "Fission",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Remove all your Orbs. Gain [E] and draw 1 card for each Orb removed. Exhaust.",
+   "text_upgraded": "Evoke all your Orbs. Gain [E] and draw 1 card for each Orb Evoked. Exhaust.",
+   "keywords": [
+    "Evoke",
+    "Energy",
+    "Exhaust",
+    "Orb"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Evoke",
+      "Energy",
+      "Exhaust"
+     ],
+     "interacts": [
+      "Orb"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.force_field",
+   "name": "Force Field",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "4",
+   "cost_upgraded": null,
+   "text": "Costs 1 less [E] for each Power card played this combat. Gain 12 Block.",
+   "text_upgraded": "Costs 1 less [E] for each Power card played this combat. Gain 16 Block.",
+   "keywords": [
+    "Block",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ],
+     "interacts": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.fusion",
+   "name": "Fusion",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Channel 1 Plasma.",
+   "text_upgraded": "Channel 1 Plasma.",
+   "keywords": [
+    "Channel",
+    "Plasma"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Plasma"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.genetic_algorithm",
+   "name": "Genetic Algorithm",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 1 Block. Permanently increase this card's Block by 2. Exhaust.",
+   "text_upgraded": "Gain 1 Block. Permanently increase this card's Block by 3. Exhaust.",
+   "keywords": [
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.glacier",
+   "name": "Glacier",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block. Channel 2 Frost.",
+   "text_upgraded": "Gain 10 Block. Channel 2 Frost.",
+   "keywords": [
+    "Block",
+    "Channel",
+    "Frost"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Channel",
+      "Frost"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.hologram",
+   "name": "Hologram",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 3 Block. Put a card from your discard pile into your hand. Exhaust.",
+   "text_upgraded": "Gain 5 Block. Put a card from your discard pile into your hand.",
+   "keywords": [
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.leap",
+   "name": "Leap",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 9 Block.",
+   "text_upgraded": "Gain 12 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.multi_cast",
+   "name": "Multi-Cast",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Evoke your next Orb X times.",
+   "text_upgraded": "Evoke your next Orb X+1 times.",
+   "keywords": [
+    "Evoke"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Evoke"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.overclock",
+   "name": "Overclock",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 2 cards. Add a Burn into your discard pile.",
+   "text_upgraded": "Draw 3 cards. Add a Burn into your discard pile.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    },
+    "card_refs": [
+     "Burn"
+    ]
+   }
+  },
+  {
+   "id": "sts1.rainbow",
+   "name": "Rainbow",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark. Exhaust.",
+   "text_upgraded": "Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark.",
+   "keywords": [
+    "Channel",
+    "Lightning",
+    "Frost",
+    "Dark",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Lightning",
+      "Frost",
+      "Dark",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.reboot",
+   "name": "Reboot",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Shuffle ALL your cards into your draw pile. Draw 4 cards. Exhaust.",
+   "text_upgraded": "Shuffle ALL your cards into your draw pile. Draw 6 cards. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.recursion",
+   "name": "Recursion",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Evoke your next Orb. Channel the Orb that was just Evoked.",
+   "text_upgraded": "Evoke your next Orb. Channel the Orb that was just Evoked.",
+   "keywords": [
+    "Evoke",
+    "Channel"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Evoke",
+      "Channel"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.recycle",
+   "name": "Recycle",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Exhaust a card. Gain [E] equal to its cost.",
+   "text_upgraded": "Exhaust a card. Gain [E] equal to its cost.",
+   "keywords": [
+    "Energy",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.reinforced_body",
+   "name": "Reinforced Body",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block X times.",
+   "text_upgraded": "Gain 9 Block X times.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.reprogram",
+   "name": "Reprogram",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Lose 1 Focus. Gain 1 Strength. Gain 1 Dexterity.",
+   "text_upgraded": "Lose 2 Focus. Gain 2 Strength. Gain 2 Dexterity.",
+   "keywords": [
+    "Dexterity",
+    "Strength",
+    "Focus"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Dexterity",
+      "Strength",
+      "Focus"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.seek",
+   "name": "Seek",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Put 1 card from your draw pile into your hand. Exhaust.",
+   "text_upgraded": "Put 2 cards from your draw pile into your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.skim",
+   "name": "Skim",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Draw 3 cards.",
+   "text_upgraded": "Draw 4 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.stack",
+   "name": "Stack",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain Block equal to the number of cards in your discard pile.",
+   "text_upgraded": "Gain Block equal to the number of cards in your discard pile+3.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.steam_barrier",
+   "name": "Steam Barrier",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 6 Block. Decrease this card's Block by 1 this combat.",
+   "text_upgraded": "Gain 8 Block. Decrease this card's Block by 1 this combat.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.turbo",
+   "name": "TURBO",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain [E] [E]. Add a Void into your discard pile.",
+   "text_upgraded": "Gain [E] [E] [E]. Add a Void into your discard pile.",
+   "keywords": [
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ]
+    },
+    "card_refs": [
+     "Void"
+    ]
+   }
+  },
+  {
+   "id": "sts1.tempest",
+   "name": "Tempest",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Channel X Lightning. Exhaust.",
+   "text_upgraded": "Channel X+1 Lightning. Exhaust.",
+   "keywords": [
+    "Channel",
+    "Lightning",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Lightning",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.white_noise",
+   "name": "White Noise",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Add a random Power card into your hand. It costs 0 this turn. Exhaust.",
+   "text_upgraded": "Add a random Power card into your hand. It costs 0 this turn. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.zap",
+   "name": "Zap",
+   "owner": "Defect",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Channel 1 Lightning.",
+   "text_upgraded": "Channel 1 Lightning.",
+   "keywords": [
+    "Channel",
+    "Lightning"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Channel",
+      "Lightning"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.anger",
+   "name": "Anger",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage. Add a copy of this card into your discard pile.",
+   "text_upgraded": "Deal 8 damage. Add a copy of this card into your discard pile.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.bash",
+   "name": "Bash",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. Apply 2 Vulnerable.",
+   "text_upgraded": "Deal 10 damage. Apply 3 Vulnerable.",
+   "keywords": [
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.blood_for_blood",
+   "name": "Blood for Blood",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "4",
+   "cost_upgraded": "3",
+   "text": "Costs 1 less [E] for each time you lose HP this combat. Deal 18 damage.",
+   "text_upgraded": "Costs 1 less [E] for each time you lose HP this combat. Deal 22 damage.",
+   "keywords": [
+    "Lose HP"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Lose HP"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bludgeon",
+   "name": "Bludgeon",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Deal 32 damage.",
+   "text_upgraded": "Deal 42 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.body_slam",
+   "name": "Body Slam",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Deal damage equal to your Block.",
+   "text_upgraded": "Deal damage equal to your Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.carnage",
+   "name": "Carnage",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Ethereal. Deal 20 damage.",
+   "text_upgraded": "Ethereal. Deal 28 damage.",
+   "keywords": [
+    "Ethereal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Ethereal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.clash",
+   "name": "Clash",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Can only be played if every card in your hand is an Attack. Deal 14 damage.",
+   "text_upgraded": "Can only be played if every card in your hand is an Attack. Deal 18 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.cleave",
+   "name": "Cleave",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage to ALL enemies.",
+   "text_upgraded": "Deal 11 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.clothesline",
+   "name": "Clothesline",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. Apply 2 Weak.",
+   "text_upgraded": "Deal 14 damage. Apply 3 Weak.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dropkick",
+   "name": "Dropkick",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage. If the enemy has Vulnerable, gain [E] and draw 1 card.",
+   "text_upgraded": "Deal 8 damage. If the enemy has Vulnerable, gain [E] and draw 1 card.",
+   "keywords": [
+    "Draw",
+    "Energy",
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Energy"
+     ],
+     "interacts": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.feed",
+   "name": "Feed",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage. If Fatal, raise your Max HP by 3. Exhaust.",
+   "text_upgraded": "Deal 12 damage. If Fatal, raise your Max HP by 4. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Fatal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "interacts": [
+      "Fatal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.fiend_fire",
+   "name": "Fiend Fire",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Exhaust your hand. Deal 7 damage for each card Exhausted. Exhaust.",
+   "text_upgraded": "Exhaust your hand. Deal 10 damage for each card Exhausted. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "interacts": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.headbutt",
+   "name": "Headbutt",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Put a card from your discard pile on top of your draw pile.",
+   "text_upgraded": "Deal 12 damage. Put a card from your discard pile on top of your draw pile.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.heavy_blade",
+   "name": "Heavy Blade",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 14 damage. Strength affects this card 3 times.",
+   "text_upgraded": "Deal 14 damage. Strength affects this card 5 times.",
+   "keywords": [
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Strength"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.hemokinesis",
+   "name": "Hemokinesis",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Lose 2 HP. Deal 15 damage.",
+   "text_upgraded": "Lose 2 HP. Deal 20 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.immolate",
+   "name": "Immolate",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 21 damage to ALL enemies. Add a Burn into your discard pile.",
+   "text_upgraded": "Deal 28 damage to ALL enemies. Add a Burn into your discard pile.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Burn"
+    ]
+   }
+  },
+  {
+   "id": "sts1.iron_wave",
+   "name": "Iron Wave",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block. Deal 5 damage.",
+   "text_upgraded": "Gain 7 Block. Deal 7 damage.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.perfected_strike",
+   "name": "Perfected Strike",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage. Deals 2 additional damage for ALL your cards containing \"Strike\".",
+   "text_upgraded": "Deal 6 damage. Deals 3 additional damage for ALL your cards containing \"Strike\".",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.pommel_strike",
+   "name": "Pommel Strike",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Draw 1 card.",
+   "text_upgraded": "Deal 10 damage. Draw 2 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.pummel",
+   "name": "Pummel",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 2 damage 4 times. Exhaust.",
+   "text_upgraded": "Deal 2 damage 5 times. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.rampage",
+   "name": "Rampage",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. Increase this card's damage by 5 this combat.",
+   "text_upgraded": "Deal 8 damage. Increase this card's damage by 8 this combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.reaper",
+   "name": "Reaper",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage to ALL enemies. Heal HP equal to unblocked damage. Exhaust.",
+   "text_upgraded": "Deal 5 damage to ALL enemies. Heal HP equal to unblocked damage. Exhaust.",
+   "keywords": [
+    "Heal",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Heal",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.reckless_charge",
+   "name": "Reckless Charge",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Shuffle a Dazed into your draw pile.",
+   "text_upgraded": "Deal 10 damage. Shuffle a Dazed into your draw pile.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Dazed"
+    ]
+   }
+  },
+  {
+   "id": "sts1.searing_blow",
+   "name": "Searing Blow",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. Can be Upgraded any number of times.",
+   "text_upgraded": "Deal 16 damage. Can be Upgraded any number of times.",
+   "keywords": [
+    "Upgrade"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Upgrade"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.sever_soul",
+   "name": "Sever Soul",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Exhaust all non-Attack cards in your hand. Deal 16 damage.",
+   "text_upgraded": "Exhaust all non-Attack cards in your hand. Deal 22 damage.",
+   "keywords": [
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.strike_ironclad",
+   "name": "Strike",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage.",
+   "text_upgraded": "Deal 9 damage.",
+   "keywords": [],
+   "extra": {
+    "wiki_name": "Strike (Ironclad)"
+   }
+  },
+  {
+   "id": "sts1.sword_boomerang",
+   "name": "Sword Boomerang",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage to a random enemy 3 times.",
+   "text_upgraded": "Deal 3 damage to a random enemy 4 times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.thunderclap",
+   "name": "Thunderclap",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage and apply 1 Vulnerable to ALL enemies.",
+   "text_upgraded": "Deal 7 damage and apply 1 Vulnerable to ALL enemies.",
+   "keywords": [
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.twin_strike",
+   "name": "Twin Strike",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage twice.",
+   "text_upgraded": "Deal 7 damage twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.uppercut",
+   "name": "Uppercut",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 13 damage. Apply 1 Weak. Apply 1 Vulnerable.",
+   "text_upgraded": "Deal 13 damage. Apply 2 Weak. Apply 2 Vulnerable.",
+   "keywords": [
+    "Weak",
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak",
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.whirlwind",
+   "name": "Whirlwind",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage to ALL enemies X times.",
+   "text_upgraded": "Deal 8 damage to ALL enemies X times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.wild_strike",
+   "name": "Wild Strike",
+   "owner": "Ironclad",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. Shuffle a Wound into your draw pile.",
+   "text_upgraded": "Deal 17 damage. Shuffle a Wound into your draw pile.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Wound"
+    ]
+   }
+  },
+  {
+   "id": "sts1.barricade",
+   "name": "Barricade",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "Block is not removed at the start of your turn.",
+   "text_upgraded": "Block is not removed at the start of your turn.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Barricade"
+     ],
+     "power": [
+      "Block"
+     ]
+    },
+    "self_power": "Barricade"
+   }
+  },
+  {
+   "id": "sts1.berserk",
+   "name": "Berserk",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 2 Vulnerable. At the start of your turn, gain [E].",
+   "text_upgraded": "Gain 1 Vulnerable. At the start of your turn, gain [E].",
+   "keywords": [
+    "Vulnerable",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Vulnerable",
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.brutality",
+   "name": "Brutality",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, lose 1 HP and draw 1 card.",
+   "text_upgraded": "Innate. At the start of your turn, lose 1 HP and draw 1 card.",
+   "keywords": [
+    "Lose HP",
+    "Draw",
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Lose HP",
+      "Draw",
+      "Innate"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.combust",
+   "name": "Combust",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the end of your turn, lose 1 HP and deal 5 damage to ALL enemies.",
+   "text_upgraded": "At the end of your turn, lose 1 HP and deal 7 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.corruption",
+   "name": "Corruption",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "Skills cost 0. Whenever you play a Skill, Exhaust it.",
+   "text_upgraded": "Skills cost 0. Whenever you play a Skill, Exhaust it.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dark_embrace",
+   "name": "Dark Embrace",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Whenever a card is Exhausted, draw 1 card.",
+   "text_upgraded": "Whenever a card is Exhausted, draw 1 card.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.demon_form",
+   "name": "Demon Form",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, gain 2 Strength.",
+   "text_upgraded": "At the start of your turn, gain 3 Strength.",
+   "keywords": [
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Demon Form"
+     ],
+     "power": [
+      "Strength"
+     ]
+    },
+    "self_power": "Demon Form"
+   }
+  },
+  {
+   "id": "sts1.evolve",
+   "name": "Evolve",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you draw a Status card, draw 1 card.",
+   "text_upgraded": "Whenever you draw a Status card, draw 2 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Evolve"
+     ],
+     "power": [
+      "Draw"
+     ]
+    },
+    "self_power": "Evolve"
+   }
+  },
+  {
+   "id": "sts1.feel_no_pain",
+   "name": "Feel No Pain",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever a card is Exhausted, gain 3 Block.",
+   "text_upgraded": "Whenever a card is Exhausted, gain 4 Block.",
+   "keywords": [
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.fire_breathing",
+   "name": "Fire Breathing",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you draw a Status or Curse card, deal 6 damage to ALL enemies.",
+   "text_upgraded": "Whenever you draw a Status or Curse card, deal 10 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Fire Breathing"
+     ]
+    },
+    "self_power": "Fire Breathing"
+   }
+  },
+  {
+   "id": "sts1.inflame",
+   "name": "Inflame",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 2 Strength.",
+   "text_upgraded": "Gain 3 Strength.",
+   "keywords": [
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Strength"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.juggernaut",
+   "name": "Juggernaut",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Whenever you gain Block, deal 5 damage to a random enemy.",
+   "text_upgraded": "Whenever you gain Block, deal 7 damage to a random enemy.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.metallicize",
+   "name": "Metallicize",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the end of your turn, gain 3 Block.",
+   "text_upgraded": "At the end of your turn, gain 4 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Metallicize"
+     ],
+     "power": [
+      "Block"
+     ]
+    },
+    "self_power": "Metallicize"
+   }
+  },
+  {
+   "id": "sts1.rupture",
+   "name": "Rupture",
+   "owner": "Ironclad",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you lose HP from a card, gain 1 Strength.",
+   "text_upgraded": "Whenever you lose HP from a card, gain 2 Strength.",
+   "keywords": [
+    "Strength",
+    "Lose HP"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Rupture"
+     ],
+     "power": [
+      "Strength",
+      "Lose HP"
+     ]
+    },
+    "self_power": "Rupture"
+   }
+  },
+  {
+   "id": "sts1.armaments",
+   "name": "Armaments",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block. Upgrade a card in your hand for the rest of combat.",
+   "text_upgraded": "Gain 5 Block. Upgrade all cards in your hand for the rest of combat.",
+   "keywords": [
+    "Block",
+    "Upgrade"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Upgrade"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.battle_trance",
+   "name": "Battle Trance",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 3 cards. You cannot draw additional cards this turn.",
+   "text_upgraded": "Draw 4 cards. You cannot draw additional cards this turn.",
+   "keywords": [
+    "Draw",
+    "No Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "No Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bloodletting",
+   "name": "Bloodletting",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Lose 3 HP. Gain [E][E].",
+   "text_upgraded": "Lose 3 HP. Gain [E][E][E].",
+   "keywords": [
+    "Energy",
+    "Lose HP"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Lose HP"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.burning_pact",
+   "name": "Burning Pact",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Exhaust 1 card. Draw 2 cards.",
+   "text_upgraded": "Exhaust 1 card. Draw 3 cards.",
+   "keywords": [
+    "Exhaust",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.defend_ironclad",
+   "name": "Defend",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block.",
+   "text_upgraded": "Gain 8 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "wiki_name": "Defend (Ironclad)",
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.disarm",
+   "name": "Disarm",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Enemy loses 2 Strength. Exhaust.",
+   "text_upgraded": "Enemy loses 3 Strength. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Strength (Negative)",
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Strength (Negative)"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.double_tap",
+   "name": "Double Tap",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "This turn, your next Attack is played twice.",
+   "text_upgraded": "This turn, your next 2 Attacks are played twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.dual_wield",
+   "name": "Dual Wield",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Choose an Attack or Power card. Add a copy of that card into your hand.",
+   "text_upgraded": "Choose an Attack or Power card. Add 2 copies of that card into your hand.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.entrench",
+   "name": "Entrench",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Double your Block.",
+   "text_upgraded": "Double your Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ],
+     "interacts": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.exhume",
+   "name": "Exhume",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Put a card from your Exhaust pile into your hand. Exhaust.",
+   "text_upgraded": "Put a card from your Exhaust pile into your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "interacts": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.flame_barrier",
+   "name": "Flame Barrier",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 12 Block. Whenever you are attacked this turn, deal 4 damage back.",
+   "text_upgraded": "Gain 16 Block. Whenever you are attacked this turn, deal 6 damage back.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Flame Barrier",
+      "Block"
+     ]
+    },
+    "self_power": "Flame Barrier"
+   }
+  },
+  {
+   "id": "sts1.flex",
+   "name": "Flex",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 2 Strength. At the end of this turn, lose 2 Strength.",
+   "text_upgraded": "Gain 4 Strength. At the end of this turn, lose 4 Strength.",
+   "keywords": [
+    "Strength",
+    "Strength Down"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Strength",
+      "Strength Down"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.ghostly_armor",
+   "name": "Ghostly Armor",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Ethereal. Gain 10 Block.",
+   "text_upgraded": "Ethereal. Gain 13 Block.",
+   "keywords": [
+    "Ethereal",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Ethereal",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.havoc",
+   "name": "Havoc",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Play the top card of your draw pile and Exhaust it.",
+   "text_upgraded": "Play the top card of your draw pile and Exhaust it.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.impervious",
+   "name": "Impervious",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 30 Block. Exhaust.",
+   "text_upgraded": "Gain 40 Block. Exhaust.",
+   "keywords": [
+    "Block",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.infernal_blade",
+   "name": "Infernal Blade",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Add a random Attack into your hand. It costs 0 this turn. Exhaust.",
+   "text_upgraded": "Add a random Attack into your hand. It costs 0 this turn. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.intimidate",
+   "name": "Intimidate",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Apply 1 Weak to ALL enemies. Exhaust.",
+   "text_upgraded": "Apply 2 Weak to ALL enemies. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.limit_break",
+   "name": "Limit Break",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Double your Strength. Exhaust.",
+   "text_upgraded": "Double your Strength.",
+   "keywords": [
+    "Strength",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Strength",
+      "Exhaust"
+     ],
+     "interacts": [
+      "Strength"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.offering",
+   "name": "Offering",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Lose 6 HP. Gain [E] [E]. Draw 3 cards. Exhaust.",
+   "text_upgraded": "Lose 6 HP. Gain [E] [E]. Draw 5 cards. Exhaust.",
+   "keywords": [
+    "Lose HP",
+    "Energy",
+    "Exhaust",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Lose HP",
+      "Energy",
+      "Exhaust",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.power_through",
+   "name": "Power Through",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Add 2 Wounds into your hand. Gain 15 Block.",
+   "text_upgraded": "Add 2 Wounds into your hand. Gain 20 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    },
+    "card_refs": [
+     "Wound"
+    ]
+   }
+  },
+  {
+   "id": "sts1.rage",
+   "name": "Rage",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Whenever you play an Attack this turn, gain 3 Block.",
+   "text_upgraded": "Whenever you play an Attack this turn, gain 5 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Rage"
+     ],
+     "power": [
+      "Block"
+     ]
+    },
+    "self_power": "Rage"
+   }
+  },
+  {
+   "id": "sts1.second_wind",
+   "name": "Second Wind",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Exhaust all non-Attack cards in your hand. Gain 5 Block for each card Exhausted.",
+   "text_upgraded": "Exhaust all non-Attack cards in your hand. Gain 7 Block for each card Exhausted.",
+   "keywords": [
+    "Exhaust",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Block"
+     ],
+     "interacts": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.seeing_red",
+   "name": "Seeing Red",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Gain [E] [E]. Exhaust.",
+   "text_upgraded": "Gain [E] [E]. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.sentinel",
+   "name": "Sentinel",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block. If this card is Exhausted, gain [E][E].",
+   "text_upgraded": "Gain 8 Block. If this card is Exhausted, gain [E][E][E].",
+   "keywords": [
+    "Block",
+    "Energy",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Energy"
+     ],
+     "interacts": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.shockwave",
+   "name": "Shockwave",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Apply 3 Weak and Vulnerable to ALL enemies. Exhaust.",
+   "text_upgraded": "Apply 5 Weak and Vulnerable to ALL enemies. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Weak",
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Weak",
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.shrug_it_off",
+   "name": "Shrug It Off",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 8 Block. Draw 1 card.",
+   "text_upgraded": "Gain 11 Block. Draw 1 card.",
+   "keywords": [
+    "Block",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.spot_weakness",
+   "name": "Spot Weakness",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "If the enemy intends to attack, gain 3 Strength.",
+   "text_upgraded": "If the enemy intends to attack, gain 4 Strength.",
+   "keywords": [
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Strength"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.true_grit",
+   "name": "True Grit",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block. Exhaust 1 card at random.",
+   "text_upgraded": "Gain 9 Block. Exhaust 1 card.",
+   "keywords": [
+    "Exhaust",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.warcry",
+   "name": "Warcry",
+   "owner": "Ironclad",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 1 card. Put a card from your hand onto the top of your draw pile. Exhaust.",
+   "text_upgraded": "Draw 2 cards. Put a card from your hand onto the top of your draw pile. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.all_out_attack",
+   "name": "All-Out Attack",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage to ALL enemies. Discard 1 card at random.",
+   "text_upgraded": "Deal 14 damage to ALL enemies. Discard 1 card at random.",
+   "keywords": [
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.backstab",
+   "name": "Backstab",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Innate. Deal 11 damage. Exhaust.",
+   "text_upgraded": "Innate. Deal 15 damage. Exhaust.",
+   "keywords": [
+    "Innate",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bane",
+   "name": "Bane",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. If the enemy has Poison, deal 7 damage again.",
+   "text_upgraded": "Deal 10 damage. If the enemy has Poison, deal 10 damage again.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.choke",
+   "name": "Choke",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. Whenever you play a card this turn, the enemy loses 3 HP.",
+   "text_upgraded": "Deal 12 damage. Whenever you play a card this turn, the enemy loses 5 HP.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.dagger_spray",
+   "name": "Dagger Spray",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage to ALL enemies twice.",
+   "text_upgraded": "Deal 6 damage to ALL enemies twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.dagger_throw",
+   "name": "Dagger Throw",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Draw 1 card. Discard 1 card.",
+   "text_upgraded": "Deal 12 damage. Draw 1 card. Discard 1 card.",
+   "keywords": [
+    "Draw",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dash",
+   "name": "Dash",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 10 Block. Deal 10 damage.",
+   "text_upgraded": "Gain 13 Block. Deal 13 damage.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.die_die_die",
+   "name": "Die Die Die",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 13 damage to ALL enemies. Exhaust.",
+   "text_upgraded": "Deal 17 damage to ALL enemies. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.endless_agony",
+   "name": "Endless Agony",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Whenever you draw this card, add a copy of it into your hand. Deal 4 damage. Exhaust.",
+   "text_upgraded": "Whenever you draw this card, add a copy of it into your hand. Deal 6 damage. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "interacts": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.eviscerate",
+   "name": "Eviscerate",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Costs 1 less [E] for each card discarded this turn. Deal 7 damage 3 times.",
+   "text_upgraded": "Costs 1 less [E] for each card discarded this turn. Deal 9 damage 3 times.",
+   "keywords": [
+    "Discard",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard",
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.finisher",
+   "name": "Finisher",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage for each Attack played this turn.",
+   "text_upgraded": "Deal 8 damage for each Attack played this turn.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.flechettes",
+   "name": "Flechettes",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage for each Skill in your hand.",
+   "text_upgraded": "Deal 6 damage for each Skill in your hand.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.flying_knee",
+   "name": "Flying Knee",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. Next turn, gain [E].",
+   "text_upgraded": "Deal 11 damage. Next turn, gain [E].",
+   "keywords": [
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.glass_knife",
+   "name": "Glass Knife",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage twice. Decrease the damage of this card by 2 this combat.",
+   "text_upgraded": "Deal 12 damage twice. Decrease the damage of this card by 2 this combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.grand_finale",
+   "name": "Grand Finale",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Can only be played if there are no cards in your draw pile. Deal 50 damage to ALL enemies.",
+   "text_upgraded": "Can only be played if there are no cards in your draw pile. Deal 60 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.heel_hook",
+   "name": "Heel Hook",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage. If the enemy has Weak, gain [E] and draw 1 card.",
+   "text_upgraded": "Deal 8 damage. If the enemy has Weak, gain [E] and draw 1 card.",
+   "keywords": [
+    "Draw",
+    "Energy",
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Energy"
+     ],
+     "interacts": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.masterful_stab",
+   "name": "Masterful Stab",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Costs 1 additional [E] for each time you lose HP this combat. Deal 12 damage.",
+   "text_upgraded": "Costs 1 additional [E] for each time you lose HP this combat. Deal 16 damage.",
+   "keywords": [
+    "Energy",
+    "Lose HP"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ],
+     "interacts": [
+      "Lose HP"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.neutralize",
+   "name": "Neutralize",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage. Apply 1 Weak.",
+   "text_upgraded": "Deal 4 damage. Apply 2 Weak.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.poisoned_stab",
+   "name": "Poisoned Stab",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage. Apply 3 Poison.",
+   "text_upgraded": "Deal 8 damage. Apply 4 Poison.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.predator",
+   "name": "Predator",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 15 damage. Next turn, draw 2 additional cards.",
+   "text_upgraded": "Deal 20 damage. Next turn, draw 2 additional cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.quick_slash",
+   "name": "Quick Slash",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. Draw 1 card.",
+   "text_upgraded": "Deal 12 damage. Draw 1 card.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.riddle_with_holes",
+   "name": "Riddle with Holes",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage 5 times.",
+   "text_upgraded": "Deal 4 damage 5 times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.skewer",
+   "name": "Skewer",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage X times.",
+   "text_upgraded": "Deal 10 damage X times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.slice",
+   "name": "Slice",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage.",
+   "text_upgraded": "Deal 9 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.sneaky_strike",
+   "name": "Sneaky Strike",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. If you have discarded a card this turn, gain [E] [E].",
+   "text_upgraded": "Deal 16 damage. If you have discarded a card this turn, gain [E] [E].",
+   "keywords": [
+    "Energy",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ],
+     "interacts": [
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.strike_silent",
+   "name": "Strike",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage.",
+   "text_upgraded": "Deal 9 damage.",
+   "keywords": [],
+   "extra": {
+    "wiki_name": "Strike (Silent)"
+   }
+  },
+  {
+   "id": "sts1.sucker_punch",
+   "name": "Sucker Punch",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Apply 1 Weak.",
+   "text_upgraded": "Deal 9 damage. Apply 2 Weak.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.unload",
+   "name": "Unload",
+   "owner": "Silent",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 14 damage. Discard all non-Attack cards in your hand.",
+   "text_upgraded": "Deal 18 damage. Discard all non-Attack cards in your hand.",
+   "keywords": [
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.a_thousand_cuts",
+   "name": "A Thousand Cuts",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Whenever you play a card, deal 1 damage to ALL enemies.",
+   "text_upgraded": "Whenever you play a card, deal 2 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.accuracy",
+   "name": "Accuracy",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Shivs deal 4 additional damage.",
+   "text_upgraded": "Shivs deal 6 additional damage.",
+   "keywords": [],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Accuracy"
+     ]
+    },
+    "self_power": "Accuracy",
+    "card_refs": [
+     "Shiv"
+    ]
+   }
+  },
+  {
+   "id": "sts1.after_image",
+   "name": "After Image",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you play a card, gain 1 Block.",
+   "text_upgraded": "Innate. Whenever you play a card, gain 1 Block.",
+   "keywords": [
+    "Innate",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "After Image",
+      "Innate"
+     ],
+     "power": [
+      "Block"
+     ]
+    },
+    "self_power": "After Image"
+   }
+  },
+  {
+   "id": "sts1.caltrops",
+   "name": "Caltrops",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you are attacked, deal 3 damage back.",
+   "text_upgraded": "Whenever you are attacked, deal 5 damage back.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.envenom",
+   "name": "Envenom",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Whenever an Attack deals unblocked damage, apply 1 Poison.",
+   "text_upgraded": "Whenever an Attack deals unblocked damage, apply 1 Poison.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.footwork",
+   "name": "Footwork",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 2 Dexterity.",
+   "text_upgraded": "Gain 3 Dexterity.",
+   "keywords": [
+    "Dexterity"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Dexterity"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.infinite_blades",
+   "name": "Infinite Blades",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, add a Shiv into your hand.",
+   "text_upgraded": "Innate. At the start of your turn, add a Shiv into your hand.",
+   "keywords": [
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate"
+     ]
+    },
+    "card_refs": [
+     "Shiv"
+    ]
+   }
+  },
+  {
+   "id": "sts1.noxious_fumes",
+   "name": "Noxious Fumes",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, apply 2 Poison to ALL enemies.",
+   "text_upgraded": "At the start of your turn, apply 3 Poison to ALL enemies.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.tools_of_the_trade",
+   "name": "Tools of the Trade",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "At the start of your turn, draw 1 card and discard 1 card.",
+   "text_upgraded": "At the start of your turn, draw 1 card and discard 1 card.",
+   "keywords": [
+    "Draw",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Draw",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.well_laid_plans",
+   "name": "Well-Laid Plans",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the end of your turn, Retain up to 1 card.",
+   "text_upgraded": "At the end of your turn, Retain up to 2 cards.",
+   "keywords": [
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wraith_form",
+   "name": "Wraith Form",
+   "owner": "Silent",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Gain 2 Intangible. At the end of your turn, lose 1 Dexterity.",
+   "text_upgraded": "Gain 3 Intangible. At the end of your turn, lose 1 Dexterity.",
+   "keywords": [
+    "Intangible",
+    "Dexterity (Negative)",
+    "Dexterity"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Intangible",
+      "Wraith Form"
+     ],
+     "power": [
+      "Dexterity (Negative)"
+     ]
+    },
+    "self_power": "Wraith Form"
+   }
+  },
+  {
+   "id": "sts1.acrobatics",
+   "name": "Acrobatics",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Draw 3 cards. Discard 1 card.",
+   "text_upgraded": "Draw 4 cards. Discard 1 card.",
+   "keywords": [
+    "Draw",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.adrenaline",
+   "name": "Adrenaline",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain [E]. Draw 2 cards. Exhaust.",
+   "text_upgraded": "Gain [E] [E]. Draw 2 cards. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Energy",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Energy",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.alchemize",
+   "name": "Alchemize",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Obtain a random potion. Exhaust.",
+   "text_upgraded": "Obtain a random potion. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.backflip",
+   "name": "Backflip",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block. Draw 2 cards.",
+   "text_upgraded": "Gain 8 Block. Draw 2 cards.",
+   "keywords": [
+    "Draw",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.blade_dance",
+   "name": "Blade Dance",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Add 3 Shivs into your hand.",
+   "text_upgraded": "Add 4 Shivs into your hand.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Shiv"
+    ]
+   }
+  },
+  {
+   "id": "sts1.blur",
+   "name": "Blur",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block. Block is not removed at the start of your next turn.",
+   "text_upgraded": "Gain 8 Block. Block is not removed at the start of your next turn.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Blur"
+     ]
+    },
+    "self_power": "Blur"
+   }
+  },
+  {
+   "id": "sts1.bouncing_flask",
+   "name": "Bouncing Flask",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Apply 3 Poison to a random enemy 3 times.",
+   "text_upgraded": "Apply 3 Poison to a random enemy 4 times.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bullet_time",
+   "name": "Bullet Time",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn.",
+   "text_upgraded": "You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn.",
+   "keywords": [
+    "No Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "No Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.burst",
+   "name": "Burst",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "This turn, your next Skill is played twice.",
+   "text_upgraded": "This turn, your next 2 Skills are played twice.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.calculated_gamble",
+   "name": "Calculated Gamble",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Discard your hand, then draw that many cards. Exhaust.",
+   "text_upgraded": "Discard your hand, then draw that many cards.",
+   "keywords": [
+    "Draw",
+    "Discard",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.catalyst",
+   "name": "Catalyst",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Double the enemy's Poison. Exhaust.",
+   "text_upgraded": "Triple the enemy's Poison. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Poison"
+     ],
+     "interacts": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.cloak_and_dagger",
+   "name": "Cloak and Dagger",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 6 Block. Add 1 Shiv into your hand.",
+   "text_upgraded": "Gain 6 Block. Add 2 Shivs into your hand.",
+   "keywords": [
+    "Block",
+    "Shiv"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Shiv"
+     ]
+    },
+    "card_refs": [
+     "Shiv"
+    ]
+   }
+  },
+  {
+   "id": "sts1.concentrate",
+   "name": "Concentrate",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Discard 3 cards. Gain [E] [E].",
+   "text_upgraded": "Discard 2 cards. Gain [E] [E].",
+   "keywords": [
+    "Discard",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard",
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.corpse_explosion",
+   "name": "Corpse Explosion",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Apply 6 Poison. When the enemy dies, deal damage equal to its max HP to ALL enemies.",
+   "text_upgraded": "Apply 9 Poison. When the enemy dies, deal damage equal to its max HP to ALL enemies.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.crippling_cloud",
+   "name": "Crippling Cloud",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Apply 4 Poison and 2 Weak to ALL enemies. Exhaust.",
+   "text_upgraded": "Apply 7 Poison and 2 Weak to ALL enemies. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Poison",
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Poison",
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.deadly_poison",
+   "name": "Deadly Poison",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Apply 5 Poison.",
+   "text_upgraded": "Apply 7 Poison.",
+   "keywords": [
+    "Poison"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Poison"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.defend_silent",
+   "name": "Defend",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block.",
+   "text_upgraded": "Gain 8 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "wiki_name": "Defend (Silent)",
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.deflect",
+   "name": "Deflect",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 4 Block.",
+   "text_upgraded": "Gain 7 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.distraction",
+   "name": "Distraction",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Add a random Skill into your hand. It costs 0 this turn. Exhaust.",
+   "text_upgraded": "Add a random Skill into your hand. It costs 0 this turn. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dodge_and_roll",
+   "name": "Dodge and Roll",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 4 Block. Next turn, gain 4 Block.",
+   "text_upgraded": "Gain 6 Block. Next turn, gain 6 Block.",
+   "keywords": [
+    "Block",
+    "Next Turn Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Next Turn Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.doppelganger",
+   "name": "Doppelganger",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Next turn, draw X cards and gain X [E]. Exhaust.",
+   "text_upgraded": "Next turn, draw X+1 cards and gain X+1 [E]. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Energized",
+    "Exhaust",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Draw",
+      "Energized",
+      "Exhaust",
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.escape_plan",
+   "name": "Escape Plan",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 1 card. If you draw a Skill, gain 3 Block.",
+   "text_upgraded": "Draw 1 card. If you draw a Skill, gain 5 Block.",
+   "keywords": [
+    "Draw",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Block"
+     ],
+     "interacts": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.expertise",
+   "name": "Expertise",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Draw cards until you have 6 in your hand.",
+   "text_upgraded": "Draw cards until you have 7 in your hand.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.leg_sweep",
+   "name": "Leg Sweep",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Apply 2 Weak. Gain 11 Block.",
+   "text_upgraded": "Apply 3 Weak. Gain 14 Block.",
+   "keywords": [
+    "Block",
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ],
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.malaise",
+   "name": "Malaise",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Enemy loses X Strength. Apply X Weak. Exhaust.",
+   "text_upgraded": "Enemy loses X+1 Strength. Apply X+1 Weak. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Strength (Negative)",
+    "Weak",
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Strength (Negative)",
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.nightmare",
+   "name": "Nightmare",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "Choose a card. Next turn, add 3 copies of that card into your hand. Exhaust.",
+   "text_upgraded": "Choose a card. Next turn, add 3 copies of that card into your hand. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Nightmare"
+     ]
+    },
+    "self_power": "Nightmare"
+   }
+  },
+  {
+   "id": "sts1.outmaneuver",
+   "name": "Outmaneuver",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Next turn, gain [E] [E].",
+   "text_upgraded": "Next turn, gain [E] [E] [E].",
+   "keywords": [
+    "Energy",
+    "Energized"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Energized"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.phantasmal_killer",
+   "name": "Phantasmal Killer",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Next turn, your Attacks deal double damage.",
+   "text_upgraded": "Next turn, your Attacks deal double damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.piercing_wail",
+   "name": "Piercing Wail",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "ALL enemies lose 6 Strength this turn. Exhaust.",
+   "text_upgraded": "ALL enemies lose 8 Strength this turn. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Strength (Negative)",
+    "Shackled",
+    "Strength"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Strength (Negative)",
+      "Shackled"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.prepared",
+   "name": "Prepared",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Draw 1 card. Discard 1 card.",
+   "text_upgraded": "Draw 2 cards. Discard 2 cards.",
+   "keywords": [
+    "Draw",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.reflex",
+   "name": "Reflex",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. If this card is discarded from your hand, draw 2 cards.",
+   "text_upgraded": "Unplayable. If this card is discarded from your hand, draw 3 cards.",
+   "keywords": [
+    "Draw",
+    "Discard",
+    "Unplayable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Discard",
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.setup",
+   "name": "Setup",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Put a card from your hand on top of your draw pile. It costs 0 until played.",
+   "text_upgraded": "Put a card from your hand on top of your draw pile. It costs 0 until played.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.storm_of_steel",
+   "name": "Storm of Steel",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Discard your hand. Add 1 Shiv into your hand for each card discarded.",
+   "text_upgraded": "Discard your hand. Add 1 Shiv+ into your hand for each card discarded.",
+   "keywords": [
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard"
+     ]
+    },
+    "card_refs": [
+     "Shiv"
+    ]
+   }
+  },
+  {
+   "id": "sts1.survivor",
+   "name": "Survivor",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 8 Block. Discard 1 card.",
+   "text_upgraded": "Gain 11 Block. Discard 1 card.",
+   "keywords": [
+    "Block",
+    "Discard"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Discard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.tactician",
+   "name": "Tactician",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. If this card is discarded from your hand, gain [E].",
+   "text_upgraded": "Unplayable. If this card is discarded from your hand, gain [E] [E].",
+   "keywords": [
+    "Discard",
+    "Energy",
+    "Unplayable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Discard",
+      "Energy",
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.terror",
+   "name": "Terror",
+   "owner": "Silent",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Apply 99 Vulnerable. Exhaust.",
+   "text_upgraded": "Apply 99 Vulnerable. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.burn",
+   "name": "Burn",
+   "owner": "Status",
+   "type": "Status",
+   "rarity": "Status",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. At the end of your turn, take 2 damage.",
+   "text_upgraded": "Unplayable. At the end of your turn, take 4 damage.",
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.dazed",
+   "name": "Dazed",
+   "owner": "Status",
+   "type": "Status",
+   "rarity": "Status",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Ethereal.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable",
+    "Ethereal"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable",
+      "Ethereal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.slimed",
+   "name": "Slimed",
+   "owner": "Status",
+   "type": "Status",
+   "rarity": "Status",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Exhaust.",
+   "text_upgraded": null,
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.void",
+   "name": "Void",
+   "owner": "Status",
+   "type": "Status",
+   "rarity": "Status",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. Ethereal. Whenever this card is drawn, lose 1 Energy.",
+   "text_upgraded": null,
+   "keywords": [
+    "Energy",
+    "Ethereal",
+    "Unplayable",
+    "Draw"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Energy",
+      "Ethereal",
+      "Unplayable"
+     ],
+     "interacts": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wound",
+   "name": "Wound",
+   "owner": "Status",
+   "type": "Status",
+   "rarity": "Status",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable.",
+   "text_upgraded": null,
+   "keywords": [
+    "Unplayable"
+   ],
+   "extra": {
+    "no_upgrade": true,
+    "keyword_roles": {
+     "player": [
+      "Unplayable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.bowling_bash",
+   "name": "Bowling Bash",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage for each enemy in combat.",
+   "text_upgraded": "Deal 10 damage for each enemy in combat.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.brilliance",
+   "name": "Brilliance",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage. Deals additional damage equal to Mantra gained this combat.",
+   "text_upgraded": "Deal 16 damage. Deals additional damage equal to Mantra gained this combat.",
+   "keywords": [
+    "Mantra"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Mantra"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.carve_reality",
+   "name": "Carve Reality",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage. Add a Smite into your hand.",
+   "text_upgraded": "Deal 10 damage. Add a Smite into your hand.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Smite"
+    ]
+   }
+  },
+  {
+   "id": "sts1.conclude",
+   "name": "Conclude",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 12 damage to ALL enemies. End your turn.",
+   "text_upgraded": "Deal 16 damage to ALL enemies. End your turn.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.consecrate",
+   "name": "Consecrate",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage to ALL enemies.",
+   "text_upgraded": "Deal 8 damage to ALL enemies.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.crush_joints",
+   "name": "Crush Joints",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. If the last card played this combat was a Skill, apply 1 Vulnerable.",
+   "text_upgraded": "Deal 10 damage. If the last card played this combat was a Skill, apply 2 Vulnerable.",
+   "keywords": [
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Vulnerable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.cut_through_fate",
+   "name": "Cut Through Fate",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. Scry 2. Draw 1 card.",
+   "text_upgraded": "Deal 9 damage. Scry 3. Draw 1 card.",
+   "keywords": [
+    "Draw",
+    "Scry"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Scry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.empty_fist",
+   "name": "Empty Fist",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Exit your Stance.",
+   "text_upgraded": "Deal 14 damage. Exit your Stance.",
+   "keywords": [
+    "Stance"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Stance"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.eruption",
+   "name": "Eruption",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "Deal 9 damage. Enter Wrath.",
+   "text_upgraded": "Deal 9 damage. Enter Wrath.",
+   "keywords": [
+    "Wrath"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.fear_no_evil",
+   "name": "Fear No Evil",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. If the enemy intends to Attack, enter Calm.",
+   "text_upgraded": "Deal 11 damage. If the enemy intends to Attack, enter Calm.",
+   "keywords": [
+    "Calm"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Calm"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.flurry_of_blows",
+   "name": "Flurry of Blows",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage. Whenever you change Stances, return this from the discard pile to your hand.",
+   "text_upgraded": "Deal 6 damage. Whenever you change Stances, return this from the discard pile to your hand.",
+   "keywords": [
+    "Stance"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Stance"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.flying_sleeves",
+   "name": "Flying Sleeves",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Retain. Deal 4 damage twice.",
+   "text_upgraded": "Retain. Deal 6 damage twice.",
+   "keywords": [
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.follow_up",
+   "name": "Follow-Up",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 7 damage. If the previous card played was an Attack, gain [E].",
+   "text_upgraded": "Deal 11 damage. If the previous card played was an Attack, gain [E].",
+   "keywords": [
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.just_lucky",
+   "name": "Just Lucky",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Scry 1. Gain 2 Block. Deal 3 damage.",
+   "text_upgraded": "Scry 2. Gain 3 Block. Deal 4 damage.",
+   "keywords": [
+    "Scry",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Scry",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.lesson_learned",
+   "name": "Lesson Learned",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage. If Fatal, Upgrade a random card in your deck. Exhaust.",
+   "text_upgraded": "Deal 13 damage. If Fatal, Upgrade a random card in your deck. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Upgrade",
+    "Fatal"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Upgrade"
+     ],
+     "interacts": [
+      "Fatal"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.ragnarok",
+   "name": "Ragnarok",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage to a random enemy 5 times.",
+   "text_upgraded": "Deal 6 damage to a random enemy 6 times.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.reach_heaven",
+   "name": "Reach Heaven",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 10 damage. Shuffle a Through Violence into your draw pile.",
+   "text_upgraded": "Deal 15 damage. Shuffle a Through Violence into your draw pile.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Through Violence"
+    ]
+   }
+  },
+  {
+   "id": "sts1.sands_of_time",
+   "name": "Sands of Time",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "4",
+   "cost_upgraded": null,
+   "text": "Retain. Deal 20 damage. When Retained, lower its cost by 1 this combat.",
+   "text_upgraded": "Retain. Deal 26 damage. When Retained, lower its cost by 1 this combat.",
+   "keywords": [
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain"
+     ],
+     "interacts": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.sash_whip",
+   "name": "Sash Whip",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 8 damage. If the last card played this combat was an Attack, apply 1 Weak.",
+   "text_upgraded": "Deal 10 damage. If the last card played this combat was an Attack, apply 2 Weak.",
+   "keywords": [
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.signature_move",
+   "name": "Signature Move",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Can only be played if this is the only Attack in your hand. Deal 30 damage.",
+   "text_upgraded": "Can only be played if this is the only Attack in your hand. Deal 40 damage.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.strike_watcher",
+   "name": "Strike",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 6 damage.",
+   "text_upgraded": "Deal 9 damage.",
+   "keywords": [],
+   "extra": {
+    "wiki_name": "Strike (Watcher)"
+   }
+  },
+  {
+   "id": "sts1.talk_to_the_hand",
+   "name": "Talk to the Hand",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 5 damage. Whenever you attack this enemy, gain 2 Block. Exhaust.",
+   "text_upgraded": "Deal 7 damage. Whenever you attack this enemy, gain 3 Block. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Block Return",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ],
+     "enemy": [
+      "Block Return"
+     ],
+     "power": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.tantrum",
+   "name": "Tantrum",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Deal 3 damage 3 times. Enter Wrath. Shuffle this card into your draw pile.",
+   "text_upgraded": "Deal 3 damage 4 times. Enter Wrath. Shuffle this card into your draw pile.",
+   "keywords": [
+    "Wrath"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wallop",
+   "name": "Wallop",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 9 damage. Gain Block equal to unblocked damage dealt.",
+   "text_upgraded": "Deal 12 damage. Gain Block equal to unblocked damage dealt.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.weave",
+   "name": "Weave",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Deal 4 damage. Whenever you Scry, return this from the discard pile to your hand.",
+   "text_upgraded": "Deal 6 damage. Whenever you Scry, return this from the discard pile to your hand.",
+   "keywords": [
+    "Scry"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "interacts": [
+      "Scry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wheel_kick",
+   "name": "Wheel Kick",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Deal 15 damage. Draw 2 cards.",
+   "text_upgraded": "Deal 20 damage. Draw 2 cards.",
+   "keywords": [
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.windmill_strike",
+   "name": "Windmill Strike",
+   "owner": "Watcher",
+   "type": "Attack",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Retain. Deal 7 damage. When Retained, increase its damage by 4 this combat.",
+   "text_upgraded": "Retain. Deal 10 damage. When Retained, increase its damage by 5 this combat.",
+   "keywords": [
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain"
+     ],
+     "interacts": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.battle_hymn",
+   "name": "Battle Hymn",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of each turn, add a Smite into your hand.",
+   "text_upgraded": "Innate. At the start of each turn, add a Smite into your hand.",
+   "keywords": [
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate"
+     ]
+    },
+    "card_refs": [
+     "Smite"
+    ]
+   }
+  },
+  {
+   "id": "sts1.deva_form",
+   "name": "Deva Form",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Ethereal. At the start of your turn, gain [E] and increase this gain by 1.",
+   "text_upgraded": "At the start of your turn, gain [E] and increase this gain by 1.",
+   "keywords": [
+    "Ethereal",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Ethereal"
+     ],
+     "power": [
+      "Energy"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.devotion",
+   "name": "Devotion",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, gain 2 Mantra.",
+   "text_upgraded": "At the start of your turn, gain 3 Mantra.",
+   "keywords": [
+    "Mantra"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Mantra"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.establishment",
+   "name": "Establishment",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever a card is Retained, lower its cost by 1.",
+   "text_upgraded": "Innate. Whenever a card is Retained, lower its cost by 1.",
+   "keywords": [
+    "Innate",
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Innate"
+     ],
+     "power": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.fasting",
+   "name": "Fasting",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 3 Strength. Gain 3 Dexterity. Gain 1 less [E] at the start of each turn.",
+   "text_upgraded": "Gain 4 Strength. Gain 4 Dexterity. Gain 1 less [E] at the start of each turn.",
+   "keywords": [
+    "Strength",
+    "Dexterity",
+    "Energy"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Strength",
+      "Dexterity",
+      "Fasting"
+     ],
+     "power": [
+      "Energy"
+     ]
+    },
+    "self_power": "Fasting"
+   }
+  },
+  {
+   "id": "sts1.foresight",
+   "name": "Foresight",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your turn, Scry 3.",
+   "text_upgraded": "At the start of your turn, Scry 4.",
+   "keywords": [
+    "Scry"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Scry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.like_water",
+   "name": "Like Water",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the end of your turn, if you are in Calm, gain 5 Block.",
+   "text_upgraded": "At the end of your turn, if you are in Calm, gain 7 Block.",
+   "keywords": [
+    "Calm",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Calm",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.master_reality",
+   "name": "Master Reality",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Whenever a card is created during combat, Upgrade it.",
+   "text_upgraded": "Whenever a card is created during combat, Upgrade it.",
+   "keywords": [
+    "Upgrade"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Upgrade"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.mental_fortress",
+   "name": "Mental Fortress",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you switch Stances, gain 4 Block.",
+   "text_upgraded": "Whenever you switch Stances, gain 6 Block.",
+   "keywords": [
+    "Stance",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Stance",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.nirvana",
+   "name": "Nirvana",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you Scry, gain 3 Block.",
+   "text_upgraded": "Whenever you Scry, gain 4 Block.",
+   "keywords": [
+    "Scry",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Nirvana"
+     ],
+     "power": [
+      "Scry",
+      "Block"
+     ]
+    },
+    "self_power": "Nirvana"
+   }
+  },
+  {
+   "id": "sts1.rushdown",
+   "name": "Rushdown",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Whenever you enter Wrath, draw 2 cards.",
+   "text_upgraded": "Whenever you enter Wrath, draw 2 cards.",
+   "keywords": [
+    "Draw",
+    "Wrath"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Draw",
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.study",
+   "name": "Study",
+   "owner": "Watcher",
+   "type": "Power",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": "1",
+   "text": "At the end of your turn, shuffle an Insight into your draw pile.",
+   "text_upgraded": "At the end of your turn, shuffle an Insight into your draw pile.",
+   "keywords": [],
+   "extra": {
+    "card_refs": [
+     "Insight"
+    ]
+   }
+  },
+  {
+   "id": "sts1.alpha",
+   "name": "Alpha",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Shuffle a Beta into your draw pile. Exhaust.",
+   "text_upgraded": "Innate. Shuffle a Beta into your draw pile. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Innate"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Innate"
+     ]
+    },
+    "card_refs": [
+     "Beta"
+    ]
+   }
+  },
+  {
+   "id": "sts1.blasphemy",
+   "name": "Blasphemy",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Enter Divinity. Die next turn. Exhaust.",
+   "text_upgraded": "Retain. Enter Divinity. Die next turn. Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Divinity",
+    "Blasphemer",
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Divinity",
+      "Blasphemer",
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.collect",
+   "name": "Collect",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Put a Miracle+ into your hand at the start of your next X turns. Exhaust",
+   "text_upgraded": "Put a Miracle+ into your hand at the start of your next X+1 turns. Exhaust",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    },
+    "card_refs": [
+     "Miracle"
+    ]
+   }
+  },
+  {
+   "id": "sts1.conjure_blade",
+   "name": "Conjure Blade",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "X",
+   "cost_upgraded": null,
+   "text": "Shuffle an Expunger into your draw pile. Exhaust.",
+   "text_upgraded": "Shuffle an Expunger with X+1 into your draw pile. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    },
+    "card_refs": [
+     "Expunger"
+    ]
+   }
+  },
+  {
+   "id": "sts1.crescendo",
+   "name": "Crescendo",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Retain. Enter Wrath. Exhaust.",
+   "text_upgraded": "Retain. Enter Wrath. Exhaust.",
+   "keywords": [
+    "Wrath",
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Wrath",
+      "Retain",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.deceive_reality",
+   "name": "Deceive Reality",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 4 Block. Add a Safety into your hand.",
+   "text_upgraded": "Gain 7 Block. Add a Safety into your hand.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    },
+    "card_refs": [
+     "Safety"
+    ]
+   }
+  },
+  {
+   "id": "sts1.defend_watcher",
+   "name": "Defend",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 5 Block.",
+   "text_upgraded": "Gain 8 Block.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "wiki_name": "Defend (Watcher)",
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.deus_ex_machina",
+   "name": "Deus Ex Machina",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "U",
+   "cost_upgraded": null,
+   "text": "Unplayable. When you draw this card, add 2 Miracles to your hand and Exhaust.",
+   "text_upgraded": "Unplayable. When you draw this card, add 3 Miracles to your hand and Exhaust.",
+   "keywords": [
+    "Exhaust",
+    "Unplayable",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust",
+      "Unplayable"
+     ],
+     "interacts": [
+      "Draw"
+     ]
+    },
+    "card_refs": [
+     "Miracle"
+    ]
+   }
+  },
+  {
+   "id": "sts1.empty_body",
+   "name": "Empty Body",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block. Exit your Stance.",
+   "text_upgraded": "Gain 10 Block. Exit your Stance.",
+   "keywords": [
+    "Block",
+    "Stance"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Stance"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.empty_mind",
+   "name": "Empty Mind",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Exit your Stance. Draw 2 cards.",
+   "text_upgraded": "Exit your Stance. Draw 3 cards.",
+   "keywords": [
+    "Stance",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Stance",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.evaluate",
+   "name": "Evaluate",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 6 Block. Shuffle an Insight into your draw pile.",
+   "text_upgraded": "Gain 10 Block. Shuffle an Insight into your draw pile.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    },
+    "card_refs": [
+     "Insight"
+    ]
+   }
+  },
+  {
+   "id": "sts1.foreign_influence",
+   "name": "Foreign Influence",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Choose 1 of 3 Attacks of any color to add to your hand. Exhaust.",
+   "text_upgraded": "Choose 1 of 3 Attacks of any color to add to your hand. It costs 0 this turn. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.halt",
+   "name": "Halt",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 3 Block. If you are in Wrath, gain 9 additional Block.",
+   "text_upgraded": "Gain 4 Block. If you are in Wrath, gain 14 additional Block.",
+   "keywords": [
+    "Block",
+    "Wrath"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ],
+     "interacts": [
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.indignation",
+   "name": "Indignation",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "If you are in Wrath, apply 3 Vulnerable to ALL enemies, otherwise enter Wrath.",
+   "text_upgraded": "If you are in Wrath, apply 5 Vulnerable to ALL enemies, otherwise enter Wrath.",
+   "keywords": [
+    "Wrath",
+    "Vulnerable"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Wrath"
+     ],
+     "enemy": [
+      "Vulnerable"
+     ],
+     "interacts": [
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.inner_peace",
+   "name": "Inner Peace",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "If you are in Calm, draw 3 cards, otherwise enter Calm.",
+   "text_upgraded": "If you are in Calm, draw 4 cards, otherwise enter Calm.",
+   "keywords": [
+    "Calm",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Calm",
+      "Draw"
+     ],
+     "interacts": [
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.judgment",
+   "name": "Judgment",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "If the enemy has 30 or less HP, set their HP to 0.",
+   "text_upgraded": "If the enemy has 40 or less HP, set their HP to 0.",
+   "keywords": [],
+   "extra": {}
+  },
+  {
+   "id": "sts1.meditate",
+   "name": "Meditate",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Put a card from your discard pile into your hand and Retain it. Enter Calm. End your turn.",
+   "text_upgraded": "Put 2 cards from your discard pile into your hand and Retain them. Enter Calm. End your turn.",
+   "keywords": [
+    "Calm",
+    "Retain",
+    "End Turn"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Calm",
+      "Retain",
+      "End Turn"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.omniscience",
+   "name": "Omniscience",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "4",
+   "cost_upgraded": "3",
+   "text": "Choose a card in your draw pile. Play the chosen card twice and Exhaust it. Exhaust.",
+   "text_upgraded": "Choose a card in your draw pile. Play the chosen card twice and Exhaust it. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.perseverance",
+   "name": "Perseverance",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Retain. Gain 5 Block. Whenever this card is Retained, increase its Block by 2.",
+   "text_upgraded": "Retain. Gain 7 Block. Whenever this card is Retained, increase its Block by 3.",
+   "keywords": [
+    "Retain",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain",
+      "Block"
+     ],
+     "interacts": [
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.pray",
+   "name": "Pray",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 3 Mantra. Shuffle an Insight into your draw pile.",
+   "text_upgraded": "Gain 4 Mantra. Shuffle an Insight into your draw pile.",
+   "keywords": [
+    "Mantra"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Mantra"
+     ]
+    },
+    "card_refs": [
+     "Insight"
+    ]
+   }
+  },
+  {
+   "id": "sts1.pressure_points",
+   "name": "Pressure Points",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Apply 8 Mark. ALL enemies lose HP equal to their Mark.",
+   "text_upgraded": "Apply 11 Mark. ALL enemies lose HP equal to their Mark.",
+   "keywords": [
+    "Mark"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "enemy": [
+      "Mark"
+     ],
+     "interacts": [
+      "Mark"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.prostrate",
+   "name": "Prostrate",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "0",
+   "cost_upgraded": null,
+   "text": "Gain 2 Mantra. Gain 4 Block.",
+   "text_upgraded": "Gain 3 Mantra. Gain 4 Block.",
+   "keywords": [
+    "Mantra",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Mantra",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.protect",
+   "name": "Protect",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Retain. Gain 12 Block.",
+   "text_upgraded": "Retain. Gain 16 Block.",
+   "keywords": [
+    "Retain",
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Retain",
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.sanctity",
+   "name": "Sanctity",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 6 Block. If the last card played this combat was a Skill, draw 2 cards.",
+   "text_upgraded": "Gain 9 Block. If the last card played this combat was a Skill, draw 2 cards.",
+   "keywords": [
+    "Block",
+    "Draw"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Draw"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.scrawl",
+   "name": "Scrawl",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Draw cards until your hand is full. Exhaust.",
+   "text_upgraded": "Draw cards until your hand is full. Exhaust.",
+   "keywords": [
+    "Draw",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.simmering_fury",
+   "name": "Simmering Fury",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "At the start of your next turn, enter Wrath and draw 2 cards.",
+   "text_upgraded": "At the start of your next turn, enter Wrath and draw 3 cards.",
+   "keywords": [
+    "Draw",
+    "Simmering Rage",
+    "Wrath"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Draw",
+      "Simmering Rage"
+     ],
+     "power": [
+      "Wrath"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.spirit_shield",
+   "name": "Spirit Shield",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 3 Block for each card in your hand.",
+   "text_upgraded": "Gain 4 Block for each card in your hand.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.swivel",
+   "name": "Swivel",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 8 Block. The next Attack you play costs 0.",
+   "text_upgraded": "Gain 11 Block. The next Attack you play costs 0.",
+   "keywords": [
+    "Block"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.third_eye",
+   "name": "Third Eye",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Gain 7 Block. Scry 3.",
+   "text_upgraded": "Gain 9 Block. Scry 5.",
+   "keywords": [
+    "Block",
+    "Scry"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Scry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.tranquility",
+   "name": "Tranquility",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Common",
+   "cost": "1",
+   "cost_upgraded": "0",
+   "text": "Retain. Enter Calm. Exhaust.",
+   "text_upgraded": "Retain. Enter Calm. Exhaust.",
+   "keywords": [
+    "Calm",
+    "Retain",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Calm",
+      "Retain",
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.vault",
+   "name": "Vault",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": "2",
+   "text": "Take an extra turn after this one. End your turn. Exhaust.",
+   "text_upgraded": "Take an extra turn after this one. End your turn. Exhaust.",
+   "keywords": [
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Exhaust"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.vigilance",
+   "name": "Vigilance",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Basic",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 8 Block. Enter Calm.",
+   "text_upgraded": "Gain 12 Block. Enter Calm.",
+   "keywords": [
+    "Block",
+    "Calm"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Block",
+      "Calm"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wave_of_the_hand",
+   "name": "Wave of the Hand",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Whenever you gain Block this turn, apply 1 Weak to ALL enemies.",
+   "text_upgraded": "Whenever you gain Block this turn, apply 2 Weak to ALL enemies.",
+   "keywords": [
+    "Block",
+    "Weak"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "power": [
+      "Block",
+      "Weak"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wish",
+   "name": "Wish",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Rare",
+   "cost": "3",
+   "cost_upgraded": null,
+   "text": "Choose one: Gain 6 Plated Armor, 3 Strength, or 25 Gold. Exhaust.",
+   "text_upgraded": "Choose one: Gain 8 Plated Armor, 4 Strength, or 30 Gold. Exhaust.",
+   "keywords": [
+    "Plated Armor",
+    "Strength",
+    "Exhaust"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Plated Armor",
+      "Strength",
+      "Exhaust"
+     ]
+    },
+    "variants": [
+     {
+      "name": "Live Forever",
+      "type": "Power",
+      "cost": "U",
+      "text": "Gain 6 Plated Armor.",
+      "text_upgraded": "Gain 8 Plated Armor.",
+      "keywords": [
+       "Plated Armor"
+      ]
+     },
+     {
+      "name": "Become Almighty",
+      "type": "Power",
+      "cost": "U",
+      "text": "Gain 3 Strength.",
+      "text_upgraded": "Gain 4 Strength.",
+      "keywords": [
+       "Strength"
+      ]
+     },
+     {
+      "name": "Fame and Fortune",
+      "type": "Skill",
+      "cost": "U",
+      "text": "Gain 25 Gold",
+      "text_upgraded": "Gain 30 Gold",
+      "keywords": [
+       "Gold"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sts1.worship",
+   "name": "Worship",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "2",
+   "cost_upgraded": null,
+   "text": "Gain 5 Mantra.",
+   "text_upgraded": "Retain. Gain 5 Mantra.",
+   "keywords": [
+    "Mantra",
+    "Retain"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Mantra",
+      "Retain"
+     ]
+    }
+   }
+  },
+  {
+   "id": "sts1.wreath_of_flame",
+   "name": "Wreath of Flame",
+   "owner": "Watcher",
+   "type": "Skill",
+   "rarity": "Uncommon",
+   "cost": "1",
+   "cost_upgraded": null,
+   "text": "Your next Attack deals 5 additional damage.",
+   "text_upgraded": "Your next Attack deals 8 additional damage.",
+   "keywords": [
+    "Vigor"
+   ],
+   "extra": {
+    "keyword_roles": {
+     "player": [
+      "Vigor"
+     ]
+    }
+   }
+  }
+ ]
+}
