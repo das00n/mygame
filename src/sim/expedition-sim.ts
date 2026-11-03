@@ -1,0 +1,128 @@
+// sim:expedition — 56개 조합 × N 회 보통 길이 원정 (첫 지역, 보스 b1/b2 무작위).
+// 실행: npm run sim:expedition -- --runs 100 --workers 4
+
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { loadData as D, ROOT } from '../core/data.ts';
+import { HERO_IDS } from '../core/types.ts';
+import { allTrios, mergeCardAgg, mergeCombatAgg, metrics, newCardAgg, newCombatAgg } from './agg.ts';
+import { cardTables } from './combat-sim.ts';
+import type { ExpeditionJobResult } from './jobs.ts';
+import { argFlag, argNum, argStr, runPool } from './pool.ts';
+import type { WhatIf } from './jobs.ts';
+import { writeReport } from './report.ts';
+
+const r3 = (x: number) => Math.round(x * 1000) / 1000;
+
+export function flagOf(rate: number, median: number): 'dominant' | 'dead' | '' {
+  if (rate > median + 0.25) return 'dominant';
+  if (rate < median - 0.25 || rate < 0.05) return 'dead';
+  return '';
+}
+
+export function median(xs: number[]): number {
+  const s = xs.slice().sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
+
+async function main() {
+  const runs = argNum('runs', 100);
+  const workers = argNum('workers', 4);
+  // what-if (기본값 = 설계 그대로). 결과는 --out 이름으로 따로 저장한다
+  const whatIf: WhatIf = {
+    betweenHeal: argNum('between-heal', 0),
+    rules: { enemyDmgMult: argNum('enemy-dmg', 1), downShield: argFlag('down-shield') },
+    boss: argStr('boss', '') || undefined,
+  };
+  const isWhatIf = whatIf.betweenHeal !== 0 || whatIf.rules!.enemyDmgMult !== 1 || whatIf.rules!.downShield || !!whatIf.boss;
+  const outName = argStr('out', isWhatIf ? 'expedition-whatif' : 'expedition');
+  const d = D();
+  const trios = allTrios();
+  const t0 = performance.now();
+  process.stdout.write(`sim:expedition — ${trios.length} 조합 × ${runs} 원정, 워커 ${workers}\n`);
+  const results = await runPool<ExpeditionJobResult>('expedition', trios, runs, workers, (done, total) => {
+    if (done % 8 === 0 || done === total) process.stdout.write(`  ${done}/${total} 조합 (${((performance.now() - t0) / 1000).toFixed(0)}s)\n`);
+  }, whatIf);
+  const cards = newCardAgg();
+  let allAgg = newCombatAgg();
+  const bossTot: Record<string, { reached: number; won: number; haewon: number }> = {};
+  const wipeTot: Record<string, number> = {};
+  const trioRows = results.map((r) => {
+    mergeCardAgg(cards, r.cards);
+    allAgg = mergeCombatAgg(allAgg, r.agg);
+    const n = r.runs.length;
+    const boss: Record<string, { reached: number; won: number; haewon: number }> = {};
+    const wipes: Record<string, number> = {};
+    let cleared = 0, deaths = 0, fights = 0, hae = 0, haeE = 0, heal = 0, remove = 0, deck = 0, skips = 0;
+    for (const x of r.runs) {
+      if (x.cleared) cleared++;
+      deaths += x.deaths;
+      fights += x.fightsWon;
+      hae += x.haewons;
+      haeE += x.haewonEligible;
+      deck += x.deckSize;
+      skips += x.skips;
+      if (x.campChoice === 'heal') heal++;
+      if (x.campChoice === 'remove') remove++;
+      const b = (boss[x.boss] ??= { reached: 0, won: 0, haewon: 0 });
+      const bt = (bossTot[x.boss] ??= { reached: 0, won: 0, haewon: 0 });
+      if (x.bossReached) { b.reached++; bt.reached++; }
+      if (x.bossWon) { b.won++; bt.won++; }
+      if (x.bossHaewon) { b.haewon++; bt.haewon++; }
+      if (x.wipedAt) {
+        wipes[x.wipedAt] = (wipes[x.wipedAt] ?? 0) + 1;
+        wipeTot[x.wipedAt] = (wipeTot[x.wipedAt] ?? 0) + 1;
+      }
+    }
+    const bossRates: Record<string, { reached: number; clearRate: number }> = {};
+    for (const [k, v] of Object.entries(boss)) bossRates[k] = { reached: v.reached, clearRate: v.reached ? r3(v.won / v.reached) : 0 };
+    return {
+      trio: r.trio, heroes: r.trio.split('+'), runs: n, clearRate: r3(cleared / n), deathsPerRun: r3(deaths / n), fightsSurvived: r3(fights / n),
+      haewonRate: r3(hae / Math.max(1, haeE)), boss: bossRates, wipes, campHeal: r3(heal / n), campRemove: r3(remove / n), deckSize: r3(deck / n),
+      skipsPerRun: r3(skips / n), combat: metrics(r.agg), flag: '' as string,
+    };
+  });
+  const med = median(trioRows.map((t) => t.clearRate));
+  for (const t of trioRows) t.flag = flagOf(t.clearRate, med);
+  trioRows.sort((a, b) => b.clearRate - a.clearRate);
+  const heroes: Record<string, { trios: number; meanClearRate: number; meanDeaths: number }> = {};
+  for (const h of HERO_IDS) {
+    const rows = trioRows.filter((t) => t.heroes.includes(h));
+    heroes[h] = {
+      trios: rows.length,
+      meanClearRate: r3(rows.reduce((a, t) => a + t.clearRate, 0) / rows.length),
+      meanDeaths: r3(rows.reduce((a, t) => a + t.deathsPerRun, 0) / rows.length),
+    };
+  }
+  const bosses: Record<string, { name: string; reached: number; clearRate: number; haewonRate: number }> = {};
+  for (const [k, v] of Object.entries(bossTot)) {
+    const enc = d.encounterById.get(k)!;
+    const bossDef = enc.enemies.map((id) => d.enemyById.get(id)!).find((e) => e.category === 'boss')!;
+    bosses[k] = { name: bossDef.name, reached: v.reached, clearRate: v.reached ? r3(v.won / v.reached) : 0, haewonRate: v.won ? r3(v.haewon / v.won) : 0 };
+  }
+  const clear = trioRows.map((t) => t.clearRate);
+  const runtimeSec = Math.round((performance.now() - t0) / 100) / 10;
+  const out = {
+    meta: { generated: new Date().toISOString(), runs, trios: trios.length, runtimeSec, structure: '쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿) + 보스 b1/b2', whatIf: isWhatIf ? whatIf : null },
+    distribution: { min: Math.min(...clear), median: med, max: Math.max(...clear), mean: r3(clear.reduce((a, b) => a + b, 0) / clear.length) },
+    trios: trioRows,
+    heroes,
+    bosses,
+    wipes: wipeTot,
+    combat: metrics(allAgg),
+    ...cardTables(cards),
+  };
+  const dir = resolve(ROOT, 'data/sim');
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(resolve(dir, `${outName}.json`), JSON.stringify(out, null, 1) + '\n');
+  process.stdout.write(`완료: 클리어율 최소 ${(out.distribution.min * 100).toFixed(0)}% · 중앙 ${(med * 100).toFixed(0)}% · 최대 ${(out.distribution.max * 100).toFixed(0)}%, ${runtimeSec}s → data/sim/${outName}.json\n`);
+  writeReport();
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
