@@ -2,7 +2,7 @@
  "game": "Monster Train 2",
  "source": "https://monstertrain2.miraheze.org (CC BY-SA) via archive.org backup miraheze-wiki-monstertrain2wiki-20260907",
  "retrieved": "2026-11-03",
- "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 211 names -> nav-only none, page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] (+ 7 Endless-mode curses listed in the nav, kept under rules.endless_mode) | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only 21 Soul Savior '-slab' versions (listed in the wiki table's Soul Savior column, not as rows) + [\"Archus' Wing\", 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Duplicate Spell', 'Unit Replicator', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] (spelling) | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
+ "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 211 names -> nav-only none, page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] (+ 7 Endless-mode curses listed in the nav, kept under rules.endless_mode) | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only 21 Soul Savior '-slab' versions (listed in the wiki table's Soul Savior column, not as rows) + [\"Archus' Wing\", 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Duplicate Spell', 'Unit Replicator', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] (spelling) | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 -> game-data-only ['Anxious', 'Callous', 'Glutton', 'Guarded', 'Insecure', 'Joker', 'Masochist', 'Overachiever', 'Overgrowth', 'Pyrebuff', 'Reclusive', 'Run Distance 1', 'Run Distance 2', 'Run Distance 3', 'Run Distance 4', 'Sadist', 'Spoiled', 'Starter Deck', 'Tangle', 'Tormentor'] (Soul Savior region-boss mutators, difficulty tiers Tangle/Overgrowth and internal run modifiers) | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
  "artifacts": [
   {
    "name": "Abyssal Prism",
@@ -3783,78 +3783,6 @@
     }
    },
    {
-    "name": "Armored Legion",
-    "ring": 7,
-    "page": "The Observatory",
-    "description": "The higher angels clad in their divine armor have lost their way. Wear them down with haste.",
-    "notes": "In the code, this battle is called \"Level7BattleArmorAttackers_ThisBattleIsBoringCutForNow\".",
-    "waves": {
-     "Covenant 0-1": [
-      "1: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Deformed Duo",
-      "4: Celestial Bastion, Deformed Duo",
-      "5: Avowed Gladiator, Deformed Duo",
-      "6: A Brief Respite",
-      "7: Boss, Celestial Bastion"
-     ],
-     "Covenant 2-6": [
-      "1: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Deformed Duo",
-      "4: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "5: Avowed Gladiator, Deformed Duo, Deformed Duo",
-      "6: A Brief Respite",
-      "7: Boss, Celestial Bastion"
-     ],
-     "Covenant 7+": [
-      "1: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Deformed Duo",
-      "4: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "5: Avowed Gladiator, Deformed Duo, Deformed Duo",
-      "6: Avowed Gladiator, Deformed Duo",
-      "7: Boss, Celestial Bastion"
-     ]
-    }
-   },
-   {
-    "name": "Draining Ardents",
-    "ring": 7,
-    "page": "The Observatory",
-    "description": "Be wary of these ardents and their guards. Empowered by the corruption, they are stronger than they were once before.",
-    "notes": "In the code, this battle is called \"Level7BattleIncanterAttack_MaybeCutThis\".",
-    "waves": {
-     "Covenant 0-1": [
-      "1: Celestial Bastion, Deformed Duo, Enthralled Ardent",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Enthralled Ardent",
-      "4: Celestial Bastion, Deformed Duo",
-      "5: Avowed Gladiator, Enthralled Ardent",
-      "6: A Brief Respite",
-      "7: Boss, Celestial Bastion, Enthralled Ardent"
-     ],
-     "Covenant 2-6": [
-      "1: Celestial Bastion, Deformed Duo, Enthralled Ardent",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Enthralled Ardent",
-      "4: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "5: Avowed Gladiator, Deformed Duo, Enthralled Ardent",
-      "6: A Brief Respite",
-      "7: Boss, Celestial Bastion, Enthralled Ardent"
-     ],
-     "Covenant 7+": [
-      "1: Celestial Bastion, Deformed Duo, Enthralled Ardent",
-      "2: Avowed Gladiator, Deformed Duo",
-      "3: Celestial Bastion, Avowed Gladiator, Enthralled Ardent",
-      "4: Celestial Bastion, Deformed Duo, Deformed Duo",
-      "5: Avowed Gladiator, Deformed Duo, Enthralled Ardent",
-      "6: Avowed Gladiator, Deformed Duo",
-      "7: Boss, Celestial Bastion, Enthralled Ardent"
-     ]
-    }
-   },
-   {
     "name": "Chosen of Dominion",
     "ring": 8,
     "page": "Heaven's Maw",
@@ -6419,6 +6347,18 @@
    "Boss Rush Bonus": "If the boss is defeated before it enters the Pyre room, a 10% bonus is applied for each turn before the boss would have entered it. For example, defeating the boss on the top floor during the Relentless phase results in a 10% bonus, while defeating it on the bottom floor results in a 30% bonus. On Ring 9, as there is no Relentless phase, the final turn is considered to be turn 10 for the purposes of this bonus.",
    "Boss Damage Dealt Bonus": "If the battle is lost, a bonus is applied based on the percentage of damage dealt to the boss, up to 100% of the (quartered) baseline score for 100% damage dealt."
   },
-  "covenant_outpost": "The Covenant Outpost serves as the main menu of Monster Train 2. Various game features are spread throughout the screen."
+  "covenant_outpost": "The Covenant Outpost serves as the main menu of Monster Train 2. Various game features are spread throughout the screen.",
+  "unimplemented_combats": [
+   {
+    "name": "Armored Legion",
+    "ring": 7,
+    "note": "present in the game's code but unused (wiki)"
+   },
+   {
+    "name": "Draining Ardents",
+    "ring": 7,
+    "note": "present in the game's code but unused (wiki)"
+   }
+  ]
  }
 }

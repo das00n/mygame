@@ -378,8 +378,6 @@ def mt1_redirects(titles):
     return out
 
 
-MT1_RING_NAMES = ["Limbo", "The Cliffs of Fallen Souls", "Bogwurm's Remains", "The Waxen Arches",
-                  "Frozen Styx Sea", "The Wildwood", "Scorched Plains", "The Crucible", "The Frozen Heart"]
 MT1_CATEGORY = {"Major Boss": "flying_boss", "Boss": "boss", "Heavy": "normal", "Support": "normal"}
 
 MT1_PATTERN = {
@@ -926,7 +924,10 @@ def mt2_combat_tables(pages, title, ring):
     txt = pages.get(title, {}).get("text", "")
     out = []
     hs = headings(txt)
+    parent = ""
     for i, (s, e, lv, name) in enumerate(hs):
+        if lv <= 2:
+            parent = name
         end = hs[i + 1][0] if i + 1 < len(hs) else len(txt)
         body = txt[e:end]
         if "Wave" not in body or "{|" not in body:
@@ -956,6 +957,7 @@ def mt2_combat_tables(pages, title, ring):
                     waves.setdefault(lab, []).append(f"{wn}: " + ", ".join(names))
         if waves:
             out.append(OrderedDict(name=clean(name), ring=ring, page=title,
+                                   unimplemented=True if "Unimplemented" in parent else None,
                                    description=clean(desc.group(1)) if desc else None,
                                    notes=prose(intro, 500, title) or None, waves=waves))
     return out
@@ -1041,12 +1043,15 @@ def scrape_mt2(gamedata=None):
     navc = mt2_nav_classes(pages)
 
     # ---- combats + waves
-    combats = []
+    combats, unimplemented = [], []
     for ring, t in MT2_RING_PAGES.items():
-        combats += mt2_combat_tables(pages, t, ring)
+        for cb in mt2_combat_tables(pages, t, ring):
+            (unimplemented if cb.pop("unimplemented") else combats).append(cb)
     ss_combats = []
     for t in MT2_SS_PAGES:
         ss_combats += mt2_combat_tables(pages, t, "Soul Savior: " + t)
+    for cb in ss_combats:
+        cb.pop("unimplemented", None)
     wave_idx = defaultdict(list)
     for cb in combats + ss_combats:
         seen = defaultdict(set)
@@ -1224,6 +1229,9 @@ def scrape_mt2(gamedata=None):
         enemies=enemies)
 
     structure = mt2_structure(pages, item, src, combats, ss_combats, gdi)
+    structure["rules"]["unimplemented_combats"] = [
+        OrderedDict(name=c["name"], ring=c["ring"], note="present in the game's code but unused (wiki)")
+        for c in unimplemented]
     return enemy_doc, structure
 
 
@@ -1570,7 +1578,10 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
                                             added=clean(cells[3]) if len(cells) > 3 else None,
                                             boon_value=to_int(cells[4]) if len(cells) > 4 else None))
     if gdi:
-        checks.append(f"mutators: wiki {len(mutators)} vs game-data MutatorData {len(gdi['mutators'])}")
+        wk = {norm(m["name"]) for m in mutators}
+        checks.append(f"mutators: wiki {len(mutators)} vs game-data MutatorData {len(gdi['mutators'])} -> game-data-only "
+                      f"{sorted(r['name'] for r in gdi['mutators'] if norm(r['name']) not in wk)} (Soul Savior "
+                      f"region-boss mutators, difficulty tiers Tangle/Overgrowth and internal run modifiers)")
     endless = OrderedDict(summary=lead(T("Endless Mode"), 600, "Endless Mode"))
     for title, body in sections(T("Endless Mode"), 2):
         if "Modifiers" in title:

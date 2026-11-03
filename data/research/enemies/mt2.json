@@ -1179,9 +1179,7 @@
    ],
    "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Celestial Bastion is an enemy in Monster Train 2. It is a tanky frontline enemy with Titanskin 10, making low-damage units and spells ineffective.",
    "waves": [
-    "R7 Armored Legion (wave 1, 3, 4, 7)",
     "R7 Dominion's Disdain (wave 1, 3, 4)",
-    "R7 Draining Ardents (wave 1, 3, 4, 7)",
     "R8 Harbinger of Entropy (wave 1, 3, 5, 6, 7)",
     "R9 Clash with the Titans (wave 5, 9)"
    ],
@@ -1249,9 +1247,7 @@
    ],
    "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Deformed Duo is an enemy in Monster Train 2. It is a resilient backline enemy with Reanimate that applies Corruption on Strike.",
    "waves": [
-    "R7 Armored Legion (wave 1, 2, 3, 4, 5, 6)",
     "R7 Dominion's Disdain (wave 1, 4, 5, 6)",
-    "R7 Draining Ardents (wave 1, 2, 4, 5, 6)",
     "R8 Chosen of Dominion (wave 2, 3, 4, 5, 6, 7, 8)",
     "R9 Clash with the Titans (wave 6)"
    ],
@@ -1316,9 +1312,7 @@
    "abilities": [],
    "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Avowed Gladiator is an enemy in Monster Train 2. They are a common tank enemy in Rings 7-9, and have the highest Health of any non-boss enemy in the game.",
    "waves": [
-    "R7 Armored Legion (wave 2, 3, 5, 6)",
     "R7 Dominion's Disdain (wave 2, 3, 4, 5, 6)",
-    "R7 Draining Ardents (wave 2, 3, 5, 6)",
     "R7 Purified Hordes (wave 3, 4, 5, 6)",
     "R7 Savagery's Final Assault (wave 1, 3, 4)",
     "R8 Champion of Savagery (wave 1, 3, 4, 5, 6, 7)",
@@ -1456,7 +1450,6 @@
    ],
    "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Enthralled Ardent is an enemy in Monster Train 2. It is a backline healer that applies Attack to enemy units when you Incant on its floor.",
    "waves": [
-    "R7 Draining Ardents (wave 1, 3, 5, 7)",
     "R7 Purified Hordes (wave 2, 3, 5)",
     "R8 Harbinger of Entropy (wave 1, 3, 4, 6, 8)",
     "R9 Clash with the Titans (wave 5)"
@@ -2062,7 +2055,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Athane, Last to Fall is one of the possible Ring 7 Bosses. She protects herself with a Chosen Prayerstone and grants Spikes to enemy units on Incant.",
    "waves": [
-    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault, Armored Legion, Draining Ardents)"
+    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault)"
    ],
    "extra": {
     "mode": null,
@@ -2138,7 +2131,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Rax the Overblessed is one of the possible Ring 7 Bosses. He deals very high damage, strikes twice, and gets even stronger if allowed to Resolve.",
    "waves": [
-    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault, Armored Legion, Draining Ardents)"
+    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault)"
    ],
    "extra": {
     "mode": null,
