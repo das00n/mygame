@@ -414,7 +414,9 @@
   "produce": [
    "block"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -463,7 +465,9 @@
    "heal"
   ],
   "produce": [],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -496,7 +500,9 @@
   "name": "Books.EXE",
   "owner": "CAT",
   "effects": [],
-  "produce": [],
+  "produce": [
+   "energy"
+  ],
   "consume": [],
   "props": [
    "ethereal",
@@ -836,7 +842,9 @@
   "effects": [
    "draw"
   ],
-  "produce": [],
+  "produce": [
+   "energy"
+  ],
   "consume": [],
   "props": [
    "ethereal"
@@ -1447,7 +1455,9 @@
    "damage"
   ],
   "produce": [],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self",
    "retain"
@@ -1849,7 +1859,8 @@
    "damage"
   ],
   "produce": [
-   "block"
+   "block",
+   "energy"
   ],
   "consume": [],
   "props": [],
@@ -1867,7 +1878,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -1950,6 +1963,8 @@
    "summon"
   ],
   "produce": [
+   "orb_summon",
+   "energy",
    "evade"
   ],
   "consume": [],
@@ -1984,6 +1999,8 @@
    "summon"
   ],
   "produce": [
+   "orb_summon",
+   "energy",
    "evade"
   ],
   "consume": [],
@@ -1998,7 +2015,9 @@
   "effects": [
    "damage"
   ],
-  "produce": [],
+  "produce": [
+   "energy"
+  ],
   "consume": [],
   "props": [],
   "conditions": [
@@ -2171,7 +2190,9 @@
   "effects": [
    "summon"
   ],
-  "produce": [],
+  "produce": [
+   "orb_summon"
+  ],
   "consume": [],
   "props": [
    "exhaust_self",
@@ -2223,9 +2244,12 @@
    "stat_up"
   ],
   "produce": [
-   "attack_stat"
+   "attack_stat",
+   "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -2347,7 +2371,8 @@
    "summon"
   ],
   "produce": [
-   "block"
+   "block",
+   "orb_summon"
   ],
   "consume": [],
   "props": [
@@ -2366,7 +2391,9 @@
   "effects": [
    "heal"
   ],
-  "produce": [],
+  "produce": [
+   "energy"
+  ],
   "consume": [],
   "props": [
    "ethereal",
@@ -2486,7 +2513,9 @@
   "name": "Quantum Quarry",
   "owner": "Books",
   "effects": [],
-  "produce": [],
+  "produce": [
+   "energy"
+  ],
   "consume": [],
   "props": [
    "exhaust_self"
@@ -2727,7 +2756,8 @@
    "block"
   ],
   "produce": [
-   "block"
+   "block",
+   "energy"
   ],
   "consume": [],
   "props": [],
@@ -2899,6 +2929,7 @@
   ],
   "produce": [
    "block",
+   "energy",
    "discard"
   ],
   "consume": [],
@@ -3240,9 +3271,12 @@
    "position"
   ],
   "produce": [
+   "energy",
    "evade"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -3430,7 +3464,8 @@
    "generate"
   ],
   "produce": [
-   "token_card"
+   "token_card",
+   "energy"
   ],
   "consume": [],
   "props": [
@@ -3668,7 +3703,9 @@
   "produce": [
    "evade"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []

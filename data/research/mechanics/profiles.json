@@ -111,7 +111,7 @@
    "produce": {
     "block": 5,
     "evade": 3,
-    "energy": 1,
+    "energy": 2,
     "discard": 2
    },
    "consume": {
@@ -249,7 +249,7 @@
    "scaling": {},
    "produce": {
     "block": 9,
-    "orb_summon": 17,
+    "orb_summon": 18,
     "energy": 3,
     "token_card": 1,
     "evade": 4
@@ -290,14 +290,16 @@
    },
    "produce": {
     "block": 5,
-    "orb_summon": 2,
+    "orb_summon": 5,
     "token_card": 3,
     "evade": 5,
-    "energy": 2,
+    "energy": 14,
     "attack_stat": 1,
     "discard": 2
    },
-   "consume": {}
+   "consume": {
+    "energy": 7
+   }
   },
   "Peri": {
    "_n": {
