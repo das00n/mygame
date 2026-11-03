@@ -1,0 +1,190 @@
+{
+ "version": "0.1",
+ "note": "Phase 3 영웅 자원 배치. resources 키는 docs/02-core-rules.md §5의 공용 상태·매개체. exports_candidates(앞쪽일수록 세계관상 자연스러움) 중 2~3개를 tools/design/synergy.py 가 제약을 만족하도록 고른다. 첫 번째로 고른 것이 주 수출, 나머지는 부 수출.",
+ "resources": {
+  "V": {
+   "name": "취약",
+   "kind": "universal"
+  },
+  "W": {
+   "name": "약화",
+   "kind": "universal"
+  },
+  "M": {
+   "name": "점지(표식)",
+   "kind": "status"
+  },
+  "B": {
+   "name": "상흔(출혈)",
+   "kind": "status"
+  },
+  "D": {
+   "name": "명부(파멸)",
+   "kind": "status"
+  },
+  "C": {
+   "name": "넋흔들림(균열)",
+   "kind": "status"
+  },
+  "K": {
+   "name": "장단(기세)",
+   "kind": "status"
+  },
+  "F": {
+   "name": "진형",
+   "kind": "medium"
+  },
+  "S": {
+   "name": "굿상(설치물)",
+   "kind": "medium"
+  },
+  "T": {
+   "name": "부적(토큰)",
+   "kind": "medium"
+  }
+ },
+ "heroes": [
+  {
+   "id": "manshin",
+   "name": "만신",
+   "range": "ranged",
+   "role": "중간",
+   "hp": 35,
+   "personal": "신명(강신 단계)",
+   "signature": "S",
+   "import": "T",
+   "universal": [
+    "W"
+   ],
+   "exports_candidates": [
+    "D",
+    "K",
+    "M",
+    "C"
+   ]
+  },
+  {
+   "id": "jaebi",
+   "name": "잽이",
+   "range": "ranged",
+   "role": "지원",
+   "hp": 30,
+   "personal": "가락(템포: 굿거리→자진→휘모리)",
+   "signature": "K",
+   "import": "F",
+   "universal": [],
+   "exports_candidates": [
+    "S",
+    "F",
+    "T",
+    "C"
+   ]
+  },
+  {
+   "id": "posu",
+   "name": "포수",
+   "range": "ranged",
+   "role": "화력",
+   "hp": 28,
+   "personal": "화약(장전)",
+   "signature": "M",
+   "import": "C",
+   "universal": [
+    "V"
+   ],
+   "exports_candidates": [
+    "B",
+    "C",
+    "F"
+   ]
+  },
+  {
+   "id": "baksu",
+   "name": "작두박수",
+   "range": "melee",
+   "role": "화력",
+   "hp": 32,
+   "personal": "작두(체력을 걸고 날 위에 선다)",
+   "signature": "B",
+   "import": "K",
+   "universal": [],
+   "exports_candidates": [
+    "C",
+    "F",
+    "D",
+    "S"
+   ]
+  },
+  {
+   "id": "seungnyeo",
+   "name": "승려",
+   "range": "melee",
+   "role": "수호",
+   "hp": 45,
+   "personal": "염주(알을 굴려 반격·방어)",
+   "signature": "C",
+   "import": "D",
+   "universal": [
+    "W"
+   ],
+   "exports_candidates": [
+    "F",
+    "K",
+    "D",
+    "T"
+   ]
+  },
+  {
+   "id": "dosa",
+   "name": "도사",
+   "range": "ranged",
+   "role": "중간",
+   "hp": 32,
+   "personal": "주사(부적 먹)",
+   "signature": "T",
+   "import": "S",
+   "universal": [],
+   "exports_candidates": [
+    "S",
+    "D",
+    "C",
+    "F"
+   ]
+  },
+  {
+   "id": "talggun",
+   "name": "탈꾼",
+   "range": "melee",
+   "role": "중간",
+   "hp": 35,
+   "personal": "탈(세 가면 전환)",
+   "signature": "F",
+   "import": "M",
+   "universal": [
+    "V"
+   ],
+   "exports_candidates": [
+    "K",
+    "M",
+    "B",
+    "T"
+   ]
+  },
+  {
+   "id": "chasa",
+   "name": "차사",
+   "range": "melee",
+   "role": "수호",
+   "hp": 40,
+   "personal": "오랏줄(묶은 적 수)",
+   "signature": "D",
+   "import": "B",
+   "universal": [],
+   "exports_candidates": [
+    "M",
+    "C",
+    "F"
+   ]
+  }
+ ]
+}
