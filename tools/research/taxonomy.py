@@ -14,10 +14,10 @@ N = r"(?:\d+|x|\(\d+;\d+\))"  # 숫자 / X / (기본;강화)
 # ── 효과 원자 ──────────────────────────────────────────────
 EFFECTS = {
     "damage":        ("단일 피해",        [r"\bdeals? [^.]{0,30}?damage", rf"attack (?:for )?{N}", r"\bshoot\b", r"(?:additional|double|triple) damage"]),
-    "damage_aoe":    ("광역 피해",        [r"(?:to )?all enem", r"every enem", r"all units", r"to all\b"]),
+    "damage_aoe":    ("광역 피해",        [r"(?:to )?all enem", r"every enem", r"all units", r"to all\b", r"\bsweep\b"]),
     "damage_multi":  ("다단 히트",        [rf"{N} times", r"multistrike", r"\btwice\b"]),
     "block":         ("방어 획득",        [rf"gain {N}.*?block", r"\bblock\b", r"\bshield\b", r"\barmor\b", r"temp shield"]),
-    "heal":          ("회복",            [r"\bheal", r"restore .*?(?:hp|health)", r"\bregen", r"rejuvenate"]),
+    "heal":          ("회복",            [r"\bheal", r"restore .*?(?:hp|health)", r"\bregen", r"rejuvenate", r"lifesteal"]),
     "max_hp":        ("최대 체력",        [r"max(?:imum)? (?:hp|health)"]),
     "draw":          ("드로우",          [r"\bdraw", r"put .*? into your hand"]),
     "discard":       ("버리기",          [r"\bdiscard"]),
@@ -26,39 +26,44 @@ EFFECTS = {
     "recall":        ("버린/소멸 더미 회수", [r"from (?:your )?(?:discard|exhaust) pile", r"\brecycle", r"\breturn .*? to your hand"]),
     "energy":        ("에너지 획득",      [r"gain .*?energy", r"gain \[e\]", r"\[e\]", r"\bember\b", r"energy next turn"]),
     "cost_reduce":   ("비용 감소",        [r"costs? (?:\d+ )?less", r"cost 0", r"\bdiscount\b", r"reduce .*?cost"]),
-    "stat_up":       ("영구 능력치 상승",  [r"\bstrength\b", r"\bdexterity\b", r"\bfocus\b", r"\boverdrive\b", r"\bpowerdrive\b", r"\brage\b", r"gain(?:s)? \+?\d+ (?:\[attack\]|attack)", r"\bvalor\b", r"\bvigor\b", r"\bforge\b"]),
+    "stat_up":       ("영구 능력치 상승",  [r"magic power", r"\bconduit\b", r"\bmageblade\b", r"\bpropagate\b", r"\btitanskin\b", r"\bstrength\b", r"\bdexterity\b", r"\bfocus\b", r"\boverdrive\b", r"\bpowerdrive\b", r"\brage\b", r"gain(?:s)? \+?\d+ (?:\[attack\]|attack)", r"\bvalor\b", r"\bvigor\b", r"\bforge\b"]),
     "debuff":        ("적 약화",          [r"\bvulnerable\b", r"\bweak\b", r"\bfrail\b", r"\bsap\b", r"lock-?on", r"melee weakness", r"spell weakness", r"\bbrittle\b"]),
-    "dot_apply":     ("지속 피해 부여",    [r"\bpoison", r"frostbite", r"\bcorrode", r"\boxidation", r"\bbleed", r"\bburn(?:ing)?\b(?! ?out)", r"\bdoom\b"]),
-    "generate":      ("카드 생성",        [r"\badd .*? (?:to|into) your (?:hand|draw pile|discard pile|deck)", r"\bcreate", r"\bshivs?\b", r"\bgenerate"]),
+    "dot_apply":     ("지속 피해 부여",    [r"\breap\b", r"\bdecay\b", r"\bunstable\b", r"\bpoison", r"frostbite", r"\bcorrode", r"\boxidation", r"\bbleed", r"\bburn(?:ing)?\b(?! ?out)", r"\bdoom\b"]),
+    "generate":      ("카드 생성",        [r"\bmix\b", r"\badd .*? (?:to|into) your (?:hand|draw pile|discard pile|deck)", r"\bcreate", r"\bshivs?\b", r"\bgenerate"]),
     "pollute":       ("자기 덱 오염",      [r"(?:wound|dazed|burn|slimed|void|trash|status) .*?(?:into|to) your", r"add .*?(?:status|curse)"]),
-    "exhaust_other": ("다른 카드 소멸",    [r"exhaust (?:a|\d+|all|your|the|any|it|them|x)\b", r"\bpurge\b"]),
-    "summon":        ("소환·설치",        [r"\bsummon", r"\bchannel", r"\borb", r"\bdrone", r"\bmissile", r"\bmidrow", r"\bmorsel", r"\bimp\b", r"spawn", r"\blaunch\b", r"\bosty\b", r"sovereign blade", r"\bminions?\b"]),
-    "position":      ("위치 이동",        [r"\bmove\b", r"\bascend\b", r"\bdescend\b", r"\bswap\b", r"\bfront\b", r"\bback\b", r"\bevade\b", r"\bflip\b"]),
+    "exhaust_other": ("다른 카드 소멸",    [r"\bsmelt\b", r"exhaust (?:a|\d+|all|your|the|any|it|them|x)\b", r"\bpurge\b"]),
+    "summon":        ("소환·설치",        [r"\bsummon", r"\bchannel", r"\borb", r"\bdrone", r"\bmissile", r"\bmidrow", r"\bmorsel", r"\bimp\b", r"spawn", r"\blaunch\b", r"\bosty\b", r"sovereign blade", r"\bminions?\b", r"\bunits?\b"]),
+    "position":      ("위치 이동",        [r"\bcapacity\b", r"\badvance\b", r"\bquick\b", r"\bmove\b", r"\bascend\b", r"\bdescend\b", r"\bswap\b", r"\bfront\b", r"\bback\b", r"\bevade\b", r"\bflip\b"]),
     "transform":     ("카드 변형·강화",    [r"\bupgrade", r"\btransform", r"\bevolve", r"permanently"]),
     "control":       ("행동 방해",        [r"\bstun", r"\bdazed\b", r"\brooted\b", r"skip", r"\bstall", r"engine lock", r"\btimestop", r"\bjam\b"]),
-    "self_damage":   ("자해",            [r"lose \d+ (?:hp|health)", r"take \d+ damage", r"\bsacrifice"]),
-    "economy":       ("골드·보상",        [r"\bgold\b", r"\bcoin", r"card reward", r"\brelic"]),
+    "self_damage":   ("자해",            [r"pyre takes", r"lose \d+ (?:hp|health)", r"take \d+ damage", r"\bsacrifice"]),
+    "economy":       ("골드·보상",        [r"\bavarice\b", r"\bgold\b", r"\bcoin", r"card reward", r"\brelic"]),
+    "replay":        ("재사용·복사",      [r"played an extra time", r"played again", r"\bplay [^.]*? (?:twice|again)", r"\bduplicate", r"\bcopy\b", r"\becho\b", r"triggers? an additional time"]),
+    "equip":         ("장비·부착",        [r"\bgraft\b", r"\bequip", r"\btrample\b"]),
+    "execute":       ("즉사·처형",        [r"set (?:their|its) hp to 0", r"\bkill\b", r"\bdestroy\b"]),
     "mode":          ("자세·형태 전환",    [r"\bstance\b", r"\bwrath\b", r"\bcalm\b", r"\bdivinity\b", r"\bform\b"]),
 }
 
 # ── 자원·상태 계열 (생산/소비 판정 대상) ─────────────────────
 #  terms: 이 계열을 가리키는 단어들 (게임마다 이름이 다르다)
 FAMILIES = {
-    "attack_stat":  ("공격 능력치 (힘·분노·오버드라이브·활력)", [r"strength", r"\brage\b", r"overdrive", r"powerdrive", r"\bvalor\b", r"\+\d+ \[attack\]", r"\bvigor\b"]),
-    "defense_stat": ("방어 능력치 (민첩·방어 증폭)",      [r"dexterity", r"\barmor\b"]),
-    "block":        ("방어도 (블록·실드)",              [r"\bblock\b", r"\bshield\b", r"temp shield"]),
-    "vulnerable":   ("받는 피해 증가 (취약·조준)",        [r"vulnerable", r"lock-?on", r"spell weakness", r"melee weakness", r"\bbrittle\b"]),
+    "attack_stat":  ("공격 능력치 (힘·분노·오버드라이브·활력)", [r"strength", r"\brage\b", r"overdrive", r"powerdrive", r"\bvalor\b", r"\+\d+ \[attack\]", r"\+\d+ attack", r"\bvigor\b"]),
+    "defense_stat": ("방어 능력치 (민첩·체력 증가)",      [r"dexterity", r"\+\d+ health", r"max shield"]),
+    "block":        ("방어도 (블록·실드·장갑)",          [r"\bblock\b", r"\bshield\b", r"temp shield", r"\barmor\b", r"damage shield"]),
+    "vulnerable":   ("받는 피해 증가 (취약·조준·젤)",      [r"vulnerable", r"lock-?on", r"spell weakness", r"melee weakness", r"\bbrittle\b", r"pyregel"]),
     "weak":         ("주는 피해 감소 (약화·수액)",        [r"\bweak\b", r"\bsap\b"]),
-    "dot":          ("지속 피해 (독·동상·부식)",         [r"poison", r"frostbite", r"corrode", r"oxidation", r"\bbleed", r"\bdoom\b"]),
+    "dot":          ("지속 피해 (독·동상·부식·수확)",     [r"poison", r"frostbite", r"corrode", r"oxidation", r"\bbleed", r"\bdoom\b", r"\breap\b", r"\bdecay\b", r"\bunstable\b"]),
     "orb_summon":   ("설치물·동료 (오브·드론·소환물·Osty·검)", [r"\borbs?\b", r"\bdrones?\b", r"\bmissiles?\b", r"\bmidrow\b", r"\bminions?\b", r"\bmorsels?\b", r"\bimps?\b", r"summon", r"\bosty\b", r"sovereign blade", r"\bforge\b", r"\bfocus\b", r"\basteroids?\b", r"\bmines?\b", r"\bgeodes?\b", r"\bbubbles?\b"]),
     "token_card":   ("토큰 카드 (단검·영혼·연료 등 생성 카드)", [r"\bshivs?\b", r"\bsouls?\b", r"\bfuel\b", r"\bcreate", r"add [^.]*? (?:to|into) your hand"]),
-    "energy":       ("에너지·불씨·별·샤드",                  [r"energy", r"\[e\]", r"\bember\b", r"\[star\]", r"\bstars?\b", r"\bshards?\b"]),
+    "energy":       ("에너지·불씨·별·샤드·메아리",            [r"energy", r"\[e\]", r"\bember", r"\[star\]", r"\bstars?\b", r"\bshards?\b", r"charged echo", r"echo slot"]),
+    "spell_power":  ("주문 위력 (마력·도관)",            [r"magic power", r"\bconduit\b", r"\bmageblade\b", r"\bincant\b"]),
     "self_status":  ("자기 덱의 상태·저주 카드",          [r"\bstatus\b", r"\bcurses?\b", r"\bwound", r"\bdazed\b", r"\bslimed\b", r"\btrash\b", r"\bburn\b"]),
     "exhaust":      ("소멸",                          [r"exhaust", r"\bpurge\b", r"\bconsume\b"]),
     "discard":      ("버리기",                        [r"discard"]),
     "heat":         ("과열·자해 자원",                  [r"\bheat\b", r"overheat", r"lose \d+ (?:hp|health)", r"\bsacrifice"]),
     "evade":        ("회피·위치",                      [r"\bevade\b", r"\bmove\b", r"\bascend\b", r"\bdescend\b"]),
-    "thorns":       ("반사 피해 (가시)",               [r"thorns", r"\bspikes\b", r"damage shield"]),
+    "thorns":       ("반사 피해 (가시)",               [r"thorns", r"\bspikes\b"]),
+    "death":        ("죽음·희생 (아군 유닛·동료의 죽음)",  [r"\bsacrific", r"\bdies\b", r"\bdeaths?\b", r"\bslay\b", r"\bharvest\b", r"\bextinguish\b", r"\breanimate", r"\breform\b", r"\brevenge\b", r"\bburnout\b"]),
     "stance":       ("자세·만트라",                    [r"stance", r"\bwrath\b", r"\bcalm\b", r"mantra", r"divinity"]),
 }
 
@@ -80,7 +85,7 @@ CONSUME_CONTEXT = [
 PROPS = {
     "exhaust_self": ("사용 후 소멸·1회용", [r"\bexhaust\.?$", r"^exhaust\b", r"\. exhaust\.?", r"\bconsume\b", r"single.?use"]),
     "ethereal":     ("휘발",            [r"\bethereal\b", r"\btemporary\b", r"\bpurge\b"]),
-    "retain":       ("보존",            [r"\bretain\b", r"\bholdover\b", r"\bbuoyant\b"]),
+    "retain":       ("보존",            [r"\bretain\b", r"\bholdover\b", r"\bbuoyant\b", r"\bfrozen\b", r"\bpermafrost\b"]),
     "innate":       ("선천",            [r"\binnate\b", r"\bintrinsic\b"]),
     "unplayable":   ("사용 불가",        [r"\bunplayable\b"]),
     "x_cost":       ("X 비용",          []),  # cost 필드로 판정
@@ -95,7 +100,7 @@ CONDITIONS = {
     "if_sequence":      ("직전 카드 조건",     [r"last card", r"previous card", r"if you played"]),
     "if_hp":            ("체력 조건",         [r"(?:hp|health) (?:is )?(?:below|above|less|at)", r"half"]),
     "if_pile":          ("더미·손패 조건",     [r"if your hand", r"cards? in your (?:hand|draw pile|discard pile|exhaust pile)", r"no cards"]),
-    "on_trigger":       ("사건 발동형",       [r"\bwhenever\b", r"\bwhen\b", r"at the (?:start|end) of", r"\bslay\b", r"\brevenge\b", r"\bharvest\b", r"\bincant\b", r"\bresolve\b", r"\bextinguish\b", r"\bstrike:"]),
+    "on_trigger":       ("사건 발동형",       [r"\bwhenever\b", r"\bwhen\b", r"at the (?:start|end) of", r"\bslay\b", r"\brevenge\b", r"\bharvest\b", r"\bincant\b", r"\bresolve\b", r"\bextinguish\b", r"\bstrike:", r"\brally\b", r"\bsummon:", r"\baction:", r"\brejuvenate:", r"\betch\b"]),
 }
 
 # ── 성장 방식 ────────────────────────────────────────────
