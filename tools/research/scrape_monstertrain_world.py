@@ -957,7 +957,7 @@ def mt2_combat_tables(pages, title, ring):
         if waves:
             out.append(OrderedDict(name=clean(name), ring=ring, page=title,
                                    description=clean(desc.group(1)) if desc else None,
-                                   notes=cut(clean(strip_divs(intro)), 500) or None, waves=waves))
+                                   notes=prose(intro, 500, title) or None, waves=waves))
     return out
 
 
@@ -1083,7 +1083,7 @@ def scrape_mt2(gamedata=None):
                 seen_names.add(name)
                 after = txt[e:]
                 m = re.search(r"^=+.*=+\s*$|\{\{\s*(Enemy|EnemySS)\b", after, re.M)
-                blurb = cut(clean(strip_divs(after[:m.start()] if m else after)), 450)
+                blurb = prose(after[:m.start()] if m else after, 450, title)
                 if tpl == "Enemy":
                     enemies.append(mt2_enemy_standard(name, pr, title, blurb, roles, navc, wave_idx,
                                                       boss_variant_rows, vocab, gdi))

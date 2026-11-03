@@ -2,7 +2,7 @@
  "game": "Monster Train 2",
  "source": "https://monstertrain2.miraheze.org (CC BY-SA) via archive.org backup miraheze-wiki-monstertrain2wiki-20260907",
  "retrieved": "2026-11-03",
- "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 235 names -> nav-only ['Awoken', 'Banished', 'Boss Artifacts', 'Celestial Alcove', 'Clanless', 'Curse of Arrogance', 'Curse of Fading Light', 'Curse of Forgetfulness', 'Curse of Friendly Fire', 'Curse of Pacifism', 'Curse of The Empty Mind', 'Curse of The Laden Soul', 'Endless Mode', 'Hellhorned', 'Lazarus League', 'Luna Coven', 'Melting Remnant', 'Pyreborne', 'Railforged', 'Stygian Guard', 'Template:ClanlessArtifacts', 'Umbra', 'Underlegion', 'Wurmkin'], page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only [\"Archus' Wing\", 'Braveslab', 'Burstslab', 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Dualslab', 'Duplicate Spell', 'Echoslab', 'Frankenslab', 'Frenzyslab', 'Furyslab', 'Glimmerslab', 'Greedslab', 'Heartslab', 'Immortalslab', 'Largeslab', 'Mossyslab', 'Runeslab', 'Shieldslab', 'Smidgeslab', 'Speedslab', 'Strengthslab', 'Thornslab', 'Titanslab', 'Unit Replicator', 'Wickslab', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
+ "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 211 names -> nav-only none, page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] (+ 7 Endless-mode curses listed in the nav, kept under rules.endless_mode) | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only [\"Archus' Wing\", 'Braveslab', 'Burstslab', 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Dualslab', 'Duplicate Spell', 'Echoslab', 'Frankenslab', 'Frenzyslab', 'Furyslab', 'Glimmerslab', 'Greedslab', 'Heartslab', 'Immortalslab', 'Largeslab', 'Mossyslab', 'Runeslab', 'Shieldslab', 'Smidgeslab', 'Speedslab', 'Strengthslab', 'Thornslab', 'Titanslab', 'Unit Replicator', 'Wickslab', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
  "artifacts": [
   {
    "name": "Abyssal Prism",
@@ -1504,7 +1504,7 @@
   }
  ],
  "merchants_and_upgrades": {
-  "overview": "Merchants are map nodes in Monster Train 2 that allow you to purchase items with Gold. In each ring, a Merchant is always present on both paths between combats. There are four types of Merchants: | class=\"wikitable\" style=\"text-align: center; |- | Merchant of Arms || Merchant of Magic || Merchant of Steel || Merchant of Trinkets |",
+  "overview": "Merchants are map nodes in Monster Train 2 that allow you to purchase items with Gold. In each ring, a Merchant is always present on both paths between combats. There are four types of Merchants:",
   "reroll": "Each Merchant lets you re-roll its Primary Inventory once. This service replaces everything in its primary inventory with new options. These options are always different from the options previously offered. Re-rolling costs 50 Gold, and 75 Gold on Covenant 3+.",
   "purge_costs": [
    {
@@ -1561,8 +1561,8 @@
     "possible_rings": "7, 8",
     "overview": "Merchant of Steel is a map node and merchant in Monster Train 2. 4-5 Merchants of Steel are present on the map: • A Merchant of Steel is guaranteed on Ring 2, accompanying a Unit Banner. • A Merchant of Steel is guaranteed on either Ring 3 or Ring 4. • A Merchant of Steel is guaranteed on either Ring 5 or Ring 6. • A Merchant of Steel is present on one or both of Ring 7 and Ring 8. The merchant's primary inventory offers a choice of four upgrades for purchase.",
     "services": {
-     "Minor Upgrades": "Minor upgrades cost 15 Gold, 20 Gold, or 25 Gold. The available upgrades are the two clanless upgrades, and two clan-specific upgrades for your primary and allied clans. Because there are only four possible upgrades, you are guaranteed to be able to purchase each minor upgrade at any Merchant of Steel after rerolling. | class=\"wikitable\" style=\"text-align: center; |+ Clanless Unit Upgrades |-! Upgrade!! Description |- | Heartstone || Upgrade a unit with +20 Health. |- | Strengthstone|| Upgrade a unit with +14 Attack. | | class=\"wikitable\" style=\"text-align: center; |+ Clan-Specific Unit Upgrades |-! Upgrade!! Description!! Clan |- | Bravestone || Upgrade a unit with Valor 8.",
-     "Major Upgrades": "Major upgrades cost between 80 Gold and 110 Gold. There are seven possible upgrades. | class=\"wikitable\" style=\"text-align: center; |+ Major Unit Upgrades |-! Upgrade!! Description |- | Dualstone || Upgrade a unit with Dualism. |- | Frenzystone || Upgrade a unit with Multistrike Multistrike 1. |- | Immortalstone || Upgrade a unit with Endless. |- | Largestone || Upgrade a unit with +1 Capacity, +15 Attack, and +50 Health. |- | Smidgestone || Reduce Capacity to 1. |- | Speedstone || Upgrade a unit with Quick and +10 Attack. |- | Titanstone || Upgrade a unit with Titanite Titanite. |"
+     "Minor Upgrades": "Minor upgrades cost 15 Gold, 20 Gold, or 25 Gold. The available upgrades are the two clanless upgrades, and two clan-specific upgrades for your primary and allied clans. Because there are only four possible upgrades, you are guaranteed to be able to purchase each minor upgrade at any Merchant of Steel after rerolling. Upgrade | Description; Heartstone | Upgrade a unit with +20 Health.; Strengthstone | Upgrade a unit with +14 Attack. Upgrade | Description | Clan; Bravestone | Upgrade a unit with Valor 8. | Banished; Greedstone | Upgrade a unit with Avarice 3. | Pyreborne; Glimmerstone | Upgrade a unit with Conduit 5. | Luna Coven; Mossystone | Upgrade a unit with +10 Health and Regen 10. | Underlegion; Frankenstone | Upgrade a unit with Reanimate 1. | Lazarus League; Burststone | Upgrade a unit with Burst 2. | Railforged; Furystone | Upgrade a unit with Rage 12.",
+     "Major Upgrades": "Major upgrades cost between 80 Gold and 110 Gold. There are seven possible upgrades. Upgrade | Description; Dualstone | Upgrade a unit with Dualism.; Frenzystone | Upgrade a unit with Multistrike Multistrike 1.; Immortalstone | Upgrade a unit with Endless.; Largestone | Upgrade a unit with +1 Capacity, +15 Attack, and +50 Health.; Smidgestone | Reduce Capacity to 1.; Speedstone | Upgrade a unit with Quick and +10 Attack.; Titanstone | Upgrade a unit with Titanite Titanite."
     }
    },
    {
@@ -1572,9 +1572,9 @@
     "possible_rings": "7, 8",
     "overview": "Merchant of Magic is a map node and merchant in Monster Train 2. 4-5 Merchants of Magic are present on the map: • A Merchant of Magic is guaranteed on Ring 2, accompanying a Unit Banner. • A Merchant of Magic is guaranteed on either Ring 3 or Ring 4. • A Merchant of Magic is guaranteed on either Ring 5 or Ring 6. • A Merchant of Magic is present on one or both of Ring 7 and Ring 8. The merchant's primary inventory offers a choice of four upgrades for purchase.",
     "services": {
-     "Minor Magic Power Upgrades": "Minor Magic Power upgrades cost 15 Gold, 20 Gold, or 25 Gold. There are only two possible upgrades, so you are guaranteed to be able to purchase both at any Merchant of Magic after rerolling. | class=\"wikitable\" style=\"text-align: center; |+ Minor Magic Power Upgrades |-! Upgrade!! Description |- | Powerstone || Upgrade a spell with +10 Magic Power. |- | Surgestone|| Upgrade a spell with +20 Magic Power and gain Consume. |",
-     "Minor Ember Cost Upgrades": "Minor ember cost upgrades always cost 35 Gold. There are only two possible upgrades, so you are guaranteed to be able to purchase both at any Merchant of Magic after rerolling. | class=\"wikitable\" style=\"text-align: center; |+ Minor Ember Cost Upgrades |-! Upgrade!! Description |- | Emberstone || Upgrade a spell to cost -1 Ember. |- | Smolderstone|| Upgrade a spell to cost -2 Ember and gain Consume. |",
-     "Major Upgrades": "Major upgrades cost between 80 Gold and 110 Gold. There are seven possible upgrades. | class=\"wikitable\" style=\"text-align: center; |+ Major Unit Upgrades |-! Upgrade!! Description |- | Eternalstone || Upgrade a spell to permanently remove Consume. |- | Freezestone || Upgrade a spell to cost -1 Ember and gain Permafrost. |- | Holystone || Heal your pyre equal to the spell's Ember cost. |- | Keepstone || Upgrade a spell to gain Holdover. |- | Seekstone || Upgrade a spell to cost -1 Ember and gain Intrinsic. |- | Stackstone || Upgrade a spell to gain Doublestack. |- | Twinstone || Upgrade a spell to gain Spellchain. |"
+     "Minor Magic Power Upgrades": "Minor Magic Power upgrades cost 15 Gold, 20 Gold, or 25 Gold. There are only two possible upgrades, so you are guaranteed to be able to purchase both at any Merchant of Magic after rerolling. Upgrade | Description; Powerstone | Upgrade a spell with +10 Magic Power.; Surgestone | Upgrade a spell with +20 Magic Power and gain Consume.",
+     "Minor Ember Cost Upgrades": "Minor ember cost upgrades always cost 35 Gold. There are only two possible upgrades, so you are guaranteed to be able to purchase both at any Merchant of Magic after rerolling. Upgrade | Description; Emberstone | Upgrade a spell to cost -1 Ember.; Smolderstone | Upgrade a spell to cost -2 Ember and gain Consume.",
+     "Major Upgrades": "Major upgrades cost between 80 Gold and 110 Gold. There are seven possible upgrades. Upgrade | Description; Eternalstone | Upgrade a spell to permanently remove Consume.; Freezestone | Upgrade a spell to cost -1 Ember and gain Permafrost.; Holystone | Heal your pyre equal to the spell's Ember cost.; Keepstone | Upgrade a spell to gain Holdover.; Seekstone | Upgrade a spell to cost -1 Ember and gain Intrinsic.; Stackstone | Upgrade a spell to gain Doublestack.; Twinstone | Upgrade a spell to gain Spellchain."
     }
    },
    {
@@ -1981,8 +1981,8 @@
     "description": "Upgrade a spell with +10 Magic Power.",
     "clan": "Clanless",
     "rarity": "Common",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell with +20 Magic Power."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell with +20 Magic Power."
    },
    {
     "name": "Surgestone",
@@ -1990,8 +1990,8 @@
     "description": "Upgrade a spell with +20 Magic Power and gain Consume.",
     "clan": "Clanless",
     "rarity": "Common",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell with +40 Magic Power and gain Consume."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell with +40 Magic Power and gain Consume."
    },
    {
     "name": "Emberstone",
@@ -1999,8 +1999,8 @@
     "description": "Upgrade a spell to cost -1 Ember.",
     "clan": "Clanless",
     "rarity": "Common",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell to cost -2 Ember."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember."
    },
    {
     "name": "Smolderstone",
@@ -2008,8 +2008,8 @@
     "description": "Upgrade a spell to cost -2 Ember and gain Consume.",
     "clan": "Clanless",
     "rarity": "Common",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell to cost -4 Ember and gain Consume."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell to cost -4 Ember and gain Consume."
    },
    {
     "name": "Eternalstone",
@@ -2017,8 +2017,8 @@
     "description": "Upgrade a spell to permanently remove Consume.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "N/A"
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Freezestone",
@@ -2026,8 +2026,8 @@
     "description": "Upgrade a spell to cost -1 Ember and gain Permafrost.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell to cost -2 Ember and gain Permafrost."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember and gain Permafrost."
    },
    {
     "name": "Holystone",
@@ -2035,8 +2035,8 @@
     "description": "Heal your Pyre equal to the spell's base Ember cost.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "N/A"
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Seekstone",
@@ -2044,8 +2044,8 @@
     "description": "Upgrade a spell to cost -1 Ember and gain Intrinsic.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "Upgrade a spell to cost -2 Ember and gain Intrinsic."
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember and gain Intrinsic."
    },
    {
     "name": "Keepstone",
@@ -2053,8 +2053,8 @@
     "description": "Upgrade a spell to gain Holdover.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "N/A"
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Stackstone",
@@ -2062,8 +2062,8 @@
     "description": "Upgrade a spell to gain Doublestack.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "N/A"
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Twinstone",
@@ -2071,8 +2071,8 @@
     "description": "Upgrade a spell to gain Spellchain.",
     "clan": "Clanless",
     "rarity": "Rare",
-    "source_||_+_(soul_savior)": "Merchant of Magic",
-    "col5": "N/A"
+    "source": "Merchant of Magic",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Entropic Stone",
@@ -2080,8 +2080,8 @@
     "description": "Upgrade a spell to gain Triplestack.",
     "clan": "Clanless",
     "rarity": "Event",
-    "source_||_+_(soul_savior)": "Celestial Alcove (Entropy's Crystals)",
-    "col5": "N/A"
+    "source": "Celestial Alcove (Entropy's Crystals)",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Entropic Growth",
@@ -2089,8 +2089,8 @@
     "description": "Permafrost. Reserve: Permanently gain +5 Magic Power.",
     "clan": "Clanless",
     "rarity": "Event",
-    "source_||_+_(soul_savior)": "Celestial Alcove (Entropy's Crystals)",
-    "col5": "N/A"
+    "source": "Celestial Alcove (Entropy's Crystals)",
+    "+_(soul_savior)": "N/A"
    },
    {
     "name": "Entropic Energy",
@@ -2098,8 +2098,8 @@
     "description": "Upgrade a spell to cost -4 Ember.",
     "clan": "Clanless",
     "rarity": "Event",
-    "source_||_+_(soul_savior)": "Celestial Alcove (Entropy's Crystals)",
-    "col5": "N/A"
+    "source": "Celestial Alcove (Entropy's Crystals)",
+    "+_(soul_savior)": "N/A"
    }
   ]
  },
@@ -2416,12 +2416,13 @@
  ],
  "pyre": {
   "summary": "Pyre Hearts are the different options which the player can choose for their Pyre. Each has different Attack and Pyre Health values, and most have special abilities or provide universal buffs. Rounds of Dominion (RoD) is how many turns it takes for the Pyre Heart to solo Dominion at 1555 Health/2055 Health. The first column assumes the Pyre Lights are not played, whereas the second column assumes you play exactly one Pyre Light per turn after turn 1. This can give an estimation for which Titan needs to be focused on depending on your Pyre Heart and your deck.",
+  "stat_note": "attack/pyre_health = base; ring3_increase/ring6_increase = attack/health added by the boss artifact taken after Ring 3 / Ring 6 (depends on the heart).",
   "combat_rules": "At the beginning of each non-Deployment turn, Enemies will enter on the first floor. After the player ends the turn, enemies on each floor will attack the friendly units, after which the player's surviving units will attack the enemy units. Surviving enemies will then climb to the next floor and will fight the player's units there on the next turn. The Pyre Room is above the three train floors. If it is destroyed, the player loses the run. Enemies which reach the Pyre will attack it immediately. The Pyre then strikes back, dealing damage to all enemies. Surviving units will attack again, continuing until they are killed or the Pyre is destroyed. Damage done to the Pyre is persistent: the Pyre's health does not regenerate between battles, and can only be restored through certain Spells, Artifacts, Celestial Alcove events, and Pyre Remains.",
   "pyre_hearts": [
    {
     "name": "Aquath's Reservation",
-    "attack": null,
-    "pyre_health": null,
+    "attack": 35,
+    "pyre_health": 65,
     "effect": "Once per battle, select the heart to gain 3 Ember.",
     "unlock": "Deal 12000 damage with Magic Power.",
     "ring3_increase": "+25/+15",
@@ -2536,7 +2537,7 @@
     "ring6_increase": "+45/+15"
    }
   ],
-  "boss_artifacts": "Boss artifacts are artifacts obtained as rewards for defeating Arkion / Fleshweaver after Ring 3 and Cael / Stryx & Hallow after Ring 6. The player can choose between Hell's Flame, Limbo's Solace, and Heaven's Light. All three options will grant the same boost to the Pyre's Pyre Health and Attack. This depends on when the artifacts are taken and which Pyre is being used. See Pyre Hearts for these numbers. == Pyreforged Boss Artifacts == Facsimile versions of the Boss artifacts can be obtained via Pyreborne's Dragon's Hoard mechanic. These versions are called Pyreforged Flame, Pyreforged Solace and Pyreforged Light, and the player can obtain at most one copy of each.",
+  "boss_artifacts": "Boss artifacts are artifacts obtained as rewards for defeating Arkion / Fleshweaver after Ring 3 and Cael / Stryx & Hallow after Ring 6. The player can choose between Hell's Flame, Limbo's Solace, and Heaven's Light. All three options will grant the same boost to the Pyre's Pyre Health and Attack. This depends on when the artifacts are taken and which Pyre is being used. See Pyre Hearts for these numbers. Pyreforged Boss Artifacts: Facsimile versions of the Boss artifacts can be obtained via Pyreborne's Dragon's Hoard mechanic. These versions are called Pyreforged Flame, Pyreforged Solace and Pyreforged Light, and the player can obtain at most one copy of each.",
   "boss_artifact_list": [
    {
     "name": "Hell's Flame",
@@ -2774,11 +2775,11 @@
    "lead": "Monster Train 2 is set in Heaven, which is segmented into Rings. The game is played through eight Rings with each Ring featuring a deck building section, where the player can gain, buy and upgrade cards and ending with a battle and rewards for winning that battle. If unlocked throughout the game, the player can optionally fight an additional battle after Ring 8 for a higher Score and additional game unlocks."
   },
   "battle": {
-   "overview": "In each Ring, after improving their deck with the offered nodes, the player faces a random battle from a pool of 3 or 4. The player is given the option to take a Trial prior to entering the battle, which grants extra rewards but make the battle more challenging. Each combat encounter occurs within the player's train, which is divided into three floors and the Pyre Room at the top. Waves enter the train on the bottom floor, and ascend one level per turn (unless Rooted). The player's objective is to defeat the boss while protecting the Pyre. ===",
+   "overview": "In each Ring, after improving their deck with the offered nodes, the player faces a random battle from a pool of 3 or 4. The player is given the option to take a Trial prior to entering the battle, which grants extra rewards but make the battle more challenging. Each combat encounter occurs within the player's train, which is divided into three floors and the Pyre Room at the top. Waves enter the train on the bottom floor, and ascend one level per turn (unless Rooted). The player's objective is to defeat the boss while protecting the Pyre.",
    "Turns": "The player begins with the Deployment Phase, during which extra Ember is granted and no Enemies spawn. During this turn, the player may naturally draw only Banner Units and Deployable cards (other cards can be drawn with certain Artifacts). Unit and Pyre Abilities cannot be activated during this turn. Per turn Ember gains and reductions doubly affect Ember during Deployment Phase, as \"Deployment Ember\" and \"Per Turn Ember\" are separate counters. During non-Deployment turns, Enemies first spawn, then start-of-turn effects occur. The player then gains Ember and draws cards randomly from the Draw Pile. The Draw Pile begins as the player's pre-combat deck. The player draws at base 5 cards per turn, up to a maximum of the hand size limit of 10. Cards played enter the Discard Pile, which is reshuffled into the Draw Pile when the player can no longer draw sufficiently from the remaining pile. When the player chooses to end their turn, End of Turn effects occur. Quick units then attack, followed by enemy units, then other friendly units. Afterwards, all Resolve effects trigger, followed by non-Rooted enemy units Ascending to the next floor. Any units entering the Pyre Room will fight the Pyre until either they are killed or the Pyre is destroyed. Combat must resolve on every floor before enemies Ascend, hence, if a boss is killed, ending the combat, surviving units will not Ascend to and attack the Pyre.",
    "Floors": "At the beginning of each non-Deployment turn, Enemies will enter on the first floor. After the player ends the turn, enemies on each floor will attack the friendly units, after which the player's surviving units will attack the enemy units. Surviving enemies will then climb to the next floor and will fight the player's units there on the next turn. The Pyre Room is above the three train floors. If it is destroyed, the player loses the run. Enemies which reach the Pyre will attack it immediately. The Pyre then strikes back, dealing damage to all enemies. Surviving units will attack again, continuing until they are killed or the Pyre is destroyed. Damage done to the Pyre is persistent: the Pyre's health does not regenerate between battles, and can only be restored through certain Spells, Artifacts, Celestial Alcove events, and Pyre Remains.",
    "Battles": "Each ring in Monster Train 2 chooses from a set of predetermined battles, each of which has several waves of enemies. Any given combat at a given Covenant Rank will always have the same sequence of enemies entering the train (with the exception of the Collector), though this is not shown ahead of time in-game. Bosses are chosen separately from combat, and any combat can be combined with any boss from the same ring.",
-   "Deployment Phase": "The Deployment Phase is essentially the zeroth turn of combat. In it, you gain Ember equal to your regular Ember plus Deployment Ember, then draw your Champion, Banner Units, as well as any cards with the Deployable keyword. Excluding your champion, cards marked to be drawn during your deployment phase have a blue banner draping down the left of their card. == Card Order == In the Deployment Phase, cards are drawn randomly from a fixed order of \"buckets\". If the player would draw enough cards to exceed the hand size limit of 10 cards, then any subsequent cards are not drawn. • Cards drawn or added by artifacts: the Clanless artifacts Attuned Whetstone and Dante's Footstool, as well as the clan-specific artifacts Celestial Sails and Part Factory. • Champion • Banner Units • Cards with the Deployable keyword, which comes from either Departure Manifest, a Merchant of Arms upgrade, or Savage Shackles. == Other Effects == Any cards that are not played during Deployment are shuffled back into your draw pile at the end of the Deployment Phase. Most triggers do not trigger during Deployment. One notable exception is Entropy during the Titans fight, whose Resolve trigger already adds a Curse of Entropy to the deck at the end of Deployment."
+   "Deployment Phase": "The Deployment Phase is essentially the zeroth turn of combat. In it, you gain Ember equal to your regular Ember plus Deployment Ember, then draw your Champion, Banner Units, as well as any cards with the Deployable keyword. Excluding your champion, cards marked to be drawn during your deployment phase have a blue banner draping down the left of their card. Card Order: In the Deployment Phase, cards are drawn randomly from a fixed order of \"buckets\". If the player would draw enough cards to exceed the hand size limit of 10 cards, then any subsequent cards are not drawn. • Cards drawn or added by artifacts: the Clanless artifacts Attuned Whetstone and Dante's Footstool, as well as the clan-specific artifacts Celestial Sails and Part Factory. • Champion • Banner Units • Cards with the Deployable keyword, which comes from either Departure Manifest, a Merchant of Arms upgrade, or Savage Shackles. Other Effects: Any cards that are not played during Deployment are shuffled back into your draw pile at the end of the Deployment Phase. Most triggers do not trigger during Deployment. One notable exception is Entropy during the Titans fight, whose Resolve trigger already adds a Curse of Entropy to the deck at the end of Deployment."
   },
   "flying_bosses": {
    "Movement": "• On turn 1, flying bosses spawn on the topmost floor which contains friendly units during Deployment. If you've placed units on all floors, then the flying boss always spawns on the top floor. • The floor must already be occupied during Deployment. Friendly units summoned at the start of turn 1 by the artifacts Sketches of Salvation or Commemorative Spike don't count. • After combat each turn, flying bosses always move to a different floor. • Bosses preferably fly to an occupied floor. If only one floor is occupied, then they alternate between the occupied floor and an empty floor. • If there are two occupied destination floors, bosses preferably fly to the floor they've flown to least recently. Before turn 2, there's no such floor, so the destination is chosen randomly. • Arkion, Scion of Savagery as Pyre Hunter is a special case: he always simply picks his destination floor at random. Altogether, if all floors are occupied and remain so until the Relentless phase, then flying bosses always move in a flight pattern of either 123123 or 132132, where floors are numbered 1-3 from top to bottom. Put even more simply, if we think of the bottom and top floors as connected, then flying bosses always either want to move \"up\" each turn or \"down\" each turn.",
@@ -4108,43 +4109,43 @@
     }
    ],
    "boss_variants": [
-    "Arkion, Scion of Savagery: [] Hard Headed Arkion pushes attacked units to the back.",
-    "Arkion, Scion of Savagery: [] Pyre Hunter If you have no units on the floor, Arkion deals damage to the Pyre.",
-    "Arkion, Scion of Savagery: [] Furious Frenzy Arkion gains Rage 2 on Siphon.",
-    "Arkion, Scion of Savagery: Hard Headed II Arkion pushes attacked units to the back. Arkion has +150 Health.",
-    "Arkion, Scion of Savagery: Pyre Hunter II If you have no units on the floor, Arkion deals damage to the Pyre. Arkion has +5 Attack.",
-    "Arkion, Scion of Savagery: Furious Frenzy II Arkion gains Rage 4 on Siphon.",
-    "The Fleshweaver: [] Corrupted Mass Fleshlings have 3 Attack and 3 Health and apply Corruption 1 on death to the unit that killed it.",
-    "The Fleshweaver: [] Spiked Mass Fleshlings have 2 Attack and 5 Health and gain Spikes 1.",
-    "The Fleshweaver: [] More Mass Fleshlings have 5 Attack and 5 Health. Fleshweaver has 3 more stacks of Mass.",
-    "The Fleshweaver: Corrupted Mass II Fleshlings have 5 Attack and 5 Health and apply Corruption 2 on death to the unit that killed it. Fleshweaver has 4 more stacks of Mass.",
-    "The Fleshweaver: Spiked Mass II Fleshlings have 3 Attack and 9 Health and gain Spikes 2. Fleshweaver has 4 more stacks of Mass.",
-    "The Fleshweaver: More Mass II Fleshlings have 7 Attack and 7 Health. Fleshweaver has 7 more stacks of Mass.",
-    "Cael, Lord of the Cherubs: [] Holy Feed Cael and his cherubs grant Damage Shield 1 to enemy units.",
-    "Cael, Lord of the Cherubs: [] Nourishing Feed Cael and his cherubs grant +35 Health and Spikes 4 to enemy units.",
-    "Cael, Lord of the Cherubs: [] Vampiric Feed Cael and his cherubs grant +7 Attack and Lifesteal 1 to enemy units.",
-    "Cael, Lord of the Cherubs: Holy Feed II Cael and his cherubs grant Damage Shield 1 and Spell Shield 1 to enemy units.",
-    "Cael, Lord of the Cherubs: Nourishing Feed II Cael and his cherubs grant +50 Health and Spikes 6 to enemy units.",
-    "Cael, Lord of the Cherubs: Vampiric Feed II Cael and his cherubs grant +12 Attack and Lifesteal 1 to enemy units.",
-    "Stryx & Hallow: [] Inevitability Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve.",
-    "Stryx & Hallow: [] Doombringers Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant.",
-    "Stryx & Hallow: [] Bloody Harvest Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon.",
-    "Stryx & Hallow: Inevitability II Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve.",
-    "Stryx & Hallow: Doombringers II Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant.",
-    "Stryx & Hallow: Bloody Harvest II Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon.",
-    "Stryx & Hallow: [] Chosen of Dominion Seraph applies Corruption 2 to your units each turn and doubles Corruption on Strike.",
-    "Stryx & Hallow: [] Champion of Savagery Seraph enchants enemy units with Rage 3. Your units enter with Melee Weakness 1.",
-    "Stryx & Hallow: [] Harbinger of Entropy Seraph enchants your units with Sap 5 and adds a Curse of Entropy to your deck on Resolve.",
-    "Stryx & Hallow: Chosen of Dominion II Seraph applies Corruption 4 to your units each turn and doubles Corruption on Strike.",
-    "Stryx & Hallow: Champion of Savagery II Seraph enchants enemy units with Rage 6. Your units enter with Melee Weakness 2.",
-    "Stryx & Hallow: Harbinger of Entropy II Seraph enchants your units with Sap 10 and adds a Curse of Entropy to your deck on Resolve."
+    "Arkion, Scion of Savagery: Hard Headed / Arkion pushes attacked units to the back.",
+    "Arkion, Scion of Savagery: Pyre Hunter / If you have no units on the floor, Arkion deals damage to the Pyre.",
+    "Arkion, Scion of Savagery: Furious Frenzy / Arkion gains Rage 2 on Siphon.",
+    "Arkion, Scion of Savagery: Hard Headed II / Arkion pushes attacked units to the back. Arkion has +150 Health.",
+    "Arkion, Scion of Savagery: Pyre Hunter II / If you have no units on the floor, Arkion deals damage to the Pyre. Arkion has +5 Attack.",
+    "Arkion, Scion of Savagery: Furious Frenzy II / Arkion gains Rage 4 on Siphon.",
+    "The Fleshweaver: Corrupted Mass / Fleshlings have 3 Attack and 3 Health and apply Corruption 1 on death to the unit that killed it.",
+    "The Fleshweaver: Spiked Mass / Fleshlings have 2 Attack and 5 Health and gain Spikes 1.",
+    "The Fleshweaver: More Mass / Fleshlings have 5 Attack and 5 Health. Fleshweaver has 3 more stacks of Mass.",
+    "The Fleshweaver: Corrupted Mass II / Fleshlings have 5 Attack and 5 Health and apply Corruption 2 on death to the unit that killed it. Fleshweaver has 4 more stacks of Mass.",
+    "The Fleshweaver: Spiked Mass II / Fleshlings have 3 Attack and 9 Health and gain Spikes 2. Fleshweaver has 4 more stacks of Mass.",
+    "The Fleshweaver: More Mass II / Fleshlings have 7 Attack and 7 Health. Fleshweaver has 7 more stacks of Mass.",
+    "Cael, Lord of the Cherubs: Holy Feed / Cael and his cherubs grant Damage Shield 1 to enemy units.",
+    "Cael, Lord of the Cherubs: Nourishing Feed / Cael and his cherubs grant +35 Health and Spikes 4 to enemy units.",
+    "Cael, Lord of the Cherubs: Vampiric Feed / Cael and his cherubs grant +7 Attack and Lifesteal 1 to enemy units.",
+    "Cael, Lord of the Cherubs: Holy Feed II / Cael and his cherubs grant Damage Shield 1 and Spell Shield 1 to enemy units.",
+    "Cael, Lord of the Cherubs: Nourishing Feed II / Cael and his cherubs grant +50 Health and Spikes 6 to enemy units.",
+    "Cael, Lord of the Cherubs: Vampiric Feed II / Cael and his cherubs grant +12 Attack and Lifesteal 1 to enemy units.",
+    "Stryx & Hallow: Inevitability / Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve.",
+    "Stryx & Hallow: Doombringers / Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant.",
+    "Stryx & Hallow: Bloody Harvest / Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon.",
+    "Stryx & Hallow: Inevitability II / Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve.",
+    "Stryx & Hallow: Doombringers II / Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant.",
+    "Stryx & Hallow: Bloody Harvest II / Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon.",
+    "Stryx & Hallow: Chosen of Dominion / Seraph applies Corruption 2 to your units each turn and doubles Corruption on Strike.",
+    "Stryx & Hallow: Champion of Savagery / Seraph enchants enemy units with Rage 3. Your units enter with Melee Weakness 1.",
+    "Stryx & Hallow: Harbinger of Entropy / Seraph enchants your units with Sap 5 and adds a Curse of Entropy to your deck on Resolve.",
+    "Stryx & Hallow: Chosen of Dominion II / Seraph applies Corruption 4 to your units each turn and doubles Corruption on Strike.",
+    "Stryx & Hallow: Champion of Savagery II / Seraph enchants enemy units with Rage 6. Your units enter with Melee Weakness 2.",
+    "Stryx & Hallow: Harbinger of Entropy II / Seraph enchants your units with Sap 10 and adds a Curse of Entropy to your deck on Resolve."
    ],
    "rewards": [
     "Ring 1: 75 Gold",
     "Ring 2: 75 Gold",
     "Ring 3: Titan Essence",
-    "Ring 4: [] or []: 200 Gold Others: 150 Gold",
-    "Ring 5: [] or []: 200 Gold Others: 150 Gold",
+    "Ring 4: Seal Of Aggression or Heavens Seal: 200 Gold / Others: 150 Gold",
+    "Ring 5: Seal Of Aggression or Heavens Seal: 200 Gold / Others: 150 Gold",
     "Ring 6: Titan Essence",
     "Ring 7: 400 Gold",
     "Ring 8: Titan Essence"
@@ -4152,7 +4153,7 @@
   },
   "titans": {
    "unlock": "In order to unlock the battle against the Titans, you must unlock all but the last three Pyre Hearts. In all future runs, this will give the option to turn on Trials during the battles against Arkion or Fleshweaver, Cael or Hallow and Stryx, and Seraph. Activating all three trials will unlock the option to face the Titans at the end of the run.",
-   "clash": ": The Titans of Savagery, Dominion, and Entropy await. Defeat them once and for all. This battle features three unique bosses who are fought simultaneously, each with special mechanics used nowhere else in the game: • Dominion is Immobile and Pyre Bound. He stays in the Pyre Room for the entirety of the battle and attacks for 3 Attack every turn. He also applies Corruption to your front unit of each floor every turn. • Entropy attacks all three floors simultaneously every turn and adds a Curse of Entropy to your deck, damaging the Pyre if it is not played and applying Sap to your units if it is. Entropy cannot be Dazed. • Savagery starts on the bottom floor, but his Live to Fight effect means that he never ascends to the Pyre room, instead cycling back to the bottom floor of the train, continuously gaining Rage and Multistrike. If no friendly units remain alive to oppose him, he will deal 5 Attack to the Pyre on Resolve. Unlike all other combats, this fight has no Relentless phase; the fight will continue spawning new waves until either your pyre is destroyed or the titans are defeated. After the 9th wave, the waves start to repeat. All three bosses have Fate Link, meaning that all must be brought to 1 Health before they can be killed."
+   "clash": "The Titans of Savagery, Dominion, and Entropy await. Defeat them once and for all. This battle features three unique bosses who are fought simultaneously, each with special mechanics used nowhere else in the game: • Dominion is Immobile and Pyre Bound. He stays in the Pyre Room for the entirety of the battle and attacks for 3 Attack every turn. He also applies Corruption to your front unit of each floor every turn. • Entropy attacks all three floors simultaneously every turn and adds a Curse of Entropy to your deck, damaging the Pyre if it is not played and applying Sap to your units if it is. Entropy cannot be Dazed. • Savagery starts on the bottom floor, but his Live to Fight effect means that he never ascends to the Pyre room, instead cycling back to the bottom floor of the train, continuously gaining Rage and Multistrike. If no friendly units remain alive to oppose him, he will deal 5 Attack to the Pyre on Resolve. Unlike all other combats, this fight has no Relentless phase; the fight will continue spawning new waves until either your pyre is destroyed or the titans are defeated. After the 9th wave, the waves start to repeat. All three bosses have Fate Link, meaning that all must be brought to 1 Health before they can be killed."
   },
   "clan_levels": {
    "summary": "Clan levels are a game mechanic that locks cards, artifacts and a secondary champion behind game progression. Each Clan has a Clan Level that starts at 1 and goes up to Level 10. Level-ups are obtained by gaining XP points. XP points are gained after playing a normal run or a Dimensional Challenge. XP is calculated as follows: • The primary clan gets 100% of the score from a run as XP. • The secondary clan gets 50% of the score from a run as XP.",
@@ -4186,9 +4187,9 @@
       "Heart of the Pact"
      ],
      "modifiers": [
-      "[] Enchanted Armory: Equipment cards cost 0 Ember. Add 3 random Equipment cards to your starting deck.",
-      "[] Amplified Armaments: Attack and health benefits from equipment are doubled.",
-      "[] No Fluff: All cards have 1 fewer upgrade slot."
+      "Enchanted Armory: Equipment cards cost 0 Ember. Add 3 random Equipment cards to your starting deck.",
+      "Amplified Armaments: Attack and health benefits from equipment are doubled.",
+      "No Fluff: All cards have 1 fewer upgrade slot."
      ]
     },
     {
@@ -4201,9 +4202,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Two for One: Each time you draft a card, gain a second copy.",
-      "[] Moneybags: Double Gold earned.",
-      "[] Duality: Double stacks of all status effects."
+      "Two for One: Each time you draft a card, gain a second copy.",
+      "Moneybags: Double Gold earned.",
+      "Duality: Double stacks of all status effects."
      ]
     },
     {
@@ -4216,9 +4217,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Fast Draw: Friendly units get Quick.",
-      "[] Race Ya There: Ascend friendly units at the end of each turn.",
-      "[] One Track Mind: The path you take on the map is chosen automatically."
+      "Fast Draw: Friendly units get Quick.",
+      "Race Ya There: Ascend friendly units at the end of each turn.",
+      "One Track Mind: The path you take on the map is chosen automatically."
      ]
     },
     {
@@ -4231,9 +4232,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Strike Hard: All units get Multistrike 1.",
-      "[] Pain Train: Enemy units enter with Spikes 1.",
-      "[] Rising Retribution: Enemy units gain Spikes 3 when they move."
+      "Strike Hard: All units get Multistrike 1.",
+      "Pain Train: Enemy units enter with Spikes 1.",
+      "Rising Retribution: Enemy units gain Spikes 3 when they move."
      ]
     },
     {
@@ -4246,9 +4247,9 @@
       "Wyngh's Spirit"
      ],
      "modifiers": [
-      "[] Team Up: Gain the Champion of the Allied Clan. It gains a random upgrade and levels up after each flying boss.",
-      "[] A New Challenger: Your Champion is randomly replaced by one that is not from your primary or allied clan.",
-      "[] Brawl: All units gain +5 Attack and +10 Health. Your Pyre gains +10 Attack."
+      "Team Up: Gain the Champion of the Allied Clan. It gains a random upgrade and levels up after each flying boss.",
+      "A New Challenger: Your Champion is randomly replaced by one that is not from your primary or allied clan.",
+      "Brawl: All units gain +5 Attack and +10 Health. Your Pyre gains +10 Attack."
      ]
     },
     {
@@ -4261,9 +4262,9 @@
       "Pyre of Savagery"
      ],
      "modifiers": [
-      "[] Gravity: At end of turn, Descend friendly units.",
-      "[] Slow and Steady: Friendly units enter with +10 Attack and Sap 7.",
-      "[] Big Chungus: All friendly units get +1 Capacity."
+      "Gravity: At end of turn, Descend friendly units.",
+      "Slow and Steady: Friendly units enter with +10 Attack and Sap 7.",
+      "Big Chungus: All friendly units get +1 Capacity."
      ]
     },
     {
@@ -4276,9 +4277,9 @@
       "Aquath's Reservation"
      ],
      "modifiers": [
-      "[] The Math Challenge: Room Combat Previews are disabled.",
-      "[] Frontloaded: -3 Ember Ember per turn. Gain 20 Ember at the beginning of each battle. Start with The Unbroken Horn.",
-      "[] Magic Hands: Cards are not discarded at end of turn. -2 cards per turn."
+      "The Math Challenge: Room Combat Previews are disabled.",
+      "Frontloaded: -3 Ember Ember per turn. Gain 20 Ember at the beginning of each battle. Start with The Unbroken Horn.",
+      "Magic Hands: Cards are not discarded at end of turn. -2 cards per turn."
      ]
     },
     {
@@ -4291,9 +4292,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Skull Collectors: Collectors no longer retreat, and have increased stats.",
-      "[] Return on Investment: Spawn an additional Collector in battlers that already have a Collector.",
-      "[] Shields Up: Enemy units enter with Damage Shield."
+      "Skull Collectors: Collectors no longer retreat, and have increased stats.",
+      "Return on Investment: Spawn an additional Collector in battlers that already have a Collector.",
+      "Shields Up: Enemy units enter with Damage Shield."
      ]
     },
     {
@@ -4306,9 +4307,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Explosive Personality: When enemy units die they deal 5 damage to the front friendly unit.",
-      "[] Cure Light Wounds: Restore 5 health to all units after combat.",
-      "[] Return on Investment: Spawn an additional Collector in battlers that already have a Collector."
+      "Explosive Personality: When enemy units die they deal 5 damage to the front friendly unit.",
+      "Cure Light Wounds: Restore 5 health to all units after combat.",
+      "Return on Investment: Spawn an additional Collector in battlers that already have a Collector."
      ]
     },
     {
@@ -4321,9 +4322,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Zoom, Enhance: All cards have 1 additional upgrade slot.",
-      "[] Influential: At start of turn, spawn a Follower unit on a random floor.",
-      "[] Gluttonous: Each upgrade you purchase for a unit increases its Capacity by 1."
+      "Zoom, Enhance: All cards have 1 additional upgrade slot.",
+      "Influential: At start of turn, spawn a Follower unit on a random floor.",
+      "Gluttonous: Each upgrade you purchase for a unit increases its Capacity by 1."
      ]
     },
     {
@@ -4336,9 +4337,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Highly Reactive: Trigger on friendly units activate an additional time.",
-      "[] Duality: Double stacks of all status effects.",
-      "[] Shields Up: Enemy units enter with Damage Shield."
+      "Highly Reactive: Trigger on friendly units activate an additional time.",
+      "Duality: Double stacks of all status effects.",
+      "Shields Up: Enemy units enter with Damage Shield."
      ]
     },
     {
@@ -4351,9 +4352,9 @@
       "Wyngh's Spirit"
      ],
      "modifiers": [
-      "[] Volatile Spells: The targets of spells are chosen randomly and Undo is disabled.",
-      "[] Broken Valve: Start with Volatile Gauge.",
-      "[] Musical Chairs: Shuffle the position of all units in the train after combat."
+      "Volatile Spells: The targets of spells are chosen randomly and Undo is disabled.",
+      "Broken Valve: Start with Volatile Gauge.",
+      "Musical Chairs: Shuffle the position of all units in the train after combat."
      ]
     },
     {
@@ -4366,9 +4367,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Starry Suffering: Friendly units enter with Dazed 2.",
-      "[] Cheap Trick: Spells cost -1 Ember.",
-      "[] Spellcraft: Start with Lightstone Casing."
+      "Starry Suffering: Friendly units enter with Dazed 2.",
+      "Cheap Trick: Spells cost -1 Ember.",
+      "Spellcraft: Start with Lightstone Casing."
      ]
     },
     {
@@ -4381,9 +4382,9 @@
       "Bogwurm's Growth"
      ],
      "modifiers": [
-      "[] Mansion: +2 Capacity on each floor.",
-      "[] Bleeding Cash: Lose 1 Gold whenever a friendly unit takes damage.",
-      "[] Arduous Arcana: Spells cost +1 Ember."
+      "Mansion: +2 Capacity on each floor.",
+      "Bleeding Cash: Lose 1 Gold whenever a friendly unit takes damage.",
+      "Arduous Arcana: Spells cost +1 Ember."
      ]
     },
     {
@@ -4396,9 +4397,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Permadeath: When a non-Champion unit dies, it is purged from your deck.",
-      "[] Yeetpocalypse: Your must purge two cards after every battle.",
-      "[] Vampiric Touch: All units enter with Lifesteal 3."
+      "Permadeath: When a non-Champion unit dies, it is purged from your deck.",
+      "Yeetpocalypse: Your must purge two cards after every battle.",
+      "Vampiric Touch: All units enter with Lifesteal 3."
      ]
     },
     {
@@ -4411,9 +4412,9 @@
       "Herzal's Horde"
      ],
      "modifiers": [
-      "[] At Your Service: Upgrading Steward units gives them an additional +10 Attack and +10 Health.",
-      "[] Fallen Champion: Remove the Champion from your starting deck.",
-      "[] Zoom, Enhance: All cards have 1 additional upgrade slot."
+      "At Your Service: Upgrading Steward units gives them an additional +10 Attack and +10 Health.",
+      "Fallen Champion: Remove the Champion from your starting deck.",
+      "Zoom, Enhance: All cards have 1 additional upgrade slot."
      ]
     },
     {
@@ -4426,9 +4427,9 @@
       "Heart of the Pact"
      ],
      "modifiers": [
-      "[] It's Free Real Estate: Room cards cost 0 Ember. Add 2 random Room cards to your starting deck.",
-      "[] Permadeath: When a non-Champion unit dies, it is purged from your deck.",
-      "[] Arduous Arcana: Spells cost +1 Ember."
+      "It's Free Real Estate: Room cards cost 0 Ember. Add 2 random Room cards to your starting deck.",
+      "Permadeath: When a non-Champion unit dies, it is purged from your deck.",
+      "Arduous Arcana: Spells cost +1 Ember."
      ]
     },
     {
@@ -4441,9 +4442,9 @@
       "Proto Heartcage"
      ],
      "modifiers": [
-      "[] Zoom, Enhance: All cards have 1 additional upgrade slot.",
-      "[] Upgraded Drafts: Cards in reward packs and unit banners come with a random upgrade.",
-      "[] Cursed Treasure: Units get -5 Attack for each upgrade on their card."
+      "Zoom, Enhance: All cards have 1 additional upgrade slot.",
+      "Upgraded Drafts: Cards in reward packs and unit banners come with a random upgrade.",
+      "Cursed Treasure: Units get -5 Attack for each upgrade on their card."
      ]
     },
     {
@@ -4456,9 +4457,9 @@
       "Pyre of Entropy"
      ],
      "modifiers": [
-      "[] Armchair General: Your Champion enters with Sap 10 and Heartless.",
-      "[] Heavy: Add 5 Deadweights to your starting deck.",
-      "[] Hollow: Friendly units get Heartless."
+      "Armchair General: Your Champion enters with Sap 10 and Heartless.",
+      "Heavy: Add 5 Deadweights to your starting deck.",
+      "Hollow: Friendly units get Heartless."
      ]
     },
     {
@@ -4471,9 +4472,9 @@
       "Aquath's Reservation"
      ],
      "modifiers": [
-      "[] Recurrent: All spells gain Holdover.",
-      "[] Ninja Training: Minor bosses enter with Stealth 5.",
-      "[] Shields Up: Enemy units enter with Damage Shield."
+      "Recurrent: All spells gain Holdover.",
+      "Ninja Training: Minor bosses enter with Stealth 5.",
+      "Shields Up: Enemy units enter with Damage Shield."
      ]
     },
     {
@@ -4486,9 +4487,9 @@
       "Pyre of Savagery"
      ],
      "modifiers": [
-      "[] Final Shard: At the start of battle, apply Fragile and Damage Shield 2 to your Pyre.",
-      "[] Race Ya There: Ascend friendly units at the end of each turn.",
-      "[] Cure Light Wounds: Restore 5 health to all units after combat."
+      "Final Shard: At the start of battle, apply Fragile and Damage Shield 2 to your Pyre.",
+      "Race Ya There: Ascend friendly units at the end of each turn.",
+      "Cure Light Wounds: Restore 5 health to all units after combat."
      ]
     },
     {
@@ -4501,9 +4502,9 @@
       "Fhyra's Greed"
      ],
      "modifiers": [
-      "[] Not So Free Range: Start with 4 copies of Alchemy.",
-      "[] Soul Exchange: Start with Soulsmelter and it has Deployable.",
-      "[] Cardcuffs: Purging costs much more gold."
+      "Not So Free Range: Start with 4 copies of Alchemy.",
+      "Soul Exchange: Start with Soulsmelter and it has Deployable.",
+      "Cardcuffs: Purging costs much more gold."
      ]
     },
     {
@@ -4516,9 +4517,9 @@
       "Fhyra's Greed"
      ],
      "modifiers": [
-      "[] Stoneform: Enemy units enter with Armor equal to 50% of their Health.",
-      "[] Grubbery: Friendly units enter with Avarice 5.",
-      "[] Money is Power: Spells gain 1 Magic Power per 100 Gold you start the turn with."
+      "Stoneform: Enemy units enter with Armor equal to 50% of their Health.",
+      "Grubbery: Friendly units enter with Avarice 5.",
+      "Money is Power: Spells gain 1 Magic Power per 100 Gold you start the turn with."
      ]
     },
     {
@@ -4531,9 +4532,9 @@
       "Aquath's Reservation"
      ],
      "modifiers": [
-      "[] Redhot Renovations: At the start of battle, apply Inferno Room on all floors.",
-      "[] Super Glue: Train Rooms can not be replaced.",
-      "[] Zombies!: Enemy units enter with Reanimate 3. Friendly units enter with Reanimate 1."
+      "Redhot Renovations: At the start of battle, apply Inferno Room on all floors.",
+      "Super Glue: Train Rooms can not be replaced.",
+      "Zombies!: Enemy units enter with Reanimate 3. Friendly units enter with Reanimate 1."
      ]
     },
     {
@@ -4546,9 +4547,9 @@
       "Bogwurm's Growth"
      ],
      "modifiers": [
-      "[] Musical Chairs: Shuffle the position of all units in the train after combat.",
-      "[] Fancy Footwork: All units gain +2 Attack on movement.",
-      "[] Frontline Fighter: Enemy units get Titanite when they are in the front."
+      "Musical Chairs: Shuffle the position of all units in the train after combat.",
+      "Fancy Footwork: All units gain +2 Attack on movement.",
+      "Frontline Fighter: Enemy units get Titanite when they are in the front."
      ]
     },
     {
@@ -4561,9 +4562,9 @@
       "Bogwurm's Growth"
      ],
      "modifiers": [
-      "[] Downright Deployable: -1 Ember per turn. +10 Deployment Ember.",
-      "[] Gear Up: A Merchant of Arms appears in the middle of the tracks after the first battle.",
-      "[] Hammer Time: Start with Heph's Hammer and it has Deployable."
+      "Downright Deployable: -1 Ember per turn. +10 Deployment Ember.",
+      "Gear Up: A Merchant of Arms appears in the middle of the tracks after the first battle.",
+      "Hammer Time: Start with Heph's Hammer and it has Deployable."
      ]
     },
     {
@@ -4576,9 +4577,9 @@
       "Echo of the Time Father"
      ],
      "modifiers": [
-      "[] Full Of It: The Full Moon is always active.",
-      "[] Cult of the Moon: Friendly units gain Conduit 1 and lose -2 Attack on Mooncycle.",
-      "[] Economy Class: -2 Capacity on each floor."
+      "Full Of It: The Full Moon is always active.",
+      "Cult of the Moon: Friendly units gain Conduit 1 and lose -2 Attack on Mooncycle.",
+      "Economy Class: -2 Capacity on each floor."
      ]
     },
     {
@@ -4591,9 +4592,9 @@
       "Wyngh's Spirit"
      ],
      "modifiers": [
-      "[] Attrition: Friendly unit's health persists between battles.",
-      "[] Permadeath: When a non-Champion unit dies, it is purged from your deck.",
-      "[] Artificial Intelligence: Pyre Abilities now have a two turn Cooldown."
+      "Attrition: Friendly unit's health persists between battles.",
+      "Permadeath: When a non-Champion unit dies, it is purged from your deck.",
+      "Artificial Intelligence: Pyre Abilities now have a two turn Cooldown."
      ]
     },
     {
@@ -4606,9 +4607,9 @@
       "Herzal's Horde"
      ],
      "modifiers": [
-      "[] Weapon Master: Draft 2 cards added in Lost Arsenal.",
-      "[] Gear Up: A Merchant of Arms appears in the middle of the tracks after the first battle.",
-      "[] Our Powers Combined: Drafts can have cards from any clan."
+      "Weapon Master: Draft 2 cards added in Lost Arsenal.",
+      "Gear Up: A Merchant of Arms appears in the middle of the tracks after the first battle.",
+      "Our Powers Combined: Drafts can have cards from any clan."
      ]
     },
     {
@@ -4621,9 +4622,9 @@
       "Herzal's Horde"
      ],
      "modifiers": [
-      "[] Organic: Replace Train Stewards with Graft units.",
-      "[] Perma Scaling: Start with Blood of the Apex and Advanced Growth.",
-      "[] Pain Train: Enemy units enter with Spikes 1."
+      "Organic: Replace Train Stewards with Graft units.",
+      "Perma Scaling: Start with Blood of the Apex and Advanced Growth.",
+      "Pain Train: Enemy units enter with Spikes 1."
      ]
     },
     {
@@ -4636,9 +4637,9 @@
       "Echo of the Time Father"
      ],
      "modifiers": [
-      "[] Agony: All your units gain Corruption 1 after combat.",
-      "[] Soft Handed: Your units no longer deal any damage to enemy units.",
-      "[] More Damage, Less Time: Frostbite and Decay deal an extra 1 damage per stack."
+      "Agony: All your units gain Corruption 1 after combat.",
+      "Soft Handed: Your units no longer deal any damage to enemy units.",
+      "More Damage, Less Time: Frostbite and Decay deal an extra 1 damage per stack."
      ]
     },
     {
@@ -4651,9 +4652,9 @@
       "Herzal's Horde"
      ],
      "modifiers": [
-      "[] Ninja's Best Friend: Start with Shadow's Sheath.",
-      "[] Circle of Life: Friendly units Propagate 1 on Slay.",
-      "[] The Floor is Lava: All units get Pyregel 5."
+      "Ninja's Best Friend: Start with Shadow's Sheath.",
+      "Circle of Life: Friendly units Propagate 1 on Slay.",
+      "The Floor is Lava: All units get Pyregel 5."
      ]
     },
     {
@@ -4666,9 +4667,9 @@
       "Bogwurm's Growth"
      ],
      "modifiers": [
-      "[] Scrumptious Snacks: Summon three Morsel units on random floors at the start of each turn.",
-      "[] Soul Harvesters: Enemy units gain +3 Health on Harvest.",
-      "[] Mansion: +2 Capacity on each floor."
+      "Scrumptious Snacks: Summon three Morsel units on random floors at the start of each turn.",
+      "Soul Harvesters: Enemy units gain +3 Health on Harvest.",
+      "Mansion: +2 Capacity on each floor."
      ]
     },
     {
@@ -4681,9 +4682,9 @@
       "Bogwurm's Growth"
      ],
      "modifiers": [
-      "[] Half a Heart: Friendly units have double health, but it is unhealed.",
-      "[] Grow Up Big and Strong: Friendly units gain +1 Attack permanently when healed.",
-      "[] Bulked Up: Enemy units have double health."
+      "Half a Heart: Friendly units have double health, but it is unhealed.",
+      "Grow Up Big and Strong: Friendly units gain +1 Attack permanently when healed.",
+      "Bulked Up: Enemy units have double health."
      ]
     },
     {
@@ -4696,9 +4697,9 @@
       "Pyre of Dominion"
      ],
      "modifiers": [
-      "[] Brains and Brawn: Your units gain +2 Attack and +2 Health per 10 cards in your deck.",
-      "[] No Skip For You: Drafts do not have a skip option.",
-      "[] Two for One: Each time you draft a card, gain a second copy."
+      "Brains and Brawn: Your units gain +2 Attack and +2 Health per 10 cards in your deck.",
+      "No Skip For You: Drafts do not have a skip option.",
+      "Two for One: Each time you draft a card, gain a second copy."
      ]
     },
     {
@@ -4711,9 +4712,9 @@
       "Pyre of Savagery"
      ],
      "modifiers": [
-      "[] Banner-ed: Banners no longer give Banner units.",
-      "[] Fabulous Four: Gain all other Champions for your clans. They gain a random upgrade each time you use the Light Forge.",
-      "[] On Strike: Steward units are removed from the deck."
+      "Banner-ed: Banners no longer give Banner units.",
+      "Fabulous Four: Gain all other Champions for your clans. They gain a random upgrade each time you use the Light Forge.",
+      "On Strike: Steward units are removed from the deck."
      ]
     },
     {
@@ -4726,9 +4727,9 @@
       "Malicka's Shifting Pyre"
      ],
      "modifiers": [
-      "[] Time for Trials: Trials are always enabled in battles that have them.",
-      "[] Paid in Blood: Take 4 Pyre damage when purchasing any merchant option.",
-      "[] Gladiatior's Boon: Start with Golden Idol."
+      "Time for Trials: Trials are always enabled in battles that have them.",
+      "Paid in Blood: Take 4 Pyre damage when purchasing any merchant option.",
+      "Gladiatior's Boon: Start with Golden Idol."
      ]
     },
     {
@@ -4741,9 +4742,9 @@
       "Pyre of Dominion"
      ],
      "modifiers": [
-      "[] Dominion's Reign: Friendly units have one of Dominion's Boons at random.",
-      "[] Die By the Sword: Friendly units gain Corruption 2 on Strike.",
-      "[] Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
+      "Dominion's Reign: Friendly units have one of Dominion's Boons at random.",
+      "Die By the Sword: Friendly units gain Corruption 2 on Strike.",
+      "Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
      ]
     },
     {
@@ -4756,9 +4757,9 @@
       "Pyre of Savagery"
      ],
      "modifiers": [
-      "[] Savagery's Champion: Your Champion gains all of Savagery's Boons.",
-      "[] Uncoordinated: Friendly non-Champion units' Attack is halved.",
-      "[] Heavy Burden: Units cost 1 more Ember."
+      "Savagery's Champion: Your Champion gains all of Savagery's Boons.",
+      "Uncoordinated: Friendly non-Champion units' Attack is halved.",
+      "Heavy Burden: Units cost 1 more Ember."
      ]
     },
     {
@@ -4771,9 +4772,9 @@
       "Pyre of Savagery"
      ],
      "modifiers": [
-      "[] Imaginary Armor: All damage is now Piercing.",
-      "[] Bloodlust: All non-boss units fully heal on Slay.",
-      "[] Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
+      "Imaginary Armor: All damage is now Piercing.",
+      "Bloodlust: All non-boss units fully heal on Slay.",
+      "Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
      ]
     },
     {
@@ -4786,9 +4787,9 @@
       "Pyre of Dominion"
      ],
      "modifiers": [
-      "[] Our Powers Combined: Drafts can have cards from any clan.",
-      "[] Empty Pockets: No longer gain card packs from non-Flying Boss battles.",
-      "[] Lootsplosion: Gain an extra card pack for each clan from Flying Bosses."
+      "Our Powers Combined: Drafts can have cards from any clan.",
+      "Empty Pockets: No longer gain card packs from non-Flying Boss battles.",
+      "Lootsplosion: Gain an extra card pack for each clan from Flying Bosses."
      ]
     },
     {
@@ -4801,9 +4802,9 @@
       "Echo of the Time Father"
      ],
      "modifiers": [
-      "[] Early Boarding: On the turn after Deployment Phase, the first enemy wave ascends and the second wave enters.",
-      "[] Point of Entry: During Deployment friendly units can only be summoned on the top floor.",
-      "[] Top Heavy: +10 Capacity on the top floor and -5 Capacity on the other two."
+      "Early Boarding: On the turn after Deployment Phase, the first enemy wave ascends and the second wave enters.",
+      "Point of Entry: During Deployment friendly units can only be summoned on the top floor.",
+      "Top Heavy: +10 Capacity on the top floor and -5 Capacity on the other two."
      ]
     },
     {
@@ -4816,22 +4817,15 @@
       "Pyre of Entropy"
      ],
      "modifiers": [
-      "[] Chronic Pain: Add Curse of Entropy to your deck at the start of every battle.",
-      "[] Divine Flame: Start with 2 copies of Torch that have Entropic Growth.",
-      "[] Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
+      "Chronic Pain: Add Curse of Entropy to your deck at the start of every battle.",
+      "Divine Flame: Start with 2 copies of Torch that have Entropic Growth.",
+      "Pyre of Glass: Your Pyre takes an additional 3 damage from all sources."
      ]
-    },
-    {
-     "name": "History",
-     "description": "See Version History",
-     "covenant": null,
-     "setup": null,
-     "modifiers": []
     }
    ]
   },
   "endless_mode": {
-   "summary": "is a Gamemode that let's you continue playing the game after beating the game in normal mode. can be played on any Covenant Rank, but not after finishing a run with Mutators or a Community Challenge. After each battle in Endless Mode, the player is given the choice of two modifier pairs each of which provides one positive and one negative modifier.",
+   "summary": "Endless Mode is a Gamemode that let's you continue playing the game after beating the game in normal mode. Endless Mode can be played on any Covenant Rank, but not after finishing a run with Mutators or a Community Challenge. After each battle in Endless Mode, the player is given the choice of two modifier pairs each of which provides one positive and one negative modifier.",
    "Positive Modifiers": [
     "Restore Health: Heal 20% of your Pyre's Health.",
     "Card Duplicator: Add Card Duplicator (duplicate a card from your deck).",
@@ -4839,13 +4833,13 @@
     "Rare Pack: Gain a Pack with rare cards (from your primary and allied clans)."
    ],
    "Negative Modifiers": [
-    "[] Curse of Forgetfulness: After casting a spell increase the cost of a random spell in hand by 1 Ember for the rest of battle.",
-    "[] Curse of Arrogance: Your Champion costs +3 Ember.",
-    "[] Curse of Fading Light: Your units enter with Emberdrain 1.",
-    "[] Curse of The Laden Soul: Your units cost +1 Ember.",
-    "[] Curse of Friendly Fire: All Friendly units take 3 damage when a unit is summoned.",
-    "[] Curse of The Empty Mind: At the beginning of each battle, take Pyre damage equal to 30 - the number of cards in your deck.",
-    "[] Curse of Pacifism: -6 Attack to all friendly units.",
+    "Curse of Forgetfulness: After casting a spell increase the cost of a random spell in hand by 1 Ember for the rest of battle.",
+    "Curse of Arrogance: Your Champion costs +3 Ember.",
+    "Curse of Fading Light: Your units enter with Emberdrain 1.",
+    "Curse of The Laden Soul: Your units cost +1 Ember.",
+    "Curse of Friendly Fire: All Friendly units take 3 damage when a unit is summoned.",
+    "Curse of The Empty Mind: At the beginning of each battle, take Pyre damage equal to 30 - the number of cards in your deck.",
+    "Curse of Pacifism: -6 Attack to all friendly units.",
     "Fade Away: Lose [Selected Card].",
     "Clan Pack: Add 2 Deadweight cards to your deck.",
     "Vengeful Shard: Add four Vengeful Shard cards to your deck."
@@ -4853,7 +4847,7 @@
   },
   "soul_savior": {
    "summary": "Soul Savior is an alternative game mode introduced in the Destiny of the Railforged DLC. Each run consists of 10 battles: • An initial First Battle featuring Astrael, The First Reborn • 2 battles in each of 4 regions, the latter of which is against the region's boss • A Final Battle against The Lifemother. After completing the first battle, the 4 regions can be completed in any order. Defeating a region's boss bestows a negative mutator. At the start of the run, in addition to choices of clans and Pyre Hearts, you can choose up to 3 starting Souls.",
-   "map_nodes": "Before the First Battle, the player is offered a Light Forge and a Herzal's Hoard, as in standard play. From there, node generation differs from the standard map. Before each region battle, the player gains access to: • Central nodes, accessible to either track (1 before the first battle, and 2 before the boss battle) • 1 \"major node\" on each side of the track • 1 \"minor node\" on each side of the track ===Central Nodes=== Each region has 3 central nodes which are shown in the main map screen. These nodes can be accessed from either side of the track. The first node shown in the main map screen is available before the first battle, while the second two nodes are available before the boss battle. Central nodes cannot be repeated within a given region. Every Soul Savior run features the following central nodes: • 2 Merchant of Steel • 2 Merchant of Magic • 2 Light Forge • 1-2 Merchant of Trinkets • 1 Merchant of Arms • 0-2 Forgotten Boons worth 100 Gold • 0-2 Herzal's Hoard • 0-2 Pyre Remains Defeating any region's boss permanently upgrades one of these nodes in every other region to a more powerful \"+\" version. This means that after completing 3 regions, all 3 of the central nodes in the 4th region will be upgraded. ===Major Nodes=== Like central nodes, major nodes have run-wide limits and cannot be repeated in a given region.",
+   "map_nodes": "Before the First Battle, the player is offered a Light Forge and a Herzal's Hoard, as in standard play. From there, node generation differs from the standard map. Before each region battle, the player gains access to: • Central nodes, accessible to either track (1 before the first battle, and 2 before the boss battle) • 1 \"major node\" on each side of the track • 1 \"minor node\" on each side of the track Central Nodes: Each region has 3 central nodes which are shown in the main map screen. These nodes can be accessed from either side of the track. The first node shown in the main map screen is available before the first battle, while the second two nodes are available before the boss battle. Central nodes cannot be repeated within a given region. Every Soul Savior run features the following central nodes: • 2 Merchant of Steel • 2 Merchant of Magic • 2 Light Forge • 1-2 Merchant of Trinkets • 1 Merchant of Arms • 0-2 Forgotten Boons worth 100 Gold • 0-2 Herzal's Hoard • 0-2 Pyre Remains Defeating any region's boss permanently upgrades one of these nodes in every other region to a more powerful \"+\" version. This means that after completing 3 regions, all 3 of the central nodes in the 4th region will be upgraded. Major Nodes: Like central nodes, major nodes have run-wide limits and cannot be repeated in a given region. Every Soul Savior run features the following major nodes: • 4 Unit Banner for the primary clan (1 in each region) • 4 Unit Banner for the allied clan (1 in each region) • 2-3 Celestial Alcove • 2-3 Empyrean Well • 2-3 Herzal's Hoard Minor Nodes: Minor nodes have no run-wide limits, and the same minor node can be present before both battles in a given region. The minor nodes are: • Armory • Forgotten Boons worth 100 Gold • Pyre Remains • Unstable Vortex",
    "souls": "Souls are a mechanic in Soul Savior game mode. They provide powerful effects to shape the gameplay and efficiency of any deck, and their bonuses are required to overcome the greater difficulty of Soul Savior compared to a standard run. There are three types of Souls: Unit Souls are attached to a unit and provide their effect to that unit, Spell Souls attached to a spell, while Global Souls are always active like Artifacts. Unit and Spell Souls can be reassigned while not in combat, but each card can have at most one Soul attached. Minor exception: When Elle is used, the soul takes an upgrade slot on the respective starter cards. As it does not use a soul space, a unit soul can be attached to these cards as well. The player gets to freely choose starting Souls from all unlocked Souls before embarking on a run, and gains further Souls during the run. The amount of starting Souls begins at one, but rises as the player unlocks more Souls and progresses in the DLC's story, reaching three starting Souls after unlocking all Souls. During a run, a Soul is rewarded after every flying Boss. In addition, an upgraded Herzal's Hoard contains a Soul instead of an Artifact. In either case, the player is offered a choice of two Souls to pick from, with four re-rolls in case neither option is desirable.",
    "soul_list": [
     "Beeziebub",

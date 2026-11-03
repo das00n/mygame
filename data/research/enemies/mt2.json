@@ -2,7 +2,7 @@
  "game": "Monster Train 2",
  "source": "https://monstertrain2.miraheze.org (CC BY-SA) via archive.org backup miraheze-wiki-monstertrain2wiki-20260907",
  "retrieved": "2026-11-03",
- "notes": "Version: MT2 as documented on the community wiki (patches through 2.2.1; DLC Destiny of the Railforged adds the Soul Savior mode). Read from Miraheze's archive.org backup because the live wiki serves a bot challenge. Standard-mode enemies = every {{Enemy}} infobox (also the Chosen elites, cherubs, Fleshling and Chosen Prayerstone sections inside parent pages); Soul Savior enemies = {{EnemySS}}/{{FlyingBossSS}} infoboxes + names that only appear in the SS nav or region wave tables (extra.mode set). category: normal (wave enemy; extra.roles = wiki role categories), elite (Covenant 10 'Chosen' / Soul Savior 'Mother's' versions), boss (minor ring boss), flying_boss (Rings 3/6/8; Stryx & Hallow are a duo), final_boss (Ring 9 Titans / The Lifemother), minion (boss-spawned), special (Collector, Skull Collector, Penitent Prayerstone trial spawn). hp.base/attack = baseline (Covenant 0) stats; hp.covenant = the infobox's Covenant 1/4/8 rows (Soul Savior: Tangle/Overgrowth difficulty rows). Flying-boss variants keep per-variant stats in extra.variants. size = game-data dump (the wiki has no enemy size). waves = ring/region page wave tables, all covenant tabs merged. Completeness: standard mode: 71 enemies from {{Enemy}} infoboxes vs Template:EnemiesNav 56 names -> nav-only none | Soul Savior: 43 enemies (19 with a wiki infobox, the rest named only in Template:EnemiesNavSS / region wave tables) | vs game-data ScenarioData (names of characters referenced by non-test battles: 111): game-data-only ['The Lifemother - Cycle Ender', 'The Lifemother - Swarmhost', 'The Lifemother - Undying Bloom']; wiki-only (not referenced directly by a scenario: boss-spawned minions, trial spawns, endless-only) ['Category:Nav Templates', 'Chosen Prayerstone', 'Fleshling', 'Penitent Prayerstone', 'Skull Collector', 'The Lifemother'] | wiki vs game-data base stats differ for 10 standard enemies (wiki often lists the in-game tooltip incl. multistrike/variant; examples: ['Chosen Flagellant wiki 3/110 vs data 3/90', 'Chosen Supplicant wiki 5/35 vs data 3/35', 'Chosen Shieldbearer wiki 1/100 vs data 0/100', 'Chosen Zealot wiki 4/310 vs data 4/250', 'Sharp-Eye Sniper wiki 7/3 vs data 5/2', 'Chosen Sniper wiki 10/75 vs data 9/75', 'Chosen Bastion wiki 9/50 vs data 8/50', 'Chosen Herald wiki 1/60 vs data 0/60', 'Chosen Assassin wiki 7/50 vs data 5/50', 'Fleshling wiki 3/3 vs data 5/5']) | standard enemies absent from every ring wave table: [] (bosses are written as 'Boss' in the tables; minions/Chosen/trial spawns are added by rules)",
+ "notes": "Version: MT2 as documented on the community wiki (patches through 2.2.1; DLC Destiny of the Railforged adds the Soul Savior mode). Read from Miraheze's archive.org backup because the live wiki serves a bot challenge. Standard-mode enemies = every {{Enemy}} infobox (also the Chosen elites, cherubs, Fleshling and Chosen Prayerstone sections inside parent pages); Soul Savior enemies = {{EnemySS}}/{{FlyingBossSS}} infoboxes + names that only appear in the SS nav or region wave tables (extra.mode set). category: normal (wave enemy; extra.roles = wiki role categories), elite (Covenant 10 'Chosen' / Soul Savior 'Mother's' versions), boss (minor ring boss), flying_boss (Rings 3/6/8; Stryx & Hallow are a duo), final_boss (Ring 9 Titans / The Lifemother), minion (boss-spawned), special (Collector, Skull Collector, Penitent Prayerstone trial spawn). hp.base/attack = baseline (Covenant 0) stats; hp.covenant = the infobox's Covenant 1/4/8 rows (Soul Savior: Tangle/Overgrowth difficulty rows). Flying-boss variants keep per-variant stats in extra.variants. size = game-data dump (the wiki has no enemy size). waves = ring/region page wave tables, all covenant tabs merged. Completeness: standard mode: 71 enemies from {{Enemy}} infoboxes vs Template:EnemiesNav 71 names -> nav-only none | Soul Savior: 42 enemies (19 with a wiki infobox, the rest named only in Template:EnemiesNavSS / region wave tables) | vs game-data ScenarioData (names of characters referenced by non-test battles: 111): game-data-only ['The Lifemother - Cycle Ender', 'The Lifemother - Swarmhost', 'The Lifemother - Undying Bloom']; wiki-only (not referenced directly by a scenario: boss-spawned minions, trial spawns, endless-only) ['Chosen Prayerstone', 'Fleshling', 'Penitent Prayerstone', 'Skull Collector', 'The Lifemother'] | wiki vs game-data base stats differ for 10 standard enemies (wiki often lists the in-game tooltip incl. multistrike/variant; examples: ['Chosen Flagellant wiki 3/110 vs data 3/90', 'Chosen Supplicant wiki 5/35 vs data 3/35', 'Chosen Shieldbearer wiki 1/100 vs data 0/100', 'Chosen Zealot wiki 4/310 vs data 4/250', 'Sharp-Eye Sniper wiki 7/3 vs data 5/2', 'Chosen Sniper wiki 10/75 vs data 9/75', 'Chosen Bastion wiki 9/50 vs data 8/50', 'Chosen Herald wiki 1/60 vs data 0/60', 'Chosen Assassin wiki 7/50 vs data 5/50', 'Fleshling wiki 3/3 vs data 5/5']) | standard enemies absent from every ring wave table: [] (bosses are written as 'Boss' in the tables; minions/Chosen/trial spawns are added by rules)",
  "enemies": [
   {
    "id": "mt2.forsaken",
@@ -28,7 +28,7 @@
      "horde",
      "trial spawn"
     ],
-    "titan": "None",
+    "titan": null,
     "keywords": [],
     "size_source": "game-data dump"
    }
@@ -113,7 +113,7 @@
     "base": 1,
     "covenant": null
    },
-   "attack": null,
+   "attack": 0,
    "size": 1,
    "abilities": [
     "Recover: Restore 15 Health to enemy units after combat."
@@ -139,14 +139,8 @@
     "keywords": [
      "Recover"
     ],
-    "variants": [
-     {
-      "variant": "15[[file",
-      "attack": null,
-      "health": 1
-     }
-    ],
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -158,7 +152,7 @@
     "base": 30,
     "covenant": null
    },
-   "attack": null,
+   "attack": 0,
    "size": 1,
    "abilities": [
     "Recover: Restore 20 Health to enemy units after combat."
@@ -178,14 +172,8 @@
     "keywords": [
      "Recover"
     ],
-    "variants": [
-     {
-      "variant": "20[[file",
-      "attack": null,
-      "health": 30
-     }
-    ],
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -216,7 +204,7 @@
     "roles": [
      "shieldguard"
     ],
-    "titan": "None",
+    "titan": null,
     "keywords": [
      "Spikes"
     ],
@@ -412,7 +400,7 @@
     "Multistrike 1.",
     "Resolve: If you have no units on the floor, deals 5 damage to the Pyre."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Hard Headed Arkion pushes attacked units to the back. | Pyre Hunter If you have no units on the floor, Arkion deals damage to the Pyre. | Furious Frenzy Arkion gains Rage 2 on Siphon. | Hard Headed II Arkion pushes attacked units to the back. Arkion has +150 Health. | Pyre Hunter II If you have no units on the floor, Arkion deals damage to the Pyre. Arkion has +5 Attack. | Furious Frenzy II Arkion gains Rage 4 on Siphon. Wiki: Arkion, Scion of Savagery is a major boss of Ring 3. He appears as one of three variants.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Hard Headed / Arkion pushes attacked units to the back. | Pyre Hunter / If you have no units on the floor, Arkion deals damage to the Pyre. | Furious Frenzy / Arkion gains Rage 2 on Siphon. | Hard Headed II / Arkion pushes attacked units to the back. Arkion has +150 Health. | Pyre Hunter II / If you have no units on the floor, Arkion deals damage to the Pyre. Arkion has +5 Attack. | Furious Frenzy II / Arkion gains Rage 4 on Siphon. Wiki: Arkion, Scion of Savagery is a major boss of Ring 3. He appears as one of three variants.",
    "waves": [
     "R3: Any combat titled Arkion, Scion of Savagery"
    ],
@@ -469,7 +457,7 @@
     "Vampiric Feed:",
     "Resolve: Grant +7 Attack and Lifesteal 1 to the front non-boss enemy unit."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Holy Feed Cael and his cherubs grant Damage Shield 1 to enemy units. | Nourishing Feed Cael and his cherubs grant +35 Health and Spikes 4 to enemy units. | Vampiric Feed Cael and his cherubs grant +7 Attack and Lifesteal 1 to enemy units. | Holy Feed II Cael and his cherubs grant Damage Shield 1 and Spell Shield 1 to enemy units. | Nourishing Feed II Cael and his cherubs grant +50 Health and Spikes 6 to enemy units. | Vampiric Feed II Cael and his cherubs grant +12 Attack and Lifesteal 1 to enemy units. Wiki: Cael, Lord of the Cherubs is a major boss in Monster Train 2, and can be fought in Ring 6. He summons Cherubs which cannot attack, but provide buffs to other units by being Eaten, similar to Morsels. Cael himself can both eat Cherubs and provide buffs to other units. Cael and his Cherubs appears as one of three variants.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Holy Feed / Cael and his cherubs grant Damage Shield 1 to enemy units. | Nourishing Feed / Cael and his cherubs grant +35 Health and Spikes 4 to enemy units. | Vampiric Feed / Cael and his cherubs grant +7 Attack and Lifesteal 1 to enemy units. | Holy Feed II / Cael and his cherubs grant Damage Shield 1 and Spell Shield 1 to enemy units. | Nourishing Feed II / Cael and his cherubs grant +50 Health and Spikes 6 to enemy units. | Vampiric Feed II / Cael and his cherubs grant +12 Attack and Lifesteal 1 to enemy units. Wiki: Cael, Lord of the Cherubs is a major boss in Monster Train 2, and can be fought in Ring 6. He summons Cherubs which cannot attack, but provide buffs to other units by being Eaten, similar to Morsels. Cael himself can both eat Cherubs and provide buffs to other units. Cael and his Cherubs appears as one of three variants.",
    "waves": [
     "R6: Any combat titled Cael, Lord of the Cherubs"
    ],
@@ -668,7 +656,7 @@
     "base": 5,
     "covenant": null
    },
-   "attack": null,
+   "attack": 0,
    "size": 1,
    "abilities": [
     "Recover: Restore 25 Health to enemy units after combat."
@@ -688,14 +676,8 @@
     "keywords": [
      "Recover"
     ],
-    "variants": [
-     {
-      "variant": "25[[file",
-      "attack": null,
-      "health": 5
-     }
-    ],
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -1466,7 +1448,7 @@
     "base": 15,
     "covenant": null
    },
-   "attack": null,
+   "attack": 0,
    "size": 2,
    "abilities": [
     "Recover: Restore 40 Health to enemy units after combat.",
@@ -1490,14 +1472,8 @@
      "Incant",
      "Recover"
     ],
-    "variants": [
-     {
-      "variant": "40[[file",
-      "attack": null,
-      "health": 15
-     }
-    ],
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -1509,7 +1485,7 @@
     "base": 120,
     "covenant": null
    },
-   "attack": null,
+   "attack": 0,
    "size": 2,
    "abilities": [
     "Recover: Restore 50 Health to enemy units after combat.",
@@ -1531,14 +1507,8 @@
      "Incant",
      "Recover"
     ],
-    "variants": [
-     {
-      "variant": "50[[file",
-      "attack": null,
-      "health": 120
-     }
-    ],
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -1659,7 +1629,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Yorael the First-Blessed is one of the possible Ring 1 Bosses. He is a simple, no-frills boss with high immediate damage output.",
    "waves": [
-    "R1: Any combat"
+    "R1 boss: final wave of any Ring 1 combat (Dominion's Preservation, Forsaken Few, Heavenly Toll)"
    ],
    "extra": {
     "mode": null,
@@ -1693,7 +1663,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Astreal the Lost is one of the possible Ring 1 Bosses. He cannot attack at first due to his Sap 6, but as combat is dragged out he will quickly become deadly.",
    "waves": [
-    "R1: Any combat"
+    "R1 boss: final wave of any Ring 1 combat (Dominion's Preservation, Forsaken Few, Heavenly Toll)"
    ],
    "extra": {
     "mode": null,
@@ -1729,7 +1699,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Elebor the Wall is one of the possible Ring 2 Bosses. He continually gains Armor while battled, making high damage output paramount.",
    "waves": [
-    "R2: Any combat"
+    "R2 boss: final wave of any Ring 2 combat (Flagellant's March, Knights of Entropy, March of the Supplicants, Quicksilver Cherubs)"
    ],
    "extra": {
     "mode": null,
@@ -1766,7 +1736,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Legion is one of the possible Ring 2 Bosses. He starts with Spikes, and gains more of them as he ascends the train, making him very dangerous to fragile backline units.",
    "waves": [
-    "R2: Any combat"
+    "R2 boss: final wave of any Ring 2 combat (Flagellant's March, Knights of Entropy, March of the Supplicants, Quicksilver Cherubs)"
    ],
    "extra": {
     "mode": null,
@@ -1800,7 +1770,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Ajax the Unyielding is one of the possible Ring 4 Bosses. He applies significant amounts of Sap to your units in combat.",
    "waves": [
-    "R4: Any combat"
+    "R4 boss: final wave of any Ring 4 combat (Dire Defenses, Hordes of Heaven, Penance Seekers, Savagery's Hunters)"
    ],
    "extra": {
     "mode": null,
@@ -1835,7 +1805,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Korin the Judge is one of the possible Ring 4 Bosses. When she appears, all enemies still alive on the train will come to her defense.",
    "waves": [
-    "R4: Any combat"
+    "R4 boss: final wave of any Ring 4 combat (Dire Defenses, Hordes of Heaven, Penance Seekers, Savagery's Hunters)"
    ],
    "extra": {
     "mode": null,
@@ -1872,7 +1842,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Qel the Corruptor is one of the possible Ring 4 Bosses. He applies Corruption to your units on Incant. At Covenant 4 and above, he also applies Corruption to all of your units on all floors as soon as he enters the train.",
    "waves": [
-    "R4: Any combat"
+    "R4 boss: final wave of any Ring 4 combat (Dire Defenses, Hordes of Heaven, Penance Seekers, Savagery's Hunters)"
    ],
    "extra": {
     "mode": null,
@@ -1915,7 +1885,7 @@
     "roles": [
      "boss"
     ],
-    "titan": "N/A",
+    "titan": null,
     "keywords": [
      "Corruption",
      "Fate Link",
@@ -1953,7 +1923,7 @@
     "roles": [
      "boss"
     ],
-    "titan": "N/A",
+    "titan": null,
     "keywords": [
      "Fate Link",
      "Immobile",
@@ -1990,7 +1960,7 @@
     "roles": [
      "boss"
     ],
-    "titan": "N/A",
+    "titan": null,
     "keywords": [
      "Fate Link",
      "Live to Fight",
@@ -2022,7 +1992,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Quoto the Absolute is one of the possible Ring 5 Bosses. He is a tanky boss with a huge amount of Titanskin, but he loses a stack each time he's hit.",
    "waves": [
-    "R5: Any combat"
+    "R5 boss: final wave of any Ring 5 combat (Corrupted Crusade, Relentless Zealots, Undying Minions, Unholy Alliances)"
    ],
    "extra": {
     "mode": null,
@@ -2057,7 +2027,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: The Undying One is one of the possible Ring 5 Bosses. They enter with 8 stacks of Reanimate, prolonging the fight even after they have been \"killed.\"",
    "waves": [
-    "R5: Any combat"
+    "R5 boss: final wave of any Ring 5 combat (Corrupted Crusade, Relentless Zealots, Undying Minions, Unholy Alliances)"
    ],
    "extra": {
     "mode": null,
@@ -2092,7 +2062,7 @@
    ],
    "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Athane, Last to Fall is one of the possible Ring 7 Bosses. She protects herself with a Chosen Prayerstone and grants Spikes to enemy units on Incant.",
    "waves": [
-    "R7: Any combat"
+    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault, Armored Legion, Draining Ardents)"
    ],
    "extra": {
     "mode": null,
@@ -2136,7 +2106,7 @@
     "roles": [
      "boss"
     ],
-    "titan": "None",
+    "titan": null,
     "keywords": [
      "Armor",
      "Immobile",
@@ -2150,7 +2120,7 @@
   {
    "id": "mt2.rax_the_overblessed",
    "name": "Rax the Overblessed",
-   "category": "normal",
+   "category": "boss",
    "area": "Ring 7",
    "hp": {
     "base": 1100,
@@ -2166,9 +2136,9 @@
     "Resolve: Gain Rage 8, Regen 20, and Spell Shield 2.",
     "[Covenant 4+] Resolve: Gain Multistrike 1."
    ],
-   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Rax the Overblessed is one of the possible Ring 7 Bosses. He deals very high damage, strikes twice, and gets even stronger if allowed to Resolve.",
+   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Rax the Overblessed is one of the possible Ring 7 Bosses. He deals very high damage, strikes twice, and gets even stronger if allowed to Resolve.",
    "waves": [
-    "R7: Any combat"
+    "R7 boss: final wave of any Ring 7 combat (Dominion's Disdain, Purified Hordes, Savagery's Final Assault, Armored Legion, Draining Ardents)"
    ],
    "extra": {
     "mode": null,
@@ -2202,7 +2172,7 @@
     "Relentless.",
     "Enchant: Grant enemy units Rage 3."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Champion of Savagery Seraph enchants enemy units with Rage 3. Your units enter with Melee Weakness 1. | Champion of Savagery II Seraph enchants enemy units with Rage 6. Your units enter with Melee Weakness 2. Wiki: Seraph Aeternus-The Savage is the flying boss of the Ring 8 Champion of Savagery fight. He grants Rage 3 to enemy units on his floor. Additionally, your units enter with Melee Weakness 1. If the Titan Trial is activated, he instead grants Rage 6 and your units enter with Melee Weakness 2.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Champion of Savagery / Seraph enchants enemy units with Rage 3. Your units enter with Melee Weakness 1. | Champion of Savagery II / Seraph enchants enemy units with Rage 6. Your units enter with Melee Weakness 2. Wiki: Seraph Aeternus-The Savage is the flying boss of the Ring 8 Champion of Savagery fight. He grants Rage 3 to enemy units on his floor. Additionally, your units enter with Melee Weakness 1. If the Titan Trial is activated, he instead grants Rage 6 and your units enter with Melee Weakness 2.",
    "waves": [
     "R8 Champion of Savagery (wave 8)"
    ],
@@ -2237,7 +2207,7 @@
     "Strike: Double Corruption on the attacked unit.",
     "Action: Apply Corruption 2 to your units."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Chosen of Dominion Seraph applies Corruption 2 to your units each turn and doubles Corruption on Strike. | Chosen of Dominion II Seraph applies Corruption 4 to your units each turn and doubles Corruption on Strike. Wiki: Seraph Aeternus-The Dominant is the flying boss of the Ring 8 Chosen of Dominion fight. He applies Corruption 2 to your units on Action and doubles Corruption on Strike. If the Titan Trial is activated, his Action instead applies Corruption 4. During the Relentless phase, his Action trigger is disabled, but his Strike trigger remains active.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Chosen of Dominion / Seraph applies Corruption 2 to your units each turn and doubles Corruption on Strike. | Chosen of Dominion II / Seraph applies Corruption 4 to your units each turn and doubles Corruption on Strike. Wiki: Seraph Aeternus-The Dominant is the flying boss of the Ring 8 Chosen of Dominion fight. He applies Corruption 2 to your units on Action and doubles Corruption on Strike. If the Titan Trial is activated, his Action instead applies Corruption 4. During the Relentless phase, his Action trigger is disabled, but his Strike trigger remains active.",
    "waves": [
     "R8 Chosen of Dominion (wave 8)"
    ],
@@ -2273,7 +2243,7 @@
     "Resolve: Add a Curse of Entropy card to your deck.",
     "Enchant: Grant your units Sap 5."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Harbinger of Entropy Seraph enchants your units with Sap 5 and adds a Curse of Entropy to your deck on Resolve. | Harbinger of Entropy II Seraph enchants your units with Sap 10 and adds a Curse of Entropy to your deck on Resolve. Wiki: Seraph Aeternus-The Entropic is the flying boss of the Ring 8 Harbinger of Entropy fight. He pollutes your draw with Curse of Entropy and applies Sap to your units on his floor.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Harbinger of Entropy / Seraph enchants your units with Sap 5 and adds a Curse of Entropy to your deck on Resolve. | Harbinger of Entropy II / Seraph enchants your units with Sap 10 and adds a Curse of Entropy to your deck on Resolve. Wiki: Seraph Aeternus-The Entropic is the flying boss of the Ring 8 Harbinger of Entropy fight. He pollutes your draw with Curse of Entropy and applies Sap to your units on his floor.",
    "waves": [
     "R8 Harbinger of Entropy (wave 8)"
    ],
@@ -2322,7 +2292,7 @@
     "mode": null,
     "wiki_page": "Collector",
     "roles": null,
-    "titan": "None",
+    "titan": null,
     "keywords": [
      "Dazed",
      "Extinguish",
@@ -2377,7 +2347,7 @@
     "roles": [
      "trial spawn"
     ],
-    "titan": "None",
+    "titan": null,
     "keywords": [
      "Immobile",
      "Spikes"
@@ -2425,7 +2395,7 @@
     "mode": null,
     "wiki_page": "Skull Collector",
     "roles": null,
-    "titan": "None",
+    "titan": null,
     "keywords": [
      "Extinguish"
     ],
@@ -2466,7 +2436,7 @@
     "Spiked Mass: -",
     "More Mass: Mass 3."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): More Mass Fleshlings have 5 Attack and 5 Health. Fleshweaver has 3 more stacks of Mass. | Corrupted Mass II Fleshlings have 5 Attack and 5 Health and apply Corruption 2 on death to the unit that killed it. Fleshweaver has 4 more stacks of Mass. | Spiked Mass II Fleshlings have 3 Attack and 9 Health and gain Spikes 2. Fleshweaver has 4 more stacks of Mass. | More Mass II Fleshlings have 7 Attack and 7 Health. Fleshweaver has 7 more stacks of Mass. Wiki: Fleshweaver is a major boss of Ring 3. He starts with many stacks of Mass, which raise his Attack, and which are lost on taking damage to spawn Fleshlings. He appears as one of three variants.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): More Mass / Fleshlings have 5 Attack and 5 Health. Fleshweaver has 3 more stacks of Mass. | Corrupted Mass II / Fleshlings have 5 Attack and 5 Health and apply Corruption 2 on death to the unit that killed it. Fleshweaver has 4 more stacks of Mass. | Spiked Mass II / Fleshlings have 3 Attack and 9 Health and gain Spikes 2. Fleshweaver has 4 more stacks of Mass. | More Mass II / Fleshlings have 7 Attack and 7 Health. Fleshweaver has 7 more stacks of Mass. Wiki: Fleshweaver is a major boss of Ring 3. He starts with many stacks of Mass, which raise his Attack, and which are lost on taking damage to spawn Fleshlings. He appears as one of three variants.",
    "waves": [
     "R3 Corrupted Mass (wave 6)",
     "R3 More Mass (wave 6)",
@@ -2574,7 +2544,7 @@
     "Doombringers: Slay: Hallow gains +3 Attack.",
     "Inevitability: Loop: Hallow gains +8 Attack."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Stryx is a major boss of Ring 6. She appears as one of three variants, always together with Hallow. Unlike most major bosses, she does not fly and instead moves around the train cycling back to the first floor due to having the status effect Live to Fight.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability / Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers / Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest / Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II / Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II / Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II / Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Stryx is a major boss of Ring 6. She appears as one of three variants, always together with Hallow. Unlike most major bosses, she does not fly and instead moves around the train cycling back to the first floor due to having the status effect Live to Fight.",
    "waves": [
     "R6 Bloody Harvest (wave 1, 4, 7, 8)",
     "R6 Doombringers (wave 1, 4, 7, 8)",
@@ -2634,7 +2604,7 @@
     "Doombringers: Incant: Stryx gains +30 Health.",
     "Inevitability: Resolve: Stryx gains +60 Health."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Hallow is a major boss of Ring 6. He appears as one of three variants, always together with Stryx.",
+   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Variants (normal / Titan Trial II): Inevitability / Stryx applies +8 Attack to Hallow on Loop. Hallow applies +60 Health to Stryx on Resolve. | Doombringers / Stryx applies +3 Attack to Hallow on Slay. Hallow applies +30 Health to Stryx on Incant. | Bloody Harvest / Stryx applies +1 Attack to Hallow on Revenge. Hallow applies +50 Health to Stryx on Siphon. | Inevitability II / Stryx applies +12 Attack to Hallow on Loop. Hallow applies +100 Health to Stryx on Resolve. | Doombringers II / Stryx applies +5 Attack to Hallow on Slay. Hallow applies +50 Health to Stryx on Incant. | Bloody Harvest II / Stryx applies +2 Attack to Hallow on Revenge. Hallow applies +70 Health to Stryx on Siphon. Wiki: Hallow is a major boss of Ring 6. He appears as one of three variants, always together with Stryx.",
    "waves": [
     "R6 Bloody Harvest (wave 8)",
     "R6 Doombringers (wave 8)",
@@ -2680,7 +2650,7 @@
    "id": "mt2.zephyrite",
    "name": "Zephyrite",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
     "base": 6,
     "covenant": "difficulty Tangle: 12/8; Overgrowth: 16/9 (attack/health; Soul Savior difficulty tiers)"
@@ -2719,7 +2689,7 @@
    "id": "mt2.mother_s_zephyrite",
    "name": "Mother's Zephyrite",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Maera's Region",
    "hp": {
     "base": 20,
     "covenant": "difficulty Tangle: 36/25; Overgrowth: 48/30 (attack/health; Soul Savior difficulty tiers)"
@@ -2737,7 +2707,7 @@
     "[Overgrowth] Shift: Gain Burst 1.",
     "[Overgrowth] Slay: Descend and gain Armor 18."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Zephyrite can appear once 2 regions have been completed and replaces Zephyrite once 3 regions have been completed. It has higher stats and an additional Slay trigger that returns it to a lower floor.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Zephyrite can appear once 2 regions have been completed and replaces Zephyrite once 3 regions have been completed. It has higher stats and an additional Slay trigger that returns it to a lower floor.",
    "waves": [
     "Soul Savior: Final Battle The Swarmhost (wave 8)",
     "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 3, 4, 6, 8)",
@@ -2765,7 +2735,7 @@
    "id": "mt2.longlash",
    "name": "Longlash",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: First Battle, Tivi's Region",
    "hp": {
     "base": 4,
     "covenant": "difficulty Tangle: 11/5; Overgrowth: 14/6 (attack/health; Soul Savior difficulty tiers)"
@@ -2796,7 +2766,7 @@
    "id": "mt2.mother_s_longlash",
    "name": "Mother's Longlash",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Tivi's Region",
    "hp": {
     "base": 12,
     "covenant": "difficulty Tangle: 27/15; Overgrowth: 36/18 (attack/health; Soul Savior difficulty tiers)"
@@ -2807,7 +2777,7 @@
     "Sniper. Stealth 2.",
     "Strike: Apply Emberdrain 1."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Longlash replaces Longlash once 2 regions have been completed. It has an extra stack of Stealth and applies Emberdrain on Strike.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Longlash replaces Longlash once 2 regions have been completed. It has an extra stack of Stealth and applies Emberdrain on Strike.",
    "waves": [
     "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 5, 7)",
     "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5, 6)",
@@ -2830,12 +2800,12 @@
    "id": "mt2.ossivane_sentinel",
    "name": "Ossivane Sentinel",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
     "base": null,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
-   "attack": null,
+   "attack": 8,
    "size": 2,
    "abilities": [
     "Shift: Gain Armor 15."
@@ -2856,14 +2826,15 @@
      "Shift"
     ],
     "combats": "All combats in Maera's Region",
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
    "id": "mt2.glutmass",
    "name": "Glutmass",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Thaddeus's Region",
    "hp": {
     "base": 60,
     "covenant": "difficulty Tangle: 12/75; Overgrowth: 16/90 (attack/health; Soul Savior difficulty tiers)"
@@ -2896,7 +2867,7 @@
    "id": "mt2.mother_s_glutmass",
    "name": "Mother's Glutmass",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Thaddeus's Region",
    "hp": {
     "base": 250,
     "covenant": "difficulty Tangle: 23/313; Overgrowth: 30/375 (attack/health; Soul Savior difficulty tiers)"
@@ -2906,7 +2877,7 @@
    "abilities": [
     "Trample. Infested 1. Gorge: Gain Rage 5, Titanskin 5, and restore 50 health."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Glutmass appears once 2 regions have been completed and replaces Glutmass once 3 regions have been completed. It has much higher stats, and also gains Rage in addition to more Titanskin and healing on Gorge.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Glutmass appears once 2 regions have been completed and replaces Glutmass once 3 regions have been completed. It has much higher stats, and also gains Rage in addition to more Titanskin and healing on Gorge.",
    "waves": [
     "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 6, 7, 8)",
     "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 1, 2, 3, 4, 5)",
@@ -2932,7 +2903,7 @@
    "id": "mt2.jeermask",
    "name": "Jeermask",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Tivi's Region",
    "hp": {
     "base": 1,
     "covenant": "difficulty Tangle: 0/2; Overgrowth: 0/2 (attack/health; Soul Savior difficulty tiers)"
@@ -2962,7 +2933,7 @@
    "id": "mt2.mother_s_jeermask",
    "name": "Mother's Jeermask",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Tivi's Region",
    "hp": {
     "base": 1,
     "covenant": "difficulty Tangle: 0/2; Overgrowth: 0/2 (attack/health; Soul Savior difficulty tiers)"
@@ -2973,7 +2944,7 @@
     "Spell Shield 1.",
     "Revenge: Apply Dazed 2 and Melee Weakness 1 to the attacker."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Jeermask can appear once 2 regions have been completed and replaces Jeermask once 3 regions have been completed. It gains Spell Shield 1, and additionally applies Melee Weakness alongside Dazed.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Jeermask can appear once 2 regions have been completed and replaces Jeermask once 3 regions have been completed. It gains Spell Shield 1, and additionally applies Melee Weakness alongside Dazed.",
    "waves": [
     "Soul Savior: Final Battle The Undying Bloom (wave 1, 3, 5, 6, 8)",
     "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)",
@@ -2996,7 +2967,7 @@
    "id": "mt2.plaguehost",
    "name": "Plaguehost",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Lylith's Region",
    "hp": {
     "base": 70,
     "covenant": "difficulty Tangle: 8/88; Overgrowth: 10/105 (attack/health; Soul Savior difficulty tiers)"
@@ -3028,7 +2999,7 @@
    "id": "mt2.mother_s_plaguehost",
    "name": "Mother's Plaguehost",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Lylith's Region",
    "hp": {
     "base": 160,
     "covenant": "difficulty Tangle: 15/200; Overgrowth: 20/240 (attack/health; Soul Savior difficulty tiers)"
@@ -3040,7 +3011,7 @@
     "[Tangle] Extinguish: Apply Malaise? and Witherbloom? to your front unit.",
     "[Overgrowth] Extinguish: Apply Malaise 12 and Witherbloom 12 to your front unit."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Plaguehost appears once 2 regions have been completed and replaces Plaguehost once 3 regions have been completed. It has higher stats, applies more Witherbloom, and also applies Malaise.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Plaguehost appears once 2 regions have been completed and replaces Plaguehost once 3 regions have been completed. It has higher stats, applies more Witherbloom, and also applies Malaise.",
    "waves": [
     "Soul Savior: Final Battle The Corpseflower (wave 1, 2, 3, 4, 5, 6, 7, 8)",
     "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5, 6)",
@@ -3062,12 +3033,12 @@
    "id": "mt2.witchwarden",
    "name": "Witchwarden",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Lylith's Region",
    "hp": {
     "base": null,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
-   "attack": null,
+   "attack": 10,
    "size": 1,
    "abilities": [
     "Witherbloom 1. Revenge: Enemy units gain Regen 3."
@@ -3086,26 +3057,27 @@
      "Witherbloom"
     ],
     "combats": "All combats in Lylith's Region",
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
    "id": "mt2.astrael_the_first_reborn",
    "name": "Astrael the First Reborn",
    "category": "boss",
-   "area": "Soul Savior",
+   "area": "Soul Savior: First Battle",
    "hp": {
     "base": null,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
-   "attack": null,
+   "attack": 8,
    "size": 5,
    "abilities": [
     "Relentless.",
     "Sap 6.",
     "Infested 4."
    ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Astrael the First Reborn is a boss in Monster Train 2, found exclusively in its Soul Savior mode. It enters with Sap 6 and Infested 4.",
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region). Wiki: Astrael the First Reborn is a boss in Monster Train 2, found exclusively in its Soul Savior mode. It enters with Sap 6 and Infested 4.",
    "waves": [
     "Soul Savior: First Battle Mother's Flagellant (wave 4)",
     "Soul Savior: First Battle Mother's Hunter (wave 4)"
@@ -3119,7 +3091,8 @@
      "Sap"
     ],
     "combats": "First Battle",
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -3131,7 +3104,7 @@
     "base": null,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
-   "attack": null,
+   "attack": 5,
    "size": 5,
    "abilities": [
     "Relentless.",
@@ -3139,7 +3112,7 @@
     "Ascension: Spawn an Ossivane Sentinel.",
     "Strike: Retreat."
    ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Athane the Fallen is a boss in Monster Train 2, found exclusively in its Soul Savior mode. She applies Rage 1 to enemy units on Incant.",
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region). Wiki: Athane the Fallen is a boss in Monster Train 2, found exclusively in its Soul Savior mode. She applies Rage 1 to enemy units on Incant.",
    "waves": [],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
@@ -3152,7 +3125,8 @@
      "Strike"
     ],
     "combats": "First combat in Maera's Region",
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
@@ -3164,13 +3138,13 @@
     "base": null,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
-   "attack": null,
+   "attack": 12,
    "size": 4,
    "abilities": [
     "Relentless.",
     "Summon: Descend all friendly units to this floor and Retreat."
    ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic. Wiki: Korin the Judged is a boss in Monster Train 2, found exclusively in its Soul Savior mode. When she appears, all enemies still alive on the train will come to her defense.",
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region). Wiki: Korin the Judged is a boss in Monster Train 2, found exclusively in its Soul Savior mode. When she appears, all enemies still alive on the train will come to her defense.",
    "waves": [],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
@@ -3182,14 +3156,15 @@
      "Summon"
     ],
     "combats": "First combat in Maera's Region",
-    "size_source": "game-data dump"
+    "size_source": "game-data dump",
+    "attack_source": "game-data dump (wiki infobox gives no attack)"
    }
   },
   {
    "id": "mt2.maera_the_dutiful",
    "name": "Maera the Dutiful",
    "category": "flying_boss",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
     "base": 1000,
     "covenant": "per-variant; Tangle/Overgrowth ability values in extra.variants"
@@ -3201,7 +3176,7 @@
     "Sibling Hierarchy: Shift: Apply Rage 3 to enemy units.",
     "Stern Sister: Resolve: Apply Burst 1 to self and enemy units."
    ],
-   "pattern": "Flying boss: present from turn 1 on the topmost occupied floor, moves to a different floor every turn (prefers occupied floors, the one visited least recently -> a 1-2-3 or 1-3-2 cycle), can be hit and targeted there, uses its variant's triggers while flying (5 flying turns on Ring 3, 7 on Rings 6/8), and becomes a Relentless boss in the final wave (some triggers switch off). Immune to Advance/Retreat/Rooted; can be Ascended/Descended but not into the Pyre Room. Ring 3/6/8 combats are tied to the boss variant; Titan Trials make the variant stronger and grant a Titan Essence. Wiki: Maera the Dutiful, one of The Lifemother's children, is the boss of Maera's Region in Soul Savior mode. She appears as one of three variants.",
+   "pattern": "Soul Savior region boss (Lifemother's child): flying boss of the region's second battle with three variants; defeating it grants a Soul and imposes the variant's negative mutator for the rest of the run (see abilities). Wiki: Maera the Dutiful, one of The Lifemother's children, is the boss of Maera's Region in Soul Savior mode. She appears as one of three variants.",
    "waves": [
     "Soul Savior: Maera's Region Eldest Scion (wave 4, 5, 6)",
     "Soul Savior: Maera's Region Sibling Hierarchy (wave 4, 5, 6)",
@@ -3253,7 +3228,7 @@
    "id": "mt2.mother_s_flagellant",
    "name": "Mother's Flagellant",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: First Battle",
    "hp": {
     "base": 80,
     "covenant": "difficulty Tangle: 5/100; Overgrowth: 6/120 (attack/health; Soul Savior difficulty tiers)"
@@ -3264,7 +3239,7 @@
     "Resolve: Take 20 damage.",
     "Revenge: Gain Burst 1."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Flagellant is an enemy in the Soul Savior mode of Monster Train 2 exclusive to the Mother's Flagellant battle. It gains Burst on Revenge, which it triggers by damaging itself on Resolve.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Flagellant is an enemy in the Soul Savior mode of Monster Train 2 exclusive to the Mother's Flagellant battle. It gains Burst on Revenge, which it triggers by damaging itself on Resolve.",
    "waves": [
     "Soul Savior: First Battle Mother's Flagellant (wave 1, 2, 3)"
    ],
@@ -3284,7 +3259,7 @@
    "id": "mt2.mother_s_flautist",
    "name": "Mother's Flautist",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
     "base": 5,
     "covenant": "difficulty Tangle: 2/7; Overgrowth: 2/8 (attack/health; Soul Savior difficulty tiers)"
@@ -3294,7 +3269,7 @@
    "abilities": [
     "Haste. Enchant: Grant enemy units Haste."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: Mother's Flautist is an enemy in the Soul Savior mode of Monster Train 2 associated with Maera the Dutiful. It grants allied enemies Haste, causing them to move from the bottom floor directly to the top floor.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: Mother's Flautist is an enemy in the Soul Savior mode of Monster Train 2 associated with Maera the Dutiful. It grants allied enemies Haste, causing them to move from the bottom floor directly to the top floor.",
    "waves": [
     "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 3)",
     "Soul Savior: Maera's Region Eldest Scion (wave 1, 3, 4, 5)",
@@ -3317,7 +3292,7 @@
    "id": "mt2.mother_s_blade",
    "name": "Mother's Blade",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Tivi's Region",
    "hp": {
     "base": 80,
     "covenant": "difficulty Tangle: 8/100; Overgrowth: 8/108 (attack/health; Soul Savior difficulty tiers)"
@@ -3327,7 +3302,7 @@
    "abilities": [
     "Infested 3."
    ],
-   "pattern": "'Mother's' empowered version; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies. Wiki: The Mother's Blade is an enemy in the Soul Savior mode of Monster Train 2 associated with Tivi the Unruly.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy. Wiki: The Mother's Blade is an enemy in the Soul Savior mode of Monster Train 2 associated with Tivi the Unruly.",
    "waves": [
     "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5, 6)",
     "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 4)"
@@ -3346,7 +3321,7 @@
    "id": "mt2.mother_s_fiend",
    "name": "Mother's Fiend",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, First Battle",
    "hp": {
     "base": 3,
     "covenant": null
@@ -3354,7 +3329,7 @@
    "attack": 2,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 7, 8)",
     "Soul Savior: First Battle Mother's Hunter (wave 1, 2, 3, 4)"
@@ -3367,425 +3342,10 @@
    }
   },
   {
-   "id": "mt2.mother_s_hunter",
-   "name": "Mother's Hunter",
-   "category": "elite",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 3,
-    "covenant": null
-   },
-   "attack": 3,
-   "size": 1,
-   "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [
-    "Soul Savior: First Battle Mother's Hunter (wave 1, 2, 3, 4)",
-    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5, 6)",
-    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 4, 5)",
-    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 4, 5)",
-    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 4, 5)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.mother_s_zealot",
-   "name": "Mother's Zealot",
-   "category": "elite",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 45,
-    "covenant": null
-   },
-   "attack": 14,
-   "size": 2,
-   "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [
-    "Soul Savior: Final Battle The Swarmhost (wave 2, 4, 6, 7)",
-    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5)",
-    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5)",
-    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.elebor_the_unstoppable",
-   "name": "Elebor the Unstoppable",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 360,
-    "covenant": null
-   },
-   "attack": 12,
-   "size": 5,
-   "abilities": [
-    "Region mini-boss of Thaddeus's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.quoto_the_destroyer",
-   "name": "Quoto the Destroyer",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 320,
-    "covenant": null
-   },
-   "attack": 8,
-   "size": 4,
-   "abilities": [
-    "Region mini-boss of Thaddeus's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.thaddeus_the_indulgent",
-   "name": "Thaddeus the Indulgent",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 1100,
-    "covenant": null
-   },
-   "attack": 13,
-   "size": 5,
-   "abilities": [
-    "Train Chomper: Thaddeus reduces Capacity by 1 and triggers Gorge on Resolve. Upon defeat, Thaddeus grants you the Glutton mutator: A random floor loses -3 Capacity.",
-    "Thick Skinned: Thaddeus enters with Titanskin 3 and gains Titanskin 3 on Gorge. Upon defeat, Thaddeus grants you the Callous mutator: Enemy units gain Titanskin 3.",
-    "Insatiable: Thaddeus triggers Gorge on Slay. Upon defeat, Thaddeus grants you the Spoiled mutator: Enemy units gain Infested 1."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [
-    "Soul Savior: Thaddeus's Region Insatiable (wave 4, 5, 6)",
-    "Soul Savior: Thaddeus's Region Thick Skinned (wave 4, 5, 6, 7)",
-    "Soul Savior: Thaddeus's Region Train Chomper (wave 4, 5, 6, 7)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": [
-     "Gorge",
-     "Infested",
-     "Resolve",
-     "Slay",
-     "Titanskin"
-    ]
-   }
-  },
-  {
-   "id": "mt2.mother_s_supplicant",
-   "name": "Mother's Supplicant",
-   "category": "elite",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 20,
-    "covenant": null
-   },
-   "attack": 3,
-   "size": 2,
-   "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [
-    "Soul Savior: Tivi's Region Harassing Snipers (wave 2, 3, 5, 6)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.phalanx",
-   "name": "Phalanx",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 500,
-    "covenant": null
-   },
-   "attack": 12,
-   "size": 5,
-   "abilities": [
-    "Region mini-boss of Tivi's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.the_undying_spirit",
-   "name": "The Undying Spirit",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 250,
-    "covenant": null
-   },
-   "attack": 7,
-   "size": 4,
-   "abilities": [
-    "Region mini-boss of Tivi's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.tivi_the_unruly",
-   "name": "Tivi the Unruly",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 800,
-    "covenant": null
-   },
-   "attack": 12,
-   "size": 5,
-   "abilities": [
-    "Duplicitous: Tivi creates a copy of the front enemy unit on the floor at the end of the turn. If there are no enemy units, Tivi creates a Jeermask unit. Upon defeat, Tivi grants you the Joker mutator: At the start of battle, spawn a Jeermask unit on each floor.",
-    "Mischevious Child: Tivi has Sniper and Advances the attacked unit on Strike. Upon defeat, Tivi grants you the Insecure mutator: Champions enter with Melee Weakness 3.",
-    "Prankster: Tivi adds a Tivi's Scourge to your hand on Siphon. Upon defeat, Tivi grants you the Tormentor mutator: At the start of battle, add 4 Tivi's Scourge cards to your deck."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [
-    "Soul Savior: Tivi's Region Prankster (wave 4, 5, 6)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": [
-     "Melee Weakness",
-     "Scourge",
-     "Siphon",
-     "Sniper",
-     "Strike"
-    ]
-   }
-  },
-  {
-   "id": "mt2.ajax_the_deathbringer",
-   "name": "Ajax the Deathbringer",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 450,
-    "covenant": null
-   },
-   "attack": 11,
-   "size": 4,
-   "abilities": [
-    "Region mini-boss of Lylith's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.qel_the_malaiser",
-   "name": "Qel the Malaiser",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 380,
-    "covenant": null
-   },
-   "attack": 12,
-   "size": 4,
-   "abilities": [
-    "Region mini-boss of Lylith's Region (first combat)."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.lylith_the_spurned",
-   "name": "Lylith the Spurned",
-   "category": "boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 1000,
-    "covenant": null
-   },
-   "attack": 14,
-   "size": 5,
-   "abilities": [
-    "Plaguebringer: Lylith gains Dualism at 50% health. Upon defeat, Lylith grants you the Reclusive mutator: Champions enter with Malaise 10.",
-    "Energy Vampire: Lylith additionally applies Witherbloom X to your units on Action. Upon defeat, Lylith grants you the Masochist mutator: Enemy units gain Regen 2 when hit.",
-    "Inoculation: Lylith gains 3x Armor per Malaise on Strike. Upon defeat, Lylith grants you the Sadist mutator: Your units enter with Witherbloom 1."
-   ],
-   "pattern": "Minor boss: arrives in the final wave (after 'A Brief Respite', removed at Covenant 7) and is Relentless: fights on its floor until it or all your units there die; the floor it leaves freezes. Any combat of the ring can pair with any of the ring's bosses; Covenant 4+ adds an extra mechanic.",
-   "waves": [
-    "Soul Savior: Lylith's Region Inoculation (wave 4, 5, 6)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": [
-     "Action",
-     "Armor",
-     "Dualism",
-     "Malaise",
-     "Regen",
-     "Strike",
-     "Witherbloom"
-    ]
-   }
-  },
-  {
-   "id": "mt2.mother_s_amalgam",
-   "name": "Mother's Amalgam",
-   "category": "elite",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 150,
-    "covenant": null
-   },
-   "attack": 5,
-   "size": 2,
-   "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [
-    "Soul Savior: Final Battle The Corpseflower (wave 1, 3, 5, 7, 8)",
-    "Soul Savior: Lylith's Region Inoculation (wave 1, 3, 4, 5, 6)",
-    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5)",
-    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.mother_s_knight",
-   "name": "Mother's Knight",
-   "category": "elite",
-   "area": "Soul Savior",
-   "hp": {
-    "base": 60,
-    "covenant": null
-   },
-   "attack": 10,
-   "size": 2,
-   "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [
-    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5, 6)",
-    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5, 6)",
-    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5, 6)",
-    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": "game-data dump (no wiki infobox)",
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.the_lifemother",
-   "name": "The Lifemother",
-   "category": "final_boss",
-   "area": "Soul Savior",
-   "hp": {
-    "base": null,
-    "covenant": null
-   },
-   "attack": null,
-   "size": null,
-   "abilities": [],
-   "pattern": "Soul Savior final boss (Final Battle after all four regions); three variants (The Corpseflower, The Swarmhost, The Undying Bloom). Wiki: The Final Battle against The Lifemother in Soul Savior mode can be accessed after defeating each of the four region bosses. In the tables below, an enemy's presence depends on the difficulty, indicated as follows: • Bloom • Tangle • Overgrowth",
-   "waves": [
-    "Soul Savior: Final Battle The Corpseflower (wave 8)",
-    "Soul Savior: Final Battle The Swarmhost (wave 8)",
-    "Soul Savior: Final Battle The Undying Bloom (wave 8)"
-   ],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": null,
-    "keywords": []
-   }
-  },
-  {
-   "id": "mt2.category_nav_templates",
-   "name": "Category:Nav Templates",
-   "category": "normal",
-   "area": "Soul Savior",
-   "hp": {
-    "base": null,
-    "covenant": null
-   },
-   "attack": null,
-   "size": null,
-   "abilities": [],
-   "pattern": "Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
-   "waves": [],
-   "extra": {
-    "mode": "Soul Savior (Destiny of the Railforged DLC)",
-    "wiki_page": null,
-    "stats_source": null,
-    "keywords": []
-   }
-  },
-  {
    "id": "mt2.mother_s_ossivane_sentinel",
    "name": "Mother's Ossivane Sentinel",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Maera's Region",
    "hp": {
     "base": 200,
     "covenant": null
@@ -3793,7 +3353,7 @@
    "attack": 18,
    "size": 2,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Undying Bloom (wave 1, 2, 4, 5, 6, 7, 8)",
     "Soul Savior: Maera's Region Dutiful Sentinels (wave 1, 2, 3, 4, 5, 6)",
@@ -3813,7 +3373,7 @@
    "id": "mt2.mother_s_cherub",
    "name": "Mother's Cherub",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Thaddeus's Region",
    "hp": {
     "base": 30,
     "covenant": null
@@ -3821,7 +3381,7 @@
    "attack": 0,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Swarmhost (wave 1, 3, 5, 6, 7)",
     "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 1, 4, 5, 6)",
@@ -3840,7 +3400,7 @@
    "id": "mt2.fleshfruit",
    "name": "Fleshfruit",
    "category": "normal",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Thaddeus's Region",
    "hp": {
     "base": 30,
     "covenant": null
@@ -3866,7 +3426,7 @@
    "id": "mt2.mother_s_fleshfruit",
    "name": "Mother's Fleshfruit",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Thaddeus's Region",
    "hp": {
     "base": 60,
     "covenant": null
@@ -3874,7 +3434,7 @@
    "attack": 0,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Swarmhost (wave 1, 2, 3, 4, 5, 7, 8)",
     "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5, 6)",
@@ -3890,10 +3450,144 @@
    }
   },
   {
+   "id": "mt2.mother_s_hunter",
+   "name": "Mother's Hunter",
+   "category": "elite",
+   "area": "Soul Savior: First Battle, Thaddeus's Region",
+   "hp": {
+    "base": 3,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 1,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
+   "waves": [
+    "Soul Savior: First Battle Mother's Hunter (wave 1, 2, 3, 4)",
+    "Soul Savior: Thaddeus's Region Gluttonous Masses (wave 2, 3, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 1, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 1, 3, 4, 5)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 1, 3, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_zealot",
+   "name": "Mother's Zealot",
+   "category": "elite",
+   "area": "Soul Savior: Final Battle, Thaddeus's Region",
+   "hp": {
+    "base": 45,
+    "covenant": null
+   },
+   "attack": 14,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
+   "waves": [
+    "Soul Savior: Final Battle The Swarmhost (wave 2, 4, 6, 7)",
+    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.elebor_the_unstoppable",
+   "name": "Elebor the Unstoppable",
+   "category": "boss",
+   "area": "Soul Savior: Thaddeus's Region",
+   "hp": {
+    "base": 360,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Region mini-boss of Thaddeus's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.quoto_the_destroyer",
+   "name": "Quoto the Destroyer",
+   "category": "boss",
+   "area": "Soul Savior: Thaddeus's Region",
+   "hp": {
+    "base": 320,
+    "covenant": null
+   },
+   "attack": 8,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Thaddeus's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.thaddeus_the_indulgent",
+   "name": "Thaddeus the Indulgent",
+   "category": "flying_boss",
+   "area": "Soul Savior: Thaddeus's Region",
+   "hp": {
+    "base": 1100,
+    "covenant": null
+   },
+   "attack": 13,
+   "size": 5,
+   "abilities": [
+    "Train Chomper: Thaddeus reduces Capacity by 1 and triggers Gorge on Resolve. Upon defeat, Thaddeus grants you the Glutton mutator: A random floor loses -3 Capacity.",
+    "Thick Skinned: Thaddeus enters with Titanskin 3 and gains Titanskin 3 on Gorge. Upon defeat, Thaddeus grants you the Callous mutator: Enemy units gain Titanskin 3.",
+    "Insatiable: Thaddeus triggers Gorge on Slay. Upon defeat, Thaddeus grants you the Spoiled mutator: Enemy units gain Infested 1."
+   ],
+   "pattern": "Soul Savior region boss (Lifemother's child): flying boss of the region's second battle with three variants; defeating it grants a Soul and imposes the variant's negative mutator for the rest of the run (see abilities).",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Insatiable (wave 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 4, 5, 6, 7)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 4, 5, 6, 7)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Gorge",
+     "Infested",
+     "Resolve",
+     "Slay",
+     "Titanskin"
+    ]
+   }
+  },
+  {
    "id": "mt2.mother_s_sharp_eye_sniper",
    "name": "Mother's Sharp-Eye Sniper",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Tivi's Region",
    "hp": {
     "base": 3,
     "covenant": null
@@ -3901,7 +3595,7 @@
    "attack": 6,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Tivi's Region Rabble-Rousers (wave 1, 2, 3, 4, 5)"
    ],
@@ -3913,10 +3607,112 @@
    }
   },
   {
+   "id": "mt2.mother_s_supplicant",
+   "name": "Mother's Supplicant",
+   "category": "elite",
+   "area": "Soul Savior: Tivi's Region",
+   "hp": {
+    "base": 20,
+    "covenant": null
+   },
+   "attack": 3,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
+   "waves": [
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 2, 3, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.phalanx",
+   "name": "Phalanx",
+   "category": "boss",
+   "area": "Soul Savior: Tivi's Region",
+   "hp": {
+    "base": 500,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Region mini-boss of Tivi's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.the_undying_spirit",
+   "name": "The Undying Spirit",
+   "category": "boss",
+   "area": "Soul Savior: Tivi's Region",
+   "hp": {
+    "base": 250,
+    "covenant": null
+   },
+   "attack": 7,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Tivi's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.tivi_the_unruly",
+   "name": "Tivi the Unruly",
+   "category": "flying_boss",
+   "area": "Soul Savior: Tivi's Region",
+   "hp": {
+    "base": 800,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 5,
+   "abilities": [
+    "Duplicitous: Tivi creates a copy of the front enemy unit on the floor at the end of the turn. If there are no enemy units, Tivi creates a Jeermask unit. Upon defeat, Tivi grants you the Joker mutator: At the start of battle, spawn a Jeermask unit on each floor.",
+    "Mischevious Child: Tivi has Sniper and Advances the attacked unit on Strike. Upon defeat, Tivi grants you the Insecure mutator: Champions enter with Melee Weakness 3.",
+    "Prankster: Tivi adds a Tivi's Scourge to your hand on Siphon. Upon defeat, Tivi grants you the Tormentor mutator: At the start of battle, add 4 Tivi's Scourge cards to your deck."
+   ],
+   "pattern": "Soul Savior region boss (Lifemother's child): flying boss of the region's second battle with three variants; defeating it grants a Soul and imposes the variant's negative mutator for the rest of the run (see abilities).",
+   "waves": [
+    "Soul Savior: Tivi's Region Prankster (wave 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Melee Weakness",
+     "Scourge",
+     "Siphon",
+     "Sniper",
+     "Strike"
+    ]
+   }
+  },
+  {
    "id": "mt2.mother_s_assassin",
    "name": "Mother's Assassin",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Lylith's Region",
    "hp": {
     "base": 8,
     "covenant": null
@@ -3924,7 +3720,7 @@
    "attack": 4,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Corpseflower (wave 1, 2, 3, 4, 5, 6, 7, 8)",
     "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 4, 5, 6)",
@@ -3941,7 +3737,7 @@
    "id": "mt2.mother_s_witchwarden",
    "name": "Mother's Witchwarden",
    "category": "elite",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Final Battle, Lylith's Region",
    "hp": {
     "base": 40,
     "covenant": null
@@ -3949,7 +3745,7 @@
    "attack": 22,
    "size": 1,
    "abilities": [],
-   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed. Enters on the bottom floor with its wave (waves are fixed per combat and covenant). After the turn ends, Quick units strike, then enemies, then your other units; Resolve triggers fire; non-Rooted enemies ascend one floor. In the Pyre Room it fights the Pyre until it or the Pyre dies.",
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
    "waves": [
     "Soul Savior: Final Battle The Corpseflower (wave 2, 4, 6, 7, 8)",
     "Soul Savior: Lylith's Region Inoculation (wave 1, 2, 3, 5, 6)",
@@ -3960,6 +3756,181 @@
     "wiki_page": null,
     "stats_source": "game-data dump (no wiki infobox)",
     "keywords": []
+   }
+  },
+  {
+   "id": "mt2.ajax_the_deathbringer",
+   "name": "Ajax the Deathbringer",
+   "category": "boss",
+   "area": "Soul Savior: Lylith's Region",
+   "hp": {
+    "base": 450,
+    "covenant": null
+   },
+   "attack": 11,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Lylith's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.qel_the_malaiser",
+   "name": "Qel the Malaiser",
+   "category": "boss",
+   "area": "Soul Savior: Lylith's Region",
+   "hp": {
+    "base": 380,
+    "covenant": null
+   },
+   "attack": 12,
+   "size": 4,
+   "abilities": [
+    "Region mini-boss of Lylith's Region (first combat)."
+   ],
+   "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
+   "waves": [],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.lylith_the_spurned",
+   "name": "Lylith the Spurned",
+   "category": "flying_boss",
+   "area": "Soul Savior: Lylith's Region",
+   "hp": {
+    "base": 1000,
+    "covenant": null
+   },
+   "attack": 14,
+   "size": 5,
+   "abilities": [
+    "Plaguebringer: Lylith gains Dualism at 50% health. Upon defeat, Lylith grants you the Reclusive mutator: Champions enter with Malaise 10.",
+    "Energy Vampire: Lylith additionally applies Witherbloom X to your units on Action. Upon defeat, Lylith grants you the Masochist mutator: Enemy units gain Regen 2 when hit.",
+    "Inoculation: Lylith gains 3x Armor per Malaise on Strike. Upon defeat, Lylith grants you the Sadist mutator: Your units enter with Witherbloom 1."
+   ],
+   "pattern": "Soul Savior region boss (Lifemother's child): flying boss of the region's second battle with three variants; defeating it grants a Soul and imposes the variant's negative mutator for the rest of the run (see abilities).",
+   "waves": [
+    "Soul Savior: Lylith's Region Inoculation (wave 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [
+     "Action",
+     "Armor",
+     "Dualism",
+     "Malaise",
+     "Regen",
+     "Strike",
+     "Witherbloom"
+    ]
+   }
+  },
+  {
+   "id": "mt2.mother_s_amalgam",
+   "name": "Mother's Amalgam",
+   "category": "elite",
+   "area": "Soul Savior: Final Battle, Lylith's Region, Tivi's Region",
+   "hp": {
+    "base": 150,
+    "covenant": null
+   },
+   "attack": 5,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 1, 3, 5, 7, 8)",
+    "Soul Savior: Lylith's Region Inoculation (wave 1, 3, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Harassing Snipers (wave 1, 2, 3, 4, 5)",
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3, 4, 5, 6)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.mother_s_knight",
+   "name": "Mother's Knight",
+   "category": "elite",
+   "area": "Soul Savior: Thaddeus's Region, Tivi's Region",
+   "hp": {
+    "base": 60,
+    "covenant": null
+   },
+   "attack": 10,
+   "size": 2,
+   "abilities": [],
+   "pattern": "'Mother's' empowered version of a Soul Savior enemy; replaces the base enemy in waves as more regions are completed (and on higher difficulty tiers). Otherwise a normal wave enemy.",
+   "waves": [
+    "Soul Savior: Thaddeus's Region Insatiable (wave 2, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Thick Skinned (wave 2, 4, 5, 6)",
+    "Soul Savior: Thaddeus's Region Train Chomper (wave 2, 4, 5, 6)",
+    "Soul Savior: Tivi's Region Prankster (wave 1, 2, 3)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "mt2.the_lifemother",
+   "name": "The Lifemother",
+   "category": "final_boss",
+   "area": "Soul Savior: Final Battle",
+   "hp": {
+    "base": 9000,
+    "covenant": null
+   },
+   "attack": 50,
+   "size": 5,
+   "abilities": [],
+   "pattern": "Soul Savior final boss (Final Battle after all four regions); three variants with their own fixed waves. Wiki: There are three possible combats against The Lifemother. The Corpseflower: Eons of being trapped in the Soulstream has driven the Lifemother to madness. The Lifemother will use her powers to weaken the lifeforce of your army. The Lifemother applies Malaise 12 on Strike and spreads Debuff effects on Hellborne Harvest.",
+   "waves": [
+    "Soul Savior: Final Battle The Corpseflower (wave 8)",
+    "Soul Savior: Final Battle The Swarmhost (wave 8)",
+    "Soul Savior: Final Battle The Undying Bloom (wave 8)"
+   ],
+   "extra": {
+    "mode": "Soul Savior (Destiny of the Railforged DLC)",
+    "wiki_page": null,
+    "stats_source": "game-data dump (no wiki infobox)",
+    "keywords": [],
+    "variants": [
+     {
+      "variant": "The Lifemother - Cycle Ender",
+      "attack": 50,
+      "health": 9000
+     },
+     {
+      "variant": "The Lifemother - Swarmhost",
+      "attack": 40,
+      "health": 9000
+     },
+     {
+      "variant": "The Lifemother - Undying Bloom",
+      "attack": 40,
+      "health": 10000
+     }
+    ]
    }
   }
  ]
