@@ -8,15 +8,35 @@ import { newCardAgg, recordCombat, newCombatAgg, deckIdsOf, type CardAgg, type C
 import { runCombat } from './bot.ts';
 import { instFor, newPity, pickReward, rewardScore, profileDeck, rollRewards, starterDeck, type RewardTier } from './draft.ts';
 
+// ── 원정 회복 규칙 (탐험 §9·§10, v0.2 S1) ──────────────────────────────
+/** 넋 수습: 전투가 끝날 때 서 있던 영웅은 **잃은 체력의 40%**를 회복한다 (쓰러진 채 끝난 영웅은 제외) */
+export const AFTER_FIGHT_RECOVERY_MISSING = 0.4;
+/** 넋 수습: 최대 체력 비율 (v0.2 기본 0, 실험용) */
+export const AFTER_FIGHT_RECOVERY = 0;
+/** 넋 수습: 고정량 (v0.2 기본 0, 실험용) */
+export const AFTER_FIGHT_RECOVERY_FLAT = 0;
+/** 보스 길: 보스 굴 앞에 길굿이 하나 더 있다 (보통 길이 1 + 보스 굴 앞 1) */
+export const PRE_BOSS_CAMP = true;
+/** 보스 굴 앞 길굿에서도 다른 길굿과 같이 고른다 (끼니가 필요할 때만 끼니) */
+export const PRE_BOSS_FORCE_HEAL = false;
+
 export interface ExpeditionOptions {
   /** 원정 기록용 집계 (없으면 기록하지 않는다) */
   agg?: CombatAgg;
   cards?: CardAgg;
-  /** what-if: 전투가 끝날 때마다 살아 있는 영웅 최대 체력의 이 비율만큼 회복 (설계값 0) */
+  /** 넋 수습 비율 덮어쓰기 (기본 AFTER_FIGHT_RECOVERY) */
   betweenHeal?: number;
+  /** 넋 수습 고정량 덮어쓰기 (기본 AFTER_FIGHT_RECOVERY_FLAT) */
+  betweenHealFlat?: number;
+  /** 넋 수습: 잃은 체력 비율 덮어쓰기 (기본 AFTER_FIGHT_RECOVERY_MISSING) */
+  betweenHealMissing?: number;
   rules?: RuleVariant;
   /** what-if: 보스 고정 ('b1' | 'b2'), 기본은 무작위 */
   boss?: string;
+  /** 보스 굴 앞 길굿 (기본 PRE_BOSS_CAMP) */
+  preBossCamp?: boolean;
+  /** 보스 앞 길굿에서 언제나 끼니 (기본 PRE_BOSS_FORCE_HEAL) */
+  preBossHeal?: boolean;
 }
 
 export interface ExpeditionResult {
@@ -142,7 +162,15 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       p.recovering = h.recovering;
     });
     for (const [hi, cd] of s.newCurses) deck.push({ d: cd, o: hi, o2: -1, orig: -1, x: -1 });
-    if (opts.betweenHeal) for (const h of heroes) if (!h.dead) h.hp = Math.min(effMax(h), h.hp + Math.round(h.baseMax * opts.betweenHeal));
+    // 넋 수습: 전투가 끝날 때 서 있던 영웅 (쓰러진 채 끝나 체력 1로 일어난 영웅은 제외)
+    const recovery = opts.betweenHeal ?? AFTER_FIGHT_RECOVERY;
+    const flat = opts.betweenHealFlat ?? AFTER_FIGHT_RECOVERY_FLAT;
+    const missing = opts.betweenHealMissing ?? AFTER_FIGHT_RECOVERY_MISSING;
+    if (recovery > 0 || flat > 0 || missing > 0) heroes.forEach((h, idx) => {
+      if (h.dead || s.heroes[idx].endDowned) return;
+      const lost = effMax(h) - h.hp;
+      h.hp = Math.min(effMax(h), h.hp + Math.round(h.baseMax * recovery) + flat + Math.round(lost * missing));
+    });
     // 해원: 파티 귀기 회복 (−5 / 해원)
     if (st.haewons) for (const h of heroes) if (!h.dead) h.stress = Math.max(0, h.stress - 5 * st.haewons);
     // 카드 보상
@@ -156,19 +184,23 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       scratchCards.picked[pick.id] = (scratchCards.picked[pick.id] ?? 0) + 1;
       res.picks++;
     } else res.skips++;
-    // 6번째 전투 뒤 길굿
+    // 6번째 전투 뒤 길굿 (+ 보스 굴 앞 길굿)
     if (i === 5) res.campChoice = camp(heroes, () => {
       deck = removeWorstStarter(deck);
     });
+    // 보스 굴 앞 길굿: 보스 앞이라 언제나 끼니(회복)를 고른다
+    if (i === all.length - 2 && (opts.preBossCamp ?? PRE_BOSS_CAMP)) camp(heroes, () => {
+      deck = removeWorstStarter(deck);
+    }, opts.preBossHeal ?? PRE_BOSS_FORCE_HEAL);
   }
   res.deckSize = deck.length;
   return res;
 }
 
 /** 길굿: 쌀로 끼니(체력 30%·귀기 −10·중상 치료) 또는 시작 카드 1장 제거 */
-function camp(heroes: PHero[], remove: () => void): 'heal' | 'remove' {
+function camp(heroes: PHero[], remove: () => void, forceHeal = false): 'heal' | 'remove' {
   const alive = heroes.filter((h) => !h.dead);
-  const needHeal = alive.some((h) => h.injured || h.hp / effMax(h) < 0.6);
+  const needHeal = forceHeal || alive.some((h) => h.injured || h.hp / effMax(h) < 0.6);
   if (needHeal) {
     for (const h of alive) {
       h.injured = false;

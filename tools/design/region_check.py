@@ -20,7 +20,9 @@ SRC = ROOT / "data/design/region1.json"
 HEROES = ROOT / "data/design/heroes.json"
 OUT = ROOT / "docs/design/region1-content.md"
 
-HP_RANGE = {"normal": (6, 45), "minion": (6, 25), "elite": (50, 100), "boss": (140, 260)}
+HP_RANGE = {"normal": (6, 45), "minion": (6, 25), "elite": (50, 100), "boss": (100, 260)}
+# 보스 조합은 졸개를 포함한 합계 체력으로 본다(여러 몸 보스). StS 1막 보스 곡선 기준
+BOSS_ENCOUNTER_HP = (140, 260)
 # 조합의 턴당 최대 피해 상한(모든 원귀가 한 턴에 가장 센 행동을 한다고 가정한 상한선)
 TURN_DMG_CAP = {"easy": 13, "hard": 18, "elite": 18, "boss": 26}
 PROVISIONS = {"촛불", "쌀", "향", "지전", "부적", "술"}
@@ -128,6 +130,10 @@ def main():
             dmg = sum(max_turn_damage(e) for e in es)
             hp = sum(sum(e["hp"]) / 2 for e in es)
             cap = TURN_DMG_CAP[pool]
+            if pool == "boss":
+                lo_b, hi_b = BOSS_ENCOUNTER_HP
+                if not lo_b <= hp <= hi_b:
+                    err(f"보스 조합 {enc['id']}: 합계 체력 {hp:.0f}이 {lo_b}~{hi_b} 밖")
             if dmg > cap:
                 err(f"조합 {enc['id']}({pool}): 턴당 최대 피해 {dmg} > 상한 {cap}")
             enc_rows.append((pool, enc["id"], " + ".join(e["name"] for e in es), hp, dmg))

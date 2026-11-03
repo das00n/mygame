@@ -162,10 +162,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "적 전체에 피해 3, 넋흔들림 1. 붕괴 상태인 적에게는 피해 3 더.",
-      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}, {"op": "cond", "if": "붕괴 상태(넋흔들림이 버팀에 닿은 턴)인 적", "then": [{"op": "dmg", "n": 3, "target": "all"}]}],
+      "text": "적 전체에 피해 3, 넋흔들림 1. 넋흔들림 4 이상이거나 붕괴 상태인 적에게는 피해 3 더.",
+      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}, {"op": "cond", "if": "넋흔들림 4 이상 또는 붕괴 상태인 적", "then": [{"op": "dmg", "n": 3, "target": "all"}]}],
       "tags": {"produce": ["넋흔들림"], "consume": ["넋흔들림"]},
-      "upgrade": "적 전체에 피해 4, 넋흔들림 1. 붕괴 상태인 적에게는 피해 5 더."
+      "upgrade": "적 전체에 피해 4, 넋흔들림 1. 넋흔들림 4 이상이거나 붕괴 상태인 적에게는 피해 5 더."
     },
     {
       "id": "seungnyeo.naerijjikneun",
@@ -175,10 +175,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "피해 5. 대상이 붕괴 상태면 피해 8 더.",
-      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상이 붕괴 상태(넋흔들림이 버팀에 닿은 턴)", "then": [{"op": "dmg", "n": 8}]}],
+      "text": "피해 5. 대상의 넋흔들림이 4 이상이거나 붕괴 상태면 피해 8 더.",
+      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상의 넋흔들림 4 이상 또는 붕괴", "then": [{"op": "dmg", "n": 8}]}],
       "tags": {"produce": [], "consume": ["넋흔들림"]},
-      "upgrade": "피해 6. 대상이 붕괴 상태면 피해 11 더."
+      "upgrade": "피해 6. 대상의 넋흔들림이 4 이상이거나 붕괴 상태면 피해 11 더."
     },
     {
       "id": "seungnyeo.jineon_oegi",
@@ -396,10 +396,10 @@
       "cost": 3,
       "path": "core",
       "keywords": [],
-      "text": "피해 20. 대상이 붕괴 상태면 피해 20 더.",
-      "effects": [{"op": "dmg", "n": 20}, {"op": "cond", "if": "대상이 붕괴 상태(넋흔들림이 버팀에 닿은 턴)", "then": [{"op": "dmg", "n": 20}]}],
+      "text": "피해 20. 대상의 넋흔들림이 6 이상이거나 붕괴 상태면 피해 20 더.",
+      "effects": [{"op": "dmg", "n": 20}, {"op": "cond", "if": "대상의 넋흔들림 6 이상 또는 붕괴", "then": [{"op": "dmg", "n": 20}]}],
       "tags": {"produce": [], "consume": ["넋흔들림"]},
-      "upgrade": "피해 26. 대상이 붕괴 상태면 피해 26 더."
+      "upgrade": "피해 26. 대상의 넋흔들림이 6 이상이거나 붕괴 상태면 피해 26 더."
     }
   ]
 }

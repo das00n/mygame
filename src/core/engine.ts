@@ -57,7 +57,7 @@ export function newStats(): CombatStats {
   return {
     plays: new Map(), condEval: new Map(), powerFires: new Map(), specialUse: new Map(),
     dmgTakenHero: [0, 0, 0], dmgTakenSlot: [0, 0, 0], jangdanTurnSum: 0, turnsCounted: 0, respPlays: 0, respEligible: 0, cardPlays: 0,
-    downs: 0, deaths: 0, sameTurnDeaths: 0, revives: 0, gangsin: 0, collapses: 0, executions: 0, kills: 0, haewons: 0, haewonEligible: 0, escapes: 0,
+    downs: 0, deaths: 0, sameTurnDeaths: 0, revives: 0, gangsin: 0, collapses: 0, executions: 0, kills: 0, haewons: 0, haewonEligible: 0, haewonHealed: 0, escapes: 0,
     enemyHaewon: new Map(), heroDmgDealt: [0, 0, 0],
   };
 }
@@ -90,14 +90,14 @@ export function createCombat(setup: CombatSetup): CombatState {
     return {
       id: p.id, idx, melee: def.range === 'melee', maxHp, hp: Math.min(maxHp, p.hp ?? maxHp), block: 0, downed: false, dead: !!p.dead,
       downs: 0, rescue: 0, rescueNeed: RESCUE_BASE, survived: 0, weak: 0, possess: 0, stress: p.stress ?? 0, personal: 0,
-      personalCap: PERSONAL_CAP[p.id], stance: false, recovering: !!p.recovering, injured: !!p.injured, cover: -1, downTurn: -1,
+      personalCap: PERSONAL_CAP[p.id], stance: false, recovering: !!p.recovering, injured: !!p.injured, cover: -1, downTurn: -1, endDowned: false,
     };
   });
   const s: CombatState = {
     rng: setup.seed | 0, rules: setup.rules ?? DEFAULT_RULES, turn: 0, heroes, formation: [], enemies: [], nextUid: 1, draw: [], hand: [], discard: [], exhaust: [], powerZone: [],
     energy: 0, nextEnergy: 0, jangdan: 0, prevOwners: null, tokensPlayed: 0, formChanges: 0, talChanges: 0, summons: [], powers: [],
     gangsin: false, gangsinExtra: 0, baraji: 0, talAll: false, garakLocked: false, seokja: false, ajik: false, holdFront: -1,
-    statusAdded: 0, offeringPaid: false, jijeon: setup.jijeon ?? 3, deferredTokens: [], outcome: 0, lastDrawn: null,
+    statusAdded: 0, offeringPaid: false, groupHaewon: [], jijeon: setup.jijeon ?? 3, deferredTokens: [], outcome: 0, lastDrawn: null,
     stats: setup.record ? newStats() : null, newCurses: [], log: setup.log ? [] : null,
   };
   s.formation = defaultFormation(heroes);
@@ -353,6 +353,7 @@ export function checkOutcome(s: CombatState): void {
 export function finishCombat(s: CombatState): void {
   if (s.outcome !== 1) return;
   for (const h of s.heroes) {
+    h.endDowned = h.downed;
     if (h.downed) {
       h.downed = false;
       h.hp = 1;
@@ -447,8 +448,11 @@ export function playCard(s: CombatState, choice: ActionChoice): void {
     if (al.length) ctx.target = al[Math.floor(rand(s) * al.length)];
   }
   s.prevOwners = owners;
-  // 신바람: 만신 카드를 연달아 쓰면 +1
-  if (manshin && owners.length === 1 && owner === manshin.idx && (ctx.prevManshin || s.rules.sinbaramEvery) && def.ownerKind === 'hero') addPersonal(s, manshin.idx, 1);
+  // 신바람 (v0.4): 만신 카드를 낼 때마다 +1, 직전 카드도 만신 카드면 +1 더. (v0.1: 연달아 낼 때만 +1)
+  if (manshin && owners.length === 1 && owner === manshin.idx && def.ownerKind === 'hero') {
+    const gain = s.rules.sinbaramV01 ? (ctx.prevManshin ? 1 : 0) : 1 + (ctx.prevManshin ? 1 : 0);
+    if (gain) addPersonal(s, manshin.idx, gain);
+  }
 
   log(s, `카드: ${def.name}${choice.enemy >= 0 ? ' → ' + d.enemies[s.enemies[choice.enemy].def].name : ''}${resp ? ' (받는소리)' : ''}`);
 
@@ -1017,6 +1021,7 @@ function evalCond(s: CombatState, c: Cond, op: Extract<Op, { op: 'cond' }>, ctx:
       return !!b && b.stance;
     }
     case 'gangsin_req': return s.gangsin;
+    case 'gangsin': return s.gangsin;
     case 'prev_manshin': return ctx.prevManshin;
     case 'summons': return s.summons.length >= c.n;
     case 'summons_empty_res': {
@@ -1652,15 +1657,35 @@ export function killHero(s: CombatState, hi: number): void {
 }
 
 // ── 적 쓰러짐·해원 ──────────────────────────────────────────────────
+/** 해원 성립: 기록 + (규칙) 서 있는 영웅 모두 체력 회복 */
+function haewonDone(s: CombatState, e: EnemyState): void {
+  if (s.stats) {
+    s.stats.haewons++;
+    const id = D().enemies[e.def].id;
+    const v = s.stats.enemyHaewon.get(id) ?? [0, 0];
+    v[1]++;
+    s.stats.enemyHaewon.set(id, v);
+  }
+  const n = s.rules.haewonHeal ?? 0;
+  if (n > 0) {
+    for (const h of s.heroes) {
+      if (!standing(h)) continue;
+      const before = h.hp;
+      h.hp = Math.min(h.maxHp, h.hp + n);
+      if (s.stats) s.stats.haewonHealed += h.hp - before;
+    }
+  }
+}
+
 export function haewonSatisfied(s: CombatState, e: EnemyState): boolean {
   const d = D();
   const def = d.enemies[e.def];
   const r = def.haewon;
   switch (r.kind) {
-    case 'status': return statusOf(e, r.status!) >= (r.n ?? 1);
+    case 'status': return statusOf(e, r.status!) >= (r.n ?? 1) || (!!r.orCollapse && collapsed(s, e));
     case 'jangdan': return s.jangdan >= (r.n ?? 3);
     case 'summons': return s.summons.length > 0;
-    case 'token': return e.lastHitToken;
+    case 'token': return e.lastHitToken || (!!r.group && s.groupHaewon.includes(def.id));
     case 'formation': return s.formChanges > 0;
     case 'collapse': return collapsed(s, e);
     case 'offering': return s.offeringPaid;
@@ -1686,11 +1711,18 @@ export function killEnemy(s: CombatState, ei: number): void {
     s.stats.kills++;
     if (def.haewon.kind !== 'none') {
       s.stats.haewonEligible++;
-      if (e.haewon) s.stats.haewons++;
       const v = s.stats.enemyHaewon.get(def.id) ?? [0, 0];
       v[0]++;
-      if (e.haewon) v[1]++;
       s.stats.enemyHaewon.set(def.id, v);
+    }
+  }
+  if (e.haewon) haewonDone(s, e);
+  // 무리 해원 (잡귀): 하나가 조건을 채우면 이미 쓰러진 같은 원귀도 해원
+  if (e.haewon && def.haewon.group && !s.groupHaewon.includes(def.id)) {
+    s.groupHaewon = [...s.groupHaewon, def.id];
+    for (const x of s.enemies) if (x !== e && x.dead && !x.haewon && x.def === e.def) {
+      x.haewon = true;
+      haewonDone(s, x);
     }
   }
   log(s, `${def.name} 쓰러짐${e.haewon ? ' (해원)' : ''}`);

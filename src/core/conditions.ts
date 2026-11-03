@@ -17,6 +17,7 @@ export function parseCond(raw: string): Cond {
 
   // ── 플레이 조건·특수 ─────────────────────────────
   if (t.includes('에만 쓸 수 있다') && t.includes('강신')) return { k: 'gangsin_req' };
+  if (t.includes('강신 중')) return { k: 'gangsin' };
   if (t.includes('헛디딤') || t.includes('턴 종료(')) return { k: 'blade_fall' };
   if (t.startsWith('받는소리') && t.includes('굿상')) return { k: 'resp_summon' };
   if (t === '받는소리') return { k: 'resp' };

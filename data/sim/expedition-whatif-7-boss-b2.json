@@ -1,0 +1,8549 @@
+{
+ "meta": {
+  "generated": "2026-11-03T16:30:28.303Z",
+  "runs": 100,
+  "trios": 56,
+  "runtimeSec": 43.3,
+  "structure": "쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2",
+  "rules": {
+   "enemyDmgMult": 1,
+   "downShield": true,
+   "haewonHeal": 3,
+   "afterFightRecoveryMissing": 0.4,
+   "preBossCamp": true
+  },
+  "whatIf": {
+   "boss": "b2"
+  }
+ },
+ "distribution": {
+  "min": 0.15,
+  "median": 0.47,
+  "max": 0.81,
+  "mean": 0.457
+ },
+ "trios": [
+  {
+   "trio": "seungnyeo+beopsa+talggun",
+   "heroes": [
+    "seungnyeo",
+    "beopsa",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.81,
+   "deathsPerRun": 0.3,
+   "fightsSurvived": 11.32,
+   "haewonRate": 0.661,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.81
+    }
+   },
+   "wipes": {
+    "b2": 19
+   },
+   "campHeal": 0.11,
+   "campRemove": 0.89,
+   "deckSize": 20.75,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1151,
+    "winRate": 0.983,
+    "avgTurns": 6.216,
+    "hpLost": 17.12,
+    "haewonRate": 0.661,
+    "jangdanPerTurn": 2.126,
+    "respRate": 0.562,
+    "downsPerCombat": 0.118,
+    "deathsPerCombat": 0.006,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.056,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "seungnyeo": 0.411,
+     "beopsa": 0.251,
+     "talggun": 0.338
+    },
+    "dmgDealtShare": {
+     "seungnyeo": 0.293,
+     "beopsa": 0.334,
+     "talggun": 0.373
+    },
+    "dmgShareSlot": [
+     0.761,
+     0.071,
+     0.168
+    ],
+    "collapsesPerCombat": 0.559,
+    "executionsPerCombat": 0.321,
+    "gangsinPerCombat": 0
+   },
+   "flag": "dominant"
+  },
+  {
+   "trio": "seungnyeo+beopsa+chasa",
+   "heroes": [
+    "seungnyeo",
+    "beopsa",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.73,
+   "deathsPerRun": 0.48,
+   "fightsSurvived": 11.19,
+   "haewonRate": 0.757,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.73
+    }
+   },
+   "wipes": {
+    "b2": 27
+   },
+   "campHeal": 0.18,
+   "campRemove": 0.82,
+   "deckSize": 20.76,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1146,
+    "winRate": 0.976,
+    "avgTurns": 6.814,
+    "hpLost": 18.408,
+    "haewonRate": 0.757,
+    "jangdanPerTurn": 1.344,
+    "respRate": 0.6,
+    "downsPerCombat": 0.158,
+    "deathsPerCombat": 0.011,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.074,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "seungnyeo": 0.399,
+     "beopsa": 0.256,
+     "chasa": 0.344
+    },
+    "dmgDealtShare": {
+     "seungnyeo": 0.344,
+     "beopsa": 0.341,
+     "chasa": 0.314
+    },
+    "dmgShareSlot": [
+     0.736,
+     0.072,
+     0.191
+    ],
+    "collapsesPerCombat": 0.879,
+    "executionsPerCombat": 1.131,
+    "gangsinPerCombat": 0
+   },
+   "flag": "dominant"
+  },
+  {
+   "trio": "manshin+seungnyeo+chasa",
+   "heroes": [
+    "manshin",
+    "seungnyeo",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.7,
+   "deathsPerRun": 0.48,
+   "fightsSurvived": 11.2,
+   "haewonRate": 0.558,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.7
+    }
+   },
+   "wipes": {
+    "b2": 30
+   },
+   "campHeal": 0.01,
+   "campRemove": 0.99,
+   "deckSize": 20.6,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1150,
+    "winRate": 0.974,
+    "avgTurns": 6.503,
+    "hpLost": 18.647,
+    "haewonRate": 0.558,
+    "jangdanPerTurn": 1.201,
+    "respRate": 0.687,
+    "downsPerCombat": 0.17,
+    "deathsPerCombat": 0.01,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.079,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.271,
+     "seungnyeo": 0.39,
+     "chasa": 0.339
+    },
+    "dmgDealtShare": {
+     "manshin": 0.25,
+     "seungnyeo": 0.395,
+     "chasa": 0.355
+    },
+    "dmgShareSlot": [
+     0.725,
+     0.075,
+     0.2
+    ],
+    "collapsesPerCombat": 0.679,
+    "executionsPerCombat": 1.429,
+    "gangsinPerCombat": 1.031
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+beopsa+talggun",
+   "heroes": [
+    "baksu",
+    "beopsa",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.68,
+   "deathsPerRun": 0.61,
+   "fightsSurvived": 11.1,
+   "haewonRate": 0.547,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.68
+    }
+   },
+   "wipes": {
+    "b2": 32
+   },
+   "campHeal": 0.24,
+   "campRemove": 0.76,
+   "deckSize": 21.06,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1142,
+    "winRate": 0.972,
+    "avgTurns": 5.547,
+    "hpLost": 20.06,
+    "haewonRate": 0.547,
+    "jangdanPerTurn": 2.44,
+    "respRate": 0.606,
+    "downsPerCombat": 0.203,
+    "deathsPerCombat": 0.009,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.09,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "baksu": 0.394,
+     "beopsa": 0.262,
+     "talggun": 0.345
+    },
+    "dmgDealtShare": {
+     "baksu": 0.268,
+     "beopsa": 0.307,
+     "talggun": 0.426
+    },
+    "dmgShareSlot": [
+     0.759,
+     0.068,
+     0.173
+    ],
+    "collapsesPerCombat": 0.087,
+    "executionsPerCombat": 0.176,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+seungnyeo+chasa",
+   "heroes": [
+    "posu",
+    "seungnyeo",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.66,
+   "deathsPerRun": 0.51,
+   "fightsSurvived": 11.08,
+   "haewonRate": 0.427,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.667
+    }
+   },
+   "wipes": {
+    "b2": 33,
+    "x3": 1
+   },
+   "campHeal": 0.31,
+   "campRemove": 0.68,
+   "deckSize": 20.97,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1142,
+    "winRate": 0.97,
+    "avgTurns": 6.515,
+    "hpLost": 22.505,
+    "haewonRate": 0.427,
+    "jangdanPerTurn": 1.208,
+    "respRate": 0.711,
+    "downsPerCombat": 0.22,
+    "deathsPerCombat": 0.007,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.109,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.272,
+     "seungnyeo": 0.402,
+     "chasa": 0.326
+    },
+    "dmgDealtShare": {
+     "posu": 0.438,
+     "seungnyeo": 0.3,
+     "chasa": 0.262
+    },
+    "dmgShareSlot": [
+     0.712,
+     0.08,
+     0.208
+    ],
+    "collapsesPerCombat": 0.447,
+    "executionsPerCombat": 0.797,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+beopsa+talggun",
+   "heroes": [
+    "jaebi",
+    "beopsa",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.64,
+   "deathsPerRun": 0.79,
+   "fightsSurvived": 11.06,
+   "haewonRate": 0.536,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.646
+    }
+   },
+   "wipes": {
+    "b2": 35,
+    "h5": 1
+   },
+   "campHeal": 0.17,
+   "campRemove": 0.83,
+   "deckSize": 20.93,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1142,
+    "winRate": 0.968,
+    "avgTurns": 5.559,
+    "hpLost": 18.112,
+    "haewonRate": 0.536,
+    "jangdanPerTurn": 3.274,
+    "respRate": 0.566,
+    "downsPerCombat": 0.201,
+    "deathsPerCombat": 0.019,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.085,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.27,
+     "beopsa": 0.299,
+     "talggun": 0.431
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.289,
+     "beopsa": 0.317,
+     "talggun": 0.394
+    },
+    "dmgShareSlot": [
+     0.744,
+     0.076,
+     0.18
+    ],
+    "collapsesPerCombat": 0.046,
+    "executionsPerCombat": 0.25,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+baksu+talggun",
+   "heroes": [
+    "jaebi",
+    "baksu",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.63,
+   "deathsPerRun": 0.61,
+   "fightsSurvived": 11.16,
+   "haewonRate": 0.271,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.63
+    }
+   },
+   "wipes": {
+    "b2": 37
+   },
+   "campHeal": 0.26,
+   "campRemove": 0.74,
+   "deckSize": 21.19,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1153,
+    "winRate": 0.968,
+    "avgTurns": 5.303,
+    "hpLost": 21.253,
+    "haewonRate": 0.271,
+    "jangdanPerTurn": 3.388,
+    "respRate": 0.643,
+    "downsPerCombat": 0.226,
+    "deathsPerCombat": 0.016,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.099,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.265,
+     "baksu": 0.385,
+     "talggun": 0.35
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.291,
+     "baksu": 0.306,
+     "talggun": 0.404
+    },
+    "dmgShareSlot": [
+     0.737,
+     0.08,
+     0.183
+    ],
+    "collapsesPerCombat": 0.022,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "beopsa+talggun+chasa",
+   "heroes": [
+    "beopsa",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.63,
+   "deathsPerRun": 0.72,
+   "fightsSurvived": 11.08,
+   "haewonRate": 0.667,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.636
+    }
+   },
+   "wipes": {
+    "b2": 36,
+    "x2": 1
+   },
+   "campHeal": 0.17,
+   "campRemove": 0.83,
+   "deckSize": 20.8,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1145,
+    "winRate": 0.968,
+    "avgTurns": 6.437,
+    "hpLost": 19.233,
+    "haewonRate": 0.667,
+    "jangdanPerTurn": 2.076,
+    "respRate": 0.58,
+    "downsPerCombat": 0.279,
+    "deathsPerCombat": 0.021,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.158,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "beopsa": 0.276,
+     "talggun": 0.353,
+     "chasa": 0.371
+    },
+    "dmgDealtShare": {
+     "beopsa": 0.353,
+     "talggun": 0.39,
+     "chasa": 0.257
+    },
+    "dmgShareSlot": [
+     0.767,
+     0.064,
+     0.17
+    ],
+    "collapsesPerCombat": 0.07,
+    "executionsPerCombat": 0.927,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+seungnyeo+beopsa",
+   "heroes": [
+    "posu",
+    "seungnyeo",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.62,
+   "deathsPerRun": 0.76,
+   "fightsSurvived": 11.12,
+   "haewonRate": 0.598,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.633
+    }
+   },
+   "wipes": {
+    "b2": 36,
+    "h5": 1,
+    "h2": 1
+   },
+   "campHeal": 0.35,
+   "campRemove": 0.65,
+   "deckSize": 21.18,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1150,
+    "winRate": 0.967,
+    "avgTurns": 6.672,
+    "hpLost": 20.32,
+    "haewonRate": 0.598,
+    "jangdanPerTurn": 1.483,
+    "respRate": 0.605,
+    "downsPerCombat": 0.233,
+    "deathsPerCombat": 0.024,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.109,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.268,
+     "seungnyeo": 0.513,
+     "beopsa": 0.219
+    },
+    "dmgDealtShare": {
+     "posu": 0.405,
+     "seungnyeo": 0.26,
+     "beopsa": 0.335
+    },
+    "dmgShareSlot": [
+     0.75,
+     0.068,
+     0.182
+    ],
+    "collapsesPerCombat": 0.711,
+    "executionsPerCombat": 0.276,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+seungnyeo+talggun",
+   "heroes": [
+    "posu",
+    "seungnyeo",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.61,
+   "deathsPerRun": 0.76,
+   "fightsSurvived": 11.07,
+   "haewonRate": 0.527,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.616
+    }
+   },
+   "wipes": {
+    "b2": 38,
+    "x3": 1
+   },
+   "campHeal": 0.31,
+   "campRemove": 0.68,
+   "deckSize": 21.13,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1146,
+    "winRate": 0.966,
+    "avgTurns": 6.666,
+    "hpLost": 23.145,
+    "haewonRate": 0.527,
+    "jangdanPerTurn": 1.912,
+    "respRate": 0.652,
+    "downsPerCombat": 0.26,
+    "deathsPerCombat": 0.016,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.136,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "posu": 0.26,
+     "seungnyeo": 0.415,
+     "talggun": 0.326
+    },
+    "dmgDealtShare": {
+     "posu": 0.381,
+     "seungnyeo": 0.257,
+     "talggun": 0.362
+    },
+    "dmgShareSlot": [
+     0.762,
+     0.071,
+     0.167
+    ],
+    "collapsesPerCombat": 0.323,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+seungnyeo+talggun",
+   "heroes": [
+    "manshin",
+    "seungnyeo",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.59,
+   "deathsPerRun": 0.63,
+   "fightsSurvived": 11.1,
+   "haewonRate": 0.596,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.59
+    }
+   },
+   "wipes": {
+    "b2": 41
+   },
+   "campHeal": 0.07,
+   "campRemove": 0.93,
+   "deckSize": 20.73,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1151,
+    "winRate": 0.964,
+    "avgTurns": 6.373,
+    "hpLost": 19.495,
+    "haewonRate": 0.596,
+    "jangdanPerTurn": 1.858,
+    "respRate": 0.639,
+    "downsPerCombat": 0.23,
+    "deathsPerCombat": 0.019,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.105,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.247,
+     "seungnyeo": 0.414,
+     "talggun": 0.339
+    },
+    "dmgDealtShare": {
+     "manshin": 0.207,
+     "seungnyeo": 0.315,
+     "talggun": 0.478
+    },
+    "dmgShareSlot": [
+     0.759,
+     0.083,
+     0.158
+    ],
+    "collapsesPerCombat": 0.387,
+    "executionsPerCombat": 0.619,
+    "gangsinPerCombat": 1.178
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+seungnyeo+talggun",
+   "heroes": [
+    "baksu",
+    "seungnyeo",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.58,
+   "deathsPerRun": 0.67,
+   "fightsSurvived": 11.09,
+   "haewonRate": 0.53,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.586
+    }
+   },
+   "wipes": {
+    "b2": 41,
+    "x3": 1
+   },
+   "campHeal": 0.29,
+   "campRemove": 0.71,
+   "deckSize": 21.05,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1151,
+    "winRate": 0.964,
+    "avgTurns": 6.406,
+    "hpLost": 22.964,
+    "haewonRate": 0.53,
+    "jangdanPerTurn": 2.274,
+    "respRate": 0.645,
+    "downsPerCombat": 0.226,
+    "deathsPerCombat": 0.012,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.099,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "baksu": 0.342,
+     "seungnyeo": 0.356,
+     "talggun": 0.302
+    },
+    "dmgDealtShare": {
+     "baksu": 0.263,
+     "seungnyeo": 0.273,
+     "talggun": 0.464
+    },
+    "dmgShareSlot": [
+     0.724,
+     0.094,
+     0.182
+    ],
+    "collapsesPerCombat": 0.266,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+seungnyeo+talggun",
+   "heroes": [
+    "jaebi",
+    "seungnyeo",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.56,
+   "deathsPerRun": 0.7,
+   "fightsSurvived": 11.03,
+   "haewonRate": 0.511,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.56
+    }
+   },
+   "wipes": {
+    "b2": 44
+   },
+   "campHeal": 0.2,
+   "campRemove": 0.8,
+   "deckSize": 20.89,
+   "skipsPerRun": 0.01,
+   "combat": {
+    "n": 1147,
+    "winRate": 0.962,
+    "avgTurns": 6.922,
+    "hpLost": 21.861,
+    "haewonRate": 0.511,
+    "jangdanPerTurn": 3.169,
+    "respRate": 0.594,
+    "downsPerCombat": 0.247,
+    "deathsPerCombat": 0.015,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.105,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.27,
+     "seungnyeo": 0.397,
+     "talggun": 0.332
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.34,
+     "seungnyeo": 0.243,
+     "talggun": 0.417
+    },
+    "dmgShareSlot": [
+     0.738,
+     0.088,
+     0.174
+    ],
+    "collapsesPerCombat": 0.201,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+seungnyeo+chasa",
+   "heroes": [
+    "baksu",
+    "seungnyeo",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.56,
+   "deathsPerRun": 0.76,
+   "fightsSurvived": 10.97,
+   "haewonRate": 0.498,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.571
+    }
+   },
+   "wipes": {
+    "b2": 42,
+    "x3": 2
+   },
+   "campHeal": 0.28,
+   "campRemove": 0.72,
+   "deckSize": 21.02,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1141,
+    "winRate": 0.961,
+    "avgTurns": 6.711,
+    "hpLost": 24.288,
+    "haewonRate": 0.498,
+    "jangdanPerTurn": 1.191,
+    "respRate": 0.7,
+    "downsPerCombat": 0.254,
+    "deathsPerCombat": 0.012,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.113,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "baksu": 0.36,
+     "seungnyeo": 0.347,
+     "chasa": 0.293
+    },
+    "dmgDealtShare": {
+     "baksu": 0.247,
+     "seungnyeo": 0.362,
+     "chasa": 0.391
+    },
+    "dmgShareSlot": [
+     0.699,
+     0.096,
+     0.205
+    ],
+    "collapsesPerCombat": 0.629,
+    "executionsPerCombat": 1.018,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+baksu+seungnyeo",
+   "heroes": [
+    "manshin",
+    "baksu",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.55,
+   "deathsPerRun": 0.75,
+   "fightsSurvived": 11.07,
+   "haewonRate": 0.472,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.55
+    }
+   },
+   "wipes": {
+    "b2": 45
+   },
+   "campHeal": 0.27,
+   "campRemove": 0.73,
+   "deckSize": 20.96,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1152,
+    "winRate": 0.961,
+    "avgTurns": 6.098,
+    "hpLost": 21.596,
+    "haewonRate": 0.472,
+    "jangdanPerTurn": 1.291,
+    "respRate": 0.696,
+    "downsPerCombat": 0.228,
+    "deathsPerCombat": 0.01,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.092,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.247,
+     "baksu": 0.382,
+     "seungnyeo": 0.37
+    },
+    "dmgDealtShare": {
+     "manshin": 0.31,
+     "baksu": 0.269,
+     "seungnyeo": 0.421
+    },
+    "dmgShareSlot": [
+     0.688,
+     0.104,
+     0.208
+    ],
+    "collapsesPerCombat": 0.486,
+    "executionsPerCombat": 0.708,
+    "gangsinPerCombat": 1.234
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+beopsa+talggun",
+   "heroes": [
+    "manshin",
+    "beopsa",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.55,
+   "deathsPerRun": 0.8,
+   "fightsSurvived": 11.12,
+   "haewonRate": 0.58,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.55
+    }
+   },
+   "wipes": {
+    "b2": 45
+   },
+   "campHeal": 0.16,
+   "campRemove": 0.84,
+   "deckSize": 20.91,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1157,
+    "winRate": 0.961,
+    "avgTurns": 5.455,
+    "hpLost": 17.749,
+    "haewonRate": 0.58,
+    "jangdanPerTurn": 2.077,
+    "respRate": 0.582,
+    "downsPerCombat": 0.247,
+    "deathsPerCombat": 0.018,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.107,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.258,
+     "beopsa": 0.308,
+     "talggun": 0.434
+    },
+    "dmgDealtShare": {
+     "manshin": 0.182,
+     "beopsa": 0.359,
+     "talggun": 0.459
+    },
+    "dmgShareSlot": [
+     0.735,
+     0.08,
+     0.185
+    ],
+    "collapsesPerCombat": 0.049,
+    "executionsPerCombat": 0.607,
+    "gangsinPerCombat": 1.123
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+beopsa+chasa",
+   "heroes": [
+    "jaebi",
+    "beopsa",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.53,
+   "deathsPerRun": 0.82,
+   "fightsSurvived": 10.95,
+   "haewonRate": 0.614,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.541
+    }
+   },
+   "wipes": {
+    "b2": 45,
+    "x2": 2
+   },
+   "campHeal": 0.36,
+   "campRemove": 0.63,
+   "deckSize": 21.36,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1142,
+    "winRate": 0.959,
+    "avgTurns": 6.778,
+    "hpLost": 21.009,
+    "haewonRate": 0.614,
+    "jangdanPerTurn": 2.784,
+    "respRate": 0.566,
+    "downsPerCombat": 0.328,
+    "deathsPerCombat": 0.018,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.158,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.199,
+     "beopsa": 0.318,
+     "chasa": 0.483
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.36,
+     "beopsa": 0.397,
+     "chasa": 0.243
+    },
+    "dmgShareSlot": [
+     0.702,
+     0.082,
+     0.216
+    ],
+    "collapsesPerCombat": 0.065,
+    "executionsPerCombat": 0.902,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+beopsa+chasa",
+   "heroes": [
+    "posu",
+    "beopsa",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.53,
+   "deathsPerRun": 0.91,
+   "fightsSurvived": 10.99,
+   "haewonRate": 0.541,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.535
+    }
+   },
+   "wipes": {
+    "b2": 46,
+    "x1": 1
+   },
+   "campHeal": 0.59,
+   "campRemove": 0.41,
+   "deckSize": 21.61,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1146,
+    "winRate": 0.959,
+    "avgTurns": 6.343,
+    "hpLost": 22.014,
+    "haewonRate": 0.541,
+    "jangdanPerTurn": 1.49,
+    "respRate": 0.608,
+    "downsPerCombat": 0.392,
+    "deathsPerCombat": 0.036,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.19,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.303,
+     "beopsa": 0.23,
+     "chasa": 0.468
+    },
+    "dmgDealtShare": {
+     "posu": 0.416,
+     "beopsa": 0.35,
+     "chasa": 0.235
+    },
+    "dmgShareSlot": [
+     0.727,
+     0.069,
+     0.204
+    ],
+    "collapsesPerCombat": 0.071,
+    "executionsPerCombat": 0.784,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+seungnyeo+beopsa",
+   "heroes": [
+    "baksu",
+    "seungnyeo",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.52,
+   "deathsPerRun": 0.83,
+   "fightsSurvived": 11.01,
+   "haewonRate": 0.669,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.525
+    }
+   },
+   "wipes": {
+    "b2": 47,
+    "x3": 1
+   },
+   "campHeal": 0.28,
+   "campRemove": 0.72,
+   "deckSize": 20.99,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1149,
+    "winRate": 0.958,
+    "avgTurns": 6.342,
+    "hpLost": 21.125,
+    "haewonRate": 0.669,
+    "jangdanPerTurn": 1.524,
+    "respRate": 0.59,
+    "downsPerCombat": 0.224,
+    "deathsPerCombat": 0.013,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.075,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "baksu": 0.388,
+     "seungnyeo": 0.37,
+     "beopsa": 0.242
+    },
+    "dmgDealtShare": {
+     "baksu": 0.27,
+     "seungnyeo": 0.315,
+     "beopsa": 0.415
+    },
+    "dmgShareSlot": [
+     0.68,
+     0.119,
+     0.201
+    ],
+    "collapsesPerCombat": 0.789,
+    "executionsPerCombat": 0.427,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+beopsa+chasa",
+   "heroes": [
+    "manshin",
+    "beopsa",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.51,
+   "deathsPerRun": 0.94,
+   "fightsSurvived": 10.99,
+   "haewonRate": 0.616,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.51
+    }
+   },
+   "wipes": {
+    "b2": 49
+   },
+   "campHeal": 0.44,
+   "campRemove": 0.56,
+   "deckSize": 21.28,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1148,
+    "winRate": 0.957,
+    "avgTurns": 6.183,
+    "hpLost": 19.678,
+    "haewonRate": 0.616,
+    "jangdanPerTurn": 1.405,
+    "respRate": 0.576,
+    "downsPerCombat": 0.305,
+    "deathsPerCombat": 0.033,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.13,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.204,
+     "beopsa": 0.312,
+     "chasa": 0.484
+    },
+    "dmgDealtShare": {
+     "manshin": 0.303,
+     "beopsa": 0.443,
+     "chasa": 0.254
+    },
+    "dmgShareSlot": [
+     0.711,
+     0.076,
+     0.213
+    ],
+    "collapsesPerCombat": 0.046,
+    "executionsPerCombat": 1.129,
+    "gangsinPerCombat": 1.374
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+posu+seungnyeo",
+   "heroes": [
+    "manshin",
+    "posu",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.5,
+   "deathsPerRun": 0.96,
+   "fightsSurvived": 10.93,
+   "haewonRate": 0.391,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.505
+    }
+   },
+   "wipes": {
+    "b2": 49,
+    "x2": 1
+   },
+   "campHeal": 0.38,
+   "campRemove": 0.62,
+   "deckSize": 21.17,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1143,
+    "winRate": 0.956,
+    "avgTurns": 6.427,
+    "hpLost": 22.088,
+    "haewonRate": 0.391,
+    "jangdanPerTurn": 1.288,
+    "respRate": 0.682,
+    "downsPerCombat": 0.284,
+    "deathsPerCombat": 0.031,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.118,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.217,
+     "posu": 0.284,
+     "seungnyeo": 0.499
+    },
+    "dmgDealtShare": {
+     "manshin": 0.21,
+     "posu": 0.494,
+     "seungnyeo": 0.296
+    },
+    "dmgShareSlot": [
+     0.719,
+     0.065,
+     0.216
+    ],
+    "collapsesPerCombat": 0.413,
+    "executionsPerCombat": 0.507,
+    "gangsinPerCombat": 1.011
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+seungnyeo+chasa",
+   "heroes": [
+    "jaebi",
+    "seungnyeo",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.5,
+   "deathsPerRun": 0.92,
+   "fightsSurvived": 10.95,
+   "haewonRate": 0.519,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.505
+    }
+   },
+   "wipes": {
+    "b2": 49,
+    "h5": 1
+   },
+   "campHeal": 0.22,
+   "campRemove": 0.78,
+   "deckSize": 20.85,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1145,
+    "winRate": 0.956,
+    "avgTurns": 7.387,
+    "hpLost": 21.808,
+    "haewonRate": 0.519,
+    "jangdanPerTurn": 2.264,
+    "respRate": 0.626,
+    "downsPerCombat": 0.279,
+    "deathsPerCombat": 0.019,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.135,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.277,
+     "seungnyeo": 0.397,
+     "chasa": 0.326
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.328,
+     "seungnyeo": 0.34,
+     "chasa": 0.333
+    },
+    "dmgShareSlot": [
+     0.721,
+     0.085,
+     0.194
+    ],
+    "collapsesPerCombat": 0.525,
+    "executionsPerCombat": 0.954,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+seungnyeo+beopsa",
+   "heroes": [
+    "manshin",
+    "seungnyeo",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.49,
+   "deathsPerRun": 0.86,
+   "fightsSurvived": 10.93,
+   "haewonRate": 0.675,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.49
+    }
+   },
+   "wipes": {
+    "b2": 51
+   },
+   "campHeal": 0.26,
+   "campRemove": 0.74,
+   "deckSize": 20.87,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1144,
+    "winRate": 0.955,
+    "avgTurns": 6.31,
+    "hpLost": 18.349,
+    "haewonRate": 0.675,
+    "jangdanPerTurn": 1.42,
+    "respRate": 0.59,
+    "downsPerCombat": 0.237,
+    "deathsPerCombat": 0.017,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.087,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.187,
+     "seungnyeo": 0.515,
+     "beopsa": 0.299
+    },
+    "dmgDealtShare": {
+     "manshin": 0.283,
+     "seungnyeo": 0.287,
+     "beopsa": 0.429
+    },
+    "dmgShareSlot": [
+     0.696,
+     0.091,
+     0.214
+    ],
+    "collapsesPerCombat": 0.627,
+    "executionsPerCombat": 0.785,
+    "gangsinPerCombat": 1.39
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+seungnyeo+beopsa",
+   "heroes": [
+    "jaebi",
+    "seungnyeo",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.49,
+   "deathsPerRun": 0.95,
+   "fightsSurvived": 10.79,
+   "haewonRate": 0.584,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.495
+    }
+   },
+   "wipes": {
+    "b2": 50,
+    "x2": 1
+   },
+   "campHeal": 0.26,
+   "campRemove": 0.73,
+   "deckSize": 20.91,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1130,
+    "winRate": 0.955,
+    "avgTurns": 6.74,
+    "hpLost": 19.942,
+    "haewonRate": 0.584,
+    "jangdanPerTurn": 2.713,
+    "respRate": 0.563,
+    "downsPerCombat": 0.254,
+    "deathsPerCombat": 0.017,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.095,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.202,
+     "seungnyeo": 0.513,
+     "beopsa": 0.284
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.328,
+     "seungnyeo": 0.275,
+     "beopsa": 0.397
+    },
+    "dmgShareSlot": [
+     0.692,
+     0.101,
+     0.207
+    ],
+    "collapsesPerCombat": 0.592,
+    "executionsPerCombat": 0.354,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+beopsa+chasa",
+   "heroes": [
+    "baksu",
+    "beopsa",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.49,
+   "deathsPerRun": 1,
+   "fightsSurvived": 10.92,
+   "haewonRate": 0.691,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.49
+    }
+   },
+   "wipes": {
+    "b2": 51
+   },
+   "campHeal": 0.34,
+   "campRemove": 0.66,
+   "deckSize": 21.09,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1143,
+    "winRate": 0.955,
+    "avgTurns": 6.073,
+    "hpLost": 22.391,
+    "haewonRate": 0.691,
+    "jangdanPerTurn": 1.47,
+    "respRate": 0.615,
+    "downsPerCombat": 0.297,
+    "deathsPerCombat": 0.021,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.128,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "baksu": 0.382,
+     "beopsa": 0.265,
+     "chasa": 0.354
+    },
+    "dmgDealtShare": {
+     "baksu": 0.246,
+     "beopsa": 0.396,
+     "chasa": 0.358
+    },
+    "dmgShareSlot": [
+     0.711,
+     0.078,
+     0.211
+    ],
+    "collapsesPerCombat": 0.115,
+    "executionsPerCombat": 0.997,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "seungnyeo+talggun+chasa",
+   "heroes": [
+    "seungnyeo",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.49,
+   "deathsPerRun": 0.91,
+   "fightsSurvived": 10.95,
+   "haewonRate": 0.65,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.495
+    }
+   },
+   "wipes": {
+    "b2": 50,
+    "x3": 1
+   },
+   "campHeal": 0.06,
+   "campRemove": 0.94,
+   "deckSize": 20.64,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1146,
+    "winRate": 0.955,
+    "avgTurns": 7.102,
+    "hpLost": 21.393,
+    "haewonRate": 0.65,
+    "jangdanPerTurn": 1.911,
+    "respRate": 0.654,
+    "downsPerCombat": 0.3,
+    "deathsPerCombat": 0.022,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.151,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "seungnyeo": 0.37,
+     "talggun": 0.31,
+     "chasa": 0.319
+    },
+    "dmgDealtShare": {
+     "seungnyeo": 0.319,
+     "talggun": 0.384,
+     "chasa": 0.297
+    },
+    "dmgShareSlot": [
+     0.74,
+     0.082,
+     0.178
+    ],
+    "collapsesPerCombat": 0.547,
+    "executionsPerCombat": 0.936,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+baksu+chasa",
+   "heroes": [
+    "jaebi",
+    "baksu",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.47,
+   "deathsPerRun": 0.88,
+   "fightsSurvived": 11.02,
+   "haewonRate": 0.235,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.47
+    }
+   },
+   "wipes": {
+    "b2": 53
+   },
+   "campHeal": 0.32,
+   "campRemove": 0.68,
+   "deckSize": 21.36,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1155,
+    "winRate": 0.954,
+    "avgTurns": 5.694,
+    "hpLost": 23.54,
+    "haewonRate": 0.235,
+    "jangdanPerTurn": 2.637,
+    "respRate": 0.661,
+    "downsPerCombat": 0.271,
+    "deathsPerCombat": 0.013,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.104,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.275,
+     "baksu": 0.376,
+     "chasa": 0.349
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.321,
+     "baksu": 0.376,
+     "chasa": 0.302
+    },
+    "dmgShareSlot": [
+     0.695,
+     0.085,
+     0.22
+    ],
+    "collapsesPerCombat": 0.036,
+    "executionsPerCombat": 0.81,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+baksu+seungnyeo",
+   "heroes": [
+    "posu",
+    "baksu",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.47,
+   "deathsPerRun": 0.92,
+   "fightsSurvived": 10.87,
+   "haewonRate": 0.343,
+   "boss": {
+    "b2": {
+     "reached": 97,
+     "clearRate": 0.485
+    }
+   },
+   "wipes": {
+    "b2": 50,
+    "h1": 1,
+    "x3": 1,
+    "x2": 1
+   },
+   "campHeal": 0.55,
+   "campRemove": 0.44,
+   "deckSize": 21.42,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1140,
+    "winRate": 0.954,
+    "avgTurns": 6.258,
+    "hpLost": 26.085,
+    "haewonRate": 0.343,
+    "jangdanPerTurn": 1.372,
+    "respRate": 0.717,
+    "downsPerCombat": 0.338,
+    "deathsPerCombat": 0.018,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.141,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.243,
+     "baksu": 0.381,
+     "seungnyeo": 0.376
+    },
+    "dmgDealtShare": {
+     "posu": 0.45,
+     "baksu": 0.25,
+     "seungnyeo": 0.3
+    },
+    "dmgShareSlot": [
+     0.688,
+     0.098,
+     0.214
+    ],
+    "collapsesPerCombat": 0.405,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+beopsa+talggun",
+   "heroes": [
+    "posu",
+    "beopsa",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.47,
+   "deathsPerRun": 1.04,
+   "fightsSurvived": 10.98,
+   "haewonRate": 0.522,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.475
+    }
+   },
+   "wipes": {
+    "b2": 52,
+    "h2": 1
+   },
+   "campHeal": 0.29,
+   "campRemove": 0.71,
+   "deckSize": 21.17,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1151,
+    "winRate": 0.954,
+    "avgTurns": 5.757,
+    "hpLost": 20.5,
+    "haewonRate": 0.522,
+    "jangdanPerTurn": 2.2,
+    "respRate": 0.6,
+    "downsPerCombat": 0.346,
+    "deathsPerCombat": 0.029,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.175,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.294,
+     "beopsa": 0.291,
+     "talggun": 0.415
+    },
+    "dmgDealtShare": {
+     "posu": 0.284,
+     "beopsa": 0.29,
+     "talggun": 0.426
+    },
+    "dmgShareSlot": [
+     0.771,
+     0.07,
+     0.159
+    ],
+    "collapsesPerCombat": 0.069,
+    "executionsPerCombat": 0.153,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+talggun+chasa",
+   "heroes": [
+    "posu",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.45,
+   "deathsPerRun": 1.03,
+   "fightsSurvived": 11.03,
+   "haewonRate": 0.387,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.455
+    }
+   },
+   "wipes": {
+    "b2": 54,
+    "h1": 1
+   },
+   "campHeal": 0.36,
+   "campRemove": 0.64,
+   "deckSize": 21.42,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1158,
+    "winRate": 0.953,
+    "avgTurns": 5.984,
+    "hpLost": 23.818,
+    "haewonRate": 0.387,
+    "jangdanPerTurn": 1.88,
+    "respRate": 0.655,
+    "downsPerCombat": 0.345,
+    "deathsPerCombat": 0.027,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.169,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.274,
+     "talggun": 0.358,
+     "chasa": 0.368
+    },
+    "dmgDealtShare": {
+     "posu": 0.374,
+     "talggun": 0.391,
+     "chasa": 0.235
+    },
+    "dmgShareSlot": [
+     0.757,
+     0.065,
+     0.178
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.649,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+baksu+beopsa",
+   "heroes": [
+    "posu",
+    "baksu",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.44,
+   "deathsPerRun": 1.19,
+   "fightsSurvived": 10.71,
+   "haewonRate": 0.473,
+   "boss": {
+    "b2": {
+     "reached": 91,
+     "clearRate": 0.484
+    }
+   },
+   "wipes": {
+    "b2": 47,
+    "x2": 3,
+    "x1": 1,
+    "h1": 2,
+    "x3": 1,
+    "h5": 2
+   },
+   "campHeal": 0.64,
+   "campRemove": 0.35,
+   "deckSize": 21.65,
+   "skipsPerRun": 0.01,
+   "combat": {
+    "n": 1127,
+    "winRate": 0.95,
+    "avgTurns": 5.828,
+    "hpLost": 21.586,
+    "haewonRate": 0.473,
+    "jangdanPerTurn": 1.742,
+    "respRate": 0.613,
+    "downsPerCombat": 0.512,
+    "deathsPerCombat": 0.055,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.236,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "posu": 0.276,
+     "baksu": 0.465,
+     "beopsa": 0.259
+    },
+    "dmgDealtShare": {
+     "posu": 0.411,
+     "baksu": 0.186,
+     "beopsa": 0.404
+    },
+    "dmgShareSlot": [
+     0.713,
+     0.085,
+     0.202
+    ],
+    "collapsesPerCombat": 0.167,
+    "executionsPerCombat": 0.133,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+posu+beopsa",
+   "heroes": [
+    "manshin",
+    "posu",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.43,
+   "deathsPerRun": 1.11,
+   "fightsSurvived": 10.91,
+   "haewonRate": 0.535,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.434
+    }
+   },
+   "wipes": {
+    "b2": 56,
+    "x2": 1
+   },
+   "campHeal": 0.44,
+   "campRemove": 0.56,
+   "deckSize": 21.4,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1148,
+    "winRate": 0.95,
+    "avgTurns": 6.038,
+    "hpLost": 19.943,
+    "haewonRate": 0.535,
+    "jangdanPerTurn": 1.47,
+    "respRate": 0.575,
+    "downsPerCombat": 0.387,
+    "deathsPerCombat": 0.04,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.172,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.444,
+     "posu": 0.308,
+     "beopsa": 0.248
+    },
+    "dmgDealtShare": {
+     "manshin": 0.175,
+     "posu": 0.424,
+     "beopsa": 0.401
+    },
+    "dmgShareSlot": [
+     0.723,
+     0.075,
+     0.202
+    ],
+    "collapsesPerCombat": 0.074,
+    "executionsPerCombat": 0.557,
+    "gangsinPerCombat": 1.177
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+posu+seungnyeo",
+   "heroes": [
+    "jaebi",
+    "posu",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.43,
+   "deathsPerRun": 1.02,
+   "fightsSurvived": 10.7,
+   "haewonRate": 0.32,
+   "boss": {
+    "b2": {
+     "reached": 92,
+     "clearRate": 0.467
+    }
+   },
+   "wipes": {
+    "b2": 49,
+    "h5": 1,
+    "x2": 6,
+    "x1": 1
+   },
+   "campHeal": 0.49,
+   "campRemove": 0.49,
+   "deckSize": 21.28,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1127,
+    "winRate": 0.949,
+    "avgTurns": 7.075,
+    "hpLost": 23.872,
+    "haewonRate": 0.32,
+    "jangdanPerTurn": 2.476,
+    "respRate": 0.625,
+    "downsPerCombat": 0.402,
+    "deathsPerCombat": 0.042,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.194,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.233,
+     "posu": 0.286,
+     "seungnyeo": 0.481
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.358,
+     "posu": 0.43,
+     "seungnyeo": 0.212
+    },
+    "dmgShareSlot": [
+     0.717,
+     0.08,
+     0.203
+    ],
+    "collapsesPerCombat": 0.288,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+talggun+chasa",
+   "heroes": [
+    "jaebi",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.43,
+   "deathsPerRun": 1.07,
+   "fightsSurvived": 10.96,
+   "haewonRate": 0.362,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.43
+    }
+   },
+   "wipes": {
+    "b2": 57
+   },
+   "campHeal": 0.22,
+   "campRemove": 0.78,
+   "deckSize": 21.08,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1153,
+    "winRate": 0.951,
+    "avgTurns": 5.961,
+    "hpLost": 21.971,
+    "haewonRate": 0.362,
+    "jangdanPerTurn": 3.084,
+    "respRate": 0.616,
+    "downsPerCombat": 0.31,
+    "deathsPerCombat": 0.023,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.139,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.289,
+     "talggun": 0.335,
+     "chasa": 0.376
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.353,
+     "talggun": 0.376,
+     "chasa": 0.271
+    },
+    "dmgShareSlot": [
+     0.745,
+     0.073,
+     0.182
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.768,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+baksu+talggun",
+   "heroes": [
+    "posu",
+    "baksu",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.43,
+   "deathsPerRun": 0.93,
+   "fightsSurvived": 10.82,
+   "haewonRate": 0.309,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.439
+    }
+   },
+   "wipes": {
+    "b2": 55,
+    "x2": 1,
+    "x3": 1
+   },
+   "campHeal": 0.55,
+   "campRemove": 0.44,
+   "deckSize": 21.55,
+   "skipsPerRun": 0.01,
+   "combat": {
+    "n": 1139,
+    "winRate": 0.95,
+    "avgTurns": 5.511,
+    "hpLost": 24.824,
+    "haewonRate": 0.309,
+    "jangdanPerTurn": 2.26,
+    "respRate": 0.678,
+    "downsPerCombat": 0.358,
+    "deathsPerCombat": 0.025,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.159,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.274,
+     "baksu": 0.386,
+     "talggun": 0.339
+    },
+    "dmgDealtShare": {
+     "posu": 0.289,
+     "baksu": 0.267,
+     "talggun": 0.444
+    },
+    "dmgShareSlot": [
+     0.745,
+     0.071,
+     0.184
+    ],
+    "collapsesPerCombat": 0.034,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+posu+chasa",
+   "heroes": [
+    "manshin",
+    "posu",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.42,
+   "deathsPerRun": 1.2,
+   "fightsSurvived": 10.97,
+   "haewonRate": 0.204,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.424
+    }
+   },
+   "wipes": {
+    "b2": 57,
+    "x3": 1
+   },
+   "campHeal": 0.41,
+   "campRemove": 0.59,
+   "deckSize": 21.43,
+   "skipsPerRun": 0.01,
+   "combat": {
+    "n": 1155,
+    "winRate": 0.95,
+    "avgTurns": 5.776,
+    "hpLost": 22.23,
+    "haewonRate": 0.204,
+    "jangdanPerTurn": 1.274,
+    "respRate": 0.685,
+    "downsPerCombat": 0.404,
+    "deathsPerCombat": 0.039,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.195,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.218,
+     "posu": 0.32,
+     "chasa": 0.461
+    },
+    "dmgDealtShare": {
+     "manshin": 0.217,
+     "posu": 0.513,
+     "chasa": 0.27
+    },
+    "dmgShareSlot": [
+     0.7,
+     0.078,
+     0.222
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 1.042,
+    "gangsinPerCombat": 0.89
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+talggun+chasa",
+   "heroes": [
+    "manshin",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.41,
+   "deathsPerRun": 1.1,
+   "fightsSurvived": 10.9,
+   "haewonRate": 0.407,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.41
+    }
+   },
+   "wipes": {
+    "b2": 59
+   },
+   "campHeal": 0.13,
+   "campRemove": 0.87,
+   "deckSize": 20.89,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1149,
+    "winRate": 0.949,
+    "avgTurns": 5.795,
+    "hpLost": 21.232,
+    "haewonRate": 0.407,
+    "jangdanPerTurn": 1.883,
+    "respRate": 0.635,
+    "downsPerCombat": 0.294,
+    "deathsPerCombat": 0.023,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.125,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.275,
+     "talggun": 0.359,
+     "chasa": 0.366
+    },
+    "dmgDealtShare": {
+     "manshin": 0.189,
+     "talggun": 0.526,
+     "chasa": 0.285
+    },
+    "dmgShareSlot": [
+     0.76,
+     0.069,
+     0.171
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 1.014,
+    "gangsinPerCombat": 0.962
+   },
+   "flag": ""
+  },
+  {
+   "trio": "posu+baksu+chasa",
+   "heroes": [
+    "posu",
+    "baksu",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.41,
+   "deathsPerRun": 1.04,
+   "fightsSurvived": 10.85,
+   "haewonRate": 0.226,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.414
+    }
+   },
+   "wipes": {
+    "b2": 58,
+    "x3": 1
+   },
+   "campHeal": 0.62,
+   "campRemove": 0.37,
+   "deckSize": 21.73,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1144,
+    "winRate": 0.948,
+    "avgTurns": 5.848,
+    "hpLost": 26.2,
+    "haewonRate": 0.226,
+    "jangdanPerTurn": 1.369,
+    "respRate": 0.721,
+    "downsPerCombat": 0.377,
+    "deathsPerCombat": 0.034,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.177,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "posu": 0.271,
+     "baksu": 0.376,
+     "chasa": 0.354
+    },
+    "dmgDealtShare": {
+     "posu": 0.449,
+     "baksu": 0.233,
+     "chasa": 0.318
+    },
+    "dmgShareSlot": [
+     0.706,
+     0.07,
+     0.224
+    ],
+    "collapsesPerCombat": 0.037,
+    "executionsPerCombat": 0.855,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+posu+chasa",
+   "heroes": [
+    "jaebi",
+    "posu",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.4,
+   "deathsPerRun": 1.27,
+   "fightsSurvived": 10.73,
+   "haewonRate": 0.167,
+   "boss": {
+    "b2": {
+     "reached": 92,
+     "clearRate": 0.435
+    }
+   },
+   "wipes": {
+    "b2": 52,
+    "x2": 3,
+    "h1": 2,
+    "x3": 1,
+    "h3": 1,
+    "h4": 1
+   },
+   "campHeal": 0.59,
+   "campRemove": 0.39,
+   "deckSize": 21.61,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1133,
+    "winRate": 0.947,
+    "avgTurns": 6.314,
+    "hpLost": 24.024,
+    "haewonRate": 0.167,
+    "jangdanPerTurn": 2.397,
+    "respRate": 0.636,
+    "downsPerCombat": 0.452,
+    "deathsPerCombat": 0.047,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.226,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.238,
+     "posu": 0.299,
+     "chasa": 0.463
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.332,
+     "posu": 0.424,
+     "chasa": 0.244
+    },
+    "dmgShareSlot": [
+     0.707,
+     0.082,
+     0.212
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.722,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+jaebi+beopsa",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.36,
+   "deathsPerRun": 1.2,
+   "fightsSurvived": 10.75,
+   "haewonRate": 0.532,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.364
+    }
+   },
+   "wipes": {
+    "b2": 63,
+    "x1": 1
+   },
+   "campHeal": 0.29,
+   "campRemove": 0.7,
+   "deckSize": 21.02,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1139,
+    "winRate": 0.944,
+    "avgTurns": 5.811,
+    "hpLost": 18.632,
+    "haewonRate": 0.532,
+    "jangdanPerTurn": 2.595,
+    "respRate": 0.556,
+    "downsPerCombat": 0.31,
+    "deathsPerCombat": 0.024,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.107,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.467,
+     "jaebi": 0.203,
+     "beopsa": 0.329
+    },
+    "dmgDealtShare": {
+     "manshin": 0.252,
+     "jaebi": 0.328,
+     "beopsa": 0.42
+    },
+    "dmgShareSlot": [
+     0.673,
+     0.099,
+     0.229
+    ],
+    "collapsesPerCombat": 0.027,
+    "executionsPerCombat": 0.701,
+    "gangsinPerCombat": 1.302
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+posu+beopsa",
+   "heroes": [
+    "jaebi",
+    "posu",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.36,
+   "deathsPerRun": 1.15,
+   "fightsSurvived": 10.7,
+   "haewonRate": 0.472,
+   "boss": {
+    "b2": {
+     "reached": 91,
+     "clearRate": 0.396
+    }
+   },
+   "wipes": {
+    "b2": 55,
+    "h2": 1,
+    "h4": 1,
+    "x1": 2,
+    "x2": 4,
+    "h5": 1
+   },
+   "campHeal": 0.63,
+   "campRemove": 0.37,
+   "deckSize": 21.59,
+   "skipsPerRun": 0.01,
+   "combat": {
+    "n": 1134,
+    "winRate": 0.944,
+    "avgTurns": 6.242,
+    "hpLost": 21.104,
+    "haewonRate": 0.472,
+    "jangdanPerTurn": 2.627,
+    "respRate": 0.57,
+    "downsPerCombat": 0.449,
+    "deathsPerCombat": 0.04,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.21,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.444,
+     "posu": 0.296,
+     "beopsa": 0.26
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.281,
+     "posu": 0.33,
+     "beopsa": 0.389
+    },
+    "dmgShareSlot": [
+     0.734,
+     0.078,
+     0.188
+    ],
+    "collapsesPerCombat": 0.069,
+    "executionsPerCombat": 0.167,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+baksu+beopsa",
+   "heroes": [
+    "jaebi",
+    "baksu",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.36,
+   "deathsPerRun": 1.25,
+   "fightsSurvived": 10.75,
+   "haewonRate": 0.459,
+   "boss": {
+    "b2": {
+     "reached": 95,
+     "clearRate": 0.379
+    }
+   },
+   "wipes": {
+    "b2": 59,
+    "x2": 5
+   },
+   "campHeal": 0.4,
+   "campRemove": 0.59,
+   "deckSize": 21.47,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1139,
+    "winRate": 0.944,
+    "avgTurns": 5.667,
+    "hpLost": 20.753,
+    "haewonRate": 0.459,
+    "jangdanPerTurn": 2.946,
+    "respRate": 0.597,
+    "downsPerCombat": 0.405,
+    "deathsPerCombat": 0.042,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.163,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.209,
+     "baksu": 0.485,
+     "beopsa": 0.306
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.345,
+     "baksu": 0.272,
+     "beopsa": 0.383
+    },
+    "dmgShareSlot": [
+     0.679,
+     0.098,
+     0.223
+    ],
+    "collapsesPerCombat": 0.076,
+    "executionsPerCombat": 0.145,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "baksu+talggun+chasa",
+   "heroes": [
+    "baksu",
+    "talggun",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.36,
+   "deathsPerRun": 1.11,
+   "fightsSurvived": 10.76,
+   "haewonRate": 0.395,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.364
+    }
+   },
+   "wipes": {
+    "b2": 63,
+    "x3": 1
+   },
+   "campHeal": 0.27,
+   "campRemove": 0.73,
+   "deckSize": 21.06,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1140,
+    "winRate": 0.944,
+    "avgTurns": 5.917,
+    "hpLost": 24.338,
+    "haewonRate": 0.395,
+    "jangdanPerTurn": 2.122,
+    "respRate": 0.665,
+    "downsPerCombat": 0.326,
+    "deathsPerCombat": 0.025,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.136,
+    "timeouts": 1,
+    "dmgShareHero": {
+     "baksu": 0.366,
+     "talggun": 0.313,
+     "chasa": 0.322
+    },
+    "dmgDealtShare": {
+     "baksu": 0.271,
+     "talggun": 0.459,
+     "chasa": 0.27
+    },
+    "dmgShareSlot": [
+     0.745,
+     0.078,
+     0.177
+    ],
+    "collapsesPerCombat": 0.059,
+    "executionsPerCombat": 0.785,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+baksu+seungnyeo",
+   "heroes": [
+    "jaebi",
+    "baksu",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.35,
+   "deathsPerRun": 1.06,
+   "fightsSurvived": 10.83,
+   "haewonRate": 0.366,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.354
+    }
+   },
+   "wipes": {
+    "b2": 64,
+    "x2": 1
+   },
+   "campHeal": 0.29,
+   "campRemove": 0.71,
+   "deckSize": 21.1,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1148,
+    "winRate": 0.943,
+    "avgTurns": 6.253,
+    "hpLost": 23.558,
+    "haewonRate": 0.366,
+    "jangdanPerTurn": 2.777,
+    "respRate": 0.649,
+    "downsPerCombat": 0.287,
+    "deathsPerCombat": 0.016,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.092,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.262,
+     "baksu": 0.363,
+     "seungnyeo": 0.375
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.377,
+     "baksu": 0.34,
+     "seungnyeo": 0.283
+    },
+    "dmgShareSlot": [
+     0.665,
+     0.119,
+     0.216
+    ],
+    "collapsesPerCombat": 0.21,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+jaebi+seungnyeo",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "seungnyeo"
+   ],
+   "runs": 100,
+   "clearRate": 0.32,
+   "deathsPerRun": 1.15,
+   "fightsSurvived": 10.84,
+   "haewonRate": 0.426,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.32
+    }
+   },
+   "wipes": {
+    "b2": 68
+   },
+   "campHeal": 0.27,
+   "campRemove": 0.73,
+   "deckSize": 21.06,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1152,
+    "winRate": 0.941,
+    "avgTurns": 6.521,
+    "hpLost": 21.049,
+    "haewonRate": 0.426,
+    "jangdanPerTurn": 2.409,
+    "respRate": 0.62,
+    "downsPerCombat": 0.28,
+    "deathsPerCombat": 0.025,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.083,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.203,
+     "jaebi": 0.302,
+     "seungnyeo": 0.495
+    },
+    "dmgDealtShare": {
+     "manshin": 0.302,
+     "jaebi": 0.416,
+     "seungnyeo": 0.282
+    },
+    "dmgShareSlot": [
+     0.677,
+     0.095,
+     0.228
+    ],
+    "collapsesPerCombat": 0.296,
+    "executionsPerCombat": 0.569,
+    "gangsinPerCombat": 1.379
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+jaebi+talggun",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.32,
+   "deathsPerRun": 1.21,
+   "fightsSurvived": 10.85,
+   "haewonRate": 0.334,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.32
+    }
+   },
+   "wipes": {
+    "b2": 68
+   },
+   "campHeal": 0.2,
+   "campRemove": 0.8,
+   "deckSize": 20.94,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1153,
+    "winRate": 0.941,
+    "avgTurns": 5.166,
+    "hpLost": 19.408,
+    "haewonRate": 0.334,
+    "jangdanPerTurn": 2.981,
+    "respRate": 0.631,
+    "downsPerCombat": 0.307,
+    "deathsPerCombat": 0.029,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.107,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.267,
+     "jaebi": 0.312,
+     "talggun": 0.421
+    },
+    "dmgDealtShare": {
+     "manshin": 0.251,
+     "jaebi": 0.324,
+     "talggun": 0.425
+    },
+    "dmgShareSlot": [
+     0.71,
+     0.089,
+     0.2
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.478,
+    "gangsinPerCombat": 1.061
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+baksu+chasa",
+   "heroes": [
+    "manshin",
+    "baksu",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.32,
+   "deathsPerRun": 1.03,
+   "fightsSurvived": 10.93,
+   "haewonRate": 0.3,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.32
+    }
+   },
+   "wipes": {
+    "b2": 68
+   },
+   "campHeal": 0.26,
+   "campRemove": 0.74,
+   "deckSize": 21.24,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1161,
+    "winRate": 0.941,
+    "avgTurns": 5.615,
+    "hpLost": 23.388,
+    "haewonRate": 0.3,
+    "jangdanPerTurn": 1.264,
+    "respRate": 0.711,
+    "downsPerCombat": 0.309,
+    "deathsPerCombat": 0.023,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.108,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.269,
+     "baksu": 0.382,
+     "chasa": 0.349
+    },
+    "dmgDealtShare": {
+     "manshin": 0.293,
+     "baksu": 0.297,
+     "chasa": 0.41
+    },
+    "dmgShareSlot": [
+     0.691,
+     0.091,
+     0.218
+    ],
+    "collapsesPerCombat": 0.036,
+    "executionsPerCombat": 1.179,
+    "gangsinPerCombat": 0.998
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+posu+talggun",
+   "heroes": [
+    "jaebi",
+    "posu",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.3,
+   "deathsPerRun": 1.37,
+   "fightsSurvived": 10.71,
+   "haewonRate": 0.284,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.306
+    }
+   },
+   "wipes": {
+    "b2": 68,
+    "x2": 1,
+    "h5": 1
+   },
+   "campHeal": 0.42,
+   "campRemove": 0.57,
+   "deckSize": 21.41,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1141,
+    "winRate": 0.939,
+    "avgTurns": 5.706,
+    "hpLost": 22.362,
+    "haewonRate": 0.284,
+    "jangdanPerTurn": 3.08,
+    "respRate": 0.616,
+    "downsPerCombat": 0.415,
+    "deathsPerCombat": 0.038,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.182,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.287,
+     "posu": 0.293,
+     "talggun": 0.42
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.325,
+     "posu": 0.268,
+     "talggun": 0.407
+    },
+    "dmgShareSlot": [
+     0.746,
+     0.074,
+     0.18
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+jaebi+chasa",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "chasa"
+   ],
+   "runs": 100,
+   "clearRate": 0.27,
+   "deathsPerRun": 1.31,
+   "fightsSurvived": 10.73,
+   "haewonRate": 0.235,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.27
+    }
+   },
+   "wipes": {
+    "b2": 73
+   },
+   "campHeal": 0.36,
+   "campRemove": 0.64,
+   "deckSize": 21.2,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1146,
+    "winRate": 0.936,
+    "avgTurns": 5.824,
+    "hpLost": 21.573,
+    "haewonRate": 0.235,
+    "jangdanPerTurn": 2.415,
+    "respRate": 0.632,
+    "downsPerCombat": 0.345,
+    "deathsPerCombat": 0.044,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.125,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.205,
+     "jaebi": 0.33,
+     "chasa": 0.465
+    },
+    "dmgDealtShare": {
+     "manshin": 0.302,
+     "jaebi": 0.421,
+     "chasa": 0.277
+    },
+    "dmgShareSlot": [
+     0.669,
+     0.095,
+     0.236
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 1.048,
+    "gangsinPerCombat": 1.039
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+posu+baksu",
+   "heroes": [
+    "manshin",
+    "posu",
+    "baksu"
+   ],
+   "runs": 100,
+   "clearRate": 0.25,
+   "deathsPerRun": 1.51,
+   "fightsSurvived": 10.77,
+   "haewonRate": 0.186,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.25
+    }
+   },
+   "wipes": {
+    "b2": 75
+   },
+   "campHeal": 0.7,
+   "campRemove": 0.3,
+   "deckSize": 21.9,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1152,
+    "winRate": 0.935,
+    "avgTurns": 5.517,
+    "hpLost": 23.841,
+    "haewonRate": 0.186,
+    "jangdanPerTurn": 1.436,
+    "respRate": 0.695,
+    "downsPerCombat": 0.535,
+    "deathsPerCombat": 0.052,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.233,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.241,
+     "posu": 0.312,
+     "baksu": 0.447
+    },
+    "dmgDealtShare": {
+     "manshin": 0.277,
+     "posu": 0.514,
+     "baksu": 0.209
+    },
+    "dmgShareSlot": [
+     0.675,
+     0.089,
+     0.236
+    ],
+    "collapsesPerCombat": 0.042,
+    "executionsPerCombat": 0.483,
+    "gangsinPerCombat": 1.016
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+jaebi+posu",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "posu"
+   ],
+   "runs": 100,
+   "clearRate": 0.24,
+   "deathsPerRun": 1.38,
+   "fightsSurvived": 10.68,
+   "haewonRate": 0.165,
+   "boss": {
+    "b2": {
+     "reached": 98,
+     "clearRate": 0.245
+    }
+   },
+   "wipes": {
+    "b2": 74,
+    "h4": 1,
+    "x1": 1
+   },
+   "campHeal": 0.57,
+   "campRemove": 0.43,
+   "deckSize": 21.53,
+   "skipsPerRun": 0.02,
+   "combat": {
+    "n": 1144,
+    "winRate": 0.934,
+    "avgTurns": 5.796,
+    "hpLost": 21.915,
+    "haewonRate": 0.165,
+    "jangdanPerTurn": 2.516,
+    "respRate": 0.622,
+    "downsPerCombat": 0.424,
+    "deathsPerCombat": 0.038,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.167,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.429,
+     "jaebi": 0.241,
+     "posu": 0.33
+    },
+    "dmgDealtShare": {
+     "manshin": 0.223,
+     "jaebi": 0.384,
+     "posu": 0.393
+    },
+    "dmgShareSlot": [
+     0.681,
+     0.092,
+     0.227
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.472,
+    "gangsinPerCombat": 1.05
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+baksu+talggun",
+   "heroes": [
+    "manshin",
+    "baksu",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.24,
+   "deathsPerRun": 1.24,
+   "fightsSurvived": 10.79,
+   "haewonRate": 0.351,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.24
+    }
+   },
+   "wipes": {
+    "b2": 76
+   },
+   "campHeal": 0.27,
+   "campRemove": 0.73,
+   "deckSize": 21.2,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1155,
+    "winRate": 0.934,
+    "avgTurns": 5.29,
+    "hpLost": 22.62,
+    "haewonRate": 0.351,
+    "jangdanPerTurn": 2.149,
+    "respRate": 0.662,
+    "downsPerCombat": 0.335,
+    "deathsPerCombat": 0.029,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.11,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.265,
+     "baksu": 0.386,
+     "talggun": 0.349
+    },
+    "dmgDealtShare": {
+     "manshin": 0.167,
+     "baksu": 0.269,
+     "talggun": 0.564
+    },
+    "dmgShareSlot": [
+     0.727,
+     0.087,
+     0.187
+    ],
+    "collapsesPerCombat": 0.02,
+    "executionsPerCombat": 0.451,
+    "gangsinPerCombat": 0.818
+   },
+   "flag": ""
+  },
+  {
+   "trio": "jaebi+posu+baksu",
+   "heroes": [
+    "jaebi",
+    "posu",
+    "baksu"
+   ],
+   "runs": 100,
+   "clearRate": 0.22,
+   "deathsPerRun": 1.37,
+   "fightsSurvived": 10.47,
+   "haewonRate": 0.117,
+   "boss": {
+    "b2": {
+     "reached": 92,
+     "clearRate": 0.239
+    }
+   },
+   "wipes": {
+    "b2": 70,
+    "x2": 4,
+    "h5": 3,
+    "h2": 1
+   },
+   "campHeal": 0.74,
+   "campRemove": 0.24,
+   "deckSize": 21.78,
+   "skipsPerRun": 0.02,
+   "combat": {
+    "n": 1125,
+    "winRate": 0.931,
+    "avgTurns": 5.779,
+    "hpLost": 23.836,
+    "haewonRate": 0.117,
+    "jangdanPerTurn": 2.725,
+    "respRate": 0.664,
+    "downsPerCombat": 0.556,
+    "deathsPerCombat": 0.055,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.257,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "jaebi": 0.248,
+     "posu": 0.299,
+     "baksu": 0.453
+    },
+    "dmgDealtShare": {
+     "jaebi": 0.368,
+     "posu": 0.355,
+     "baksu": 0.277
+    },
+    "dmgShareSlot": [
+     0.692,
+     0.087,
+     0.221
+    ],
+    "collapsesPerCombat": 0.037,
+    "executionsPerCombat": 0,
+    "gangsinPerCombat": 0
+   },
+   "flag": ""
+  },
+  {
+   "trio": "manshin+baksu+beopsa",
+   "heroes": [
+    "manshin",
+    "baksu",
+    "beopsa"
+   ],
+   "runs": 100,
+   "clearRate": 0.21,
+   "deathsPerRun": 1.54,
+   "fightsSurvived": 10.75,
+   "haewonRate": 0.53,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.21
+    }
+   },
+   "wipes": {
+    "b2": 79
+   },
+   "campHeal": 0.59,
+   "campRemove": 0.41,
+   "deckSize": 21.63,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1154,
+    "winRate": 0.932,
+    "avgTurns": 5.554,
+    "hpLost": 20.91,
+    "haewonRate": 0.53,
+    "jangdanPerTurn": 1.61,
+    "respRate": 0.599,
+    "downsPerCombat": 0.492,
+    "deathsPerCombat": 0.057,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.179,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.212,
+     "baksu": 0.476,
+     "beopsa": 0.313
+    },
+    "dmgDealtShare": {
+     "manshin": 0.328,
+     "baksu": 0.196,
+     "beopsa": 0.475
+    },
+    "dmgShareSlot": [
+     0.658,
+     0.101,
+     0.241
+    ],
+    "collapsesPerCombat": 0.069,
+    "executionsPerCombat": 0.62,
+    "gangsinPerCombat": 1.231
+   },
+   "flag": "dead"
+  },
+  {
+   "trio": "manshin+posu+talggun",
+   "heroes": [
+    "manshin",
+    "posu",
+    "talggun"
+   ],
+   "runs": 100,
+   "clearRate": 0.17,
+   "deathsPerRun": 1.45,
+   "fightsSurvived": 10.73,
+   "haewonRate": 0.311,
+   "boss": {
+    "b2": {
+     "reached": 100,
+     "clearRate": 0.17
+    }
+   },
+   "wipes": {
+    "b2": 83
+   },
+   "campHeal": 0.35,
+   "campRemove": 0.65,
+   "deckSize": 21.32,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1156,
+    "winRate": 0.928,
+    "avgTurns": 5.364,
+    "hpLost": 22.066,
+    "haewonRate": 0.311,
+    "jangdanPerTurn": 1.93,
+    "respRate": 0.655,
+    "downsPerCombat": 0.397,
+    "deathsPerCombat": 0.031,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.154,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.29,
+     "posu": 0.296,
+     "talggun": 0.414
+    },
+    "dmgDealtShare": {
+     "manshin": 0.139,
+     "posu": 0.351,
+     "talggun": 0.51
+    },
+    "dmgShareSlot": [
+     0.735,
+     0.073,
+     0.192
+    ],
+    "collapsesPerCombat": 0,
+    "executionsPerCombat": 0.405,
+    "gangsinPerCombat": 0.803
+   },
+   "flag": "dead"
+  },
+  {
+   "trio": "manshin+jaebi+baksu",
+   "heroes": [
+    "manshin",
+    "jaebi",
+    "baksu"
+   ],
+   "runs": 100,
+   "clearRate": 0.15,
+   "deathsPerRun": 1.61,
+   "fightsSurvived": 10.69,
+   "haewonRate": 0.185,
+   "boss": {
+    "b2": {
+     "reached": 99,
+     "clearRate": 0.152
+    }
+   },
+   "wipes": {
+    "b2": 84,
+    "h5": 1
+   },
+   "campHeal": 0.52,
+   "campRemove": 0.48,
+   "deckSize": 21.62,
+   "skipsPerRun": 0,
+   "combat": {
+    "n": 1154,
+    "winRate": 0.926,
+    "avgTurns": 5.438,
+    "hpLost": 21.756,
+    "haewonRate": 0.185,
+    "jangdanPerTurn": 2.835,
+    "respRate": 0.652,
+    "downsPerCombat": 0.484,
+    "deathsPerCombat": 0.049,
+    "sameTurnDeathShare": 0,
+    "revivesPerCombat": 0.176,
+    "timeouts": 0,
+    "dmgShareHero": {
+     "manshin": 0.211,
+     "jaebi": 0.321,
+     "baksu": 0.468
+    },
+    "dmgDealtShare": {
+     "manshin": 0.278,
+     "jaebi": 0.406,
+     "baksu": 0.316
+    },
+    "dmgShareSlot": [
+     0.641,
+     0.107,
+     0.252
+    ],
+    "collapsesPerCombat": 0.023,
+    "executionsPerCombat": 0.44,
+    "gangsinPerCombat": 0.976
+   },
+   "flag": "dead"
+  }
+ ],
+ "heroes": {
+  "manshin": {
+   "trios": 21,
+   "meanClearRate": 0.381,
+   "meanDeaths": 1.117
+  },
+  "jaebi": {
+   "trios": 21,
+   "meanClearRate": 0.397,
+   "meanDeaths": 1.1
+  },
+  "posu": {
+   "trios": 21,
+   "meanClearRate": 0.42,
+   "meanDeaths": 1.09
+  },
+  "baksu": {
+   "trios": 21,
+   "meanClearRate": 0.414,
+   "meanDeaths": 1.043
+  },
+  "seungnyeo": {
+   "trios": 21,
+   "meanClearRate": 0.549,
+   "meanDeaths": 0.78
+  },
+  "beopsa": {
+   "trios": 21,
+   "meanClearRate": 0.517,
+   "meanDeaths": 0.917
+  },
+  "talggun": {
+   "trios": 21,
+   "meanClearRate": 0.493,
+   "meanDeaths": 0.907
+  },
+  "chasa": {
+   "trios": 21,
+   "meanClearRate": 0.489,
+   "meanDeaths": 0.928
+  }
+ },
+ "bosses": {
+  "b2": {
+   "name": "넘어가지 못한 상여",
+   "reached": 5518,
+   "clearRate": 0.464,
+   "haewonRate": 0.863
+  }
+ },
+ "wipes": {
+  "b2": 2957,
+  "h4": 3,
+  "x1": 7,
+  "h5": 12,
+  "x2": 35,
+  "x3": 14,
+  "h2": 4,
+  "h1": 6,
+  "h3": 1
+ },
+ "combat": {
+  "n": 64174,
+  "winRate": 0.953,
+  "avgTurns": 6.091,
+  "hpLost": 21.596,
+  "haewonRate": 0.445,
+  "jangdanPerTurn": 2.071,
+  "respRate": 0.624,
+  "downsPerCombat": 0.319,
+  "deathsPerCombat": 0.026,
+  "sameTurnDeathShare": 0,
+  "revivesPerCombat": 0.137,
+  "timeouts": 6,
+  "dmgShareHero": {
+   "manshin": 0.099,
+   "jaebi": 0.097,
+   "posu": 0.11,
+   "baksu": 0.156,
+   "seungnyeo": 0.16,
+   "beopsa": 0.101,
+   "talggun": 0.132,
+   "chasa": 0.145
+  },
+  "dmgDealtShare": {
+   "manshin": 0.077,
+   "jaebi": 0.132,
+   "posu": 0.152,
+   "baksu": 0.093,
+   "seungnyeo": 0.12,
+   "beopsa": 0.145,
+   "talggun": 0.174,
+   "chasa": 0.108
+  },
+  "dmgShareSlot": [
+   0.717,
+   0.083,
+   0.2
+  ],
+  "collapsesPerCombat": 0.209,
+  "executionsPerCombat": 0.549,
+  "gangsinPerCombat": 0.413
+ },
+ "cards": {
+  "manshin.cheongbae": {
+   "name": "청배",
+   "set": "manshin",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 24518,
+   "inDeck": 21693,
+   "playRate": 1.13,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "manshin.bangul": {
+   "name": "방울 흔들기",
+   "set": "manshin",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 26396,
+   "inDeck": 20949,
+   "playRate": 1.26,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "manshin.gongsu": {
+   "name": "공수",
+   "set": "manshin",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 27002,
+   "inDeck": 23960,
+   "playRate": 1.127,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "manshin.buchae_makgi": {
+   "name": "부채 막기",
+   "set": "manshin",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 17115,
+   "inDeck": 24089,
+   "playRate": 0.71,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "manshin.yeoldu_bangul": {
+   "name": "열두 방울",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2071,
+   "inDeck": 1397,
+   "playRate": 1.482,
+   "offered": 1151,
+   "picked": 267,
+   "pickRate": 0.232
+  },
+  "manshin.wongwi_homyeong": {
+   "name": "원귀 호명",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 443,
+   "inDeck": 280,
+   "playRate": 1.582,
+   "offered": 1093,
+   "picked": 40,
+   "pickRate": 0.037
+  },
+  "manshin.buchae_baram": {
+   "name": "부채 바람",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 22,
+   "inDeck": 17,
+   "playRate": 1.294,
+   "offered": 1111,
+   "picked": 3,
+   "pickRate": 0.003
+  },
+  "manshin.bangul_cheongbae": {
+   "name": "방울 청배",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3899,
+   "inDeck": 2676,
+   "playRate": 1.457,
+   "offered": 1168,
+   "picked": 463,
+   "pickRate": 0.396
+  },
+  "manshin.janggun_cheongbae": {
+   "name": "장군 청배",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1824,
+   "inDeck": 1382,
+   "playRate": 1.32,
+   "offered": 1144,
+   "picked": 227,
+   "pickRate": 0.198
+  },
+  "manshin.chilseong_maji": {
+   "name": "칠성 맞이",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 2,
+   "plays": 2807,
+   "inDeck": 4025,
+   "playRate": 0.697,
+   "offered": 1152,
+   "picked": 663,
+   "pickRate": 0.576
+  },
+  "manshin.yeonpungdae": {
+   "name": "연풍대",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 1084,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "manshin.mubok_yeomigi": {
+   "name": "무복 여미기",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 638,
+   "inDeck": 826,
+   "playRate": 0.772,
+   "offered": 1107,
+   "picked": 131,
+   "pickRate": 0.118
+  },
+  "manshin.soji": {
+   "name": "소지 올리기",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1348,
+   "inDeck": 2127,
+   "playRate": 0.634,
+   "offered": 1152,
+   "picked": 320,
+   "pickRate": 0.278
+  },
+  "manshin.ssal": {
+   "name": "쌀 흩뿌리기",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1075,
+   "inDeck": 1165,
+   "playRate": 0.923,
+   "offered": 1140,
+   "picked": 179,
+   "pickRate": 0.157
+  },
+  "manshin.daegam_nori": {
+   "name": "대감 놀리기",
+   "set": "manshin",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2043,
+   "inDeck": 1606,
+   "playRate": 1.272,
+   "offered": 1126,
+   "picked": 251,
+   "pickRate": 0.223
+  },
+  "manshin.janggun_gongsu": {
+   "name": "장군 공수",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 4431,
+   "inDeck": 3024,
+   "playRate": 1.465,
+   "offered": 844,
+   "picked": 548,
+   "pickRate": 0.649
+  },
+  "manshin.chilseong_gongsu": {
+   "name": "칠성 공수",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3938,
+   "inDeck": 2361,
+   "playRate": 1.668,
+   "offered": 785,
+   "picked": 398,
+   "pickRate": 0.507
+  },
+  "manshin.daegam_gongsu": {
+   "name": "대감 공수",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 673,
+   "inDeck": 500,
+   "playRate": 1.346,
+   "offered": 888,
+   "picked": 72,
+   "pickRate": 0.081
+  },
+  "manshin.sinryeong_baeung": {
+   "name": "신령 배웅",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 290,
+   "inDeck": 338,
+   "playRate": 0.858,
+   "offered": 822,
+   "picked": 70,
+   "pickRate": 0.085
+  },
+  "manshin.myeongdo": {
+   "name": "명도 비추기",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4275,
+   "inDeck": 3306,
+   "playRate": 1.293,
+   "offered": 822,
+   "picked": 549,
+   "pickRate": 0.668
+  },
+  "manshin.josang_maji": {
+   "name": "조상 맞이",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 5207,
+   "inDeck": 3393,
+   "playRate": 1.535,
+   "offered": 825,
+   "picked": 583,
+   "pickRate": 0.707
+  },
+  "manshin.geumeum_cheongbae": {
+   "name": "그믐 청배",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1860,
+   "inDeck": 1666,
+   "playRate": 1.116,
+   "offered": 813,
+   "picked": 276,
+   "pickRate": 0.339
+  },
+  "manshin.jemulsang": {
+   "name": "제물상 차리기",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 2447,
+   "inDeck": 2682,
+   "playRate": 0.912,
+   "offered": 854,
+   "picked": 479,
+   "pickRate": 0.561
+  },
+  "manshin.hongcheollik": {
+   "name": "홍철릭",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 2051,
+   "inDeck": 2249,
+   "playRate": 0.912,
+   "offered": 782,
+   "picked": 423,
+   "pickRate": 0.541
+  },
+  "manshin.chilseongdan": {
+   "name": "칠성단 쌓기",
+   "set": "manshin",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3272,
+   "inDeck": 3529,
+   "playRate": 0.927,
+   "offered": 807,
+   "picked": 597,
+   "pickRate": 0.74
+  },
+  "manshin.eonwoldo": {
+   "name": "언월도 휘두르기",
+   "set": "manshin",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 818,
+   "inDeck": 852,
+   "playRate": 0.96,
+   "offered": 273,
+   "picked": 177,
+   "pickRate": 0.648
+  },
+  "manshin.obanggi": {
+   "name": "오방기 펼치기",
+   "set": "manshin",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1026,
+   "inDeck": 914,
+   "playRate": 1.123,
+   "offered": 272,
+   "picked": 192,
+   "pickRate": 0.706
+  },
+  "manshin.mubok_garaipgi": {
+   "name": "무복 갈아입기",
+   "set": "manshin",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 1,
+   "plays": 662,
+   "inDeck": 859,
+   "playRate": 0.771,
+   "offered": 248,
+   "picked": 181,
+   "pickRate": 0.73
+  },
+  "manshin.myeongjul": {
+   "name": "명줄 잇기",
+   "set": "manshin",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1042,
+   "inDeck": 1275,
+   "playRate": 0.817,
+   "offered": 283,
+   "picked": 283,
+   "pickRate": 1
+  },
+  "manshin.sineomeoni": {
+   "name": "신어머니의 가르침",
+   "set": "manshin",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 987,
+   "inDeck": 1055,
+   "playRate": 0.936,
+   "offered": 243,
+   "picked": 230,
+   "pickRate": 0.947
+  },
+  "jaebi.janggu_jangdan": {
+   "name": "장구 장단",
+   "set": "jaebi",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 0,
+   "plays": 33198,
+   "inDeck": 21147,
+   "playRate": 1.57,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "jaebi.jing_ullim": {
+   "name": "징 울림",
+   "set": "jaebi",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 26197,
+   "inDeck": 20034,
+   "playRate": 1.308,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "jaebi.chuimsae": {
+   "name": "추임새",
+   "set": "jaebi",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 23765,
+   "inDeck": 23811,
+   "playRate": 0.998,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "jaebi.jangdan_bakkum": {
+   "name": "장단 바꿈",
+   "set": "jaebi",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 13579,
+   "inDeck": 23952,
+   "playRate": 0.567,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "jaebi.chaepyeon": {
+   "name": "채편 치기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 5820,
+   "inDeck": 3704,
+   "playRate": 1.571,
+   "offered": 1007,
+   "picked": 593,
+   "pickRate": 0.589
+  },
+  "jaebi.jegeum": {
+   "name": "제금 부딪기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 1085,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "jaebi.makjangdan": {
+   "name": "막장단",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 2,
+   "plays": 3990,
+   "inDeck": 3631,
+   "playRate": 1.099,
+   "offered": 1007,
+   "picked": 589,
+   "pickRate": 0.585
+  },
+  "jaebi.jingchae": {
+   "name": "징채 내리치기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 4776,
+   "inDeck": 2792,
+   "playRate": 1.711,
+   "offered": 1026,
+   "picked": 508,
+   "pickRate": 0.495
+  },
+  "jaebi.taepyeongso": {
+   "name": "태평소 불기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 125,
+   "inDeck": 96,
+   "playRate": 1.302,
+   "offered": 1011,
+   "picked": 18,
+   "pickRate": 0.018
+  },
+  "jaebi.deongdeokgungi": {
+   "name": "덩덕궁이",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 3117,
+   "inDeck": 1801,
+   "playRate": 1.731,
+   "offered": 1024,
+   "picked": 280,
+   "pickRate": 0.273
+  },
+  "jaebi.geosang": {
+   "name": "거상장단",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 138,
+   "inDeck": 92,
+   "playRate": 1.5,
+   "offered": 1022,
+   "picked": 17,
+   "pickRate": 0.017
+  },
+  "jaebi.cheongbae_jangdan": {
+   "name": "청배 장단",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4620,
+   "inDeck": 3220,
+   "playRate": 1.435,
+   "offered": 1025,
+   "picked": 527,
+   "pickRate": 0.514
+  },
+  "jaebi.heung": {
+   "name": "흥 돋우기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 826,
+   "inDeck": 641,
+   "playRate": 1.289,
+   "offered": 1040,
+   "picked": 121,
+   "pickRate": 0.116
+  },
+  "jaebi.chumsawi": {
+   "name": "춤사위 맞추기",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 211,
+   "inDeck": 151,
+   "playRate": 1.397,
+   "offered": 980,
+   "picked": 32,
+   "pickRate": 0.033
+  },
+  "jaebi.subu": {
+   "name": "수부장단",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 728,
+   "inDeck": 1420,
+   "playRate": 0.513,
+   "offered": 1032,
+   "picked": 247,
+   "pickRate": 0.239
+  },
+  "jaebi.sinmyeong_janggu": {
+   "name": "신명 장구",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 6533,
+   "inDeck": 4226,
+   "playRate": 1.546,
+   "offered": 831,
+   "picked": 740,
+   "pickRate": 0.89
+  },
+  "jaebi.bujeongnori": {
+   "name": "부정놀이 장구",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 193,
+   "inDeck": 134,
+   "playRate": 1.44,
+   "offered": 818,
+   "picked": 20,
+   "pickRate": 0.024
+  },
+  "jaebi.geollip": {
+   "name": "걸립 청하기",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 2335,
+   "inDeck": 1830,
+   "playRate": 1.276,
+   "offered": 811,
+   "picked": 295,
+   "pickRate": 0.364
+  },
+  "jaebi.teoju": {
+   "name": "터주 모시기",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 6664,
+   "inDeck": 4031,
+   "playRate": 1.653,
+   "offered": 836,
+   "picked": 713,
+   "pickRate": 0.853
+  },
+  "jaebi.sorigwangdae": {
+   "name": "소리광대 모시기",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 7163,
+   "inDeck": 4003,
+   "playRate": 1.789,
+   "offered": 879,
+   "picked": 714,
+   "pickRate": 0.812
+  },
+  "jaebi.jeseok": {
+   "name": "제석 맞이",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2365,
+   "inDeck": 1286,
+   "playRate": 1.839,
+   "offered": 802,
+   "picked": 218,
+   "pickRate": 0.272
+  },
+  "jaebi.baldidim": {
+   "name": "발디딤 장단",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3048,
+   "inDeck": 3039,
+   "playRate": 1.003,
+   "offered": 826,
+   "picked": 550,
+   "pickRate": 0.666
+  },
+  "jaebi.cheongbo": {
+   "name": "청보장단",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3824,
+   "inDeck": 4080,
+   "playRate": 0.937,
+   "offered": 846,
+   "picked": 704,
+   "pickRate": 0.832
+  },
+  "jaebi.chumpan": {
+   "name": "춤판 장단",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3160,
+   "inDeck": 3424,
+   "playRate": 0.923,
+   "offered": 744,
+   "picked": 593,
+   "pickRate": 0.797
+  },
+  "jaebi.sigimsae": {
+   "name": "피리 시김새",
+   "set": "jaebi",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 524,
+   "inDeck": 574,
+   "playRate": 0.913,
+   "offered": 827,
+   "picked": 94,
+   "pickRate": 0.114
+  },
+  "jaebi.cheondung_jing": {
+   "name": "천둥 징",
+   "set": "jaebi",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1789,
+   "inDeck": 1530,
+   "playRate": 1.169,
+   "offered": 324,
+   "picked": 323,
+   "pickRate": 0.997
+  },
+  "jaebi.ojang": {
+   "name": "오장 장단",
+   "set": "jaebi",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 997,
+   "inDeck": 1435,
+   "playRate": 0.695,
+   "offered": 1093,
+   "picked": 256,
+   "pickRate": 0.234
+  },
+  "jaebi.sinawi": {
+   "name": "시나위",
+   "set": "jaebi",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 1,
+   "plays": 565,
+   "inDeck": 767,
+   "playRate": 0.737,
+   "offered": 331,
+   "picked": 170,
+   "pickRate": 0.514
+  },
+  "jaebi.baraji": {
+   "name": "바라지",
+   "set": "jaebi",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 1,
+   "plays": 99,
+   "inDeck": 226,
+   "playRate": 0.438,
+   "offered": 319,
+   "picked": 43,
+   "pickRate": 0.135
+  },
+  "jaebi.samhyeon": {
+   "name": "삼현육각",
+   "set": "jaebi",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 3,
+   "plays": 264,
+   "inDeck": 295,
+   "playRate": 0.895,
+   "offered": 306,
+   "picked": 60,
+   "pickRate": 0.196
+  },
+  "posu.jojun": {
+   "name": "조준",
+   "set": "posu",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 26296,
+   "inDeck": 23150,
+   "playRate": 1.136,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "posu.hwaseungchong": {
+   "name": "화승총 사격",
+   "set": "posu",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 27657,
+   "inDeck": 23871,
+   "playRate": 1.159,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "posu.geupso": {
+   "name": "급소 저격",
+   "set": "posu",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 2,
+   "plays": 16209,
+   "inDeck": 23759,
+   "playRate": 0.682,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "posu.eompye": {
+   "name": "엄폐",
+   "set": "posu",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 10739,
+   "inDeck": 23333,
+   "playRate": 0.46,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "posu.ganeumsoe": {
+   "name": "가늠쇠 맞추기",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 659,
+   "inDeck": 363,
+   "playRate": 1.815,
+   "offered": 1102,
+   "picked": 56,
+   "pickRate": 0.051
+  },
+  "posu.kkojildae": {
+   "name": "꼬질대 다지기",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 5334,
+   "inDeck": 3133,
+   "playRate": 1.703,
+   "offered": 1138,
+   "picked": 508,
+   "pickRate": 0.446
+  },
+  "posu.giljabi": {
+   "name": "길잡이 탄",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 400,
+   "inDeck": 311,
+   "playRate": 1.286,
+   "offered": 1147,
+   "picked": 53,
+   "pickRate": 0.046
+  },
+  "posu.santan_jum": {
+   "name": "산탄 한 줌",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 51,
+   "inDeck": 47,
+   "playRate": 1.085,
+   "offered": 1188,
+   "picked": 8,
+   "pickRate": 0.007
+  },
+  "posu.otjarak": {
+   "name": "옷자락 꿰기",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2404,
+   "inDeck": 1575,
+   "playRate": 1.526,
+   "offered": 1068,
+   "picked": 254,
+   "pickRate": 0.238
+  },
+  "posu.gilteo": {
+   "name": "길 터 주는 사격",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2829,
+   "inDeck": 2415,
+   "playRate": 1.171,
+   "offered": 1071,
+   "picked": 389,
+   "pickRate": 0.363
+  },
+  "posu.deombul": {
+   "name": "덤불 매복",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 621,
+   "inDeck": 606,
+   "playRate": 1.025,
+   "offered": 1089,
+   "picked": 96,
+   "pickRate": 0.088
+  },
+  "posu.bawi": {
+   "name": "바위 뒤 겨누기",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3463,
+   "inDeck": 3209,
+   "playRate": 1.079,
+   "offered": 1144,
+   "picked": 534,
+   "pickRate": 0.467
+  },
+  "posu.teumsae": {
+   "name": "틈새 사격",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 5341,
+   "inDeck": 3777,
+   "playRate": 1.414,
+   "offered": 1083,
+   "picked": 650,
+   "pickRate": 0.6
+  },
+  "posu.olmu": {
+   "name": "올무 걸기",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3397,
+   "inDeck": 2327,
+   "playRate": 1.46,
+   "offered": 1105,
+   "picked": 403,
+   "pickRate": 0.365
+  },
+  "posu.heutppurim": {
+   "name": "흩뿌림 탄",
+   "set": "posu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 2,
+   "plays": 29,
+   "inDeck": 34,
+   "playRate": 0.853,
+   "offered": 1113,
+   "picked": 6,
+   "pickRate": 0.005
+  },
+  "posu.sumtong": {
+   "name": "숨통 겨누기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 151,
+   "inDeck": 162,
+   "playRate": 0.932,
+   "offered": 839,
+   "picked": 27,
+   "pickRate": 0.032
+  },
+  "posu.hwayaktong": {
+   "name": "화약통 털기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 633,
+   "inDeck": 1511,
+   "playRate": 0.419,
+   "offered": 828,
+   "picked": 254,
+   "pickRate": 0.307
+  },
+  "posu.mori": {
+   "name": "몰이 호령",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4648,
+   "inDeck": 4195,
+   "playRate": 1.108,
+   "offered": 831,
+   "picked": 746,
+   "pickRate": 0.898
+  },
+  "posu.hwayak_jaegi": {
+   "name": "화약 재기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 617,
+   "inDeck": 566,
+   "playRate": 1.09,
+   "offered": 821,
+   "picked": 97,
+   "pickRate": 0.118
+  },
+  "posu.hwayak_yeongi": {
+   "name": "화약 연기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4632,
+   "inDeck": 4591,
+   "playRate": 1.009,
+   "offered": 884,
+   "picked": 776,
+   "pickRate": 0.878
+  },
+  "posu.nunsseolmi": {
+   "name": "길목 눈썰미",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3712,
+   "inDeck": 4072,
+   "playRate": 0.912,
+   "offered": 784,
+   "picked": 713,
+   "pickRate": 0.909
+  },
+  "posu.neok_kkwetturgi": {
+   "name": "흔들린 넋 꿰뚫기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 155,
+   "inDeck": 107,
+   "playRate": 1.449,
+   "offered": 820,
+   "picked": 14,
+   "pickRate": 0.017
+  },
+  "posu.santan_serye": {
+   "name": "산탄 세례",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 4277,
+   "inDeck": 3472,
+   "playRate": 1.232,
+   "offered": 818,
+   "picked": 618,
+   "pickRate": 0.756
+  },
+  "posu.deonnan": {
+   "name": "덧나는 탄환",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 740,
+   "inDeck": 869,
+   "playRate": 0.852,
+   "offered": 775,
+   "picked": 155,
+   "pickRate": 0.2
+  },
+  "posu.yakjeom": {
+   "name": "숨은 약점 들추기",
+   "set": "posu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3164,
+   "inDeck": 2310,
+   "playRate": 1.37,
+   "offered": 812,
+   "picked": 427,
+   "pickRate": 0.526
+  },
+  "posu.oegil": {
+   "name": "외길 저격",
+   "set": "posu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 642,
+   "inDeck": 694,
+   "playRate": 0.925,
+   "offered": 237,
+   "picked": 162,
+   "pickRate": 0.684
+  },
+  "posu.geodun": {
+   "name": "거둔 표적",
+   "set": "posu",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 1,
+   "plays": 1099,
+   "inDeck": 1198,
+   "playRate": 0.917,
+   "offered": 278,
+   "picked": 255,
+   "pickRate": 0.917
+  },
+  "posu.beoljip": {
+   "name": "벌집 산탄",
+   "set": "posu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 2,
+   "plays": 623,
+   "inDeck": 552,
+   "playRate": 1.129,
+   "offered": 285,
+   "picked": 114,
+   "pickRate": 0.4
+  },
+  "posu.sanyanggut": {
+   "name": "사냥굿 한판",
+   "set": "posu",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1589,
+   "inDeck": 1084,
+   "playRate": 1.466,
+   "offered": 241,
+   "picked": 235,
+   "pickRate": 0.975
+  },
+  "posu.jumeoni": {
+   "name": "산탄 주머니",
+   "set": "posu",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 1,
+   "plays": 1188,
+   "inDeck": 1277,
+   "playRate": 0.93,
+   "offered": 270,
+   "picked": 262,
+   "pickRate": 0.97
+  },
+  "baksu.sinkal": {
+   "name": "신칼 베기",
+   "set": "baksu",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 27537,
+   "inDeck": 23423,
+   "playRate": 1.176,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "baksu.jakdu": {
+   "name": "작두 오르기",
+   "set": "baksu",
+   "rarity": "기본",
+   "type": "능력",
+   "cost": 1,
+   "plays": 15696,
+   "inDeck": 23383,
+   "playRate": 0.671,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "baksu.kalnal": {
+   "name": "칼날 춤",
+   "set": "baksu",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 19635,
+   "inDeck": 23292,
+   "playRate": 0.843,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "baksu.magaseogi": {
+   "name": "막아서기",
+   "set": "baksu",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 14216,
+   "inDeck": 23031,
+   "playRate": 0.617,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "baksu.huinsul": {
+   "name": "흰 술 휘날리기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 942,
+   "inDeck": 904,
+   "playRate": 1.042,
+   "offered": 1061,
+   "picked": 157,
+   "pickRate": 0.148
+  },
+  "baksu.eonwoldo": {
+   "name": "언월도 내려치기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 658,
+   "inDeck": 520,
+   "playRate": 1.265,
+   "offered": 1097,
+   "picked": 89,
+   "pickRate": 0.081
+  },
+  "baksu.nal_sewugi": {
+   "name": "날 세우기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 692,
+   "inDeck": 862,
+   "playRate": 0.803,
+   "offered": 1146,
+   "picked": 145,
+   "pickRate": 0.127
+  },
+  "baksu.cheollik": {
+   "name": "철릭 자락 막기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1399,
+   "inDeck": 1748,
+   "playRate": 0.8,
+   "offered": 1152,
+   "picked": 305,
+   "pickRate": 0.265
+  },
+  "baksu.kaljaguk": {
+   "name": "칼자국 따라 베기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1891,
+   "inDeck": 1910,
+   "playRate": 0.99,
+   "offered": 1108,
+   "picked": 298,
+   "pickRate": 0.269
+  },
+  "baksu.jangdan_bal": {
+   "name": "장단 타는 발",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 717,
+   "inDeck": 679,
+   "playRate": 1.056,
+   "offered": 1153,
+   "picked": 127,
+   "pickRate": 0.11
+  },
+  "baksu.gugunbok": {
+   "name": "구군복 여미기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 333,
+   "inDeck": 456,
+   "playRate": 0.73,
+   "offered": 1062,
+   "picked": 65,
+   "pickRate": 0.061
+  },
+  "baksu.domu": {
+   "name": "도무 뜀뛰기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 274,
+   "inDeck": 207,
+   "playRate": 1.324,
+   "offered": 1094,
+   "picked": 38,
+   "pickRate": 0.035
+  },
+  "baksu.janggun_cheong": {
+   "name": "장군 청하기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3285,
+   "inDeck": 2848,
+   "playRate": 1.153,
+   "offered": 1142,
+   "picked": 467,
+   "pickRate": 0.409
+  },
+  "baksu.sinkal_goreugi": {
+   "name": "신칼 고르기",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 1775,
+   "inDeck": 1149,
+   "playRate": 1.545,
+   "offered": 1069,
+   "picked": 195,
+   "pickRate": 0.182
+  },
+  "baksu.jeongjeok": {
+   "name": "날 위의 정적",
+   "set": "baksu",
+   "rarity": "일반",
+   "type": "능력",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 1066,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "baksu.omgyeo": {
+   "name": "자국 옮겨 새기기",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1029,
+   "inDeck": 1865,
+   "playRate": 0.552,
+   "offered": 812,
+   "picked": 333,
+   "pickRate": 0.41
+  },
+  "baksu.janggun_naerim": {
+   "name": "장군 내림",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1607,
+   "inDeck": 3194,
+   "playRate": 0.503,
+   "offered": 845,
+   "picked": 541,
+   "pickRate": 0.64
+  },
+  "baksu.dangak": {
+   "name": "당악 칼춤",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1132,
+   "inDeck": 1255,
+   "playRate": 0.902,
+   "offered": 795,
+   "picked": 231,
+   "pickRate": 0.291
+  },
+  "baksu.samjichang": {
+   "name": "삼지창 내리꽂기",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 769,
+   "inDeck": 599,
+   "playRate": 1.284,
+   "offered": 752,
+   "picked": 111,
+   "pickRate": 0.148
+  },
+  "baksu.sinjang": {
+   "name": "칼끝 신장 모시기",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3310,
+   "inDeck": 3539,
+   "playRate": 0.935,
+   "offered": 795,
+   "picked": 614,
+   "pickRate": 0.772
+  },
+  "baksu.gongsu": {
+   "name": "작두 공수",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1054,
+   "inDeck": 2208,
+   "playRate": 0.477,
+   "offered": 790,
+   "picked": 395,
+   "pickRate": 0.5
+  },
+  "baksu.hwimori": {
+   "name": "신칼 휘몰이",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1217,
+   "inDeck": 1217,
+   "playRate": 1,
+   "offered": 800,
+   "picked": 210,
+   "pickRate": 0.263
+  },
+  "baksu.byeorak": {
+   "name": "벼락 호령",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 548,
+   "inDeck": 460,
+   "playRate": 1.191,
+   "offered": 823,
+   "picked": 76,
+   "pickRate": 0.092
+  },
+  "baksu.cheongbo": {
+   "name": "청보 장단에 몸 싣기",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 2,
+   "plays": 408,
+   "inDeck": 493,
+   "playRate": 0.828,
+   "offered": 749,
+   "picked": 83,
+   "pickRate": 0.111
+  },
+  "baksu.beonjineun": {
+   "name": "번지는 자국",
+   "set": "baksu",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3600,
+   "inDeck": 4086,
+   "playRate": 0.881,
+   "offered": 783,
+   "picked": 741,
+   "pickRate": 0.946
+  },
+  "baksu.ssangnal": {
+   "name": "쌍날 위의 춤",
+   "set": "baksu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 127,
+   "inDeck": 216,
+   "playRate": 0.588,
+   "offered": 212,
+   "picked": 49,
+   "pickRate": 0.231
+  },
+  "baksu.yeongheom": {
+   "name": "맨발의 영험",
+   "set": "baksu",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 1,
+   "plays": 297,
+   "inDeck": 637,
+   "playRate": 0.466,
+   "offered": 241,
+   "picked": 136,
+   "pickRate": 0.564
+  },
+  "baksu.geodugi": {
+   "name": "신칼 던져 거두기",
+   "set": "baksu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 1,
+   "plays": 570,
+   "inDeck": 1190,
+   "playRate": 0.479,
+   "offered": 268,
+   "picked": 265,
+   "pickRate": 0.989
+  },
+  "baksu.ullim": {
+   "name": "신칼 울림",
+   "set": "baksu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1050,
+   "inDeck": 1038,
+   "playRate": 1.012,
+   "offered": 261,
+   "picked": 214,
+   "pickRate": 0.82
+  },
+  "baksu.naeryeoseogi": {
+   "name": "날에서 내려서기",
+   "set": "baksu",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1182,
+   "inDeck": 1152,
+   "playRate": 1.026,
+   "offered": 251,
+   "picked": 245,
+   "pickRate": 0.976
+  },
+  "seungnyeo.yukhwanjang": {
+   "name": "육환장",
+   "set": "seungnyeo",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 34838,
+   "inDeck": 23963,
+   "playRate": 1.454,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "seungnyeo.hapjang": {
+   "name": "합장",
+   "set": "seungnyeo",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 23433,
+   "inDeck": 23880,
+   "playRate": 0.981,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "seungnyeo.gasa": {
+   "name": "가사 펼치기",
+   "set": "seungnyeo",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 16530,
+   "inDeck": 23973,
+   "playRate": 0.69,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "seungnyeo.cheondo_yeombul": {
+   "name": "천도 염불",
+   "set": "seungnyeo",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 2,
+   "plays": 8559,
+   "inDeck": 21411,
+   "playRate": 0.4,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "seungnyeo.beotigo_seogi": {
+   "name": "버티고 서기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3650,
+   "inDeck": 3039,
+   "playRate": 1.201,
+   "offered": 1171,
+   "picked": 506,
+   "pickRate": 0.432
+  },
+  "seungnyeo.deung_dwiro": {
+   "name": "등 뒤로 물러서라",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1048,
+   "inDeck": 1014,
+   "playRate": 1.034,
+   "offered": 1139,
+   "picked": 178,
+   "pickRate": 0.156
+  },
+  "seungnyeo.yeomjual": {
+   "name": "염주알 튕기기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 0,
+   "plays": 153,
+   "inDeck": 90,
+   "playRate": 1.7,
+   "offered": 1093,
+   "picked": 15,
+   "pickRate": 0.014
+  },
+  "seungnyeo.seokjang_badachigi": {
+   "name": "석장 받아치기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2510,
+   "inDeck": 1651,
+   "playRate": 1.52,
+   "offered": 1084,
+   "picked": 270,
+   "pickRate": 0.249
+  },
+  "seungnyeo.ireum_bulleo": {
+   "name": "이름 불러 보내기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1658,
+   "inDeck": 1080,
+   "playRate": 1.535,
+   "offered": 1168,
+   "picked": 202,
+   "pickRate": 0.173
+  },
+  "seungnyeo.hoehyang": {
+   "name": "회향 염불",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 730,
+   "inDeck": 629,
+   "playRate": 1.161,
+   "offered": 1165,
+   "picked": 120,
+   "pickRate": 0.103
+  },
+  "seungnyeo.moktak": {
+   "name": "목탁 소리",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 227,
+   "inDeck": 117,
+   "playRate": 1.94,
+   "offered": 1098,
+   "picked": 22,
+   "pickRate": 0.02
+  },
+  "seungnyeo.gori_sori": {
+   "name": "고리 소리 울리기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 5804,
+   "inDeck": 4193,
+   "playRate": 1.384,
+   "offered": 1132,
+   "picked": 693,
+   "pickRate": 0.612
+  },
+  "seungnyeo.naerijjikneun": {
+   "name": "내리찍는 석장",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 5478,
+   "inDeck": 3855,
+   "playRate": 1.421,
+   "offered": 1103,
+   "picked": 611,
+   "pickRate": 0.554
+  },
+  "seungnyeo.jineon_oegi": {
+   "name": "진언 외기",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 105,
+   "inDeck": 97,
+   "playRate": 1.082,
+   "offered": 1063,
+   "picked": 18,
+   "pickRate": 0.017
+  },
+  "seungnyeo.saebyeok_yebul": {
+   "name": "새벽 예불",
+   "set": "seungnyeo",
+   "rarity": "일반",
+   "type": "능력",
+   "cost": 1,
+   "plays": 7,
+   "inDeck": 7,
+   "playRate": 1,
+   "offered": 1117,
+   "picked": 1,
+   "pickRate": 0.001
+  },
+  "seungnyeo.apeuro_naseo": {
+   "name": "앞으로 나서 막기",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3553,
+   "inDeck": 3488,
+   "playRate": 1.019,
+   "offered": 806,
+   "picked": 603,
+   "pickRate": 0.748
+  },
+  "seungnyeo.geumgang_jase": {
+   "name": "금강 자세",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3268,
+   "inDeck": 3552,
+   "playRate": 0.92,
+   "offered": 779,
+   "picked": 595,
+   "pickRate": 0.764
+  },
+  "seungnyeo.jineon_yeomsong": {
+   "name": "진언 염송",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1040,
+   "inDeck": 827,
+   "playRate": 1.258,
+   "offered": 824,
+   "picked": 150,
+   "pickRate": 0.182
+  },
+  "seungnyeo.buchuk": {
+   "name": "부축해 물리기",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4367,
+   "inDeck": 3745,
+   "playRate": 1.166,
+   "offered": 790,
+   "picked": 625,
+   "pickRate": 0.791
+  },
+  "seungnyeo.beomjong": {
+   "name": "범종 서른세 번",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 2182,
+   "inDeck": 1449,
+   "playRate": 1.506,
+   "offered": 863,
+   "picked": 251,
+   "pickRate": 0.291
+  },
+  "seungnyeo.wangsaeng_barwon": {
+   "name": "왕생 발원",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1491,
+   "inDeck": 2812,
+   "playRate": 0.53,
+   "offered": 858,
+   "picked": 496,
+   "pickRate": 0.578
+  },
+  "seungnyeo.eopgyeongdae": {
+   "name": "업경대 비추기",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1326,
+   "inDeck": 1122,
+   "playRate": 1.182,
+   "offered": 825,
+   "picked": 214,
+   "pickRate": 0.259
+  },
+  "seungnyeo.neok_geodeo": {
+   "name": "넋 걷어 내기",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1127,
+   "inDeck": 1329,
+   "playRate": 0.848,
+   "offered": 817,
+   "picked": 218,
+   "pickRate": 0.267
+  },
+  "seungnyeo.sajahu": {
+   "name": "사자후",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3387,
+   "inDeck": 2006,
+   "playRate": 1.688,
+   "offered": 816,
+   "picked": 365,
+   "pickRate": 0.447
+  },
+  "seungnyeo.jari_bakkwo": {
+   "name": "자리 바꿔 서기",
+   "set": "seungnyeo",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 0,
+   "plays": 7502,
+   "inDeck": 3894,
+   "playRate": 1.927,
+   "offered": 813,
+   "picked": 672,
+   "pickRate": 0.827
+  },
+  "seungnyeo.baekpal_yeomju": {
+   "name": "백팔 염주",
+   "set": "seungnyeo",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 392,
+   "inDeck": 419,
+   "playRate": 0.936,
+   "offered": 295,
+   "picked": 83,
+   "pickRate": 0.281
+  },
+  "seungnyeo.cheondojae": {
+   "name": "천도재",
+   "set": "seungnyeo",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 3,
+   "plays": 850,
+   "inDeck": 1231,
+   "playRate": 0.69,
+   "offered": 250,
+   "picked": 250,
+   "pickRate": 1
+  },
+  "seungnyeo.wangsaeng_deungbul": {
+   "name": "왕생 등불",
+   "set": "seungnyeo",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 427,
+   "inDeck": 456,
+   "playRate": 0.936,
+   "offered": 265,
+   "picked": 109,
+   "pickRate": 0.411
+  },
+  "seungnyeo.banghal": {
+   "name": "방할",
+   "set": "seungnyeo",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 1,
+   "plays": 959,
+   "inDeck": 1234,
+   "playRate": 0.777,
+   "offered": 273,
+   "picked": 273,
+   "pickRate": 1
+  },
+  "seungnyeo.cheongeun_seokjang": {
+   "name": "천근 석장",
+   "set": "seungnyeo",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 1225,
+   "inDeck": 828,
+   "playRate": 1.479,
+   "offered": 266,
+   "picked": 168,
+   "pickRate": 0.632
+  },
+  "beopsa.bujeok_sseugi": {
+   "name": "부적 쓰기",
+   "set": "beopsa",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 19532,
+   "inDeck": 23717,
+   "playRate": 0.824,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "beopsa.sinjangpyeon": {
+   "name": "신장편",
+   "set": "beopsa",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 33955,
+   "inDeck": 23797,
+   "playRate": 1.427,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "beopsa.hosinbu": {
+   "name": "호신부",
+   "set": "beopsa",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 21805,
+   "inDeck": 23861,
+   "playRate": 0.914,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "beopsa.sinryeong_damgi": {
+   "name": "신령 담기",
+   "set": "beopsa",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 7325,
+   "inDeck": 19239,
+   "playRate": 0.381,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "beopsa.sinjang_horyeong": {
+   "name": "신장 호령",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1117,
+   "inDeck": 678,
+   "playRate": 1.647,
+   "offered": 1149,
+   "picked": 110,
+   "pickRate": 0.096
+  },
+  "beopsa.chukgwigyeong": {
+   "name": "축귀경",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1352,
+   "inDeck": 1249,
+   "playRate": 1.082,
+   "offered": 1112,
+   "picked": 231,
+   "pickRate": 0.208
+  },
+  "beopsa.sinmyeong_bujeok": {
+   "name": "신명 실은 부적",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1533,
+   "inDeck": 1047,
+   "playRate": 1.464,
+   "offered": 1131,
+   "picked": 222,
+   "pickRate": 0.196
+  },
+  "beopsa.bujeok_dabal": {
+   "name": "부적 다발",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1339,
+   "inDeck": 1118,
+   "playRate": 1.198,
+   "offered": 1117,
+   "picked": 191,
+   "pickRate": 0.171
+  },
+  "beopsa.bujeok_jumeoni": {
+   "name": "부적 주머니",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "능력",
+   "cost": 1,
+   "plays": 1191,
+   "inDeck": 1358,
+   "playRate": 0.877,
+   "offered": 1112,
+   "picked": 257,
+   "pickRate": 0.231
+  },
+  "beopsa.bujeok_nalligi": {
+   "name": "부적 날리기",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 559,
+   "inDeck": 488,
+   "playRate": 1.145,
+   "offered": 1184,
+   "picked": 70,
+   "pickRate": 0.059
+  },
+  "beopsa.suhobu_sseugi": {
+   "name": "수호부 쓰기",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3364,
+   "inDeck": 2300,
+   "playRate": 1.463,
+   "offered": 1092,
+   "picked": 412,
+   "pickRate": 0.377
+  },
+  "beopsa.haewongyeong": {
+   "name": "해원경 읽기",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 407,
+   "inDeck": 263,
+   "playRate": 1.548,
+   "offered": 1144,
+   "picked": 43,
+   "pickRate": 0.038
+  },
+  "beopsa.kkujitneun_gyeong": {
+   "name": "꾸짖는 경",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 499,
+   "inDeck": 322,
+   "playRate": 1.55,
+   "offered": 1142,
+   "picked": 51,
+   "pickRate": 0.045
+  },
+  "beopsa.byeoksagyeong": {
+   "name": "벽사경",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 4583,
+   "inDeck": 2870,
+   "playRate": 1.597,
+   "offered": 1126,
+   "picked": 458,
+   "pickRate": 0.407
+  },
+  "beopsa.gyeongmun_geumjul": {
+   "name": "경문 금줄",
+   "set": "beopsa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1497,
+   "inDeck": 1323,
+   "playRate": 1.132,
+   "offered": 1104,
+   "picked": 212,
+   "pickRate": 0.192
+  },
+  "beopsa.obang_horyeong": {
+   "name": "오방 호령",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 342,
+   "inDeck": 289,
+   "playRate": 1.183,
+   "offered": 785,
+   "picked": 48,
+   "pickRate": 0.061
+  },
+  "beopsa.bulgeun_bujeok": {
+   "name": "붉은 부적 쓰기",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 889,
+   "inDeck": 1327,
+   "playRate": 0.67,
+   "offered": 801,
+   "picked": 253,
+   "pickRate": 0.316
+  },
+  "beopsa.bujeok_baram": {
+   "name": "부적 바람",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 2560,
+   "inDeck": 2866,
+   "playRate": 0.893,
+   "offered": 800,
+   "picked": 478,
+   "pickRate": 0.598
+  },
+  "beopsa.bujeok_byeongpung": {
+   "name": "부적 병풍",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2783,
+   "inDeck": 3318,
+   "playRate": 0.839,
+   "offered": 776,
+   "picked": 575,
+   "pickRate": 0.741
+  },
+  "beopsa.bujeok_sareugi": {
+   "name": "부적 사르기",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1902,
+   "inDeck": 4137,
+   "playRate": 0.46,
+   "offered": 860,
+   "picked": 712,
+   "pickRate": 0.828
+  },
+  "beopsa.sinryeongbu_bonghagi": {
+   "name": "신령부 봉하기",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 565,
+   "inDeck": 1524,
+   "playRate": 0.371,
+   "offered": 835,
+   "picked": 318,
+   "pickRate": 0.381
+  },
+  "beopsa.sinryeongkke_chugwon": {
+   "name": "신령께 축원",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 1106,
+   "inDeck": 1265,
+   "playRate": 0.874,
+   "offered": 840,
+   "picked": 251,
+   "pickRate": 0.299
+  },
+  "beopsa.haewongyeong_wandok": {
+   "name": "해원경 완독",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 2324,
+   "inDeck": 2472,
+   "playRate": 0.94,
+   "offered": 781,
+   "picked": 405,
+   "pickRate": 0.519
+  },
+  "beopsa.ireum_jeogeun": {
+   "name": "이름 적은 부적",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 4088,
+   "inDeck": 3651,
+   "playRate": 1.12,
+   "offered": 817,
+   "picked": 606,
+   "pickRate": 0.742
+  },
+  "beopsa.bujeong_ssitneun": {
+   "name": "부정 씻는 경",
+   "set": "beopsa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2857,
+   "inDeck": 2803,
+   "playRate": 1.019,
+   "offered": 787,
+   "picked": 486,
+   "pickRate": 0.618
+  },
+  "beopsa.sinryeong_giun": {
+   "name": "신령 기운 쏟기",
+   "set": "beopsa",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 2,
+   "plays": 991,
+   "inDeck": 996,
+   "playRate": 0.995,
+   "offered": 264,
+   "picked": 208,
+   "pickRate": 0.788
+  },
+  "beopsa.jinsa_geureut": {
+   "name": "진사 그릇",
+   "set": "beopsa",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 867,
+   "inDeck": 921,
+   "playRate": 0.941,
+   "offered": 257,
+   "picked": 198,
+   "pickRate": 0.77
+  },
+  "beopsa.dokgyeong_sammae": {
+   "name": "독경 삼매",
+   "set": "beopsa",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 132,
+   "inDeck": 146,
+   "playRate": 0.904,
+   "offered": 264,
+   "picked": 30,
+   "pickRate": 0.114
+  },
+  "beopsa.sinryeong_ongwi": {
+   "name": "신령 옹위",
+   "set": "beopsa",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 2,
+   "plays": 442,
+   "inDeck": 501,
+   "playRate": 0.882,
+   "offered": 219,
+   "picked": 103,
+   "pickRate": 0.47
+  },
+  "beopsa.samdumae": {
+   "name": "삼두매 부적",
+   "set": "beopsa",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 1211,
+   "inDeck": 1255,
+   "playRate": 0.965,
+   "offered": 262,
+   "picked": 259,
+   "pickRate": 0.989
+  },
+  "talggun.malttugi_jaedam": {
+   "name": "말뚝이 재담",
+   "set": "talggun",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 28885,
+   "inDeck": 23974,
+   "playRate": 1.205,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "talggun.tal_bakkwosseugi": {
+   "name": "탈 바꿔쓰기",
+   "set": "talggun",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 0,
+   "plays": 28417,
+   "inDeck": 24023,
+   "playRate": 1.183,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "talggun.deotboegi_chum": {
+   "name": "덧뵈기 춤",
+   "set": "talggun",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 27785,
+   "inDeck": 24023,
+   "playRate": 1.157,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "talggun.sopum_deonjigi": {
+   "name": "소품 던지기",
+   "set": "talggun",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 19063,
+   "inDeck": 22900,
+   "playRate": 0.832,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "talggun.chaejjik_sawi": {
+   "name": "채찍 사위",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3438,
+   "inDeck": 2576,
+   "playRate": 1.335,
+   "offered": 1141,
+   "picked": 452,
+   "pickRate": 0.396
+  },
+  "talggun.yangban_hyungnae": {
+   "name": "양반 흉내",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 191,
+   "inDeck": 175,
+   "playRate": 1.091,
+   "offered": 1121,
+   "picked": 34,
+   "pickRate": 0.03
+  },
+  "talggun.kkaekki_georeum": {
+   "name": "깨끼 걸음",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 0,
+   "plays": 4623,
+   "inDeck": 3274,
+   "playRate": 1.412,
+   "offered": 1127,
+   "picked": 547,
+   "pickRate": 0.485
+  },
+  "talggun.eongdeongi_chum": {
+   "name": "엉덩이춤",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2314,
+   "inDeck": 2244,
+   "playRate": 1.031,
+   "offered": 1141,
+   "picked": 392,
+   "pickRate": 0.344
+  },
+  "talggun.malttugi_hwalgae": {
+   "name": "말뚝이 활개",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 2,
+   "plays": 379,
+   "inDeck": 363,
+   "playRate": 1.044,
+   "offered": 1167,
+   "picked": 67,
+   "pickRate": 0.057
+  },
+  "talggun.jipangi_jitgi": {
+   "name": "지팡이 짚기",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2214,
+   "inDeck": 3828,
+   "playRate": 0.578,
+   "offered": 1103,
+   "picked": 639,
+   "pickRate": 0.579
+  },
+  "talggun.halmi_neokduri": {
+   "name": "할미 넋두리",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3999,
+   "inDeck": 4047,
+   "playRate": 0.988,
+   "offered": 1094,
+   "picked": 680,
+   "pickRate": 0.622
+  },
+  "talggun.pyojubak_dudeurigi": {
+   "name": "표주박 두드리기",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 838,
+   "inDeck": 453,
+   "playRate": 1.85,
+   "offered": 1162,
+   "picked": 81,
+   "pickRate": 0.07
+  },
+  "talggun.madang_dolgi": {
+   "name": "마당 돌기",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 3358,
+   "inDeck": 4034,
+   "playRate": 0.832,
+   "offered": 1111,
+   "picked": 671,
+   "pickRate": 0.604
+  },
+  "talggun.jwilbuchae_pyeogi": {
+   "name": "쥘부채 펴기",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1920,
+   "inDeck": 2107,
+   "playRate": 0.911,
+   "offered": 1152,
+   "picked": 336,
+   "pickRate": 0.292
+  },
+  "talggun.geodeureum_chum": {
+   "name": "거드름춤",
+   "set": "talggun",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 685,
+   "inDeck": 567,
+   "playRate": 1.208,
+   "offered": 1180,
+   "picked": 91,
+   "pickRate": 0.077
+  },
+  "talggun.se_tal_noreum": {
+   "name": "세 탈 놀음",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2831,
+   "inDeck": 2243,
+   "playRate": 1.262,
+   "offered": 823,
+   "picked": 373,
+   "pickRate": 0.453
+  },
+  "talggun.kkujitneun_jaedam": {
+   "name": "꾸짖는 재담",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 359,
+   "inDeck": 300,
+   "playRate": 1.197,
+   "offered": 805,
+   "picked": 62,
+   "pickRate": 0.077
+  },
+  "talggun.jaedam_batgi": {
+   "name": "재담 받기",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3088,
+   "inDeck": 2512,
+   "playRate": 1.229,
+   "offered": 842,
+   "picked": 427,
+   "pickRate": 0.507
+  },
+  "talggun.talnoreumpan": {
+   "name": "탈놀음판",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 0,
+   "plays": 3761,
+   "inDeck": 3975,
+   "playRate": 0.946,
+   "offered": 842,
+   "picked": 662,
+   "pickRate": 0.786
+  },
+  "talggun.yangban_haengse": {
+   "name": "양반 행세",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 2429,
+   "inDeck": 2719,
+   "playRate": 0.893,
+   "offered": 799,
+   "picked": 475,
+   "pickRate": 0.594
+  },
+  "talggun.halmi_heoteunchum": {
+   "name": "할미 허튼춤",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 669,
+   "inDeck": 891,
+   "playRate": 0.751,
+   "offered": 851,
+   "picked": 140,
+   "pickRate": 0.165
+  },
+  "talggun.jipangi_huryeochigi": {
+   "name": "지팡이 후려치기",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 3750,
+   "inDeck": 3379,
+   "playRate": 1.11,
+   "offered": 808,
+   "picked": 567,
+   "pickRate": 0.702
+  },
+  "talggun.malttugi_apjang": {
+   "name": "말뚝이 앞장",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 0,
+   "plays": 4474,
+   "inDeck": 3625,
+   "playRate": 1.234,
+   "offered": 762,
+   "picked": 605,
+   "pickRate": 0.794
+  },
+  "talggun.sopum_botari": {
+   "name": "소품 보따리",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 335,
+   "inDeck": 381,
+   "playRate": 0.879,
+   "offered": 805,
+   "picked": 59,
+   "pickRate": 0.073
+  },
+  "talggun.halmi_dwitpuri": {
+   "name": "할미 뒷풀이",
+   "set": "talggun",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 3,
+   "plays": 1912,
+   "inDeck": 2065,
+   "playRate": 0.926,
+   "offered": 804,
+   "picked": 365,
+   "pickRate": 0.454
+  },
+  "talggun.tal_set_hanmom": {
+   "name": "탈 셋 한 몸",
+   "set": "talggun",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 2,
+   "plays": 1205,
+   "inDeck": 879,
+   "playRate": 1.371,
+   "offered": 256,
+   "picked": 181,
+   "pickRate": 0.707
+  },
+  "talggun.nollimgeori": {
+   "name": "놀림거리",
+   "set": "talggun",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 119,
+   "inDeck": 131,
+   "playRate": 0.908,
+   "offered": 237,
+   "picked": 28,
+   "pickRate": 0.118
+  },
+  "talggun.halmi_madang": {
+   "name": "할미 마당",
+   "set": "talggun",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 1,
+   "plays": 979,
+   "inDeck": 1072,
+   "playRate": 0.913,
+   "offered": 230,
+   "picked": 230,
+   "pickRate": 1
+  },
+  "talggun.talpan_hanmadang": {
+   "name": "탈판 한마당",
+   "set": "talggun",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 311,
+   "inDeck": 307,
+   "playRate": 1.013,
+   "offered": 285,
+   "picked": 70,
+   "pickRate": 0.246
+  },
+  "talggun.tal_taeugi": {
+   "name": "탈 태우기",
+   "set": "talggun",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 1,
+   "plays": 690,
+   "inDeck": 1378,
+   "playRate": 0.501,
+   "offered": 275,
+   "picked": 274,
+   "pickRate": 0.996
+  },
+  "chasa.ora_jiugi": {
+   "name": "오라 지우기",
+   "set": "chasa",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 1,
+   "plays": 30917,
+   "inDeck": 23865,
+   "playRate": 1.295,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "chasa.jeokpaeji_pyeolchigi": {
+   "name": "적패지 펼치기",
+   "set": "chasa",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 30564,
+   "inDeck": 23988,
+   "playRate": 1.274,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "chasa.jeoseung_munjigi": {
+   "name": "저승 문지기",
+   "set": "chasa",
+   "rarity": "기본",
+   "type": "기술",
+   "cost": 1,
+   "plays": 17447,
+   "inDeck": 23958,
+   "playRate": 0.728,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "chasa.hon_geodugi": {
+   "name": "혼 거두기",
+   "set": "chasa",
+   "rarity": "기본",
+   "type": "공격",
+   "cost": 2,
+   "plays": 19581,
+   "inDeck": 23948,
+   "playRate": 0.818,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "chasa.soesasl_huligi": {
+   "name": "쇠사슬 후리기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2136,
+   "inDeck": 1503,
+   "playRate": 1.421,
+   "offered": 1069,
+   "picked": 258,
+   "pickRate": 0.241
+  },
+  "chasa.kkamagwi_simbureum": {
+   "name": "까마귀 심부름",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2425,
+   "inDeck": 1969,
+   "playRate": 1.232,
+   "offered": 1159,
+   "picked": 336,
+   "pickRate": 0.29
+  },
+  "chasa.yukmo_bangmangi": {
+   "name": "육모방망이",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 2,
+   "plays": 53,
+   "inDeck": 49,
+   "playRate": 1.082,
+   "offered": 1023,
+   "picked": 7,
+   "pickRate": 0.007
+  },
+  "chasa.bulgeun_geulssi": {
+   "name": "붉은 글씨",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 305,
+   "inDeck": 281,
+   "playRate": 1.085,
+   "offered": 1115,
+   "picked": 50,
+   "pickRate": 0.045
+  },
+  "chasa.daemun_jikigi": {
+   "name": "대문 지키기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1143,
+   "inDeck": 1039,
+   "playRate": 1.1,
+   "offered": 1154,
+   "picked": 162,
+   "pickRate": 0.14
+  },
+  "chasa.oratjul_danggigi": {
+   "name": "오랏줄 당기기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 1,
+   "plays": 2735,
+   "inDeck": 3300,
+   "playRate": 0.829,
+   "offered": 1139,
+   "picked": 531,
+   "pickRate": 0.466
+  },
+  "chasa.sangcheo_jitgi": {
+   "name": "상처 짚기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1054,
+   "inDeck": 1314,
+   "playRate": 0.802,
+   "offered": 1143,
+   "picked": 227,
+   "pickRate": 0.199
+  },
+  "chasa.oratjul_sarigi": {
+   "name": "오랏줄 사리기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 2157,
+   "inDeck": 1454,
+   "playRate": 1.483,
+   "offered": 1111,
+   "picked": 229,
+   "pickRate": 0.206
+  },
+  "chasa.neok_galmuri": {
+   "name": "넋 갈무리",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 299,
+   "inDeck": 263,
+   "playRate": 1.137,
+   "offered": 1118,
+   "picked": 42,
+   "pickRate": 0.038
+  },
+  "chasa.jeokpaeji_daejo": {
+   "name": "적패지 대조",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "공격",
+   "cost": 1,
+   "plays": 236,
+   "inDeck": 202,
+   "playRate": 1.168,
+   "offered": 1164,
+   "picked": 31,
+   "pickRate": 0.027
+  },
+  "chasa.bonhyang_mutgi": {
+   "name": "본향 묻기",
+   "set": "chasa",
+   "rarity": "일반",
+   "type": "기술",
+   "cost": 0,
+   "plays": 2826,
+   "inDeck": 1497,
+   "playRate": 1.888,
+   "offered": 1104,
+   "picked": 242,
+   "pickRate": 0.219
+  },
+  "chasa.myeongbu_jiphaeng": {
+   "name": "명부 집행",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 2,
+   "plays": 616,
+   "inDeck": 608,
+   "playRate": 1.013,
+   "offered": 801,
+   "picked": 91,
+   "pickRate": 0.114
+  },
+  "chasa.eodum_sok_ireum": {
+   "name": "어둠 속 이름",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1043,
+   "inDeck": 1231,
+   "playRate": 0.847,
+   "offered": 827,
+   "picked": 201,
+   "pickRate": 0.243
+  },
+  "chasa.mukkin_ireum": {
+   "name": "묶인 이름",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 1,
+   "plays": 3054,
+   "inDeck": 3387,
+   "playRate": 0.902,
+   "offered": 846,
+   "picked": 599,
+   "pickRate": 0.708
+  },
+  "chasa.gil_magaseogi": {
+   "name": "길 막아서기",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 564,
+   "inDeck": 1569,
+   "playRate": 0.359,
+   "offered": 833,
+   "picked": 274,
+   "pickRate": 0.329
+  },
+  "chasa.munjigi_seoyak": {
+   "name": "문지기 서약",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "능력",
+   "cost": 2,
+   "plays": 162,
+   "inDeck": 184,
+   "playRate": 0.88,
+   "offered": 802,
+   "picked": 26,
+   "pickRate": 0.032
+  },
+  "chasa.neokjul_butdeulgi": {
+   "name": "넋줄 붙들기",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 202,
+   "inDeck": 154,
+   "playRate": 1.312,
+   "offered": 813,
+   "picked": 21,
+   "pickRate": 0.026
+  },
+  "chasa.jeoseunggil_donghaeng": {
+   "name": "저승길 동행",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 2,
+   "plays": 1401,
+   "inDeck": 1282,
+   "playRate": 1.093,
+   "offered": 805,
+   "picked": 224,
+   "pickRate": 0.278
+  },
+  "chasa.maethin_han": {
+   "name": "맺힌 한 거두기",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 1132,
+   "inDeck": 2455,
+   "playRate": 0.461,
+   "offered": 846,
+   "picked": 443,
+   "pickRate": 0.524
+  },
+  "chasa.dongmyeong_iin": {
+   "name": "동명이인",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "기술",
+   "cost": 1,
+   "plays": 857,
+   "inDeck": 647,
+   "playRate": 1.325,
+   "offered": 816,
+   "picked": 116,
+   "pickRate": 0.142
+  },
+  "chasa.jeoseungmun_dudeurigi": {
+   "name": "저승문 두드리기",
+   "set": "chasa",
+   "rarity": "고급",
+   "type": "공격",
+   "cost": 1,
+   "plays": 1728,
+   "inDeck": 1282,
+   "playRate": 1.348,
+   "offered": 839,
+   "picked": 229,
+   "pickRate": 0.273
+  },
+  "chasa.jeoseung_pangyeol": {
+   "name": "저승 판결",
+   "set": "chasa",
+   "rarity": "희귀",
+   "type": "공격",
+   "cost": 3,
+   "plays": 1189,
+   "inDeck": 1298,
+   "playRate": 0.916,
+   "offered": 293,
+   "picked": 264,
+   "pickRate": 0.901
+  },
+  "chasa.ireum_seokja": {
+   "name": "이름 석 자",
+   "set": "chasa",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 2,
+   "plays": 1025,
+   "inDeck": 1111,
+   "playRate": 0.923,
+   "offered": 270,
+   "picked": 235,
+   "pickRate": 0.87
+  },
+  "chasa.ajik_ttaega_anida": {
+   "name": "아직 때가 아니다",
+   "set": "chasa",
+   "rarity": "희귀",
+   "type": "능력",
+   "cost": 1,
+   "plays": 753,
+   "inDeck": 813,
+   "playRate": 0.926,
+   "offered": 254,
+   "picked": 172,
+   "pickRate": 0.677
+  },
+  "chasa.daesin_seoneun_chasa": {
+   "name": "대신 서는 차사",
+   "set": "chasa",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 3,
+   "plays": 697,
+   "inDeck": 693,
+   "playRate": 1.006,
+   "offered": 276,
+   "picked": 146,
+   "pickRate": 0.529
+  },
+  "chasa.jeokpaeji_nangdok": {
+   "name": "적패지 낭독",
+   "set": "chasa",
+   "rarity": "희귀",
+   "type": "기술",
+   "cost": 2,
+   "plays": 217,
+   "inDeck": 203,
+   "playRate": 1.069,
+   "offered": 268,
+   "picked": 37,
+   "pickRate": 0.138
+  },
+  "duo.cheongsin_janggu": {
+   "name": "청신 장구",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gongsu_hanbal": {
+   "name": "공수 한 발",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.kalkkeut_cheongbae": {
+   "name": "칼끝 청배",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gildakkeum_yeombul": {
+   "name": "길닦음 염불",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.jihwa_kkotgi": {
+   "name": "지화 꽂기",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.dwitjeon_noreum": {
+   "name": "뒷전 놀음",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.sajasang_charim": {
+   "name": "사자상 차림",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.hwaseung_jangdan": {
+   "name": "화승 장단",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.dangak_jakdutagi": {
+   "name": "당악 작두타기",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.moktak_baraji": {
+   "name": "목탁 바라지",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.anjeungut_jangdan": {
+   "name": "앉은굿 장단",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gillori": {
+   "name": "길놀이",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.orajul_gutgeori": {
+   "name": "오랏줄 굿거리",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "능력",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.hwaseung_sinkal": {
+   "name": "화승 신칼",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.beomjong_hanbal": {
+   "name": "범종 한 발",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gyeong_tanhwan": {
+   "name": "경 새긴 탄환",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.sandae_gwanyeok": {
+   "name": "산대 과녁",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.chongseong_myeongbu": {
+   "name": "총성 명부",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.kallal_hapjang": {
+   "name": "칼날 위 합장",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 3,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.sinjang_kalbujeok": {
+   "name": "신장 칼부적",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.eokkaechum_jakdu": {
+   "name": "어깨춤 작두",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.kallo_myeongbu": {
+   "name": "칼로 쓴 명부",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gyeongban_yeombulban": {
+   "name": "경 반 염불 반",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.gokkal_tal": {
+   "name": "고깔과 탈",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.jeoseunggil_baeung": {
+   "name": "저승길 배웅",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.jjokbak_bujeok": {
+   "name": "쪽박 부적",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "능력",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.haewon_homyeong": {
+   "name": "해원 호명",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "duo.jeokpaeji_jaedam": {
+   "name": "적패지 재담",
+   "set": "duo",
+   "rarity": "합기",
+   "type": "공격",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.jeonghwasu": {
+   "name": "정화수 떠놓기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.soji": {
+   "name": "소지 사르기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.ssaljeom": {
+   "name": "쌀점 치기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.sonppyeok_jangdan": {
+   "name": "손뼉 장단",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.daedong_jangdan": {
+   "name": "대동 장단",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 2,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.geumjul": {
+   "name": "금줄 두르기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.sogeum": {
+   "name": "소금 뿌리기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.pat": {
+   "name": "팥 뿌리기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "공격",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.yaksuk": {
+   "name": "약쑥 찜질",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.jari_naeeo": {
+   "name": "자리 내어주기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.gosure": {
+   "name": "고수레",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.neokjeon": {
+   "name": "넋전 모시기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "능력",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.curse_mangseorim": {
+   "name": "망설임",
+   "set": "common",
+   "rarity": "특수",
+   "type": "저주",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.curse_heotgeot": {
+   "name": "헛것",
+   "set": "common",
+   "rarity": "특수",
+   "type": "저주",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.curse_wonmang": {
+   "name": "원망",
+   "set": "common",
+   "rarity": "특수",
+   "type": "저주",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 1,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.curse_duryeoum": {
+   "name": "두려움",
+   "set": "common",
+   "rarity": "특수",
+   "type": "저주",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.curse_daemun": {
+   "name": "대문 흔들기",
+   "set": "common",
+   "rarity": "특수",
+   "type": "저주",
+   "cost": 1,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.status_geuneul": {
+   "name": "그늘",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.status_sangcheo": {
+   "name": "상처",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.status_jabeum": {
+   "name": "잡음",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.rescue_neokbureugi": {
+   "name": "넋 부르기",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 0,
+   "plays": 35268,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.mourn_gok": {
+   "name": "곡",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 0,
+   "plays": 8902,
+   "inDeck": 7276,
+   "playRate": 1.223,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.offering_nojatdon": {
+   "name": "노잣돈 바치기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  }
+ },
+ "tokens": {
+  "jaebi.t_eolssu": 49050,
+  "jaebi.t_jota": 716,
+  "jaebi.t_jalhanda": 6874,
+  "seungnyeo.t_hosin": 2011,
+  "seungnyeo.t_pasa": 135,
+  "beopsa.t_hwabu": 45413,
+  "beopsa.t_hwabu_red": 10286,
+  "beopsa.t_suhobu": 23847,
+  "beopsa.t_chukgwibu": 3650,
+  "beopsa.t_sinryeongbu": 4780,
+  "talggun.t_pyojubak": 18859,
+  "talggun.t_jwilbuchae": 5588,
+  "duo.t_eolssigu": 0,
+  "duo.t_jihwa": 0,
+  "duo.t_jineon": 0,
+  "duo.t_kalbujeok": 0,
+  "duo.t_gyeongmun": 0,
+  "duo.t_buchae": 0
+ },
+ "conds": {
+  "posu.geupso#1": {
+   "card": "posu.geupso",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 10146,
+   "true": 1357,
+   "rate": 0.134,
+   "dataP": 0.4
+  },
+  "manshin.buchae_makgi#0": {
+   "card": "manshin.buchae_makgi",
+   "if": "받는소리 · 굿상에 신령이 있을 때",
+   "evaluated": 16846,
+   "true": 6419,
+   "rate": 0.381,
+   "dataP": 0.5
+  },
+  "posu.hwaseungchong#0": {
+   "card": "posu.hwaseungchong",
+   "if": "화약 1을 쓰면",
+   "evaluated": 25727,
+   "true": 13622,
+   "rate": 0.529,
+   "dataP": 0.5
+  },
+  "jaebi.janggu_jangdan#0": {
+   "card": "jaebi.janggu_jangdan",
+   "if": "받는소리",
+   "evaluated": 32702,
+   "true": 21818,
+   "rate": 0.667,
+   "dataP": 0.6
+  },
+  "posu.teumsae#0": {
+   "card": "posu.teumsae",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 5083,
+   "true": 578,
+   "rate": 0.114,
+   "dataP": 0.45
+  },
+  "manshin.janggun_gongsu#1": {
+   "card": "manshin.janggun_gongsu",
+   "if": "강신 중(신바람 5)이면",
+   "evaluated": 4161,
+   "true": 1517,
+   "rate": 0.365,
+   "dataP": 0.3
+  },
+  "manshin.myeongdo#0": {
+   "card": "manshin.myeongdo",
+   "if": "받는소리",
+   "evaluated": 4232,
+   "true": 2403,
+   "rate": 0.568,
+   "dataP": 0.6
+  },
+  "posu.hwayak_yeongi#0": {
+   "card": "posu.hwayak_yeongi",
+   "if": "화약 1을 쓰면",
+   "evaluated": 4579,
+   "true": 1511,
+   "rate": 0.33,
+   "dataP": 0.5
+  },
+  "manshin.geumeum_cheongbae#0": {
+   "card": "manshin.geumeum_cheongbae",
+   "if": "손에 그늘이 있으면",
+   "evaluated": 1843,
+   "true": 0,
+   "rate": 0,
+   "dataP": 0.4
+  },
+  "posu.otjarak#0": {
+   "card": "posu.otjarak",
+   "if": "받는소리",
+   "evaluated": 2307,
+   "true": 1389,
+   "rate": 0.602,
+   "dataP": 0.6
+  },
+  "jaebi.chaepyeon#0": {
+   "card": "jaebi.chaepyeon",
+   "if": "장단이 2 이상이면",
+   "evaluated": 5430,
+   "true": 1783,
+   "rate": 0.328,
+   "dataP": 0.5
+  },
+  "posu.kkojildae#0": {
+   "card": "posu.kkojildae",
+   "if": "받는소리",
+   "evaluated": 5248,
+   "true": 3727,
+   "rate": 0.71,
+   "dataP": 0.6
+  },
+  "jaebi.teoju#0": {
+   "card": "jaebi.teoju",
+   "if": "받는소리",
+   "evaluated": 6613,
+   "true": 4952,
+   "rate": 0.749,
+   "dataP": 0.6
+  },
+  "jaebi.subu#1": {
+   "card": "jaebi.subu",
+   "if": "받는소리",
+   "evaluated": 709,
+   "true": 618,
+   "rate": 0.872,
+   "dataP": 0.6
+  },
+  "posu.geodun#0": {
+   "card": "posu.geodun",
+   "if": "점지를 없앨 때마다",
+   "evaluated": 531,
+   "true": 531,
+   "rate": 1,
+   "dataP": 1
+  },
+  "jaebi.makjangdan#1": {
+   "card": "jaebi.makjangdan",
+   "if": "가락이 당악이면",
+   "evaluated": 3352,
+   "true": 742,
+   "rate": 0.221,
+   "dataP": 0.5
+  },
+  "jaebi.ojang#0": {
+   "card": "jaebi.ojang",
+   "if": "이번 턴 장단이 5가 되면",
+   "evaluated": 981,
+   "true": 424,
+   "rate": 0.432,
+   "dataP": 0.5
+  },
+  "jaebi.sinmyeong_janggu#0": {
+   "card": "jaebi.sinmyeong_janggu",
+   "if": "이번 턴 진형이 바뀌었으면",
+   "evaluated": 6331,
+   "true": 863,
+   "rate": 0.136,
+   "dataP": 0.5
+  },
+  "jaebi.jingchae#0": {
+   "card": "jaebi.jingchae",
+   "if": "이번 턴 진형이 바뀌었으면",
+   "evaluated": 4546,
+   "true": 541,
+   "rate": 0.119,
+   "dataP": 0.5
+  },
+  "posu.sanyanggut#0": {
+   "card": "posu.sanyanggut",
+   "if": "받는소리",
+   "evaluated": 1572,
+   "true": 529,
+   "rate": 0.337,
+   "dataP": 0.6
+  },
+  "manshin.soji#0": {
+   "card": "manshin.soji",
+   "if": "손의 부적 1장을 소멸시켜 바치면",
+   "evaluated": 1323,
+   "true": 153,
+   "rate": 0.116,
+   "dataP": 0.5
+  },
+  "manshin.ssal#0": {
+   "card": "manshin.ssal",
+   "if": "받는소리",
+   "evaluated": 1066,
+   "true": 608,
+   "rate": 0.57,
+   "dataP": 0.6
+  },
+  "manshin.ssal#1": {
+   "card": "manshin.ssal",
+   "if": "직전 카드도 만신 카드면",
+   "evaluated": 1066,
+   "true": 351,
+   "rate": 0.329,
+   "dataP": 0.4
+  },
+  "posu.jumeoni#0": {
+   "card": "posu.jumeoni",
+   "if": "점지된 적을 공격하면",
+   "evaluated": 2928,
+   "true": 2346,
+   "rate": 0.801,
+   "dataP": 0.7
+  },
+  "posu.santan_serye#0": {
+   "card": "posu.santan_serye",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 4013,
+   "true": 444,
+   "rate": 0.111,
+   "dataP": 0.45
+  },
+  "posu.giljabi#0": {
+   "card": "posu.giljabi",
+   "if": "화약 1을 쓰면",
+   "evaluated": 379,
+   "true": 106,
+   "rate": 0.28,
+   "dataP": 0.5
+  },
+  "manshin.daegam_nori#0": {
+   "card": "manshin.daegam_nori",
+   "if": "받는소리",
+   "evaluated": 2021,
+   "true": 1450,
+   "rate": 0.717,
+   "dataP": 0.6
+  },
+  "posu.sumtong#1": {
+   "card": "posu.sumtong",
+   "if": "화약 1을 쓰면",
+   "evaluated": 118,
+   "true": 45,
+   "rate": 0.381,
+   "dataP": 0.5
+  },
+  "jaebi.sinawi#0": {
+   "card": "jaebi.sinawi",
+   "if": "받는소리",
+   "evaluated": 558,
+   "true": 381,
+   "rate": 0.683,
+   "dataP": 0.6
+  },
+  "jaebi.taepyeongso#0": {
+   "card": "jaebi.taepyeongso",
+   "if": "받는소리",
+   "evaluated": 122,
+   "true": 71,
+   "rate": 0.582,
+   "dataP": 0.6
+  },
+  "manshin.mubok_garaipgi#0": {
+   "card": "manshin.mubok_garaipgi",
+   "if": "손의 부적 1장을 소멸시켜 바치면",
+   "evaluated": 656,
+   "true": 13,
+   "rate": 0.02,
+   "dataP": 0.5
+  },
+  "posu.hwayak_jaegi#0": {
+   "card": "posu.hwayak_jaegi",
+   "if": "받는소리",
+   "evaluated": 603,
+   "true": 430,
+   "rate": 0.713,
+   "dataP": 0.6
+  },
+  "posu.yakjeom#0": {
+   "card": "posu.yakjeom",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 3133,
+   "true": 407,
+   "rate": 0.13,
+   "dataP": 0.45
+  },
+  "manshin.chilseong_gongsu#0": {
+   "card": "manshin.chilseong_gongsu",
+   "if": "강신 중(신바람 5)이면",
+   "evaluated": 3842,
+   "true": 1260,
+   "rate": 0.328,
+   "dataP": 0.3
+  },
+  "posu.oegil#1": {
+   "card": "posu.oegil",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 482,
+   "true": 57,
+   "rate": 0.118,
+   "dataP": 0.4
+  },
+  "manshin.wongwi_homyeong#0": {
+   "card": "manshin.wongwi_homyeong",
+   "if": "받는소리",
+   "evaluated": 421,
+   "true": 237,
+   "rate": 0.563,
+   "dataP": 0.6
+  },
+  "posu.heutppurim#0": {
+   "card": "posu.heutppurim",
+   "if": "화약 1을 쓰면",
+   "evaluated": 26,
+   "true": 8,
+   "rate": 0.308,
+   "dataP": 0.5
+  },
+  "posu.beoljip#0": {
+   "card": "posu.beoljip",
+   "if": "받는소리",
+   "evaluated": 555,
+   "true": 122,
+   "rate": 0.22,
+   "dataP": 0.6
+  },
+  "posu.deonnan#0": {
+   "card": "posu.deonnan",
+   "if": "점지된 적을 맞히면",
+   "evaluated": 1705,
+   "true": 1434,
+   "rate": 0.841,
+   "dataP": 0.8
+  },
+  "jaebi.bujeongnori#0": {
+   "card": "jaebi.bujeongnori",
+   "if": "가락이 당악이면",
+   "evaluated": 181,
+   "true": 42,
+   "rate": 0.232,
+   "dataP": 0.4
+  },
+  "jaebi.geosang#0": {
+   "card": "jaebi.geosang",
+   "if": "가락을 한 단계 늦추면",
+   "evaluated": 137,
+   "true": 95,
+   "rate": 0.693,
+   "dataP": 0.5
+  },
+  "baksu.jakdu#1": {
+   "card": "baksu.jakdu",
+   "if": "장단 2 미만으로 턴 종료(헛디딤)",
+   "evaluated": 38562,
+   "true": 8298,
+   "rate": 0.215,
+   "dataP": 0.4
+  },
+  "baksu.omgyeo#1": {
+   "card": "baksu.omgyeo",
+   "if": "받는소리",
+   "evaluated": 1000,
+   "true": 708,
+   "rate": 0.708,
+   "dataP": 0.6
+  },
+  "baksu.samjichang#0": {
+   "card": "baksu.samjichang",
+   "if": "장단 3 이상",
+   "evaluated": 700,
+   "true": 42,
+   "rate": 0.06,
+   "dataP": 0.5
+  },
+  "baksu.beonjineun#0": {
+   "card": "baksu.beonjineun",
+   "if": "상흔 5 이상인 적",
+   "evaluated": 14645,
+   "true": 3705,
+   "rate": 0.253,
+   "dataP": 0.5
+  },
+  "baksu.naeryeoseogi#0": {
+   "card": "baksu.naeryeoseogi",
+   "if": "작두 위에서",
+   "evaluated": 1170,
+   "true": 389,
+   "rate": 0.332,
+   "dataP": 0.5
+  },
+  "baksu.eonwoldo#0": {
+   "card": "baksu.eonwoldo",
+   "if": "받는소리",
+   "evaluated": 626,
+   "true": 278,
+   "rate": 0.444,
+   "dataP": 0.6
+  },
+  "baksu.cheollik#0": {
+   "card": "baksu.cheollik",
+   "if": "작두 위에서",
+   "evaluated": 1380,
+   "true": 301,
+   "rate": 0.218,
+   "dataP": 0.5
+  },
+  "baksu.gugunbok#0": {
+   "card": "baksu.gugunbok",
+   "if": "받는소리",
+   "evaluated": 326,
+   "true": 123,
+   "rate": 0.377,
+   "dataP": 0.6
+  },
+  "baksu.sinkal_goreugi#0": {
+   "card": "baksu.sinkal_goreugi",
+   "if": "받는소리",
+   "evaluated": 1755,
+   "true": 1236,
+   "rate": 0.704,
+   "dataP": 0.6
+  },
+  "baksu.hwimori#0": {
+   "card": "baksu.hwimori",
+   "if": "상흔이 있는 적",
+   "evaluated": 1154,
+   "true": 576,
+   "rate": 0.499,
+   "dataP": 0.6
+  },
+  "baksu.byeorak#0": {
+   "card": "baksu.byeorak",
+   "if": "받는소리",
+   "evaluated": 545,
+   "true": 259,
+   "rate": 0.475,
+   "dataP": 0.6
+  },
+  "baksu.gongsu#0": {
+   "card": "baksu.gongsu",
+   "if": "작두 위에서",
+   "evaluated": 1030,
+   "true": 585,
+   "rate": 0.568,
+   "dataP": 0.5
+  },
+  "baksu.domu#0": {
+   "card": "baksu.domu",
+   "if": "작두 위에서",
+   "evaluated": 259,
+   "true": 69,
+   "rate": 0.266,
+   "dataP": 0.5
+  },
+  "baksu.yeongheom#0": {
+   "card": "baksu.yeongheom",
+   "if": "작두 위에서",
+   "evaluated": 376,
+   "true": 376,
+   "rate": 1,
+   "dataP": 0.7
+  },
+  "baksu.ssangnal#1": {
+   "card": "baksu.ssangnal",
+   "if": "작두 위에서",
+   "evaluated": 108,
+   "true": 48,
+   "rate": 0.444,
+   "dataP": 0.6
+  },
+  "seungnyeo.gasa#0": {
+   "card": "seungnyeo.gasa",
+   "if": "염주 1을 쓰면",
+   "evaluated": 16241,
+   "true": 15110,
+   "rate": 0.93,
+   "dataP": 0.5
+  },
+  "seungnyeo.ireum_bulleo#0": {
+   "card": "seungnyeo.ireum_bulleo",
+   "if": "대상에 명부가 있으면",
+   "evaluated": 1573,
+   "true": 960,
+   "rate": 0.61,
+   "dataP": 0.5
+  },
+  "seungnyeo.sajahu#0": {
+   "card": "seungnyeo.sajahu",
+   "if": "받는소리",
+   "evaluated": 3355,
+   "true": 1166,
+   "rate": 0.348,
+   "dataP": 0.6
+  },
+  "seungnyeo.naerijjikneun#0": {
+   "card": "seungnyeo.naerijjikneun",
+   "if": "대상의 넋흔들림 4 이상 또는 붕괴",
+   "evaluated": 5212,
+   "true": 2519,
+   "rate": 0.483,
+   "dataP": 0.5
+  },
+  "seungnyeo.jari_bakkwo#0": {
+   "card": "seungnyeo.jari_bakkwo",
+   "if": "받는소리",
+   "evaluated": 7407,
+   "true": 6036,
+   "rate": 0.815,
+   "dataP": 0.6
+  },
+  "seungnyeo.banghal#0": {
+   "card": "seungnyeo.banghal",
+   "if": "대상의 넋흔들림이 4 이상이면",
+   "evaluated": 909,
+   "true": 267,
+   "rate": 0.294,
+   "dataP": 0.5
+  },
+  "seungnyeo.gori_sori#0": {
+   "card": "seungnyeo.gori_sori",
+   "if": "넋흔들림 4 이상 또는 붕괴 상태인 적",
+   "evaluated": 5551,
+   "true": 2986,
+   "rate": 0.538,
+   "dataP": 0.5
+  },
+  "seungnyeo.cheongeun_seokjang#0": {
+   "card": "seungnyeo.cheongeun_seokjang",
+   "if": "대상의 넋흔들림 6 이상 또는 붕괴",
+   "evaluated": 1027,
+   "true": 117,
+   "rate": 0.114,
+   "dataP": 0.5
+  },
+  "manshin.daegam_gongsu#0": {
+   "card": "manshin.daegam_gongsu",
+   "if": "강신 중(신바람 5)이면",
+   "evaluated": 628,
+   "true": 173,
+   "rate": 0.275,
+   "dataP": 0.3
+  },
+  "seungnyeo.moktak#0": {
+   "card": "seungnyeo.moktak",
+   "if": "받는소리",
+   "evaluated": 224,
+   "true": 151,
+   "rate": 0.674,
+   "dataP": 0.6
+  },
+  "seungnyeo.seokjang_badachigi#0": {
+   "card": "seungnyeo.seokjang_badachigi",
+   "if": "받는소리",
+   "evaluated": 2415,
+   "true": 983,
+   "rate": 0.407,
+   "dataP": 0.6
+  },
+  "seungnyeo.hoehyang#1": {
+   "card": "seungnyeo.hoehyang",
+   "if": "받는소리",
+   "evaluated": 723,
+   "true": 460,
+   "rate": 0.636,
+   "dataP": 0.6
+  },
+  "beopsa.sinryeong_damgi#0": {
+   "card": "beopsa.sinryeong_damgi",
+   "if": "굿상에 설치물이 있으면",
+   "evaluated": 7149,
+   "true": 2539,
+   "rate": 0.355,
+   "dataP": 0.5
+  },
+  "beopsa.sinryeong_damgi#1": {
+   "card": "beopsa.sinryeong_damgi",
+   "if": "굿상이 비었으면 경면주사 1을 써서",
+   "evaluated": 7149,
+   "true": 5270,
+   "rate": 0.737,
+   "dataP": 0.5
+  },
+  "beopsa.suhobu_sseugi#0": {
+   "card": "beopsa.suhobu_sseugi",
+   "if": "받는소리",
+   "evaluated": 3336,
+   "true": 2816,
+   "rate": 0.844,
+   "dataP": 0.6
+  },
+  "beopsa.chukgwigyeong#0": {
+   "card": "beopsa.chukgwigyeong",
+   "if": "경면주사 1을 쓰면",
+   "evaluated": 1335,
+   "true": 1335,
+   "rate": 1,
+   "dataP": 0.5
+  },
+  "beopsa.sinmyeong_bujeok#0": {
+   "card": "beopsa.sinmyeong_bujeok",
+   "if": "굿상에 설치물이 있으면",
+   "evaluated": 1474,
+   "true": 646,
+   "rate": 0.438,
+   "dataP": 0.5
+  },
+  "beopsa.bujeok_dabal#0": {
+   "card": "beopsa.bujeok_dabal",
+   "if": "받는소리",
+   "evaluated": 1324,
+   "true": 972,
+   "rate": 0.734,
+   "dataP": 0.6
+  },
+  "beopsa.gyeongmun_geumjul#0": {
+   "card": "beopsa.gyeongmun_geumjul",
+   "if": "받는소리",
+   "evaluated": 1475,
+   "true": 775,
+   "rate": 0.525,
+   "dataP": 0.6
+  },
+  "beopsa.haewongyeong#0": {
+   "card": "beopsa.haewongyeong",
+   "if": "받는소리",
+   "evaluated": 404,
+   "true": 274,
+   "rate": 0.678,
+   "dataP": 0.6
+  },
+  "beopsa.sinjang_horyeong#0": {
+   "card": "beopsa.sinjang_horyeong",
+   "if": "받는소리",
+   "evaluated": 1061,
+   "true": 599,
+   "rate": 0.565,
+   "dataP": 0.6
+  },
+  "talggun.malttugi_jaedam#0": {
+   "card": "talggun.malttugi_jaedam",
+   "if": "점지된 적이면",
+   "evaluated": 26463,
+   "true": 8995,
+   "rate": 0.34,
+   "dataP": 0.5
+  },
+  "talggun.deotboegi_chum#0": {
+   "card": "talggun.deotboegi_chum",
+   "if": "진형:선두에서",
+   "evaluated": 25908,
+   "true": 15963,
+   "rate": 0.616,
+   "dataP": 0.5
+  },
+  "talggun.tal_bakkwosseugi#0": {
+   "card": "talggun.tal_bakkwosseugi",
+   "if": "받는소리",
+   "evaluated": 27926,
+   "true": 20869,
+   "rate": 0.747,
+   "dataP": 0.6
+  },
+  "talggun.malttugi_apjang#0": {
+   "card": "talggun.malttugi_apjang",
+   "if": "받는소리",
+   "evaluated": 4396,
+   "true": 3848,
+   "rate": 0.875,
+   "dataP": 0.6
+  },
+  "talggun.madang_dolgi#0": {
+   "card": "talggun.madang_dolgi",
+   "if": "받는소리",
+   "evaluated": 3318,
+   "true": 2002,
+   "rate": 0.603,
+   "dataP": 0.6
+  },
+  "talggun.malttugi_hwalgae#0": {
+   "card": "talggun.malttugi_hwalgae",
+   "if": "진형:선두에서",
+   "evaluated": 325,
+   "true": 133,
+   "rate": 0.409,
+   "dataP": 0.5
+  },
+  "talggun.talnoreumpan#0": {
+   "card": "talggun.talnoreumpan",
+   "if": "탈이 바뀔 때마다",
+   "evaluated": 22059,
+   "true": 22059,
+   "rate": 1,
+   "dataP": 1
+  },
+  "talggun.halmi_neokduri#0": {
+   "card": "talggun.halmi_neokduri",
+   "if": "진형:후열에서",
+   "evaluated": 3966,
+   "true": 1817,
+   "rate": 0.458,
+   "dataP": 0.5
+  },
+  "talggun.halmi_neokduri#1": {
+   "card": "talggun.halmi_neokduri",
+   "if": "진형:후열이 아니면",
+   "evaluated": 3966,
+   "true": 2150,
+   "rate": 0.542,
+   "dataP": 0.5
+  },
+  "talggun.kkaekki_georeum#0": {
+   "card": "talggun.kkaekki_georeum",
+   "if": "진형:선두에서",
+   "evaluated": 4423,
+   "true": 2808,
+   "rate": 0.635,
+   "dataP": 0.5
+  },
+  "talggun.kkujitneun_jaedam#0": {
+   "card": "talggun.kkujitneun_jaedam",
+   "if": "점지된 적이면",
+   "evaluated": 335,
+   "true": 167,
+   "rate": 0.499,
+   "dataP": 0.5
+  },
+  "talggun.jaedam_batgi#0": {
+   "card": "talggun.jaedam_batgi",
+   "if": "받는소리",
+   "evaluated": 2867,
+   "true": 1609,
+   "rate": 0.561,
+   "dataP": 0.6
+  },
+  "talggun.yangban_haengse#0": {
+   "card": "talggun.yangban_haengse",
+   "if": "탈:양반탈(진형:중열)에서 탈꾼 카드를 쓸 때마다",
+   "evaluated": 19101,
+   "true": 6976,
+   "rate": 0.365,
+   "dataP": 1
+  },
+  "talggun.halmi_madang#0": {
+   "card": "talggun.halmi_madang",
+   "if": "탈:할미탈(진형:후열)에서 턴 시작",
+   "evaluated": 5215,
+   "true": 1569,
+   "rate": 0.301,
+   "dataP": 0.5
+  },
+  "talggun.jwilbuchae_pyeogi#0": {
+   "card": "talggun.jwilbuchae_pyeogi",
+   "if": "받는소리",
+   "evaluated": 1897,
+   "true": 1386,
+   "rate": 0.731,
+   "dataP": 0.6
+  },
+  "talggun.sopum_botari#0": {
+   "card": "talggun.sopum_botari",
+   "if": "받는소리",
+   "evaluated": 333,
+   "true": 251,
+   "rate": 0.754,
+   "dataP": 0.6
+  },
+  "talggun.pyojubak_dudeurigi#0": {
+   "card": "talggun.pyojubak_dudeurigi",
+   "if": "진형:후열에서",
+   "evaluated": 827,
+   "true": 262,
+   "rate": 0.317,
+   "dataP": 0.5
+  },
+  "talggun.yangban_hyungnae#0": {
+   "card": "talggun.yangban_hyungnae",
+   "if": "점지된 적이면",
+   "evaluated": 178,
+   "true": 114,
+   "rate": 0.64,
+   "dataP": 0.5
+  },
+  "talggun.se_tal_noreum#0": {
+   "card": "talggun.se_tal_noreum",
+   "if": "탈:말뚝이탈(진형:선두)",
+   "evaluated": 2804,
+   "true": 1079,
+   "rate": 0.385,
+   "dataP": 0.4
+  },
+  "talggun.se_tal_noreum#1": {
+   "card": "talggun.se_tal_noreum",
+   "if": "탈:양반탈(진형:중열)",
+   "evaluated": 2804,
+   "true": 801,
+   "rate": 0.286,
+   "dataP": 0.4
+  },
+  "talggun.se_tal_noreum#2": {
+   "card": "talggun.se_tal_noreum",
+   "if": "탈:할미탈(진형:후열)",
+   "evaluated": 2804,
+   "true": 994,
+   "rate": 0.354,
+   "dataP": 0.4
+  },
+  "talggun.halmi_dwitpuri#0": {
+   "card": "talggun.halmi_dwitpuri",
+   "if": "진형:후열에서",
+   "evaluated": 1911,
+   "true": 899,
+   "rate": 0.47,
+   "dataP": 0.5
+  },
+  "talggun.nollimgeori#0": {
+   "card": "talggun.nollimgeori",
+   "if": "점지된 적을 공격할 때마다",
+   "evaluated": 355,
+   "true": 214,
+   "rate": 0.603,
+   "dataP": 1
+  },
+  "talggun.eongdeongi_chum#0": {
+   "card": "talggun.eongdeongi_chum",
+   "if": "점지된 적이면",
+   "evaluated": 2152,
+   "true": 942,
+   "rate": 0.438,
+   "dataP": 0.5
+  },
+  "talggun.jipangi_huryeochigi#0": {
+   "card": "talggun.jipangi_huryeochigi",
+   "if": "진형:후열에서",
+   "evaluated": 3438,
+   "true": 870,
+   "rate": 0.253,
+   "dataP": 0.5
+  },
+  "talggun.chaejjik_sawi#0": {
+   "card": "talggun.chaejjik_sawi",
+   "if": "진형:선두에서",
+   "evaluated": 3189,
+   "true": 1357,
+   "rate": 0.426,
+   "dataP": 0.5
+  },
+  "talggun.talpan_hanmadang#0": {
+   "card": "talggun.talpan_hanmadang",
+   "if": "점지된 적에게는",
+   "evaluated": 230,
+   "true": 89,
+   "rate": 0.387,
+   "dataP": 0.5
+  },
+  "manshin.buchae_baram#0": {
+   "card": "manshin.buchae_baram",
+   "if": "받는소리",
+   "evaluated": 22,
+   "true": 11,
+   "rate": 0.5,
+   "dataP": 0.6
+  },
+  "chasa.jeoseungmun_dudeurigi#0": {
+   "card": "chasa.jeoseungmun_dudeurigi",
+   "if": "받는소리",
+   "evaluated": 1653,
+   "true": 1180,
+   "rate": 0.714,
+   "dataP": 0.6
+  },
+  "chasa.soesasl_huligi#0": {
+   "card": "chasa.soesasl_huligi",
+   "if": "받는소리",
+   "evaluated": 2021,
+   "true": 1264,
+   "rate": 0.625,
+   "dataP": 0.6
+  },
+  "chasa.oratjul_danggigi#0": {
+   "card": "chasa.oratjul_danggigi",
+   "if": "받는소리",
+   "evaluated": 2689,
+   "true": 1695,
+   "rate": 0.63,
+   "dataP": 0.6
+  },
+  "chasa.mukkin_ireum#0": {
+   "card": "chasa.mukkin_ireum",
+   "if": "오라로 적을 묶을 때마다",
+   "evaluated": 2666,
+   "true": 2666,
+   "rate": 1,
+   "dataP": 1
+  },
+  "chasa.jeoseunggil_donghaeng#0": {
+   "card": "chasa.jeoseunggil_donghaeng",
+   "if": "쓰러진 아군이 있으면",
+   "evaluated": 1401,
+   "true": 112,
+   "rate": 0.08,
+   "dataP": 0.2
+  },
+  "chasa.neokjul_butdeulgi#0": {
+   "card": "chasa.neokjul_butdeulgi",
+   "if": "쓰러진 아군이면",
+   "evaluated": 201,
+   "true": 7,
+   "rate": 0.035,
+   "dataP": 0.2
+  },
+  "chasa.gil_magaseogi#0": {
+   "card": "chasa.gil_magaseogi",
+   "if": "이번 턴 차사를 공격하는 적",
+   "evaluated": 546,
+   "true": 546,
+   "rate": 1,
+   "dataP": 0.5
+  },
+  "chasa.daemun_jikigi#0": {
+   "card": "chasa.daemun_jikigi",
+   "if": "받는소리",
+   "evaluated": 1129,
+   "true": 627,
+   "rate": 0.555,
+   "dataP": 0.6
+  },
+  "chasa.myeongbu_jiphaeng#1": {
+   "card": "chasa.myeongbu_jiphaeng",
+   "if": "오라에 묶인 적이면",
+   "evaluated": 523,
+   "true": 26,
+   "rate": 0.05,
+   "dataP": 0.5
+  },
+  "chasa.oratjul_sarigi#0": {
+   "card": "chasa.oratjul_sarigi",
+   "if": "받는소리",
+   "evaluated": 2083,
+   "true": 948,
+   "rate": 0.455,
+   "dataP": 0.6
+  },
+  "posu.neok_kkwetturgi#0": {
+   "card": "posu.neok_kkwetturgi",
+   "if": "넋흔들림 5 이상 또는 붕괴",
+   "evaluated": 134,
+   "true": 23,
+   "rate": 0.172,
+   "dataP": 0.45
+  },
+  "talggun.geodeureum_chum#0": {
+   "card": "talggun.geodeureum_chum",
+   "if": "진형:중열에서",
+   "evaluated": 675,
+   "true": 342,
+   "rate": 0.507,
+   "dataP": 0.5
+  },
+  "chasa.jeokpaeji_daejo#0": {
+   "card": "chasa.jeokpaeji_daejo",
+   "if": "명부가 있는 적이면",
+   "evaluated": 224,
+   "true": 189,
+   "rate": 0.844,
+   "dataP": 0.5
+  },
+  "chasa.neok_galmuri#0": {
+   "card": "chasa.neok_galmuri",
+   "if": "상흔이 있는 적이면",
+   "evaluated": 284,
+   "true": 88,
+   "rate": 0.31,
+   "dataP": 0.5
+  },
+  "chasa.bulgeun_geulssi#0": {
+   "card": "chasa.bulgeun_geulssi",
+   "if": "오라에 묶인 적이면",
+   "evaluated": 296,
+   "true": 32,
+   "rate": 0.108,
+   "dataP": 0.5
+  }
+ },
+ "powers": {
+  "manshin.jemulsang": {
+   "played": 2447,
+   "fires": 5757,
+   "firesPerPlay": 2.35,
+   "dataExpect": 3
+  },
+  "manshin.hongcheollik": {
+   "played": 2051,
+   "fires": 9616,
+   "firesPerPlay": 4.69,
+   "dataExpect": 3.5
+  },
+  "manshin.chilseongdan": {
+   "played": 3272,
+   "fires": 15797,
+   "firesPerPlay": 4.83,
+   "dataExpect": 3.5
+  },
+  "manshin.sineomeoni": {
+   "played": 987,
+   "fires": 1680,
+   "firesPerPlay": 1.7,
+   "dataExpect": 2
+  },
+  "jaebi.cheongbo": {
+   "played": 3824,
+   "fires": 19231,
+   "firesPerPlay": 5.03,
+   "dataExpect": 3.5
+  },
+  "jaebi.chumpan": {
+   "played": 3160,
+   "fires": 11126,
+   "firesPerPlay": 3.52,
+   "dataExpect": 3.5
+  },
+  "jaebi.sigimsae": {
+   "played": 524,
+   "fires": 2748,
+   "firesPerPlay": 5.24,
+   "dataExpect": 3.5
+  },
+  "posu.nunsseolmi": {
+   "played": 3712,
+   "fires": 17816,
+   "firesPerPlay": 4.8,
+   "dataExpect": 3.5
+  },
+  "posu.deonnan": {
+   "played": 740,
+   "fires": 1705,
+   "firesPerPlay": 2.3,
+   "dataExpect": 4
+  },
+  "posu.geodun": {
+   "played": 1099,
+   "fires": 531,
+   "firesPerPlay": 0.48,
+   "dataExpect": 2.2
+  },
+  "posu.jumeoni": {
+   "played": 1188,
+   "fires": 2928,
+   "firesPerPlay": 2.46,
+   "dataExpect": 3.5
+  },
+  "baksu.jakdu": {
+   "played": 15696,
+   "fires": 15394,
+   "firesPerPlay": 0.98,
+   "dataExpect": 2.5
+  },
+  "baksu.jeongjeok": {
+   "played": 0,
+   "fires": 0,
+   "firesPerPlay": 0,
+   "dataExpect": 3.5
+  },
+  "baksu.cheongbo": {
+   "played": 408,
+   "fires": 2308,
+   "firesPerPlay": 5.66,
+   "dataExpect": 3.5
+  },
+  "baksu.beonjineun": {
+   "played": 3600,
+   "fires": 14645,
+   "firesPerPlay": 4.07,
+   "dataExpect": 3.5
+  },
+  "baksu.yeongheom": {
+   "played": 297,
+   "fires": 376,
+   "firesPerPlay": 1.27,
+   "dataExpect": 5.5
+  },
+  "seungnyeo.saebyeok_yebul": {
+   "played": 7,
+   "fires": 36,
+   "firesPerPlay": 5.14,
+   "dataExpect": 3.5
+  },
+  "seungnyeo.geumgang_jase": {
+   "played": 3268,
+   "fires": 12030,
+   "firesPerPlay": 3.68,
+   "dataExpect": 3.5
+  },
+  "seungnyeo.baekpal_yeomju": {
+   "played": 392,
+   "fires": 1749,
+   "firesPerPlay": 4.46,
+   "dataExpect": 3.5
+  },
+  "seungnyeo.wangsaeng_deungbul": {
+   "played": 427,
+   "fires": 2920,
+   "firesPerPlay": 6.84,
+   "dataExpect": 3.5
+  },
+  "beopsa.bujeok_jumeoni": {
+   "played": 1191,
+   "fires": 5267,
+   "firesPerPlay": 4.42,
+   "dataExpect": 3.5
+  },
+  "beopsa.sinryeongkke_chugwon": {
+   "played": 1106,
+   "fires": 3911,
+   "firesPerPlay": 3.54,
+   "dataExpect": 3.5
+  },
+  "beopsa.jinsa_geureut": {
+   "played": 867,
+   "fires": 3836,
+   "firesPerPlay": 4.42,
+   "dataExpect": 3.5
+  },
+  "beopsa.dokgyeong_sammae": {
+   "played": 132,
+   "fires": 734,
+   "firesPerPlay": 5.56,
+   "dataExpect": 3.5
+  },
+  "talggun.talnoreumpan": {
+   "played": 3761,
+   "fires": 22059,
+   "firesPerPlay": 5.87,
+   "dataExpect": 3.5
+  },
+  "talggun.yangban_haengse": {
+   "played": 2429,
+   "fires": 19101,
+   "firesPerPlay": 7.86,
+   "dataExpect": 3.5
+  },
+  "talggun.nollimgeori": {
+   "played": 119,
+   "fires": 355,
+   "firesPerPlay": 2.98,
+   "dataExpect": 3.5
+  },
+  "talggun.halmi_madang": {
+   "played": 979,
+   "fires": 5215,
+   "firesPerPlay": 5.33,
+   "dataExpect": 3.5
+  },
+  "chasa.mukkin_ireum": {
+   "played": 3054,
+   "fires": 2666,
+   "firesPerPlay": 0.87,
+   "dataExpect": 3.5
+  },
+  "chasa.munjigi_seoyak": {
+   "played": 162,
+   "fires": 832,
+   "firesPerPlay": 5.14,
+   "dataExpect": 3.5
+  },
+  "chasa.ajik_ttaega_anida": {
+   "played": 753,
+   "fires": 4245,
+   "firesPerPlay": 5.64,
+   "dataExpect": 3.5
+  },
+  "duo.orajul_gutgeori": {
+   "played": 0,
+   "fires": 0,
+   "firesPerPlay": 0,
+   "dataExpect": 3.5
+  },
+  "duo.jjokbak_bujeok": {
+   "played": 0,
+   "fires": 0,
+   "firesPerPlay": 0,
+   "dataExpect": 3
+  },
+  "common.neokjeon": {
+   "played": 0,
+   "fires": 0,
+   "firesPerPlay": 0,
+   "dataExpect": 3.5
+  }
+ },
+ "enemies": {
+  "japgwi": {
+   "name": "잡귀",
+   "kills": 34273,
+   "haewon": 15566,
+   "rate": 0.454
+  },
+  "jeojeun_neok": {
+   "name": "물에 젖은 넋",
+   "kills": 32656,
+   "haewon": 16054,
+   "rate": 0.492
+  },
+  "heogijin_neok": {
+   "name": "허기진 넋",
+   "kills": 9287,
+   "haewon": 3241,
+   "rate": 0.349
+  },
+  "goksori_neok": {
+   "name": "곡소리 넋",
+   "kills": 13056,
+   "haewon": 4788,
+   "rate": 0.367
+  },
+  "gutpan_hwebang": {
+   "name": "굿판 훼방꾼",
+   "kills": 6535,
+   "haewon": 3060,
+   "rate": 0.468
+  },
+  "naru_mulgwisin": {
+   "name": "나루 물귀신",
+   "kills": 12982,
+   "haewon": 4775,
+   "rate": 0.368
+  },
+  "mongdal": {
+   "name": "혼처 잃은 몽달귀",
+   "kills": 2802,
+   "haewon": 1497,
+   "rate": 0.534
+  },
+  "gilileun_gaekgwi": {
+   "name": "길 잃은 객귀",
+   "kills": 9342,
+   "haewon": 3710,
+   "rate": 0.397
+  },
+  "sangyeo": {
+   "name": "넘어가지 못한 상여",
+   "kills": 2867,
+   "haewon": 2512,
+   "rate": 0.876
+  },
+  "eogul_ajeon": {
+   "name": "누명 쓴 아전 원귀",
+   "kills": 2760,
+   "haewon": 1133,
+   "rate": 0.411
+  },
+  "mulmit_geurimja": {
+   "name": "물밑 그림자",
+   "kills": 2788,
+   "haewon": 1068,
+   "rate": 0.383
+  },
+  "botjim_gaekgwi": {
+   "name": "봇짐 진 객귀",
+   "kills": 698,
+   "haewon": 488,
+   "rate": 0.699
+  }
+ },
+ "special": {
+  "fire_summon": 7914,
+  "rescue": 35268,
+  "samhyeon": 259,
+  "baraji": 97,
+  "gangsin_extra": 13,
+  "instant_collapse": 267,
+  "sinryeongbu": 4778,
+  "tal_all": 678,
+  "seokja": 1015,
+  "rescue_ally": 7,
+  "ajik": 748
+ }
+}

@@ -167,6 +167,7 @@ export type Cond =
   | { k: 'slot'; slot: number; neg: boolean; who: 'owner' | 'talggun' }
   | { k: 'stance' }
   | { k: 'gangsin_req' }
+  | { k: 'gangsin' }
   | { k: 'prev_manshin' }
   | { k: 'summons'; n: number }
   | { k: 'summons_empty_res'; res: string; n: number }
@@ -213,6 +214,9 @@ export interface HaewonRule {
   kind: 'status' | 'jangdan' | 'summons' | 'token' | 'formation' | 'collapse' | 'offering' | 'minions' | 'none';
   status?: EnemyStatus;
   n?: number;
+  /** 무리 해원: 같은 원귀 하나가 조건을 채우면 그 전투의 같은 원귀 모두 해원 (잡귀, v0.2 S9) */
+  group?: boolean;
+  orCollapse?: boolean;
   text: string;
 }
 
@@ -277,6 +281,7 @@ export interface HeroState {
   injured: boolean; // 중상
   cover: number; // 이번 턴 엄호하는 아군 idx
   downTurn: number; // 쓰러진 턴 (같은 적 턴 사망 집계)
+  endDowned: boolean; // 전투가 끝날 때 쓰러져 있었음 (체력 1·중상으로 일어남)
 }
 
 export interface EnemyState {
@@ -352,6 +357,7 @@ export interface CombatStats {
   kills: number;
   haewons: number;
   haewonEligible: number; // 해원 조건이 있는 적을 쓰러뜨린 수
+  haewonHealed: number; // 해원 회복으로 얻은 체력
   escapes: number;
   enemyHaewon: Map<string, [number, number]>; // enemy id → [쓰러뜨림, 해원]
   heroDmgDealt: number[];
@@ -360,12 +366,17 @@ export interface CombatStats {
 /** 규칙 변형 (what-if 실험용, 기본값 = 설계 문서 그대로) */
 export interface RuleVariant {
   enemyDmgMult: number; // 적 피해 배수
-  downShield: boolean; // 쓰러진 그 적 턴에는 더 맞지 않고 다음 서 있는 영웅이 맞는다
+  /** 쓰러진 턴 보호 (핵심 규칙 §6, v0.2 S3): 쓰러진 그 적 턴에는 그 영웅을 노린 공격이 가장 앞의 서 있는 영웅에게 간다 */
+  downShield: boolean;
   endureFrac?: number; // 버팀 = 최대 체력 × 이 값 (기본 0.35)
-  sinbaramEvery?: boolean; // 신바람: 만신 카드를 낼 때마다 +1 (기본: 연달아 낼 때만)
+  /** 신바람 v0.1 규칙(직전 카드도 만신일 때만 +1)으로 되돌린다 — 비교 실험용 */
+  sinbaramV01?: boolean;
+  /** 해원할 때 서 있는 영웅 모두 체력 회복 (탐험 §10, v0.2 S1). 0 이면 없음 */
+  haewonHeal?: number;
 }
 
-export const DEFAULT_RULES: RuleVariant = { enemyDmgMult: 1, downShield: false };
+/** 규칙 v0.4 기본값 (docs/02-core-rules.md §6·§13·§14) */
+export const DEFAULT_RULES: RuleVariant = { enemyDmgMult: 1, downShield: true, haewonHeal: 3 };
 
 export interface CombatState {
   rng: number;
@@ -399,6 +410,7 @@ export interface CombatState {
   holdFront: number; // 이번 턴 선두를 내주지 않는 영웅 idx
   statusAdded: number; // 이번 전투에 새로 들어온 상태·씌임 카드 수 (최대 4)
   offeringPaid: boolean;
+  groupHaewon: string[]; // 무리 해원이 성립한 원귀 id
   jijeon: number; // 지전
   deferredTokens: number[]; // 다음 턴 시작에 만들 부적 (CardDef idx | owner<<16)
   outcome: 0 | 1 | -1;

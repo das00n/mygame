@@ -68,8 +68,12 @@ export interface ExpeditionJobResult {
 
 export interface WhatIf {
   betweenHeal?: number;
+  betweenHealFlat?: number;
+  betweenHealMissing?: number;
   rules?: RuleVariant;
   boss?: string;
+  preBossCamp?: boolean;
+  preBossHeal?: boolean;
 }
 
 export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = {}): ExpeditionJobResult {

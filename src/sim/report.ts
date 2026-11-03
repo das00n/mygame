@@ -213,15 +213,28 @@ export function writeReport(): void {
   // ── what-if 원정 (설계값을 바꾸지 않은 실험) ──
   const whatIfs = readdirSync(resolve(ROOT, 'data/sim')).filter((f) => /^expedition-whatif.*\.json$/.test(f)).sort();
   if (whatIfs.length) {
-    L.push('## 5. What-if 원정 (설계값은 그대로, 실험용 변형)');
+    L.push('## 5. What-if 원정 (기본 규칙은 그대로, 실험용 변형)');
     L.push('');
-    L.push('`npm run sim:expedition -- --between-heal 0.15 --down-shield --enemy-dmg 0.85 --boss b1 --out expedition-whatif-x` 처럼 실행한다. between-heal = 전투가 끝날 때마다 최대 체력 비율 회복, down-shield = 막 쓰러진 영웅은 그 적 턴에 더 맞지 않음(다음 서 있는 영웅이 맞음), enemy-dmg = 적 피해 배수, boss = 보스 고정.');
+    L.push('`npm run sim:expedition -- --between-heal 0.15 --down-shield 0 --enemy-dmg 0.85 --haewon-heal 3 --boss b1 --out expedition-whatif-x` 처럼 실행한다. 준 인자만 기본 규칙을 덮어쓴다: between-heal = 넋 수습 비율, down-shield = 쓰러진 턴 보호(1/0), enemy-dmg = 적 피해 배수, haewon-heal = 해원 회복량, endure = 버팀 비율, sinbaram-v01 = 신바람 옛 규칙, boss = 보스 고정.');
     L.push('');
     const rows: (string | number)[][] = [];
     for (const f of whatIfs) {
       const W = JSON.parse(readFileSync(resolve(ROOT, 'data/sim', f), 'utf8'));
       const w = W.meta.whatIf ?? {};
-      const params = [w.betweenHeal ? `회복 ${pct(w.betweenHeal)}` : '', w.rules?.downShield ? 'down-shield' : '', w.rules?.enemyDmgMult !== 1 ? `적 피해 ×${w.rules?.enemyDmgMult}` : '', w.boss ? `보스 ${w.boss}` : ''].filter(Boolean).join(', ');
+      const base = W.meta.rules ?? {};
+      const r = w.rules ?? {};
+      const params = [
+        w.betweenHeal !== undefined ? `넋 수습 ${pct(w.betweenHeal)}` : '',
+        w.betweenHealFlat !== undefined ? `넋 수습 +${w.betweenHealFlat}` : '',
+        w.betweenHealMissing !== undefined ? `넋 수습 잃은 체력의 ${pct(w.betweenHealMissing)}` : '',
+        r.downShield !== undefined && r.downShield !== base.downShield ? `쓰러진 턴 보호 ${r.downShield ? '켬' : '끔'}` : '',
+        r.enemyDmgMult !== undefined && r.enemyDmgMult !== 1 ? `적 피해 ×${r.enemyDmgMult}` : '',
+        r.haewonHeal !== undefined && r.haewonHeal !== base.haewonHeal ? `해원 회복 ${r.haewonHeal}` : '',
+        r.endureFrac !== undefined ? `버팀 ${pct(r.endureFrac)}` : '',
+        r.sinbaramV01 ? '신바람 v0.1' : '',
+        w.boss ? `보스 ${w.boss}` : '',
+        w.preBossCamp !== undefined ? `보스 앞 길굿 ${w.preBossCamp ? '켬' : '끔'}` : '',
+      ].filter(Boolean).join(', ');
       const b = Object.entries(W.bosses as Record<string, Json>).map(([k, v]) => `${k} ${pct(v.clearRate)}`).join(' / ');
       const dom = W.trios.filter((t: Json) => t.flag === 'dominant').length;
       const dead = W.trios.filter((t: Json) => t.flag === 'dead').length;

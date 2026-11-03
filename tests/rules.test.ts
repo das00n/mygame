@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
-  collapsed, D, deathSaveChance, downHero, endPlayerTurn, endureOf, enemyTurn, hitHero, killEnemy, playCard, startPlayerTurn,
+  collapsed, createCombat, D, deathSaveChance, downHero, endPlayerTurn, endureOf, enemyTurn, hitHero, killEnemy, playCard, startPlayerTurn,
 } from '../src/core/engine.ts';
 import { heroIdx, mk, play } from './helpers.ts';
 
@@ -184,7 +184,7 @@ test('쓰러짐 → 카드가 넋 부르기로 → N장 쓰면 25%로 기상, �
   assert.ok(h.downed, '2장으로는 아직');
   playRescue();
   assert.ok(!h.downed);
-  assert.equal(h.hp, Math.round(28 * 0.25));
+  assert.equal(h.hp, Math.round(h.maxHp * 0.25));
   assert.ok(h.recovering, '회복 중 디버프');
   for (const pile of [s.draw, s.hand, s.discard]) for (const c of pile) assert.notEqual(c.d, d.special.rescue, '남은 구조 카드는 원래 카드로');
   assert.equal(s.hand.length, 1);
@@ -205,6 +205,7 @@ test('사망 판정: 65%에서 버틸 때마다 −10%, 최저 25% / 사망하�
   s.hand = d.starters.get('posu')!.map((c) => ({ d: c.idx, o: posu, o2: -1, orig: -1, x: -1 }));
   downHero(s, posu);
   const h = s.heroes[posu];
+  h.downTurn = s.turn - 1; // 지난 턴에 쓰러졌다 (쓰러진 턴 보호 밖)
   let hits = 0;
   while (!h.dead && hits < 50) {
     hitHero(s, posu, 5, 0);
@@ -218,6 +219,7 @@ test('사망 판정: 65%에서 버틸 때마다 −10%, 최저 25% / 사망하�
   const s2 = mk(['posu', 'seungnyeo', 'chasa'], 'e2', 3);
   const p2 = heroIdx(s2, 'posu');
   downHero(s2, p2);
+  s2.heroes[p2].downTurn = s2.turn - 1;
   s2.heroes[p2].block = 10;
   hitHero(s2, p2, 5, 0);
   assert.equal(s2.heroes[p2].survived, 0);
@@ -293,14 +295,35 @@ test('해원 판정 (물에 젖은 넋·곡소리 넋·허기진 넋·잡귀·�
   s.enemies[hz].hp = 3;
   play(s, 'posu.hwaseungchong', { enemy: hz });
   assert.equal(s.enemies[hz].haewon, true);
-  // 잡귀: 부적(토큰)으로 마지막 피해
+  // 잡귀 (v0.2 무리 해원): 하나라도 부적(토큰)의 마지막 피해로 쓰러지면 그 전투의 잡귀 모두 해원
   s = mk(['beopsa', 'posu', 'chasa'], 'e3');
   s.enemies[0].hp = 3;
-  play(s, 'beopsa.t_hwabu', { enemy: 0 });
-  assert.equal(s.enemies[0].haewon, true);
+  play(s, 'posu.hwaseungchong', { enemy: 0 });
+  assert.equal(s.enemies[0].haewon, false, '카드로 쓰러뜨리면 아직 아니다');
   s.enemies[1].hp = 3;
-  play(s, 'posu.hwaseungchong', { enemy: 1 });
-  assert.equal(s.enemies[1].haewon, false);
+  play(s, 'beopsa.t_hwabu', { enemy: 1 });
+  assert.equal(s.enemies[1].haewon, true);
+  assert.equal(s.enemies[0].haewon, true, '먼저 쓰러진 잡귀도 해원');
+  s.enemies[2].hp = 3;
+  play(s, 'posu.hwaseungchong', { enemy: 2 });
+  assert.equal(s.enemies[2].haewon, true, '뒤에 쓰러진 잡귀도 해원');
+  assert.equal(s.stats!.haewons, 3);
+  // 굿판 훼방꾼 (v0.2): 장단 2 이상인 턴
+  s = mk(['seungnyeo', 'posu', 'chasa'], 'h2');
+  const gp = s.enemies.findIndex((e) => d.enemies[e.def].id === 'gutpan_hwebang');
+  s.enemies[gp].hp = 1;
+  s.jangdan = 2;
+  play(s, 'posu.ganeumsoe', { enemy: gp });
+  play(s, 'posu.hwaseungchong', { enemy: gp });
+  assert.equal(s.enemies[gp].haewon, true);
+  // 물밑 그림자 (v0.2): 넋흔들림 6 이상 또는 붕괴
+  s = mk(['seungnyeo', 'posu', 'chasa'], 'x3');
+  const gr = s.enemies.findIndex((e) => d.enemies[e.def].id === 'mulmit_geurimja');
+  s.enemies[gr].hp = 1;
+  s.enemies[gr].shake = 6;
+  s.enemies[gr].endure = 99;
+  play(s, 'posu.hwaseungchong', { enemy: gr });
+  assert.equal(s.enemies[gr].haewon, true);
   // 길 잃은 객귀: 그 턴에 진형이 바뀐 상태
   s = mk(['seungnyeo', 'posu', 'chasa'], 'e2');
   s.enemies[0].hp = 3;
@@ -336,4 +359,73 @@ test('해원 판정 (보스): 노잣돈을 바친 뒤 뱃사공 / 상여꾼 2명
   killEnemy(s, 2);
   killEnemy(s, sy);
   assert.equal(s.enemies[sy].haewon, false, '상여꾼 1명');
+});
+
+test('쓰러진 턴 보호 (v0.2 S3): 쓰러진 그 적 턴에는 그 영웅 대신 가장 앞의 서 있는 영웅이 맞는다', () => {
+  const s = mk(['seungnyeo', 'posu', 'chasa'], 'e2');
+  const seung = heroIdx(s, 'seungnyeo');
+  const chasa = heroIdx(s, 'chasa');
+  assert.equal(s.formation[0], seung);
+  s.heroes[seung].hp = 3;
+  hitHero(s, seung, 5, 0); // 쓰러짐
+  assert.ok(s.heroes[seung].downed);
+  const chasaHp = s.heroes[chasa].hp;
+  hitHero(s, seung, 5, 0); // 같은 턴 → 다음 서 있는 영웅(차사)이 맞는다
+  hitHero(s, seung, 5, 0);
+  assert.equal(s.heroes[seung].survived, 0, '사망 판정 없음');
+  assert.ok(!s.heroes[seung].dead);
+  assert.equal(s.heroes[chasa].hp, chasaHp - 10);
+  // 다음 턴부터는 쓰러진 영웅이 다시 맞는다 (사망 판정)
+  s.turn += 1;
+  hitHero(s, seung, 5, 0);
+  assert.ok(s.heroes[seung].dead || (s.heroes[seung].survived as number) === 1);
+  // 규칙 변형으로 끄면 v0.1 처럼 그 턴에도 맞는다
+  const s2 = createCombat({ party: [{ id: 'seungnyeo' }, { id: 'posu' }, { id: 'chasa' }], deck: [], encounter: D().encounterById.get('e2')!, seed: 3, record: true, rules: { enemyDmgMult: 1, downShield: false } });
+  const sg = s2.heroes.findIndex((h) => h.id === 'seungnyeo');
+  s2.heroes[sg].hp = 3;
+  hitHero(s2, sg, 5, 0);
+  hitHero(s2, sg, 5, 0);
+  assert.ok(s2.heroes[sg].dead || s2.heroes[sg].survived === 1);
+});
+
+test('신바람 (v0.2 S5): 만신 카드마다 +1, 연달아 내면 +1 더, 5에서 강신 / 공수는 강신 밖에서도 약하게', () => {
+  const s = mk(['manshin', 'posu', 'chasa'], 'e2');
+  s.energy = 99;
+  const e = s.enemies[0];
+  e.hp = e.maxHp = 999;
+  const m = s.heroes[heroIdx(s, 'manshin')];
+  play(s, 'manshin.gongsu', { enemy: 0 });
+  assert.equal(m.personal, 1, '만신 카드 +1');
+  play(s, 'posu.ganeumsoe', { enemy: 0 });
+  play(s, 'manshin.gongsu', { enemy: 0 });
+  assert.equal(m.personal, 2, '직전이 포수면 +1만');
+  // 공수: 강신 밖 → 피해 6
+  let hp = e.hp;
+  play(s, 'manshin.daegam_gongsu', { enemy: 0 });
+  assert.equal(hp - e.hp, 6);
+  assert.equal(m.personal, 4, '연달아 → +2');
+  assert.equal(s.gangsin, false);
+  play(s, 'manshin.gongsu', { enemy: 0 });
+  assert.equal(s.gangsin, true, '신바람 5 → 강신');
+  assert.equal(m.personal, 0);
+  // 강신 중: 장군 공수 피해 6 (+ 신령 1당 6)
+  hp = e.hp;
+  play(s, 'manshin.janggun_gongsu', { enemy: 0 });
+  assert.equal(hp - e.hp, 6);
+  // v0.1 규칙: 연달아 낼 때만 +1
+  const s2 = createCombat({ party: [{ id: 'manshin' }, { id: 'posu' }, { id: 'chasa' }], deck: [], encounter: D().encounterById.get('e2')!, seed: 1, record: true, rules: { enemyDmgMult: 1, downShield: true, sinbaramV01: true } });
+  s2.hand = [];
+  s2.energy = 9;
+  play(s2, 'manshin.gongsu', { enemy: 0 });
+  assert.equal(s2.heroes[heroIdx(s2, 'manshin')].personal, 0);
+});
+
+test('붕괴 조건 확장 (v0.2 S8): 넋흔들림 4 이상이면 붕괴가 아니어도 내리찍는 석장 +8', () => {
+  const s = mk(['seungnyeo', 'posu', 'chasa'], 'e2');
+  const e = s.enemies[0];
+  e.hp = e.maxHp = 200;
+  e.endure = 99;
+  e.shake = 4;
+  play(s, 'seungnyeo.naerijjikneun', { enemy: 0 });
+  assert.equal(200 - e.hp, 13);
 });

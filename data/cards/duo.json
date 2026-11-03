@@ -181,11 +181,11 @@
 
   {"id": "duo.beomjong_hanbal", "name": "범종 한 발", "owners": ["posu", "seungnyeo"], "link": "seungnyeo→posu 넋흔들림",
    "type": "공격", "rarity": "합기", "cost": 1, "keywords": [],
-   "text": "승려가 범종을 울린다: 적 하나에 넋흔들림 4. 포수가 흔들린 틈을 쏜다: 피해 5. 그 적이 넋흔들림으로 붕괴해 있으면 피해를 두 배로 준다.",
+   "text": "승려가 범종을 울린다: 적 하나에 넋흔들림 4. 포수가 흔들린 틈을 쏜다: 피해 5. 그 적의 넋흔들림이 8 이상이거나 붕괴해 있으면 피해를 두 배로 준다.",
    "effects": [
     {"op": "apply", "status": "넋흔들림", "n": 4, "target": "one"},
     {"op": "dmg", "n": 5, "target": "one"},
-    {"op": "cond", "if": "넋흔들림으로 붕괴한 적이면", "p": 0.4, "then": [{"op": "dmg", "n": 5, "target": "one"}]}],
+    {"op": "cond", "if": "넋흔들림 8 이상 또는 붕괴한 적이면", "p": 0.4, "then": [{"op": "dmg", "n": 5, "target": "one"}]}],
    "tags": {"produce": ["넋흔들림"], "consume": ["넋흔들림"]},
    "upgrade": "넋흔들림 5, 피해 6."},
 
@@ -223,11 +223,11 @@
 
   {"id": "duo.kallal_hapjang", "name": "칼날 위 합장", "owners": ["baksu", "seungnyeo"], "link": "baksu→seungnyeo 넋흔들림",
    "type": "공격", "rarity": "합기", "cost": 3, "keywords": [],
-   "text": "작두박수가 날 위에서 내리친다: 적 하나에 피해 10, 넋흔들림 8. 그 적이 붕괴하면 승려가 합장하고 이어 친다: 피해 16, 염주 +2.",
+   "text": "작두박수가 날 위에서 내리친다: 적 하나에 피해 10, 넋흔들림 8. 그 적의 넋흔들림이 12 이상이거나 붕괴하면 승려가 합장하고 이어 친다: 피해 16, 염주 +2.",
    "effects": [
     {"op": "dmg", "n": 10, "target": "one"},
     {"op": "apply", "status": "넋흔들림", "n": 8, "target": "one"},
-    {"op": "cond", "if": "그 적이 넋흔들림으로 붕괴하면", "p": 0.5, "then": [
+    {"op": "cond", "if": "넋흔들림 12 이상 또는 붕괴하면", "p": 0.5, "then": [
      {"op": "dmg", "n": 16, "target": "one"}, {"op": "personal", "hero": "seungnyeo", "n": 2}]}],
    "tags": {"produce": ["넋흔들림", "염주"], "consume": ["넋흔들림"]},
    "upgrade": "피해 13, 넋흔들림 10."},

@@ -8,7 +8,9 @@ import { HERO_IDS } from '../core/types.ts';
 import { allTrios, mergeCardAgg, mergeCombatAgg, metrics, newCardAgg, newCombatAgg } from './agg.ts';
 import { cardTables } from './combat-sim.ts';
 import type { ExpeditionJobResult } from './jobs.ts';
-import { argFlag, argNum, argStr, runPool } from './pool.ts';
+import { argNum, argStr, runPool } from './pool.ts';
+import { AFTER_FIGHT_RECOVERY, AFTER_FIGHT_RECOVERY_MISSING, PRE_BOSS_CAMP } from './expedition.ts';
+import { DEFAULT_RULES, type RuleVariant } from '../core/types.ts';
 import type { WhatIf } from './jobs.ts';
 import { writeReport } from './report.ts';
 
@@ -29,13 +31,24 @@ export function median(xs: number[]): number {
 async function main() {
   const runs = argNum('runs', 100);
   const workers = argNum('workers', 4);
-  // what-if (기본값 = 설계 그대로). 결과는 --out 이름으로 따로 저장한다
-  const whatIf: WhatIf = {
-    betweenHeal: argNum('between-heal', 0),
-    rules: { enemyDmgMult: argNum('enemy-dmg', 1), downShield: argFlag('down-shield') },
-    boss: argStr('boss', '') || undefined,
-  };
-  const isWhatIf = whatIf.betweenHeal !== 0 || whatIf.rules!.enemyDmgMult !== 1 || whatIf.rules!.downShield || !!whatIf.boss;
+  // what-if: 준 인자만 기본 규칙(DEFAULT_RULES·AFTER_FIGHT_RECOVERY)을 덮어쓴다. 결과는 --out 이름으로 따로 저장한다
+  const has = (n: string) => process.argv.includes(`--${n}`);
+  const whatIf: WhatIf = {};
+  if (has('between-heal')) whatIf.betweenHeal = argNum('between-heal', AFTER_FIGHT_RECOVERY);
+  if (has('between-heal-flat')) whatIf.betweenHealFlat = argNum('between-heal-flat', 0);
+  if (has('between-heal-missing')) whatIf.betweenHealMissing = argNum('between-heal-missing', 0);
+  const rules: RuleVariant = { ...DEFAULT_RULES };
+  let ruleArgs = false;
+  if (has('enemy-dmg')) { rules.enemyDmgMult = argNum('enemy-dmg', 1); ruleArgs = true; }
+  if (has('down-shield')) { rules.downShield = argNum('down-shield', 1) !== 0; ruleArgs = true; }
+  if (has('haewon-heal')) { rules.haewonHeal = argNum('haewon-heal', 0); ruleArgs = true; }
+  if (has('endure')) { rules.endureFrac = argNum('endure', 0.35); ruleArgs = true; }
+  if (has('sinbaram-v01')) { rules.sinbaramV01 = true; ruleArgs = true; }
+  if (ruleArgs) whatIf.rules = rules;
+  if (has('boss')) whatIf.boss = argStr('boss', '');
+  if (has('pre-boss-camp')) whatIf.preBossCamp = argNum('pre-boss-camp', 1) !== 0;
+  if (has('pre-boss-heal')) whatIf.preBossHeal = argNum('pre-boss-heal', 1) !== 0;
+  const isWhatIf = Object.keys(whatIf).length > 0;
   const outName = argStr('out', isWhatIf ? 'expedition-whatif' : 'expedition');
   const d = D();
   const trios = allTrios();
@@ -104,7 +117,10 @@ async function main() {
   const clear = trioRows.map((t) => t.clearRate);
   const runtimeSec = Math.round((performance.now() - t0) / 100) / 10;
   const out = {
-    meta: { generated: new Date().toISOString(), runs, trios: trios.length, runtimeSec, structure: '쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿) + 보스 b1/b2', whatIf: isWhatIf ? whatIf : null },
+    meta: {
+      generated: new Date().toISOString(), runs, trios: trios.length, runtimeSec, structure: '쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2',
+      rules: { ...DEFAULT_RULES, afterFightRecoveryMissing: AFTER_FIGHT_RECOVERY_MISSING, preBossCamp: PRE_BOSS_CAMP }, whatIf: isWhatIf ? whatIf : null,
+    },
     distribution: { min: Math.min(...clear), median: med, max: Math.max(...clear), mean: r3(clear.reduce((a, b) => a + b, 0) / clear.length) },
     trios: trioRows,
     heroes,

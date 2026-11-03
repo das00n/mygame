@@ -484,11 +484,11 @@ function analyseCard(def: CardDef): void {
 function parseHaewon(rule: string | null): HaewonRule {
   if (!rule) return { kind: 'none', text: '' };
   const st = rule.match(/(점지|상흔|명부|넋흔들림)\s*(\d+)\s*이상/);
-  if (st) return { kind: 'status', status: st[1] as EnemyStatus, n: Number(st[2]), text: rule };
+  if (st) return { kind: 'status', status: st[1] as EnemyStatus, n: Number(st[2]), orCollapse: rule.includes('붕괴'), text: rule };
   const jd = rule.match(/장단\s*(\d+)\s*이상/);
   if (jd) return { kind: 'jangdan', n: Number(jd[1]), text: rule };
   if (rule.includes('굿상에 설치물')) return { kind: 'summons', text: rule };
-  if (rule.includes('부적')) return { kind: 'token', text: rule };
+  if (rule.includes('부적')) return { kind: 'token', group: rule.includes('모두') || rule.includes('무리'), text: rule };
   if (rule.includes('진형이 바뀐')) return { kind: 'formation', text: rule };
   if (rule.includes('붕괴')) return { kind: 'collapse', text: rule };
   if (rule.includes('노잣돈')) return { kind: 'offering', text: rule };

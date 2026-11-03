@@ -29,7 +29,7 @@
    "han": "나루에서 배를 기다리다 빠져 죽었다. 지나가는 이의 발목을 잡는다.",
    "intents": [
     {"id": "a", "name": "발목 잡기", "kind": "attack", "target": "선두", "damage": 10, "hits": 1},
-    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 6, "effect": "공격 +2 (누적)"}
+    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 6, "effect": "공격 +1 (누적)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
@@ -78,7 +78,7 @@
    "pattern": {"type": "cycle", "order": ["a"]},
    "passives": ["동료 잡귀가 쓰러질 때마다 남은 잡귀의 공격 +1"],
    "pressures": ["P7"],
-   "haewon": {"status": "부적", "rule": "부적(토큰) 카드로 마지막 피해를 준다", "story": "부적 한 장에 흩어져 제 갈 길을 간다"},
+   "haewon": {"status": "부적", "rule": "무리 중 하나라도 부적(토큰) 카드의 마지막 피해로 쓰러지면, 그 전투의 잡귀 모두 해원", "story": "부적 한 장에 무리가 흩어져 제 갈 길을 간다"},
    "drops": {"material": "잡귀 넋", "gold": [2, 4]}},
   {"id": "gutpan_hwebang", "name": "굿판 훼방꾼", "family": "잡귀잡신", "category": "normal", "hp": [24, 28], "position": "back",
    "han": "굿판마다 끼어들어 장단을 흐트러뜨리던 잡귀.",
@@ -89,7 +89,7 @@
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P4"],
-   "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "장단이 살아나면 저도 흥이 나 물러간다"},
+   "haewon": {"status": "장단", "rule": "장단 2 이상인 턴에 쓰러뜨린다", "story": "장단이 살아나면 저도 흥이 나 물러간다"},
    "drops": {"material": "잡귀 넋", "gold": [10, 16]}},
   {"id": "goksori_neok", "name": "곡소리 넋", "family": "굶주린 넋", "category": "normal", "hp": [28, 32], "position": "back",
    "han": "상주 없이 떠난 넋. 제 곡을 제가 운다.",
@@ -115,11 +115,11 @@
    "pressures": ["P5", "P13"],
    "haewon": {"status": "명부", "rule": "명부 8 이상인 상태로 쓰러뜨린다", "story": "누명을 명부에 바로잡아 적어 준다"},
    "drops": {"material": "타다 남은 소지", "gold": [25, 35]}},
-  {"id": "mongdal", "name": "혼처 잃은 몽달귀", "family": "몽달·손각시", "category": "elite", "hp": [68, 72], "position": "front",
+  {"id": "mongdal", "name": "혼처 잃은 몽달귀", "family": "몽달·손각시", "category": "elite", "hp": [60, 64], "position": "front",
    "han": "혼례를 사흘 앞두고 죽은 총각. 혼처를 찾아 헤맨다.",
    "intents": [
     {"id": "a", "name": "옷자락 붙잡기", "kind": "attack", "target": "최고 체력", "damage": 7, "hits": 2},
-    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "effect": "공격 +3 (누적)"}
+    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "effect": "공격 +2 (누적)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b", "a"]},
    "passives": [],
@@ -135,7 +135,7 @@
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": ["물밑 손 둘과 함께 나온다"],
    "pressures": ["P7", "P13"],
-   "haewon": {"status": "넋흔들림", "rule": "붕괴 상태에서 그림자를 쓰러뜨린다", "story": "엉킨 넋들이 흔들려 하나씩 풀려난다"},
+   "haewon": {"status": "넋흔들림", "rule": "넋흔들림 6 이상이거나 붕괴 상태에서 그림자를 쓰러뜨린다", "story": "엉킨 넋들이 흔들려 하나씩 풀려난다"},
    "drops": {"material": "젖은 넋전", "gold": [25, 35]}},
   {"id": "mulmit_son", "name": "물밑 손", "family": "수귀", "category": "minion", "hp": [16, 18], "position": "front",
    "han": "그림자가 뻗은 손.",
@@ -167,11 +167,11 @@
    "pressures": ["P1", "P13", "P8"],
    "haewon": {"status": null, "rule": "노잣돈을 바친 뒤 쓰러뜨린다", "story": "밀린 삯을 치르면 마지막으로 노를 저어 스스로 강을 건넌다"},
    "drops": {"material": "젖은 넋전", "gold": [95, 105], "chiseong": 1}},
-  {"id": "sangyeo", "name": "넘어가지 못한 상여", "family": "억울귀", "category": "boss", "hp": [150, 150], "position": "back",
+  {"id": "sangyeo", "name": "넘어가지 못한 상여", "family": "억울귀", "category": "boss", "hp": [125, 125], "position": "back",
    "han": "저승 강을 건너다 멈춰 선 상여. 상여꾼들이 아직도 상여소리를 멈추지 못한다.",
    "intents": [
     {"id": "a", "name": "상여 흔들기", "kind": "buff", "target": "아군 원귀", "effect": "상여꾼 전원 방어도 5"},
-    {"id": "b", "name": "넋 쏟기", "kind": "summon", "target": "아군 원귀", "effect": "물에 젖은 넋 1 소환(최대 2)"},
+    {"id": "b", "name": "넋 쏟기", "kind": "summon", "target": "아군 원귀", "effect": "물에 젖은 넋 1 소환(최대 1)"},
     {"id": "c", "name": "무너지는 상여", "kind": "attack", "target": "전체", "damage": 8, "hits": 1, "effect": "상여꾼이 2명 이하일 때만"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"], "override": "상여꾼 2명 이하이면 매 턴 c"},
@@ -182,7 +182,7 @@
   {"id": "sangyeokkun", "name": "상여꾼", "family": "억울귀", "category": "minion", "hp": [18, 20], "position": "front",
    "han": "상여를 멘 채 멈춰 선 사람들.",
    "intents": [
-    {"id": "a", "name": "상여채 밀기", "kind": "attack", "target": "선두", "damage": 4, "hits": 1},
+    {"id": "a", "name": "상여채 밀기", "kind": "attack", "target": "선두", "damage": 3, "hits": 1},
     {"id": "b", "name": "상여소리", "kind": "stress", "target": "전체", "effect": "파티 귀기 +2"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},

@@ -14,6 +14,8 @@ export const W = {
   dmg: 1.0,
   kill: 6,
   haewon: 9,
+  /** 해원할 수 있었는데(덱이 그 조건을 만들 수 있는데) 그냥 쓰러뜨리면 잃는 몫 (해원 가치 대비) */
+  haewonMiss: 1.2,
   haewonProgress: 3,
   hp: 1.3,
   down: 28,
@@ -88,6 +90,7 @@ function haewonProgress(s: CombatState, e: EnemyState): number {
   switch (r.kind) {
     case 'status': {
       const v = r.status === '점지' ? e.mark : r.status === '명부' ? e.doom : r.status === '넋흔들림' ? e.shake : e.bleed;
+      if (r.orCollapse && collapsed(s, e)) return 1;
       return Math.min(1, v / (r.n ?? 1));
     }
     case 'jangdan': return Math.min(1, s.jangdan / (r.n ?? 3));
@@ -114,7 +117,9 @@ function overrideDanger(s: CombatState, skip: boolean[]): number {
     if (!m || !it) continue;
     let minions = 0;
     s.enemies.forEach((x, i) => {
-      if (x.alive && !skip[i] && d.enemies[x.def].category === 'minion') minions++;
+      // 이미 걸린 상흔만으로 언젠가 쓰러질 졸개는 없는 셈 친다
+      const bleedOut = x.bleed > 0 && x.hp + x.block <= (x.bleed * (x.bleed + 1)) / 2;
+      if (x.alive && !skip[i] && !bleedOut && d.enemies[x.def].category === 'minion') minions++;
     });
     if (minions <= Number(m[1])) {
       const targets = it.target === '전체' ? s.formation.length : 1;
@@ -136,6 +141,42 @@ function usesJangdan(defIdx: number): boolean {
   return v;
 }
 
+// 덱(뽑을·손·버린 더미)이 해원 조건을 만들 수 있는가 — 카드 정의마다 캐시
+const produceCache = new Map<number, string[]>();
+function producesOf(defIdx: number): string[] {
+  let v = produceCache.get(defIdx);
+  if (v) return v;
+  const out = new Set<string>();
+  const walk = (ops: Op[]) => {
+    for (const o of ops) {
+      if (o.op === 'apply') out.add(o.status);
+      if (o.op === 'summon') out.add('summons');
+      if (o.op === 'move' && !o.when) out.add('formation');
+      if (o.op === 'token') {
+        const t = D().cards[o.tidx];
+        if (t.effects.some((x) => x.op === 'dmg')) out.add('token');
+        walk(t.effects);
+      }
+      if (o.op === 'per') walk(o.each);
+      if (o.op === 'cond') walk(o.then);
+      if (o.op === 'power') walk(o.effects);
+    }
+  };
+  const def = D().cards[defIdx];
+  walk(def.effects);
+  if (def.isAttack && def.heroes.some((h) => D().heroes.get(h)?.range === 'melee')) out.add('formation');
+  v = [...out];
+  produceCache.set(defIdx, v);
+  return v;
+}
+
+function feasibleHaewon(s: CombatState): Set<string> {
+  const f = new Set<string>(['jangdan', 'offering', 'minions']);
+  for (const pile of [s.hand, s.draw, s.discard]) for (const c of pile) for (const x of producesOf(c.d)) f.add(x);
+  if (f.has('넋흔들림')) f.add('collapse');
+  return f;
+}
+
 function personalValue(s: CombatState, h: HeroState): number {
   switch (h.id) {
     case 'posu': return h.personal * 2.5;
@@ -144,7 +185,7 @@ function personalValue(s: CombatState, h: HeroState): number {
     case 'beopsa': return h.personal * 1.5;
     case 'manshin': return h.personal * 1.5 + (s.gangsin ? 4 : 0);
     case 'jaebi': return h.personal * 2;
-    case 'baksu': return h.stance ? (s.jangdan >= 2 ? 6 : 2) : 0;
+    case 'baksu': return h.stance ? 6 : 0;
     default: return 0;
   }
 }
@@ -192,13 +233,24 @@ export function evaluate(s: CombatState, withPotential = true): number {
   const nA = al.length || 1;
   const skip: boolean[] = new Array(s.enemies.length).fill(false);
   const markV = 1.6;
+  const feas = feasibleHaewon(s);
+  const missed = (e: EnemyState) => {
+    const r = d.enemies[e.def].haewon;
+    return r.kind !== 'none' && !e.escaped && feas.has(r.kind === 'status' ? r.status! : r.kind);
+  };
+  const guardedMinion = s.enemies.some((x) => x.alive && !!d.enemies[x.def].pattern.override);
+  // 해원 가치 = 기본(재료·귀기) + 규칙상 해원 회복(서 있는 영웅 모두)
+  let standingN = 0;
+  for (const h of s.heroes) if (standing(h)) standingN++;
+  const haewonV = W.haewon + (s.rules.haewonHeal ?? 0) * standingN * W.hp;
   for (let i = 0; i < s.enemies.length; i++) {
     const e = s.enemies[i];
     if (e.escaped) continue;
-    // 보스가 다시 불러내는 넋은 죽여도 곧 돌아온다 → 처치 가치를 낮춘다
-    const respawn = e.summoned ? 0.35 : 1;
+    // 보스가 다시 불러내는 넋은 죽여도 곧 돌아온다 → 처치 가치를 낮춘다.
+    // 무리 보스의 override 문턱(상여꾼 N명 이하)이 걸린 졸개는 건드릴 가치가 거의 없다(해원 조건도 살려 두라고 한다)
+    const respawn = e.summoned ? 0.35 : guardedMinion && d.enemies[e.def].category === 'minion' ? 0.1 : 1;
     if (!e.alive) {
-      score += (e.maxHp * W.dmg + W.kill + threatOf(e)) * respawn + (e.haewon ? W.haewon : 0);
+      score += (e.maxHp * W.dmg + W.kill + threatOf(e)) * respawn + (e.haewon ? W.haewon : missed(e) ? -W.haewonMiss * haewonV : 0);
       continue;
     }
     const mult = (e.vuln > 0 ? 1.5 : 1) * (collapsed(s, e) ? 1.5 : 1);
@@ -213,7 +265,7 @@ export function evaluate(s: CombatState, withPotential = true): number {
     }
     if (dies) {
       skip[i] = true;
-      score += (e.maxHp * W.dmg + W.kill + threatOf(e)) * respawn + (haewonSatisfied(s, e) ? W.haewon * 0.9 : 0);
+      score += (e.maxHp * W.dmg + W.kill + threatOf(e)) * respawn + (haewonSatisfied(s, e) ? haewonV * 0.9 : missed(e) ? -W.haewonMiss * haewonV : 0);
       continue;
     }
     score += (e.maxHp - hp) * W.dmg * respawn;
@@ -230,7 +282,7 @@ export function evaluate(s: CombatState, withPotential = true): number {
     score += st * f;
     score -= e.block * 0.3;
     score -= e.atkBonus * 2.5; // 누적된 공격 보너스 = 앞으로 받을 피해
-    if (d.enemies[e.def].haewon.kind !== 'none') score += haewonProgress(s, e) * W.haewonProgress * (1 - hp / e.maxHp);
+    if (d.enemies[e.def].haewon.kind !== 'none') score += haewonProgress(s, e) * (W.haewonProgress + 0.3 * (haewonV - W.haewon)) * (1 - hp / e.maxHp);
   }
   // 무리 보스의 override("상여꾼 N명 이하이면 매 턴 c"): 그 문턱을 넘으면 매 턴 받을 전체 피해
   score -= overrideDanger(s, skip);
@@ -254,9 +306,11 @@ export function evaluate(s: CombatState, withPotential = true): number {
       continue;
     }
     const hpW = W.hp * (1 + (1 - h.hp / h.maxHp));
-    const loss = Math.min(unb, h.hp);
+    // 작두 위에서 장단 2 미만으로 턴을 마치면 헛디딤(체력 6, 방어도 무시)
+    const fall = h.id === 'baksu' && h.stance && s.jangdan < 2 ? 6 : 0;
+    const loss = Math.min(unb + fall, h.hp);
     score += (h.hp - loss) * hpW;
-    if (unb >= h.hp) {
+    if (unb + fall >= h.hp) {
       score -= W.down;
       // 쓰러진 뒤 같은 적 턴에 남은 타격 → 사망 판정
       const after = inc.hits[h.idx] * Math.max(0, (unb - h.hp) / Math.max(1, incoming));
