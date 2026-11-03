@@ -2,7 +2,7 @@
  "game": "Monster Train 2",
  "source": "https://monstertrain2.miraheze.org (CC BY-SA) via archive.org backup miraheze-wiki-monstertrain2wiki-20260907",
  "retrieved": "2026-11-03",
- "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 211 names -> nav-only none, page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] (+ 7 Endless-mode curses listed in the nav, kept under rules.endless_mode) | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only [\"Archus' Wing\", 'Braveslab', 'Burstslab', 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Dualslab', 'Duplicate Spell', 'Echoslab', 'Frankenslab', 'Frenzyslab', 'Furyslab', 'Glimmerslab', 'Greedslab', 'Heartslab', 'Immortalslab', 'Largeslab', 'Mossyslab', 'Runeslab', 'Shieldslab', 'Smidgeslab', 'Speedslab', 'Strengthslab', 'Thornslab', 'Titanslab', 'Unit Replicator', 'Wickslab', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
+ "notes": "Run structure of MT2 from the community wiki (Miraheze archive.org backup). artifacts = the 'Artifacts' page tables (clan = section; group = sub-table such as Minor Pyreborne / Pyreforged / Celestial Alcove / Boss); rarity from the game-data dump when --mt2-gamedata is given. events = Celestial Alcove event pages ({{Event}}); map_nodes = {{Node}} pages. Completeness: artifacts: Artifacts page 214 rows vs <Clan>Artifacts nav templates 211 names -> nav-only none, page-only ['Pyreforged Flame', 'Pyreforged Light', 'Pyreforged Solace'] (+ 7 Endless-mode curses listed in the nav, kept under rules.endless_mode) | vs game-data CollectableRelicData 221 relics: rarity filled for 214; game-data-only ['Blank Pages', 'Hope for Peace', 'MoreRares_Relic', 'Silver Capacity', 'Silver Draw', 'Silver Ember', 'The Dragonstone'] | upgrades: Upgrades page 56 rows vs game-data EnhancerData 89 -> game-data-only 21 Soul Savior '-slab' versions (listed in the wiki table's Soul Savior column, not as rows) + [\"Archus' Wing\", 'Card Duplicator', 'Card Replicator', 'Card Replicator', 'Duplicate Spell', 'Unit Replicator', 'Wurmkin Infused']; wiki-only [\"Archus' Wings\"] (spelling) | events: 27 {{Event}} pages vs game-data StoryEventData 38 files (incl. follow-up events and Soul Savior-only events): ['BalatroEvent', 'BalatroFollowupEvent', 'BoneDogTitan', 'ClassPotions', 'ClassSpikes', 'ClassTomes', 'ClippedWings', 'Copier', 'CorruptedAngels', 'CultOfTheLambEvent', 'DanteReturns', 'DanteReturns_Followup', 'GarfieldBoxes', 'InkboundEvent', 'InscryptionEvent', 'InscryptionFollowupEventCorpseEater', 'InscryptionFollowupEventManyLives', 'InscryptionFollowupEventWorthySacrifice', 'LazarusLeagueLab', 'MoreOrLessArtifacts', 'MothersRemnant1', 'MothersRemnant2_Followup', 'MothersRemnant3_Followup', 'NonclassCards', 'PathOfTheAngel', 'PenanceFields', 'PenanceFields_FollowupMajor', 'PenanceFields_FollowupMinor', 'PurgeChampion', 'PurifyingFlame', 'PyreHeartUpgrade', 'TextAnimationsTestEvent', 'TheOldOrder', 'TitanDominion', 'TitanEntropy', 'TitanSavagery', 'TrainRoomInstall', 'TrueFinalBossUnlockC'] | Pyre Hearts: wiki 13 vs game-data PyreArtifactData 16 (['PyreHeartAquath_ArtifactData', 'PyreHeartBogworm_ArtifactData', 'PyreHeartBogwurm_Roomsize_ArtifactData', 'PyreHeartDominion_ArtifactData', 'PyreHeartEntropy_ArtifactData', 'PyreHeartFhyra_ArtifactData', 'PyreHeartFhyra_ArtifactDataGainSpellPower', 'PyreHeartHerzal_StewardUpgradeSlots', 'PyreHeartLife_ArtifactData', 'PyreHeartLife_CopyAtMerchant_ArtifactData', 'PyreHeartMalicka_ArtifactData', 'PyreHeartPact_ArtifactData', 'PyreHeartSavagery_ArtifactData', 'PyreHeartStarter_ArtifactData', 'PyreHeartTime_ArtifactData', 'PyreHeartWyngh_ArtifactData']) | covenant: wiki 10 ranks vs game-data CovenantData 11 files (incl. Covenant00_FTUE) | trials: wiki 8 regular trials + boss-variant table vs game-data SinsData 63 'sin' relics (regular trials per ring tier + flying-boss variants and their Titan Trial II versions) | mutators: wiki 130 vs game-data MutatorData 150 | souls: wiki 33 soul pages vs game-data SoulData 99 relics (= souls x upgrade tiers)",
  "artifacts": [
   {
    "name": "Abyssal Prism",
@@ -1607,7 +1607,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with +60 Health."
+    "soul_savior_version": "Upgrade a unit with +60 Health."
    },
    {
     "name": "Strengthstone",
@@ -1616,7 +1616,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with +40 Attack."
+    "soul_savior_version": "Upgrade a unit with +40 Attack."
    },
    {
     "name": "Largestone",
@@ -1625,7 +1625,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with +2 Capacity, +40 Attack, and +120 Health."
+    "soul_savior_version": "Upgrade a unit with +2 Capacity, +40 Attack, and +120 Health."
    },
    {
     "name": "Smidgestone",
@@ -1634,7 +1634,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Reduce Capacity to 1 and gain Armor 30."
+    "soul_savior_version": "Reduce Capacity to 1 and gain Armor 30."
    },
    {
     "name": "Dualstone",
@@ -1643,7 +1643,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Dualism, Rage 4, Regen 4, and Spikes 4."
+    "soul_savior_version": "Upgrade a unit with Dualism, Rage 4, Regen 4, and Spikes 4."
    },
    {
     "name": "Frenzystone",
@@ -1652,7 +1652,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Multistrike 2."
+    "soul_savior_version": "Upgrade a unit with Multistrike 2."
    },
    {
     "name": "Immortalstone",
@@ -1661,7 +1661,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Endless and -1 Ember."
+    "soul_savior_version": "Upgrade a unit with Endless and -1 Ember."
    },
    {
     "name": "Speedstone",
@@ -1670,7 +1670,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Quick and +30 Attack."
+    "soul_savior_version": "Upgrade a unit with Quick and +30 Attack."
    },
    {
     "name": "Titanstone",
@@ -1679,7 +1679,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Titanite and Titanskin 3."
+    "soul_savior_version": "Upgrade a unit with Titanite and Titanskin 3."
    },
    {
     "name": "Bravestone",
@@ -1688,7 +1688,7 @@
     "clan": "Banished",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Valor 16."
+    "soul_savior_version": "Upgrade a unit with Valor 16."
    },
    {
     "name": "Greedstone",
@@ -1697,7 +1697,7 @@
     "clan": "Pyreborne",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Avarice 6."
+    "soul_savior_version": "Upgrade a unit with Avarice 6."
    },
    {
     "name": "Glimmerstone",
@@ -1714,7 +1714,7 @@
     "clan": "Underlegion",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with +20 Health and Regen 15."
+    "soul_savior_version": "Upgrade a unit with +20 Health and Regen 15."
    },
    {
     "name": "Frankenstone",
@@ -1723,7 +1723,7 @@
     "clan": "Lazarus League",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Reanimate 2."
+    "soul_savior_version": "Upgrade a unit with Reanimate 2."
    },
    {
     "name": "Burststone",
@@ -1732,7 +1732,7 @@
     "clan": "Railforged",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Burst 4."
+    "soul_savior_version": "Upgrade a unit with Burst 4."
    },
    {
     "name": "Furystone",
@@ -1741,7 +1741,7 @@
     "clan": "Hellhorned",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Rage 24."
+    "soul_savior_version": "Upgrade a unit with Rage 24."
    },
    {
     "name": "Thornstone",
@@ -1758,7 +1758,7 @@
     "clan": "Stygian Guard",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Incant: Gain Armor 4."
+    "soul_savior_version": "Upgrade a unit with Incant: Gain Armor 4."
    },
    {
     "name": "Shieldstone",
@@ -1767,7 +1767,7 @@
     "clan": "Umbra",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with Damage Shield 5."
+    "soul_savior_version": "Upgrade a unit with Damage Shield 5."
    },
    {
     "name": "Wickstone",
@@ -1776,7 +1776,7 @@
     "clan": "Melting Remnant",
     "rarity": "Common",
     "source": "Merchant of Steel",
-    "slab_(soul_savior)": "Upgrade a unit with +30 Attack, +10 Health, and Burnout 1."
+    "soul_savior_version": "Upgrade a unit with +30 Attack, +10 Health, and Burnout 1."
    },
    {
     "name": "Echostone",
@@ -1793,7 +1793,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Clipped Wings)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Archus' Wings",
@@ -1802,7 +1802,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Clipped Wings)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Wings of Light",
@@ -1811,7 +1811,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Clipped Wings)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Red Crown",
@@ -1820,7 +1820,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Cult of the Lamb)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Dominating Power",
@@ -1829,7 +1829,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Fountain of Dominion)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Dominating Authority",
@@ -1838,7 +1838,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Fountain of Dominion)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Dominating Control",
@@ -1847,7 +1847,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Fountain of Dominion)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Worthy Sacrifice",
@@ -1856,7 +1856,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Inscryption)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Many Lives",
@@ -1865,7 +1865,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Inscryption)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Fecundity",
@@ -1874,7 +1874,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Inscryption)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Benevolence",
@@ -1883,7 +1883,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Path of the Angel)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Courage",
@@ -1892,7 +1892,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Path of the Angel)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Wrath",
@@ -1901,7 +1901,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Path of the Angel)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Frailty Penance",
@@ -1910,7 +1910,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Penitent's Suit)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Ascetic Penance",
@@ -1919,7 +1919,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Penitent's Suit)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Frailty Absolution",
@@ -1928,7 +1928,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Penitent's Suit)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Ascetic Absolution",
@@ -1937,7 +1937,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Penitent's Suit)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Savage Skin",
@@ -1946,7 +1946,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Savagery's Statue)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Savage Heart",
@@ -1955,7 +1955,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Savagery's Statue)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Savage Spirit",
@@ -1964,7 +1964,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Savagery's Statue)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Purified Essence",
@@ -1973,7 +1973,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Beacon)",
-    "slab_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Powerstone",
@@ -1982,7 +1982,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell with +20 Magic Power."
+    "soul_savior_version": "Upgrade a spell with +20 Magic Power."
    },
    {
     "name": "Surgestone",
@@ -1991,7 +1991,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell with +40 Magic Power and gain Consume."
+    "soul_savior_version": "Upgrade a spell with +40 Magic Power and gain Consume."
    },
    {
     "name": "Emberstone",
@@ -2000,7 +2000,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember."
+    "soul_savior_version": "Upgrade a spell to cost -2 Ember."
    },
    {
     "name": "Smolderstone",
@@ -2009,7 +2009,7 @@
     "clan": "Clanless",
     "rarity": "Common",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell to cost -4 Ember and gain Consume."
+    "soul_savior_version": "Upgrade a spell to cost -4 Ember and gain Consume."
    },
    {
     "name": "Eternalstone",
@@ -2018,7 +2018,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Freezestone",
@@ -2027,7 +2027,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember and gain Permafrost."
+    "soul_savior_version": "Upgrade a spell to cost -2 Ember and gain Permafrost."
    },
    {
     "name": "Holystone",
@@ -2036,7 +2036,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Seekstone",
@@ -2045,7 +2045,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "Upgrade a spell to cost -2 Ember and gain Intrinsic."
+    "soul_savior_version": "Upgrade a spell to cost -2 Ember and gain Intrinsic."
    },
    {
     "name": "Keepstone",
@@ -2054,7 +2054,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Stackstone",
@@ -2063,7 +2063,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Twinstone",
@@ -2072,7 +2072,7 @@
     "clan": "Clanless",
     "rarity": "Rare",
     "source": "Merchant of Magic",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Entropic Stone",
@@ -2081,7 +2081,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Entropy's Crystals)",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Entropic Growth",
@@ -2090,7 +2090,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Entropy's Crystals)",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    },
    {
     "name": "Entropic Energy",
@@ -2099,7 +2099,7 @@
     "clan": "Clanless",
     "rarity": "Event",
     "source": "Celestial Alcove (Entropy's Crystals)",
-    "+_(soul_savior)": "N/A"
+    "soul_savior_version": "N/A"
    }
   ]
  },

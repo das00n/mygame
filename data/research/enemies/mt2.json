@@ -2802,7 +2802,7 @@
    "category": "normal",
    "area": "Soul Savior: Maera's Region",
    "hp": {
-    "base": null,
+    "base": 60,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
    "attack": 8,
@@ -2827,7 +2827,8 @@
     ],
     "combats": "All combats in Maera's Region",
     "size_source": "game-data dump",
-    "attack_source": "game-data dump (wiki infobox gives no attack)"
+    "attack_source": "game-data dump (wiki infobox gives no attack)",
+    "hp_source": "game-data dump (wiki infobox gives no health)"
    }
   },
   {
@@ -3035,7 +3036,7 @@
    "category": "normal",
    "area": "Soul Savior: Lylith's Region",
    "hp": {
-    "base": null,
+    "base": 12,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
    "attack": 10,
@@ -3058,7 +3059,8 @@
     ],
     "combats": "All combats in Lylith's Region",
     "size_source": "game-data dump",
-    "attack_source": "game-data dump (wiki infobox gives no attack)"
+    "attack_source": "game-data dump (wiki infobox gives no attack)",
+    "hp_source": "game-data dump (wiki infobox gives no health)"
    }
   },
   {
@@ -3067,7 +3069,7 @@
    "category": "boss",
    "area": "Soul Savior: First Battle",
    "hp": {
-    "base": null,
+    "base": 230,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
    "attack": 8,
@@ -3092,16 +3094,17 @@
     ],
     "combats": "First Battle",
     "size_source": "game-data dump",
-    "attack_source": "game-data dump (wiki infobox gives no attack)"
+    "attack_source": "game-data dump (wiki infobox gives no attack)",
+    "hp_source": "game-data dump (wiki infobox gives no health)"
    }
   },
   {
    "id": "mt2.athane_the_fallen",
    "name": "Athane the Fallen",
    "category": "boss",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
-    "base": null,
+    "base": 400,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
    "attack": 5,
@@ -3113,7 +3116,9 @@
     "Strike: Retreat."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region). Wiki: Athane the Fallen is a boss in Monster Train 2, found exclusively in its Soul Savior mode. She applies Rage 1 to enemy units on Incant.",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Maera's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": "Athane the Fallen",
@@ -3126,16 +3131,17 @@
     ],
     "combats": "First combat in Maera's Region",
     "size_source": "game-data dump",
-    "attack_source": "game-data dump (wiki infobox gives no attack)"
+    "attack_source": "game-data dump (wiki infobox gives no attack)",
+    "hp_source": "game-data dump (wiki infobox gives no health)"
    }
   },
   {
    "id": "mt2.korin_the_judged",
    "name": "Korin the Judged",
    "category": "boss",
-   "area": "Soul Savior",
+   "area": "Soul Savior: Maera's Region",
    "hp": {
-    "base": null,
+    "base": 400,
     "covenant": "difficulty Tangle: None/None; Overgrowth: None/None (attack/health; Soul Savior difficulty tiers)"
    },
    "attack": 12,
@@ -3145,7 +3151,9 @@
     "Summon: Descend all friendly units to this floor and Retreat."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region). Wiki: Korin the Judged is a boss in Monster Train 2, found exclusively in its Soul Savior mode. When she appears, all enemies still alive on the train will come to her defense.",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Maera's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": "Korin the Judged",
@@ -3157,7 +3165,8 @@
     ],
     "combats": "First combat in Maera's Region",
     "size_source": "game-data dump",
-    "attack_source": "game-data dump (wiki infobox gives no attack)"
+    "attack_source": "game-data dump (wiki infobox gives no attack)",
+    "hp_source": "game-data dump (wiki infobox gives no health)"
    }
   },
   {
@@ -3517,7 +3526,9 @@
     "Region mini-boss of Thaddeus's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Thaddeus's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,
@@ -3540,7 +3551,9 @@
     "Region mini-boss of Thaddeus's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Thaddeus's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,
@@ -3644,7 +3657,9 @@
     "Region mini-boss of Tivi's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Tivi's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,
@@ -3667,7 +3682,9 @@
     "Region mini-boss of Tivi's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Tivi's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,
@@ -3773,7 +3790,9 @@
     "Region mini-boss of Lylith's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Lylith's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,
@@ -3796,7 +3815,9 @@
     "Region mini-boss of Lylith's Region (first combat)."
    ],
    "pattern": "Soul Savior mini-boss: Relentless final-wave boss of the First Battle (Astrael) or of a region's first combat (two candidates per region).",
-   "waves": [],
+   "waves": [
+    "Soul Savior: Lylith's Region boss wave ('Boss' slot of the first combat)"
+   ],
    "extra": {
     "mode": "Soul Savior (Destiny of the Railforged DLC)",
     "wiki_page": null,

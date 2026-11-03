@@ -1418,14 +1418,18 @@ def mt2_structure(pages, item, src, combats, ss_combats, gdi):
             rec = OrderedDict(name=links(cells[0])[-1], table=cap or None)
             for ci, c in enumerate(cells[1:], start=1):
                 key = (cols[ci] if ci < len(cols) else f"col{ci}").lower().replace(" ", "_") or f"col{ci}"
+                key = "soul_savior_version" if "soul_savior" in key else key
                 rec[key] = cell(c)
             upgrades.append(rec)
     if gdi:
         en = {norm(r["name"]) for r in gdi["enhancers"]}
         wk = {norm(u["name"]) for u in upgrades}
+        gd_only = sorted(r["name"] for r in gdi["enhancers"] if norm(r["name"]) not in wk)
+        slabs = [x for x in gd_only if x.endswith("slab")]
         checks.append(f"upgrades: Upgrades page {len(upgrades)} rows vs game-data EnhancerData {len(gdi['enhancers'])} "
-                      f"-> game-data-only {sorted(r['name'] for r in gdi['enhancers'] if norm(r['name']) not in wk)}; "
-                      f"wiki-only {sorted(u['name'] for u in upgrades if norm(u['name']) not in en)}")
+                      f"-> game-data-only {len(slabs)} Soul Savior '-slab' versions (listed in the wiki table's Soul "
+                      f"Savior column, not as rows) + {[x for x in gd_only if x not in slabs]}; wiki-only "
+                      f"{sorted(u['name'] for u in upgrades if norm(u['name']) not in en)} (spelling)")
     merch = OrderedDict(
         overview=prose(re.split(r"\{\|", own_text(mp))[0], 400, "Merchants"),
         reroll=clean(section(mp, "Re-roll", 3)), purge_costs=removal, merchants=merchants,
