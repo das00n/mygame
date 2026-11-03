@@ -1,0 +1,2795 @@
+{
+ "effect_mix": {
+  "sts1": {
+   "n": 300,
+   "effects": {
+    "damage": 0.407,
+    "draw": 0.23,
+    "block": 0.217,
+    "damage_aoe": 0.093,
+    "summon": 0.09,
+    "energy": 0.09,
+    "discard": 0.087,
+    "damage_multi": 0.087,
+    "generate": 0.08,
+    "debuff": 0.073,
+    "stat_up": 0.07,
+    "mode": 0.063,
+    "dot_apply": 0.037,
+    "scry": 0.033,
+    "exhaust_other": 0.03,
+    "cost_reduce": 0.027,
+    "recall": 0.023,
+    "replay": 0.017,
+    "transform": 0.017,
+    "pollute": 0.017,
+    "self_damage": 0.017,
+    "heal": 0.007,
+    "tutor": 0.007,
+    "max_hp": 0.007,
+    "position": 0.007,
+    "control": 0.003,
+    "execute": 0.003,
+    "economy": 0.003
+   },
+   "props": {
+    "exhaust_self": 0.197,
+    "persistent": 0.17,
+    "innate": 0.04,
+    "retain": 0.04,
+    "x_cost": 0.03,
+    "ethereal": 0.013,
+    "unplayable": 0.01
+   },
+   "conditions": {
+    "on_trigger": 0.2,
+    "if_pile": 0.037,
+    "if_self_state": 0.023,
+    "if_target_status": 0.013,
+    "if_sequence": 0.013
+   }
+  },
+  "sts2": {
+   "n": 454,
+   "effects": {
+    "damage": 0.41,
+    "draw": 0.189,
+    "block": 0.181,
+    "summon": 0.154,
+    "energy": 0.112,
+    "generate": 0.104,
+    "stat_up": 0.104,
+    "damage_aoe": 0.099,
+    "debuff": 0.079,
+    "damage_multi": 0.073,
+    "discard": 0.066,
+    "dot_apply": 0.062,
+    "transform": 0.035,
+    "exhaust_other": 0.031,
+    "replay": 0.026,
+    "self_damage": 0.024,
+    "cost_reduce": 0.022,
+    "recall": 0.02,
+    "scry": 0.013,
+    "pollute": 0.009,
+    "tutor": 0.009,
+    "max_hp": 0.007,
+    "heal": 0.004,
+    "economy": 0.004,
+    "control": 0.002,
+    "position": 0.002,
+    "execute": 0.002
+   },
+   "props": {
+    "persistent": 0.216,
+    "exhaust_self": 0.152,
+    "ethereal": 0.042,
+    "retain": 0.042,
+    "innate": 0.033,
+    "x_cost": 0.02
+   },
+   "conditions": {
+    "on_trigger": 0.194,
+    "if_pile": 0.04,
+    "if_self_state": 0.009,
+    "if_target_status": 0.004
+   }
+  },
+  "mt1": {
+   "n": 242,
+   "effects": {
+    "summon": 0.554,
+    "damage": 0.19,
+    "heal": 0.157,
+    "position": 0.153,
+    "block": 0.099,
+    "stat_up": 0.095,
+    "energy": 0.091,
+    "draw": 0.083,
+    "generate": 0.066,
+    "dot_apply": 0.066,
+    "damage_multi": 0.054,
+    "replay": 0.054,
+    "discard": 0.045,
+    "debuff": 0.037,
+    "control": 0.029,
+    "damage_aoe": 0.029,
+    "recall": 0.021,
+    "transform": 0.021,
+    "self_damage": 0.012,
+    "max_hp": 0.012,
+    "execute": 0.012,
+    "equip": 0.008,
+    "economy": 0.008,
+    "scry": 0.008,
+    "exhaust_other": 0.004
+   },
+   "props": {
+    "exhaust_self": 0.227,
+    "x_cost": 0.05,
+    "retain": 0.017,
+    "ethereal": 0.004
+   },
+   "conditions": {
+    "on_trigger": 0.24,
+    "if_pile": 0.008
+   }
+  },
+  "mt2": {
+   "n": 499,
+   "effects": {
+    "summon": 0.481,
+    "damage": 0.18,
+    "stat_up": 0.154,
+    "position": 0.146,
+    "heal": 0.14,
+    "block": 0.098,
+    "dot_apply": 0.066,
+    "generate": 0.06,
+    "equip": 0.058,
+    "energy": 0.054,
+    "debuff": 0.052,
+    "draw": 0.052,
+    "damage_multi": 0.052,
+    "replay": 0.048,
+    "damage_aoe": 0.03,
+    "economy": 0.024,
+    "control": 0.024,
+    "discard": 0.024,
+    "self_damage": 0.022,
+    "transform": 0.022,
+    "max_hp": 0.014,
+    "recall": 0.012,
+    "exhaust_other": 0.01,
+    "execute": 0.008,
+    "scry": 0.004
+   },
+   "props": {
+    "exhaust_self": 0.212,
+    "x_cost": 0.05,
+    "retain": 0.008,
+    "ethereal": 0.002,
+    "unplayable": 0.002
+   },
+   "conditions": {
+    "on_trigger": 0.257,
+    "if_hp": 0.004,
+    "if_self_state": 0.002,
+    "if_target_status": 0.002,
+    "if_pile": 0.002
+   }
+  },
+  "cobaltcore": {
+   "n": 172,
+   "effects": {
+    "block": 0.285,
+    "damage": 0.279,
+    "position": 0.244,
+    "draw": 0.203,
+    "summon": 0.157,
+    "discard": 0.064,
+    "energy": 0.058,
+    "generate": 0.058,
+    "control": 0.041,
+    "stat_up": 0.041,
+    "heal": 0.029,
+    "recall": 0.029,
+    "damage_aoe": 0.017,
+    "dot_apply": 0.012,
+    "exhaust_other": 0.012,
+    "replay": 0.006,
+    "damage_multi": 0.006,
+    "scry": 0.006,
+    "tutor": 0.006,
+    "debuff": 0.006
+   },
+   "props": {
+    "exhaust_self": 0.541,
+    "ethereal": 0.163,
+    "retain": 0.041,
+    "unplayable": 0.006
+   },
+   "conditions": {
+    "on_trigger": 0.5,
+    "if_pile": 0.041,
+    "if_hp": 0.017
+   }
+  }
+ },
+ "self_containment": {
+  "sts1:Defect": 1.0,
+  "sts1:Ironclad": 1.0,
+  "sts1:Silent": 0.89,
+  "sts1:Watcher": 1.0,
+  "sts2:Defect": 1.0,
+  "sts2:Ironclad": 1.0,
+  "sts2:Necrobinder": 1.0,
+  "sts2:Regent": 1.0,
+  "sts2:Silent": 1.0,
+  "mt1:Hellhorned": 1.0,
+  "mt1:Awoken": 1.0,
+  "mt1:Stygian Guard": 1.0,
+  "mt1:Umbra": 1.0,
+  "mt1:Melting Remnant": 1.0,
+  "mt1:Wurmkin": 1.0,
+  "mt2:Banished": 1.0,
+  "mt2:Pyreborne": 1.0,
+  "mt2:Luna Coven": 1.0,
+  "mt2:Underlegion": 0.89,
+  "mt2:Lazarus League": 1.0,
+  "mt2:Hellhorned": 1.0,
+  "mt2:Awoken": 1.0,
+  "mt2:Stygian Guard": 1.0,
+  "mt2:Umbra": 1.0,
+  "mt2:Melting Remnant": 1.0,
+  "mt2:Wurmkin": 1.0,
+  "mt2:Railforged": 1.0,
+  "cobaltcore:Riggs": 1.0,
+  "cobaltcore:Dizzy": 1.0,
+  "cobaltcore:CAT": 0.0,
+  "cobaltcore:Max": null,
+  "cobaltcore:Drake": 0.94,
+  "cobaltcore:Isaac": null,
+  "cobaltcore:Books": null,
+  "cobaltcore:Peri": 1.0
+ },
+ "owner_top": {
+  "cobaltcore:Books": {
+   "n": 23,
+   "produce": [
+    [
+     "block",
+     5
+    ],
+    [
+     "orb_summon",
+     5
+    ],
+    [
+     "evade",
+     5
+    ],
+    [
+     "token_card",
+     3
+    ]
+   ],
+   "consume": []
+  },
+  "cobaltcore:CAT": {
+   "n": 18,
+   "produce": [
+    [
+     "block",
+     5
+    ],
+    [
+     "evade",
+     3
+    ],
+    [
+     "discard",
+     2
+    ]
+   ],
+   "consume": [
+    [
+     "heat",
+     1
+    ]
+   ]
+  },
+  "cobaltcore:Dizzy": {
+   "n": 21,
+   "produce": [
+    [
+     "block",
+     15
+    ],
+    [
+     "defense_stat",
+     4
+    ],
+    [
+     "evade",
+     3
+    ],
+    [
+     "dot",
+     2
+    ]
+   ],
+   "consume": [
+    [
+     "block",
+     3
+    ],
+    [
+     "defense_stat",
+     1
+    ]
+   ]
+  },
+  "cobaltcore:Drake": {
+   "n": 21,
+   "produce": [
+    [
+     "heat",
+     12
+    ],
+    [
+     "evade",
+     5
+    ],
+    [
+     "block",
+     4
+    ],
+    [
+     "attack_stat",
+     1
+    ]
+   ],
+   "consume": [
+    [
+     "heat",
+     15
+    ],
+    [
+     "defense_stat",
+     1
+    ]
+   ]
+  },
+  "cobaltcore:Isaac": {
+   "n": 22,
+   "produce": [
+    [
+     "orb_summon",
+     18
+    ],
+    [
+     "block",
+     9
+    ],
+    [
+     "evade",
+     4
+    ],
+    [
+     "token_card",
+     1
+    ]
+   ],
+   "consume": []
+  },
+  "cobaltcore:Max": {
+   "n": 22,
+   "produce": [
+    [
+     "block",
+     6
+    ],
+    [
+     "token_card",
+     4
+    ],
+    [
+     "evade",
+     3
+    ],
+    [
+     "exhaust",
+     2
+    ]
+   ],
+   "consume": []
+  },
+  "cobaltcore:Peri": {
+   "n": 24,
+   "produce": [
+    [
+     "evade",
+     8
+    ],
+    [
+     "attack_stat",
+     4
+    ],
+    [
+     "block",
+     3
+    ],
+    [
+     "token_card",
+     1
+    ]
+   ],
+   "consume": [
+    [
+     "block",
+     1
+    ]
+   ]
+  },
+  "cobaltcore:Riggs": {
+   "n": 21,
+   "produce": [
+    [
+     "evade",
+     11
+    ],
+    [
+     "discard",
+     4
+    ],
+    [
+     "block",
+     1
+    ]
+   ],
+   "consume": [
+    [
+     "evade",
+     1
+    ]
+   ]
+  },
+  "mt1:Awoken": {
+   "n": 59,
+   "produce": [
+    [
+     "defense_stat",
+     17
+    ],
+    [
+     "attack_stat",
+     16
+    ],
+    [
+     "thorns",
+     9
+    ],
+    [
+     "orb_summon",
+     6
+    ]
+   ],
+   "consume": [
+    [
+     "thorns",
+     1
+    ]
+   ]
+  },
+  "mt1:Hellhorned": {
+   "n": 59,
+   "produce": [
+    [
+     "attack_stat",
+     25
+    ],
+    [
+     "block",
+     17
+    ],
+    [
+     "orb_summon",
+     14
+    ],
+    [
+     "defense_stat",
+     13
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     5
+    ],
+    [
+     "block",
+     3
+    ],
+    [
+     "attack_stat",
+     2
+    ]
+   ]
+  },
+  "mt1:Melting Remnant": {
+   "n": 59,
+   "produce": [
+    [
+     "death",
+     47
+    ],
+    [
+     "attack_stat",
+     26
+    ],
+    [
+     "defense_stat",
+     16
+    ],
+    [
+     "thorns",
+     3
+    ]
+   ],
+   "consume": [
+    [
+     "death",
+     3
+    ],
+    [
+     "token_card",
+     1
+    ]
+   ]
+  },
+  "mt1:Stygian Guard": {
+   "n": 59,
+   "produce": [
+    [
+     "defense_stat",
+     19
+    ],
+    [
+     "dot",
+     15
+    ],
+    [
+     "attack_stat",
+     13
+    ],
+    [
+     "spell_power",
+     12
+    ]
+   ],
+   "consume": [
+    [
+     "dot",
+     1
+    ],
+    [
+     "self_status",
+     1
+    ]
+   ]
+  },
+  "mt1:Umbra": {
+   "n": 65,
+   "produce": [
+    [
+     "attack_stat",
+     20
+    ],
+    [
+     "orb_summon",
+     16
+    ],
+    [
+     "defense_stat",
+     16
+    ],
+    [
+     "token_card",
+     11
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     1
+    ]
+   ]
+  },
+  "mt1:Wurmkin": {
+   "n": 61,
+   "produce": [
+    [
+     "attack_stat",
+     26
+    ],
+    [
+     "defense_stat",
+     21
+    ],
+    [
+     "dot",
+     10
+    ],
+    [
+     "block",
+     7
+    ]
+   ],
+   "consume": [
+    [
+     "block",
+     1
+    ]
+   ]
+  },
+  "mt2:Awoken": {
+   "n": 60,
+   "produce": [
+    [
+     "attack_stat",
+     11
+    ],
+    [
+     "thorns",
+     9
+    ],
+    [
+     "death",
+     6
+    ],
+    [
+     "spell_power",
+     4
+    ]
+   ],
+   "consume": [
+    [
+     "thorns",
+     1
+    ]
+   ]
+  },
+  "mt2:Banished": {
+   "n": 60,
+   "produce": [
+    [
+     "attack_stat",
+     31
+    ],
+    [
+     "evade",
+     16
+    ],
+    [
+     "vulnerable",
+     9
+    ],
+    [
+     "block",
+     8
+    ]
+   ],
+   "consume": [
+    [
+     "attack_stat",
+     4
+    ],
+    [
+     "block",
+     4
+    ]
+   ]
+  },
+  "mt2:Hellhorned": {
+   "n": 60,
+   "produce": [
+    [
+     "attack_stat",
+     21
+    ],
+    [
+     "block",
+     17
+    ],
+    [
+     "orb_summon",
+     15
+    ],
+    [
+     "death",
+     11
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     4
+    ],
+    [
+     "block",
+     3
+    ],
+    [
+     "attack_stat",
+     2
+    ]
+   ]
+  },
+  "mt2:Lazarus League": {
+   "n": 69,
+   "produce": [
+    [
+     "death",
+     22
+    ],
+    [
+     "dot",
+     13
+    ],
+    [
+     "attack_stat",
+     12
+    ],
+    [
+     "heat",
+     5
+    ]
+   ],
+   "consume": [
+    [
+     "dot",
+     13
+    ]
+   ]
+  },
+  "mt2:Luna Coven": {
+   "n": 60,
+   "produce": [
+    [
+     "spell_power",
+     28
+    ],
+    [
+     "attack_stat",
+     14
+    ],
+    [
+     "token_card",
+     5
+    ],
+    [
+     "block",
+     5
+    ]
+   ],
+   "consume": [
+    [
+     "attack_stat",
+     1
+    ],
+    [
+     "defense_stat",
+     1
+    ],
+    [
+     "spell_power",
+     1
+    ]
+   ]
+  },
+  "mt2:Melting Remnant": {
+   "n": 60,
+   "produce": [
+    [
+     "death",
+     47
+    ],
+    [
+     "attack_stat",
+     16
+    ],
+    [
+     "thorns",
+     3
+    ],
+    [
+     "orb_summon",
+     2
+    ]
+   ],
+   "consume": [
+    [
+     "death",
+     3
+    ],
+    [
+     "token_card",
+     1
+    ]
+   ]
+  },
+  "mt2:Pyreborne": {
+   "n": 60,
+   "produce": [
+    [
+     "vulnerable",
+     26
+    ],
+    [
+     "death",
+     13
+    ],
+    [
+     "attack_stat",
+     8
+    ],
+    [
+     "orb_summon",
+     4
+    ]
+   ],
+   "consume": [
+    [
+     "vulnerable",
+     6
+    ],
+    [
+     "attack_stat",
+     1
+    ],
+    [
+     "block",
+     1
+    ]
+   ]
+  },
+  "mt2:Railforged": {
+   "n": 62,
+   "produce": [
+    [
+     "orb_summon",
+     19
+    ],
+    [
+     "token_card",
+     17
+    ],
+    [
+     "block",
+     14
+    ],
+    [
+     "attack_stat",
+     13
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     2
+    ]
+   ]
+  },
+  "mt2:Stygian Guard": {
+   "n": 60,
+   "produce": [
+    [
+     "spell_power",
+     27
+    ],
+    [
+     "dot",
+     16
+    ],
+    [
+     "vulnerable",
+     6
+    ],
+    [
+     "discard",
+     6
+    ]
+   ],
+   "consume": [
+    [
+     "self_status",
+     1
+    ],
+    [
+     "dot",
+     1
+    ]
+   ]
+  },
+  "mt2:Umbra": {
+   "n": 66,
+   "produce": [
+    [
+     "orb_summon",
+     15
+    ],
+    [
+     "attack_stat",
+     12
+    ],
+    [
+     "token_card",
+     11
+    ],
+    [
+     "defense_stat",
+     9
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     1
+    ]
+   ]
+  },
+  "mt2:Underlegion": {
+   "n": 60,
+   "produce": [
+    [
+     "dot",
+     16
+    ],
+    [
+     "weak",
+     10
+    ],
+    [
+     "death",
+     9
+    ],
+    [
+     "defense_stat",
+     6
+    ]
+   ],
+   "consume": [
+    [
+     "defense_stat",
+     3
+    ],
+    [
+     "dot",
+     3
+    ],
+    [
+     "attack_stat",
+     1
+    ],
+    [
+     "weak",
+     1
+    ]
+   ]
+  },
+  "mt2:Wurmkin": {
+   "n": 62,
+   "produce": [
+    [
+     "attack_stat",
+     14
+    ],
+    [
+     "dot",
+     9
+    ],
+    [
+     "block",
+     7
+    ],
+    [
+     "orb_summon",
+     6
+    ]
+   ],
+   "consume": [
+    [
+     "block",
+     1
+    ]
+   ]
+  },
+  "sts1:Defect": {
+   "n": 75,
+   "produce": [
+    [
+     "orb_summon",
+     13
+    ],
+    [
+     "block",
+     13
+    ],
+    [
+     "discard",
+     5
+    ],
+    [
+     "token_card",
+     3
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     5
+    ],
+    [
+     "block",
+     2
+    ],
+    [
+     "discard",
+     1
+    ]
+   ]
+  },
+  "sts1:Ironclad": {
+   "n": 75,
+   "produce": [
+    [
+     "block",
+     18
+    ],
+    [
+     "exhaust",
+     7
+    ],
+    [
+     "attack_stat",
+     7
+    ],
+    [
+     "vulnerable",
+     5
+    ]
+   ],
+   "consume": [
+    [
+     "block",
+     3
+    ],
+    [
+     "attack_stat",
+     3
+    ],
+    [
+     "exhaust",
+     3
+    ],
+    [
+     "self_status",
+     2
+    ]
+   ]
+  },
+  "sts1:Silent": {
+   "n": 75,
+   "produce": [
+    [
+     "discard",
+     11
+    ],
+    [
+     "block",
+     11
+    ],
+    [
+     "token_card",
+     8
+    ],
+    [
+     "dot",
+     8
+    ]
+   ],
+   "consume": [
+    [
+     "discard",
+     3
+    ],
+    [
+     "dot",
+     2
+    ],
+    [
+     "weak",
+     1
+    ],
+    [
+     "defense_stat",
+     1
+    ]
+   ]
+  },
+  "sts1:Watcher": {
+   "n": 75,
+   "produce": [
+    [
+     "block",
+     21
+    ],
+    [
+     "stance",
+     16
+    ],
+    [
+     "token_card",
+     4
+    ],
+    [
+     "attack_stat",
+     4
+    ]
+   ],
+   "consume": [
+    [
+     "stance",
+     12
+    ],
+    [
+     "block",
+     3
+    ],
+    [
+     "token_card",
+     1
+    ],
+    [
+     "vulnerable",
+     1
+    ]
+   ]
+  },
+  "sts2:Defect": {
+   "n": 91,
+   "produce": [
+    [
+     "orb_summon",
+     19
+    ],
+    [
+     "block",
+     15
+    ],
+    [
+     "self_status",
+     10
+    ],
+    [
+     "discard",
+     9
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     3
+    ],
+    [
+     "token_card",
+     3
+    ],
+    [
+     "self_status",
+     3
+    ]
+   ]
+  },
+  "sts2:Ironclad": {
+   "n": 90,
+   "produce": [
+    [
+     "block",
+     20
+    ],
+    [
+     "vulnerable",
+     11
+    ],
+    [
+     "exhaust",
+     10
+    ],
+    [
+     "attack_stat",
+     10
+    ]
+   ],
+   "consume": [
+    [
+     "exhaust",
+     6
+    ],
+    [
+     "vulnerable",
+     5
+    ],
+    [
+     "block",
+     3
+    ],
+    [
+     "attack_stat",
+     1
+    ]
+   ]
+  },
+  "sts2:Necrobinder": {
+   "n": 91,
+   "produce": [
+    [
+     "orb_summon",
+     23
+    ],
+    [
+     "block",
+     14
+    ],
+    [
+     "dot",
+     13
+    ],
+    [
+     "token_card",
+     10
+    ]
+   ],
+   "consume": [
+    [
+     "orb_summon",
+     4
+    ],
+    [
+     "token_card",
+     4
+    ],
+    [
+     "block",
+     2
+    ],
+    [
+     "dot",
+     2
+    ]
+   ]
+  },
+  "sts2:Regent": {
+   "n": 91,
+   "produce": [
+    [
+     "orb_summon",
+     16
+    ],
+    [
+     "block",
+     15
+    ],
+    [
+     "token_card",
+     6
+    ],
+    [
+     "attack_stat",
+     6
+    ]
+   ],
+   "consume": [
+    [
+     "attack_stat",
+     3
+    ],
+    [
+     "token_card",
+     2
+    ],
+    [
+     "exhaust",
+     1
+    ],
+    [
+     "orb_summon",
+     1
+    ]
+   ]
+  },
+  "sts2:Silent": {
+   "n": 91,
+   "produce": [
+    [
+     "block",
+     17
+    ],
+    [
+     "token_card",
+     14
+    ],
+    [
+     "dot",
+     13
+    ],
+    [
+     "discard",
+     11
+    ]
+   ],
+   "consume": [
+    [
+     "dot",
+     3
+    ],
+    [
+     "defense_stat",
+     1
+    ],
+    [
+     "attack_stat",
+     1
+    ],
+    [
+     "block",
+     1
+    ]
+   ]
+  }
+ },
+ "link_scores": {
+  "sts1": {
+   "pairs": [
+    {
+     "pair": "Ironclad + Watcher",
+     "score": 0.173,
+     "glue": [
+      "block",
+      "attack_stat",
+      "vulnerable"
+     ]
+    },
+    {
+     "pair": "Silent + Watcher",
+     "score": 0.147,
+     "glue": [
+      "discard",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Defect + Ironclad",
+     "score": 0.133,
+     "glue": [
+      "block",
+      "discard",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Ironclad + Silent",
+     "score": 0.133,
+     "glue": [
+      "discard",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Defect + Silent",
+     "score": 0.12,
+     "glue": [
+      "discard",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Defect + Watcher",
+     "score": 0.107,
+     "glue": [
+      "block",
+      "discard",
+      "vulnerable"
+     ]
+    }
+   ],
+   "min": 0.107,
+   "median": 0.133,
+   "max": 0.173
+  },
+  "sts2": {
+   "pairs": [
+    {
+     "pair": "Necrobinder + Regent",
+     "score": 0.209,
+     "glue": [
+      "token_card",
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Ironclad + Necrobinder",
+     "score": 0.188,
+     "glue": [
+      "block",
+      "vulnerable",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Defect + Necrobinder",
+     "score": 0.187,
+     "glue": [
+      "orb_summon",
+      "token_card",
+      "block"
+     ]
+    },
+    {
+     "pair": "Ironclad + Regent",
+     "score": 0.177,
+     "glue": [
+      "vulnerable",
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Necrobinder + Silent",
+     "score": 0.154,
+     "glue": [
+      "dot",
+      "token_card",
+      "block"
+     ]
+    },
+    {
+     "pair": "Defect + Regent",
+     "score": 0.121,
+     "glue": [
+      "token_card",
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Defect + Ironclad",
+     "score": 0.11,
+     "glue": [
+      "block",
+      "token_card",
+      "exhaust"
+     ]
+    },
+    {
+     "pair": "Ironclad + Silent",
+     "score": 0.088,
+     "glue": [
+      "block",
+      "attack_stat",
+      "vulnerable"
+     ]
+    },
+    {
+     "pair": "Defect + Silent",
+     "score": 0.066,
+     "glue": [
+      "token_card",
+      "attack_stat",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Regent + Silent",
+     "score": 0.055,
+     "glue": [
+      "attack_stat",
+      "token_card",
+      "block"
+     ]
+    }
+   ],
+   "min": 0.055,
+   "median": 0.1375,
+   "max": 0.209
+  },
+  "mt1": {
+   "pairs": [
+    {
+     "pair": "Hellhorned + Wurmkin",
+     "score": 0.183,
+     "glue": [
+      "orb_summon",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Umbra",
+     "score": 0.177,
+     "glue": [
+      "orb_summon",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Melting Remnant",
+     "score": 0.136,
+     "glue": [
+      "death",
+      "attack_stat",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Hellhorned",
+     "score": 0.119,
+     "glue": [
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Awoken + Melting Remnant",
+     "score": 0.085,
+     "glue": [
+      "death",
+      "thorns",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Stygian Guard",
+     "score": 0.085,
+     "glue": [
+      "attack_stat",
+      "block",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Umbra",
+     "score": 0.081,
+     "glue": [
+      "death",
+      "orb_summon",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Stygian Guard",
+     "score": 0.068,
+     "glue": [
+      "death",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Stygian Guard + Wurmkin",
+     "score": 0.05,
+     "glue": [
+      "dot",
+      "block",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Wurmkin",
+     "score": 0.033,
+     "glue": [
+      "death"
+     ]
+    },
+    {
+     "pair": "Umbra + Wurmkin",
+     "score": 0.032,
+     "glue": [
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Umbra",
+     "score": 0.016,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Stygian Guard + Umbra",
+     "score": 0.016,
+     "glue": [
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Awoken + Stygian Guard",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Awoken + Wurmkin",
+     "score": 0.0,
+     "glue": []
+    }
+   ],
+   "min": 0.0,
+   "median": 0.068,
+   "max": 0.183
+  },
+  "mt2": {
+   "pairs": [
+    {
+     "pair": "Lazarus League + Underlegion",
+     "score": 0.31,
+     "glue": [
+      "dot",
+      "defense_stat",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Hellhorned",
+     "score": 0.233,
+     "glue": [
+      "block",
+      "attack_stat",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Banished + Pyreborne",
+     "score": 0.233,
+     "glue": [
+      "vulnerable",
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Stygian Guard",
+     "score": 0.233,
+     "glue": [
+      "dot",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Pyreborne",
+     "score": 0.183,
+     "glue": [
+      "orb_summon",
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Railforged",
+     "score": 0.18,
+     "glue": [
+      "orb_summon",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Luna Coven",
+     "score": 0.167,
+     "glue": [
+      "attack_stat",
+      "block",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Underlegion",
+     "score": 0.167,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Wurmkin",
+     "score": 0.164,
+     "glue": [
+      "block",
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Umbra",
+     "score": 0.159,
+     "glue": [
+      "orb_summon",
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Wurmkin",
+     "score": 0.153,
+     "glue": [
+      "dot",
+      "block"
+     ]
+    },
+    {
+     "pair": "Stygian Guard + Underlegion",
+     "score": 0.15,
+     "glue": [
+      "dot",
+      "defense_stat",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Railforged",
+     "score": 0.148,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Banished + Wurmkin",
+     "score": 0.148,
+     "glue": [
+      "block",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Umbra",
+     "score": 0.143,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Melting Remnant",
+     "score": 0.133,
+     "glue": [
+      "death",
+      "attack_stat",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Pyreborne + Stygian Guard",
+     "score": 0.133,
+     "glue": [
+      "vulnerable",
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Underlegion + Wurmkin",
+     "score": 0.131,
+     "glue": [
+      "dot",
+      "defense_stat",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Melting Remnant",
+     "score": 0.117,
+     "glue": [
+      "attack_stat",
+      "death"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Luna Coven",
+     "score": 0.117,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Underlegion",
+     "score": 0.117,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Pyreborne",
+     "score": 0.117,
+     "glue": [
+      "attack_stat",
+      "vulnerable",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Underlegion",
+     "score": 0.117,
+     "glue": [
+      "defense_stat",
+      "attack_stat",
+      "spell_power"
+     ]
+    },
+    {
+     "pair": "Railforged + Underlegion",
+     "score": 0.115,
+     "glue": [
+      "defense_stat",
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Banished + Stygian Guard",
+     "score": 0.1,
+     "glue": [
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Melting Remnant",
+     "score": 0.1,
+     "glue": [
+      "death",
+      "attack_stat",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Underlegion",
+     "score": 0.1,
+     "glue": [
+      "death",
+      "attack_stat",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Railforged",
+     "score": 0.098,
+     "glue": [
+      "death",
+      "orb_summon",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Umbra + Underlegion",
+     "score": 0.095,
+     "glue": [
+      "defense_stat",
+      "attack_stat",
+      "exhaust"
+     ]
+    },
+    {
+     "pair": "Banished + Lazarus League",
+     "score": 0.093,
+     "glue": [
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Lazarus League",
+     "score": 0.093,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Hellhorned",
+     "score": 0.083,
+     "glue": [
+      "orb_summon",
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Awoken + Melting Remnant",
+     "score": 0.083,
+     "glue": [
+      "death",
+      "thorns",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Awoken + Underlegion",
+     "score": 0.083,
+     "glue": [
+      "defense_stat",
+      "attack_stat",
+      "thorns"
+     ]
+    },
+    {
+     "pair": "Hellhorned + Stygian Guard",
+     "score": 0.083,
+     "glue": [
+      "attack_stat",
+      "block",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Pyreborne",
+     "score": 0.083,
+     "glue": [
+      "death",
+      "attack_stat",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Pyreborne + Railforged",
+     "score": 0.082,
+     "glue": [
+      "orb_summon",
+      "attack_stat",
+      "vulnerable"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Umbra",
+     "score": 0.079,
+     "glue": [
+      "death",
+      "orb_summon",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Awoken + Banished",
+     "score": 0.067,
+     "glue": [
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Stygian Guard",
+     "score": 0.067,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Stygian Guard",
+     "score": 0.067,
+     "glue": [
+      "death",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Pyreborne + Underlegion",
+     "score": 0.067,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Pyreborne + Wurmkin",
+     "score": 0.066,
+     "glue": [
+      "block",
+      "attack_stat",
+      "vulnerable"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Melting Remnant",
+     "score": 0.062,
+     "glue": [
+      "death",
+      "token_card"
+     ]
+    },
+    {
+     "pair": "Awoken + Luna Coven",
+     "score": 0.05,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "spell_power"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Railforged",
+     "score": 0.049,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Wurmkin",
+     "score": 0.049,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Stygian Guard + Wurmkin",
+     "score": 0.049,
+     "glue": [
+      "dot",
+      "block",
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Luna Coven + Umbra",
+     "score": 0.048,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Pyreborne + Umbra",
+     "score": 0.048,
+     "glue": [
+      "attack_stat",
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Railforged + Wurmkin",
+     "score": 0.048,
+     "glue": [
+      "orb_summon",
+      "block"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Luna Coven",
+     "score": 0.047,
+     "glue": [
+      "attack_stat",
+      "defense_stat",
+      "spell_power"
+     ]
+    },
+    {
+     "pair": "Railforged + Umbra",
+     "score": 0.047,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Railforged",
+     "score": 0.033,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Melting Remnant + Wurmkin",
+     "score": 0.033,
+     "glue": [
+      "death"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Pyreborne",
+     "score": 0.031,
+     "glue": [
+      "attack_stat",
+      "block"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Railforged",
+     "score": 0.031,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Umbra + Wurmkin",
+     "score": 0.031,
+     "glue": [
+      "block",
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Pyreborne",
+     "score": 0.017,
+     "glue": [
+      "attack_stat"
+     ]
+    },
+    {
+     "pair": "Awoken + Lazarus League",
+     "score": 0.016,
+     "glue": [
+      "thorns"
+     ]
+    },
+    {
+     "pair": "Awoken + Umbra",
+     "score": 0.016,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Railforged + Stygian Guard",
+     "score": 0.016,
+     "glue": [
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Stygian Guard + Umbra",
+     "score": 0.016,
+     "glue": [
+      "self_status"
+     ]
+    },
+    {
+     "pair": "Lazarus League + Umbra",
+     "score": 0.015,
+     "glue": [
+      "orb_summon"
+     ]
+    },
+    {
+     "pair": "Awoken + Stygian Guard",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Awoken + Wurmkin",
+     "score": 0.0,
+     "glue": []
+    }
+   ],
+   "min": 0.0,
+   "median": 0.083,
+   "max": 0.31
+  },
+  "cobaltcore": {
+   "pairs": [
+    {
+     "pair": "Dizzy + Drake",
+     "score": 0.19,
+     "glue": [
+      "block",
+      "defense_stat"
+     ]
+    },
+    {
+     "pair": "Dizzy + Peri",
+     "score": 0.178,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "CAT + Dizzy",
+     "score": 0.154,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Dizzy + Isaac",
+     "score": 0.14,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Dizzy + Max",
+     "score": 0.14,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Books + Dizzy",
+     "score": 0.136,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Dizzy + Riggs",
+     "score": 0.095,
+     "glue": [
+      "evade",
+      "block"
+     ]
+    },
+    {
+     "pair": "Peri + Riggs",
+     "score": 0.089,
+     "glue": [
+      "evade",
+      "block"
+     ]
+    },
+    {
+     "pair": "CAT + Drake",
+     "score": 0.051,
+     "glue": [
+      "heat"
+     ]
+    },
+    {
+     "pair": "CAT + Riggs",
+     "score": 0.051,
+     "glue": [
+      "evade"
+     ]
+    },
+    {
+     "pair": "CAT + Peri",
+     "score": 0.048,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Drake + Riggs",
+     "score": 0.048,
+     "glue": [
+      "evade"
+     ]
+    },
+    {
+     "pair": "Isaac + Riggs",
+     "score": 0.047,
+     "glue": [
+      "evade"
+     ]
+    },
+    {
+     "pair": "Max + Riggs",
+     "score": 0.047,
+     "glue": [
+      "evade"
+     ]
+    },
+    {
+     "pair": "Books + Riggs",
+     "score": 0.045,
+     "glue": [
+      "evade"
+     ]
+    },
+    {
+     "pair": "Drake + Peri",
+     "score": 0.044,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Books + Peri",
+     "score": 0.043,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Isaac + Peri",
+     "score": 0.043,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Max + Peri",
+     "score": 0.043,
+     "glue": [
+      "block"
+     ]
+    },
+    {
+     "pair": "Books + CAT",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Books + Drake",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Books + Isaac",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Books + Max",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "CAT + Isaac",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "CAT + Max",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Drake + Isaac",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Drake + Max",
+     "score": 0.0,
+     "glue": []
+    },
+    {
+     "pair": "Isaac + Max",
+     "score": 0.0,
+     "glue": []
+    }
+   ],
+   "min": 0.0,
+   "median": 0.046,
+   "max": 0.19
+  }
+ },
+ "value_baseline": {
+  "attack@0": [
+   [
+    6,
+    "Slice",
+    "Common"
+   ],
+   [
+    6,
+    "Slice",
+    "Common"
+   ],
+   [
+    7,
+    "Swift Strike",
+    "Uncommon"
+   ],
+   [
+    14,
+    "Byrd Swoop",
+    "Event"
+   ]
+  ],
+  "attack@1": [
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    6,
+    "Strike",
+    "Basic"
+   ],
+   [
+    14,
+    "Ultimate Strike",
+    "Uncommon"
+   ],
+   [
+    20,
+    "Giant Rock",
+    "Token"
+   ],
+   [
+    35,
+    "Devastate",
+    "Uncommon"
+   ]
+  ],
+  "attack@3": [
+   [
+    32,
+    "Bludgeon",
+    "Rare"
+   ],
+   [
+    32,
+    "Bludgeon",
+    "Uncommon"
+   ]
+  ],
+  "attack@4": [
+   [
+    52,
+    "Bury",
+    "Uncommon"
+   ]
+  ],
+  "block@0": [
+   [
+    4,
+    "Deflect",
+    "Common"
+   ],
+   [
+    4,
+    "Deflect",
+    "Common"
+   ],
+   [
+    6,
+    "Good Instincts",
+    "Uncommon"
+   ],
+   [
+    7,
+    "Cloak of Stars",
+    "Common"
+   ]
+  ],
+  "block@1": [
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    5,
+    "Defend",
+    "Basic"
+   ],
+   [
+    9,
+    "Leap",
+    "Common"
+   ],
+   [
+    9,
+    "Leap",
+    "Common"
+   ],
+   [
+    11,
+    "Ultimate Defend",
+    "Uncommon"
+   ]
+  ]
+ },
+ "pool_template": {
+  "sts1": {
+   "Defect": {
+    "Rare": 17,
+    "Common": 18,
+    "Uncommon": 36,
+    "Basic": 4
+   },
+   "Ironclad": {
+    "Common": 20,
+    "Basic": 3,
+    "Uncommon": 36,
+    "Rare": 16
+   },
+   "Silent": {
+    "Uncommon": 33,
+    "Common": 19,
+    "Rare": 19,
+    "Basic": 4
+   },
+   "Watcher": {
+    "Common": 19,
+    "Rare": 17,
+    "Uncommon": 35,
+    "Basic": 4
+   }
+  },
+  "sts2": {
+   "Defect": {
+    "Rare": 27,
+    "Common": 20,
+    "Uncommon": 38,
+    "Basic": 4,
+    "Ancient": 2
+   },
+   "Ironclad": {
+    "Common": 20,
+    "Uncommon": 38,
+    "Basic": 3,
+    "Ancient": 2,
+    "Rare": 27
+   },
+   "Necrobinder": {
+    "Rare": 27,
+    "Common": 20,
+    "Uncommon": 38,
+    "Ancient": 2,
+    "Basic": 4
+   },
+   "Regent": {
+    "Common": 20,
+    "Rare": 27,
+    "Uncommon": 38,
+    "Basic": 4,
+    "Ancient": 2
+   },
+   "Silent": {
+    "Rare": 27,
+    "Uncommon": 38,
+    "Common": 20,
+    "Basic": 4,
+    "Ancient": 2
+   }
+  },
+  "mt1": {
+   "Hellhorned": {
+    "Champion": 2,
+    "Common": 10,
+    "Rare": 11,
+    "Uncommon": 18
+   },
+   "Awoken": {
+    "Champion": 2,
+    "Rare": 11,
+    "Uncommon": 18,
+    "Common": 10
+   },
+   "Stygian Guard": {
+    "Champion": 2,
+    "Rare": 11,
+    "Uncommon": 18,
+    "Common": 10
+   },
+   "Umbra": {
+    "Champion": 2,
+    "Rare": 12,
+    "Common": 11,
+    "Uncommon": 22
+   },
+   "Melting Remnant": {
+    "Champion": 2,
+    "Rare": 11,
+    "Common": 10,
+    "Uncommon": 18
+   },
+   "Wurmkin": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 19,
+    "Rare": 12
+   }
+  },
+  "mt2": {
+   "Banished": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 18,
+    "Rare": 12
+   },
+   "Pyreborne": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 19,
+    "Rare": 11
+   },
+   "Luna Coven": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 19,
+    "Rare": 11
+   },
+   "Underlegion": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 18,
+    "Rare": 12
+   },
+   "Lazarus League": {
+    "Champion": 2,
+    "?": 1,
+    "Common": 12,
+    "Uncommon": 19,
+    "Rare": 13,
+    "Infusion (generated)": 4
+   },
+   "Hellhorned": {
+    "Champion": 2,
+    "Common": 11,
+    "Uncommon": 17,
+    "Rare": 12
+   },
+   "Awoken": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 18,
+    "Rare": 12
+   },
+   "Stygian Guard": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 18,
+    "Rare": 12
+   },
+   "Umbra": {
+    "Champion": 2,
+    "Common": 11,
+    "Uncommon": 22,
+    "Rare": 13
+   },
+   "Melting Remnant": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 18,
+    "Rare": 12
+   },
+   "Wurmkin": {
+    "Champion": 2,
+    "Common": 10,
+    "Uncommon": 19,
+    "Rare": 13
+   },
+   "Railforged": {
+    "Champion": 2,
+    "Common": 11,
+    "?": 1,
+    "Uncommon": 19,
+    "Rare": 11
+   }
+  },
+  "cobaltcore": {
+   "Riggs": {
+    "Rare": 5,
+    "Common": 9,
+    "Uncommon": 7
+   },
+   "Dizzy": {
+    "Uncommon": 7,
+    "Common": 9,
+    "Rare": 5
+   },
+   "CAT": {
+    "Rare": 4,
+    "Uncommon": 7,
+    "Common": 7
+   },
+   "Max": {
+    "Common": 10,
+    "Rare": 5,
+    "Uncommon": 7
+   },
+   "Drake": {
+    "Uncommon": 7,
+    "Common": 9,
+    "Rare": 5
+   },
+   "Isaac": {
+    "Common": 10,
+    "Uncommon": 7,
+    "Rare": 5
+   },
+   "Books": {
+    "Uncommon": 7,
+    "Common": 11,
+    "Rare": 5
+   },
+   "Peri": {
+    "Uncommon": 7,
+    "Common": 12,
+    "Rare": 5
+   }
+  }
+ }
+}

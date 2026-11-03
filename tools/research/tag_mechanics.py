@@ -49,13 +49,21 @@ def plain(card):
     return " ".join(parts).lower()
 
 
+TRIGGER_DEF = re.compile(r"\b(?:whenever|each time|at the (?:start|end) of)\b")
+
+
 def match_group(compiled, text):
     return sorted(k for k, (_, pats) in compiled.items() if any(p.search(text) for p in pats))
 
 
-def tag_card(card):
+def tag_card(card, glossary=None):
     text = plain(card)
     kw = " ".join(card.get("keywords") or []).lower()
+    # 효과가 키워드 정의 안에 있는 카드(예: "Gain 1 Strafe")를 위해, 발동형 키워드의 정의문만 덧붙여 '소비' 판정에 쓴다.
+    cons_text = text
+    if glossary:
+        defs = [glossary[k].lower() for k in card.get("keywords") or [] if k in glossary]
+        cons_text = text + " " + " ".join(d for d in defs if TRIGGER_DEF.search(d))
     both = f"{text} {kw}"
     effects = match_group(C_EFFECTS, both)
     props = match_group(C_PROPS, text)
@@ -67,7 +75,7 @@ def tag_card(card):
     for fam, c in C_FAM.items():
         if not c["mention"].search(both):
             continue
-        is_cons = any(p.search(text) for p in c["consume"])
+        is_cons = any(p.search(cons_text) for p in c["consume"])
         is_prod = any(p.search(both) for p in c["produce"])
         if fam == "exhaust":  # 자기 소멸은 성질(props)이다. 다른 카드를 소멸시켜야 생산으로 본다.
             is_prod = "exhaust_other" in effects
@@ -93,9 +101,10 @@ def main():
     for path in sorted(CARDS_DIR.glob("*.json")):
         data = json.loads(path.read_text())
         game = path.stem
+        glossary = {k: v for k, v in (data.get("keyword_glossary") or {}).items() if isinstance(v, str)}
         prof = defaultdict(lambda: defaultdict(Counter))
         for card in data["cards"]:
-            t = tag_card(card)
+            t = tag_card(card, glossary)
             tags[card["id"]] = {"game": game, "name": card["name"], "owner": card.get("owner"), **t}
             p = prof[card.get("owner") or "?"]
             p["_n"]["cards"] += 1

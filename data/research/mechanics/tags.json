@@ -922,7 +922,9 @@
    "block",
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -1043,7 +1045,9 @@
   "produce": [
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -1237,7 +1241,9 @@
   "produce": [
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -1563,7 +1569,9 @@
    "block",
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -1985,7 +1993,9 @@
   "produce": [
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [
    "ethereal",
    "exhaust_self"
@@ -2844,7 +2854,9 @@
   "produce": [
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -3098,7 +3110,9 @@
   "produce": [
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -3349,7 +3363,9 @@
    "energy",
    "heat"
   ],
-  "consume": [],
+  "consume": [
+   "heat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -4298,7 +4314,9 @@
   "produce": [
    "attack_stat"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -4394,10 +4412,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "orb_summon"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -4643,10 +4661,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "block"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -4783,7 +4801,9 @@
    "block",
    "orb_summon"
   ],
-  "consume": [],
+  "consume": [
+   "block"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -5640,10 +5660,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "thorns"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -7384,7 +7404,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -7486,7 +7508,9 @@
    "attack_stat",
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -7554,7 +7578,9 @@
    "block",
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -7797,7 +7823,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -8587,7 +8615,9 @@
    "token_card",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "token_card"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -8864,10 +8894,10 @@
    "damage",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "death"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -8993,10 +9023,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "death"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -9886,7 +9916,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -10782,7 +10814,9 @@
    "attack_stat",
    "block"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -10803,7 +10837,9 @@
    "attack_stat",
    "block"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -10825,7 +10861,9 @@
    "attack_stat",
    "block"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -11083,7 +11121,9 @@
   "produce": [
    "attack_stat"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -11182,10 +11222,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "block"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -11269,10 +11309,11 @@
    "summon"
   ],
   "produce": [
-   "block",
    "evade"
   ],
-  "consume": [],
+  "consume": [
+   "block"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -11406,10 +11447,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "block"
   ],
-  "consume": [],
   "props": [
    "exhaust_self"
   ],
@@ -11447,10 +11488,11 @@
    "summon"
   ],
   "produce": [
-   "block",
    "evade"
   ],
-  "consume": [],
+  "consume": [
+   "block"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -13857,7 +13899,9 @@
   "produce": [
    "defense_stat"
   ],
-  "consume": [],
+  "consume": [
+   "defense_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -13875,7 +13919,9 @@
   "produce": [
    "defense_stat"
   ],
-  "consume": [],
+  "consume": [
+   "defense_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -13893,7 +13939,9 @@
   "produce": [
    "defense_stat"
   ],
-  "consume": [],
+  "consume": [
+   "defense_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -14338,7 +14386,9 @@
   "produce": [
    "attack_stat"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -14638,7 +14688,9 @@
    "weak",
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "weak"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -14896,7 +14948,9 @@
    "dot",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -14914,7 +14968,9 @@
    "dot",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -14932,7 +14988,9 @@
    "dot",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -14951,7 +15009,9 @@
    "dot",
    "spell_power"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -14970,7 +15030,9 @@
    "dot",
    "spell_power"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -14989,7 +15051,9 @@
    "dot",
    "spell_power"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -15193,7 +15257,9 @@
    "spell_power",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -15321,7 +15387,9 @@
   "produce": [
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -15427,7 +15495,9 @@
   "produce": [
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -15471,7 +15541,9 @@
   "produce": [
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -15535,7 +15607,9 @@
   "produce": [
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -15765,7 +15839,9 @@
    "dot",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -15783,7 +15859,9 @@
   "produce": [
    "dot"
   ],
-  "consume": [],
+  "consume": [
+   "dot"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -16527,7 +16605,9 @@
    "block",
    "orb_summon"
   ],
-  "consume": [],
+  "consume": [
+   "block"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -16565,7 +16645,9 @@
   "produce": [
    "attack_stat"
   ],
-  "consume": [],
+  "consume": [
+   "attack_stat"
+  ],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -16785,10 +16867,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "block"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -16872,10 +16954,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "orb_summon"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -17749,10 +17831,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "thorns"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -19644,10 +19726,10 @@
   "name": "Shadowsiege",
   "owner": "Umbra",
   "effects": [],
-  "produce": [
+  "produce": [],
+  "consume": [
    "energy"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -19703,7 +19785,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -19740,7 +19824,9 @@
    "attack_stat",
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -19884,7 +19970,9 @@
    "block",
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -20059,7 +20147,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -20704,7 +20794,9 @@
    "token_card",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "token_card"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -20924,10 +21016,10 @@
    "damage",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "death"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -20992,10 +21084,10 @@
    "position",
    "summon"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "death"
   ],
-  "consume": [],
   "props": [],
   "conditions": [],
   "scaling": [
@@ -21916,7 +22008,9 @@
   "produce": [
    "energy"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [
    "exhaust_self"
   ],
@@ -22165,7 +22259,9 @@
    "energy",
    "death"
   ],
-  "consume": [],
+  "consume": [
+   "energy"
+  ],
   "props": [],
   "conditions": [
    "on_trigger"
@@ -24319,7 +24415,9 @@
   "owner": "Colorless",
   "effects": [],
   "produce": [],
-  "consume": [],
+  "consume": [
+   "exhaust"
+  ],
   "props": [
    "ethereal",
    "exhaust_self"
@@ -26219,10 +26317,11 @@
    "discard"
   ],
   "produce": [
-   "block",
+   "block"
+  ],
+  "consume": [
    "discard"
   ],
-  "consume": [],
   "props": [],
   "conditions": [
    "if_pile"
@@ -29495,7 +29594,9 @@
   "produce": [
    "stance"
   ],
-  "consume": [],
+  "consume": [
+   "stance"
+  ],
   "props": [
    "persistent"
   ],
@@ -30040,7 +30141,9 @@
   "produce": [
    "stance"
   ],
-  "consume": [],
+  "consume": [
+   "stance"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -30071,7 +30174,9 @@
    "block",
    "stance"
   ],
-  "consume": [],
+  "consume": [
+   "stance"
+  ],
   "props": [],
   "conditions": [],
   "scaling": []
@@ -30296,7 +30401,9 @@
   "produce": [
    "stance"
   ],
-  "consume": [],
+  "consume": [
+   "stance"
+  ],
   "props": [
    "retain"
   ],
@@ -30769,7 +30876,9 @@
   "produce": [
    "orb_summon"
   ],
-  "consume": [],
+  "consume": [
+   "exhaust"
+  ],
   "props": [
    "ethereal",
    "exhaust_self"
@@ -31274,7 +31383,9 @@
   "owner": "Colorless",
   "effects": [],
   "produce": [],
-  "consume": [],
+  "consume": [
+   "exhaust"
+  ],
   "props": [
    "ethereal",
    "exhaust_self"
@@ -31972,10 +32083,11 @@
    "discard"
   ],
   "produce": [
-   "block",
+   "block"
+  ],
+  "consume": [
    "discard"
   ],
-  "consume": [],
   "props": [],
   "conditions": [
    "if_pile"
@@ -36109,10 +36221,10 @@
    "damage",
    "dot_apply"
   ],
-  "produce": [
+  "produce": [],
+  "consume": [
    "dot"
   ],
-  "consume": [],
   "props": [
    "retain"
   ],
@@ -36782,7 +36894,9 @@
   "owner": "Necrobinder",
   "effects": [],
   "produce": [],
-  "consume": [],
+  "consume": [
+   "exhaust"
+  ],
   "props": [
    "ethereal",
    "exhaust_self"

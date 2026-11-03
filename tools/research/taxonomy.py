@@ -70,7 +70,11 @@ FAMILIES = {
 # 소비 판정: 계열 단어가 아래 문맥 안에 있으면 '소비'로 본다.
 CONSUME_CONTEXT = [
     r"for (?:each|every) (?:{t})",
-    r"equal to (?:your |its |the |their )?(?:current )?(?:{t})",
+    r"equal to [^.]{{0,40}}?(?:{t})",
+    r"\d+x the (?:amount|number) of [^.]*?(?:{t})",
+    r"where x is [^.]*?(?:{t})",
+    r"the number of [^.]*?(?:{t})",
+    r"(?:{t})[^.]{{0,30}}? per stack",
     r"\b(?:double|triple|multiply)\b[^.]*?(?:{t})",
     r"\bif\b[^.]*?\b(?:has|have|is|are)\b[^.]*?(?:{t})",
     r"(?:remove|consume|lose|spend|expend) (?:all |\d+ |x )?(?:of (?:your|its) )?(?:{t})",

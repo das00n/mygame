@@ -193,7 +193,7 @@
     "discard": 1
    },
    "consume": {
-    "heat": 8,
+    "heat": 15,
     "defense_stat": 1
    }
   },
@@ -227,6 +227,7 @@
     "dot": 1
    },
    "consume": {
+    "heat": 1,
     "energy": 1
    }
   },
@@ -553,11 +554,11 @@
     "per_stack": 9
    },
    "produce": {
-    "block": 18,
+    "block": 17,
     "attack_stat": 25,
     "death": 9,
     "defense_stat": 13,
-    "orb_summon": 15,
+    "orb_summon": 14,
     "token_card": 4,
     "energy": 6,
     "heat": 2,
@@ -566,9 +567,9 @@
     "self_status": 1
    },
    "consume": {
-    "orb_summon": 4,
-    "attack_stat": 1,
-    "block": 1
+    "orb_summon": 5,
+    "attack_stat": 2,
+    "block": 3
    }
   },
   "Awoken": {
@@ -606,7 +607,7 @@
    "produce": {
     "defense_stat": 17,
     "death": 5,
-    "thorns": 10,
+    "thorns": 9,
     "attack_stat": 16,
     "orb_summon": 6,
     "token_card": 5,
@@ -615,7 +616,9 @@
     "evade": 2,
     "discard": 1
    },
-   "consume": {}
+   "consume": {
+    "thorns": 1
+   }
   },
   "Stygian Guard": {
    "_n": {
@@ -721,6 +724,7 @@
     "exhaust": 1
    },
    "consume": {
+    "energy": 4,
     "orb_summon": 1
    }
   },
@@ -758,7 +762,7 @@
    "produce": {
     "attack_stat": 26,
     "defense_stat": 16,
-    "death": 49,
+    "death": 47,
     "thorns": 3,
     "energy": 1,
     "token_card": 2,
@@ -767,7 +771,8 @@
     "evade": 1
    },
    "consume": {
-    "death": 1
+    "death": 3,
+    "token_card": 1
    }
   },
   "Wurmkin": {
@@ -818,7 +823,7 @@
     "self_status": 1
    },
    "consume": {
-    "energy": 10,
+    "energy": 11,
     "block": 1
    }
   },
@@ -913,13 +918,16 @@
    "produce": {
     "attack_stat": 31,
     "death": 7,
-    "block": 12,
+    "block": 8,
     "evade": 16,
     "vulnerable": 9,
     "defense_stat": 3,
     "orb_summon": 1
    },
-   "consume": {}
+   "consume": {
+    "attack_stat": 4,
+    "block": 4
+   }
   },
   "Pyreborne": {
    "_n": {
@@ -1073,7 +1081,10 @@
     "discard": 2
    },
    "consume": {
+    "defense_stat": 3,
     "dot": 3,
+    "attack_stat": 1,
+    "weak": 1,
     "exhaust": 1
    }
   },
@@ -1127,7 +1138,9 @@
     "energy": 1,
     "orb_summon": 2
    },
-   "consume": {}
+   "consume": {
+    "dot": 13
+   }
   },
   "Hellhorned": {
    "_n": {
@@ -1162,10 +1175,10 @@
     "per_stack": 8
    },
    "produce": {
-    "block": 18,
+    "block": 17,
     "attack_stat": 21,
     "death": 11,
-    "orb_summon": 16,
+    "orb_summon": 15,
     "token_card": 4,
     "energy": 5,
     "vulnerable": 1,
@@ -1174,9 +1187,9 @@
     "self_status": 1
    },
    "consume": {
-    "orb_summon": 3,
-    "attack_stat": 1,
-    "block": 1
+    "orb_summon": 4,
+    "block": 3,
+    "attack_stat": 2
    }
   },
   "Awoken": {
@@ -1214,7 +1227,7 @@
    },
    "produce": {
     "death": 6,
-    "thorns": 10,
+    "thorns": 9,
     "attack_stat": 11,
     "spell_power": 4,
     "energy": 6,
@@ -1224,7 +1237,9 @@
     "evade": 1,
     "discard": 1
    },
-   "consume": {}
+   "consume": {
+    "thorns": 1
+   }
   },
   "Stygian Guard": {
    "_n": {
@@ -1325,14 +1340,15 @@
     "block": 8,
     "token_card": 11,
     "death": 5,
-    "energy": 13,
+    "energy": 12,
     "heat": 1,
     "discard": 2,
     "evade": 1,
     "exhaust": 1
    },
    "consume": {
-    "orb_summon": 1
+    "orb_summon": 1,
+    "energy": 5
    }
   },
   "Melting Remnant": {
@@ -1367,7 +1383,7 @@
     "per_stack": 4
    },
    "produce": {
-    "death": 49,
+    "death": 47,
     "attack_stat": 16,
     "thorns": 3,
     "orb_summon": 2,
@@ -1377,7 +1393,8 @@
     "evade": 1
    },
    "consume": {
-    "death": 1
+    "token_card": 1,
+    "death": 3
    }
   },
   "Wurmkin": {
@@ -1430,7 +1447,7 @@
     "death": 2
    },
    "consume": {
-    "energy": 9,
+    "energy": 11,
     "block": 1
    }
   },
@@ -1596,7 +1613,9 @@
     "energy": 1,
     "vulnerable": 1
    },
-   "consume": {}
+   "consume": {
+    "exhaust": 1
+   }
   },
   "Curse": {
    "_n": {
@@ -1678,7 +1697,7 @@
     "permanent_run": 1
    },
    "produce": {
-    "discard": 6,
+    "discard": 5,
     "orb_summon": 13,
     "vulnerable": 2,
     "weak": 1,
@@ -1693,7 +1712,8 @@
    "consume": {
     "orb_summon": 5,
     "block": 2,
-    "energy": 1
+    "energy": 1,
+    "discard": 1
    }
   },
   "Ironclad": {
@@ -1906,7 +1926,7 @@
     "exhaust": 1
    },
    "consume": {
-    "stance": 8,
+    "stance": 12,
     "block": 3,
     "token_card": 1,
     "vulnerable": 1
@@ -1965,7 +1985,7 @@
     "block": 18,
     "token_card": 7,
     "energy": 10,
-    "discard": 3,
+    "discard": 2,
     "vulnerable": 2,
     "orb_summon": 1,
     "thorns": 1,
@@ -1974,8 +1994,10 @@
     "weak": 1
    },
    "consume": {
+    "exhaust": 2,
     "block": 4,
-    "energy": 1
+    "energy": 1,
+    "discard": 1
    }
   },
   "Curse": {
@@ -2182,7 +2204,7 @@
    },
    "produce": {
     "energy": 12,
-    "dot": 14,
+    "dot": 13,
     "block": 14,
     "orb_summon": 23,
     "death": 2,
@@ -2198,8 +2220,9 @@
     "orb_summon": 4,
     "energy": 2,
     "token_card": 4,
+    "dot": 2,
     "attack_stat": 2,
-    "dot": 1,
+    "exhaust": 1,
     "death": 1
    }
   },
