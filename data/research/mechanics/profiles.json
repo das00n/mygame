@@ -1,0 +1,1311 @@
+{
+ "cobaltcore": {
+  "Corrupted": {
+   "_n": {
+    "cards": 1
+   },
+   "effects": {},
+   "props": {
+    "ethereal": 1,
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 1
+   },
+   "scaling": {},
+   "produce": {},
+   "consume": {}
+  },
+  "Riggs": {
+   "_n": {
+    "cards": 21
+   },
+   "effects": {
+    "position": 11,
+    "damage": 6,
+    "damage_multi": 1,
+    "draw": 9,
+    "discard": 4,
+    "recall": 1,
+    "scry": 1,
+    "block": 1,
+    "energy": 1,
+    "tutor": 1
+   },
+   "props": {
+    "exhaust_self": 12
+   },
+   "conditions": {
+    "on_trigger": 12
+   },
+   "scaling": {},
+   "produce": {
+    "evade": 11,
+    "discard": 4,
+    "block": 1,
+    "energy": 1
+   },
+   "consume": {
+    "evade": 1
+   }
+  },
+  "Dizzy": {
+   "_n": {
+    "cards": 21
+   },
+   "effects": {
+    "damage": 6,
+    "dot_apply": 2,
+    "block": 16,
+    "position": 3,
+    "damage_aoe": 1,
+    "draw": 1,
+    "control": 4,
+    "energy": 1
+   },
+   "props": {
+    "ethereal": 6,
+    "exhaust_self": 8
+   },
+   "conditions": {
+    "on_trigger": 8
+   },
+   "scaling": {
+    "per_stack": 3,
+    "combat_ramp": 1
+   },
+   "produce": {
+    "dot": 2,
+    "block": 15,
+    "evade": 3,
+    "energy": 1
+   },
+   "consume": {
+    "block": 3
+   }
+  },
+  "CAT": {
+   "_n": {
+    "cards": 18
+   },
+   "effects": {
+    "block": 5,
+    "position": 3,
+    "discard": 2,
+    "draw": 3,
+    "energy": 1,
+    "damage": 3,
+    "summon": 1
+   },
+   "props": {
+    "exhaust_self": 13,
+    "ethereal": 8,
+    "retain": 1
+   },
+   "conditions": {
+    "if_hp": 1,
+    "on_trigger": 12,
+    "if_pile": 1
+   },
+   "scaling": {},
+   "produce": {
+    "block": 5,
+    "evade": 3,
+    "energy": 1,
+    "discard": 2
+   },
+   "consume": {
+    "heat": 1
+   }
+  },
+  "Max": {
+   "_n": {
+    "cards": 22
+   },
+   "effects": {
+    "exhaust_other": 2,
+    "generate": 4,
+    "draw": 8,
+    "recall": 3,
+    "block": 6,
+    "damage": 6,
+    "discard": 2,
+    "damage_aoe": 1,
+    "energy": 1,
+    "stat_up": 1,
+    "position": 3
+   },
+   "props": {
+    "ethereal": 5,
+    "exhaust_self": 14,
+    "retain": 2
+   },
+   "conditions": {
+    "if_pile": 6,
+    "on_trigger": 12
+   },
+   "scaling": {},
+   "produce": {
+    "exhaust": 2,
+    "token_card": 4,
+    "block": 6,
+    "discard": 2,
+    "attack_stat": 1,
+    "energy": 1,
+    "evade": 3
+   },
+   "consume": {}
+  },
+  "Drake": {
+   "_n": {
+    "cards": 21
+   },
+   "effects": {
+    "damage": 8,
+    "position": 5,
+    "block": 4,
+    "control": 3,
+    "heal": 2,
+    "stat_up": 1,
+    "draw": 3,
+    "damage_aoe": 1,
+    "energy": 1,
+    "discard": 1
+   },
+   "props": {
+    "exhaust_self": 9
+   },
+   "conditions": {
+    "on_trigger": 9
+   },
+   "scaling": {
+    "per_stack": 3
+   },
+   "produce": {
+    "evade": 5,
+    "heat": 12,
+    "block": 4,
+    "attack_stat": 1,
+    "energy": 1,
+    "discard": 1
+   },
+   "consume": {
+    "heat": 8
+   }
+  },
+  "Trash": {
+   "_n": {
+    "cards": 14
+   },
+   "effects": {
+    "discard": 1,
+    "draw": 3,
+    "position": 1,
+    "transform": 1,
+    "damage": 1,
+    "dot_apply": 1
+   },
+   "props": {
+    "ethereal": 9,
+    "exhaust_self": 10,
+    "unplayable": 2
+   },
+   "conditions": {
+    "on_trigger": 9
+   },
+   "scaling": {
+    "permanent_run": 1
+   },
+   "produce": {
+    "discard": 1,
+    "evade": 1,
+    "heat": 1,
+    "dot": 1
+   },
+   "consume": {
+    "energy": 1
+   }
+  },
+  "Isaac": {
+   "_n": {
+    "cards": 22
+   },
+   "effects": {
+    "block": 9,
+    "summon": 20,
+    "draw": 2,
+    "energy": 2,
+    "generate": 1,
+    "position": 4,
+    "damage": 3
+   },
+   "props": {
+    "exhaust_self": 14,
+    "ethereal": 1
+   },
+   "conditions": {
+    "on_trigger": 14
+   },
+   "scaling": {},
+   "produce": {
+    "block": 9,
+    "orb_summon": 17,
+    "energy": 3,
+    "token_card": 1,
+    "evade": 4
+   },
+   "consume": {
+    "energy": 1
+   }
+  },
+  "Books": {
+   "_n": {
+    "cards": 23
+   },
+   "effects": {
+    "damage": 5,
+    "block": 5,
+    "heal": 2,
+    "generate": 3,
+    "position": 5,
+    "summon": 6,
+    "draw": 5,
+    "energy": 2,
+    "stat_up": 1,
+    "discard": 2,
+    "recall": 1
+   },
+   "props": {
+    "unplayable": 1,
+    "exhaust_self": 10,
+    "ethereal": 5,
+    "retain": 4
+   },
+   "conditions": {
+    "on_trigger": 7,
+    "if_hp": 2
+   },
+   "scaling": {
+    "per_stack": 1
+   },
+   "produce": {
+    "block": 5,
+    "orb_summon": 2,
+    "token_card": 3,
+    "evade": 5,
+    "energy": 2,
+    "attack_stat": 1,
+    "discard": 2
+   },
+   "consume": {}
+  },
+  "Peri": {
+   "_n": {
+    "cards": 24
+   },
+   "effects": {
+    "damage": 11,
+    "position": 8,
+    "block": 3,
+    "heal": 1,
+    "stat_up": 4,
+    "energy": 1,
+    "draw": 4,
+    "generate": 2,
+    "debuff": 1
+   },
+   "props": {
+    "exhaust_self": 13,
+    "ethereal": 3
+   },
+   "conditions": {
+    "on_trigger": 12
+   },
+   "scaling": {
+    "per_stack": 1
+   },
+   "produce": {
+    "evade": 8,
+    "block": 3,
+    "attack_stat": 4,
+    "energy": 1,
+    "token_card": 1,
+    "vulnerable": 1,
+    "weak": 1
+   },
+   "consume": {
+    "block": 1
+   }
+  },
+  "Basic": {
+   "_n": {
+    "cards": 5
+   },
+   "effects": {
+    "block": 1,
+    "position": 1,
+    "summon": 1,
+    "damage": 1,
+    "draw": 1
+   },
+   "props": {
+    "ethereal": 1,
+    "exhaust_self": 3
+   },
+   "conditions": {
+    "on_trigger": 3
+   },
+   "scaling": {},
+   "produce": {
+    "block": 1,
+    "evade": 1
+   },
+   "consume": {}
+  },
+  "Tooth": {
+   "_n": {
+    "cards": 4
+   },
+   "effects": {
+    "block": 1,
+    "damage": 1,
+    "draw": 1,
+    "energy": 1,
+    "position": 1
+   },
+   "props": {
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 1
+   },
+   "scaling": {},
+   "produce": {
+    "block": 1,
+    "energy": 1,
+    "evade": 1
+   },
+   "consume": {}
+  },
+  "Ephemeral": {
+   "_n": {
+    "cards": 3
+   },
+   "effects": {
+    "damage": 1,
+    "position": 1
+   },
+   "props": {
+    "exhaust_self": 3
+   },
+   "conditions": {},
+   "scaling": {},
+   "produce": {
+    "evade": 1
+   },
+   "consume": {}
+  },
+  "Jupiter": {
+   "_n": {
+    "cards": 2
+   },
+   "effects": {
+    "recall": 2,
+    "summon": 2
+   },
+   "props": {
+    "ethereal": 2
+   },
+   "conditions": {},
+   "scaling": {},
+   "produce": {
+    "orb_summon": 2
+   },
+   "consume": {}
+  },
+  "Dracula": {
+   "_n": {
+    "cards": 1
+   },
+   "effects": {
+    "control": 1,
+    "damage": 1,
+    "heal": 1
+   },
+   "props": {
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 1
+   },
+   "scaling": {},
+   "produce": {},
+   "consume": {}
+  },
+  "Soggins": {
+   "_n": {
+    "cards": 2
+   },
+   "effects": {
+    "damage": 1,
+    "summon": 2,
+    "position": 1
+   },
+   "props": {
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 1
+   },
+   "scaling": {},
+   "produce": {
+    "orb_summon": 2,
+    "evade": 1
+   },
+   "consume": {}
+  },
+  "Evil Riggs": {
+   "_n": {
+    "cards": 1
+   },
+   "effects": {
+    "damage": 1,
+    "summon": 1
+   },
+   "props": {},
+   "conditions": {},
+   "scaling": {},
+   "produce": {
+    "orb_summon": 1
+   },
+   "consume": {}
+  },
+  "Sasha": {
+   "_n": {
+    "cards": 2
+   },
+   "effects": {
+    "summon": 1
+   },
+   "props": {
+    "exhaust_self": 1,
+    "ethereal": 1,
+    "unplayable": 1
+   },
+   "conditions": {
+    "on_trigger": 1
+   },
+   "scaling": {},
+   "produce": {},
+   "consume": {}
+  },
+  "Ares": {
+   "_n": {
+    "cards": 2
+   },
+   "effects": {},
+   "props": {
+    "ethereal": 2,
+    "exhaust_self": 2
+   },
+   "conditions": {},
+   "scaling": {},
+   "produce": {},
+   "consume": {}
+  }
+ },
+ "sts1": {
+  "Colorless": {
+   "_n": {
+    "cards": 48
+   },
+   "effects": {
+    "damage": 14,
+    "heal": 2,
+    "damage_aoe": 6,
+    "damage_multi": 1,
+    "draw": 16,
+    "economy": 1,
+    "transform": 3,
+    "generate": 4,
+    "self_damage": 2,
+    "debuff": 2,
+    "cost_reduce": 6,
+    "stat_up": 2,
+    "discard": 1,
+    "block": 4,
+    "energy": 1,
+    "tutor": 3,
+    "scry": 1
+   },
+   "props": {
+    "exhaust_self": 27,
+    "innate": 2,
+    "retain": 5,
+    "persistent": 5,
+    "ethereal": 1,
+    "x_cost": 1
+   },
+   "conditions": {
+    "if_pile": 4,
+    "on_trigger": 5,
+    "if_self_state": 1
+   },
+   "scaling": {
+    "per_stack": 1,
+    "combat_ramp": 5,
+    "permanent_run": 1,
+    "per_turn": 2
+   },
+   "produce": {
+    "token_card": 3,
+    "weak": 1,
+    "attack_stat": 2,
+    "discard": 1,
+    "block": 4,
+    "heat": 1,
+    "energy": 1,
+    "vulnerable": 1
+   },
+   "consume": {}
+  },
+  "Curse": {
+   "_n": {
+    "cards": 14
+   },
+   "effects": {
+    "self_damage": 2,
+    "debuff": 2,
+    "max_hp": 1,
+    "transform": 1,
+    "draw": 1,
+    "scry": 1
+   },
+   "props": {
+    "ethereal": 2,
+    "unplayable": 13,
+    "exhaust_self": 1,
+    "innate": 2
+   },
+   "conditions": {
+    "on_trigger": 6,
+    "if_pile": 1
+   },
+   "scaling": {
+    "per_stack": 1
+   },
+   "produce": {
+    "weak": 1,
+    "self_status": 1,
+    "heat": 1
+   },
+   "consume": {}
+  },
+  "Defect": {
+   "_n": {
+    "cards": 75
+   },
+   "effects": {
+    "cost_reduce": 4,
+    "damage": 24,
+    "discard": 6,
+    "draw": 16,
+    "recall": 2,
+    "summon": 27,
+    "debuff": 3,
+    "damage_aoe": 5,
+    "damage_multi": 9,
+    "stat_up": 5,
+    "block": 14,
+    "scry": 1,
+    "energy": 7,
+    "generate": 5,
+    "heal": 1,
+    "transform": 1,
+    "dot_apply": 1,
+    "pollute": 2,
+    "exhaust_other": 1,
+    "tutor": 1
+   },
+   "props": {
+    "exhaust_self": 13,
+    "persistent": 14,
+    "ethereal": 1,
+    "innate": 5,
+    "retain": 1,
+    "x_cost": 3
+   },
+   "conditions": {
+    "if_self_state": 2,
+    "on_trigger": 9,
+    "if_pile": 2
+   },
+   "scaling": {
+    "per_stack": 9,
+    "combat_ramp": 6,
+    "per_turn": 6,
+    "permanent_run": 1
+   },
+   "produce": {
+    "discard": 6,
+    "orb_summon": 13,
+    "vulnerable": 2,
+    "weak": 1,
+    "energy": 8,
+    "token_card": 3,
+    "block": 13,
+    "self_status": 1,
+    "exhaust": 1,
+    "attack_stat": 1,
+    "defense_stat": 1
+   },
+   "consume": {
+    "orb_summon": 5,
+    "block": 2,
+    "energy": 1
+   }
+  },
+  "Ironclad": {
+   "_n": {
+    "cards": 75
+   },
+   "effects": {
+    "damage": 36,
+    "discard": 3,
+    "generate": 5,
+    "debuff": 8,
+    "cost_reduce": 2,
+    "energy": 7,
+    "block": 19,
+    "damage_aoe": 9,
+    "draw": 16,
+    "max_hp": 1,
+    "exhaust_other": 7,
+    "recall": 2,
+    "scry": 2,
+    "damage_multi": 6,
+    "stat_up": 8,
+    "self_damage": 5,
+    "dot_apply": 1,
+    "pollute": 3,
+    "heal": 1,
+    "control": 1,
+    "transform": 2,
+    "position": 1
+   },
+   "props": {
+    "ethereal": 2,
+    "exhaust_self": 18,
+    "x_cost": 1,
+    "persistent": 14,
+    "innate": 1
+   },
+   "conditions": {
+    "if_pile": 4,
+    "if_target_status": 1,
+    "on_trigger": 16
+   },
+   "scaling": {
+    "combat_ramp": 2,
+    "per_stack": 5,
+    "per_turn": 4
+   },
+   "produce": {
+    "discard": 3,
+    "vulnerable": 5,
+    "energy": 7,
+    "weak": 4,
+    "exhaust": 7,
+    "heat": 5,
+    "self_status": 4,
+    "block": 18,
+    "attack_stat": 7,
+    "token_card": 3
+   },
+   "consume": {
+    "block": 3,
+    "vulnerable": 1,
+    "energy": 2,
+    "attack_stat": 3,
+    "exhaust": 3,
+    "self_status": 2
+   }
+  },
+  "Silent": {
+   "_n": {
+    "cards": 75
+   },
+   "effects": {
+    "damage": 34,
+    "damage_aoe": 9,
+    "discard": 14,
+    "dot_apply": 9,
+    "damage_multi": 7,
+    "draw": 18,
+    "block": 11,
+    "generate": 8,
+    "cost_reduce": 2,
+    "energy": 10,
+    "debuff": 7,
+    "position": 1,
+    "stat_up": 4,
+    "max_hp": 1,
+    "scry": 1
+   },
+   "props": {
+    "exhaust_self": 14,
+    "innate": 3,
+    "x_cost": 3,
+    "persistent": 11,
+    "retain": 1,
+    "unplayable": 2
+   },
+   "conditions": {
+    "if_target_status": 2,
+    "on_trigger": 13,
+    "if_pile": 3,
+    "if_self_state": 1
+   },
+   "scaling": {
+    "per_stack": 6,
+    "combat_ramp": 2,
+    "per_turn": 3
+   },
+   "produce": {
+    "discard": 11,
+    "block": 11,
+    "token_card": 8,
+    "energy": 10,
+    "weak": 5,
+    "dot": 8,
+    "defense_stat": 1,
+    "attack_stat": 1,
+    "vulnerable": 1
+   },
+   "consume": {
+    "dot": 2,
+    "weak": 1,
+    "energy": 3,
+    "discard": 3,
+    "defense_stat": 1,
+    "attack_stat": 1
+   }
+  },
+  "Status": {
+   "_n": {
+    "cards": 5
+   },
+   "effects": {
+    "self_damage": 1,
+    "draw": 1
+   },
+   "props": {
+    "unplayable": 4,
+    "ethereal": 2,
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 2
+   },
+   "scaling": {},
+   "produce": {},
+   "consume": {
+    "energy": 1
+   }
+  },
+  "Watcher": {
+   "_n": {
+    "cards": 75
+   },
+   "effects": {
+    "damage": 28,
+    "generate": 6,
+    "damage_aoe": 5,
+    "debuff": 4,
+    "draw": 19,
+    "scry": 6,
+    "mode": 19,
+    "discard": 3,
+    "recall": 3,
+    "damage_multi": 4,
+    "energy": 3,
+    "block": 21,
+    "transform": 2,
+    "stat_up": 4,
+    "exhaust_other": 1,
+    "tutor": 1,
+    "economy": 1
+   },
+   "props": {
+    "retain": 10,
+    "exhaust_self": 14,
+    "innate": 3,
+    "persistent": 12,
+    "ethereal": 1,
+    "x_cost": 2,
+    "unplayable": 1
+   },
+   "conditions": {
+    "if_sequence": 4,
+    "on_trigger": 22,
+    "if_self_state": 4,
+    "if_target_status": 1,
+    "if_pile": 2
+   },
+   "scaling": {
+    "per_stack": 5,
+    "combat_ramp": 6,
+    "per_turn": 5
+   },
+   "produce": {
+    "token_card": 4,
+    "vulnerable": 2,
+    "stance": 16,
+    "discard": 3,
+    "energy": 3,
+    "block": 20,
+    "weak": 2,
+    "attack_stat": 4,
+    "defense_stat": 2,
+    "exhaust": 1
+   },
+   "consume": {
+    "stance": 8,
+    "block": 3,
+    "token_card": 1,
+    "vulnerable": 1
+   }
+  }
+ },
+ "sts2": {
+  "Colorless": {
+   "_n": {
+    "cards": 107
+   },
+   "effects": {
+    "damage": 39,
+    "recall": 4,
+    "damage_aoe": 6,
+    "damage_multi": 5,
+    "block": 18,
+    "draw": 27,
+    "economy": 2,
+    "energy": 10,
+    "generate": 12,
+    "transform": 6,
+    "discard": 3,
+    "scry": 3,
+    "tutor": 6,
+    "debuff": 2,
+    "summon": 1,
+    "control": 1,
+    "position": 1,
+    "stat_up": 5,
+    "max_hp": 1,
+    "cost_reduce": 1
+   },
+   "props": {
+    "exhaust_self": 36,
+    "innate": 7,
+    "retain": 10,
+    "ethereal": 2,
+    "x_cost": 1,
+    "persistent": 15,
+    "unplayable": 4
+   },
+   "conditions": {
+    "on_trigger": 13,
+    "if_pile": 9,
+    "if_hp": 1,
+    "if_self_state": 2
+   },
+   "scaling": {
+    "per_stack": 9,
+    "combat_ramp": 7,
+    "per_turn": 6
+   },
+   "produce": {
+    "block": 18,
+    "token_card": 7,
+    "energy": 10,
+    "discard": 3,
+    "vulnerable": 2,
+    "orb_summon": 1,
+    "thorns": 1,
+    "attack_stat": 5,
+    "defense_stat": 1,
+    "weak": 1
+   },
+   "consume": {
+    "block": 4,
+    "energy": 1
+   }
+  },
+  "Curse": {
+   "_n": {
+    "cards": 18
+   },
+   "effects": {
+    "self_damage": 3,
+    "economy": 1,
+    "debuff": 2
+   },
+   "props": {
+    "ethereal": 3,
+    "unplayable": 16,
+    "innate": 2,
+    "retain": 1,
+    "exhaust_self": 1
+   },
+   "conditions": {
+    "on_trigger": 6,
+    "if_pile": 1
+   },
+   "scaling": {
+    "per_stack": 1
+   },
+   "produce": {
+    "weak": 1
+   },
+   "consume": {
+    "heat": 2,
+    "weak": 1
+   }
+  },
+  "Defect": {
+   "_n": {
+    "cards": 91
+   },
+   "effects": {
+    "damage": 33,
+    "discard": 9,
+    "energy": 16,
+    "generate": 11,
+    "draw": 15,
+    "recall": 3,
+    "summon": 37,
+    "debuff": 3,
+    "exhaust_other": 2,
+    "stat_up": 7,
+    "damage_multi": 12,
+    "pollute": 4,
+    "damage_aoe": 5,
+    "cost_reduce": 3,
+    "tutor": 1,
+    "block": 15,
+    "control": 1,
+    "transform": 2,
+    "dot_apply": 1
+   },
+   "props": {
+    "exhaust_self": 19,
+    "persistent": 21,
+    "ethereal": 1,
+    "innate": 2,
+    "x_cost": 2
+   },
+   "conditions": {
+    "if_self_state": 2,
+    "on_trigger": 15,
+    "if_pile": 1
+   },
+   "scaling": {
+    "per_stack": 8,
+    "combat_ramp": 2,
+    "per_turn": 9,
+    "permanent_run": 1
+   },
+   "produce": {
+    "energy": 16,
+    "discard": 9,
+    "orb_summon": 19,
+    "vulnerable": 1,
+    "self_status": 10,
+    "exhaust": 2,
+    "weak": 2,
+    "attack_stat": 1,
+    "defense_stat": 1,
+    "block": 15,
+    "token_card": 3
+   },
+   "consume": {
+    "energy": 2,
+    "orb_summon": 3,
+    "token_card": 3,
+    "self_status": 3
+   }
+  },
+  "Ironclad": {
+   "_n": {
+    "cards": 90
+   },
+   "effects": {
+    "damage": 43,
+    "discard": 4,
+    "generate": 4,
+    "debuff": 13,
+    "block": 21,
+    "damage_aoe": 8,
+    "self_damage": 9,
+    "exhaust_other": 10,
+    "damage_multi": 8,
+    "max_hp": 1,
+    "stat_up": 10,
+    "draw": 14,
+    "recall": 2,
+    "scry": 1,
+    "cost_reduce": 3,
+    "energy": 9,
+    "transform": 4,
+    "position": 1,
+    "heal": 1
+   },
+   "props": {
+    "exhaust_self": 18,
+    "x_cost": 2,
+    "innate": 2,
+    "persistent": 20
+   },
+   "conditions": {
+    "if_pile": 4,
+    "if_target_status": 1,
+    "on_trigger": 18,
+    "if_self_state": 2
+   },
+   "scaling": {
+    "per_stack": 12,
+    "combat_ramp": 3,
+    "per_turn": 8
+   },
+   "produce": {
+    "discard": 4,
+    "vulnerable": 11,
+    "heat": 9,
+    "exhaust": 10,
+    "attack_stat": 10,
+    "block": 20,
+    "energy": 9,
+    "weak": 1,
+    "token_card": 3
+   },
+   "consume": {
+    "block": 3,
+    "vulnerable": 5,
+    "exhaust": 6,
+    "attack_stat": 1
+   }
+  },
+  "Necrobinder": {
+   "_n": {
+    "cards": 91
+   },
+   "effects": {
+    "damage": 40,
+    "damage_aoe": 9,
+    "energy": 14,
+    "dot_apply": 14,
+    "block": 14,
+    "summon": 25,
+    "draw": 19,
+    "damage_multi": 3,
+    "debuff": 6,
+    "discard": 5,
+    "transform": 3,
+    "recall": 2,
+    "max_hp": 2,
+    "generate": 9,
+    "stat_up": 3,
+    "self_damage": 1,
+    "exhaust_other": 1,
+    "tutor": 1,
+    "cost_reduce": 1,
+    "heal": 1
+   },
+   "props": {
+    "ethereal": 16,
+    "retain": 11,
+    "x_cost": 2,
+    "exhaust_self": 14,
+    "persistent": 20,
+    "innate": 2
+   },
+   "conditions": {
+    "if_pile": 6,
+    "on_trigger": 22
+   },
+   "scaling": {
+    "combat_ramp": 3,
+    "per_stack": 10,
+    "permanent_run": 1,
+    "per_turn": 7
+   },
+   "produce": {
+    "energy": 12,
+    "dot": 14,
+    "block": 14,
+    "orb_summon": 23,
+    "vulnerable": 4,
+    "weak": 4,
+    "discard": 5,
+    "token_card": 10,
+    "exhaust": 1,
+    "attack_stat": 1
+   },
+   "consume": {
+    "block": 2,
+    "orb_summon": 4,
+    "energy": 2,
+    "token_card": 4,
+    "attack_stat": 2,
+    "dot": 1
+   }
+  },
+  "Regent": {
+   "_n": {
+    "cards": 91
+   },
+   "effects": {
+    "damage": 35,
+    "damage_aoe": 10,
+    "damage_multi": 6,
+    "stat_up": 20,
+    "generate": 9,
+    "debuff": 5,
+    "draw": 22,
+    "energy": 7,
+    "cost_reduce": 1,
+    "scry": 5,
+    "block": 15,
+    "summon": 8,
+    "economy": 1,
+    "exhaust_other": 1,
+    "transform": 6,
+    "tutor": 2,
+    "discard": 1,
+    "recall": 2,
+    "self_damage": 1
+   },
+   "props": {
+    "exhaust_self": 7,
+    "ethereal": 2,
+    "x_cost": 1,
+    "innate": 3,
+    "persistent": 19,
+    "retain": 3
+   },
+   "conditions": {
+    "on_trigger": 18,
+    "if_pile": 4
+   },
+   "scaling": {
+    "per_turn": 6,
+    "combat_ramp": 2,
+    "per_stack": 4
+   },
+   "produce": {
+    "orb_summon": 16,
+    "token_card": 6,
+    "vulnerable": 5,
+    "weak": 5,
+    "energy": 20,
+    "attack_stat": 6,
+    "block": 15,
+    "exhaust": 1,
+    "discard": 1,
+    "heat": 1
+   },
+   "consume": {
+    "exhaust": 1,
+    "attack_stat": 3,
+    "energy": 3,
+    "token_card": 2,
+    "orb_summon": 1
+   }
+  },
+  "Silent": {
+   "_n": {
+    "cards": 91
+   },
+   "effects": {
+    "damage": 35,
+    "debuff": 9,
+    "damage_aoe": 13,
+    "damage_multi": 4,
+    "discard": 11,
+    "draw": 16,
+    "block": 17,
+    "generate": 14,
+    "cost_reduce": 2,
+    "energy": 5,
+    "dot_apply": 13,
+    "economy": 1,
+    "stat_up": 7,
+    "transform": 1
+   },
+   "props": {
+    "exhaust_self": 11,
+    "innate": 6,
+    "x_cost": 2,
+    "persistent": 18,
+    "retain": 5
+   },
+   "conditions": {
+    "if_pile": 3,
+    "on_trigger": 15,
+    "if_target_status": 1
+   },
+   "scaling": {
+    "per_stack": 9,
+    "combat_ramp": 1,
+    "per_turn": 5
+   },
+   "produce": {
+    "vulnerable": 2,
+    "discard": 11,
+    "block": 17,
+    "token_card": 14,
+    "weak": 7,
+    "energy": 5,
+    "dot": 13,
+    "defense_stat": 4,
+    "thorns": 1,
+    "attack_stat": 1
+   },
+   "consume": {
+    "defense_stat": 1,
+    "dot": 3,
+    "attack_stat": 1,
+    "block": 1
+   }
+  },
+  "Status": {
+   "_n": {
+    "cards": 16
+   },
+   "effects": {
+    "self_damage": 5,
+    "draw": 3,
+    "energy": 2
+   },
+   "props": {
+    "unplayable": 7,
+    "ethereal": 2,
+    "exhaust_self": 3
+   },
+   "conditions": {
+    "on_trigger": 7
+   },
+   "scaling": {
+    "per_turn": 2,
+    "per_stack": 1
+   },
+   "produce": {
+    "energy": 1
+   },
+   "consume": {
+    "heat": 1,
+    "energy": 1
+   }
+  }
+ }
+}

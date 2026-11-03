@@ -69,6 +69,10 @@ def tag_card(card):
             continue
         is_cons = any(p.search(text) for p in c["consume"])
         is_prod = any(p.search(both) for p in c["produce"])
+        if fam == "exhaust":  # 자기 소멸은 성질(props)이다. 다른 카드를 소멸시켜야 생산으로 본다.
+            is_prod = "exhaust_other" in effects
+            if not (is_prod or is_cons):
+                continue
         if is_cons:
             consume.append(fam)
         if is_prod or not is_cons:

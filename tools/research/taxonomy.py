@@ -13,7 +13,7 @@ N = r"(?:\d+|x|\(\d+;\d+\))"  # 숫자 / X / (기본;강화)
 
 # ── 효과 원자 ──────────────────────────────────────────────
 EFFECTS = {
-    "damage":        ("단일 피해",        [rf"deal {N}.*?damage", rf"attack (?:for )?{N}", rf"\bshoot\b", r"deals? damage"]),
+    "damage":        ("단일 피해",        [r"\bdeals? [^.]{0,30}?damage", rf"attack (?:for )?{N}", r"\bshoot\b", r"(?:additional|double|triple) damage"]),
     "damage_aoe":    ("광역 피해",        [r"(?:to )?all enem", r"every enem", r"all units", r"to all\b"]),
     "damage_multi":  ("다단 히트",        [rf"{N} times", r"multistrike", r"\btwice\b"]),
     "block":         ("방어 획득",        [rf"gain {N}.*?block", r"\bblock\b", r"\bshield\b", r"\barmor\b", r"temp shield"]),
@@ -26,13 +26,13 @@ EFFECTS = {
     "recall":        ("버린/소멸 더미 회수", [r"from (?:your )?(?:discard|exhaust) pile", r"\brecycle", r"\breturn .*? to your hand"]),
     "energy":        ("에너지 획득",      [r"gain .*?energy", r"gain \[e\]", r"\[e\]", r"\bember\b", r"energy next turn"]),
     "cost_reduce":   ("비용 감소",        [r"costs? (?:\d+ )?less", r"cost 0", r"\bdiscount\b", r"reduce .*?cost"]),
-    "stat_up":       ("영구 능력치 상승",  [r"\bstrength\b", r"\bdexterity\b", r"\bfocus\b", r"\boverdrive\b", r"\bpowerdrive\b", r"\brage\b", r"gain(?:s)? \+?\d+ (?:\[attack\]|attack)", r"\bvalor\b"]),
+    "stat_up":       ("영구 능력치 상승",  [r"\bstrength\b", r"\bdexterity\b", r"\bfocus\b", r"\boverdrive\b", r"\bpowerdrive\b", r"\brage\b", r"gain(?:s)? \+?\d+ (?:\[attack\]|attack)", r"\bvalor\b", r"\bvigor\b", r"\bforge\b"]),
     "debuff":        ("적 약화",          [r"\bvulnerable\b", r"\bweak\b", r"\bfrail\b", r"\bsap\b", r"lock-?on", r"melee weakness", r"spell weakness", r"\bbrittle\b"]),
     "dot_apply":     ("지속 피해 부여",    [r"\bpoison", r"frostbite", r"\bcorrode", r"\boxidation", r"\bbleed", r"\bburn(?:ing)?\b(?! ?out)", r"\bdoom\b"]),
     "generate":      ("카드 생성",        [r"\badd .*? (?:to|into) your (?:hand|draw pile|discard pile|deck)", r"\bcreate", r"\bshivs?\b", r"\bgenerate"]),
     "pollute":       ("자기 덱 오염",      [r"(?:wound|dazed|burn|slimed|void|trash|status) .*?(?:into|to) your", r"add .*?(?:status|curse)"]),
-    "exhaust_other": ("다른 카드 소멸",    [r"exhaust (?:a|\d+|all|your|the|any) ", r"\bpurge\b"]),
-    "summon":        ("소환·설치",        [r"\bsummon", r"\bchannel", r"\borb", r"\bdrone", r"\bmissile", r"\bmidrow", r"\bmorsel", r"\bimp\b", r"spawn", r"\blaunch\b"]),
+    "exhaust_other": ("다른 카드 소멸",    [r"exhaust (?:a|\d+|all|your|the|any|it|them|x)\b", r"\bpurge\b"]),
+    "summon":        ("소환·설치",        [r"\bsummon", r"\bchannel", r"\borb", r"\bdrone", r"\bmissile", r"\bmidrow", r"\bmorsel", r"\bimp\b", r"spawn", r"\blaunch\b", r"\bosty\b", r"sovereign blade", r"\bminions?\b"]),
     "position":      ("위치 이동",        [r"\bmove\b", r"\bascend\b", r"\bdescend\b", r"\bswap\b", r"\bfront\b", r"\bback\b", r"\bevade\b", r"\bflip\b"]),
     "transform":     ("카드 변형·강화",    [r"\bupgrade", r"\btransform", r"\bevolve", r"permanently"]),
     "control":       ("행동 방해",        [r"\bstun", r"\bdazed\b", r"\brooted\b", r"skip", r"\bstall", r"engine lock", r"\btimestop", r"\bjam\b"]),
@@ -44,15 +44,15 @@ EFFECTS = {
 # ── 자원·상태 계열 (생산/소비 판정 대상) ─────────────────────
 #  terms: 이 계열을 가리키는 단어들 (게임마다 이름이 다르다)
 FAMILIES = {
-    "attack_stat":  ("공격 능력치 (힘·분노·오버드라이브)", [r"strength", r"\brage\b", r"overdrive", r"powerdrive", r"\bvalor\b", r"\+\d+ \[attack\]"]),
+    "attack_stat":  ("공격 능력치 (힘·분노·오버드라이브·활력)", [r"strength", r"\brage\b", r"overdrive", r"powerdrive", r"\bvalor\b", r"\+\d+ \[attack\]", r"\bvigor\b"]),
     "defense_stat": ("방어 능력치 (민첩·방어 증폭)",      [r"dexterity", r"\barmor\b"]),
     "block":        ("방어도 (블록·실드)",              [r"\bblock\b", r"\bshield\b", r"temp shield"]),
     "vulnerable":   ("받는 피해 증가 (취약·조준)",        [r"vulnerable", r"lock-?on", r"spell weakness", r"melee weakness", r"\bbrittle\b"]),
     "weak":         ("주는 피해 감소 (약화·수액)",        [r"\bweak\b", r"\bsap\b"]),
     "dot":          ("지속 피해 (독·동상·부식)",         [r"poison", r"frostbite", r"corrode", r"oxidation", r"\bbleed", r"\bdoom\b"]),
-    "orb_summon":   ("설치물 (오브·드론·미사일·소환물)",   [r"\borbs?\b", r"\bdrones?\b", r"\bmissiles?\b", r"\bmidrow\b", r"\bminions?\b", r"\bmorsels?\b", r"\bimps?\b", r"summon"]),
-    "token_card":   ("토큰 카드 (단검·생성 카드)",        [r"\bshivs?\b", r"\bcreate", r"add .*? to your hand"]),
-    "energy":       ("에너지·불씨",                    [r"energy", r"\[e\]", r"\bember\b"]),
+    "orb_summon":   ("설치물·동료 (오브·드론·소환물·Osty·검)", [r"\borbs?\b", r"\bdrones?\b", r"\bmissiles?\b", r"\bmidrow\b", r"\bminions?\b", r"\bmorsels?\b", r"\bimps?\b", r"summon", r"\bosty\b", r"sovereign blade", r"\bforge\b", r"\bfocus\b"]),
+    "token_card":   ("토큰 카드 (단검·영혼·연료 등 생성 카드)", [r"\bshivs?\b", r"\bsouls?\b", r"\bfuel\b", r"\bcreate", r"add [^.]*? (?:to|into) your hand"]),
+    "energy":       ("에너지·불씨·별",                  [r"energy", r"\[e\]", r"\bember\b", r"\[star\]", r"\bstars?\b"]),
     "self_status":  ("자기 덱의 상태·저주 카드",          [r"\bstatus\b", r"\bcurses?\b", r"\bwound", r"\bdazed\b", r"\bslimed\b", r"\btrash\b", r"\bburn\b"]),
     "exhaust":      ("소멸",                          [r"exhaust", r"\bpurge\b", r"\bconsume\b"]),
     "discard":      ("버리기",                        [r"discard"]),
@@ -66,11 +66,12 @@ FAMILIES = {
 CONSUME_CONTEXT = [
     r"for (?:each|every) (?:{t})",
     r"equal to (?:your |its |the |their )?(?:current )?(?:{t})",
-    r"(?:double|triple|multiply) .*?(?:{t})",
-    r"if .*?(?:has|have|is|are) .*?(?:{t})",
+    r"\b(?:double|triple|multiply)\b[^.]*?(?:{t})",
+    r"\bif\b[^.]*?\b(?:has|have|is|are)\b[^.]*?(?:{t})",
     r"(?:remove|consume|lose|spend|expend) (?:all |\d+ |x )?(?:of (?:your|its) )?(?:{t})",
-    r"(?:whenever|when|each time) .*?(?:{t})",
-    r"(?:{t}) .*?(?:triggers?|is applied|are applied|is gained)",
+    r"\b(?:whenever|when|each time)\b[^.,]*?(?:{t})[^.,]*,",  # 발동 조건절(쉼표 앞)에 자원이 나오면 소비
+    r"(?:{t}) affects",
+    r"(?:{t})[^.]*?\b(?:triggers?|is applied|are applied|is gained)\b",
     r"per (?:{t})",
     r"(?:{t}) (?:stacks? )?(?:on|of) (?:the |all |each )?(?:target|enem)",
 ]
