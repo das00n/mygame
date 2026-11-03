@@ -30,7 +30,7 @@
     "T"
    ]
   },
-  "dosa": {
+  "beopsa": {
    "main": "D",
    "minor": [
     "C"
@@ -108,14 +108,14 @@
     "T"
    ]
   ],
-  "manshin+dosa": [
+  "manshin+beopsa": [
    [
     "manshin",
-    "dosa",
+    "beopsa",
     "S"
    ],
    [
-    "dosa",
+    "beopsa",
     "manshin",
     "T"
    ]
@@ -160,15 +160,15 @@
     "F"
    ]
   ],
-  "jaebi+dosa": [
+  "jaebi+beopsa": [
    [
     "jaebi",
-    "dosa",
+    "beopsa",
     "S"
    ],
    [
     "jaebi",
-    "dosa",
+    "beopsa",
     "T"
    ]
   ],
@@ -210,9 +210,9 @@
     "C"
    ]
   ],
-  "posu+dosa": [
+  "posu+beopsa": [
    [
-    "dosa",
+    "beopsa",
     "posu",
     "C"
    ]
@@ -248,10 +248,10 @@
     "C"
    ]
   ],
-  "baksu+dosa": [
+  "baksu+beopsa": [
    [
     "baksu",
-    "dosa",
+    "beopsa",
     "S"
    ]
   ],
@@ -269,21 +269,21 @@
     "B"
    ]
   ],
-  "seungnyeo+dosa": [
+  "seungnyeo+beopsa": [
    [
     "seungnyeo",
-    "dosa",
+    "beopsa",
     "T"
    ],
    [
-    "dosa",
-    "seungnyeo",
-    "D"
-   ],
-   [
-    "dosa",
+    "beopsa",
     "seungnyeo",
     "C"
+   ],
+   [
+    "beopsa",
+    "seungnyeo",
+    "D"
    ]
   ],
   "seungnyeo+talggun": [
@@ -300,16 +300,16 @@
     "D"
    ]
   ],
-  "dosa+talggun": [
+  "beopsa+talggun": [
    [
     "talggun",
-    "dosa",
+    "beopsa",
     "T"
    ]
   ],
-  "dosa+chasa": [
+  "beopsa+chasa": [
    [
-    "dosa",
+    "beopsa",
     "chasa",
     "D"
    ]
@@ -358,7 +358,7 @@
     4
    ]
   ],
-  "manshin+jaebi+dosa": [
+  "manshin+jaebi+beopsa": [
    [
     "S",
     12
@@ -408,7 +408,7 @@
     4
    ]
   ],
-  "manshin+posu+dosa": [
+  "manshin+posu+beopsa": [
    [
     "S",
     6
@@ -448,7 +448,7 @@
     4
    ]
   ],
-  "manshin+baksu+dosa": [
+  "manshin+baksu+beopsa": [
    [
     "S",
     9
@@ -478,7 +478,7 @@
     4
    ]
   ],
-  "manshin+seungnyeo+dosa": [
+  "manshin+seungnyeo+beopsa": [
    [
     "T",
     9
@@ -508,7 +508,7 @@
     2
    ]
   ],
-  "manshin+dosa+talggun": [
+  "manshin+beopsa+talggun": [
    [
     "T",
     9
@@ -518,7 +518,7 @@
     6
    ]
   ],
-  "manshin+dosa+chasa": [
+  "manshin+beopsa+chasa": [
    [
     "D",
     6
@@ -558,7 +558,7 @@
     6
    ]
   ],
-  "jaebi+posu+dosa": [
+  "jaebi+posu+beopsa": [
    [
     "S",
     4
@@ -598,7 +598,7 @@
     4
    ]
   ],
-  "jaebi+baksu+dosa": [
+  "jaebi+baksu+beopsa": [
    [
     "K",
     6
@@ -628,7 +628,7 @@
     6
    ]
   ],
-  "jaebi+seungnyeo+dosa": [
+  "jaebi+seungnyeo+beopsa": [
    [
     "D",
     4
@@ -658,7 +658,7 @@
     6
    ]
   ],
-  "jaebi+dosa+talggun": [
+  "jaebi+beopsa+talggun": [
    [
     "F",
     6
@@ -668,7 +668,7 @@
     4
    ]
   ],
-  "jaebi+dosa+chasa": [
+  "jaebi+beopsa+chasa": [
    [
     "D",
     4
@@ -698,7 +698,7 @@
     4
    ]
   ],
-  "posu+baksu+dosa": [
+  "posu+baksu+beopsa": [
    [
     "C",
     6
@@ -728,7 +728,7 @@
     4
    ]
   ],
-  "posu+seungnyeo+dosa": [
+  "posu+seungnyeo+beopsa": [
    [
     "C",
     9
@@ -758,7 +758,7 @@
     6
    ]
   ],
-  "posu+dosa+talggun": [
+  "posu+beopsa+talggun": [
    [
     "M",
     6
@@ -768,7 +768,7 @@
     3
    ]
   ],
-  "posu+dosa+chasa": [
+  "posu+beopsa+chasa": [
    [
     "B",
     4
@@ -788,7 +788,7 @@
     4
    ]
   ],
-  "baksu+seungnyeo+dosa": [
+  "baksu+seungnyeo+beopsa": [
    [
     "C",
     5
@@ -818,7 +818,7 @@
     6
    ]
   ],
-  "baksu+dosa+talggun": [
+  "baksu+beopsa+talggun": [
    [
     "K",
     4
@@ -828,7 +828,7 @@
     3
    ]
   ],
-  "baksu+dosa+chasa": [
+  "baksu+beopsa+chasa": [
    [
     "B",
     6
@@ -848,7 +848,7 @@
     4
    ]
   ],
-  "seungnyeo+dosa+talggun": [
+  "seungnyeo+beopsa+talggun": [
    [
     "D",
     4
@@ -858,7 +858,7 @@
     4
    ]
   ],
-  "seungnyeo+dosa+chasa": [
+  "seungnyeo+beopsa+chasa": [
    [
     "D",
     12
@@ -878,7 +878,7 @@
     5
    ]
   ],
-  "dosa+talggun+chasa": [
+  "beopsa+talggun+chasa": [
    [
     "D",
     4

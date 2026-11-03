@@ -1,0 +1,596 @@
+{
+ "cobaltcore": {
+  "n": 51,
+  "categories": {
+   "normal": 24,
+   "event": 13,
+   "elite": 9,
+   "boss": 5
+  },
+  "curve": {
+   "구역1": {
+    "boss_hp": 29.0,
+    "elite_hp": 20.0,
+    "normal_hp": 13.5
+   },
+   "구역2": {
+    "boss_hp": 31.5,
+    "elite_hp": 24.0,
+    "normal_hp": 20.0
+   },
+   "구역3": {
+    "boss_hp": 60.0,
+    "elite_hp": 26.5,
+    "normal_hp": 23.5
+   },
+   "기타": {
+    "event_hp": 15.0
+   }
+  },
+  "intents": {
+   "attack": 69,
+   "summon": 10,
+   "defend": 5,
+   "buff": 4,
+   "other": 1
+  },
+  "determinism": {
+   "고정 순환": 24,
+   "기타·조건": 17,
+   "확률": 3,
+   "미기재": 7
+  },
+  "pressure": {
+   "position": 0.686,
+   "defense": 0.314,
+   "mode_shift": 0.216,
+   "debuff": 0.176,
+   "scaling": 0.098,
+   "heal": 0.059,
+   "pollute": 0.039,
+   "multi_hit": 0.039,
+   "timer": 0.02
+  },
+  "pressure_by_category": {
+   "normal": {
+    "position": 15,
+    "defense": 11,
+    "debuff": 4,
+    "scaling": 4,
+    "pollute": 1
+   },
+   "elite": {
+    "position": 7,
+    "defense": 3,
+    "debuff": 2,
+    "scaling": 1,
+    "timer": 1,
+    "heal": 1
+   },
+   "boss": {
+    "position": 3,
+    "debuff": 2,
+    "pollute": 1,
+    "defense": 1
+   },
+   "event": {
+    "position": 10,
+    "mode_shift": 10,
+    "heal": 2,
+    "multi_hit": 2,
+    "debuff": 1,
+    "defense": 1
+   }
+  }
+ },
+ "mt1": {
+  "n": 56,
+  "categories": {
+   "flying_boss": 6,
+   "boss": 13,
+   "minion": 5,
+   "normal": 31,
+   "special": 1
+  },
+  "curve": {
+   "기타": {
+    "special_dmg": 0,
+    "special_hp": 1
+   },
+   "링1": {
+    "boss_dmg": 4.0,
+    "boss_hp": 50.0,
+    "normal_dmg": 2,
+    "normal_hp": 5
+   },
+   "링2": {
+    "boss_dmg": 5,
+    "boss_hp": 110,
+    "normal_dmg": 1,
+    "normal_hp": 1
+   },
+   "링3": {
+    "flying_boss_dmg": 7.0,
+    "flying_boss_hp": 250.0,
+    "minion_dmg": 0,
+    "minion_hp": 1
+   },
+   "링4": {
+    "boss_dmg": 10,
+    "boss_hp": 300,
+    "normal_dmg": 2,
+    "normal_hp": 10
+   },
+   "링5": {
+    "boss_dmg": 8,
+    "boss_hp": 500,
+    "normal_dmg": 7,
+    "normal_hp": 2
+   },
+   "링6": {
+    "flying_boss_dmg": 14.5,
+    "flying_boss_hp": 725.0,
+    "minion_dmg": 0.0,
+    "minion_hp": 1.0
+   },
+   "링7": {
+    "boss_dmg": 15.0,
+    "boss_hp": 850.0,
+    "normal_dmg": 5,
+    "normal_hp": 10
+   },
+   "링8": {
+    "flying_boss_dmg": 9,
+    "flying_boss_hp": 999
+   },
+   "링9": {
+    "flying_boss_dmg": 2,
+    "flying_boss_hp": 2500
+   }
+  },
+  "intents": {},
+  "determinism": {
+   "고정 순환": 50,
+   "기타·조건": 5,
+   "확률": 1
+  },
+  "pressure": {
+   "position": 1.0,
+   "defense": 0.196,
+   "summon": 0.179,
+   "scaling": 0.125,
+   "mode_shift": 0.107,
+   "multi_hit": 0.107,
+   "steal": 0.089,
+   "thorns": 0.071,
+   "pollute": 0.071,
+   "heal": 0.054,
+   "timer": 0.036,
+   "debuff": 0.036,
+   "card_punish": 0.018
+  },
+  "pressure_by_category": {
+   "flying_boss": {
+    "position": 6,
+    "defense": 3,
+    "mode_shift": 3,
+    "multi_hit": 3,
+    "summon": 3,
+    "scaling": 2
+   },
+   "boss": {
+    "position": 13,
+    "steal": 2,
+    "defense": 1,
+    "multi_hit": 1,
+    "thorns": 1
+   },
+   "minion": {
+    "summon": 5,
+    "position": 5,
+    "mode_shift": 3,
+    "pollute": 1
+   },
+   "normal": {
+    "position": 31,
+    "defense": 7,
+    "scaling": 5,
+    "heal": 3,
+    "summon": 2,
+    "thorns": 2
+   },
+   "special": {
+    "pollute": 1,
+    "timer": 1,
+    "position": 1,
+    "steal": 1
+   }
+  }
+ },
+ "mt2": {
+  "n": 113,
+  "categories": {
+   "normal": 39,
+   "elite": 30,
+   "flying_boss": 12,
+   "minion": 5,
+   "boss": 20,
+   "final_boss": 4,
+   "special": 3
+  },
+  "curve": {
+   "기타": {
+    "boss_dmg": 11,
+    "boss_hp": 380,
+    "elite_dmg": 5.0,
+    "elite_hp": 35.0,
+    "final_boss_dmg": 50,
+    "final_boss_hp": 9000,
+    "flying_boss_dmg": 12.5,
+    "flying_boss_hp": 1000.0,
+    "normal_dmg": 7.5,
+    "normal_hp": 21.0
+   },
+   "링1": {
+    "boss_dmg": 7.5,
+    "boss_hp": 152.5,
+    "normal_dmg": 1,
+    "normal_hp": 1,
+    "special_dmg": 2.5,
+    "special_hp": 6.0
+   },
+   "링2": {
+    "boss_dmg": 5.5,
+    "boss_hp": 260.0,
+    "normal_dmg": 2.5,
+    "normal_hp": 26.0
+   },
+   "링3": {
+    "elite_dmg": 1,
+    "elite_hp": 100,
+    "flying_boss_dmg": 6.5,
+    "flying_boss_hp": 462.5,
+    "minion_dmg": 3,
+    "minion_hp": 3,
+    "normal_dmg": 3,
+    "normal_hp": 3
+   },
+   "링4": {
+    "boss_dmg": 9,
+    "boss_hp": 600,
+    "normal_dmg": 4,
+    "normal_hp": 5,
+    "special_dmg": 0,
+    "special_hp": 100
+   },
+   "링5": {
+    "boss_dmg": 16.5,
+    "boss_hp": 700.0,
+    "normal_dmg": 3,
+    "normal_hp": 10
+   },
+   "링6": {
+    "elite_dmg": 7.0,
+    "elite_hp": 62.5,
+    "flying_boss_dmg": 13,
+    "flying_boss_hp": 1250,
+    "minion_dmg": 0,
+    "minion_hp": 30
+   },
+   "링7": {
+    "boss_dmg": 10.5,
+    "boss_hp": 1100.0,
+    "minion_dmg": 0,
+    "minion_hp": 250,
+    "normal_dmg": 5,
+    "normal_hp": 15
+   },
+   "링8": {
+    "elite_dmg": 3.5,
+    "elite_hp": 85.0,
+    "flying_boss_dmg": 30,
+    "flying_boss_hp": 3000
+   },
+   "링9": {
+    "elite_dmg": 1,
+    "elite_hp": 60,
+    "final_boss_dmg": 10,
+    "final_boss_hp": 2750
+   }
+  },
+  "intents": {},
+  "determinism": {
+   "고정 순환": 49,
+   "기타·조건": 63,
+   "확률": 1
+  },
+  "pressure": {
+   "position": 0.655,
+   "scaling": 0.274,
+   "mode_shift": 0.142,
+   "defense": 0.133,
+   "summon": 0.124,
+   "heal": 0.097,
+   "thorns": 0.097,
+   "multi_hit": 0.08,
+   "steal": 0.08,
+   "debuff": 0.071,
+   "artifact": 0.071,
+   "pollute": 0.071,
+   "timer": 0.009
+  },
+  "pressure_by_category": {
+   "normal": {
+    "position": 39,
+    "mode_shift": 7,
+    "heal": 5,
+    "defense": 4,
+    "debuff": 3,
+    "scaling": 2
+   },
+   "elite": {
+    "scaling": 22,
+    "position": 8,
+    "mode_shift": 4,
+    "heal": 3,
+    "multi_hit": 3,
+    "pollute": 2
+   },
+   "flying_boss": {
+    "position": 10,
+    "artifact": 8,
+    "scaling": 3,
+    "defense": 3,
+    "summon": 3,
+    "multi_hit": 2
+   },
+   "minion": {
+    "thorns": 4,
+    "defense": 2,
+    "steal": 1,
+    "summon": 1,
+    "position": 1
+   },
+   "boss": {
+    "position": 12,
+    "summon": 5,
+    "scaling": 3,
+    "debuff": 3,
+    "thorns": 3,
+    "mode_shift": 3
+   },
+   "final_boss": {
+    "pollute": 2,
+    "defense": 2,
+    "position": 2,
+    "scaling": 1,
+    "multi_hit": 1
+   },
+   "special": {
+    "summon": 3,
+    "steal": 3,
+    "position": 2,
+    "pollute": 1,
+    "timer": 1,
+    "thorns": 1
+   }
+  }
+ },
+ "sts1": {
+  "n": 66,
+  "categories": {
+   "normal": 38,
+   "elite": 11,
+   "boss": 11,
+   "minion": 3,
+   "event": 3
+  },
+  "curve": {
+   "막1": {
+    "boss_dmg": 32,
+    "boss_hp": 240.0,
+    "elite_dmg": 14,
+    "elite_hp": 84.0,
+    "normal_dmg": 9,
+    "normal_hp": 25.0
+   },
+   "막2": {
+    "boss_dmg": 20,
+    "boss_hp": 300.0,
+    "elite_dmg": 18,
+    "elite_hp": 144.0,
+    "event_dmg": 15,
+    "event_hp": 37.0,
+    "minion_dmg": 7.5,
+    "minion_hp": 47.0,
+    "normal_dmg": 18,
+    "normal_hp": 70.0
+   },
+   "막3": {
+    "boss_dmg": 23.0,
+    "boss_hp": 275.0,
+    "elite_dmg": 30,
+    "elite_hp": 185.0,
+    "minion_dmg": 25,
+    "minion_hp": 22.5,
+    "normal_dmg": 16,
+    "normal_hp": 72.5
+   },
+   "막4": {
+    "boss_dmg": 40,
+    "boss_hp": 750.0,
+    "elite_dmg": 32.0,
+    "elite_hp": 135.0
+   }
+  },
+  "intents": {
+   "attack": 116,
+   "buff": 41,
+   "other": 23,
+   "defend": 19
+  },
+  "determinism": {
+   "확률": 31,
+   "미기재": 1,
+   "고정 순환": 19,
+   "기타·조건": 15
+  },
+  "pressure": {
+   "debuff": 0.424,
+   "defense": 0.409,
+   "pollute": 0.288,
+   "summon": 0.167,
+   "scaling": 0.152,
+   "artifact": 0.121,
+   "mode_shift": 0.106,
+   "multi_hit": 0.091,
+   "timer": 0.076,
+   "heal": 0.061,
+   "card_punish": 0.061,
+   "steal": 0.045,
+   "thorns": 0.03
+  },
+  "pressure_by_category": {
+   "normal": {
+    "debuff": 19,
+    "defense": 13,
+    "pollute": 7,
+    "summon": 5,
+    "scaling": 5,
+    "multi_hit": 4
+   },
+   "elite": {
+    "pollute": 5,
+    "defense": 4,
+    "scaling": 3,
+    "debuff": 3,
+    "summon": 3,
+    "artifact": 3
+   },
+   "boss": {
+    "defense": 8,
+    "pollute": 6,
+    "debuff": 5,
+    "mode_shift": 4,
+    "artifact": 4,
+    "summon": 3
+   },
+   "minion": {
+    "defense": 1,
+    "steal": 1,
+    "pollute": 1,
+    "timer": 1
+   },
+   "event": {
+    "defense": 1,
+    "debuff": 1
+   }
+  }
+ },
+ "sts2": {
+  "n": 106,
+  "categories": {
+   "normal": 63,
+   "elite": 14,
+   "boss": 15,
+   "minion": 13,
+   "event": 1
+  },
+  "curve": {
+   "막1": {
+    "boss_dmg": 18.5,
+    "boss_hp": 216.5,
+    "elite_dmg": 15.0,
+    "elite_hp": 78.8,
+    "minion_dmg": 8,
+    "minion_hp": 12.0,
+    "normal_dmg": 10.0,
+    "normal_hp": 39.2
+   },
+   "막2": {
+    "boss_dmg": 26.0,
+    "boss_hp": 265.0,
+    "elite_dmg": 15,
+    "elite_hp": 145.0,
+    "minion_dmg": 10.0,
+    "minion_hp": 20.5,
+    "normal_dmg": 16,
+    "normal_hp": 86.0
+   },
+   "막3": {
+    "boss_dmg": 22,
+    "boss_hp": 300.0,
+    "elite_dmg": 29,
+    "elite_hp": 101.0,
+    "event_hp": 75.0,
+    "minion_dmg": 14,
+    "minion_hp": 20.5,
+    "normal_dmg": 17.0,
+    "normal_hp": 127.0
+   }
+  },
+  "intents": {
+   "attack": 198,
+   "buff": 58,
+   "other": 18,
+   "defend": 11,
+   "debuff": 11,
+   "summon": 6
+  },
+  "determinism": {
+   "기타·조건": 17,
+   "고정 순환": 69,
+   "확률": 20
+  },
+  "pressure": {
+   "scaling": 0.358,
+   "debuff": 0.321,
+   "defense": 0.236,
+   "pollute": 0.189,
+   "multi_hit": 0.17,
+   "position": 0.16,
+   "summon": 0.104,
+   "artifact": 0.047,
+   "steal": 0.047,
+   "timer": 0.047,
+   "mode_shift": 0.047,
+   "heal": 0.028,
+   "thorns": 0.019,
+   "card_punish": 0.009
+  },
+  "pressure_by_category": {
+   "normal": {
+    "scaling": 25,
+    "debuff": 22,
+    "defense": 13,
+    "multi_hit": 12,
+    "summon": 9,
+    "pollute": 8
+   },
+   "elite": {
+    "scaling": 4,
+    "pollute": 4,
+    "defense": 4,
+    "debuff": 4,
+    "position": 3,
+    "card_punish": 1
+   },
+   "boss": {
+    "scaling": 9,
+    "defense": 7,
+    "debuff": 6,
+    "pollute": 6,
+    "position": 6,
+    "multi_hit": 5
+   },
+   "minion": {
+    "pollute": 2,
+    "timer": 2,
+    "debuff": 2,
+    "steal": 1,
+    "summon": 1,
+    "mode_shift": 1
+   }
+  }
+ }
+}

@@ -1,5 +1,5 @@
 {
- "version": "0.1",
+ "version": "0.2",
  "note": "Phase 3 영웅 자원 배치. resources 키는 docs/02-core-rules.md §5의 공용 상태·매개체. exports_candidates(앞쪽일수록 세계관상 자연스러움) 중 2~3개를 tools/design/synergy.py 가 제약을 만족하도록 고른다. 첫 번째로 고른 것이 주 수출, 나머지는 부 수출.",
  "resources": {
   "V": {
@@ -50,7 +50,7 @@
    "range": "ranged",
    "role": "중간",
    "hp": 35,
-   "personal": "신명(강신 단계)",
+   "personal": "신바람(같은 영웅 연속 사용으로 쌓임 → 강신)",
    "signature": "S",
    "import": "T",
    "universal": [
@@ -69,7 +69,7 @@
    "range": "ranged",
    "role": "지원",
    "hp": 30,
-   "personal": "가락(템포: 굿거리→자진→휘모리)",
+   "personal": "가락(굿거리→자진굿거리→당악)",
    "signature": "K",
    "import": "F",
    "universal": [],
@@ -104,7 +104,7 @@
    "range": "melee",
    "role": "화력",
    "hp": 32,
-   "personal": "작두(체력을 걸고 날 위에 선다)",
+   "personal": "작두(장단이 이어지는 동안 날 위에 선다)",
    "signature": "B",
    "import": "K",
    "universal": [],
@@ -135,12 +135,12 @@
    ]
   },
   {
-   "id": "dosa",
-   "name": "도사",
+   "id": "beopsa",
+   "name": "법사",
    "range": "ranged",
    "role": "중간",
    "hp": 32,
-   "personal": "주사(부적 먹)",
+   "personal": "경면주사(붉은 부적 먹)",
    "signature": "T",
    "import": "S",
    "universal": [],
@@ -176,7 +176,7 @@
    "range": "melee",
    "role": "수호",
    "hp": 40,
-   "personal": "오랏줄(묶은 적 수)",
+   "personal": "오라(적패지에 이름이 오른 적을 묶는다)",
    "signature": "D",
    "import": "B",
    "universal": [],
