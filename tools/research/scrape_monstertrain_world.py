@@ -1150,6 +1150,12 @@ def scrape_mt2(gamedata=None):
                            for m in [re.match(r"Soul Savior: (First Battle|Final Battle|\S+'s Region)", w)] if m})
             if regs:
                 e["area"] = "Soul Savior: " + ", ".join(regs)
+            elif ss_info.get(e["name"], (None, None))[1]:
+                reg = ss_info[e["name"]][1]
+                e["area"] = "Soul Savior: " + reg
+                if e["category"] == "boss" and not e["waves"]:
+                    e["waves"] = [f"Soul Savior: {reg} boss wave ('Boss' slot of the "
+                                  f"{'first' if 'Region' in reg else 'only'} combat)"]
         elif e["category"] == "boss":
             rings = [int(x) for x in re.findall(r"\d", e["area"] or "")]
             e["waves"] = [f"R{r} boss: final wave of any Ring {r} combat ({', '.join(ring_combats[r])})"
@@ -1168,6 +1174,9 @@ def scrape_mt2(gamedata=None):
             if en["attack"] is None and g["atk"] is not None and en["extra"].get("stats_source") is None:
                 en["attack"] = g["atk"]
                 en["extra"]["attack_source"] = "game-data dump (wiki infobox gives no attack)"
+            if en["hp"]["base"] is None and g["hp"] is not None and en["extra"].get("stats_source") is None:
+                en["hp"]["base"] = g["hp"]
+                en["extra"]["hp_source"] = "game-data dump (wiki infobox gives no health)"
             if en["extra"].get("mode") is None and en["hp"]["base"] is not None and g["hp"] is not None and \
                     (en["hp"]["base"] != g["hp"] or (en["attack"] is not None and en["attack"] != g["atk"])):
                 mism.append(f"{en['name']} wiki {en['attack']}/{en['hp']['base']} vs data {g['atk']}/{g['hp']}")
