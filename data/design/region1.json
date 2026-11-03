@@ -1,0 +1,313 @@
+{
+ "version": "0.1",
+ "region": {
+  "id": "naru",
+  "name": "건너지 못한 나루",
+  "concept": "이승과 저승의 경계. 강을 건너지 못한 넋들이 물가 마을과 나루터를 맴돈다. 저승길의 첫 구간.",
+  "families": ["수귀", "객귀", "굶주린 넋", "잡귀잡신", "억울귀", "몽달·손각시"],
+  "pressures": ["P1", "P13"],
+  "teaches": ["칸 조준", "진형 교란", "홀림", "쓰러진 영웅 노리기"],
+  "map_shape": "강을 따라 길게 늘어진 사슬형 + 나루터 주변의 작은 고리",
+  "trap_card": "젖은 발목",
+  "key_provisions": ["촛불", "지전"]
+ },
+ "targets": ["선두", "중열", "후열", "전체", "최저 체력", "최고 체력", "무작위", "쓰러진 영웅", "굿상", "자신", "아군 원귀"],
+ "statuses": ["점지", "상흔", "명부", "넋흔들림", "장단", "진형", "굿상", "부적"],
+ "enemies": [
+  {"id": "jeojeun_neok", "name": "물에 젖은 넋", "family": "수귀", "category": "normal", "hp": [12, 14], "position": "front",
+   "han": "물가에서 발이 미끄러져 그대로 떠내려간 넋. 아직 물이 차다.",
+   "intents": [
+    {"id": "a", "name": "젖은 손", "kind": "attack", "target": "선두", "damage": 3, "hits": 2},
+    {"id": "b", "name": "끌어당김", "kind": "move", "target": "후열", "damage": 3, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P2", "P13"],
+   "haewon": {"status": "넋흔들림", "rule": "넋흔들림 2 이상인 상태로 쓰러뜨린다", "story": "흔들어 깨워 물 밖으로 건져 낸다"},
+   "drops": {"material": "젖은 넋전", "gold": [8, 12]}},
+  {"id": "naru_mulgwisin", "name": "나루 물귀신", "family": "수귀", "category": "normal", "hp": [36, 40], "position": "front",
+   "han": "나루에서 배를 기다리다 빠져 죽었다. 지나가는 이의 발목을 잡는다.",
+   "intents": [
+    {"id": "a", "name": "발목 잡기", "kind": "attack", "target": "선두", "damage": 10, "hits": 1},
+    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 6, "effect": "공격 +2 (누적)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P1"],
+   "haewon": {"status": "넋흔들림", "rule": "넋흔들림 4 이상인 상태로 쓰러뜨린다", "story": "흔들린 넋이 비로소 물을 놓는다"},
+   "drops": {"material": "젖은 넋전", "gold": [12, 18]}},
+  {"id": "gilileun_gaekgwi", "name": "길 잃은 객귀", "family": "객귀", "category": "normal", "hp": [26, 30], "position": "front",
+   "han": "장삿길에서 객사했다. 집으로 가는 길을 잊었다.",
+   "intents": [
+    {"id": "a", "name": "헤매는 발길", "kind": "attack", "target": "무작위", "damage": 7, "hits": 1},
+    {"id": "b", "name": "서러운 손짓", "kind": "attack_debuff", "target": "후열", "damage": 5, "hits": 1, "effect": "약화 1"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P3", "P13"],
+   "haewon": {"status": "진형", "rule": "그 턴에 진형이 바뀐 상태로 쓰러뜨린다", "story": "길을 열어 주어 집 쪽으로 돌려보낸다"},
+   "drops": {"material": "떠돌이 짚신", "gold": [10, 16]}},
+  {"id": "botjim_gaekgwi", "name": "봇짐 진 객귀", "family": "객귀", "category": "normal", "hp": [22, 25], "position": "back",
+   "han": "타향에서 번 돈을 지고 돌아오다 죽었다. 봇짐을 놓지 못한다.",
+   "intents": [
+    {"id": "a", "name": "봇짐 휘두르기", "kind": "attack", "target": "선두", "damage": 6, "hits": 1},
+    {"id": "b", "name": "봇짐 싸기", "kind": "defend", "target": "자신", "block": 5},
+    {"id": "c", "name": "달아나기", "kind": "escape", "target": "자신", "effect": "엽전 15를 훔쳐 달아난다(해원·처치 실패)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
+   "passives": [],
+   "pressures": ["P9"],
+   "haewon": {"status": "점지", "rule": "점지 2 이상인 상태로 쓰러뜨린다", "story": "이름을 불러 세우면 봇짐을 내려놓는다"},
+   "drops": {"material": "떠돌이 짚신", "gold": [16, 24]}},
+  {"id": "heogijin_neok", "name": "허기진 넋", "family": "굶주린 넋", "category": "normal", "hp": [18, 21], "position": "front",
+   "han": "제사를 받지 못해 굶주린 넋. 차려진 상을 보면 달려든다.",
+   "intents": [
+    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 7, "hits": 1},
+    {"id": "b", "name": "상 갉아먹기", "kind": "attack", "target": "굿상", "damage": 8, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 5 피해 + 자신 체력 5 회복"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P12"],
+   "haewon": {"status": "굿상", "rule": "굿상에 설치물이 있는 상태로 쓰러뜨린다", "story": "상을 차려 대접하면 배불리 먹고 떠난다"},
+   "drops": {"material": "빈 제기", "gold": [8, 14]}},
+  {"id": "japgwi", "name": "잡귀", "family": "잡귀잡신", "category": "normal", "hp": [6, 8], "position": "any",
+   "han": "이름도 사연도 남지 않은 떠돌이. 무리를 지어 다닌다.",
+   "intents": [
+    {"id": "a", "name": "할퀴기", "kind": "attack", "target": "선두", "damage": 3, "hits": 1}
+   ],
+   "pattern": {"type": "cycle", "order": ["a"]},
+   "passives": ["동료 잡귀가 쓰러질 때마다 남은 잡귀의 공격 +1"],
+   "pressures": ["P7"],
+   "haewon": {"status": "부적", "rule": "부적(토큰) 카드로 마지막 피해를 준다", "story": "부적 한 장에 흩어져 제 갈 길을 간다"},
+   "drops": {"material": "잡귀 넋", "gold": [2, 4]}},
+  {"id": "gutpan_hwebang", "name": "굿판 훼방꾼", "family": "잡귀잡신", "category": "normal", "hp": [24, 28], "position": "back",
+   "han": "굿판마다 끼어들어 장단을 흐트러뜨리던 잡귀.",
+   "intents": [
+    {"id": "a", "name": "엇박 치기", "kind": "pollute", "target": "전체", "effect": "덱에 '잡음' 2장(사용 불가·휘발)을 섞는다"},
+    {"id": "b", "name": "판 엎기", "kind": "attack", "target": "선두", "damage": 9, "hits": 1}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P4"],
+   "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "장단이 살아나면 저도 흥이 나 물러간다"},
+   "drops": {"material": "잡귀 넋", "gold": [10, 16]}},
+  {"id": "goksori_neok", "name": "곡소리 넋", "family": "굶주린 넋", "category": "normal", "hp": [28, 32], "position": "back",
+   "han": "상주 없이 떠난 넋. 제 곡을 제가 운다.",
+   "intents": [
+    {"id": "a", "name": "곡소리", "kind": "stress", "target": "전체", "effect": "파티 귀기 +4"},
+    {"id": "b", "name": "울며 매달리기", "kind": "attack", "target": "후열", "damage": 8, "hits": 1}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P3"],
+   "haewon": {"status": "명부", "rule": "명부 5 이상인 상태로 쓰러뜨린다", "story": "이름을 명부에 올려 주면 곡을 그친다"},
+   "drops": {"material": "빈 제기", "gold": [12, 18]}},
+
+  {"id": "eogul_ajeon", "name": "누명 쓴 아전 원귀", "family": "억울귀", "category": "elite", "hp": [76, 80], "position": "back",
+   "han": "장부를 맞추지 못했다는 누명으로 매를 맞다 죽은 아전. 아직도 장부를 넘긴다.",
+   "intents": [
+    {"id": "a", "name": "장부 내리치기", "kind": "attack", "target": "선두", "damage": 14, "hits": 1},
+    {"id": "b", "name": "이름 대조", "kind": "possess", "target": "무작위", "effect": "그 영웅을 홀린다(홀림 2: 그 영웅 카드 2장이 효과 없음, 비용은 든다)"},
+    {"id": "c", "name": "붓끝 찌르기", "kind": "attack", "target": "후열", "damage": 5, "hits": 2}
+   ],
+   "pattern": {"type": "weighted", "first": "b", "weights": {"a": 40, "b": 30, "c": 30}, "no_repeat": 2},
+   "passives": ["장부 대조: 홀린 영웅이 카드를 낼 때마다 아전 방어도 3"],
+   "pressures": ["P5", "P13"],
+   "haewon": {"status": "명부", "rule": "명부 8 이상인 상태로 쓰러뜨린다", "story": "누명을 명부에 바로잡아 적어 준다"},
+   "drops": {"material": "타다 남은 소지", "gold": [25, 35]}},
+  {"id": "mongdal", "name": "혼처 잃은 몽달귀", "family": "몽달·손각시", "category": "elite", "hp": [68, 72], "position": "front",
+   "han": "혼례를 사흘 앞두고 죽은 총각. 혼처를 찾아 헤맨다.",
+   "intents": [
+    {"id": "a", "name": "옷자락 붙잡기", "kind": "attack", "target": "최고 체력", "damage": 7, "hits": 2},
+    {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "effect": "공격 +3 (누적)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b", "a"]},
+   "passives": [],
+   "pressures": ["P1", "P2"],
+   "haewon": {"status": "점지", "rule": "점지 4 이상인 상태로 쓰러뜨린다", "story": "혼처를 점지해 주면 비로소 길을 떠난다"},
+   "drops": {"material": "끊어진 댕기", "gold": [25, 35]}},
+  {"id": "mulmit_geurimja", "name": "물밑 그림자", "family": "수귀", "category": "elite", "hp": [56, 60], "position": "back",
+   "han": "나루에서 빠져 죽은 이들이 뭉친 그림자. 손을 뻗어 산 사람을 끌어당긴다.",
+   "intents": [
+    {"id": "a", "name": "물밑으로", "kind": "attack", "target": "쓰러진 영웅", "damage": 8, "hits": 1, "effect": "쓰러진 영웅이 없으면 선두에게 8"},
+    {"id": "b", "name": "손 다시 뻗기", "kind": "summon", "target": "아군 원귀", "effect": "쓰러진 물밑 손 하나를 되살린다(체력 16)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": ["물밑 손 둘과 함께 나온다"],
+   "pressures": ["P7", "P13"],
+   "haewon": {"status": "넋흔들림", "rule": "붕괴 상태에서 그림자를 쓰러뜨린다", "story": "엉킨 넋들이 흔들려 하나씩 풀려난다"},
+   "drops": {"material": "젖은 넋전", "gold": [25, 35]}},
+  {"id": "mulmit_son", "name": "물밑 손", "family": "수귀", "category": "minion", "hp": [16, 18], "position": "front",
+   "han": "그림자가 뻗은 손.",
+   "intents": [
+    {"id": "a", "name": "끌어당김", "kind": "move", "target": "후열", "effect": "후열 영웅을 선두로 끌어낸다"},
+    {"id": "b", "name": "움켜쥐기", "kind": "attack", "target": "선두", "damage": 5, "hits": 1}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P13"],
+   "haewon": null,
+   "drops": {"material": null, "gold": [0, 0]}},
+
+  {"id": "sakkun", "name": "삯 못 받은 뱃사공", "family": "수귀", "category": "boss", "hp": [220, 230], "position": "front",
+   "han": "평생 넋들을 건네주고도 끝내 삯을 받지 못했다. 이제 아무도 건네주지 않는다.",
+   "intents": [
+    {"id": "a", "name": "노 내리치기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1, "phase": 1},
+    {"id": "b", "name": "노 휘두르기", "kind": "attack", "target": "전체", "damage": 5, "hits": 1, "phase": 1},
+    {"id": "c", "name": "강물 들이치기", "kind": "move", "target": "전체", "effect": "진형을 섞고 덱에 그늘 1장", "phase": 1},
+    {"id": "d", "name": "물살 연타", "kind": "attack", "target": "선두", "damage": 9, "hits": 2, "phase": 2},
+    {"id": "e", "name": "건네주지 않는다", "kind": "attack", "target": "쓰러진 영웅", "damage": 14, "hits": 1, "effect": "쓰러진 영웅이 없으면 최저 체력 영웅에게", "phase": 2},
+    {"id": "f", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 15, "effect": "공격 +3 (누적)", "phase": 2}
+   ],
+   "pattern": {"type": "phased", "phases": [
+     {"until_hp_pct": 50, "type": "cycle", "order": ["a", "b", "c"]},
+     {"type": "weighted", "weights": {"d": 40, "e": 30, "f": 30}, "no_repeat": 2}]},
+   "passives": ["삯 요구: 전투 시작 시 손에 '노잣돈 바치기'(0코스트, 보급품 지전 3 소모)가 들어온다. 바치면 해원 조건이 성립한다",
+                "반회피 규칙: 2단계에서는 쓰러진 영웅을 먼저 노린다"],
+   "pressures": ["P1", "P13", "P8"],
+   "haewon": {"status": null, "rule": "노잣돈을 바친 뒤 쓰러뜨린다", "story": "밀린 삯을 치르면 마지막으로 노를 저어 스스로 강을 건넌다"},
+   "drops": {"material": "젖은 넋전", "gold": [95, 105], "chiseong": 1}},
+  {"id": "sangyeo", "name": "넘어가지 못한 상여", "family": "억울귀", "category": "boss", "hp": [150, 150], "position": "back",
+   "han": "저승 강을 건너다 멈춰 선 상여. 상여꾼들이 아직도 상여소리를 멈추지 못한다.",
+   "intents": [
+    {"id": "a", "name": "상여 흔들기", "kind": "buff", "target": "아군 원귀", "effect": "상여꾼 전원 방어도 5"},
+    {"id": "b", "name": "넋 쏟기", "kind": "summon", "target": "아군 원귀", "effect": "물에 젖은 넋 1 소환(최대 2)"},
+    {"id": "c", "name": "무너지는 상여", "kind": "attack", "target": "전체", "damage": 8, "hits": 1, "effect": "상여꾼이 2명 이하일 때만"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"], "override": "상여꾼 2명 이하이면 매 턴 c"},
+   "passives": ["상여꾼이 쓰러질 때마다 상여의 공격 +3 (동료 죽음에 반응)", "상여꾼 넷과 함께 나온다"],
+   "pressures": ["P7", "P1"],
+   "haewon": {"status": null, "rule": "상여꾼이 2명 이상 살아 있을 때 상여를 쓰러뜨린다", "story": "상여를 끝까지 보내 주면 상여꾼들도 함께 강을 건넌다"},
+   "drops": {"material": "타다 남은 소지", "gold": [95, 105], "chiseong": 1}},
+  {"id": "sangyeokkun", "name": "상여꾼", "family": "억울귀", "category": "minion", "hp": [18, 20], "position": "front",
+   "han": "상여를 멘 채 멈춰 선 사람들.",
+   "intents": [
+    {"id": "a", "name": "상여채 밀기", "kind": "attack", "target": "선두", "damage": 4, "hits": 1},
+    {"id": "b", "name": "상여소리", "kind": "stress", "target": "전체", "effect": "파티 귀기 +2"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P3"],
+   "haewon": null,
+   "drops": {"material": null, "gold": [0, 0]}}
+ ],
+ "encounters": {
+  "easy": [
+   {"id": "e1", "enemies": ["jeojeun_neok", "jeojeun_neok"]},
+   {"id": "e2", "enemies": ["gilileun_gaekgwi"]},
+   {"id": "e3", "enemies": ["japgwi", "japgwi", "japgwi"]},
+   {"id": "e4", "enemies": ["heogijin_neok", "jeojeun_neok"]}
+  ],
+  "hard": [
+   {"id": "h1", "enemies": ["naru_mulgwisin", "jeojeun_neok"]},
+   {"id": "h2", "enemies": ["gutpan_hwebang", "japgwi", "japgwi"]},
+   {"id": "h3", "enemies": ["botjim_gaekgwi", "gilileun_gaekgwi"]},
+   {"id": "h4", "enemies": ["goksori_neok", "heogijin_neok"]},
+   {"id": "h5", "enemies": ["naru_mulgwisin", "japgwi", "japgwi"]},
+   {"id": "h6", "enemies": ["goksori_neok", "jeojeun_neok"]}
+  ],
+  "elite": [
+   {"id": "x1", "enemies": ["eogul_ajeon"]},
+   {"id": "x2", "enemies": ["mongdal"]},
+   {"id": "x3", "enemies": ["mulmit_son", "mulmit_son", "mulmit_geurimja"]}
+  ],
+  "boss": [
+   {"id": "b1", "enemies": ["sakkun"]},
+   {"id": "b2", "enemies": ["sangyeokkun", "sangyeokkun", "sangyeokkun", "sangyeokkun", "sangyeo"]}
+  ],
+  "rules": "원정의 첫 2전투는 easy, 이후 hard. 원정 안에서 같은 조합 반복 금지. 수호 방은 elite 3종을 모두 만나야 반복."
+ },
+ "curios": [
+  {"id": "seonang_dol", "name": "서낭당 돌무더기",
+   "bare": "돌을 하나 얹는다 → 60%: 다음 전투 첫 턴 장단 +1 / 40%: 귀기 +5",
+   "provision": {"item": "술", "result": "공양 → 카드 1장 강화"},
+   "hero": {"archetype": "manshin", "result": "신탁 → 다음 방 2개 정찰"}},
+  {"id": "beorin_sangyeo", "name": "버려진 상여",
+   "bare": "뒤진다 → 50%: 엽전 20 + 재료 1 / 30%: 곡소리 넋과 전투 / 20%: 씌임 카드 1",
+   "provision": {"item": "지전", "result": "넋 위로 → 파티 모든 쌍 정 +1, 30%: 일반 가호 1"},
+   "hero": {"archetype": "seungnyeo", "result": "염불 → 파티 귀기 −10"}},
+  {"id": "mulga_mudeom", "name": "물가 무덤",
+   "bare": "흙을 헤친다 → 재료 2 + 귀기 +10, 25%: 씌임 카드 1",
+   "provision": {"item": "술", "result": "술을 올린다 → 카드 1장을 같은 영웅의 다른 카드로 변환"},
+   "hero": {"archetype": "chasa", "result": "명부 확인 → 이 원정 원귀의 해원 조건 1개 공개"}},
+  {"id": "jangseung", "name": "장승",
+   "bare": "새겨진 이정을 읽는다 → 지도 일부 공개",
+   "provision": {"item": "향", "result": "향을 피운다 → 숨은 고리 통로 1개 + 인접 방 정찰"},
+   "hero": {"archetype": "talggun", "result": "장승 흉내 → 다음 전투 시작 시 진형을 자유롭게 바꾼다"}},
+  {"id": "binbae", "name": "나루터 빈 배",
+   "bare": "배를 살핀다 → 50%: 엽전 15 / 50%: 끌려 들어가 선두 영웅 상처 카드 1",
+   "provision": {"item": "지전", "result": "뱃사공의 노잣돈 자리에 놓는다 → 보스 해원 조건 공개"},
+   "hero": {"archetype": "posu", "result": "배 밑을 살핀다 → 재료(젖은 넋전) 2"}},
+  {"id": "neokjeon_deomi", "name": "젖은 넋전 더미",
+   "bare": "펼쳐 본다 → 40%: 파티 영웅 카드 3택 1 획득 / 60%: 귀기 +8",
+   "provision": {"item": "부적", "result": "정화한다 → 카드 1장 제거"},
+   "hero": {"archetype": "beopsa", "result": "해원경을 읽는다 → 덱의 씌임 카드 모두 정화"}},
+  {"id": "gutsang_janhae", "name": "굿상 잔해",
+   "bare": "남은 음식을 거둔다 → 쌀 +2, 30%: 씌임 카드 1",
+   "provision": {"item": "향", "result": "부정을 가신다 → 쌀 +3 안전하게"},
+   "hero": {"archetype": "jaebi", "result": "뒷전 장단을 친다 → 이번 원정 밤 습격 확률 0%"}},
+  {"id": "mangja_botjim", "name": "망자의 봇짐",
+   "bare": "풀어 본다 → 엽전 10~25 또는 보급품 1",
+   "provision": null,
+   "hero": {"archetype": "baksu", "result": "신칼로 매듭을 끊는다 → 작두박수 카드 1장 강화 + 재료 1"}}
+ ],
+ "events": [
+  {"id": "saja_geommun", "name": "사자 검문", "room": true,
+   "setup": "군졸 차림의 저승사자 셋이 길을 막고 심술을 부린다. 해학이 있는 장면이다.",
+   "choices": [
+    {"label": "인정을 쓴다", "cost": "지전 2", "result": "통과 + 다음 전투 선제 확정"},
+    {"label": "동료 차사가 말을 건넨다", "requires": "chasa", "result": "무료 통과 + 차사와 파티원 각각 정 +1"},
+    {"label": "버틴다", "result": "놀이 싸움(특수 전투): 사자 셋, 피해가 체력 대신 귀기로 들어간다. 이기면 통과 + 엽전 20, 지면 귀기 +15 후 통과"}]},
+  {"id": "tteooreun_neok", "name": "떠오른 넋", "room": true,
+   "setup": "물가에 사람 모양 넋전이 떠올라 있다.",
+   "choices": [
+    {"label": "넋을 건진다", "cost": "쌀 1, 향 1", "result": "선택한 영웅 쌍 정 +2, 30%: 일반 가호 1"},
+    {"label": "지나간다", "result": "없음"}]},
+  {"id": "jalmot_on_saram", "name": "잘못 끌려온 사람", "room": true,
+   "setup": "이름이 같아 잘못 끌려온 산 사람이 저승 어귀에서 헤맨다(잘못 데려간 사람 설화).",
+   "choices": [
+    {"label": "데려다준다", "result": "호위 특수 전투: 그 사람(체력 20)을 지키며 잡귀 무리를 3턴 버틴다. 성공하면 치성 +1, 실패하면 귀기 +10"},
+    {"label": "길만 알려 준다", "cost": "향 1", "result": "엽전 15"}]},
+  {"id": "seonang_gogae", "name": "서낭 고개 신탁", "room": true,
+   "setup": "고개 마루의 서낭당에 오색 천이 걸려 있다.",
+   "choices": [
+    {"label": "공수를 받는다", "requires": "manshin", "result": "남은 방 전체 정찰"},
+    {"label": "향을 올린다", "cost": "향 1", "result": "다음 방 2개 정찰"},
+    {"label": "돌만 얹고 간다", "result": "귀기 −5"}]},
+  {"id": "heotgut", "name": "헛굿 판", "room": true,
+   "setup": "잡귀들이 모여 굿 흉내를 내며 떠들썩하다.",
+   "choices": [
+    {"label": "장단을 맞춰 준다", "requires": "jaebi", "result": "뒷전: 이번 원정 동안 씌임 임계치 +10"},
+    {"label": "상을 차려 대접한다", "cost": "쌀 2", "result": "이번 원정 동안 씌임 임계치 +5"},
+    {"label": "쫓아낸다", "result": "전투(잡귀 ×4)"}]},
+  {"id": "nanutbae", "name": "뱃사공의 나룻배", "room": true, "fixed": "보스 길에서 보스 굴 바로 앞",
+   "setup": "삯을 받지 못한 뱃사공의 빈 배가 매여 있다.",
+   "choices": [
+    {"label": "노잣돈을 놓고 이야기를 듣는다", "cost": "지전 1", "result": "보스 해원 조건 공개 + 보스전 첫 턴 드로우 +1"},
+    {"label": "그냥 지나간다", "result": "없음"}]}
+ ],
+ "traps": [
+  {"id": "jeojeun_balmok", "name": "젖은 발목", "effect": "선두 영웅 덱에 상처 카드 1장(사용 불가, 전투가 끝나면 사라짐)", "disarm": "향 1 또는 부적 1"},
+  {"id": "eongkin_neokjul", "name": "엉킨 넋줄", "effect": "다음 전투 시작 시 진형이 섞인다", "disarm": "부적 1"},
+  {"id": "goksori_meari", "name": "곡소리 메아리", "effect": "파티 귀기 +10", "disarm": "술 1"}
+ ],
+ "relics": [
+  {"id": "teoju", "name": "터주의 가호", "tier": "일반", "effect": "전투 첫 턴, 선두 영웅 방어도 5"},
+  {"id": "geollip", "name": "걸립의 가호", "tier": "일반", "effect": "엽전 획득 +20%"},
+  {"id": "jowang", "name": "조왕의 가호", "tier": "일반", "effect": "길굿 끼니 효과 두 배"},
+  {"id": "seongju", "name": "성주의 가호", "tier": "일반", "effect": "모든 영웅 최대 체력 +4"},
+  {"id": "geumjul", "name": "문간 금줄", "tier": "일반", "effect": "기습당함 확률 −15%p"},
+  {"id": "eophangari", "name": "업항아리", "tier": "일반", "effect": "해원할 때 원귀 재료 +1"},
+  {"id": "sansin", "name": "산신의 가호", "tier": "고급", "effect": "장단이 처음 5가 되는 턴마다 카드 1장 드로우"},
+  {"id": "yongwang", "name": "용왕의 가호", "tier": "고급", "effect": "수귀 계열 원귀에게 주는 피해 +25%"},
+  {"id": "seonang", "name": "서낭의 가호", "tier": "고급", "effect": "길목의 덫을 항상 미리 본다"},
+  {"id": "daegam", "name": "대감의 가호", "tier": "고급", "effect": "전투 승리마다 엽전 +10. 단, 2전투마다 쌀 1을 공물로 바치지 않으면 씌임 카드 '대문 흔들기' 1장"},
+  {"id": "obanggi", "name": "오방 깃발", "tier": "고급", "effect": "오방기 뽑기에서 깃발 하나를 미리 뒤집어 본다"},
+  {"id": "jeseok", "name": "제석의 가호", "tier": "희귀", "effect": "받는소리가 3번 이어질 때마다 에너지 +1(턴당 1회)"},
+  {"id": "chilseong", "name": "칠성의 가호", "tier": "희귀", "effect": "사망 판정 버틸 확률 +15%p"},
+  {"id": "myeongdo", "name": "명도 한 닢", "tier": "희귀", "effect": "전투 첫 턴, 모든 영웅의 개인 자원 +1"},
+  {"id": "cheonsin", "name": "천신의 가호", "tier": "보스", "effect": "에너지 +1. 전투 시작 시 그늘 1장"},
+  {"id": "samjichang", "name": "삼지창 사슬", "tier": "보스", "effect": "에너지 +1. 길굿에서 카드 강화를 할 수 없다"},
+  {"id": "daesin_bangul", "name": "대신방울", "tier": "보스", "effect": "에너지 +1. 손패 최대 8장"}
+ ]
+}
