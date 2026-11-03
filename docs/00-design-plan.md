@@ -120,7 +120,7 @@
 | D4 | 프로토타입 기술 | TypeScript(웹) / Godot / Unity | ✅ **TypeScript**: 규칙 엔진을 화면과 분리해 대량 시뮬레이션하기 쉽고, 브라우저로 바로 공유할 수 있다 | 확정 11-03 |
 | D5 | 세계관·톤 | A 저승굿(K-무속 퇴마) / B 용병단 / C SF 탐사선 / D 다 쓴 동화책 — [제안서](research/world-tone-options.md) | ✅ **A 저승굿** | 확정 11-03 |
 | D6 | 카드 전수 조사 범위 | Tier A만 / Tier B까지 | ✅ **Tier A만**. Tier B는 시스템만 참고 | 확정 11-03 |
-| D7 | 원정 지도·탐험 방식 | Slay the Spire식 층 분기 지도 / **Darkest Dungeon식 던전 탐험**(방·통로, 빛, 보급품, 호기심 오브젝트, 야영) | ✅ **DD식** — 다순 결정. 근거 조사: `docs/research/exploration-reference.md` | 확정 11-03 |
+| D7 | 원정 지도·탐험 방식 | Slay the Spire식 층 분기 지도 / **Darkest Dungeon식 던전 탐험**(방·통로, 빛, 보급품, 호기심 오브젝트, 야영) | ✅ **DD식**. 근거 조사: `docs/research/exploration-reference.md` | 확정 11-03 |
 
 ## 7. 원칙: 저작권과 독창성
 
