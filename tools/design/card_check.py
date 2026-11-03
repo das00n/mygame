@@ -32,6 +32,8 @@ DEFAULT_BAND = (0.80, 1.20)
 
 APPLY = {"취약": 3.5, "약화": 3.0, "점지": 2.0, "상흔": 1.7, "명부": 1.3, "넋흔들림": 1.1, "그늘": -2.0}
 EXPECT = {"점지": 2.5, "상흔": 4, "명부": 6, "넋흔들림": 6, "장단": 3, "굿상": 1.5, "부적": 2, "그늘": 1, "손패": 4}
+ALIASES = {"붕괴": "넋흔들림", "선두": "진형", "중열": "진형", "후열": "진형"}
+DECLARED_ONLY_MAX = 3
 FORBIDDEN = ["광기", "미친", "발작", "정신병", "악마", "마녀", "지옥불", "선혈", "내장", "피범벅"]
 
 errors, warns = [], []
@@ -152,8 +154,14 @@ def infer(effects, ctx, personal, out=None):
             out["produce"].add("진형")
         elif op == "summon":
             out["produce"].add("굿상")
+            s = ctx.summons.get(ef.get("id")) if ctx else None
+            if s:
+                infer(s.get("effects"), ctx, personal, out)
         elif op == "token":
             out["produce"].add("부적")
+            t = ctx.tokens.get(ef.get("id")) if ctx else None
+            if t:
+                infer(t.get("effects"), ctx, personal, out)
         elif op == "personal" and ef.get("n", 1) > 0 and personal:
             out["produce"].add(personal)
         elif op in ("per", "consume"):
@@ -162,8 +170,12 @@ def infer(effects, ctx, personal, out=None):
                 out["consume"].add(src)
             infer(ef.get("each"), ctx, personal, out)
         elif op == "cond":
+            cond = str(ef.get("if", ""))
             for name in list(SHARED) + ([personal] if personal else []):
-                if name and name in str(ef.get("if", "")):
+                if name and name in cond:
+                    out["consume"].add(name)
+            for alias, name in ALIASES.items():
+                if alias in cond:
                     out["consume"].add(name)
             infer(ef.get("then"), ctx, personal, out)
         elif op == "power":
@@ -213,6 +225,7 @@ def check_hero(hid, res, verbose):
     ctx = Ctx({t["id"]: t for t in d.get("tokens", [])}, {s["id"]: s for s in d.get("summons", [])})
     personal = PERSONAL[hid]
     rows, ids = [], set()
+    declared_only = []
     tag_count = {"produce": Counter(), "consume": Counter()}
     for t in d.get("tokens", []):
         check_text(t["id"], t.get("name"), t.get("text"))
@@ -233,8 +246,15 @@ def check_hero(hid, res, verbose):
             miss = inferred[kind] - set(declared.get(kind, []))
             if miss and verbose:
                 W(where, f"효과에는 {kind} {sorted(miss)}가 있는데 tags에 없음")
+            only_declared = set(declared.get(kind, [])) - inferred[kind]
+            if only_declared and not c.get("starter"):
+                declared_only.append(f"{c['name']}:{kind}:{','.join(sorted(only_declared))}")
             if not c.get("starter"):
                 tag_count[kind].update(set(declared.get(kind, [])) | inferred[kind])
+    if len(declared_only) > DECLARED_ONLY_MAX:
+        E(hid, f"효과에서 추론되지 않는 선언 태그 {len(declared_only)}개 (최대 {DECLARED_ONLY_MAX}): {declared_only}")
+    elif declared_only and verbose:
+        W(hid, f"선언만 된 태그: {declared_only}")
     # 수량
     starters = [c for c in d["cards"] if c.get("starter")]
     pool = [c for c in d["cards"] if not c.get("starter")]
@@ -250,7 +270,7 @@ def check_hero(hid, res, verbose):
     for k, (lo, hi) in {"공격": (9, 13), "기술": (9, 13), "능력": (3, 5)}.items():
         if not lo <= ty[k] <= hi:
             E(hid, f"타입 {k} {ty[k]}장 (허용 {lo}~{hi})")
-    defense = sum(1 for c in pool if any(ef.get("op") == "block" or (ef.get("op") == "move" and ef.get("kind") == "엄호") for ef in walk(c.get("effects"))))
+    defense = sum(1 for c in pool if any(ef.get("op") == "block" or (ef.get("op") == "move" and ef.get("kind") == "엄호") for ef in walk(c.get("effects"), ctx)))
     need_def = 8 if hid in GUARDIANS else 5
     if defense < need_def:
         E(hid, f"방어 수단 {defense}장 (최소 {need_def})")
@@ -287,16 +307,28 @@ def check_hero(hid, res, verbose):
     if hid not in DARK_CONSUMERS and dark:
         E(hid, f"그늘 소비는 차사·만신만 (현재 {dark}장)")
     specials = sum(1 for c in d["cards"] for ef in walk(c.get("effects")) if ef.get("op") == "special")
-    if specials > 3:
-        E(hid, f"special 효과 {specials}개 (3개 이하)")
-    return {"hid": hid, "rows": rows, "P": P, "C": C, "rar": rar, "ty": ty, "defense": defense, "avg": avg, "paths": paths}
+    specials += sum(1 for t in list(d.get("tokens", [])) + list(d.get("summons", [])) for ef in walk(t.get("effects")) if ef.get("op") == "special")
+    if specials > 4:
+        E(hid, f"special 효과 {specials}개 (카드·부적·설치물 합쳐 4개 이하)")
+    names_extra = [t["name"] for t in d.get("tokens", [])] + [x["name"] for x in d.get("summons", [])]
+    return {"hid": hid, "rows": rows, "P": P, "C": C, "rar": rar, "ty": ty, "defense": defense, "avg": avg, "paths": paths, "extra_names": names_extra}
 
 
-def walk(effects):
+def walk(effects, ctx=None, _seen=None):
+    """효과 트리를 훑는다. ctx가 있으면 부적·설치물 안쪽까지 들어간다."""
+    _seen = _seen if _seen is not None else set()
     for ef in effects or []:
         yield ef
         for k in ("each", "then", "effects"):
-            yield from walk(ef.get(k))
+            yield from walk(ef.get(k), ctx, _seen)
+        if ctx and ef.get("op") in ("token", "summon"):
+            ref = ef.get("id")
+            if ref in _seen:
+                continue
+            _seen.add(ref)
+            src = (ctx.tokens if ef["op"] == "token" else ctx.summons).get(ref)
+            if src:
+                yield from walk(src.get("effects"), ctx, _seen)
 
 
 def check_extra(name, owners_ok):
@@ -307,11 +339,14 @@ def check_extra(name, owners_ok):
     d = json.loads(path.read_text())
     ctx = Ctx({t["id"]: t for t in d.get("tokens", [])}, {s["id"]: s for s in d.get("summons", [])})
     rows = []
+    for t in list(d.get("tokens", [])) + list(d.get("summons", [])):
+        check_text(f"{name}/{t.get('id')}", t.get("name"), t.get("text"))
     for c in d["cards"]:
         where = f"{name}/{c.get('name')}"
         owners_ok(c, where)
         check_card_common(c, ctx, where, rows)
-    return {"name": name, "rows": rows, "data": d}
+    extra_names = [t["name"] for t in d.get("tokens", [])] + [x["name"] for x in d.get("summons", [])]
+    return {"name": name, "rows": rows, "data": d, "extra_names": extra_names}
 
 
 # ── 출력 ─────────────────────────────────────────────
@@ -333,13 +368,40 @@ def write_hero_md(hid, info, hero_name):
     (DOCS / f"cards-{hid}.md").write_text("\n".join(L) + "\n")
 
 
-def write_overview(infos, extras, heroes):
+ROSTER_MIN = 2
+LINKABLE = SHARED - {"취약", "약화"}
+
+
+def roster_links(infos, heroes):
+    """카드 데이터에서 다시 계산한 영웅 쌍의 연계 강도: Σ_자원 min(A 생산 장수, B 소비 장수) + 반대 방향."""
+    from itertools import combinations
+    by = {i["hid"]: i for i in infos}
+    out = []
+    for a, b in combinations(list(by), 2):
+        A, B = by[a], by[b]
+        per = {}
+        for r in LINKABLE:
+            v = min(A["P"][r], B["C"][r]) + min(B["P"][r], A["C"][r])
+            if v:
+                per[r] = v
+        out.append((f"{heroes[a]} + {heroes[b]}", sum(per.values()), sorted(per.items(), key=lambda kv: -kv[1])[:3]))
+    return sorted(out, key=lambda x: x[1])
+
+
+def write_overview(infos, extras, heroes, roster=None):
     L = ["# 카드 전체 요약 (자동 생성)", "", "`tools/design/card_check.py` 출력. 기준: [docs/04-cards.md](../04-cards.md)", "",
          "| 영웅 | 카드 | 일반/고급/희귀 | 공격/기술/능력 | 방어 수단 | 평균 비용 | 가치/예산 범위 | 목록 |", "|---|---:|---|---|---:|---:|---|---|"]
     for info in infos:
         rs = [v / b for c, v, b in info["rows"] if v is not None and b]
         L.append(f"| {heroes[info['hid']]} | {len(info['rows'])} | {info['rar']['일반']}/{info['rar']['고급']}/{info['rar']['희귀']} | "
                  f"{info['ty']['공격']}/{info['ty']['기술']}/{info['ty']['능력']} | {info['defense']} | {info['avg']:.2f} | {min(rs):.2f}~{max(rs):.2f} | [보기](cards-{info['hid']}.md) |")
+    if roster:
+        vals = [s for _, s, _ in roster]
+        L += ["", "## 로스터 연계 (카드 데이터로 다시 계산)", "",
+              f"영웅 쌍 28개의 연계 강도 = Σ 자원 min(A가 생산하는 카드 수, B가 소비하는 카드 수) + 반대 방향. 최소 {min(vals)} · 중앙 {sorted(vals)[len(vals)//2]} · 최대 {max(vals)} (기준 {ROSTER_MIN} 이상)", "",
+              "| 쌍 | 강도 | 주요 자원 |", "|---|---:|---|"]
+        for pair, st, top in roster:
+            L.append(f"| {pair} | {st} | {', '.join(f'{r} {v}' for r, v in top)} |")
     for ex in extras:
         L += ["", f"## {ex['name']}", "", "| 카드 | 주인 | 비용 | 타입 | 효과 | 가치/예산 |", "|---|---|---:|---|---|---:|"]
         for c, v, b in ex["rows"]:
@@ -374,6 +436,8 @@ def main():
             o = c.get("owners", [])
             if len(o) != 2 or any(x not in heroes for x in o) or c.get("rarity") != "합기":
                 E(where, "합기 카드는 owners 2명(영웅 id)과 희귀도 '합기'")
+            if "받는소리" in c.get("keywords", []):
+                E(where, "합기 카드는 받는소리가 항상 성립하므로 키워드로 달지 않는다")
         ex = check_extra("duo", duo_ok)
         if ex:
             pairs = Counter(tuple(sorted(c["owners"])) for c in ex["data"]["cards"])
@@ -396,14 +460,29 @@ def main():
     for n, k in names.items():
         if k > 1:
             E("전체", f"카드 이름 중복: {n} ×{k}")
+    extra = Counter()
+    for x in infos + extras:
+        extra.update(x.get("extra_names", []))
+    for n, k in extra.items():
+        if k > 1 or names.get(n):
+            W("전체", f"부적·설치물 이름이 겹침: {n}")
+    roster = None
+    if not only and len(infos) == 8:
+        roster = roster_links(infos, heroes)
+        for pair, strength, _ in roster:
+            if strength < ROSTER_MIN:
+                E("로스터", f"{pair}: 카드 연계 강도 {strength} (최소 {ROSTER_MIN})")
     if not a.no_md:
         DOCS.mkdir(parents=True, exist_ok=True)
         for info in infos:
             write_hero_md(info["hid"], info, heroes[info["hid"]])
         if not only:
-            write_overview(infos, extras, heroes)
+            write_overview(infos, extras, heroes, roster)
     total = sum(len(i["rows"]) for i in infos) + sum(len(e["rows"]) for e in extras)
     print(f"검사한 카드 {total}장 (영웅 {len(infos)}명, 추가 {[e['name'] for e in extras]})")
+    if roster:
+        vals = [s for _, s, _ in roster]
+        print(f"로스터 연계 강도: 최소 {min(vals)} ({roster[0][0]}) · 중앙 {sorted(vals)[len(vals)//2]} · 최대 {max(vals)}")
     for w in warns:
         print("주의:", w)
     for e in errors:
