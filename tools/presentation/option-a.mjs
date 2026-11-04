@@ -1,5 +1,5 @@
 // 안 A — 2D 측면 종이 무대: 꼭두풍 영웅 × 넋전풍 원귀, 한지 겹 배경, DD식 측면 길목
-import { defs, hero, spirit, soulOver, icon, HERO, HANJI } from './figures.mjs';
+import { globalDefs, hero, spirit, soulOver, icon, HERO, HANJI } from './figures.mjs';
 import {
   SCENE, BASE_CSS, FONT_LINKS, handHTML, drumsHTML, lightbarHTML, switchNav,
   svgBar, statusChips, intentBadge, arc, heroColor, heroName,
@@ -12,6 +12,7 @@ const CSS = `
 .dock .left{display:flex;flex-direction:column;gap:9px}
 .dock .row{display:flex;align-items:center;gap:10px}
 .dock .right{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.handwrap{min-width:0}
 .lbl{font-size:12px;color:var(--text-dim)}
 .lbl b{color:var(--lamp);font-weight:400;font-family:var(--font-brush);font-size:22px}
 .edetail{display:none}
@@ -30,7 +31,12 @@ const CSS = `
 .fac div.lock{opacity:.55;border-style:dashed}
 .gauge{display:flex;gap:2px}.gauge i{width:14px;height:14px;border:1px solid #6b4a5a;display:block}.gauge i.on{background:#a0466a}
 .scroller{overflow:hidden}
-.mgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:10px 16px;flex:1;min-height:0}
+.mgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:10px 16px;align-content:start}
+.bands{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:0 16px 12px}
+.bands figure{margin:0;border:1px solid var(--line)}
+.bands svg{display:block;width:100%;height:auto}
+.bands figcaption{font-size:11.5px;color:var(--text-dim);padding:4px 6px;line-height:1.4}
+.bands figcaption b{color:var(--lamp);font-weight:400;font-family:var(--font-brush);font-size:19px;margin-right:4px}
 .mgrid figure{margin:0;border:1px solid var(--line);background:rgba(21,26,42,.7);display:flex;flex-direction:column}
 .mgrid figure svg{display:block;width:100%;height:auto}
 .mgrid figcaption{padding:6px 8px;font-size:12px;color:var(--text-dim);line-height:1.45}
@@ -38,7 +44,10 @@ const CSS = `
 .mgrid code{font-size:11px;color:var(--lamp)}
 @media (max-width:600px){
   .dock{grid-template-columns:1fr;gap:6px;padding:6px 12px 8px;align-content:start}
-  .dock .left{flex-direction:row;align-items:center;justify-content:space-between;gap:6px}
+  .dock .left{display:grid;grid-template-columns:1fr auto;gap:6px 8px;align-items:center}
+  .dock .left > .row:first-child{grid-column:1;grid-row:1}
+  .dock .left .endrow{grid-column:2;grid-row:1}
+  .dock .left .batline{grid-column:1/-1;grid-row:2;font-size:12px}
   .dock .right{display:none}
   .edetail{display:block;padding:4px 12px 0;font-size:11.5px;line-height:1.5;color:var(--text-dim)}
   .edetail div{display:flex;gap:6px;border-bottom:1px solid var(--line);padding:2px 0}
@@ -56,18 +65,24 @@ const CSS = `
   .scroller svg{width:820px!important;max-width:none}
   .mgrid{grid-template-columns:1fr 1fr;padding:8px 12px;gap:8px;overflow:hidden}
   .mgrid figcaption{font-size:11px;padding:4px 6px}
+  .mgrid code{display:none}
+  .mgrid figure svg{height:150px}
+  .mgrid .d{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .bands{display:none}
   .mgrid figcaption b{font-size:18px}
   .mgrid figure.wide{grid-column:span 2}
 }
 `;
 
 // ── 배경 ──
+let UID = 0;
 function nightRiver(W, H, { floorY, light = 0.55, lampX = 330 }) {
+  const u = ++UID;
   return `<defs>
-    <linearGradient id="skyA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2442"/><stop offset=".6" stop-color="#141a2c"/><stop offset="1" stop-color="#0e111c"/></linearGradient>
-    <radialGradient id="vig" cx="${(lampX / W) * 100}%" cy="70%" r="75%"><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="${0.35 + (1 - light) * 0.5}"/></radialGradient>
+    <linearGradient id="skyA${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2442"/><stop offset=".6" stop-color="#141a2c"/><stop offset="1" stop-color="#0e111c"/></linearGradient>
+    <radialGradient id="vig${u}" cx="${(lampX / W) * 100}%" cy="70%" r="75%"><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="${0.35 + (1 - light) * 0.5}"/></radialGradient>
   </defs>
-  <rect width="${W}" height="${H}" fill="url(#skyA)"/>
+  <rect width="${W}" height="${H}" fill="url(#skyA${u})"/>
   <path d="M0 ${floorY - 120} Q${W * 0.15} ${floorY - 190} ${W * 0.3} ${floorY - 140} T${W * 0.62} ${floorY - 150} T${W} ${floorY - 175} V${floorY} H0 Z" fill="#1c2540" opacity=".9"/>
   <path d="M0 ${floorY - 80} Q${W * 0.2} ${floorY - 120} ${W * 0.42} ${floorY - 90} T${W * 0.8} ${floorY - 100} T${W} ${floorY - 85} V${floorY} H0 Z" fill="#222c48"/>
   <path d="M0 ${floorY - 80} Q${W * 0.2} ${floorY - 120} ${W * 0.42} ${floorY - 90} T${W * 0.8} ${floorY - 100} T${W} ${floorY - 85} V${floorY} H0 Z" fill="url(#hanjiFiber)" opacity=".5"/>
@@ -104,79 +119,74 @@ function gutsangTable(x, y, s = 1, { label = true } = {}) {
 
 // ── 전투 (데스크톱) ──
 function combatStageDesktop() {
-  const W = 1280, H = 440, FY = 345;
+  const W = 1280, H = 462, FY = 342;
   const heroX = { posu: 118, manshin: 254, seungnyeo: 392 };
   const enemyX = [722, 884, 1062];
-  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}${nightRiver(W, H, { floorY: FY + 8, light: 0.6, lampX: 300 })}${geumjul(W, 14)}`;
-  // 굿상
-  s += gutsangTable(510, FY, 1);
-  // 영웅
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${nightRiver(W, H, { floorY: FY + 8, light: 0.6, lampX: 300 })}${geumjul(W, 8)}`;
+  const vig = `<rect width="${W}" height="${H}" fill="url(#vig${UID})"/>`;
+  let ui = '';
+  s += gutsangTable(510, FY, 1, { label: false });
+  ui += `<text x="510" y="${FY + 30}" text-anchor="middle" font-size="13" fill="#e2b23a">굿상 · ${SCENE.gutsang.name}</text><text x="510" y="${FY + 48}" text-anchor="middle" font-size="11.5" fill="#b0a78f">턴 끝 무작위 적 피해 3</text><text x="510" y="${FY + 64}" text-anchor="middle" font-size="11.5" fill="#b0a78f">남은 ${SCENE.gutsang.left}턴</text>`;
   for (const h of SCENE.party) {
     const x = heroX[h.id];
     s += hero(h.id, { x, y: FY, scale: 1.12 });
-    // 귀기 +4 예고(곡소리 넋 — 전체)
-    s += `<g transform="translate(${x + 26} ${FY - 176})"><rect x="-26" y="-11" width="52" height="19" rx="3" fill="rgba(40,30,60,.85)" stroke="#b9b0d2" stroke-opacity=".6"/>${icon('stress', { x: -15, y: -2, s: 0.8, c: '#b9b0d2' })}<text x="-3" y="3" font-size="11.5" fill="#d8d0ee">+4</text></g>`;
-    // 이름표
+    ui += `<g transform="translate(${x + 26} ${FY - 176})"><rect x="-26" y="-11" width="52" height="19" rx="3" fill="rgba(40,30,60,.9)" stroke="#b9b0d2" stroke-opacity=".6"/>${icon('stress', { x: -15, y: -2, s: 0.8, c: '#b9b0d2' })}<text x="-3" y="3" font-size="11.5" fill="#d8d0ee">+4</text></g>`;
     const c = heroColor(h.id);
-    s += `<text x="${x}" y="${FY + 30}" text-anchor="middle" font-size="12" fill="#b0a78f">${h.slot}</text>
-      <text x="${x}" y="${FY + 52}" text-anchor="middle" font-size="25" class="brush" fill="${c}">${heroName(h.id)}</text>
-      ${svgBar(x - 55, FY + 60, 110, 10, h.hp, { block: h.block, pred: h.pred?.dmg ?? 0 })}
-      <text x="${x}" y="${FY + 85}" text-anchor="middle" font-size="12" fill="#ebe3cc">${h.hp[0]}/${h.hp[1]} · ${h.res} ${'◆'.repeat(h.resVal[0])}${'◇'.repeat(Math.max(0, Math.min(5, h.resVal[1]) - h.resVal[0]))}</text>`;
-    if (h.pred) s += `<g transform="translate(${x + 58} ${FY + 64})"><rect x="0" y="-9" width="30" height="18" rx="3" fill="#c33427"/><text x="15" y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">−${h.pred.dmg}</text></g>`;
+    const pips = `${'◆'.repeat(h.resVal[0])}${'◇'.repeat(Math.max(0, Math.min(5, h.resVal[1]) - h.resVal[0]))}`;
+    ui += `<text x="${x}" y="${FY + 28}" text-anchor="middle" font-size="12" fill="#b0a78f">${h.slot}</text>
+      <text x="${x}" y="${FY + 50}" text-anchor="middle" font-size="25" class="brush" fill="${c}">${heroName(h.id)}</text>
+      ${svgBar(x - 46, FY + 58, 92, 10, h.hp, { block: h.block, pred: h.pred?.dmg ?? 0 })}
+      <text x="${x}" y="${FY + 84}" text-anchor="middle" font-size="12" fill="#ebe3cc">${h.hp[0]}/${h.hp[1]}</text>
+      <text x="${x}" y="${FY + 101}" text-anchor="middle" font-size="12" fill="#b0a78f">${h.res} <tspan fill="${c}">${pips}</tspan></text>`;
+    if (h.pred) ui += `<g transform="translate(${x + 48} ${FY + 63})"><rect x="0" y="-9" width="28" height="18" rx="3" fill="#c33427"/><text x="14" y="4.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">−${h.pred.dmg}</text></g>`;
   }
-  // 원귀
   SCENE.enemies.forEach((e, i) => {
     const x = enemyX[i];
     s += spirit(e.family, { x, y: FY, scale: e.scale });
-    s += `<text x="${x}" y="${FY + 30}" text-anchor="middle" font-size="25" class="brush" fill="#ebe3cc">${e.name}</text>
-      ${svgBar(x - 65, FY + 38, 130, 10, e.hp, { mobu: e.mobu ?? 0, color: '#c0504a' })}
-      <text x="${x + 72}" y="${FY + 47}" font-size="11.5" fill="#ebe3cc">${e.hp[0]}/${e.hp[1]}</text>
-      ${statusChips(e.status, x - 65, FY + 66)}
-      <text x="${x - 65}" y="${FY + 92}" font-size="12" fill="${e.haewon.near ? '#f4ead0' : '#b0a78f'}">${e.haewon.near ? '◆ ' : '◇ '}해원 · ${e.haewon.rule} (${e.haewon.prog})</text>`;
-    // 의도
-    const by = 46 + (i === 1 ? 0 : 0);
-    s += intentBadge(e, x, by);
+    ui += `<text x="${x}" y="${FY + 30}" text-anchor="middle" font-size="25" class="brush" fill="#ebe3cc">${e.name}</text>
+      ${svgBar(x - 56, FY + 38, 112, 10, e.hp, { mobu: e.mobu ?? 0, color: '#c0504a' })}
+      <text x="${x}" y="${FY + 64}" text-anchor="middle" font-size="12" fill="#ebe3cc">${e.hp[0]}/${e.hp[1]}${e.mobu ? ` <tspan fill="#b0a78f">· 빗금 = 명부 처형선</tspan>` : ''}</text>
+      ${statusChips(e.status, x - 66, FY + 82)}
+      <text x="${x - 66}" y="${FY + 108}" font-size="12" fill="${e.haewon.near ? '#f4ead0' : '#b0a78f'}">${e.haewon.near ? '◆ ' : '◇ '}해원 · ${e.haewon.rule} (${e.haewon.prog})</text>`;
+    const by = 64;
     const t = e.intent.target;
-    if (t !== 'all') {
-      const hx = heroX[t];
-      s += arc(x - 80, by + 2, hx + 6, FY - 168, heroColor(t), { lift: 30 });
-    } else {
-      s += `<path d="M${x - 80} ${by + 4} Q 700 30 ${heroX.seungnyeo + 40} ${FY - 196}" stroke="#b9b0d2" stroke-width="1.8" stroke-dasharray="3 5" fill="none" opacity=".7"/>`;
-    }
+    if (t !== 'all') ui += arc(x - 80, by + 6, heroX[t] + 6, FY - 166, heroColor(t), { lift: 24 });
+    else ui += `<path d="M${x - 80} ${by + 8} Q 760 120 ${heroX.seungnyeo + 52} ${FY - 184}" stroke="#b9b0d2" stroke-width="1.8" stroke-dasharray="3 5" fill="none" opacity=".7"/>`;
+    ui += intentBadge(e, x, by);
   });
-  s += `<rect width="${W}" height="${H}" fill="url(#vig)"/></svg>`;
-  return s;
+  return `${s}${vig}${ui}</svg>`;
 }
 
 // ── 전투 (폰) ──
 function combatStagePhone() {
-  const W = 390, H = 318, FY = 238;
-  const heroX = { posu: 40, manshin: 98, seungnyeo: 156 };
-  const enemyX = [248, 306, 362];
-  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}${nightRiver(W, H, { floorY: FY + 6, light: 0.6, lampX: 110 })}${geumjul(W, 6)}`;
+  const W = 390, H = 352, FY = 256;
+  const heroX = { posu: 40, manshin: 99, seungnyeo: 158 };
+  const enemyX = [246, 304, 360];
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${nightRiver(W, H, { floorY: FY + 6, light: 0.6, lampX: 110 })}${geumjul(W, 4)}`;
+  const vig = `<rect width="${W}" height="${H}" fill="url(#vig${UID})"/>`;
+  let ui = '';
   s += gutsangTable(204, FY, 0.52, { label: false });
   for (const h of SCENE.party) {
     const x = heroX[h.id];
-    s += hero(h.id, { x, y: FY, scale: 0.62 });
+    s += hero(h.id, { x, y: FY, scale: 0.68 });
     const c = heroColor(h.id);
-    s += `<text x="${x}" y="${FY + 18}" text-anchor="middle" font-size="12" font-weight="700" fill="${c}">${heroName(h.id)}</text>
+    ui += `<text x="${x}" y="${FY + 18}" text-anchor="middle" font-size="12.5" font-weight="700" fill="${c}">${heroName(h.id)}</text>
       ${svgBar(x - 25, FY + 25, 50, 7, h.hp, { pred: h.pred?.dmg ?? 0 })}
-      <text x="${x}" y="${FY + 46}" text-anchor="middle" font-size="11" fill="#ebe3cc">${h.hp[0]}${h.block ? ` ⛉${h.block}` : ''}${h.pred ? ` <tspan fill="#ff8a6d">−${h.pred.dmg}</tspan>` : ''}</text>
-      <text x="${x}" y="${FY + 62}" text-anchor="middle" font-size="10.5" fill="#b0a78f">${h.slot}</text>`;
+      <text x="${x}" y="${FY + 46}" text-anchor="middle" font-size="11.5" fill="#ebe3cc">${h.hp[0]}${h.block ? ` ⛉${h.block}` : ''}${h.pred ? ` <tspan fill="#ff8a6d">−${h.pred.dmg}</tspan>` : ''}</text>
+      <text x="${x}" y="${FY + 63}" text-anchor="middle" font-size="11" fill="#b0a78f">${h.slot}</text>`;
   }
   SCENE.enemies.forEach((e, i) => {
     const x = enemyX[i];
-    s += spirit(e.family, { x, y: FY, scale: e.scale * 0.55 });
-    s += `${svgBar(x - 24, FY + 12, 48, 7, e.hp, { mobu: e.mobu ?? 0, color: '#c0504a' })}
-      <text x="${x}" y="${FY + 33}" text-anchor="middle" font-size="11" fill="#ebe3cc">${e.hp[0]}/${e.hp[1]}</text>
-      ${statusChips(e.status, x - 27, FY + 52, { compact: true })}`;
-    const by = 52;
-    s += intentBadge(e, x, by, { compact: true });
+    s += spirit(e.family, { x, y: FY, scale: e.scale * 0.6 });
+    ui += `${svgBar(x - 24, FY + 12, 48, 7, e.hp, { mobu: e.mobu ?? 0, color: '#c0504a' })}
+      <text x="${x}" y="${FY + 33}" text-anchor="middle" font-size="11.5" fill="#ebe3cc">${e.hp[0]}/${e.hp[1]}</text>
+      ${statusChips(e.status, Math.min(x - e.status.length * 15, W - e.status.length * 32 - 2), FY + 52, { compact: true })}`;
+    const by = 46;
     const t = e.intent.target;
-    if (t !== 'all') s += arc(x - 26, by + 4, heroX[t] + 4, FY - 98, heroColor(t), { lift: 16, w: 1.6 });
+    if (t !== 'all') ui += arc(x - 24, by + 8, heroX[t] + 4, FY - 104, heroColor(t), { lift: 14, w: 1.6 });
+    ui += intentBadge(e, x, by, { compact: true });
   });
-  s += `<rect width="${W}" height="${H}" fill="url(#vig)"/></svg>`;
-  return s;
+  return `${s}${vig}${ui}</svg>`;
 }
 
 function combat() {
@@ -226,8 +236,8 @@ function corridorScene(W, H, { phone = false } = {}) {
   const sc = phone ? 0.56 : 1.02;
   const tiles = phone ? [[14, 128], [134, 248], [254, 368]] : [[150, 470], [490, 810], [830, 1060]];
   const party = phone ? { posu: 30, manshin: 66, seungnyeo: 104 } : { posu: 200, manshin: 312, seungnyeo: 424 };
-  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}${nightRiver(W, H, { floorY: FY + 8, light: 0.85, lampX: phone ? 70 : 320 })}
-    <defs><linearGradient id="dark" x1="0" x2="1"><stop offset="${phone ? 0.36 : 0.42}" stop-color="#05060a" stop-opacity="0"/><stop offset="${phone ? 0.72 : 0.78}" stop-color="#05060a" stop-opacity=".78"/><stop offset="1" stop-color="#05060a" stop-opacity=".92"/></linearGradient></defs>`;
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${nightRiver(W, H, { floorY: FY + 8, light: 0.85, lampX: phone ? 70 : 320 })}
+    <defs><linearGradient id="dark${phone ? 'm' : 'd'}" x1="0" x2="1"><stop offset="${phone ? 0.36 : 0.42}" stop-color="#05060a" stop-opacity="0"/><stop offset="${phone ? 0.72 : 0.78}" stop-color="#05060a" stop-opacity=".78"/><stop offset="1" stop-color="#05060a" stop-opacity=".92"/></linearGradient></defs>`;
   tiles.forEach(([a, b], i) => {
     s += `<path d="M${a} ${FY + 12} L${b} ${FY + 10} L${b - 6} ${FY + 30} L${a - 6} ${FY + 32} Z" fill="${i === 0 ? '#5a4a30' : '#3a3022'}" stroke="#1a1712" stroke-width="1.5"/>
       <text x="${(a + b) / 2}" y="${FY + 27}" text-anchor="middle" font-size="${phone ? 10 : 12}" fill="${i === 0 ? '#ffc964' : '#9a8f78'}">길목 ${i + 1}/3${i === 0 ? ' · 지금' : ''}</text>`;
@@ -236,8 +246,8 @@ function corridorScene(W, H, { phone = false } = {}) {
   s += `<text x="${phone ? 190 : 650}" y="${phone ? FY - 76 : FY - 136}" text-anchor="middle" font-size="${phone ? 11 : 14}" fill="#ebe3cc">기물 · 서낭당 돌무더기</text>`;
   s += `<g opacity=".7"><circle cx="${phone ? 310 : 945}" cy="${FY - (phone ? 30 : 60)}" r="${phone ? 13 : 22}" fill="none" stroke="#7d7765" stroke-width="2" stroke-dasharray="4 4"/><text x="${phone ? 310 : 945}" y="${FY - (phone ? 25 : 52)}" text-anchor="middle" font-size="${phone ? 14 : 22}" fill="#7d7765">?</text></g>`;
   s += gate(phone ? 372 : 1170, FY + 6, phone ? 0.5 : 1);
-  s += `<rect width="${W}" height="${H}" fill="url(#dark)"/>`;
-  s += `<text x="${phone ? 372 : 1170}" y="${phone ? FY - 104 : FY - 206}" text-anchor="middle" font-size="${phone ? 10.5 : 13}" fill="#b0a78f">다음 방 · 미답</text>`;
+  s += `<rect width="${W}" height="${H}" fill="url(#dark${phone ? 'm' : 'd'})"/>`;
+  s += `<text x="${phone ? 384 : 1170}" y="${phone ? FY - 104 : FY - 206}" text-anchor="${phone ? 'end' : 'middle'}" font-size="${phone ? 10.5 : 13}" fill="#b0a78f">다음 방 · 미답</text>`;
   for (const [id, x] of Object.entries(party)) s += hero(id, { x, y: FY + 4, scale: sc });
   const lx = phone ? 82 : 360, ly = phone ? 58 : 108;
   s += `<g transform="translate(${lx} ${ly}) scale(${phone ? 0.6 : 1})"><circle r="70" fill="url(#lampGlow)"/><path d="M0 -40 L0 -24" stroke="#a08a5a" stroke-width="2"/><ellipse cx="0" cy="0" rx="16" ry="22" fill="#ffe2a0" stroke="#a06a2a" stroke-width="2"/><path d="M-16 0 h32 M-14 -10 h28 M-14 10 h28" stroke="#c9873a" stroke-width="1"/><text x="26" y="6" font-size="15" fill="#ffc964">넋등 61</text></g>`;
@@ -249,7 +259,7 @@ function miniMap(W, H) {
   const rooms = [[0, 1, 'v'], [1, 1, 'v'], [1, 0, 'v'], [2, 1, 'c'], [3, 1, '?'], [3, 2, '?'], [4, 1, '?'], [2, 2, '?'], [5, 1, 'b'], [4, 0, '?']];
   const links = [[0, 1, 1, 1], [1, 1, 1, 0], [1, 1, 2, 1], [2, 1, 3, 1], [3, 1, 4, 1], [3, 1, 3, 2], [2, 1, 2, 2], [4, 1, 5, 1], [4, 1, 4, 0]];
   const px = (c) => cell * c + cell / 2, py = (r) => (H / 3) * r + H / 6;
-  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}<rect width="${W}" height="${H}" fill="#121625"/>`;
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><rect width="${W}" height="${H}" fill="#121625"/>`;
   s += `<ellipse cx="${px(1.6)}" cy="${py(1)}" rx="${cell * 1.8}" ry="${H * 0.42}" fill="url(#lampGlow)" opacity=".6"/>`;
   for (const [a, b, c, d] of links) {
     const x1 = px(a), y1 = py(b), x2 = px(c), y2 = py(d);
@@ -284,7 +294,6 @@ function explore() {
       <div class="sup hide-d"><div>촛불<b>6</b></div><div>쌀<b>4</b></div><div>향<b>2</b></div><div>지전<b>2</b></div><div>부적<b>1</b></div><div>술<b>2</b></div></div>
     </div>
   </div>
-  <div class="note">파티가 길목을 걸으면 배경이 겹겹이 흐른다(패럴랙스). 넋등 빛 반경이 줄면 앞쪽 어둠이 짙어진다. 방에 들어서면 같은 무대가 전투 무대가 된다.</div>
   </section>`;
 }
 
@@ -304,7 +313,7 @@ function hanok(x, y, w, h, { label, sub, state = 'built', s = 1, extra = '' }) {
 }
 function villagePanorama(W, H) {
   const GY = 300;
-  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
     <defs><linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2442"/><stop offset=".55" stop-color="#3a3350"/><stop offset="1" stop-color="#7a5048"/></linearGradient></defs>
     <rect width="${W}" height="${H}" fill="url(#dusk)"/>
     <path d="M0 210 Q140 120 300 180 T620 150 T940 170 T${W} 140 V${GY} H0 Z" fill="#2a2c46"/>
@@ -323,7 +332,7 @@ function villagePanorama(W, H) {
   s += hanok(830, GY, 110, 52, { label: '장터', sub: '1단계' });
   s += hanok(985, GY, 100, 60, { label: '무구방', sub: '짓는 중 · 1절기', state: 'building' });
   s += hanok(1125, GY, 96, 58, { label: '전수청', sub: '2막 보스 해원 시', state: 'lock' });
-  s += `<g transform="translate(1238 ${GY})">${[0, 18, 36].map((dx, i) => `<path d="M${dx - 20} 0 L${dx - 20} ${-150 + i * 18}" stroke="#4a3a2a" stroke-width="3"/><path d="M${dx - 28} ${-150 + i * 18} q8 -8 16 0 q-6 3 -16 0" fill="#3a3030"/>`).join('')}<text x="-2" y="40" text-anchor="middle" font-size="12" fill="#c9bf9f">솟대</text></g>`;
+  s += `<g transform="translate(1238 ${GY})">${[0, 18, 36].map((dx, i) => `<path d="M${dx - 20} 0 L${dx - 20} ${-150 + i * 18}" stroke="#4a3a2a" stroke-width="3"/><path d="M${dx - 32} ${-150 + i * 18} q10 -12 22 -2 l6 -4 l-2 7 q-12 6 -26 -1 Z" fill="#c9bf9f" stroke="#1a1712"/>`).join('')}<text x="-2" y="40" text-anchor="middle" font-size="12" fill="#c9bf9f">솟대</text></g>`;
   // 머무는 영웅들
   s += hero('manshin', { x: 286, y: GY + 4, scale: 0.42 }) + hero('jaebi', { x: 590, y: GY + 4, scale: 0.42 }) + hero('seungnyeo', { x: 744, y: GY + 4, scale: 0.42, flip: true }) + hero('posu', { x: 900, y: GY + 4, scale: 0.42 }) + hero('talggun', { x: 440, y: GY + 4, scale: 0.42, flip: true });
   s += `</svg>`;
@@ -335,7 +344,7 @@ function sadangPanel() {
     { arch: 'posu', note: '원정 1 · 1년 경칩' },
     { arch: 'beopsa', note: '원정 4 · 1년 곡우' },
   ];
-  let s = `<svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">${defs()}<rect width="400" height="190" fill="#1a1410"/>
+  let s = `<svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block"><rect width="400" height="190" fill="#1a1410"/>
     <rect x="0" y="120" width="400" height="12" fill="#5a2a18"/>`;
   tablets.forEach((t, i) => {
     const x = 60 + i * 110;
@@ -349,6 +358,17 @@ function sadangPanel() {
   s += `<path d="M60 182 h220" stroke="#6b5636" stroke-dasharray="3 4"/></svg>`;
   return s;
 }
+function lineage() {
+  return `<svg viewBox="0 0 400 96" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin-top:6px">
+    <rect width="400" height="96" fill="#151a2a"/>
+    <text x="10" y="18" font-size="12" fill="#b0a78f">계보도 · 신어머니–신딸</text>
+    <rect x="34" y="30" width="22" height="54" rx="4" fill="#e8cf7c" stroke="#5a4524"/><rect x="38" y="36" width="14" height="4" fill="${heroColor('beopsa')}"/>
+    <text x="66" y="52" font-size="12" fill="#ebe3cc">조상신 · 법사</text><text x="66" y="70" font-size="11" fill="#e2b23a">물려줌: 신장편</text>
+    <path d="M170 58 H240" stroke="#c9a85a" stroke-width="2" stroke-dasharray="5 4"/><path d="M240 58 l-8 -5 l0 10 Z" fill="#c9a85a"/>
+    ${hero('beopsa', { x: 268, y: 88, scale: 0.42 })}
+    <text x="292" y="52" font-size="12" fill="#ebe3cc">신입 법사</text><text x="292" y="70" font-size="11" fill="#b0a78f">시작 카드 +1</text>
+  </svg>`;
+}
 function village() {
   return `<section class="screen" id="village">
   <div class="topbar"><span class="opt">안 A</span><span class="title">마을</span><span class="chip">1년 하지 · 원정 9회</span><span class="sp"></span><span class="chip lamp">엽전 586</span><span class="chip lamp">치성 2</span>
@@ -356,31 +376,47 @@ function village() {
   <div class="stage scroller">${villagePanorama(1280, 360)}</div>
   <div class="lbl hide-d" style="padding:2px 12px">← 밀어서 마을을 둘러본다 → · 균열 3/12</div>
   <div class="vgrid">
-    <div class="panel" style="padding:6px"><h3 style="margin-left:4px">사당 · 위패</h3>${sadangPanel()}<div class="lbl" style="margin:4px">계보도: 조상신이 된 영웅이 같은 원형 신입에게 시작 카드 1장을 물려준다(신어머니–신딸).</div></div>
+    <div class="panel" style="padding:6px"><h3 style="margin-left:4px">사당 · 위패</h3>${sadangPanel()}${lineage()}</div>
     <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
       <div class="fac">
         <div><b>신당 2단계</b>출정 준비 · 지역 1~2</div><div><b>객주 2단계</b>영입 후보 3 · 로스터 9</div><div><b>주막 1단계</b>귀기 회복 · 소문</div>
         <div><b>사당 1단계</b>천도굿 · 위패 · 신물 1장 휴대</div><div><b>장터 1단계</b>보급품 · 교환소</div><div class="lock"><b>무구방</b>짓는 중 — 다음 절기</div>
       </div>
       <div class="row" style="display:flex;gap:8px"><span class="btn end">의뢰판 — 다음 원정</span><span class="btn">로스터</span><span class="btn">사당</span></div>
+      <div class="panel hide-m"><h3>마을 소식 · 하지</h3><div class="lbl" style="line-height:1.7">· 무구방 기둥이 섰다 — 다음 절기에 문을 연다<br>· 떠돌이 탈꾼이 객주에 머문다 — 영입 후보<br>· 서낭 고개에 금줄이 새로 걸렸다 — 균열 4칸에서 강한 원귀가 나온다</div></div>
     </div>
   </div>
-  <div class="note">DD 햄릿처럼 한 장의 파노라마. 시설이 서면 건물·사람·풍경(금줄·솟대·단청)이 늘어 본진이 자라는 것이 보인다(P6).</div>
   </section>`;
 }
 
 // ── 연출 순간 (스토리보드) ──
 function panel(inner, W = 240, H = 230) {
-  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">${defs()}<rect width="${W}" height="${H}" fill="#151a2a"/><rect y="${H - 36}" width="${W}" height="36" fill="#231e16"/>${inner}</svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg"><rect width="${W}" height="${H}" fill="#151a2a"/><rect y="${H - 36}" width="${W}" height="36" fill="#231e16"/>${inner}</svg>`;
+}
+const BANDS = [
+  { name: '환함', v: 1.0, dark: 0.0, text: '선제 +25% · 정찰 +15%p' },
+  { name: '흐림', v: 0.7, dark: 0.25, text: '엽전 +25% · 귀기 +10%' },
+  { name: '어스름', v: 0.45, dark: 0.5, text: '그늘 1장 · 적 피해 +10%' },
+  { name: '어둠', v: 0.25, dark: 0.7, text: '그늘 2장 · 카드 4택' },
+  { name: '칠흑', v: 0.08, dark: 0.88, text: '그늘 3장 · 희귀 보장' },
+];
+function bandThumb(b) {
+  const W = 240, H = 92, FY = 82;
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg"><rect width="${W}" height="${H}" fill="#151a2a"/><rect y="${FY - 4}" width="${W}" height="20" fill="#231e16"/>
+    <ellipse cx="70" cy="${FY - 30}" rx="${30 + b.v * 110}" ry="${20 + b.v * 60}" fill="url(#lampGlow)" opacity="${0.3 + b.v * 0.7}"/>
+    ${hero('posu', { x: 30, y: FY, scale: 0.42 })}${hero('manshin', { x: 62, y: FY, scale: 0.42 })}${hero('seungnyeo', { x: 94, y: FY, scale: 0.42 })}
+    ${spirit('수귀', { x: 190, y: FY, scale: 0.42 })}
+    <rect width="${W}" height="${H}" fill="#04050a" opacity="${b.dark * 0.92}"/>
+    <ellipse cx="70" cy="${FY - 30}" rx="${20 + b.v * 70}" ry="${16 + b.v * 40}" fill="url(#lampGlow)" opacity="${b.v * 0.8}"/></svg>`;
 }
 function moments() {
   const FY = 196;
   const p1 = panel(`${hero('seungnyeo', { x: 80, y: FY, scale: 1, pose: 'attack' })}${spirit('수귀', { x: 186, y: FY, scale: 0.95, state: 'hit' })}
     <path d="M120 70 q30 -20 60 6" stroke="#ffd27a" stroke-width="3" fill="none"/>
-    <g transform="translate(186 40)"><rect x="-38" y="-14" width="76" height="24" rx="3" fill="rgba(10,12,20,.85)" stroke="#8fb5dc"/>${icon('neok', { x: -24, y: -2, s: 1 })}<text x="-12" y="3" font-size="13" fill="#8fb5dc">+2 → 5</text></g>`);
+    <g transform="translate(186 52)"><rect x="-38" y="-14" width="76" height="24" rx="3" fill="rgba(10,12,20,.85)" stroke="#8fb5dc"/>${icon('neok', { x: -24, y: -2, s: 1 })}<text x="-12" y="3" font-size="13" fill="#8fb5dc">+2 → 5</text></g>`);
   const p2 = panel(`${hero('manshin', { x: 70, y: FY, scale: 0.92, pose: 'cast' })}${hero('seungnyeo', { x: 170, y: FY, scale: 0.92, pose: 'attack' })}
-    <path d="M86 60 C110 20 150 20 168 60" stroke="${heroColor('manshin')}" stroke-width="3" fill="none"/><path d="M168 60 l-8 -3 l4 9 Z" fill="${heroColor('manshin')}"/>
-    <text x="120" y="28" text-anchor="middle" font-size="13" fill="#ebe3cc">메기고 → 받고</text>
+    <path d="M86 66 C110 30 150 30 168 66" stroke="${heroColor('manshin')}" stroke-width="3" fill="none"/><path d="M168 66 l-8 -3 l4 9 Z" fill="${heroColor('manshin')}"/>
+    <text x="120" y="44" text-anchor="middle" font-size="13" fill="#ebe3cc">메기고 → 받고</text>
     ${[0, 1, 2, 3, 4].map((i) => `<circle cx="${72 + i * 24}" cy="${FY + 18}" r="8" fill="${i < 3 ? '#e2b23a' : '#2a2418'}" stroke="#6b5636"/>`).join('')}`);
   const p3 = panel(`${hero('posu', { x: 150, y: FY, scale: 1, pose: 'downed' })}${soulOver(120, 110, { calls: 1, need: 3, save: 65, scale: 0.9 })}`);
   const p4 = panel(`<rect width="240" height="230" fill="#1d2440"/>${spirit('수귀', { x: 130, y: FY - 10, scale: 1, state: 'haewon' })}
@@ -398,7 +434,8 @@ function moments() {
   ];
   return `<section class="screen" id="moments">
   <div class="topbar"><span class="opt">안 A</span><span class="title">연출 순간</span><span class="chip hide-m">러프 단계에서 CSS 변형만으로 구현</span><span class="sp"></span></div>
-  <div class="mgrid">${items.map(([t, svg, d, code], i) => `<figure class="${i === 4 ? 'wide' : ''}">${svg}<figcaption><b>${t}</b>${d}<br><code>${code}</code></figcaption></figure>`).join('')}</div>
+  <div class="mgrid">${items.map(([t, svg, d, code], i) => `<figure>${svg}<figcaption><b>${t}</b><span class="d">${d}</span><br><code>${code}</code></figcaption></figure>`).join('')}</div>
+  <div class="bands">${BANDS.map((b) => `<figure>${bandThumb(b)}<figcaption><b>${b.name}</b>${b.text}</figcaption></figure>`).join('')}</div>
   </section>`;
 }
 
@@ -407,6 +444,7 @@ export function pageA() {
 <title>저승굿 표현안 A</title>
 ${FONT_LINKS}
 <style>${BASE_CSS}${CSS}</style></head><body>
+${globalDefs()}
 ${switchNav([['combat', '전투'], ['explore', '탐험'], ['village', '마을'], ['moments', '연출']])}
 ${combat()}${explore()}${village()}${moments()}
 </body></html>`;

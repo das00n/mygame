@@ -26,7 +26,7 @@ export const SCENE = {
     {
       name: '나루 물귀신', family: '수귀', hp: [31, 38], block: 0, scale: 1.15,
       intent: { kind: 'attack', num: '10', label: '발목 잡기', target: 'seungnyeo', targetText: '선두 · 승려' },
-      status: [{ k: 'neok', name: '넋흔들림', v: '3', sub: '버팀 12' }],
+      status: [{ k: 'neok', name: '넋흔들림', v: '3/12' }],
       haewon: { rule: '넋흔들림 4+', prog: '3/4', near: true },
     },
     {
@@ -91,11 +91,11 @@ body:not(:has(.screen:target)) .screen:first-of-type{display:flex}
 .lightbar i.on{background:linear-gradient(90deg,#f2a54a,#ffc964)}
 /* 손패 = 부적 */
 .hand{display:flex;gap:10px;justify-content:center;align-items:flex-end}
-.card{position:relative;width:148px;height:200px;flex:none;background:linear-gradient(170deg,#efdc9c,#dcc076 70%,#cfb066);border:1px solid #8a6a2a;border-radius:4px;color:var(--paper-ink);padding:22px 9px 8px;box-shadow:0 6px 16px rgba(0,0,0,.5);overflow:hidden}
+.card{position:relative;width:140px;height:196px;flex:none;background:linear-gradient(170deg,#efdc9c,#dcc076 70%,#cfb066);border:1px solid #8a6a2a;border-radius:4px;color:var(--paper-ink);padding:22px 9px 8px;box-shadow:0 6px 16px rgba(0,0,0,.5);overflow:hidden}
 .card:before{content:'';position:absolute;inset:5px;border:1px solid rgba(138,106,42,.45)}
 .card .band{position:absolute;left:0;right:0;top:0;height:7px;background:var(--hc)}
 .card .cost{position:absolute;left:8px;top:13px;width:26px;height:26px;border:2px solid var(--cinnabar);color:var(--cinnabar);font-weight:700;display:grid;place-items:center;transform:rotate(-5deg);background:rgba(255,240,200,.5);font-size:15px}
-.card .cname{font-family:var(--font-brush);font-size:27px;color:#a3241a;line-height:1;margin-left:30px;min-height:28px}
+.card .cname{font-family:var(--font-brush);font-size:24px;color:#a3241a;line-height:1;margin-left:30px;min-height:28px}
 .card .ctype{font-size:11px;color:var(--paper-ink-2);text-align:center;margin:6px 0 6px}
 .card .ctext{font-size:12.5px;line-height:1.38}
 .card .ctext b{color:#9e2a1f}
@@ -177,7 +177,7 @@ export function statusChips(list, x, y, { compact = false } = {}) {
   return list
     .map((s) => {
       const label = compact ? s.v : `${s.name} ${s.v}${s.sub ? ` · ${s.sub}` : ''}`;
-      const w = compact ? 32 : 20 + label.length * 11.5;
+      const w = compact ? 28 : 20 + label.length * 11.5;
       const out = `<g><rect x="${cx}" y="${y - 11}" width="${w}" height="20" rx="3" fill="rgba(10,12,20,.82)" stroke="${STATUS_COLOR[s.k] ?? '#999'}" stroke-opacity=".6"/>
         ${icon(s.k, { x: cx + 10, y: y - 1, s: 0.85 })}
         <text x="${cx + 20}" y="${y + 3.5}" font-size="${compact ? 11.5 : 12}" fill="${STATUS_COLOR[s.k] ?? '#ddd'}">${label}</text></g>`;
@@ -193,10 +193,10 @@ export function intentBadge(e, x, y, { compact = false } = {}) {
   if (compact) {
     const slot = it.target === 'all' ? '전' : { seungnyeo: '선', manshin: '중', posu: '후' }[it.target];
     return `<g transform="translate(${x} ${y})">
-      <rect x="-30" y="-15" width="60" height="28" rx="4" fill="rgba(12,10,14,.9)" stroke="${it.kind === 'attack' ? '#e2573f' : it.kind === 'pull' ? '#e2b23a' : '#b9b0d2'}" stroke-width="1.5"/>
-      ${icon(it.kind, { x: -18, y: -1, s: 0.9 })}
-      <text x="-6" y="5" font-size="15" font-weight="700" fill="#fff">${it.num}</text>
-      <circle cx="19" cy="-1" r="9" fill="${c}"/><text x="19" y="3.5" text-anchor="middle" font-size="11" fill="#111" font-weight="700">${slot}</text>
+      <rect x="-27" y="-15" width="54" height="28" rx="4" fill="rgba(12,10,14,.92)" stroke="${it.kind === 'attack' ? '#e2573f' : it.kind === 'pull' ? '#e2b23a' : '#b9b0d2'}" stroke-width="1.5"/>
+      ${icon(it.kind, { x: -17, y: -1, s: 0.85 })}
+      <text x="-7" y="5" font-size="14" font-weight="700" fill="#fff">${it.num}</text>
+      <circle cx="17" cy="-1" r="8.5" fill="${c}"/><text x="17" y="3.5" text-anchor="middle" font-size="11" fill="#111" font-weight="700">${slot}</text>
     </g>`;
   }
   return `<g transform="translate(${x} ${y})">

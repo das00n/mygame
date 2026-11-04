@@ -38,7 +38,12 @@ const shade = (hex, k) => {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 };
 
-/** SVG <defs> — 문서마다 한 번 넣는다 */
+/** 문서 맨 앞에 한 번 넣는 공용 정의. display:none 안의 그라디언트는 그려지지 않으므로 보이는 0×0 SVG 에 둔다 */
+export function globalDefs() {
+  return `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${defs()}</svg>`;
+}
+
+/** SVG <defs> */
 export function defs() {
   return `<defs>
   <filter id="aura" x="-60%" y="-40%" width="220%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
@@ -216,7 +221,7 @@ export function hero(id, { x = 0, y = 0, scale = 1, pose = 'idle', mask, flip = 
   const sx = flip ? -scale : scale;
   if (pose === 'downed') {
     return `<g transform="translate(${x} ${y}) scale(${sx} ${scale})" opacity="${dim ? 0.55 : 1}">
-      <g transform="translate(-60 -6) rotate(-90)" opacity=".8" style="filter:saturate(.45) brightness(.8)">${inner}</g>
+      <g transform="translate(-58 -14) rotate(90)" opacity=".8" style="filter:saturate(.45) brightness(.8)">${inner}</g>
     </g>`;
   }
   const lean = pose === 'attack' ? 'rotate(8)' : pose === 'hit' ? 'rotate(-10) translate(-8 0)' : '';
