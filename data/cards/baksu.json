@@ -33,7 +33,7 @@
       "text": "피해 4. 상흔 2.",
       "effects": [{"op": "dmg", "n": 4}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}],
       "tags": {"produce": ["상흔"], "consume": []},
-      "upgrade": "피해 5. 상흔 3."
+      "upgrade": {"text": "피해 5. 상흔 3.", "effects": [{"op": "dmg", "n": 5}, {"op": "apply", "status": "상흔", "n": 3, "target": "one"}]}
     },
     {
       "id": "baksu.jakdu",
@@ -44,10 +44,10 @@
       "starter": true,
       "path": "core",
       "keywords": [],
-      "text": "작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +2, 상흔 1을 더한다(카드마다 한 번). 장단 2 미만으로 턴을 마치면 날에서 헛디뎌 내려서고 체력 6을 잃는다.",
-      "effects": [{"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "dmg", "n": 2}, {"op": "apply", "status": "상흔", "n": 1, "target": "one"}], "expect": 1.0}, {"op": "cond", "if": "장단 2 미만으로 턴 종료(헛디딤)", "when": "turn_end", "then": [{"op": "hp_loss", "n": 6}], "p": 0.5}],
+      "text": "작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +4, 상흔 2를 더한다(카드마다 한 번). 장단 2 미만으로 턴을 마치면 날에서 헛디뎌 내려서고 체력 6을 잃는다.",
+      "effects": [{"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "dmg", "n": 4}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}], "expect": 1.0}, {"op": "cond", "if": "장단 2 미만으로 턴 종료(헛디딤)", "when": "turn_end", "then": [{"op": "hp_loss", "n": 6}], "p": 0.45}],
       "tags": {"produce": ["상흔", "작두"], "consume": ["장단"]},
-      "upgrade": "작두 위 공격 카드는 피해 +3, 상흔 1."
+      "upgrade": {"text": "작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +6, 상흔 2를 더한다(카드마다 한 번). 장단 2 미만으로 턴을 마치면 날에서 헛디뎌 내려서고 체력 6을 잃는다.", "effects": [{"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "dmg", "n": 6}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}], "expect": 1.0}, {"op": "cond", "if": "장단 2 미만으로 턴 종료(헛디딤)", "when": "turn_end", "then": [{"op": "hp_loss", "n": 6}], "p": 0.45}]}
     },
     {
       "id": "baksu.kalnal",
@@ -61,7 +61,7 @@
       "text": "피해 2를 (장단 + 1)회.",
       "effects": [{"op": "dmg", "n": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 2}]}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": "피해 2를 (장단 + 2)회."
+      "upgrade": {"text": "피해 2를 (장단 + 2)회.", "effects": [{"op": "dmg", "n": 2, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 2}]}]}
     },
     {
       "id": "baksu.magaseogi",
@@ -75,7 +75,7 @@
       "text": "방어도 4. 전진.",
       "effects": [{"op": "block", "n": 4}, {"op": "move", "kind": "전진", "who": "self"}],
       "tags": {"produce": ["진형"], "consume": []},
-      "upgrade": "방어도 6. 전진."
+      "upgrade": {"text": "방어도 6. 전진.", "effects": [{"op": "block", "n": 6}, {"op": "move", "kind": "전진", "who": "self"}]}
     },
     {
       "id": "baksu.huinsul",
@@ -88,7 +88,7 @@
       "text": "모든 적에게 피해 2, 상흔 2.",
       "effects": [{"op": "dmg", "n": 2, "target": "all"}, {"op": "apply", "status": "상흔", "n": 2, "target": "all"}],
       "tags": {"produce": ["상흔"], "consume": []},
-      "upgrade": "모든 적에게 피해 2, 상흔 3."
+      "upgrade": {"text": "모든 적에게 피해 2, 상흔 3.", "effects": [{"op": "dmg", "n": 2, "target": "all"}, {"op": "apply", "status": "상흔", "n": 3, "target": "all"}]}
     },
     {
       "id": "baksu.eonwoldo",
@@ -101,7 +101,7 @@
       "text": "피해 5. 넋흔들림 2. 받는소리: 넋흔들림 2 더.",
       "effects": [{"op": "dmg", "n": 5}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}], "p": 0.45}],
       "tags": {"produce": ["넋흔들림"], "consume": []},
-      "upgrade": "피해 7. 넋흔들림 2. 받는소리: 넋흔들림 3 더."
+      "upgrade": {"text": "피해 7. 넋흔들림 2. 받는소리: 넋흔들림 3 더.", "effects": [{"op": "dmg", "n": 7}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}], "p": 0.45}]}
     },
     {
       "id": "baksu.nal_sewugi",
@@ -114,7 +114,7 @@
       "text": "체력 2를 잃는다. 작두에 오른다. 카드 1장을 뽑는다.",
       "effects": [{"op": "hp_loss", "n": 2}, {"op": "personal", "n": 1}, {"op": "draw", "n": 1}],
       "tags": {"produce": ["작두"], "consume": []},
-      "upgrade": "체력 1을 잃는다. 작두에 오른다. 카드 1장을 뽑는다."
+      "upgrade": {"text": "체력 1을 잃는다. 작두에 오른다. 카드 1장을 뽑는다.", "effects": [{"op": "hp_loss", "n": 1}, {"op": "personal", "n": 1}, {"op": "draw", "n": 1}]}
     },
     {
       "id": "baksu.cheollik",
@@ -127,7 +127,7 @@
       "text": "방어도 6. 작두 위에서: 방어도 3 더.",
       "effects": [{"op": "block", "n": 6}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "block", "n": 3}], "p": 0.2}],
       "tags": {"produce": [], "consume": ["작두"]},
-      "upgrade": "방어도 8. 작두 위에서: 방어도 4 더."
+      "upgrade": {"text": "방어도 8. 작두 위에서: 방어도 4 더.", "effects": [{"op": "block", "n": 8}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "block", "n": 4}], "p": 0.2}]}
     },
     {
       "id": "baksu.kaljaguk",
@@ -137,10 +137,10 @@
       "cost": 1,
       "path": "B",
       "keywords": [],
-      "text": "피해 5. 대상의 상흔 1당 피해 +1.",
-      "effects": [{"op": "dmg", "n": 5}, {"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 1}], "expect": 1.3}],
+      "text": "피해 6. 대상의 상흔 1당 피해 +1.",
+      "effects": [{"op": "dmg", "n": 6}, {"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 1}], "expect": 1.3}],
       "tags": {"produce": [], "consume": ["상흔"]},
-      "upgrade": "피해 8. 대상의 상흔 1당 피해 +1."
+      "upgrade": {"text": "피해 8. 대상의 상흔 1당 피해 +1.", "effects": [{"op": "dmg", "n": 8}, {"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 1}], "expect": 1.3}]}
     },
     {
       "id": "baksu.jangdan_bal",
@@ -153,7 +153,7 @@
       "text": "피해 3. 장단 1당 피해 +2.",
       "effects": [{"op": "dmg", "n": 3}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 2}]}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": "피해 3. 장단 1당 피해 +3."
+      "upgrade": {"text": "피해 3. 장단 1당 피해 +3.", "effects": [{"op": "dmg", "n": 3}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3}]}]}
     },
     {
       "id": "baksu.gugunbok",
@@ -166,7 +166,7 @@
       "text": "방어도 5. 받는소리: 방어도 3 더.",
       "effects": [{"op": "block", "n": 5}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3}], "p": 0.4}],
       "tags": {"produce": [], "consume": []},
-      "upgrade": "방어도 7. 받는소리: 방어도 4 더."
+      "upgrade": {"text": "방어도 7. 받는소리: 방어도 4 더.", "effects": [{"op": "block", "n": 7}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4}], "p": 0.4}]}
     },
     {
       "id": "baksu.domu",
@@ -179,7 +179,7 @@
       "text": "피해 7. 작두 위에서: 넋흔들림 2.",
       "effects": [{"op": "dmg", "n": 7}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}], "p": 0.25}],
       "tags": {"produce": ["넋흔들림"], "consume": ["작두"]},
-      "upgrade": "피해 9. 작두 위에서: 넋흔들림 3."
+      "upgrade": {"text": "피해 9. 작두 위에서: 넋흔들림 3.", "effects": [{"op": "dmg", "n": 9}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}], "p": 0.25}]}
     },
     {
       "id": "baksu.janggun_cheong",
@@ -192,7 +192,7 @@
       "text": "굿상에 서릿날 장군을 모신다.",
       "effects": [{"op": "summon", "id": "baksu.s_janggun"}],
       "tags": {"produce": ["굿상", "넋흔들림"], "consume": []},
-      "upgrade": "굿상에 서릿날 장군을 모신다. 방어도 3."
+      "upgrade": {"text": "굿상에 서릿날 장군을 모신다. 방어도 2.", "effects": [{"op": "summon", "id": "baksu.s_janggun"}, {"op": "block", "n": 2}]}
     },
     {
       "id": "baksu.sinkal_goreugi",
@@ -205,7 +205,7 @@
       "text": "적 하나에 상흔 2. 받는소리: 상흔 1 더.",
       "effects": [{"op": "apply", "status": "상흔", "n": 2, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}],
       "tags": {"produce": ["상흔"], "consume": []},
-      "upgrade": "상흔 3. 받는소리: 상흔 1 더."
+      "upgrade": {"text": "적 하나에 상흔 3. 받는소리: 상흔 1 더.", "effects": [{"op": "apply", "status": "상흔", "n": 3, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}]}
     },
     {
       "id": "baksu.jeongjeok",
@@ -216,9 +216,9 @@
       "path": "A",
       "keywords": [],
       "text": "작두 위에서 턴을 시작할 때마다 방어도 4.",
-      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "block", "n": 4}], "p": 0.6}]}],
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "block", "n": 4}], "p": 0.4}]}],
       "tags": {"produce": [], "consume": ["작두"]},
-      "upgrade": "방어도 5."
+      "upgrade": {"text": "작두 위에서 턴을 시작할 때마다 방어도 5.", "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "block", "n": 5}], "p": 0.4}]}]}
     },
     {
       "id": "baksu.omgyeo",
@@ -228,10 +228,10 @@
       "cost": 1,
       "path": "B",
       "keywords": ["받는소리"],
-      "text": "적 하나의 상흔만큼 다른 적 하나에게 상흔을 새긴다. 받는소리: 카드 1장을 뽑는다.",
-      "effects": [{"op": "per", "source": "상흔", "each": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}], "expect": 2.7}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 1}]}],
+      "text": "적 하나의 상흔만큼 다른 적 하나에게 상흔을 새긴다. 받는소리: 카드 2장을 뽑는다.",
+      "effects": [{"op": "per", "source": "상흔", "each": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}], "expect": 2.7}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 2}]}],
       "tags": {"produce": ["상흔"], "consume": ["상흔"]},
-      "upgrade": "비용 0."
+      "upgrade": {"text": "적 하나의 상흔만큼 다른 적 하나에게 상흔을 새긴다. 받는소리: 카드 2장을 뽑는다.", "cost": 0}
     },
     {
       "id": "baksu.janggun_naerim",
@@ -244,7 +244,7 @@
       "text": "굿상에 서릿날 장군을 모신다. 작두에 오른다. 방어도 6.",
       "effects": [{"op": "summon", "id": "baksu.s_janggun"}, {"op": "personal", "n": 1}, {"op": "block", "n": 6}],
       "tags": {"produce": ["굿상", "넋흔들림", "작두"], "consume": []},
-      "upgrade": "방어도 10."
+      "upgrade": {"text": "굿상에 서릿날 장군을 모신다. 작두에 오른다. 방어도 10.", "effects": [{"op": "summon", "id": "baksu.s_janggun"}, {"op": "personal", "n": 1}, {"op": "block", "n": 10}]}
     },
     {
       "id": "baksu.dangak",
@@ -254,10 +254,10 @@
       "cost": 2,
       "path": "core",
       "keywords": [],
-      "text": "피해 3을 (장단 + 2)회. 상흔 2.",
-      "effects": [{"op": "dmg", "n": 3, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3}], "expect": 1.0}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}],
+      "text": "피해 4를 (장단 + 2)회. 상흔 2.",
+      "effects": [{"op": "dmg", "n": 4, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4}], "expect": 1.0}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}],
       "tags": {"produce": ["상흔"], "consume": ["장단"]},
-      "upgrade": "피해 4를 (장단 + 2)회. 상흔 2."
+      "upgrade": {"text": "피해 4를 (장단 + 2)회. 상흔 2.", "effects": [{"op": "dmg", "n": 4, "hits": 3}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4}], "expect": 1.0}, {"op": "apply", "status": "상흔", "n": 2, "target": "one"}]}
     },
     {
       "id": "baksu.samjichang",
@@ -270,7 +270,7 @@
       "text": "피해 12. 넋흔들림 3. 장단이 3 이상이면 넋흔들림 3 더.",
       "effects": [{"op": "dmg", "n": 12}, {"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}, {"op": "cond", "if": "장단 3 이상", "then": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}], "p": 0.05}],
       "tags": {"produce": ["넋흔들림"], "consume": ["장단"]},
-      "upgrade": "피해 15. 넋흔들림 3. 장단이 3 이상이면 넋흔들림 4 더."
+      "upgrade": {"text": "피해 17. 넋흔들림 3. 장단이 3 이상이면 넋흔들림 3 더.", "effects": [{"op": "dmg", "n": 17}, {"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}, {"op": "cond", "if": "장단 3 이상", "then": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}], "p": 0.05}]}
     },
     {
       "id": "baksu.sinjang",
@@ -283,7 +283,7 @@
       "text": "굿상에 칼끝 신장을 모신다. 방어도 3.",
       "effects": [{"op": "summon", "id": "baksu.s_sinjang"}, {"op": "block", "n": 3}],
       "tags": {"produce": ["굿상", "상흔"], "consume": []},
-      "upgrade": "방어도 6."
+      "upgrade": {"text": "굿상에 칼끝 신장을 모신다. 방어도 6.", "effects": [{"op": "summon", "id": "baksu.s_sinjang"}, {"op": "block", "n": 6}]}
     },
     {
       "id": "baksu.gongsu",
@@ -296,7 +296,7 @@
       "text": "카드 1장을 뽑는다. 작두 위에서: 에너지 1, 카드 1장을 더 뽑는다.",
       "effects": [{"op": "draw", "n": 1}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "energy", "n": 1, "when": "now"}, {"op": "draw", "n": 1}]}],
       "tags": {"produce": [], "consume": ["작두"]},
-      "upgrade": "카드 2장을 뽑는다. 작두 위에서: 에너지 1, 카드 1장을 더 뽑는다."
+      "upgrade": {"text": "카드 1장을 뽑는다. 작두 위에서: 에너지 1, 카드 2장을 더 뽑는다.", "effects": [{"op": "draw", "n": 1}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "energy", "n": 1, "when": "now"}, {"op": "draw", "n": 2}]}]}
     },
     {
       "id": "baksu.hwimori",
@@ -309,7 +309,7 @@
       "text": "모든 적에게 피해 3. 상흔이 있는 적에게는 상흔 2를 더 새긴다.",
       "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "cond", "if": "상흔이 있는 적", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "all"}]}],
       "tags": {"produce": ["상흔"], "consume": ["상흔"]},
-      "upgrade": "모든 적에게 피해 4. 상흔이 있는 적에게는 상흔 3을 더 새긴다."
+      "upgrade": {"text": "모든 적에게 피해 4. 상흔이 있는 적에게는 상흔 3을 더 새긴다.", "effects": [{"op": "dmg", "n": 4, "target": "all"}, {"op": "cond", "if": "상흔이 있는 적", "then": [{"op": "apply", "status": "상흔", "n": 3, "target": "all"}]}]}
     },
     {
       "id": "baksu.byeorak",
@@ -322,7 +322,7 @@
       "text": "모든 적에게 넋흔들림 3. 받는소리: 방어도 4.",
       "effects": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4}], "p": 0.55}],
       "tags": {"produce": ["넋흔들림"], "consume": []},
-      "upgrade": "모든 적에게 넋흔들림 4. 받는소리: 방어도 6."
+      "upgrade": {"text": "모든 적에게 넋흔들림 4. 받는소리: 방어도 6.", "effects": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 6}], "p": 0.55}]}
     },
     {
       "id": "baksu.cheongbo",
@@ -335,7 +335,7 @@
       "text": "턴을 마칠 때 장단 1당 방어도 2.",
       "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "per", "source": "장단", "each": [{"op": "block", "n": 2}], "expect": 2.4}], "expect": 5.5}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": "비용 1."
+      "upgrade": {"text": "턴을 마칠 때 장단 1당 방어도 2.", "keywords": ["선천"]}
     },
     {
       "id": "baksu.beonjineun",
@@ -348,7 +348,7 @@
       "text": "턴을 마칠 때 모든 적에게 상흔 1. 상흔이 5 이상인 적에게는 넋흔들림 2.",
       "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "상흔 5 이상인 적", "then": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}], "p": 0.3}], "expect": 4.0}],
       "tags": {"produce": ["넋흔들림", "상흔"], "consume": ["상흔"]},
-      "upgrade": "상흔이 4 이상인 적에게 넋흔들림 3."
+      "upgrade": {"text": "턴을 마칠 때 모든 적에게 상흔 1. 상흔이 5 이상인 적에게는 넋흔들림 4.", "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "상흔 5 이상인 적", "then": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "one"}], "p": 0.3}], "expect": 4.0}]}
     },
     {
       "id": "baksu.ssangnal",
@@ -358,10 +358,10 @@
       "cost": 3,
       "path": "A",
       "keywords": [],
-      "text": "피해 5를 (장단 + 2)회. 작두 위에서: 타격마다 상흔 1.",
-      "effects": [{"op": "dmg", "n": 5, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 5}]}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "one"}, {"op": "per", "source": "장단", "each": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}], "p": 0.6}],
+      "text": "피해 6을 (장단 + 2)회. 작두 위에서: 타격마다 상흔 1.",
+      "effects": [{"op": "dmg", "n": 6, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 6}]}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "one"}, {"op": "per", "source": "장단", "each": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}], "p": 0.6}],
       "tags": {"produce": ["상흔"], "consume": ["작두", "장단"]},
-      "upgrade": "피해 6을 (장단 + 2)회. 작두 위에서: 타격마다 상흔 1."
+      "upgrade": {"text": "피해 8을 (장단 + 2)회. 작두 위에서: 타격마다 상흔 1.", "effects": [{"op": "dmg", "n": 8, "hits": 2}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 8}]}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "one"}, {"op": "per", "source": "장단", "each": [{"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}], "p": 0.6}]}
     },
     {
       "id": "baksu.yeongheom",
@@ -371,10 +371,10 @@
       "cost": 1,
       "path": "A",
       "keywords": [],
-      "text": "체력 4를 잃는다. 작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +4.",
-      "effects": [{"op": "hp_loss", "n": 4}, {"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "dmg", "n": 4}], "p": 1.0}], "expect": 1.2}],
+      "text": "체력 1을 잃는다. 작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +8.",
+      "effects": [{"op": "hp_loss", "n": 1}, {"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "dmg", "n": 8}], "p": 1.0}], "expect": 1.2}],
       "tags": {"produce": ["작두"], "consume": ["작두"]},
-      "upgrade": "체력 2를 잃는다. 작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +4."
+      "upgrade": {"text": "체력 1을 잃는다. 작두에 오른다. 작두 위에서 쓰는 공격 카드는 피해 +11.", "effects": [{"op": "hp_loss", "n": 1}, {"op": "personal", "n": 1}, {"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "작두 위에서", "then": [{"op": "dmg", "n": 11}], "p": 1.0}], "expect": 1.2}]}
     },
     {
       "id": "baksu.geodugi",
@@ -384,10 +384,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "대상의 상흔 1당 피해 3. 그 상흔을 모두 없앤다.",
-      "effects": [{"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 3}], "expect": 2.2}, {"op": "consume", "status": "상흔", "n": "all"}],
+      "text": "대상의 상흔 1당 피해 5. 그 상흔을 모두 없앤다.",
+      "effects": [{"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 5}], "expect": 2.2}, {"op": "consume", "status": "상흔", "n": "all"}],
       "tags": {"produce": [], "consume": ["상흔"]},
-      "upgrade": "대상의 상흔 1당 피해 4."
+      "upgrade": {"text": "대상의 상흔 1당 피해 6. 그 상흔을 모두 없앤다.", "effects": [{"op": "per", "source": "상흔", "each": [{"op": "dmg", "n": 6}], "expect": 2.2}, {"op": "consume", "status": "상흔", "n": "all"}]}
     },
     {
       "id": "baksu.ullim",
@@ -400,7 +400,7 @@
       "text": "모든 적에게 피해 6, 상흔 1. 그 뒤 각 적에게 그 적의 상흔 1당 넋흔들림 1.",
       "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "per", "source": "상흔", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}], "expect": 3.5}],
       "tags": {"produce": ["넋흔들림", "상흔"], "consume": ["상흔"]},
-      "upgrade": "모든 적에게 피해 8, 상흔 1. 그 뒤 각 적에게 그 적의 상흔 1당 넋흔들림 1."
+      "upgrade": {"text": "모든 적에게 피해 8, 상흔 1. 그 뒤 각 적에게 그 적의 상흔 1당 넋흔들림 1.", "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "per", "source": "상흔", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}], "expect": 3.5}]}
     },
     {
       "id": "baksu.naeryeoseogi",
@@ -413,7 +413,7 @@
       "text": "모든 적에게 넋흔들림 2. 작두 위에서: 작두에서 조용히 내려서며(체력을 잃지 않는다) 모든 적에게 피해 10.",
       "effects": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "dmg", "n": 10, "target": "all"}, {"op": "consume", "status": "작두", "n": 1}], "p": 0.35}],
       "tags": {"produce": ["넋흔들림"], "consume": ["작두"]},
-      "upgrade": "작두 위에서: 모든 적에게 피해 14."
+      "upgrade": {"text": "모든 적에게 넋흔들림 2. 작두 위에서: 작두에서 조용히 내려서며(체력을 잃지 않는다) 모든 적에게 피해 14.", "effects": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}, {"op": "cond", "if": "작두 위에서", "then": [{"op": "dmg", "n": 14, "target": "all"}, {"op": "consume", "status": "작두", "n": 1}], "p": 0.35}]}
     }
   ]
 }

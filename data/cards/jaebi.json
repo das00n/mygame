@@ -75,6 +75,14 @@
       "duration": 3,
       "text": "턴 시작 시 카드 1장을 뽑는다.",
       "effects": [{"op": "draw", "n": 1}]
+    },
+    {
+      "id": "jaebi.s_jeseok_up",
+      "name": "제석 신령+",
+      "trigger": "turn_start",
+      "duration": 4,
+      "text": "턴 시작 시 카드 1장을 뽑는다.",
+      "effects": [{"op": "draw", "n": 1}]
     }
   ],
   "cards": [
@@ -90,7 +98,7 @@
       "text": "장단 +1. 받는소리: 장단 +1 더.",
       "effects": [{"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 1}]}],
       "tags": {"produce": ["장단"], "consume": []},
-      "upgrade": "장단 +1. 받는소리: 장단 +2 더.",
+      "upgrade": {"text": "장단 +1. 받는소리: 장단 +2 더.", "effects": [{"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 2}]}]},
       "note": "시트의 '가락 +1'은 잽이 카드를 쓸 때 자동으로 오르는 몫이라 본문에서 뺐다."
     },
     {
@@ -105,7 +113,7 @@
       "text": "적 전체에 피해 4.",
       "effects": [{"op": "dmg", "n": 4, "target": "all"}],
       "tags": {"produce": [], "consume": []},
-      "upgrade": "적 전체에 피해 5."
+      "upgrade": {"text": "적 전체에 피해 5.", "effects": [{"op": "dmg", "n": 5, "target": "all"}]}
     },
     {
       "id": "jaebi.chuimsae",
@@ -119,7 +127,7 @@
       "text": "'얼쑤' 부적 2장을 손에 만든다.",
       "effects": [{"op": "token", "id": "jaebi.t_eolssu", "n": 2}],
       "tags": {"produce": ["부적"], "consume": []},
-      "upgrade": "'얼쑤' 부적 2장을 손에 만든다. 받는소리: 1장 더."
+      "upgrade": {"text": "'얼쑤' 부적 2장을 손에 만든다. 받는소리: 1장 더.", "keywords": ["받는소리"], "effects": [{"op": "token", "id": "jaebi.t_eolssu", "n": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "token", "id": "jaebi.t_eolssu", "n": 1}]}]}
     },
     {
       "id": "jaebi.jangdan_bakkum",
@@ -130,10 +138,10 @@
       "starter": true,
       "path": "core",
       "keywords": [],
-      "text": "방어도 3. 이번 턴 진형이 바뀔 때마다 장단 +1.",
-      "effects": [{"op": "block", "n": 3, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
+      "text": "방어도 5. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
-      "upgrade": "방어도 5. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "upgrade": {"text": "방어도 6. 이번 턴 진형이 바뀔 때마다 장단 +1.", "effects": [{"op": "block", "n": 6, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}]},
       "note": "C5: 잽이는 진형을 만들지 않는다. 진형 변화는 동료의 근접 돌격·이동 카드에서 온다(최종 검수에서 교대 제거)."
     },
     {
@@ -147,7 +155,7 @@
       "text": "피해 7. 장단이 2 이상이면 카드 1장을 뽑는다.",
       "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "cond", "if": "장단이 2 이상이면", "then": [{"op": "draw", "n": 1}], "p": 0.35}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": "피해 10. 장단이 2 이상이면 카드 1장을 뽑는다."
+      "upgrade": {"text": "피해 10. 장단이 2 이상이면 카드 1장을 뽑는다.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "cond", "if": "장단이 2 이상이면", "then": [{"op": "draw", "n": 1}], "p": 0.35}]}
     },
     {
       "id": "jaebi.jegeum",
@@ -160,7 +168,7 @@
       "text": "무작위 적에게 피해 3을 2회. 받는소리: 1회 더.",
       "effects": [{"op": "dmg", "n": 3, "target": "random", "hits": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "dmg", "n": 3, "target": "random"}]}],
       "tags": {"produce": [], "consume": []},
-      "upgrade": "무작위 적에게 피해 4를 2회. 받는소리: 1회 더."
+      "upgrade": {"text": "무작위 적에게 피해 4를 2회. 받는소리: 1회 더.", "effects": [{"op": "dmg", "n": 4, "target": "random", "hits": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "dmg", "n": 4, "target": "random"}]}]}
     },
     {
       "id": "jaebi.makjangdan",
@@ -170,10 +178,10 @@
       "cost": 2,
       "path": "A",
       "keywords": [],
-      "text": "무작위 적에게 피해 3을 (장단 + 3)회 준다. 가락이 당악이면 2회 더.",
-      "effects": [{"op": "dmg", "n": 3, "target": "random", "hits": 3}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "random"}], "expect": 1.3}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 3, "target": "random", "hits": 2}], "p": 0.2}],
+      "text": "무작위 적에게 피해 3을 (장단 + 4)회 준다. 가락이 당악이면 2회 더.",
+      "effects": [{"op": "dmg", "n": 3, "target": "random", "hits": 4}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "random"}], "expect": 1.3}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 3, "target": "random", "hits": 2}], "p": 0.2}],
       "tags": {"produce": [], "consume": ["가락", "장단"]},
-      "upgrade": "무작위 적에게 피해 4를 (장단 + 3)회 준다. 가락이 당악이면 2회 더."
+      "upgrade": {"text": "무작위 적에게 피해 4를 (장단 + 4)회 준다. 가락이 당악이면 2회 더.", "effects": [{"op": "dmg", "n": 4, "target": "random", "hits": 4}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4, "target": "random"}], "expect": 1.3}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 4, "target": "random", "hits": 2}], "p": 0.2}]}
     },
     {
       "id": "jaebi.jingchae",
@@ -186,7 +194,7 @@
       "text": "피해 7. 이번 턴 진형이 바뀌었으면 장단 +2.",
       "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
-      "upgrade": "피해 10. 이번 턴 진형이 바뀌었으면 장단 +2."
+      "upgrade": {"text": "피해 10. 이번 턴 진형이 바뀌었으면 장단 +2.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}]}
     },
     {
       "id": "jaebi.taepyeongso",
@@ -199,7 +207,7 @@
       "text": "적 전체에 피해 3. 받는소리: 아군 하나에게 방어도 4.",
       "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "ally"}]}],
       "tags": {"produce": [], "consume": []},
-      "upgrade": "적 전체에 피해 4. 받는소리: 아군 하나에게 방어도 6."
+      "upgrade": {"text": "적 전체에 피해 4. 받는소리: 아군 하나에게 방어도 6.", "effects": [{"op": "dmg", "n": 4, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 6, "to": "ally"}]}]}
     },
     {
       "id": "jaebi.deongdeokgungi",
@@ -212,7 +220,7 @@
       "text": "장단 +1. 가락 +1.",
       "effects": [{"op": "jangdan", "n": 1}, {"op": "personal", "n": 1}],
       "tags": {"produce": ["가락", "장단"], "consume": []},
-      "upgrade": "장단 +2. 가락 +1."
+      "upgrade": {"text": "장단 +1. 가락 +1.", "keywords": ["보존"]}
     },
     {
       "id": "jaebi.geosang",
@@ -225,7 +233,7 @@
       "text": "아군 하나에게 방어도 4. 가락을 한 단계 늦추면 그 아군에게 방어도 4 더.",
       "effects": [{"op": "block", "n": 4, "to": "ally"}, {"op": "cond", "if": "가락을 한 단계 늦추면", "then": [{"op": "block", "n": 4, "to": "ally"}], "p": 0.5}],
       "tags": {"produce": [], "consume": ["가락"]},
-      "upgrade": "아군 하나에게 방어도 5. 가락을 한 단계 늦추면 그 아군에게 방어도 5 더."
+      "upgrade": {"text": "아군 하나에게 방어도 5. 가락을 한 단계 늦추면 그 아군에게 방어도 5 더.", "effects": [{"op": "block", "n": 5, "to": "ally"}, {"op": "cond", "if": "가락을 한 단계 늦추면", "then": [{"op": "block", "n": 5, "to": "ally"}], "p": 0.5}]}
     },
     {
       "id": "jaebi.cheongbae_jangdan",
@@ -238,7 +246,7 @@
       "text": "굿상에 악기 신장을 모신다. 장단 +1.",
       "effects": [{"op": "summon", "id": "jaebi.s_akgi"}, {"op": "jangdan", "n": 1}],
       "tags": {"produce": ["굿상", "장단"], "consume": []},
-      "upgrade": "굿상에 악기 신장을 모신다. 장단 +2."
+      "upgrade": {"text": "굿상에 악기 신장을 모신다. 장단 +2.", "effects": [{"op": "summon", "id": "jaebi.s_akgi"}, {"op": "jangdan", "n": 2}]}
     },
     {
       "id": "jaebi.heung",
@@ -251,7 +259,7 @@
       "text": "'좋다' 부적 1장과 '얼쑤' 부적 1장을 손에 만든다.",
       "effects": [{"op": "token", "id": "jaebi.t_jota", "n": 1}, {"op": "token", "id": "jaebi.t_eolssu", "n": 1}],
       "tags": {"produce": ["부적"], "consume": []},
-      "upgrade": "'좋다' 부적 1장과 '얼쑤' 부적 2장을 손에 만든다."
+      "upgrade": {"text": "'좋다' 부적 1장과 '얼쑤' 부적 2장을 손에 만든다.", "effects": [{"op": "token", "id": "jaebi.t_jota", "n": 1}, {"op": "token", "id": "jaebi.t_eolssu", "n": 2}]}
     },
     {
       "id": "jaebi.chumsawi",
@@ -261,10 +269,10 @@
       "cost": 0,
       "path": "core",
       "keywords": [],
-      "text": "이번 턴 진형이 바뀔 때마다 장단 +1.",
-      "effects": [{"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
+      "text": "장단 +2. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "effects": [{"op": "jangdan", "n": 2}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
-      "upgrade": "보존. 이번 턴 진형이 바뀔 때마다 장단 +1."
+      "upgrade": {"text": "장단 +2. 이번 턴 진형이 바뀔 때마다 장단 +1.", "keywords": ["보존"]}
     },
     {
       "id": "jaebi.subu",
@@ -277,7 +285,7 @@
       "text": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1.",
       "effects": [{"op": "per", "source": "장단", "each": [{"op": "block", "n": 1, "to": "party"}], "expect": 3.5}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 1}], "p": 0.9}],
       "tags": {"produce": ["장단"], "consume": ["장단"]},
-      "upgrade": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1, 카드 1장을 뽑는다."
+      "upgrade": {"text": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +2.", "effects": [{"op": "per", "source": "장단", "each": [{"op": "block", "n": 1, "to": "party"}], "expect": 3.5}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 2}], "p": 0.9}]}
     },
     {
       "id": "jaebi.sinmyeong_janggu",
@@ -290,7 +298,7 @@
       "text": "피해 4. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.",
       "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}],
       "tags": {"produce": ["부적"], "consume": ["진형"]},
-      "upgrade": "피해 7. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더."
+      "upgrade": {"text": "피해 7. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.", "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}]}
     },
     {
       "id": "jaebi.bujeongnori",
@@ -303,7 +311,7 @@
       "text": "피해 6. 가락이 당악이면 피해 6 더.",
       "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 6, "target": "one"}], "p": 0.25}],
       "tags": {"produce": [], "consume": ["가락"]},
-      "upgrade": "피해 8. 가락이 당악이면 피해 8 더."
+      "upgrade": {"text": "피해 8. 가락이 당악이면 피해 8 더.", "effects": [{"op": "dmg", "n": 8, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 8, "target": "one"}], "p": 0.25}]}
     },
     {
       "id": "jaebi.geollip",
@@ -316,7 +324,7 @@
       "text": "적 전체에 피해 3. 굿상에 걸립 신령을 모신다. 장단 +1.",
       "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "summon", "id": "jaebi.s_geollip"}, {"op": "jangdan", "n": 1}],
       "tags": {"produce": ["굿상", "장단"], "consume": []},
-      "upgrade": "적 전체에 피해 5. 굿상에 걸립 신령을 모신다. 장단 +2."
+      "upgrade": {"text": "적 전체에 피해 5. 굿상에 걸립 신령을 모신다. 장단 +2.", "effects": [{"op": "dmg", "n": 5, "target": "all"}, {"op": "summon", "id": "jaebi.s_geollip"}, {"op": "jangdan", "n": 2}]}
     },
     {
       "id": "jaebi.teoju",
@@ -329,7 +337,7 @@
       "text": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 2.",
       "effects": [{"op": "summon", "id": "jaebi.s_teoju"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 2, "to": "ally"}]}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 6."
+      "upgrade": {"text": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 6.", "effects": [{"op": "summon", "id": "jaebi.s_teoju"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 6, "to": "ally"}]}]}
     },
     {
       "id": "jaebi.sorigwangdae",
@@ -342,7 +350,7 @@
       "text": "굿상에 소리광대 신령을 모신다.",
       "effects": [{"op": "summon", "id": "jaebi.s_sorigwangdae"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "굿상에 소리광대 신령을 모신다. 장단 +2."
+      "upgrade": {"text": "굿상에 소리광대 신령을 모신다. 장단 +1.", "effects": [{"op": "summon", "id": "jaebi.s_sorigwangdae"}, {"op": "jangdan", "n": 1}]}
     },
     {
       "id": "jaebi.jeseok",
@@ -355,7 +363,7 @@
       "text": "굿상에 제석 신령을 모신다.",
       "effects": [{"op": "summon", "id": "jaebi.s_jeseok"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "굿상에 제석 신령을 모신다. 이 신령은 4턴 머문다."
+      "upgrade": {"text": "굿상에 제석 신령을 모신다. 이 신령은 4턴 머문다.", "effects": [{"op": "summon", "id": "jaebi.s_jeseok_up"}]}
     },
     {
       "id": "jaebi.baldidim",
@@ -365,23 +373,23 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "아군 하나에게 방어도 2. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
-      "effects": [{"op": "block", "n": 2, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}],
+      "text": "아군 하나에게 방어도 6. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
+      "effects": [{"op": "block", "n": 6, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}],
       "tags": {"produce": [], "consume": ["진형"]},
-      "upgrade": "아군 하나에게 방어도 3. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 4."
+      "upgrade": {"text": "아군 하나에게 방어도 8. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.", "effects": [{"op": "block", "n": 8, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}]}
     },
     {
       "id": "jaebi.cheongbo",
       "name": "청보장단",
       "type": "능력",
       "rarity": "고급",
-      "cost": 1,
+      "cost": 2,
       "path": "A",
       "keywords": [],
       "text": "턴 시작 시 장단 +2.",
       "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "jangdan", "n": 2}]}],
       "tags": {"produce": ["장단"], "consume": []},
-      "upgrade": "선천. 턴 시작 시 장단 +2."
+      "upgrade": {"text": "턴 시작 시 장단 +2.", "cost": 1}
     },
     {
       "id": "jaebi.chumpan",
@@ -394,20 +402,20 @@
       "text": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 2.",
       "effects": [{"op": "power", "trigger": "on_formation_change", "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}, {"op": "dmg", "n": 2, "target": "random"}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
-      "upgrade": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 3."
+      "upgrade": {"text": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 3.", "effects": [{"op": "power", "trigger": "on_formation_change", "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}, {"op": "dmg", "n": 3, "target": "random"}]}]}
     },
     {
       "id": "jaebi.sigimsae",
       "name": "피리 시김새",
       "type": "능력",
       "rarity": "고급",
-      "cost": 1,
+      "cost": 2,
       "path": "B",
       "keywords": [],
-      "text": "턴 시작 시 '얼쑤' 부적 1장을 손에 만든다.",
-      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "token", "id": "jaebi.t_eolssu", "n": 1}]}],
+      "text": "턴 시작 시 장단 +1, '얼쑤' 부적 1장을 손에 만든다.",
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "jangdan", "n": 1}, {"op": "token", "id": "jaebi.t_eolssu", "n": 1}]}],
       "tags": {"produce": ["부적"], "consume": []},
-      "upgrade": "비용 0. 턴 시작 시 '얼쑤' 부적 1장을 손에 만든다."
+      "upgrade": {"text": "턴 시작 시 장단 +1, '얼쑤' 부적 1장을 손에 만든다.", "keywords": ["선천"]}
     },
     {
       "id": "jaebi.cheondung_jing",
@@ -420,7 +428,7 @@
       "text": "적 전체에 피해 6. 장단 1당 적 전체에 피해 3 더.",
       "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "all"}], "expect": 1.5}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": "적 전체에 피해 8. 장단 1당 적 전체에 피해 4 더."
+      "upgrade": {"text": "적 전체에 피해 8. 장단 1당 적 전체에 피해 4 더.", "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4, "target": "all"}], "expect": 1.5}]}
     },
     {
       "id": "jaebi.ojang",
@@ -433,7 +441,7 @@
       "text": "장단 +2. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
       "effects": [{"op": "jangdan", "n": 2}, {"op": "cond", "if": "이번 턴 장단이 5가 되면", "then": [{"op": "energy", "n": 1, "when": "now"}]}],
       "tags": {"produce": ["장단"], "consume": ["장단"]},
-      "upgrade": "장단 +3. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
+      "upgrade": {"text": "장단 +3. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.", "effects": [{"op": "jangdan", "n": 3}, {"op": "cond", "if": "이번 턴 장단이 5가 되면", "then": [{"op": "energy", "n": 1, "when": "now"}]}]},
       "note": "v0.2: 희귀 → 일반(잽이 자신의 장단 소비 보상을 자주 만나게). 일반 예산에 맞춰 드로우를 뺐다."
     },
     {
@@ -447,7 +455,7 @@
       "text": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 1장을 뽑는다.",
       "effects": [{"op": "personal", "n": 2}, {"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 1}]}],
       "tags": {"produce": ["가락", "장단"], "consume": []},
-      "upgrade": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 2장을 뽑는다.",
+      "upgrade": {"text": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 2장을 뽑는다.", "effects": [{"op": "personal", "n": 2}, {"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 2}]}]},
       "note": "'가락을 당악으로' = 굿거리에서 두 단계(가락 +2)로 평가. 당악이 되면 이 카드의 받는소리도 두 번 발동한다."
     },
     {
@@ -461,7 +469,7 @@
       "text": "카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다.",
       "effects": [{"op": "draw", "n": 1}, {"op": "special", "value": 5, "note": "받는소리 효과 1회 추가 ≈ 받는소리 효과 원값 평균 5점"}],
       "tags": {"produce": [], "consume": []},
-      "upgrade": "비용 0. 카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다."
+      "upgrade": {"text": "카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다.", "cost": 0}
     },
     {
       "id": "jaebi.samhyeon",
@@ -474,7 +482,7 @@
       "text": "가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다.",
       "effects": [{"op": "personal", "n": 2}, {"op": "special", "value": 25, "note": "당악 유지 = 매 턴 받는소리 효과 2배. 받는소리 추가분 턴당 약 6점 × 남은 약 4턴"}],
       "tags": {"produce": ["가락"], "consume": []},
-      "upgrade": "비용 2. 가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다."
+      "upgrade": {"text": "가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다.", "cost": 2}
     }
   ]
 }

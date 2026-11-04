@@ -33,7 +33,7 @@ function walk(ops: Op[], owner: string, fn: (r: OpRef) => void): void {
 
 export function allOps(fn: (r: OpRef) => void): void {
   const d = loadData();
-  for (const c of d.cards) walk(c.effects, c.id, fn);
+  for (const c of d.cards) walk(c.effects, c.id, fn); // 강화판(id+)도 같은 연산 트리로 센다
   for (const s of d.summons) walk(s.effects, s.id, fn);
 }
 

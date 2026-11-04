@@ -36,6 +36,15 @@ export interface RawCard {
   owners?: string[];
   owner?: string;
   subtype?: string;
+  /** 강화판 (K1, v0.3): 빠진 필드는 기본판을 물려받는다 */
+  upgrade?: RawUpgrade;
+}
+
+export interface RawUpgrade {
+  text: string;
+  cost?: number;
+  keywords?: string[];
+  effects?: RawOp[];
 }
 
 export interface RawSummon {
@@ -94,6 +103,12 @@ export interface CardDef {
   raisesSinjuCap: boolean; // 경면주사 5까지
   /** 'one' 연산을 조건 만족 적 모두에게 (적 전체 카드의 "점지된 적에게는") */
   perEnemyOneConds: boolean;
+  /** 강화판 정의인가 (id 는 기본판 id + '+'). 강화된 카드 인스턴스는 d 가 이 정의를 가리킨다 */
+  upgraded: boolean;
+  /** 강화판이면 기본판 idx, 아니면 자기 idx */
+  baseIdx: number;
+  /** 기본판이면 강화판 idx (강화가 없으면 −1), 강화판이면 −1 */
+  upIdx: number;
 }
 
 export interface SummonDef {

@@ -16,7 +16,7 @@
       "text": "적 하나에 점지 2. 화약 +1. (화약: 최대 3, 턴을 넘겨 남는다)",
       "effects": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}, {"op": "personal", "n": 1}],
       "tags": {"produce": ["점지", "화약"], "consume": []},
-      "upgrade": "점지 3. 화약 +1."
+      "upgrade": {"text": "적 하나에 점지 3. 화약 +1. (화약: 최대 3, 턴을 넘겨 남는다)", "effects": [{"op": "apply", "status": "점지", "n": 3, "target": "one"}, {"op": "personal", "n": 1}]}
     },
     {
       "id": "posu.hwaseungchong",
@@ -30,7 +30,7 @@
       "text": "피해 5. 화약 1을 쓰면 피해 +3, 상흔 1.",
       "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "dmg", "n": 3}, {"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}],
       "tags": {"produce": ["상흔"], "consume": ["화약"]},
-      "upgrade": "피해 7. 화약 1을 쓰면 피해 +4, 상흔 2."
+      "upgrade": {"text": "피해 7. 화약 1을 쓰면 피해 +3, 상흔 1.", "effects": [{"op": "dmg", "n": 7}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "dmg", "n": 3}, {"op": "apply", "status": "상흔", "n": 1, "target": "one"}]}]}
     },
     {
       "id": "posu.geupso",
@@ -41,10 +41,10 @@
       "starter": true,
       "path": "core",
       "keywords": [],
-      "text": "피해 4. 대상의 점지 1당 피해 +3. 넋흔들림 5 이상이거나 붕괴한 적이면 점지 피해가 두 배. 그 뒤 점지를 모두 없앤다.",
-      "effects": [{"op": "dmg", "n": 4}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 3}], "expect": 4.5}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 3}]}]}, {"op": "consume", "status": "점지", "n": "all"}],
+      "text": "피해 6. 대상의 점지 1당 피해 +2. 넋흔들림 5 이상이거나 붕괴한 적이면 점지 피해가 두 배. 그 뒤 점지를 모두 없앤다.",
+      "effects": [{"op": "dmg", "n": 6}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 2}], "expect": 4.5}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 2}]}]}, {"op": "consume", "status": "점지", "n": "all"}],
       "tags": {"produce": [], "consume": ["넋흔들림", "점지"]},
-      "upgrade": "점지 1당 피해 +4."
+      "upgrade": {"text": "피해 6. 대상의 점지 1당 피해 +3. 넋흔들림 5 이상이거나 붕괴한 적이면 점지 피해가 두 배. 그 뒤 점지를 모두 없앤다.", "effects": [{"op": "dmg", "n": 6}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 3}], "expect": 4.5}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 3}]}]}, {"op": "consume", "status": "점지", "n": "all"}]}
     },
     {
       "id": "posu.eompye",
@@ -58,7 +58,7 @@
       "text": "방어도 4. 후퇴.",
       "effects": [{"op": "block", "n": 4}, {"op": "move", "kind": "후퇴", "who": "self"}],
       "tags": {"produce": ["진형"], "consume": []},
-      "upgrade": "방어도 6. 후퇴."
+      "upgrade": {"text": "방어도 6. 후퇴.", "effects": [{"op": "block", "n": 6}, {"op": "move", "kind": "후퇴", "who": "self"}]}
     },
     {
       "id": "posu.ganeumsoe",
@@ -71,7 +71,7 @@
       "text": "적 하나에 점지 2.",
       "effects": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}],
       "tags": {"produce": ["점지"], "consume": []},
-      "upgrade": "점지 3."
+      "upgrade": {"text": "적 하나에 점지 2.", "keywords": ["보존"]}
     },
     {
       "id": "posu.kkojildae",
@@ -81,10 +81,10 @@
       "cost": 0,
       "path": "core",
       "keywords": ["받는소리"],
-      "text": "화약 +1. 받는소리: 방어도 3.",
-      "effects": [{"op": "personal", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3}]}],
+      "text": "화약 +1. 받는소리: 방어도 2.",
+      "effects": [{"op": "personal", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 2}]}],
       "tags": {"produce": ["화약"], "consume": []},
-      "upgrade": "화약 +1. 받는소리: 방어도 5."
+      "upgrade": {"text": "화약 +1. 받는소리: 방어도 4.", "effects": [{"op": "personal", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4}]}]}
     },
     {
       "id": "posu.giljabi",
@@ -97,7 +97,7 @@
       "text": "피해 5. 점지 1. 화약 1을 쓰면 점지 1 더.",
       "effects": [{"op": "dmg", "n": 5}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "apply", "status": "점지", "n": 1, "target": "one"}], "p": 0.25}],
       "tags": {"produce": ["점지"], "consume": ["화약"]},
-      "upgrade": "피해 7. 점지 1. 화약 1을 쓰면 점지 1 더."
+      "upgrade": {"text": "피해 7. 점지 1. 화약 1을 쓰면 점지 1 더.", "effects": [{"op": "dmg", "n": 7}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "apply", "status": "점지", "n": 1, "target": "one"}], "p": 0.25}]}
     },
     {
       "id": "posu.santan_jum",
@@ -110,7 +110,7 @@
       "text": "모든 적에게 피해 3, 상흔 1.",
       "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}],
       "tags": {"produce": ["상흔"], "consume": []},
-      "upgrade": "모든 적에게 피해 3, 상흔 2."
+      "upgrade": {"text": "모든 적에게 피해 3, 상흔 2.", "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "상흔", "n": 2, "target": "all"}]}
     },
     {
       "id": "posu.otjarak",
@@ -123,7 +123,7 @@
       "text": "피해 4. 취약 1. 받는소리: 점지 1.",
       "effects": [{"op": "dmg", "n": 4}, {"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "점지", "n": 1, "target": "one"}]}],
       "tags": {"produce": ["점지", "취약"], "consume": []},
-      "upgrade": "피해 6. 취약 1. 받는소리: 점지 2."
+      "upgrade": {"text": "피해 6. 취약 1. 받는소리: 점지 2.", "effects": [{"op": "dmg", "n": 6}, {"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}]}]}
     },
     {
       "id": "posu.gilteo",
@@ -136,7 +136,7 @@
       "text": "피해 3. 아군 하나에게 방어도 3을 주고 그 아군을 후퇴시킨다.",
       "effects": [{"op": "dmg", "n": 3}, {"op": "block", "n": 3, "to": "ally"}, {"op": "move", "kind": "후퇴", "who": "ally"}],
       "tags": {"produce": ["진형"], "consume": []},
-      "upgrade": "피해 4. 아군 하나에게 방어도 5를 주고 후퇴시킨다."
+      "upgrade": {"text": "피해 3. 아군 하나에게 방어도 5를 주고 그 아군을 후퇴시킨다.", "effects": [{"op": "dmg", "n": 3}, {"op": "block", "n": 5, "to": "ally"}, {"op": "move", "kind": "후퇴", "who": "ally"}]}
     },
     {
       "id": "posu.deombul",
@@ -149,7 +149,7 @@
       "text": "방어도 5. 화약 +1.",
       "effects": [{"op": "block", "n": 5}, {"op": "personal", "n": 1}],
       "tags": {"produce": ["화약"], "consume": []},
-      "upgrade": "방어도 7. 화약 +1."
+      "upgrade": {"text": "방어도 7. 화약 +1.", "effects": [{"op": "block", "n": 7}, {"op": "personal", "n": 1}]}
     },
     {
       "id": "posu.bawi",
@@ -162,7 +162,7 @@
       "text": "방어도 4. 적 하나에 점지 2.",
       "effects": [{"op": "block", "n": 4}, {"op": "apply", "status": "점지", "n": 2, "target": "one"}],
       "tags": {"produce": ["점지"], "consume": []},
-      "upgrade": "방어도 6. 점지 2."
+      "upgrade": {"text": "방어도 6. 적 하나에 점지 2.", "effects": [{"op": "block", "n": 6}, {"op": "apply", "status": "점지", "n": 2, "target": "one"}]}
     },
     {
       "id": "posu.teumsae",
@@ -175,7 +175,7 @@
       "text": "피해 5. 점지 1. 넋흔들림 5 이상이거나 붕괴한 적이면 피해 +5.",
       "effects": [{"op": "dmg", "n": 5}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 5}]}],
       "tags": {"produce": ["점지"], "consume": ["넋흔들림"]},
-      "upgrade": "피해 6. 점지 1. 넋흔들림 5 이상이거나 붕괴한 적이면 피해 +8."
+      "upgrade": {"text": "피해 6. 점지 1. 넋흔들림 5 이상이거나 붕괴한 적이면 피해 +8.", "effects": [{"op": "dmg", "n": 6}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 8}]}]}
     },
     {
       "id": "posu.olmu",
@@ -188,7 +188,7 @@
       "text": "적 하나에 상흔 4, 점지 1.",
       "effects": [{"op": "apply", "status": "상흔", "n": 4, "target": "one"}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}],
       "tags": {"produce": ["상흔", "점지"], "consume": []},
-      "upgrade": "상흔 6, 점지 1."
+      "upgrade": {"text": "적 하나에 상흔 6, 점지 1.", "effects": [{"op": "apply", "status": "상흔", "n": 6, "target": "one"}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}]}
     },
     {
       "id": "posu.heutppurim",
@@ -201,7 +201,7 @@
       "text": "모든 적에게 피해 6, 상흔 1. 화약 1을 쓰면 모든 적에게 상흔 2 더.",
       "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "all"}]}],
       "tags": {"produce": ["상흔"], "consume": ["화약"]},
-      "upgrade": "모든 적에게 피해 8, 상흔 1. 화약 1을 쓰면 상흔 3 더."
+      "upgrade": {"text": "모든 적에게 피해 8, 상흔 1. 화약 1을 쓰면 모든 적에게 상흔 3 더.", "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "apply", "status": "상흔", "n": 3, "target": "all"}]}]}
     },
     {
       "id": "posu.sumtong",
@@ -211,10 +211,10 @@
       "cost": 2,
       "path": "A",
       "keywords": [],
-      "text": "피해 4. 대상의 점지 1당 피해 +5. 화약 1을 쓰면 점지를 그대로 둔다. 아니면 점지를 모두 없앤다.",
-      "effects": [{"op": "dmg", "n": 4}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 5}]}, {"op": "cond", "if": "화약 1을 쓰면", "then": [], "else": [{"op": "consume", "status": "점지", "n": "all"}]}],
+      "text": "피해 4. 대상의 점지 1당 피해 +4. 화약 1을 쓰면 점지를 그대로 둔다. 아니면 점지를 모두 없앤다.",
+      "effects": [{"op": "dmg", "n": 4}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 4}]}, {"op": "cond", "if": "화약 1을 쓰면", "then": [], "else": [{"op": "consume", "status": "점지", "n": "all"}]}],
       "tags": {"produce": [], "consume": ["점지", "화약"]},
-      "upgrade": "점지 1당 피해 +7."
+      "upgrade": {"text": "피해 4. 대상의 점지 1당 피해 +6. 화약 1을 쓰면 점지를 그대로 둔다. 아니면 점지를 모두 없앤다.", "effects": [{"op": "dmg", "n": 4}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 6}]}, {"op": "cond", "if": "화약 1을 쓰면", "then": [], "else": [{"op": "consume", "status": "점지", "n": "all"}]}]}
     },
     {
       "id": "posu.hwayaktong",
@@ -224,10 +224,10 @@
       "cost": 2,
       "path": "B",
       "keywords": [],
-      "text": "모든 적에게 피해 3. 화약을 모두 쓴다. 쓴 화약 1당 모든 적에게 피해 3, 상흔 1.",
-      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "per", "source": "화약", "each": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}], "expect": 0.9}, {"op": "consume", "status": "화약", "n": "all"}],
+      "text": "모든 적에게 피해 6. 화약을 모두 쓴다. 쓴 화약 1당 모든 적에게 피해 3, 상흔 1.",
+      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "화약", "each": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}], "expect": 0.9}, {"op": "consume", "status": "화약", "n": "all"}],
       "tags": {"produce": ["상흔"], "consume": ["화약"]},
-      "upgrade": "모든 적에게 피해 4. 쓴 화약 1당 모든 적에게 피해 4, 상흔 1."
+      "upgrade": {"text": "모든 적에게 피해 6. 화약을 모두 쓴다. 쓴 화약 1당 모든 적에게 피해 6, 상흔 1.", "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "화약", "each": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}], "expect": 0.9}, {"op": "consume", "status": "화약", "n": "all"}]}
     },
     {
       "id": "posu.mori",
@@ -240,7 +240,7 @@
       "text": "두 아군의 자리를 바꾼다(교대). 모든 적에게 점지 1. 카드 1장을 뽑는다.",
       "effects": [{"op": "move", "kind": "교대", "who": "allies"}, {"op": "apply", "status": "점지", "n": 1, "target": "all"}, {"op": "draw", "n": 1}],
       "tags": {"produce": ["점지", "진형"], "consume": []},
-      "upgrade": "카드 2장을 뽑는다."
+      "upgrade": {"text": "두 아군의 자리를 바꾼다(교대). 모든 적에게 점지 2. 카드 1장을 뽑는다.", "effects": [{"op": "move", "kind": "교대", "who": "allies"}, {"op": "apply", "status": "점지", "n": 2, "target": "all"}, {"op": "draw", "n": 1}]}
     },
     {
       "id": "posu.hwayak_jaegi",
@@ -253,7 +253,7 @@
       "text": "화약 +2. 받는소리: 방어도 5.",
       "effects": [{"op": "personal", "n": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 5}]}],
       "tags": {"produce": ["화약"], "consume": []},
-      "upgrade": "화약 +2. 받는소리: 방어도 5, 카드 1장을 뽑는다."
+      "upgrade": {"text": "화약 +3. 받는소리: 방어도 5.", "effects": [{"op": "personal", "n": 3}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 5}]}]}
     },
     {
       "id": "posu.hwayak_yeongi",
@@ -266,7 +266,7 @@
       "text": "파티 방어도 3. 화약 1을 쓰면 아군 하나를 후퇴시키고 카드 1장을 뽑는다.",
       "effects": [{"op": "block", "n": 3, "to": "party"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "move", "kind": "후퇴", "who": "ally"}, {"op": "draw", "n": 1}], "p": 0.3}],
       "tags": {"produce": ["진형"], "consume": ["화약"]},
-      "upgrade": "파티 방어도 4."
+      "upgrade": {"text": "파티 방어도 4. 화약 1을 쓰면 아군 하나를 후퇴시키고 카드 1장을 뽑는다.", "effects": [{"op": "block", "n": 4, "to": "party"}, {"op": "cond", "if": "화약 1을 쓰면", "then": [{"op": "move", "kind": "후퇴", "who": "ally"}, {"op": "draw", "n": 1}], "p": 0.3}]}
     },
     {
       "id": "posu.nunsseolmi",
@@ -276,10 +276,10 @@
       "cost": 1,
       "path": "A",
       "keywords": [],
-      "text": "턴을 시작할 때마다 무작위 적에게 점지 2.",
-      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "apply", "status": "점지", "n": 2, "target": "random"}]}],
+      "text": "턴을 시작할 때마다 무작위 적에게 점지 1.",
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "apply", "status": "점지", "n": 1, "target": "random"}]}],
       "tags": {"produce": ["점지"], "consume": []},
-      "upgrade": "선천."
+      "upgrade": {"text": "턴을 시작할 때마다 무작위 적에게 점지 1.", "cost": 0}
     },
     {
       "id": "posu.neok_kkwetturgi",
@@ -289,10 +289,10 @@
       "cost": 2,
       "path": "A",
       "keywords": [],
-      "text": "피해 10. 넋흔들림 5 이상이거나 붕괴한 적이면 피해가 두 배이고 화약 +1.",
-      "effects": [{"op": "dmg", "n": 10}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 10}, {"op": "personal", "n": 1}]}],
+      "text": "피해 13. 넋흔들림 5 이상이거나 붕괴한 적이면 피해가 두 배이고 화약 +1.",
+      "effects": [{"op": "dmg", "n": 13}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 13}, {"op": "personal", "n": 1}]}],
       "tags": {"produce": ["화약"], "consume": ["넋흔들림"]},
-      "upgrade": "피해 13."
+      "upgrade": {"text": "피해 17. 넋흔들림 5 이상이거나 붕괴한 적이면 피해가 두 배이고 화약 +1.", "effects": [{"op": "dmg", "n": 17}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 17}, {"op": "personal", "n": 1}]}]}
     },
     {
       "id": "posu.santan_serye",
@@ -305,7 +305,7 @@
       "text": "모든 적에게 피해 4. 넋흔들림 5 이상이거나 붕괴한 적에게는 상흔 3.",
       "effects": [{"op": "dmg", "n": 4, "target": "all"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "apply", "status": "상흔", "n": 3, "target": "all"}]}],
       "tags": {"produce": ["상흔"], "consume": ["넋흔들림"]},
-      "upgrade": "모든 적에게 피해 5. 넋흔들림 5 이상이거나 붕괴한 적에게는 상흔 4."
+      "upgrade": {"text": "모든 적에게 피해 5. 넋흔들림 5 이상이거나 붕괴한 적에게는 상흔 4.", "effects": [{"op": "dmg", "n": 5, "target": "all"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "apply", "status": "상흔", "n": 4, "target": "all"}]}]}
     },
     {
       "id": "posu.deonnan",
@@ -315,10 +315,10 @@
       "cost": 1,
       "path": "B",
       "keywords": [],
-      "text": "포수의 공격 카드가 점지된 적을 맞히면 상흔 2를 더 남긴다.",
-      "effects": [{"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "점지된 적을 맞히면", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "one"}], "p": 0.85}], "expect": 2.3}],
+      "text": "포수의 공격 카드가 점지된 적을 맞히면 상흔 3을 더 남긴다.",
+      "effects": [{"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "점지된 적을 맞히면", "then": [{"op": "apply", "status": "상흔", "n": 3, "target": "one"}], "p": 0.85}], "expect": 2.3}],
       "tags": {"produce": ["상흔"], "consume": ["점지"]},
-      "upgrade": "비용 0."
+      "upgrade": {"text": "포수의 공격 카드가 점지된 적을 맞히면 상흔 3을 더 남긴다.", "cost": 0}
     },
     {
       "id": "posu.yakjeom",
@@ -331,7 +331,7 @@
       "text": "적 하나에 취약 1, 점지 2. 넋흔들림 5 이상이거나 붕괴한 적이면 취약 1 더.",
       "effects": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "apply", "status": "점지", "n": 2, "target": "one"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}]}],
       "tags": {"produce": ["점지", "취약"], "consume": ["넋흔들림"]},
-      "upgrade": "취약 1, 점지 3. 넋흔들림 5 이상이거나 붕괴한 적이면 취약 1 더."
+      "upgrade": {"text": "적 하나에 취약 1, 점지 3. 넋흔들림 5 이상이거나 붕괴한 적이면 취약 1 더.", "effects": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "apply", "status": "점지", "n": 3, "target": "one"}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}]}]}
     },
     {
       "id": "posu.oegil",
@@ -344,20 +344,20 @@
       "text": "피해 10. 대상의 점지 1당 피해 +5. 넋흔들림 5 이상이거나 붕괴한 적이면 피해가 두 배. 그 뒤 점지를 모두 없앤다.",
       "effects": [{"op": "dmg", "n": 10}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 5}], "expect": 3.0}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 10}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 5}]}]}, {"op": "consume", "status": "점지", "n": "all"}],
       "tags": {"produce": [], "consume": ["넋흔들림", "점지"]},
-      "upgrade": "피해 14. 점지 1당 피해 +6."
+      "upgrade": {"text": "피해 14. 대상의 점지 1당 피해 +6. 넋흔들림 5 이상이거나 붕괴한 적이면 피해가 두 배. 그 뒤 점지를 모두 없앤다.", "effects": [{"op": "dmg", "n": 14}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 6}], "expect": 3.0}, {"op": "cond", "if": "넋흔들림 5 이상 또는 붕괴", "then": [{"op": "dmg", "n": 14}, {"op": "per", "source": "점지", "each": [{"op": "dmg", "n": 6}]}]}, {"op": "consume", "status": "점지", "n": "all"}]}
     },
     {
       "id": "posu.geodun",
       "name": "거둔 표적",
       "type": "능력",
       "rarity": "희귀",
-      "cost": 1,
+      "cost": 0,
       "path": "A",
       "keywords": [],
-      "text": "포수 카드로 점지를 없앨 때마다 화약 +1, 카드 1장을 뽑는다.",
-      "effects": [{"op": "power", "trigger": "on_consume_mark", "effects": [{"op": "cond", "if": "점지를 없앨 때마다", "then": [{"op": "personal", "n": 1}, {"op": "draw", "n": 1}], "p": 1.0}], "expect": 0.6}],
+      "text": "포수 카드로 점지를 없앨 때마다 화약 +1, 카드 2장을 뽑는다.",
+      "effects": [{"op": "power", "trigger": "on_consume_mark", "effects": [{"op": "cond", "if": "점지를 없앨 때마다", "then": [{"op": "personal", "n": 1}, {"op": "draw", "n": 2}], "p": 1.0}], "expect": 0.6}],
       "tags": {"produce": ["화약"], "consume": ["점지"]},
-      "upgrade": "비용 0."
+      "upgrade": {"text": "포수 카드로 점지를 없앨 때마다 화약 +1, 카드 3장을 뽑는다.", "effects": [{"op": "power", "trigger": "on_consume_mark", "effects": [{"op": "cond", "if": "점지를 없앨 때마다", "then": [{"op": "personal", "n": 1}, {"op": "draw", "n": 3}], "p": 1.0}], "expect": 0.6}]}
     },
     {
       "id": "posu.beoljip",
@@ -370,7 +370,7 @@
       "text": "모든 적에게 피해 4를 2회, 상흔 1. 받는소리: 모든 적에게 상흔 2 더.",
       "effects": [{"op": "dmg", "n": 4, "hits": 2, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "상흔", "n": 2, "target": "all"}], "p": 0.3}],
       "tags": {"produce": ["상흔"], "consume": []},
-      "upgrade": "모든 적에게 피해 5를 2회, 상흔 1. 받는소리: 상흔 3 더."
+      "upgrade": {"text": "모든 적에게 피해 5를 2회, 상흔 1. 받는소리: 모든 적에게 상흔 3 더.", "effects": [{"op": "dmg", "n": 5, "hits": 2, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "상흔", "n": 3, "target": "all"}], "p": 0.3}]}
     },
     {
       "id": "posu.sanyanggut",
@@ -383,7 +383,7 @@
       "text": "두 아군의 자리를 바꾼다(교대). 모든 적에게 취약 1. 받는소리: 카드 1장을 뽑는다.",
       "effects": [{"op": "move", "kind": "교대", "who": "allies"}, {"op": "apply", "status": "취약", "n": 1, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 1}], "p": 0.45}],
       "tags": {"produce": ["진형", "취약"], "consume": []},
-      "upgrade": "받는소리: 카드 2장을 뽑는다."
+      "upgrade": {"text": "두 아군의 자리를 바꾼다(교대). 모든 적에게 취약 1. 받는소리: 카드 2장을 뽑는다.", "effects": [{"op": "move", "kind": "교대", "who": "allies"}, {"op": "apply", "status": "취약", "n": 1, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 2}], "p": 0.45}]}
     },
     {
       "id": "posu.jumeoni",
@@ -396,7 +396,7 @@
       "text": "포수가 점지된 적에게 공격 카드를 쓸 때마다 다른 모든 적에게 피해 2, 상흔 1.",
       "effects": [{"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "점지된 적을 공격하면", "then": [{"op": "dmg", "n": 2, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}], "p": 0.85}], "expect": 2.6}],
       "tags": {"produce": ["상흔"], "consume": ["점지"]},
-      "upgrade": "다른 모든 적에게 피해 3, 상흔 1."
+      "upgrade": {"text": "포수가 점지된 적에게 공격 카드를 쓸 때마다 다른 모든 적에게 피해 3, 상흔 1.", "effects": [{"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "점지된 적을 공격하면", "then": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "상흔", "n": 1, "target": "all"}], "p": 0.85}], "expect": 2.6}]}
     }
   ]
 }

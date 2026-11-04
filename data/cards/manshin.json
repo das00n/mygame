@@ -71,7 +71,7 @@
       "text": "굿상에 몸주 신령을 모신다.",
       "effects": [{"op": "summon", "id": "manshin.s_momju"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "굿상에 몸주 신령을 모신다. 신바람 +1."
+      "upgrade": {"text": "굿상에 몸주 신령을 모신다. 신바람 +1.", "effects": [{"op": "summon", "id": "manshin.s_momju"}, {"op": "personal", "n": 1}]}
     },
     {
       "id": "manshin.bangul",
@@ -85,7 +85,7 @@
       "text": "피해 4, 명부 2.",
       "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "apply", "status": "명부", "n": 2, "target": "one"}],
       "tags": {"produce": ["명부"], "consume": []},
-      "upgrade": "피해 5, 명부 3."
+      "upgrade": {"text": "피해 5, 명부 3.", "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "apply", "status": "명부", "n": 3, "target": "one"}]}
     },
     {
       "id": "manshin.gongsu",
@@ -99,7 +99,7 @@
       "text": "적 하나에 점지 2, 약화 1.",
       "effects": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}],
       "tags": {"produce": ["약화", "점지"], "consume": []},
-      "upgrade": "적 하나에 점지 3, 약화 1.",
+      "upgrade": {"text": "적 하나에 점지 3, 약화 1.", "effects": [{"op": "apply", "status": "점지", "n": 3, "target": "one"}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}]},
       "note": "시트의 시작 카드 개념(점지 + 약화)을 따른다. 강신 제한은 보상 풀의 'OO 공수' 카드에만 붙인다."
     },
     {
@@ -114,7 +114,7 @@
       "text": "방어도 5. 받는소리: 굿상의 신령 하나를 골라 즉시 발동시킨다.",
       "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "cond", "if": "받는소리 · 굿상에 신령이 있을 때", "then": [{"op": "special", "value": 3, "note": "신령 한 번 발동 ≈ 몸주 신령 1회(2.7) 기준. 받는소리와 신령 존재가 함께 필요해 p 0.5"}], "p": 0.4}],
       "tags": {"produce": [], "consume": ["굿상"]},
-      "upgrade": "방어도 7. 받는소리: 굿상의 신령 하나를 골라 즉시 발동시킨다."
+      "upgrade": {"text": "방어도 7. 받는소리: 굿상의 신령 하나를 골라 즉시 발동시킨다.", "effects": [{"op": "block", "n": 7, "to": "self"}, {"op": "cond", "if": "받는소리 · 굿상에 신령이 있을 때", "then": [{"op": "special", "value": 3, "note": "신령 한 번 발동 ≈ 몸주 신령 1회(2.7) 기준. 받는소리와 신령 존재가 함께 필요해 p 0.5"}], "p": 0.4}]}
     },
     {
       "id": "manshin.yeoldu_bangul",
@@ -127,7 +127,7 @@
       "text": "피해 2를 3회 준다. 굿상의 신령 1당 1회 더 준다.",
       "effects": [{"op": "dmg", "n": 2, "target": "one", "hits": 3}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 2, "target": "one"}]}],
       "tags": {"produce": [], "consume": ["굿상"]},
-      "upgrade": "피해 2를 3회 준다. 굿상의 신령 1당 2회 더 준다."
+      "upgrade": {"text": "피해 2를 4회 준다. 굿상의 신령 1당 1회 더 준다.", "effects": [{"op": "dmg", "n": 2, "target": "one", "hits": 4}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 2, "target": "one"}]}]}
     },
     {
       "id": "manshin.wongwi_homyeong",
@@ -140,7 +140,7 @@
       "text": "피해 4, 명부 2. 받는소리: 명부 2 더.",
       "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "apply", "status": "명부", "n": 2, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "명부", "n": 2, "target": "one"}]}],
       "tags": {"produce": ["명부"], "consume": []},
-      "upgrade": "피해 5, 명부 3. 받는소리: 명부 3 더."
+      "upgrade": {"text": "피해 5, 명부 3. 받는소리: 명부 3 더.", "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "apply", "status": "명부", "n": 3, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "명부", "n": 3, "target": "one"}]}]}
     },
     {
       "id": "manshin.buchae_baram",
@@ -153,7 +153,7 @@
       "text": "적 전체에 피해 3. 받는소리: 적 전체에 약화 1.",
       "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}]}],
       "tags": {"produce": ["약화"], "consume": []},
-      "upgrade": "적 전체에 피해 5. 받는소리: 적 전체에 약화 1."
+      "upgrade": {"text": "적 전체에 피해 5. 받는소리: 적 전체에 약화 1.", "effects": [{"op": "dmg", "n": 5, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}]}]}
     },
     {
       "id": "manshin.bangul_cheongbae",
@@ -166,7 +166,7 @@
       "text": "피해 3. 굿상에 몸주 신령을 모신다.",
       "effects": [{"op": "dmg", "n": 3, "target": "one"}, {"op": "summon", "id": "manshin.s_momju"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "피해 6. 굿상에 몸주 신령을 모신다."
+      "upgrade": {"text": "피해 6. 굿상에 몸주 신령을 모신다.", "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "summon", "id": "manshin.s_momju"}]}
     },
     {
       "id": "manshin.janggun_cheongbae",
@@ -179,7 +179,7 @@
       "text": "피해 5. 굿상에 장군 신령을 모신다.",
       "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "summon", "id": "manshin.s_janggun"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "피해 10. 굿상에 장군 신령을 모신다."
+      "upgrade": {"text": "피해 10. 굿상에 장군 신령을 모신다.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "summon", "id": "manshin.s_janggun"}]}
     },
     {
       "id": "manshin.chilseong_maji",
@@ -192,7 +192,7 @@
       "text": "굿상에 칠성 신령을 모신다. 방어도 4.",
       "effects": [{"op": "summon", "id": "manshin.s_chilseong"}, {"op": "block", "n": 4, "to": "self"}],
       "tags": {"produce": ["굿상"], "consume": []},
-      "upgrade": "굿상에 칠성 신령을 모신다. 방어도 8."
+      "upgrade": {"text": "굿상에 칠성 신령을 모신다. 방어도 8.", "effects": [{"op": "summon", "id": "manshin.s_chilseong"}, {"op": "block", "n": 8, "to": "self"}]}
     },
     {
       "id": "manshin.yeonpungdae",
@@ -205,7 +205,7 @@
       "text": "신바람 +1. 직전 카드도 만신 카드면 신바람 +1 더.",
       "effects": [{"op": "personal", "n": 1}, {"op": "cond", "if": "직전 카드도 만신 카드면", "then": [{"op": "personal", "n": 1}], "p": 0.4}],
       "tags": {"produce": ["신바람"], "consume": []},
-      "upgrade": "신바람 +1. 직전 카드도 만신 카드면 신바람 +2 더."
+      "upgrade": {"text": "신바람 +1. 직전 카드도 만신 카드면 신바람 +2 더.", "effects": [{"op": "personal", "n": 1}, {"op": "cond", "if": "직전 카드도 만신 카드면", "then": [{"op": "personal", "n": 2}], "p": 0.4}]}
     },
     {
       "id": "manshin.mubok_yeomigi",
@@ -218,7 +218,7 @@
       "text": "방어도 5. 신바람 +1.",
       "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "personal", "n": 1}],
       "tags": {"produce": ["신바람"], "consume": []},
-      "upgrade": "방어도 7. 신바람 +1."
+      "upgrade": {"text": "방어도 7. 신바람 +1.", "effects": [{"op": "block", "n": 7, "to": "self"}, {"op": "personal", "n": 1}]}
     },
     {
       "id": "manshin.soji",
@@ -228,10 +228,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "방어도 4. 손의 부적 1장을 소멸시켜 신령께 바치면 신바람 +3.",
-      "effects": [{"op": "block", "n": 4, "to": "self"}, {"op": "cond", "if": "손의 부적 1장을 소멸시켜 바치면", "then": [{"op": "consume", "source": "부적", "n": 1}, {"op": "personal", "n": 3}]}],
+      "text": "방어도 5. 손의 부적 1장을 소멸시켜 신령께 바치면 신바람 +3.",
+      "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "cond", "if": "손의 부적 1장을 소멸시켜 바치면", "then": [{"op": "consume", "source": "부적", "n": 1}, {"op": "personal", "n": 3}]}],
       "tags": {"produce": ["신바람"], "consume": ["부적"]},
-      "upgrade": "방어도 6. 손의 부적 1장을 소멸시켜 신령께 바치면 신바람 +3."
+      "upgrade": {"text": "방어도 7. 손의 부적 1장을 소멸시켜 신령께 바치면 신바람 +3.", "effects": [{"op": "block", "n": 7, "to": "self"}, {"op": "cond", "if": "손의 부적 1장을 소멸시켜 바치면", "then": [{"op": "consume", "source": "부적", "n": 1}, {"op": "personal", "n": 3}]}]}
     },
     {
       "id": "manshin.ssal",
@@ -244,7 +244,7 @@
       "text": "방어도 4. 받는소리: 적 하나에 점지 2. 직전 카드도 만신 카드면: 신바람 +1.",
       "effects": [{"op": "block", "n": 4, "to": "self"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}]}, {"op": "cond", "if": "직전 카드도 만신 카드면", "then": [{"op": "personal", "n": 1}], "p": 0.3}],
       "tags": {"produce": ["신바람", "점지"], "consume": []},
-      "upgrade": "방어도 5. 받는소리: 적 하나에 점지 3. 직전 카드도 만신 카드면: 신바람 +1."
+      "upgrade": {"text": "방어도 5. 받는소리: 적 하나에 점지 3. 직전 카드도 만신 카드면: 신바람 +1.", "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "점지", "n": 3, "target": "one"}]}, {"op": "cond", "if": "직전 카드도 만신 카드면", "then": [{"op": "personal", "n": 1}], "p": 0.3}]}
     },
     {
       "id": "manshin.daegam_nori",
@@ -257,7 +257,7 @@
       "text": "굿상에 대감 신령을 모신다. 받는소리: 적 하나에 약화 1.",
       "effects": [{"op": "summon", "id": "manshin.s_daegam"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "약화", "n": 1, "target": "one"}]}],
       "tags": {"produce": ["굿상", "약화"], "consume": []},
-      "upgrade": "굿상에 대감 신령을 모신다. 받는소리: 적 하나에 약화 2."
+      "upgrade": {"text": "굿상에 대감 신령을 모신다. 받는소리: 적 하나에 약화 2.", "effects": [{"op": "summon", "id": "manshin.s_daegam"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "약화", "n": 2, "target": "one"}]}]}
     },
     {
       "id": "manshin.janggun_gongsu",
@@ -270,7 +270,7 @@
       "text": "피해 4. 굿상의 신령 1당 피해 3을 1회 더 준다. 강신 중이면 피해 6, 신령 1당 피해 6.",
       "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 3, "target": "one"}]}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "dmg", "n": 2, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 3, "target": "one"}]}]}],
       "tags": {"produce": [], "consume": ["굿상", "신바람"]},
-      "upgrade": "피해 5. 굿상의 신령 1당 피해 4를 1회 더 준다. 강신 중이면 피해 8, 신령 1당 피해 8.",
+      "upgrade": {"text": "피해 5. 굿상의 신령 1당 피해 4를 1회 더 준다. 강신 중이면 피해 8, 신령 1당 피해 8.", "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 4, "target": "one"}]}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "dmg", "n": 3, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 4, "target": "one"}]}]}]},
       "note": "v0.2: 강신 밖에서도 쓸 수 있다(약한 효과). 강신 조건 p 0.3."
     },
     {
@@ -284,7 +284,7 @@
       "text": "피해 4, 명부 3. 강신 중이면 명부 2 더, 파티 회복 1.",
       "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "apply", "status": "명부", "n": 3, "target": "one"}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "apply", "status": "명부", "n": 2, "target": "one"}, {"op": "heal", "n": 1, "to": "party"}]}],
       "tags": {"produce": ["명부"], "consume": ["신바람"]},
-      "upgrade": "피해 5, 명부 4. 강신 중이면 명부 3 더, 파티 회복 1.",
+      "upgrade": {"text": "피해 5, 명부 4. 강신 중이면 명부 3 더, 파티 회복 1.", "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "apply", "status": "명부", "n": 4, "target": "one"}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "apply", "status": "명부", "n": 3, "target": "one"}, {"op": "heal", "n": 1, "to": "party"}]}]},
       "note": "v0.2: 강신 밖에서도 쓸 수 있다(약한 효과). 강신 조건 p 0.3."
     },
     {
@@ -295,10 +295,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "피해 6. 강신 중이면 손의 부적을 모두 소멸시키고, 1장당 카드 1장을 뽑는다.",
-      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "per", "source": "부적", "each": [{"op": "consume", "source": "부적", "n": 1}, {"op": "draw", "n": 1}], "expect": 0.1}]}],
+      "text": "피해 8. 강신 중이면 손의 부적을 모두 소멸시키고, 1장당 카드 1장을 뽑는다.",
+      "effects": [{"op": "dmg", "n": 8, "target": "one"}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "per", "source": "부적", "each": [{"op": "consume", "source": "부적", "n": 1}, {"op": "draw", "n": 1}], "expect": 0.1}]}],
       "tags": {"produce": [], "consume": ["부적", "신바람"]},
-      "upgrade": "피해 8. 강신 중이면 손의 부적을 모두 소멸시키고, 1장당 카드 1장을 뽑는다.",
+      "upgrade": {"text": "피해 10. 강신 중이면 손의 부적을 모두 소멸시키고, 1장당 카드 1장을 뽑는다.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "cond", "if": "강신 중(신바람 5)이면", "then": [{"op": "per", "source": "부적", "each": [{"op": "consume", "source": "부적", "n": 1}, {"op": "draw", "n": 1}], "expect": 0.1}]}]},
       "note": "v0.2: 강신 밖에서는 피해만. 강신 조건 p 0.3. 대감은 제물(부적)을 받고 재수(카드)를 돌려준다."
     },
     {
@@ -312,7 +312,7 @@
       "text": "굿상의 신령을 모두 배웅한다(굿상에서 내린다). 피해 4, 배웅한 신령 1당 피해 9 더.",
       "effects": [{"op": "consume", "source": "굿상"}, {"op": "dmg", "n": 4, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 9, "target": "one"}], "expect": 1.4}],
       "tags": {"produce": [], "consume": ["굿상"]},
-      "upgrade": "굿상의 신령을 모두 배웅한다(굿상에서 내린다). 피해 4, 배웅한 신령 1당 피해 12 더."
+      "upgrade": {"text": "굿상의 신령을 모두 배웅한다(굿상에서 내린다). 피해 4, 배웅한 신령 1당 피해 12 더.", "effects": [{"op": "consume", "source": "굿상"}, {"op": "dmg", "n": 4, "target": "one"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 12, "target": "one"}], "expect": 1.4}]}
     },
     {
       "id": "manshin.myeongdo",
@@ -325,7 +325,7 @@
       "text": "적 하나에 점지 2, 명부 2. 받는소리: 방어도 4.",
       "effects": [{"op": "apply", "status": "점지", "n": 2, "target": "one"}, {"op": "apply", "status": "명부", "n": 2, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "self"}]}],
       "tags": {"produce": ["명부", "점지"], "consume": []},
-      "upgrade": "적 하나에 점지 3, 명부 3. 받는소리: 방어도 4."
+      "upgrade": {"text": "적 하나에 점지 3, 명부 3. 받는소리: 방어도 4.", "effects": [{"op": "apply", "status": "점지", "n": 3, "target": "one"}, {"op": "apply", "status": "명부", "n": 3, "target": "one"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "self"}]}]}
     },
     {
       "id": "manshin.josang_maji",
@@ -338,7 +338,7 @@
       "text": "굿상에 조상 신령을 모신다. 적 하나에 점지 1.",
       "effects": [{"op": "summon", "id": "manshin.s_josang"}, {"op": "apply", "status": "점지", "n": 1, "target": "one"}],
       "tags": {"produce": ["굿상", "점지"], "consume": []},
-      "upgrade": "굿상에 조상 신령을 모신다. 적 하나에 점지 2, 명부 1."
+      "upgrade": {"text": "굿상에 조상 신령을 모신다. 적 하나에 점지 2.", "effects": [{"op": "summon", "id": "manshin.s_josang"}, {"op": "apply", "status": "점지", "n": 2, "target": "one"}]}
     },
     {
       "id": "manshin.geumeum_cheongbae",
@@ -351,7 +351,7 @@
       "text": "굿상에 몸주 신령을 모신다. 손에 그늘이 있으면 그늘 1장을 소멸시키고 신바람 +2.",
       "effects": [{"op": "summon", "id": "manshin.s_momju"}, {"op": "cond", "if": "손에 그늘이 있으면", "then": [{"op": "exhaust_other", "n": 1}, {"op": "personal", "n": 2}], "p": 0.4}],
       "tags": {"produce": ["굿상", "신바람"], "consume": []},
-      "upgrade": "굿상에 몸주 신령을 모신다. 손에 그늘이 있으면 그늘 1장을 소멸시키고 신바람 +3, 카드 1장을 뽑는다.",
+      "upgrade": {"text": "굿상에 몸주 신령을 모신다. 손에 그늘이 있으면 그늘 1장을 소멸시키고 신바람 +4.", "effects": [{"op": "summon", "id": "manshin.s_momju"}, {"op": "cond", "if": "손에 그늘이 있으면", "then": [{"op": "exhaust_other", "n": 1}, {"op": "personal", "n": 4}], "p": 0.4}]},
       "note": "그늘 소비 카드(탐험 규칙 §4). 어둠을 택한 원정에서만 성립하므로 p 0.4."
     },
     {
@@ -365,7 +365,7 @@
       "text": "부적을 쓸 때마다 신바람 +1, 무작위 적에게 피해 2.",
       "effects": [{"op": "power", "trigger": "on_token_play", "effects": [{"op": "consume", "source": "부적"}, {"op": "personal", "n": 1}, {"op": "dmg", "n": 2, "target": "random"}], "expect": 2.4}],
       "tags": {"produce": ["신바람"], "consume": ["부적"]},
-      "upgrade": "비용 0. 부적을 쓸 때마다 신바람 +1, 무작위 적에게 피해 2.",
+      "upgrade": {"text": "부적을 쓸 때마다 신바람 +1, 무작위 적에게 피해 2.", "cost": 0},
       "note": "동료의 부적이 있어야 발동하므로 기대 발동 3회."
     },
     {
@@ -377,9 +377,9 @@
       "path": "A",
       "keywords": [],
       "text": "턴 종료 시 굿상의 신령 1당 무작위 적에게 피해 3.",
-      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 3, "target": "random"}], "expect": 1.2}]}],
+      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 3, "target": "random"}], "expect": 1.15}]}],
       "tags": {"produce": [], "consume": ["굿상"]},
-      "upgrade": "턴 종료 시 굿상의 신령 1당 무작위 적에게 피해 4."
+      "upgrade": {"text": "턴 종료 시 굿상의 신령 1당 무작위 적에게 피해 4.", "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 4, "target": "random"}], "expect": 1.15}]}]}
     },
     {
       "id": "manshin.chilseongdan",
@@ -389,10 +389,10 @@
       "cost": 1,
       "path": "B",
       "keywords": [],
-      "text": "턴 종료 시 명부가 가장 많은 적에게 명부 3.",
-      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "apply", "status": "명부", "n": 3, "target": "one"}]}],
+      "text": "턴 종료 시 명부가 가장 많은 적에게 명부 2.",
+      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "apply", "status": "명부", "n": 2, "target": "one"}]}],
       "tags": {"produce": ["명부"], "consume": []},
-      "upgrade": "턴 종료 시 명부가 가장 많은 적에게 명부 4."
+      "upgrade": {"text": "턴 종료 시 명부가 가장 많은 적에게 명부 2.", "keywords": ["선천"]}
     },
     {
       "id": "manshin.eonwoldo",
@@ -405,7 +405,7 @@
       "text": "적 전체에 피해 10. 굿상의 신령 1당 적 전체에 피해 5 더. 신바람 +2.",
       "effects": [{"op": "dmg", "n": 10, "target": "all"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 5, "target": "all"}], "expect": 0.75}, {"op": "personal", "n": 2}],
       "tags": {"produce": ["신바람"], "consume": ["굿상"]},
-      "upgrade": "적 전체에 피해 13. 굿상의 신령 1당 적 전체에 피해 7 더. 신바람 +2."
+      "upgrade": {"text": "적 전체에 피해 13. 굿상의 신령 1당 적 전체에 피해 7 더. 신바람 +2.", "effects": [{"op": "dmg", "n": 13, "target": "all"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 7, "target": "all"}], "expect": 0.75}, {"op": "personal", "n": 2}]}
     },
     {
       "id": "manshin.obanggi",
@@ -418,7 +418,7 @@
       "text": "굿상에 오방 신장을 모신다. 신바람 +2.",
       "effects": [{"op": "summon", "id": "manshin.s_obang"}, {"op": "personal", "n": 2}],
       "tags": {"produce": ["굿상", "신바람"], "consume": []},
-      "upgrade": "비용 1. 굿상에 오방 신장을 모신다. 신바람 +2."
+      "upgrade": {"text": "굿상에 오방 신장을 모신다. 신바람 +2.", "cost": 1}
     },
     {
       "id": "manshin.mubok_garaipgi",
@@ -431,7 +431,7 @@
       "text": "신바람 +3. 손의 부적 1장을 소멸시켜 바치면, 이번 턴 강신할 때 신령 하나를 더 몸에 싣는다.",
       "effects": [{"op": "personal", "n": 3}, {"op": "cond", "if": "손의 부적 1장을 소멸시켜 바치면", "then": [{"op": "consume", "source": "부적", "n": 1}, {"op": "special", "value": 5, "note": "강신 때 두 번째 신령의 능력 두 배 ≈ 신령 1회분 두 배(약 5)"}]}],
       "tags": {"produce": ["신바람"], "consume": ["부적"]},
-      "upgrade": "신바람 +4. 손의 부적 1장을 소멸시켜 바치면, 이번 턴 강신할 때 신령 하나를 더 몸에 싣는다."
+      "upgrade": {"text": "신바람 +4. 손의 부적 1장을 소멸시켜 바치면, 이번 턴 강신할 때 신령 하나를 더 몸에 싣는다.", "effects": [{"op": "personal", "n": 4}, {"op": "cond", "if": "손의 부적 1장을 소멸시켜 바치면", "then": [{"op": "consume", "source": "부적", "n": 1}, {"op": "special", "value": 5, "note": "강신 때 두 번째 신령의 능력 두 배 ≈ 신령 1회분 두 배(약 5)"}]}]}
     },
     {
       "id": "manshin.myeongjul",
@@ -444,7 +444,7 @@
       "text": "파티 회복 5. 적 전체에 명부 4.",
       "effects": [{"op": "heal", "n": 5, "to": "party"}, {"op": "apply", "status": "명부", "n": 4, "target": "all"}],
       "tags": {"produce": ["명부"], "consume": []},
-      "upgrade": "파티 회복 7. 적 전체에 명부 5."
+      "upgrade": {"text": "파티 회복 7. 적 전체에 명부 5.", "effects": [{"op": "heal", "n": 7, "to": "party"}, {"op": "apply", "status": "명부", "n": 5, "target": "all"}]}
     },
     {
       "id": "manshin.sineomeoni",
@@ -457,7 +457,7 @@
       "text": "강신할 때마다 에너지 1을 얻고, 굿상에 몸주 신령을 모신다.",
       "effects": [{"op": "power", "trigger": "on_gangsin", "effects": [{"op": "consume", "source": "신바람"}, {"op": "energy", "n": 1, "when": "now"}, {"op": "summon", "id": "manshin.s_momju"}], "expect": 1.7}],
       "tags": {"produce": ["굿상"], "consume": ["신바람"]},
-      "upgrade": "비용 1. 강신할 때마다 에너지 1을 얻고, 굿상에 몸주 신령을 모신다.",
+      "upgrade": {"text": "강신할 때마다 에너지 1을 얻고, 굿상에 몸주 신령을 모신다.", "cost": 1},
       "note": "강신은 전투당 2회 안팎으로 보고 기대 발동 2회."
     }
   ]

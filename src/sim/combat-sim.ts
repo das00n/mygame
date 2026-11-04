@@ -19,6 +19,7 @@ export function cardTables(cards: ReturnType<typeof newCardAgg>) {
   const cardRows: Record<string, { name: string; set: string; rarity: string; type: string; cost: number; plays: number; inDeck: number; playRate: number; offered: number; picked: number; pickRate: number }> = {};
   for (const c of d.cards) {
     if (c.isToken) continue;
+    if (c.upgraded && !cards.plays[c.id] && !cards.inDeck[c.id]) continue; // 강화판은 쓰였을 때만
     const plays = cards.plays[c.id] ?? 0;
     const inDeck = cards.inDeck[c.id] ?? 0;
     const offered = cards.offered[c.id] ?? 0;
@@ -50,6 +51,7 @@ export function cardTables(cards: ReturnType<typeof newCardAgg>) {
   }
   const powers: Record<string, { played: number; fires: number; firesPerPlay: number; dataExpect: number }> = {};
   for (const c of d.cards) {
+    if (c.upgraded && !cards.plays[c.id]) continue;
     const pw = c.effects.find((o) => o.op === 'power');
     // 이번 턴 임시 트리거(this_turn, 진형이 바뀔 때마다)도 같은 표에 (발동/사용)
     if (!pw || pw.op !== 'power') continue;

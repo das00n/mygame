@@ -98,39 +98,55 @@ export function loadData(): GameData {
   // 카드 정의 (부적 포함) — idx 먼저 매긴다
   const cards: CardDef[] = [];
   const cardById = new Map<string, CardDef>();
-  const pending: { def: CardDef; raw: RawCard }[] = [];
-  for (const r of raw) {
-    const entries: [RawCard, boolean][] = [...r.cards.map((c) => [c, false] as [RawCard, boolean]), ...r.tokens.map((c) => [c, true] as [RawCard, boolean])];
-    for (const [c, isToken] of entries) {
-      const keywords = c.keywords ?? [];
-      let ownerKind: CardDef['ownerKind'] = 'hero';
-      let heroes: HeroId[] = [];
-      if (r.set === 'duo') {
-        ownerKind = 'duo';
-        heroes = (c.owners ?? []) as HeroId[];
-      } else if (r.set === 'common') {
-        ownerKind = c.owner === '파티' ? 'party' : 'dynamic';
-      } else {
-        heroes = [r.set as HeroId];
-      }
-      const type = c.type ?? '기술';
-      const rarity = c.rarity ?? (isToken ? '부적' : '일반');
-      const def: CardDef = {
-        idx: cards.length, id: c.id, name: c.name, set: r.set, type, rarity, cost: c.cost, ownerKind, heroes, keywords,
-        exhaust: keywords.includes('소멸') || isToken, ethereal: keywords.includes('휘발'), unplayable: keywords.includes('사용 불가'),
-        innate: keywords.includes('선천'), retain: keywords.includes('보존'),
-        text: c.text, effects: [], starter: !!c.starter, path: c.path ?? 'core', isToken,
-        isAttack: type === '공격', isPower: type === '능력', isCurse: type === '저주', isStatus: type === '상태',
-        subtype: c.subtype ?? '', tags: { produce: c.tags?.produce ?? [], consume: c.tags?.consume ?? [] },
-        value: rawValue(c.effects, vctx), budget: budgetOf(c.cost, rarity, keywords),
-        needsEnemy: false, needsEnemy2: false, allyChoice: 'none', requireGangsin: false, dashHero: null, actorFor: {},
-        holdFront: c.text.includes('선두를 내주지 않는다'), raisesSinjuCap: c.text.includes('5까지 쌓을 수'),
-        perEnemyOneConds: false,
-      };
-      cards.push(def);
-      cardById.set(def.id, def);
-      pending.push({ def, raw: c });
+  const pending: { def: CardDef; raw: RawCard; specialId: string }[] = [];
+  const upgradeQueue: { base: CardDef; raw: RawCard; set: string }[] = [];
+  const makeDef = (c: RawCard, isToken: boolean, set: string, base: CardDef | null): CardDef => {
+    const keywords = c.keywords ?? [];
+    let ownerKind: CardDef['ownerKind'] = 'hero';
+    let heroes: HeroId[] = [];
+    if (set === 'duo') {
+      ownerKind = 'duo';
+      heroes = (c.owners ?? []) as HeroId[];
+    } else if (set === 'common') {
+      ownerKind = c.owner === '파티' ? 'party' : 'dynamic';
+    } else {
+      heroes = [set as HeroId];
     }
+    const type = c.type ?? '기술';
+    const rarity = c.rarity ?? (isToken ? '부적' : '일반');
+    const def: CardDef = {
+      idx: cards.length, id: c.id, name: c.name, set: set, type, rarity, cost: c.cost, ownerKind, heroes, keywords,
+      exhaust: keywords.includes('소멸') || isToken, ethereal: keywords.includes('휘발'), unplayable: keywords.includes('사용 불가'),
+      innate: keywords.includes('선천'), retain: keywords.includes('보존'),
+      text: c.text, effects: [], starter: !!c.starter, path: c.path ?? 'core', isToken,
+      isAttack: type === '공격', isPower: type === '능력', isCurse: type === '저주', isStatus: type === '상태',
+      subtype: c.subtype ?? '', tags: { produce: c.tags?.produce ?? [], consume: c.tags?.consume ?? [] },
+      value: rawValue(c.effects, vctx), budget: budgetOf(c.cost, rarity, keywords),
+      needsEnemy: false, needsEnemy2: false, allyChoice: 'none', requireGangsin: false, dashHero: null, actorFor: {},
+      holdFront: c.text.includes('선두를 내주지 않는다'), raisesSinjuCap: c.text.includes('5까지 쌓을 수'),
+      perEnemyOneConds: false, upgraded: !!base, baseIdx: base ? base.idx : cards.length, upIdx: -1,
+    };
+    cards.push(def);
+    cardById.set(def.id, def);
+    pending.push({ def, raw: c, specialId: base ? base.id : c.id });
+    return def;
+  };
+  for (const r of raw) {
+    for (const c of r.cards) {
+      const def = makeDef(c, false, r.set, null);
+      if (c.upgrade) upgradeQueue.push({ base: def, raw: c, set: r.set });
+    }
+    for (const t of r.tokens) makeDef(t, true, r.set, null);
+  }
+  // 강화판: 기본판·부적 뒤에 붙인다 (기본판 idx 는 그대로 → 저장된 덱 호환)
+  for (const { base, raw: c, set } of upgradeQueue) {
+    const u = c.upgrade!;
+    const up: RawCard = {
+      ...c, id: `${c.id}+`, name: `${c.name}+`, text: u.text, cost: u.cost ?? c.cost, keywords: u.keywords ?? c.keywords ?? [], effects: u.effects ?? c.effects,
+    };
+    delete up.upgrade;
+    const def = makeDef(up, false, set, base);
+    base.upIdx = def.idx;
   }
 
   const tokenIdx = (id: string): number => {
@@ -144,15 +160,15 @@ export function loadData(): GameData {
     return d.idx;
   };
 
-  for (const { def, raw: c } of pending) {
-    const cc: CompileCtx = { cardId: def.id, text: def.text, isDuo: def.ownerKind === 'duo', tokenIdx, summonIdx, keyN: 0 };
+  for (const { def, raw: c, specialId } of pending) {
+    const cc: CompileCtx = { cardId: def.id, specialId, text: def.text, isDuo: def.ownerKind === 'duo', tokenIdx, summonIdx, keyN: 0 };
     def.effects = compileOps(c.effects, cc, false);
     analyseCard(def);
   }
   for (const r of raw) {
     for (const s of r.summons) {
       const def = summonById.get(s.id)!;
-      def.effects = compileOps(s.effects, { cardId: s.id, text: s.text, isDuo: false, tokenIdx, summonIdx, keyN: 0 }, false);
+      def.effects = compileOps(s.effects, { cardId: s.id, specialId: s.id, text: s.text, isDuo: false, tokenIdx, summonIdx, keyN: 0 }, false);
     }
   }
 
@@ -188,12 +204,12 @@ export function loadData(): GameData {
   const starters = new Map<HeroId, CardDef[]>();
   const pools = new Map<HeroId, CardDef[]>();
   for (const h of HERO_IDS) {
-    const own = cards.filter((d) => d.set === h && !d.isToken);
+    const own = cards.filter((d) => d.set === h && !d.isToken && !d.upgraded);
     starters.set(h, own.filter((d) => d.starter));
     pools.set(h, own.filter((d) => !d.starter));
   }
   const duoFor = new Map<string, CardDef>();
-  for (const d of cards) if (d.ownerKind === 'duo' && !d.isToken) duoFor.set([...d.heroes].sort().join('+'), d);
+  for (const d of cards) if (d.ownerKind === 'duo' && !d.isToken && !d.upgraded) duoFor.set([...d.heroes].sort().join('+'), d);
 
   const sj = readJson<{ producers: Record<string, number>; consumers: Record<string, number> }>('data/design/synergy.json');
 
@@ -213,6 +229,8 @@ export function loadData(): GameData {
 // ── 컴파일 ──────────────────────────────────────────────────────────
 interface CompileCtx {
   cardId: string;
+  /** special 규칙을 찾는 id (강화판은 기본판 id) */
+  specialId: string;
   text: string;
   isDuo: boolean;
   tokenIdx: (id: string) => number;
@@ -332,7 +350,7 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
       return { op: 'consume', status: (r.status as string) ?? null, source: (r.source as string) ?? null, n };
     }
     case 'special': {
-      const kind = SPECIAL_BY_CARD[cc.cardId] ?? 'approx';
+      const kind = SPECIAL_BY_CARD[cc.specialId] ?? 'approx';
       return { op: 'special', value: n0(r.value, 0), note: String(r.note ?? ''), kind, key: key() };
     }
     default:
@@ -508,4 +526,21 @@ function parseHaewon(rule: string | null): HaewonRule {
 
 export function condOf(op: Op): Cond | null {
   return op.op === 'cond' ? op.cond : null;
+}
+
+// ── 강화 (K1, v0.3) ───────────────────────────────────────────────────
+/** 카드 인스턴스를 강화한다. 강화할 수 없으면(이미 강화됨·강화판 없음) null */
+export function upgradeInst<T extends { d: number }>(inst: T): T | null {
+  const def = loadData().cards[inst.d];
+  if (!def || def.upgraded || def.upIdx < 0) return null;
+  return { ...inst, d: def.upIdx };
+}
+
+export function isUpgraded(inst: { d: number }): boolean {
+  return !!loadData().cards[inst.d]?.upgraded;
+}
+
+export function canUpgrade(inst: { d: number }): boolean {
+  const def = loadData().cards[inst.d];
+  return !!def && !def.upgraded && def.upIdx >= 0;
 }

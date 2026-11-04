@@ -1,0 +1,346 @@
+{
+ "version": "0.1",
+ "region": {
+  "id": "yeokbyeong",
+  "name": "역병 든 마을",
+  "act": 2,
+  "concept": "강을 건넌 넋들이 지나는 저승길 어귀의 마을. 돌림병이 휩쓴 뒤 장례도 제사도 받지 못한 넋들이 골목마다 열을 앓으며 남아 있다. 손님(마마를 맡은 신령)이 머무는 마을을, 손님 행세를 하는 허주가 차지했다.",
+  "families": ["역귀", "굶주린 넋", "잡귀잡신", "억울귀"],
+  "pressures": ["P4", "P3"],
+  "teaches": ["칸 조준", "진형 교란", "번지는 홀림", "옮김"],
+  "map_shape": "골목이 바둑판처럼 엇갈린 격자형 마을. 집집이 방(대문)이고 골목(길목)끼리 이어져 고리 통로가 많다. 한가운데 마당에 손님 마당이 고정된다",
+  "map": {"loops_bonus": 2, "trap_rate": 0.11, "fixed_rooms": ["sonnim_madang", "seonang_gosa"]},
+  "trap_card": "열기 서린 골목",
+  "key_provisions": ["술", "부적"]
+ },
+ "targets": ["선두", "중열", "후열", "전체", "최저 체력", "최고 체력", "무작위", "쓰러진 영웅", "굿상", "자신", "아군 원귀"],
+ "statuses": ["점지", "상흔", "명부", "넋흔들림", "장단", "진형", "굿상", "부적"],
+ "enemies": [
+  {"id": "yeol_neok", "name": "열 오른 넋", "family": "역귀", "category": "normal", "hp": [24, 27], "position": "front",
+   "han": "돌림병을 앓다 아무도 곁에 오지 못한 채 숨졌다. 아직도 몸에서 열이 내리지 않는다.",
+   "intents": [
+    {"id": "a", "name": "뜨거운 손", "kind": "attack", "target": "선두", "damage": 4, "hits": 2},
+    {"id": "b", "name": "열 옮기기", "kind": "pollute", "target": "선두", "effect": "선두 영웅 덱에 '신열' 1장(그 영웅이 주인)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P4", "P2"],
+   "haewon": {"status": "상흔", "rule": "상흔 2 이상인 상태로 쓰러뜨린다", "story": "앓던 자리를 끝까지 짚어 주자 비로소 열이 내린다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [14, 20]}},
+  {"id": "gichim_neok", "name": "기침하는 넋", "family": "역귀", "category": "normal", "hp": [38, 42], "position": "back",
+   "han": "밤새 기침하다 새벽에 숨이 멎었다. 그 기침 소리에 이웃들이 문을 닫아걸었다.",
+   "intents": [
+    {"id": "a", "name": "마른기침", "kind": "attack_debuff", "target": "후열", "damage": 7, "hits": 1, "effect": "약화 1"},
+    {"id": "b", "name": "밤새 기침", "kind": "stress", "target": "전체", "effect": "파티 귀기 +5"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P3"],
+   "haewon": {"status": "넋흔들림", "rule": "넋흔들림 3 이상인 상태로 쓰러뜨린다", "story": "등을 두드려 흔들어 깨우자 기침이 멎고 숨이 트인다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [16, 24]}},
+  {"id": "mungan_yeokgwi", "name": "문간 역귀", "family": "역귀", "category": "normal", "hp": [58, 62], "position": "front",
+   "han": "집에 병을 들이지 않으려 대문을 막아섰다가 문지방에서 쓰러졌다. 아직도 문을 지킨다.",
+   "intents": [
+    {"id": "a", "name": "대문 밀치기", "kind": "attack", "target": "선두", "damage": 13, "hits": 1},
+    {"id": "b", "name": "문 걸어 잠그기", "kind": "buff", "target": "자신", "block": 10, "effect": "공격 +2 (누적)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P1"],
+   "haewon": {"status": "상흔", "rule": "상흔 4 이상인 상태로 쓰러뜨린다", "story": "문지방에 쓰러졌던 자리를 짚어 주자, 그제야 대문을 열고 나선다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [20, 28]}},
+  {"id": "dollim_japgwi", "name": "돌림 잡귀", "family": "잡귀잡신", "category": "normal", "hp": [13, 15], "position": "any",
+   "han": "돌림병을 따라 이 집 저 집 옮겨 다니는 잡귀. 이름도 사연도 남지 않았다.",
+   "intents": [
+    {"id": "a", "name": "들러붙기", "kind": "attack", "target": "선두", "damage": 4, "hits": 1},
+    {"id": "b", "name": "옮겨 붙기", "kind": "pollute", "target": "무작위", "effect": "무작위 영웅 덱에 '신열' 1장(그 영웅이 주인)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "a", "b"]},
+   "passives": [],
+   "pressures": ["P7", "P4"],
+   "haewon": {"status": "부적", "rule": "무리 중 하나라도 부적(토큰) 카드의 마지막 피해로 쓰러지면, 그 전투의 돌림 잡귀 모두 해원", "story": "부적 한 장에 무리가 흩어져 저마다 제 갈 길을 간다"},
+   "drops": {"material": "잡귀 넋", "gold": [3, 5]}},
+  {"id": "sangmun_japgwi", "name": "상문 잡귀", "family": "잡귀잡신", "category": "normal", "hp": [42, 46], "position": "back",
+   "han": "상가마다 따라붙던 잡귀. 곡소리가 끊긴 마을에서 제가 곡을 흉내 낸다.",
+   "intents": [
+    {"id": "a", "name": "곡 흉내", "kind": "stress", "target": "전체", "effect": "파티 귀기 +4"},
+    {"id": "b", "name": "엇박 치기", "kind": "pollute", "target": "전체", "effect": "덱에 '잡음' 2장(사용 불가·휘발)을 넣는다"},
+    {"id": "c", "name": "상 엎기", "kind": "attack", "target": "선두", "damage": 11, "hits": 1}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
+   "passives": [],
+   "pressures": ["P4", "P3"],
+   "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "뒷전 장단에 흥이 나서 상가를 떠난다"},
+   "drops": {"material": "잡귀 넋", "gold": [16, 24]}},
+  {"id": "binsang_neok", "name": "빈 상 앞의 넋", "family": "굶주린 넋", "category": "normal", "hp": [46, 50], "position": "front",
+   "han": "돌림병 통에 일가가 다 떠나 제삿밥 한 그릇 받지 못했다. 빈 상 앞을 떠나지 못한다.",
+   "intents": [
+    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 10, "hits": 1},
+    {"id": "b", "name": "상 갉아먹기", "kind": "attack", "target": "굿상", "damage": 12, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 7 피해 + 자신 체력 8 회복"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P12"],
+   "haewon": {"status": "굿상", "rule": "굿상에 설치물이 있는 상태로 쓰러뜨린다", "story": "상을 차려 늦은 제사를 올리자 배불리 먹고 떠난다"},
+   "drops": {"material": "빈 제기", "gold": [16, 24]}},
+  {"id": "mulgitdeon_neok", "name": "물 긷던 넋", "family": "역귀", "category": "normal", "hp": [36, 40], "position": "front",
+   "han": "앓는 식구에게 물을 떠다 주려다 우물가에서 쓰러졌다. 아직도 두레박 줄을 놓지 못한다.",
+   "intents": [
+    {"id": "a", "name": "두레박 줄", "kind": "move", "target": "후열", "damage": 6, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다"},
+    {"id": "b", "name": "찬물 끼얹기", "kind": "attack_debuff", "target": "선두", "damage": 8, "hits": 1, "effect": "약화 1"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P13", "P3"],
+   "haewon": {"status": "진형", "rule": "그 턴에 진형이 바뀐 상태로 쓰러뜨린다", "story": "자리를 바꿔 물동이를 받아 주자 비로소 두레박 줄을 놓는다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [16, 22]}},
+  {"id": "bonghanjip_neok", "name": "봉한 집 넋", "family": "억울귀", "category": "normal", "hp": [48, 52], "position": "back",
+   "han": "병이 옮을까 이웃들이 대문에 금줄을 치고 집을 봉했다. 안에서 문을 두드리다 그대로 잠들었다.",
+   "intents": [
+    {"id": "a", "name": "문틈으로 뻗는 손", "kind": "attack", "target": "최고 체력", "damage": 6, "hits": 2},
+    {"id": "b", "name": "갇힌 원망", "kind": "stress", "target": "전체", "effect": "파티 귀기 +6"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P2", "P3"],
+   "haewon": {"status": "명부", "rule": "명부 5 이상인 상태로 쓰러뜨린다", "story": "이름을 불러 봉한 문을 열어 주자 원망을 내려놓는다"},
+   "drops": {"material": "타다 남은 소지", "gold": [18, 26]}},
+
+  {"id": "geumjul_jonwi", "name": "금줄 친 존위 원귀", "family": "억울귀", "category": "elite", "hp": [124, 130], "position": "back",
+   "han": "마을 어른으로서 돌림병을 막으려 어귀에 금줄을 치고 드나듦을 막았다. 갇힌 이들의 원망을 한 몸에 받다가 죽었다.",
+   "intents": [
+    {"id": "a", "name": "금줄 치기", "kind": "possess", "target": "전체", "effect": "모든 영웅을 홀린다(홀림 1: 각 영웅의 다음 카드 1장이 효과 없음, 비용은 든다)"},
+    {"id": "b", "name": "꾸짖음", "kind": "attack", "target": "선두", "damage": 17, "hits": 1},
+    {"id": "c", "name": "마을 봉쇄", "kind": "buff", "target": "자신", "block": 14, "effect": "공격 +2 (누적)"},
+    {"id": "d", "name": "회초리", "kind": "attack", "target": "후열", "damage": 6, "hits": 2}
+   ],
+   "pattern": {"type": "weighted", "first": "a", "weights": {"a": 25, "b": 35, "c": 20, "d": 20}, "no_repeat": 2},
+   "passives": ["번지는 홀림: 홀림이 한 영웅이 아니라 진형 전체에 하나씩 걸린다"],
+   "pressures": ["P3", "P1"],
+   "haewon": {"status": "명부", "rule": "명부 8 이상인 상태로 쓰러뜨린다", "story": "원망 대신 마을을 지키려던 뜻을 명부에 바로 적어 주자 스스로 금줄을 거둔다"},
+   "drops": {"material": "타다 남은 소지", "gold": [40, 55]}},
+  {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [96, 100], "position": "back",
+   "han": "돌림병이 한창일 때 장례도 없이 한자리에 서둘러 묻힌 넋들. 서로 엉겨 하나가 되었다.",
+   "intents": [
+    {"id": "a", "name": "엉킨 열기", "kind": "attack", "target": "전체", "damage": 6, "hits": 1},
+    {"id": "b", "name": "넋 불러내기", "kind": "summon", "target": "아군 원귀", "effect": "열 오른 넋 1 소환(최대 2)"},
+    {"id": "c", "name": "열 쏟기", "kind": "pollute", "target": "선두", "effect": "선두 영웅 덱에 '신열' 2장(그 영웅이 주인)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
+   "passives": ["열 오른 넋 둘과 함께 나온다"],
+   "pressures": ["P7", "P4"],
+   "haewon": {"status": "상흔", "rule": "상흔 6 이상이거나 붕괴 상태에서 쓰러뜨린다", "story": "엉킨 넋들의 앓던 자리를 하나하나 짚어, 한 사람씩 따로 보내 준다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [40, 55]}},
+  {"id": "pijeop_neok", "name": "피접 가던 넋", "family": "역귀", "category": "elite", "hp": [104, 110], "position": "front",
+   "han": "병을 피해 식구를 데리고 마을을 떠나다 어귀에서 쓰러졌다. 이번에는 꼭 빠져나가려 한다.",
+   "intents": [
+    {"id": "a", "name": "앞을 막는 이 치기", "kind": "attack", "target": "선두", "damage": 9, "hits": 2},
+    {"id": "b", "name": "짐 꾸리기", "kind": "defend", "target": "자신", "block": 16},
+    {"id": "c", "name": "열 쏟기", "kind": "pollute", "target": "선두", "effect": "선두 영웅 덱에 '신열' 1장(그 영웅이 주인)"},
+    {"id": "d", "name": "금줄 넘기", "kind": "escape", "target": "자신", "effect": "마을 밖으로 달아난다(해원·처치 실패, 보상 없음)"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b", "a", "c", "d"]},
+   "passives": [],
+   "pressures": ["P9", "P2"],
+   "haewon": {"status": "점지", "rule": "점지 4 이상인 상태로 쓰러뜨린다", "story": "이름을 불러 세우자 돌아본다. 마을이 아직 그를 기억한다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [40, 55]}},
+  {"id": "sonnim_subi", "name": "손님 길잡이 수비", "family": "잡귀잡신", "category": "minion", "hp": [22, 26], "position": "front",
+   "han": "손님 행차를 따라온 잡귀. 정식 대접은 못 받고 뒷전 몫을 기다린다.",
+   "intents": [
+    {"id": "a", "name": "앞장서기", "kind": "attack", "target": "선두", "damage": 5, "hits": 1},
+    {"id": "b", "name": "상 넘보기", "kind": "attack", "target": "굿상", "damage": 6, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 4 피해"}
+   ],
+   "pattern": {"type": "cycle", "order": ["a", "b"]},
+   "passives": [],
+   "pressures": ["P12"],
+   "haewon": {"status": null, "follows": "sonnim_baeung", "rule": "손님이 좋게 떠나면 함께 물러간다. 쓰러져도 뒷전 몫을 받고 물러간다", "story": "뒷전에서 밥 한 술 얻어먹고 손님 뒤를 따라간다"},
+   "drops": {"material": null, "gold": [0, 0]}},
+
+  {"id": "dollimbyeong_neok", "name": "돌림병이 된 넋", "family": "역귀", "category": "boss", "hp": [248, 256], "position": "front",
+   "han": "마을에서 처음 앓은 사람. 병이 옮을까 아무도 곁에 오지 못했고, 그 외로움이 열이 되어 집집이 옮겨 다녔다.",
+   "intents": [
+    {"id": "a", "name": "뜨거운 숨", "kind": "attack", "target": "선두", "damage": 14, "hits": 1, "phase": 1},
+    {"id": "b", "name": "집집이 옮기기", "kind": "pollute", "target": "전체", "effect": "덱에 '신열' 2장(선두·중열 영웅이 하나씩 주인)", "phase": 1},
+    {"id": "c", "name": "앓는 소리", "kind": "attack_debuff", "target": "전체", "damage": 4, "hits": 1, "effect": "약화 1", "phase": 1},
+    {"id": "d", "name": "열풍", "kind": "attack", "target": "전체", "damage": 7, "hits": 1, "phase": 2},
+    {"id": "e", "name": "들러붙기", "kind": "attack", "target": "최고 체력", "damage": 9, "hits": 2, "phase": 2},
+    {"id": "f", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 18, "effect": "공격 +3 (누적)", "phase": 2}
+   ],
+   "pattern": {"type": "phased", "phases": [
+     {"until_hp_pct": 50, "type": "cycle", "order": ["a", "b", "c"]},
+     {"type": "weighted", "weights": {"d": 35, "e": 35, "f": 30}, "no_repeat": 2}]},
+   "passives": ["반회피 규칙: 2단계에서는 쓰러진 영웅을 먼저 노린다"],
+   "pressures": ["P4", "P3", "P1"],
+   "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "셋이 번갈아 장단을 맞추며 곁을 지켜 주자, 처음으로 외롭지 않게 눈을 감는다"},
+   "drops": {"material": "빛바랜 역병 부적", "gold": [130, 145], "chiseong": 1}},
+  {"id": "heoju", "name": "손님 대접을 가로챈 허주", "family": "잡귀잡신", "category": "boss", "hp": [228, 236], "position": "back",
+   "han": "제 굿 한 번 받아 보지 못한 떠돌이 넋이, 손님이 지나간 마을에 눌러앉아 손님 행세를 한다. 마을 사람들은 손님이 아직 머문다고 믿고 상을 차리다 지쳐 쓰러졌다.",
+   "intents": [
+    {"id": "a", "name": "상을 내놓아라", "kind": "attack", "target": "굿상", "damage": 14, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 10 피해 + 자신 체력 10 회복", "phase": 1},
+    {"id": "b", "name": "손님 흉내", "kind": "pollute", "target": "전체", "effect": "덱에 '신열' 2장(선두·후열 영웅이 하나씩 주인)", "phase": 1},
+    {"id": "c", "name": "호령", "kind": "attack", "target": "선두", "damage": 15, "hits": 1, "phase": 1},
+    {"id": "d", "name": "잡귀 부르기", "kind": "summon", "target": "아군 원귀", "effect": "돌림 잡귀 1 소환(최대 2)", "phase": 2},
+    {"id": "e", "name": "발악", "kind": "attack", "target": "무작위", "damage": 8, "hits": 2, "phase": 2},
+    {"id": "f", "name": "홀리기", "kind": "possess", "target": "무작위", "effect": "그 영웅을 홀린다(홀림 2)", "phase": 2}
+   ],
+   "pattern": {"type": "phased", "phases": [
+     {"until_hp_pct": 50, "type": "cycle", "order": ["a", "b", "c"]},
+     {"type": "weighted", "weights": {"d": 30, "e": 40, "f": 30}, "no_repeat": 2}]},
+   "passives": ["돌림 잡귀 둘과 함께 나온다",
+                "공물: 전투 시작 시 손에 '허주 벗기기'(0코스트, 보급품 부적 2 소모)가 들어온다. 바치면 해원 조건이 성립하고 곧바로 2단계(가면이 벗겨짐)로 넘어간다",
+                "반회피 규칙: 2단계에서는 쓰러진 영웅을 먼저 노린다"],
+   "pressures": ["P12", "P4", "P7"],
+   "haewon": {"status": null, "rule": "허주 벗기기를 바친 뒤 쓰러뜨린다", "story": "가면이 벗겨진 허주는 제 이름을 대고, 손님 대신 받아먹은 상을 마을에 돌려놓는다"},
+   "drops": {"material": "잡귀 넋", "gold": [130, 145], "chiseong": 1}}
+ ],
+ "encounters": {
+  "easy": [
+   {"id": "r2e1", "enemies": ["yeol_neok", "yeol_neok"]},
+   {"id": "r2e2", "enemies": ["gichim_neok", "yeol_neok"]},
+   {"id": "r2e3", "enemies": ["dollim_japgwi", "dollim_japgwi", "dollim_japgwi"]},
+   {"id": "r2e4", "enemies": ["mulgitdeon_neok", "yeol_neok"]}
+  ],
+  "hard": [
+   {"id": "r2h1", "enemies": ["mungan_yeokgwi", "yeol_neok"]},
+   {"id": "r2h2", "enemies": ["sangmun_japgwi", "dollim_japgwi", "dollim_japgwi", "dollim_japgwi"]},
+   {"id": "r2h3", "enemies": ["binsang_neok", "gichim_neok"]},
+   {"id": "r2h4", "enemies": ["bonghanjip_neok", "mulgitdeon_neok"]},
+   {"id": "r2h5", "enemies": ["mungan_yeokgwi", "dollim_japgwi", "dollim_japgwi"]},
+   {"id": "r2h6", "enemies": ["gichim_neok", "binsang_neok", "dollim_japgwi"]}
+  ],
+  "elite": [
+   {"id": "r2x1", "enemies": ["geumjul_jonwi"]},
+   {"id": "r2x2", "enemies": ["yeol_neok", "yeol_neok", "hamkke_neokdeul"]},
+   {"id": "r2x3", "enemies": ["pijeop_neok"]}
+  ],
+  "boss": [
+   {"id": "r2b1", "enemies": ["dollimbyeong_neok"]},
+   {"id": "r2b2", "enemies": ["dollim_japgwi", "dollim_japgwi", "heoju"]}
+  ],
+  "rules": "원정의 첫 2전투는 easy, 이후 hard. 원정 안에서 같은 조합 반복 금지. 수호 방은 elite 3종을 모두 만나야 반복. 손님 배웅(특수)은 방 이벤트 '손님 마당'에서만 만난다(원정마다 1회, 조합 풀에 넣지 않는다)."
+ },
+ "specials": [
+  {"id": "sonnim_baeung", "name": "손님 배웅", "kind": "entertain", "deity": "손님",
+   "setup": "마당 한가운데 손님상이 차려지다 만 채 놓여 있다. 손님은 원귀가 아니라 마마를 맡은 신령이다. 싸워 이길 상대가 아니라, 잘 대접해 좋게 보내야 한다.",
+   "never_attackable": true,
+   "followers": ["sonnim_subi", "sonnim_subi"],
+   "meter": {"name": "대접", "goal": 12, "turn_limit": 6,
+    "gains": ["손님상 차리기(0코스트, 턴당 1회, 전투 내내 손에 남는다): 보급품 술 1 또는 쌀 1을 바치면 대접 +3",
+              "턴을 마칠 때 굿상의 설치물 하나당 +1 (턴당 최대 +2)",
+              "장단 3 이상으로 턴을 마치면 +1",
+              "부적(토큰) 카드를 낸 턴 +1 (턴당 1회)",
+              "손님 길잡이 수비가 쓰러질 때마다 +1 (뒷전 몫을 받고 물러간다)"]},
+   "deity_turn": "손님은 공격하지 않는다. 적 턴마다 대접을 살핀다: 대접이 (지난 턴 수 × 2)보다 적으면 서운함 — 선두 영웅 덱에 '신열' 1장. 그렇지 않으면 흐뭇함 — 파티 귀기 −2",
+   "outcomes": {
+    "sendoff": {"when": "대접 12", "gold": 45, "chiseong": 1, "relic": "sonnim_baeung_gaho", "effect": "전투가 곧바로 끝나고 남은 수비도 함께 물러간다. 덱의 신열을 모두 지운다. 해원록에 '손님을 좋게 보냄'이 남는다"},
+    "timeout": {"when": "6턴이 지남", "gold": 0, "penalty": "서운한 작별: 이번 원정 동안 전투 시작 시 덱에 신열 1장"},
+    "violence": {"when": "손님 마당에서 '쫓아낸다'", "gold": 20, "penalty": "수비 셋과 전투한다. 손님은 서운하게 떠나고 이번 원정 동안 전투 시작 시 덱에 신열 1장"},
+    "seal": {"when": "손님 마당에서 '대문에 부적을 붙인다'", "gold": 0, "cost": "부적 2", "penalty": "손님이 다른 길로 돌아간다. 이번 원정 동안 역귀 전투마다 신열 +1장"}
+   }}
+ ],
+ "curios": [
+  {"id": "munjeon_bujeok", "name": "대문에 붙은 빛바랜 부적",
+   "bare": "떼어 본다 → 50%: 부적 1 / 50%: 다음 전투 신열 1장",
+   "provision": {"item": "향", "result": "향을 피워 새로 붙인다 → 이번 원정 동안 덫 '열기 서린 골목'을 모두 미리 본다"},
+   "hero": {"archetype": "beopsa", "result": "부적을 새로 써 붙인다 → 덱의 신열·잡음 모두 정화 + 다음 전투 첫 턴 부적 카드 1장"}},
+  {"id": "sigeun_yaktang", "name": "식은 약탕관",
+   "bare": "남은 약을 마신다 → 50%: 파티 귀기 −10 / 50%: 다음 전투 첫 턴 파티 약화 1",
+   "provision": {"item": "술", "result": "약술을 담근다 → 이번 원정 길굿 끼니 회복 +10%p"},
+   "hero": {"archetype": "manshin", "result": "공수로 처방을 받는다 → 덱의 신열 모두 정화 + 카드 1장 강화"}},
+  {"id": "ssarimal_curio", "name": "세워 둔 싸리말",
+   "bare": "올라타 본다 → 50%: 엽전 15 / 50%: 귀기 +8",
+   "provision": {"item": "술", "result": "손님상에 올려 둔다 → 이번 원정의 손님 배웅을 대접 +4로 시작"},
+   "hero": {"archetype": "talggun", "result": "말놀이를 한다 → 다음 전투 시작 시 진형을 자유롭게 바꾸고 장단 +1"}},
+  {"id": "geumjul_jip", "name": "금줄 친 집",
+   "bare": "금줄을 넘는다 → 재료 2 + 귀기 +8, 30%: 씌임 카드 1",
+   "provision": {"item": "부적", "result": "금줄을 거두고 부적을 붙인다 → 30%: 일반 가호 1, 아니면 엽전 20"},
+   "hero": {"archetype": "chasa", "result": "명부를 확인한다 → 이 원정 원귀의 해원 조건 1개 공개 + 봉한 집 넋의 해원 조건 공개"}},
+  {"id": "maeul_sangyeojip", "name": "마을 상엿집",
+   "bare": "뒤진다 → 50%: 엽전 25 / 30%: 상문 잡귀와 전투 / 20%: 씌임 카드 1",
+   "provision": {"item": "향", "result": "넋을 위로한다 → 파티 귀기 −10, 30%: 일반 가호 1"},
+   "hero": {"archetype": "jaebi", "result": "상엿소리를 메긴다 → 파티 모든 쌍 정 +1 + 다음 전투 첫 턴 장단 +2"}},
+  {"id": "umulga_durebak", "name": "우물가 두레박",
+   "bare": "물을 긷는다 → 60%: 모든 영웅 체력 +8% / 40%: 다음 전투 신열 1장",
+   "provision": {"item": "부적", "result": "우물을 정화한다 → 모든 영웅 체력 +12%"},
+   "hero": {"archetype": "seungnyeo", "result": "우물에 염불한다 → 파티 귀기 −10 + 덱의 신열 모두 정화"}},
+  {"id": "jangteo_jwapan", "name": "버려진 장터 좌판",
+   "bare": "뒤진다 → 엽전 15~30 또는 보급품 1",
+   "provision": null,
+   "hero": {"archetype": "posu", "result": "덫을 살핀다 → 재료 2 + 인접 길목의 덫 공개"}},
+  {"id": "alteon_bang", "name": "앓던 이의 방",
+   "bare": "들어가 본다 → 40%: 파티 영웅 카드 3택 1 / 60%: 다음 전투 신열 2장 + 귀기 +5",
+   "provision": {"item": "부적", "result": "방을 정화한다 → 카드 1장 제거"},
+   "hero": {"archetype": "baksu", "result": "신칼로 부정을 가른다 → 작두박수 카드 1장 강화 + 이 원정 역귀의 해원 조건 1개 공개"}}
+ ],
+ "events": [
+  {"id": "sonnim_madang", "name": "손님 마당", "room": true, "fixed": "마을 한가운데 마당(원정마다 1회)",
+   "setup": "마당에 손님상이 차려지다 만 채 놓여 있다. 마마를 맡은 신령 손님이 아직 이 마을에 머문다. 손님은 원귀가 아니다. 싸워 이길 상대가 아니라 잘 대접해 보내야 하는 신령이다.",
+   "choices": [
+    {"label": "손님을 맞는다", "special": "sonnim_baeung", "result": "특수 전투 손님 배웅(대접 12 / 6턴). 좋게 보내면 엽전 45 · 치성 1 · 희귀 가호 「손님의 배웅」"},
+    {"label": "만신이 손님을 청해 모신다", "requires": "manshin", "special": "sonnim_baeung", "result": "손님 배웅을 대접 +4로 시작한다"},
+    {"label": "대문에 부적을 붙인다", "cost": "부적 2", "result": "손님이 다른 길로 돌아간다. 이번 원정 동안 역귀 전투마다 신열 +1장"},
+    {"label": "쫓아낸다", "result": "전투(손님 길잡이 수비 ×3). 이기면 엽전 20. 손님은 서운하게 떠나고 이번 원정 동안 전투 시작 시 신열 1장"}]},
+  {"id": "daedong_umul", "name": "대동 우물", "room": true,
+   "setup": "마을 사람이 함께 쓰던 우물. 해마다 우물 고사를 지내던 자리다.",
+   "choices": [
+    {"label": "우물 고사를 지낸다", "cost": "쌀 1, 술 1", "result": "모든 영웅 체력 +15% + 덱의 신열 모두 정화"},
+    {"label": "잽이가 고사 장단을 친다", "requires": "jaebi", "result": "다음 3전투 첫 턴 장단 +1"},
+    {"label": "물만 긷는다", "result": "모든 영웅 체력 +5%, 30%: 다음 전투 신열 1장"}]},
+  {"id": "geumjul_mundap", "name": "금줄 앞 문답", "room": true,
+   "setup": "마을 어귀 금줄 앞에 장정 넋이 서서 어디서 왔느냐고 묻는다. 병을 들이지 않으려는 문지기다.",
+   "choices": [
+    {"label": "탈꾼이 말뚝이 재담으로 받아친다", "requires": "talggun", "result": "통과 + 파티 귀기 −10"},
+    {"label": "지전을 쥐여 준다", "cost": "지전 1", "result": "통과"},
+    {"label": "밀고 지나간다", "result": "전투(문간 역귀 + 돌림 잡귀 ×2). 처음 치르는 전투로 친다"}]},
+  {"id": "binjip_jesasang", "name": "빈집 제사상", "room": true,
+   "setup": "제사 지낼 사람이 없는 집에 빈 상만 덩그러니 놓여 있다.",
+   "choices": [
+    {"label": "상을 차린다", "cost": "쌀 2", "result": "이번 원정 굶주린 넋의 해원 조건 공개, 30%: 일반 가호 1"},
+    {"label": "승려가 시식을 올린다", "requires": "seungnyeo", "result": "파티 귀기 −15 + 파티 모든 쌍 정 +1"},
+    {"label": "지나간다", "result": "없음"}]},
+  {"id": "uiwon_yakbang", "name": "쫓겨난 의원의 약방", "room": true,
+   "setup": "병을 옮겼다는 누명을 쓰고 쫓겨난 의원의 약방. 약장이 반쯤 열려 있다.",
+   "choices": [
+    {"label": "법사가 해원경을 읽어 준다", "requires": "beopsa", "result": "덱의 씌임·신열 모두 정화 + 이번 원정 억울귀의 해원 조건 공개"},
+    {"label": "약장을 닫아 준다", "cost": "향 1", "result": "모든 영웅 체력 +10%"},
+    {"label": "약재를 챙긴다", "result": "보급품 술 1, 40%: 귀기 +8 (주인 허락 없이 가져갔다)"}]},
+  {"id": "seonang_gosa", "name": "서낭 앞 고사 자리", "room": true, "fixed": "보스 길에서 보스 굴 바로 앞",
+   "setup": "마을 서낭 앞에 고사를 지내던 자리가 남아 있다. 이 마을을 앓게 한 것의 정체를 묻는다.",
+   "choices": [
+    {"label": "향을 올리고 묻는다", "cost": "향 1", "result": "보스 해원 조건 공개 + 보스전 첫 턴 드로우 +1"},
+    {"label": "차사가 명부를 펼친다", "requires": "chasa", "result": "보스 해원 조건 공개 + 보스전 첫 턴 차사 방어도 8"},
+    {"label": "그냥 지나간다", "result": "없음"}]}
+ ],
+ "traps": [
+  {"id": "yeolgi_golmok", "name": "열기 서린 골목", "effect": "다음 전투 시작 시 선두 영웅 덱에 신열 1장", "disarm": "부적 1"},
+  {"id": "muneojin_damjang", "name": "무너진 담장", "effect": "다음 전투 시작 시 진형이 섞이고 선두 영웅 덱에 상처 카드 1장", "disarm": "향 1"},
+  {"id": "eopeojin_yaksabal", "name": "엎어진 약사발", "effect": "다음 전투 첫 턴 파티 약화 1", "disarm": "술 1"}
+ ],
+ "relics": [
+  {"id": "samsin", "name": "삼신의 가호", "tier": "일반", "effect": "쓰러진 영웅이 일어날 때 체력 25% 대신 35%로 일어난다"},
+  {"id": "eop_gaho", "name": "업의 가호", "tier": "일반", "effect": "원정을 시작할 때 무작위 보급품 1개 +1"},
+  {"id": "daemun_bujeok", "name": "대문 부적", "tier": "일반", "effect": "전투마다 처음 들어오는 신열·잡음 1장을 막는다"},
+  {"id": "ssuk_dabal", "name": "쑥 다발", "tier": "일반", "effect": "길굿에서 씌임 카드 정화 비용 3 → 2. 신열도 함께 정화된다"},
+  {"id": "bugun", "name": "부군의 가호", "tier": "고급", "effect": "장단 3 이상으로 턴을 마치면 마지막으로 카드를 낸 영웅 방어도 4"},
+  {"id": "ssarimal", "name": "싸리말", "tier": "고급", "effect": "손님 배웅을 대접 +4로 시작한다. 덫 '열기 서린 골목'의 신열이 들어오지 않는다"},
+  {"id": "jisin", "name": "지신의 가호", "tier": "고급", "effect": "해원할 때 그 자리 회복이 +3 대신 +5"},
+  {"id": "daedong_gi", "name": "대동 깃발", "tier": "희귀", "effect": "장단 최대치 5 → 6"},
+  {"id": "sonnim_baeung_gaho", "name": "손님의 배웅", "tier": "희귀", "source": "sonnim_baeung", "effect": "신열을 소멸시키는 데 에너지가 들지 않는다(턴당 1회). 손님 배웅에 성공해야 얻는다"},
+  {"id": "not_sonnimsang", "name": "놋 손님상", "tier": "보스", "effect": "에너지 +1. 전투 시작 시 덱에 신열 1장"},
+  {"id": "musoe_yaktang", "name": "무쇠 약탕관", "tier": "보스", "effect": "에너지 +1. 길굿 끼니 회복이 절반"}
+ ],
+ "engine_needs": [
+  {"id": "sinyeol", "name": "신열 — 주인 있는 상태 카드와 옮김", "tags": ["신열"],
+   "used_by": ["yeol_neok", "dollim_japgwi", "hamkke_neokdeul", "pijeop_neok", "dollimbyeong_neok", "heoju", "sonnim_baeung", "yeolgi_golmok", "daemun_bujeok", "sonnim_baeung_gaho", "not_sonnimsang"],
+   "fallback": "구현 전에는 pollute 가 문장의 'N장'만큼 '잡음'을 넣는다(주인·옮김·약화 없음). 지역은 그대로 돈다",
+   "spec": "docs/05-region2.md §9.1"},
+  {"id": "offering_general", "name": "공물 행동 일반화", "tags": ["공물"],
+   "used_by": ["heoju", "sonnim_baeung"],
+   "fallback": "구현 전에는 허주를 해원할 수 없다(처치만). 손님 배웅은 아래 대접 게이지와 함께 들어온다",
+   "spec": "docs/05-region2.md §9.2"},
+  {"id": "entertain", "name": "대접 게이지 — 손님 배웅 특수 전투", "tags": ["대접"],
+   "used_by": ["sonnim_baeung", "sonnim_subi", "sonnim_madang", "ssarimal", "ssarimal_curio"],
+   "fallback": "구현 전에는 손님 마당에서 '손님을 맞는다'·'만신이 손님을 청해 모신다'를 감춘다(부적·쫓아내기만 남는다)",
+   "spec": "docs/05-region2.md §9.3"}
+ ]
+}

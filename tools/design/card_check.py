@@ -285,7 +285,8 @@ def check_upgrade(c, ctx, where, v, b):
     v2 = value(uc.get("effects"), ctx, where + "+")
     if uc["cost"] == "X":
         v2 *= 3
-    kw_base, kw_up = set(c.get("keywords", [])), set(uc.get("keywords", []))
+    # '받는소리' 키워드는 효과 안내용(카드에 받는소리 효과가 있음)이라 강화 키워드 변경으로 치지 않는다
+    kw_base, kw_up = set(c.get("keywords", [])) - {"받는소리"}, set(uc.get("keywords", [])) - {"받는소리"}
     kw_change = {("+", k) for k in kw_up - kw_base} | {("-", k) for k in kw_base - kw_up}
     bad_kw = kw_change - UPGRADE_KW_ALLOWED
     if bad_kw:
