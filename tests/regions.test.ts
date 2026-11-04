@@ -45,7 +45,8 @@ test('세 지역 데이터: 1지역 번호·조합은 그대로, 2·3지역 원�
   assert.deepEqual(d.enemyById.get('maenap_neok')!.offering!.pay, [{ item: 'rice', n: 3 }]);
   assert.equal(d.enemyById.get('heoju')!.haewon.kind, 'offering');
   assert.equal(d.enemyById.get('bitjang_janggun')!.haewon.kind, 'knots');
-  assert.equal(d.enemyById.get('bitjang_janggun')!.haewon.need, 4);
+  assert.equal(d.enemyById.get('bitjang_janggun')!.haewon.need, 7);
+  assert.equal(d.enemyById.get('bitjang_janggun')!.haewon.knotMin, 3);
   assert.equal(d.enemyById.get('sumun_gunjol')!.follows, 'bitjang_janggun');
   assert.equal(d.enemyById.get('honbaek_wongwi')!.haewon.kind, 'minions');
 });
@@ -170,8 +171,10 @@ test('손님 배웅: 손님상 차리기 +3(턴당 1회, 손에 남는다), 턴 
   assert.equal(s.outcome, 0);
 });
 
-test('손님 배웅: 대접 12 → 좋게 배웅(남은 수비 물러감, 해원 1회). 6턴이 지나면 서운한 작별', () => {
-  const s = sonnim(10);
+test('손님 배웅: 대접 22 → 좋게 배웅(남은 수비 물러감, 해원 1회). 5턴이 지나면 서운한 작별', () => {
+  assert.equal(D().specials.get('sonnim_baeung')!.goal, 22);
+  assert.equal(D().specials.get('sonnim_baeung')!.limit, 5);
+  const s = sonnim(19);
   const i = inHand(s, 'common.offering_sonnimsang');
   playCard(s, { hand: i, enemy: -1, enemy2: -1, ally: -1, pair: null });
   assert.equal(s.entertain!.result, 'sendoff');
@@ -265,36 +268,45 @@ test('빗장(혼백): 1단계에서 떠도는 백이 서 있는 동안만. 나�
   assert.equal(t0 - t.enemies[ti].hp, 30);
 });
 
-test('고풀이: 매듭(상태·턴 종료 장단/굿상/진형·부적 피해)을 넷 풀고 쓰러뜨리면 해원, 수문 군졸도 함께 문을 연다', () => {
+test('고풀이: 매듭(상태 3 이상·턴 종료 장단/굿상/진형·부적 피해)을 일곱 풀고 쓰러뜨리면 해원, 수문 군졸도 함께 문을 연다', () => {
   const d = D();
   const s = mk(['beopsa', 'posu', 'chasa'], 'r3f1');
   const ji = s.enemies.findIndex((e) => d.enemies[e.def].id === 'bitjang_janggun');
   const e = s.enemies[ji];
-  play(s, 'posu.jojun', { enemy: ji }); // 점지
+  assert.equal(d.enemies[e.def].haewon.need, 7);
+  assert.equal(d.enemies[e.def].haewon.knotMin, 3);
+  play(s, 'posu.jojun', { enemy: ji }); // 점지 2 — 문턱 3 아래
+  assert.equal(e.knots & 1, 0, '상태 매듭은 3 이상 쌓여야 풀린다');
+  s.energy = 3;
+  play(s, 'posu.jojun', { enemy: ji }); // 점지 4
   assert.equal(e.knots & 1, 1);
   s.energy = 3;
-  play(s, 'chasa.ora_jiugi', { enemy: ji }); // 명부
+  play(s, 'chasa.ora_jiugi', { enemy: ji }); // 명부 2
+  s.energy = 3;
+  play(s, 'chasa.ora_jiugi', { enemy: ji }); // 명부 4
   assert.ok(e.knots & 4);
   // 부적 피해 (방어도에 막혀도 인정)
   e.block = 50;
   give(s, 'beopsa.t_hwabu', 'beopsa');
   playCard(s, { hand: s.hand.length - 1, enemy: ji, enemy2: -1, ally: -1, pair: null });
   assert.ok(e.knots & (1 << 6));
-  // 셋으로는 해원이 아니다
-  const c = structuredClone(e);
-  assert.equal(c.knots.toString(2).split('1').length - 1, 3);
+  assert.equal(e.knots.toString(2).split('1').length - 1, 3);
   s.jangdan = 3;
   for (const x of s.enemies) x.cancelNext = true;
   endPlayerTurn(s);
   assert.ok(e.knots & (1 << 4), '장단 3 이상으로 턴을 마침');
+  // 넷으로는 해원이 아니다 → 나머지 셋(상흔·넋흔들림·굿상)을 더 푼다
+  const c = structuredClone(e);
+  assert.equal(c.knots.toString(2).split('1').length - 1, 4);
+  e.knots |= (1 << 1) | (1 << 3) | (1 << 5);
   killEnemy(s, ji);
   assert.ok(e.haewon);
   assert.ok(s.enemies.every((x) => !x.alive), '수문 군졸이 따라 물러간다');
   assert.equal(s.stats!.haewons, 3);
-  // 매듭 셋이면 처치
+  // 매듭 여섯이면 처치
   const t = mk(['beopsa', 'posu', 'chasa'], 'r3f1');
   const tj = t.enemies.findIndex((x) => d.enemies[x.def].id === 'bitjang_janggun');
-  t.enemies[tj].knots = 0b111;
+  t.enemies[tj].knots = 0b111111;
   killEnemy(t, tj);
   assert.ok(!t.enemies[tj].haewon);
 });

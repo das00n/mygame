@@ -861,7 +861,8 @@ function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, opt
       if (idx === 1) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
       if (run.relics.includes('ssarimal')) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
       lines.push(idx === 1 ? '만신이 손님을 청해 모신다. 손님상이 한결 정갈하다(대접 +4로 시작).' : '손님상을 다시 차린다. 손님은 싸워 이길 상대가 아니라 잘 대접해 보낼 신령이다.');
-      lines.push(`대접 12를 6턴 안에 채우면 좋게 떠난다. 손님상 차리기(술 1 또는 쌀 1, 턴당 1회) +3 · 굿상 설치물 · 장단 3+ · 부적.${run.flags.sonnimStart ? ` 시작 대접 ${run.flags.sonnimStart}.` : ''}`);
+      const sp = D().specials.get('sonnim_baeung')!;
+      lines.push(`대접 ${sp.goal}을 ${sp.limit}턴 안에 채우면 좋게 떠난다. 손님상 차리기(술 1 또는 쌀 1, 턴당 1회) +3 · 굿상 설치물 · 장단 3+ · 부적.${run.flags.sonnimStart ? ` 시작 대접 ${run.flags.sonnimStart}.` : ''}`);
       then = 'battle';
       dlg.battleEnc = 'sonnim';
       dlg.battleSpecial = 'sonnim';

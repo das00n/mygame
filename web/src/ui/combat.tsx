@@ -283,7 +283,7 @@ function EnemyPanel({ s, run, ei, targetable, onClick }: { s: CombatState; run: 
         {e.alive && def.cap && <span class={`st ${capActive(s, e) ? 'cap' : 'faint'}`} title="빗장: 한 플레이어 턴에 잃는 체력의 상한. 상흔·명부·붕괴는 넘는다">빗장 {capActive(s, e) ? `${Math.max(0, def.cap.n - e.capLost)}/${def.cap.n}` : '풀림'}</span>}
       </div>
       {e.alive && def.haewon.kind === 'knots' && (
-        <div class="knots" data-testid="knots" title="고풀이: 매듭 넷을 풀고 쓰러뜨리면 해원">
+        <div class="knots" data-testid="knots" title={`고풀이: 매듭 ${def.haewon.need}개를 풀고 쓰러뜨리면 해원 (상태 매듭은 그 상태 ${def.haewon.knotMin ?? 1} 이상)`}>
           {KNOTS.map((k, i) => <span key={k} class={e.knots & (1 << i) ? 'on' : ''} title={k}>{k === '넋흔들림' ? '넋' : k === '장단' ? '장3' : k.slice(0, 2)}</span>)}
           <b class="tiny">{popcount(e.knots)}/{def.haewon.need}</b>
         </div>

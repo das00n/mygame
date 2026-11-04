@@ -851,21 +851,21 @@ export function dealDamage(s: CombatState, ctx: Ctx, ei: number, base: number): 
 function applyStatus(s: CombatState, ei: number, st: string, n: number): void {
   const e = s.enemies[ei];
   if (!e.alive || n <= 0) return;
-  if (D().enemies[e.def].haewon.kind === 'knots') {
-    const k = (KNOTS as readonly string[]).indexOf(st);
-    if (k >= 0 && k < 4) e.knots |= 1 << k;
-  }
   switch (st) {
     case '취약': e.vuln += n; break;
     case '약화': e.weak += n; break;
     case '점지': e.mark += n; break;
     case '상흔': e.bleed += n; break;
     case '명부': e.doom += n; break;
-    case '넋흔들림':
-      e.shake += n;
-      if (e.shake >= e.endure) collapseEnemy(s, ei);
-      break;
+    case '넋흔들림': e.shake += n; break;
   }
+  // 고풀이 상태 매듭 ①~④: 그 상태가 문턱(knotMin) 이상 쌓인 순간 (붕괴로 넋흔들림이 0이 되기 전에 본다)
+  const hw = D().enemies[e.def].haewon;
+  if (hw.kind === 'knots') {
+    const k = (KNOTS as readonly string[]).indexOf(st);
+    if (k >= 0 && k < 4 && statusOf(e, st) >= (hw.knotMin ?? 1)) e.knots |= 1 << k;
+  }
+  if (st === '넋흔들림' && e.shake >= e.endure) collapseEnemy(s, ei);
 }
 
 export function collapseEnemy(s: CombatState, ei: number): void {

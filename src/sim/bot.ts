@@ -33,6 +33,8 @@ export const W = {
   sinyeolDeck: 1,
   /** 손님 배웅: 대접 1점 (05-region2 §9.3) */
   entertain: 5,
+  /** 졸개가 살아 있어야 해원되는 보스(혼백, 빗장 문턱 없는 'minions' 해원): 그 졸개를 치는 값의 비율 ⟨반복 3⟩ */
+  keepMinion: 0.25,
 };
 
 // ── 정적 추정 캐시 ──────────────────────────────────────────────────
@@ -245,6 +247,8 @@ export function evaluate(s: CombatState, withPotential = true): number {
     return r.kind !== 'none' && !e.escaped && feas.has(r.kind === 'status' ? r.status! : r.kind);
   };
   const guardedMinion = s.enemies.some((x) => x.alive && !!d.enemies[x.def].pattern.override);
+  // 해원 조건을 아는 사람은 보스의 해원에 필요한 졸개(혼백의 떠도는 백)를 살려 둔다 — 상여처럼 문턱(override)이 있는 보스는 위에서 따로 본다
+  const keptMinion = !guardedMinion && s.enemies.some((x) => x.alive && d.enemies[x.def].category === 'boss' && d.enemies[x.def].haewon.kind === 'minions');
   // 해원 가치 = 기본(재료·귀기) + 규칙상 해원 회복(서 있는 영웅 모두)
   let standingN = 0;
   for (const h of s.heroes) if (standing(h)) standingN++;
@@ -254,7 +258,8 @@ export function evaluate(s: CombatState, withPotential = true): number {
     if (e.escaped) continue;
     // 보스가 다시 불러내는 넋은 죽여도 곧 돌아온다 → 처치 가치를 낮춘다.
     // 무리 보스의 override 문턱(상여꾼 N명 이하)이 걸린 졸개는 건드릴 가치가 거의 없다(해원 조건도 살려 두라고 한다)
-    const respawn = e.summoned ? 0.35 : guardedMinion && d.enemies[e.def].category === 'minion' ? 0.1 : 1;
+    const minion = d.enemies[e.def].category === 'minion';
+    const respawn = e.summoned ? 0.35 : guardedMinion && minion ? 0.1 : keptMinion && minion ? W.keepMinion : 1;
     if (!e.alive) {
       score += (e.maxHp * W.dmg + W.kill + threatOf(e)) * respawn + (e.haewon ? W.haewon : missed(e) ? -W.haewonMiss * haewonV : 0);
       continue;

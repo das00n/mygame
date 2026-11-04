@@ -232,6 +232,8 @@ export interface HaewonRule {
   orCollapse?: boolean;
   /** 고풀이(05-region3 §9.3): 풀어야 할 매듭 수 (매듭 8종은 KNOTS 순서) */
   need?: number;
+  /** 고풀이 상태 매듭 ①~④: 그 상태가 이만큼 쌓인 순간 풀린다 (기본 1, ⟨반복 3⟩ 3) */
+  knotMin?: number;
   text: string;
 }
 

@@ -204,7 +204,7 @@ export function loadData(): GameData {
   // 적: 1지역 → 2지역 → 3지역 순서로 붙인다 (1지역 번호는 그대로 — 저장·시뮬 호환)
   type RawEnemy = {
     id: string; name: string; family: string; category: EnemyDef['category']; hp: [number, number]; intents: EnemyDef['intents']; pattern: EnemyDef['pattern'];
-    passives: string[]; final?: boolean; haewon: { status: string | null; rule: string; follows?: string; knots?: string[]; knots_needed?: number } | null;
+    passives: string[]; final?: boolean; haewon: { status: string | null; rule: string; follows?: string; knots?: string[]; knots_needed?: number; knot_status_min?: number } | null;
   };
   type RawRegion = {
     enemies: RawEnemy[];
@@ -222,7 +222,7 @@ export function loadData(): GameData {
     for (const e of rj.enemies) {
       const def: EnemyDef = {
         idx: enemies.length, id: e.id, name: e.name, category: e.category, hpMin: e.hp[0], hpMax: e.hp[1], intents: e.intents,
-        pattern: e.pattern, passives: e.passives, haewon: parseHaewon(e.haewon?.rule ?? null, e.haewon?.knots_needed), family: e.family,
+        pattern: e.pattern, passives: e.passives, haewon: parseHaewon(e.haewon?.rule ?? null, e.haewon?.knots_needed, e.haewon?.knot_status_min), family: e.family,
         region: rid, cap: null, offering: null, final: !!e.final, follows: e.haewon?.follows ?? null,
       };
       enemies.push(def);
@@ -565,10 +565,10 @@ function analyseCard(def: CardDef): void {
 }
 
 // ── 해원 조건 ──────────────────────────────────────────────────────────
-export function parseHaewon(rule: string | null, knotsNeeded?: number): HaewonRule {
+export function parseHaewon(rule: string | null, knotsNeeded?: number, knotStatusMin?: number): HaewonRule {
   if (!rule) return { kind: 'none', text: '' };
-  // 고풀이 (05-region3 §9.3): 매듭 N개를 푼 뒤 — 상태 단어보다 먼저 본다
-  if (knotsNeeded && rule.includes('매듭')) return { kind: 'knots', need: knotsNeeded, text: rule };
+  // 고풀이 (05-region3 §9.3): 매듭 N개를 푼 뒤 — 상태 단어보다 먼저 본다. 상태 매듭 ①~④ 는 그 상태가 knotStatusMin 이상 쌓인 순간 (⟨반복 3⟩)
+  if (knotsNeeded && rule.includes('매듭')) return { kind: 'knots', need: knotsNeeded, knotMin: knotStatusMin ?? 1, text: rule };
   const st = rule.match(/(점지|상흔|명부|넋흔들림)\s*(\d+)\s*이상/);
   if (st) return { kind: 'status', status: st[1] as EnemyStatus, n: Number(st[2]), orCollapse: rule.includes('붕괴'), text: rule };
   const jd = rule.match(/장단\s*(\d+)\s*이상/);
