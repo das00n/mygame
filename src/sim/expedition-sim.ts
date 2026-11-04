@@ -3,7 +3,8 @@
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { loadData as D, ROOT } from '../core/data.ts';
+import { loadData as D } from '../core/data.ts';
+import { ROOT } from './root.ts';
 import { HERO_IDS } from '../core/types.ts';
 import { allTrios, mergeCardAgg, mergeCombatAgg, metrics, newCardAgg, newCombatAgg } from './agg.ts';
 import { cardTables } from './combat-sim.ts';

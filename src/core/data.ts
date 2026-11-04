@@ -1,9 +1,7 @@
 // 설계 데이터(JSON) 로드 → 정적 정의로 컴파일. 프로세스마다 한 번만 만든다.
 
-import { readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { parseCond } from './conditions.ts';
+import { RAW_JSON } from './raw-data.ts';
 import { budgetOf, rawValue, type ValueCtx } from './value.ts';
 import {
   HERO_IDS, HERO_NAMES,
@@ -11,10 +9,11 @@ import {
   type HeroId, type Op, type PerMode, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type Trigger,
 } from './types.ts';
 
-export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-
+// 데이터는 raw-data.ts 의 정적 JSON import 에서 온다 (Node·브라우저 공통). 저장소 경로(ROOT)는 src/sim/root.ts.
 function readJson<T>(rel: string): T {
-  return JSON.parse(readFileSync(resolve(ROOT, rel), 'utf8')) as T;
+  const v = RAW_JSON[rel];
+  if (v === undefined) throw new Error(`unknown data file ${rel}`);
+  return v as T;
 }
 
 const STATUSES = new Set(['취약', '약화', '점지', '상흔', '명부', '넋흔들림']);

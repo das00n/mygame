@@ -3,17 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "저승굿 Phase 7 Prototype ① — headless rules engine, heuristic bot, simulators",
+  "description": "저승굿 Prototype ①·② — headless rules engine, heuristic bot, simulators, playable Act 1 (web)",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test 'tests/**/*.test.ts'",
     "sim:combat": "node --import tsx src/sim/combat-sim.ts",
     "sim:expedition": "node --import tsx src/sim/expedition-sim.ts",
-    "sim:report": "node --import tsx src/sim/report.ts"
+    "sim:report": "node --import tsx src/sim/report.ts",
+    "web:dev": "vite --config web/vite.config.ts",
+    "web:typecheck": "tsc --noEmit -p web/tsconfig.json",
+    "web:build": "tsc --noEmit -p web/tsconfig.json && vite build --config web/vite.config.ts",
+    "web:artifact": "npm run web:build && node web/scripts/artifact.mjs",
+    "web:e2e": "npm run web:artifact && node web/scripts/e2e.mjs",
+    "web:headless": "node --import tsx web/scripts/headless.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
+    "preact": "^11.1.1",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vite": "^7.3.7",
+    "vite-plugin-singlefile": "^2.3.4"
   }
 }

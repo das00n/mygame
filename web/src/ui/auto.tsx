@@ -1,0 +1,59 @@
+// 자동 진행 단추와 구동기. 켜 두면 봇이 전투·지도·기물·보상·길굿을 한 걸음씩 둔다.
+
+import { useEffect } from 'preact/hooks';
+import { autoStep, resetAuto } from '../game/autoplay.ts';
+import { app, commit, commitSettings, settings } from '../game/store.ts';
+
+const SPEED_LABEL = { normal: '보통', fast: '빠름', instant: '즉시' } as const;
+
+export function AutoToggle() {
+  return (
+    <span class="row" style={{ gap: '4px' }}>
+      <button
+        class={`btn small ${settings.auto ? 'on' : ''}`}
+        data-testid="auto-toggle"
+        aria-pressed={settings.auto}
+        onClick={() => {
+          settings.auto = !settings.auto;
+          resetAuto();
+          commitSettings();
+        }}
+      >
+        자동 {settings.auto ? '켬' : '끔'}
+      </button>
+      {settings.auto && (
+        <button
+          class="btn small ghost"
+          data-testid="auto-speed"
+          title="자동 진행 빠르기"
+          onClick={() => {
+            settings.speed = settings.speed === 'normal' ? 'fast' : settings.speed === 'fast' ? 'instant' : 'normal';
+            commitSettings();
+          }}
+        >
+          {SPEED_LABEL[settings.speed]}
+        </button>
+      )}
+    </span>
+  );
+}
+
+/** 그릴 때마다 다음 한 걸음을 예약한다 (즉시면 한 틱에 여러 걸음) */
+export function useAutoDriver(): void {
+  useEffect(() => {
+    if (!settings.auto) return;
+    const active = app.dialog || app.picker || ['map', 'combat', 'reward', 'camp'].includes(app.screen);
+    if (!active) return;
+    const delay = settings.speed === 'instant' ? 0 : settings.speed === 'fast' ? 90 : app.screen === 'combat' ? 420 : 300;
+    const t = setTimeout(() => {
+      const t0 = performance.now();
+      let did = false;
+      do {
+        if (!settings.auto || !autoStep(app)) break;
+        did = true;
+      } while (settings.speed === 'instant' && performance.now() - t0 < 30 && app.screen !== 'result');
+      if (did) commit();
+    }, delay);
+    return () => clearTimeout(t);
+  });
+}

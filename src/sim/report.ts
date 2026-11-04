@@ -3,7 +3,8 @@
 
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { loadData, ROOT } from '../core/data.ts';
+import { loadData } from '../core/data.ts';
+import { ROOT } from './root.ts';
 import { HERO_IDS, HERO_NAMES, type HeroId } from '../core/types.ts';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
