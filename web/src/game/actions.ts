@@ -1,5 +1,6 @@
 // 화면과 자동 진행이 함께 쓰는 고수준 행동. 상태를 바꾼 뒤 store.commit() 은 부르는 쪽이 한다.
 
+import { upgradeInst } from '../../../src/core/data.ts';
 import { rand } from '../../../src/core/rng.ts';
 import type { HeroId } from '../../../src/core/types.ts';
 import { D } from './content.ts';
@@ -9,7 +10,7 @@ import { objective, samePos } from './dungeon.ts';
 import { openDialogFor, setKnownBefore } from './encounters.ts';
 import { takeCard } from './rewards.ts';
 import {
-  addRunStress, aliveIdx, buildResult, canStep, currentContent, heroName, logRun, newRun, stepTo, travel, type NewRunOpts,
+  addRunStress, aliveIdx, buildResult, canStep, currentContent, heroName, logRun, newRun, stepTo, travel, upgradableIdx, type NewRunOpts,
 } from './run.ts';
 import { clearSave } from './save.ts';
 import type { AppState, BattleSource, Pos, Run } from './types.ts';
@@ -96,6 +97,12 @@ export function dialogContinue(app: AppState): void {
     case 'formation':
       app.picker = { mode: 'formation', title: '진형 다시 짜기', from: 'dialog' };
       break;
+    case 'upgrade':
+      app.picker = { mode: 'upgrade', title: '강화할 카드', allowed: upgradableIdx(run), from: 'dialog' };
+      break;
+    case 'upgrade_baksu':
+      app.picker = { mode: 'upgrade', title: '강화할 작두박수 카드', allowed: upgradableIdx(run, 'baksu'), from: 'dialog' };
+      break;
   }
 }
 
@@ -125,6 +132,17 @@ export function pickerApply(app: AppState, value: number | string | null): strin
       msg = `「${d.cards[c.d].name}」을(를) 덱에서 뺐다.`;
       if (pk.cost?.points) spendCampPoints(app, pk.cost.points);
       if (pk.cost?.supply) run.supplies[pk.cost.supply]--;
+      break;
+    }
+    case 'upgrade': {
+      const i = value as number;
+      const c = run.deck[i];
+      const up = c ? upgradeInst(c) : null;
+      if (!up) break;
+      run.deck[i] = up;
+      run.stats.upgrades++;
+      msg = `「${d.cards[c.d].name}」을(를) 강화했다 → 「${d.cards[up.d].name}」.`;
+      if (pk.cost?.points) spendCampPoints(app, pk.cost.points);
       break;
     }
     case 'transform': {

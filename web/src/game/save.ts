@@ -31,7 +31,8 @@ export function loadApp(): AppState | null {
     const raw = globalThis.localStorage?.getItem(KEY);
     if (!raw) return null;
     const v = JSON.parse(raw, reviver) as AppState;
-    if (!v || !v.run || v.run.v !== 1) return null;
+    // v2 (v0.3 반복 1): 강화판·새 설치물로 정의 번호가 바뀌어 v1 저장은 이어하지 않는다
+    if (!v || !v.run || v.run.v !== 2) return null;
     if (v.combat?.s) v.combat.s.log = [];
     return v;
   } catch {

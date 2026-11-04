@@ -138,10 +138,10 @@
       "starter": true,
       "path": "core",
       "keywords": [],
-      "text": "방어도 5. 이번 턴 진형이 바뀔 때마다 장단 +1.",
-      "effects": [{"op": "block", "n": 5, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
+      "text": "방어도 6. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "effects": [{"op": "block", "n": 6, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
-      "upgrade": {"text": "방어도 6. 이번 턴 진형이 바뀔 때마다 장단 +1.", "effects": [{"op": "block", "n": 6, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}]},
+      "upgrade": {"text": "방어도 7. 이번 턴 진형이 바뀔 때마다 장단 +1.", "effects": [{"op": "block", "n": 7, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}]},
       "note": "C5: 잽이는 진형을 만들지 않는다. 진형 변화는 동료의 근접 돌격·이동 카드에서 온다(최종 검수에서 교대 제거)."
     },
     {
@@ -191,8 +191,8 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "피해 7. 이번 턴 진형이 바뀌었으면 장단 +2.",
-      "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}],
+      "text": "피해 8. 이번 턴 진형이 바뀌었으면 장단 +2.",
+      "effects": [{"op": "dmg", "n": 8, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
       "upgrade": {"text": "피해 10. 이번 턴 진형이 바뀌었으면 장단 +2.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}]}
     },
@@ -295,8 +295,8 @@
       "cost": 1,
       "path": "B",
       "keywords": [],
-      "text": "피해 4. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.",
-      "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}],
+      "text": "피해 5. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.",
+      "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}],
       "tags": {"produce": ["부적"], "consume": ["진형"]},
       "upgrade": {"text": "피해 7. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.", "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}]}
     },
@@ -308,10 +308,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "피해 6. 가락이 당악이면 피해 6 더.",
-      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 6, "target": "one"}], "p": 0.25}],
+      "text": "피해 8. 가락이 당악이면 피해 6 더.",
+      "effects": [{"op": "dmg", "n": 8, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 6, "target": "one"}], "p": 0.25}],
       "tags": {"produce": [], "consume": ["가락"]},
-      "upgrade": {"text": "피해 8. 가락이 당악이면 피해 8 더.", "effects": [{"op": "dmg", "n": 8, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 8, "target": "one"}], "p": 0.25}]}
+      "upgrade": {"text": "피해 10. 가락이 당악이면 피해 8 더.", "effects": [{"op": "dmg", "n": 10, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 8, "target": "one"}], "p": 0.25}]}
     },
     {
       "id": "jaebi.geollip",
@@ -373,10 +373,10 @@
       "cost": 1,
       "path": "core",
       "keywords": [],
-      "text": "아군 하나에게 방어도 6. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
-      "effects": [{"op": "block", "n": 6, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}],
+      "text": "아군 하나에게 방어도 7. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
+      "effects": [{"op": "block", "n": 7, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}],
       "tags": {"produce": [], "consume": ["진형"]},
-      "upgrade": {"text": "아군 하나에게 방어도 8. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.", "effects": [{"op": "block", "n": 8, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}]}
+      "upgrade": {"text": "아군 하나에게 방어도 9. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.", "effects": [{"op": "block", "n": 9, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}]}
     },
     {
       "id": "jaebi.cheongbo",
@@ -425,10 +425,10 @@
       "cost": 2,
       "path": "A",
       "keywords": [],
-      "text": "적 전체에 피해 6. 장단 1당 적 전체에 피해 3 더.",
-      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "all"}], "expect": 1.5}],
+      "text": "적 전체에 피해 9. 장단 1당 적 전체에 피해 3 더.",
+      "effects": [{"op": "dmg", "n": 9, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "all"}], "expect": 1.5}],
       "tags": {"produce": [], "consume": ["장단"]},
-      "upgrade": {"text": "적 전체에 피해 8. 장단 1당 적 전체에 피해 4 더.", "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4, "target": "all"}], "expect": 1.5}]}
+      "upgrade": {"text": "적 전체에 피해 11. 장단 1당 적 전체에 피해 4 더.", "effects": [{"op": "dmg", "n": 11, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 4, "target": "all"}], "expect": 1.5}]}
     },
     {
       "id": "jaebi.ojang",

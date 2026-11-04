@@ -130,16 +130,17 @@ export function CardView({ def, inst = null, party, dis, sel, resp, big, pickabl
   if (def.isStatus && def.idx !== d.special.rescue && def.idx !== d.special.mourn) cls = 'status';
   if (def.isCurse) cls = 'curse';
   const rarity = def.rarity === '희귀' ? 'rare' : def.rarity === '고급' ? 'uncommon' : '';
+  const upgraded = def.upgraded ? 'upgraded' : '';
   const kws = def.keywords.filter((k) => k !== '받는소리');
   const typeLine = `${def.isToken ? '부적' : def.type} · ${ownerName(def, inst, party)}${def.rarity && !['기본', '부적', '특수', '공용'].includes(def.rarity) ? ` · ${def.rarity}` : ''}`;
   return (
     <div
-      class={`card ${cls} ${rarity} ${dis ? 'dis' : ''} ${sel ? 'sel' : ''} ${big ? 'big' : ''} ${pickable ? 'pickable' : ''}`}
+      class={`card ${cls} ${rarity} ${upgraded} ${dis ? 'dis' : ''} ${sel ? 'sel' : ''} ${big ? 'big' : ''} ${pickable ? 'pickable' : ''}`}
       style={{ '--oc': c1, '--oc2': c2 ?? c1 } as CSSProperties}
       onClick={onClick}
       data-testid={testid}
       role={onClick ? 'button' : undefined}
-      aria-label={`${name} 비용 ${def.cost}`}
+      aria-label={`${name}${def.upgraded ? ' (강화)' : ''} 비용 ${def.cost}`}
     >
       <div class={`oband ${c2 ? 'duo' : ''}`} />
       <svg class="stroke" viewBox="0 0 28 60" preserveAspectRatio="none" aria-hidden="true">
@@ -147,6 +148,7 @@ export function CardView({ def, inst = null, party, dis, sel, resp, big, pickabl
       </svg>
       {!def.unplayable && <div class="cost">{def.cost}</div>}
       {resp && <div class="resp" title="지금 내면 받는소리가 성립한다">받</div>}
+      {def.upgraded && <div class="upseal" title="강화한 카드">강</div>}
       <div class="cname">{name}</div>
       <div class="ctype">{typeLine}</div>
       <div class="ctext"><KwText text={text} /></div>

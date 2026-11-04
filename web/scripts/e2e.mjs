@@ -238,6 +238,20 @@ for (let k = 0; k < RUNS.length; k++) {
             const cancel = await p.$('.target-hint >> text=취소');
             if (cancel) await cancel.click();
           } else await shot(s2);
+          if (s2 === 'camp') {
+            // 길굿 강화(v0.3): 고르기 창에 강화판(금박·「강」 인장)이 보이는지 확인하고 그만둔다
+            const btn = await p.$('[data-testid=camp-upgrade]:not([disabled])');
+            if (!btn) throw new Error('camp: 카드 강화가 열려 있지 않다');
+            await btn.click();
+            await p.waitForSelector('[data-testid=picker] .card.upgraded');
+            const n = await p.evaluate(() => document.querySelectorAll('[data-testid=picker] .card.upgraded .upseal').length);
+            if (!n) throw new Error('camp: 강화판 미리 보기가 없다');
+            await noHScroll('camp-upgrade');
+            await shot('camp-upgrade');
+            await p.click('[data-testid=picker-cancel]');
+            const pts = await p.evaluate(() => document.querySelectorAll('.points i.on').length);
+            if (pts !== 12) throw new Error(`camp: 그만두었는데 여유가 ${pts}`);
+          }
           shotDone.add(s2);
         }
         if (s2 !== 'result') await jsClick('[data-testid=auto-toggle]');

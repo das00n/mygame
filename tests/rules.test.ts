@@ -399,10 +399,10 @@ test('신바람 (v0.2 S5): 만신 카드마다 +1, 연달아 내면 +1 더, 5에
   play(s, 'posu.ganeumsoe', { enemy: 0 });
   play(s, 'manshin.gongsu', { enemy: 0 });
   assert.equal(m.personal, 2, '직전이 포수면 +1만');
-  // 공수: 강신 밖 → 피해 6
+  // 공수: 강신 밖 → 피해 8 (v0.3 S10: 6 → 8)
   let hp = e.hp;
   play(s, 'manshin.daegam_gongsu', { enemy: 0 });
-  assert.equal(hp - e.hp, 6);
+  assert.equal(hp - e.hp, 8);
   assert.equal(m.personal, 4, '연달아 → +2');
   assert.equal(s.gangsin, false);
   play(s, 'manshin.gongsu', { enemy: 0 });

@@ -73,6 +73,8 @@ export interface RunStats {
   plays: Record<string, number>;
   cardsTaken: number;
   cardsSkipped: number;
+  /** 강화한 카드 수 (v0.3) */
+  upgrades: number;
   tilesWalked: number;
   candlesUsed: number;
   curios: number;
@@ -100,7 +102,7 @@ export interface NextFight {
 }
 
 export interface Run {
-  v: 1;
+  v: 2;
   seed: number;
   rng: number;
   commission: CommissionId;
@@ -193,13 +195,13 @@ export interface DialogState {
   /** 결과 문장이 정해지면 선택지 대신 보인다 */
   result: string | null;
   /** 결과 뒤 이어지는 동작 */
-  then: 'none' | 'battle' | 'cards' | 'remove' | 'transform' | 'formation';
+  then: 'none' | 'battle' | 'cards' | 'remove' | 'transform' | 'formation' | 'upgrade' | 'upgrade_baksu';
   battleEnc?: string;
   battleSpecial?: 'none' | 'play' | 'escort';
   cardOptions?: string[];
 }
 
-export type PickerMode = 'remove' | 'transform' | 'purge' | 'offer' | 'formation' | 'sul';
+export type PickerMode = 'remove' | 'transform' | 'purge' | 'offer' | 'formation' | 'sul' | 'upgrade';
 export interface PickerState {
   mode: PickerMode;
   title: string;

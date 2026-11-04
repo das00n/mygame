@@ -62,7 +62,7 @@ export function writeReport(): void {
       ['special', fid.special.total, fid.special.exact, fid.special.approx],
     ]));
     L.push('');
-    L.push(`카드·부적·설치물 ${fid.cardsTotal}개 중 근사가 섞인 것 ${fid.cardsWithStub}개.`);
+    L.push(`카드·부적·설치물 ${fid.cardsTotal}개(강화판 포함) 중 근사가 섞인 것 ${fid.cardsWithStub}개.`);
     L.push('');
   }
 
@@ -194,7 +194,9 @@ export function writeReport(): void {
       return [HERO_NAMES[h], f2(avg(pool, 'playRate')), f2(avg(st, 'playRate')), pct(avg(pk, 'pickRate'))];
     })));
     L.push('');
-    L.push('### 4.5 조건 성립률 — 데이터의 p 와 실측 (차이가 큰 15개, 평가 200회 이상)');
+    L.push('### 4.5 조건 성립률 — 가치 모델의 p 와 실측 (차이가 큰 15개, 평가 200회 이상)');
+    L.push('');
+    L.push('데이터 p = 카드에 적힌 p, 없으면 모델 기본값(받는소리 0.65 · 경면주사·염주를 쓰면 0.95 · 붕괴 0.15 …, [04-cards §2.1](../04-cards.md)).');
     L.push('');
     const conds = Object.values(cardSrc.conds as Record<string, Json>).filter((c) => c.evaluated >= 200 && c.dataP !== null);
     conds.sort((a, b) => Math.abs(b.rate - b.dataP) - Math.abs(a.rate - a.dataP));
@@ -203,13 +205,20 @@ export function writeReport(): void {
     const resp = Object.values(cardSrc.conds as Record<string, Json>).filter((c) => c.if === '받는소리');
     const ev = resp.reduce((a, c) => a + c.evaluated, 0);
     const tr = resp.reduce((a, c) => a + c.true, 0);
-    L.push(`받는소리 조건 전체: 실측 ${ev ? f2(tr / ev) : '-'} (데이터 가정 0.6).`);
+    L.push(`받는소리 조건 전체: 실측 ${ev ? f2(tr / ev) : '-'} (모델 기본 0.65).`);
     L.push('');
-    L.push('### 4.6 능력 카드 — 실제 발동 횟수 / 사용 (데이터 expect 기본 3.5)');
+    L.push('### 4.6 능력 카드 — 실제 발동 횟수 / 사용 (expect: 카드에 적힌 값, 없으면 턴 시작·종료 5 · 그 밖 3.5 · 이번 턴 트리거 0.15)');
     L.push('');
     const pw = Object.entries(cardSrc.powers as Record<string, Json>).filter(([, v]) => v.played >= 20).sort((a, b) => b[1].firesPerPlay - a[1].firesPerPlay);
     L.push(table(['카드', '사용', '발동', '발동/사용', 'expect'], pw.map(([k, v]) => [d.cardById.get(k)?.name ?? k, v.played, v.fires, f2(v.firesPerPlay), v.dataExpect])));
     L.push('');
+    if (cardSrc.pers) {
+      L.push('### 4.7 "X 1당"(per) — 실제로 센 수 / 데이터 expect (실행 200회 이상)');
+      L.push('');
+      const pr = Object.values(cardSrc.pers as Record<string, Json>).filter((v) => v.evaluated >= 200).sort((a, b) => String(a.source).localeCompare(String(b.source)) || b.mean - a.mean);
+      L.push(table(['카드', '센 것', '방식', '실행', '평균', 'expect(적힌 값)'], pr.map((v) => [d.cardById.get(v.card)?.name ?? v.card, v.source, v.mode, v.evaluated, f2(v.mean), v.dataExpect ?? '기본'])));
+      L.push('');
+    }
   }
   // ── what-if 원정 (설계값을 바꾸지 않은 실험) ──
   const whatIfs = readdirSync(resolve(ROOT, 'data/sim')).filter((f) => /^expedition-whatif.*\.json$/.test(f)).sort();

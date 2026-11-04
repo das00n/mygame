@@ -1,5 +1,6 @@
 // 원정(런) 상태 조작: 시작, 이동·넋등·정찰, 보급품, 귀기·씌임, 귀환·포기·결과.
 
+import { canUpgrade } from '../../../src/core/data.ts';
 import { rand } from '../../../src/core/rng.ts';
 import type { CardInst, HeroId } from '../../../src/core/types.ts';
 import { starterDeck } from '../../../src/sim/draft.ts';
@@ -32,7 +33,7 @@ export function saveCodex(ids: string[]): void {
 
 export function newStats(): RunStats {
   return {
-    fights: 0, wins: 0, haewons: 0, haewonEligible: 0, kills: 0, escapes: 0, downs: 0, deaths: 0, revives: 0, plays: {}, cardsTaken: 0, cardsSkipped: 0,
+    fights: 0, wins: 0, haewons: 0, haewonEligible: 0, kills: 0, escapes: 0, downs: 0, deaths: 0, revives: 0, plays: {}, cardsTaken: 0, cardsSkipped: 0, upgrades: 0,
     tilesWalked: 0, candlesUsed: 0, curios: 0, traps: 0, events: 0, camps: 0, hpLost: 0, startedAt: Date.now(), playMs: 0,
   };
 }
@@ -62,7 +63,7 @@ export function newRun(o: NewRunOpts): Run {
     return { id, hp, baseMax: hp, stress: 0, injured: false, recovering: false, dead: false, downs: 0 };
   });
   const run: Run = {
-    v: 1, seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossFor(o.seed) : null,
+    v: 2, seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossFor(o.seed) : null,
     party: o.party.slice(), formation: o.formation.slice(), heroes, deck: starterDeck(o.party), supplies: { ...o.supplies }, gold: o.gold,
     goldSpent: o.spent, materials: 0, chiseong: 0, light: 100, relics: [], dungeon, pos: { kind: 'room', room: dungeon.entrance }, prevRoom: dungeon.entrance,
     next: { wounds: [] }, revealed: loadCodex(), bonds: {}, threshold: 0, noNightRaid: false, fightsSeen: 0, bags: { hard: [], elite: [], lastHard: null },
@@ -306,3 +307,15 @@ export function lightCostPreview(run: Run, to: Pos): number {
 }
 
 export { travelCost };
+
+/** 강화할 수 있는 덱 카드의 index (강화판이 있고 아직 강화하지 않은 카드, 죽은 영웅의 곡·저주·상태 제외). hero 를 주면 그 영웅 카드만 */
+export function upgradableIdx(run: Run, hero?: HeroId): number[] {
+  const d = D();
+  const out: number[] = [];
+  run.deck.forEach((c, i) => {
+    if (!canUpgrade(c)) return;
+    if (hero && !(c.o >= 0 && run.heroes[c.o]?.id === hero && d.cards[c.d].ownerKind === 'hero')) return;
+    out.push(i);
+  });
+  return out;
+}

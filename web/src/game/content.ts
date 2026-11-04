@@ -84,7 +84,7 @@ export const RELIC_IMPL: Record<string, { impl: 'ok' | 'approx' | 'stub'; note?:
   chilseong: { impl: 'stub', note: '사망 판정 확률이 엔진 상수라 효과 없음' },
   myeongdo: { impl: 'approx', note: '작두박수·탈꾼은 개인 자원 대신 효과 없음' },
   cheonsin: { impl: 'ok' },
-  samjichang: { impl: 'ok', note: '강화는 아직 어차피 막혀 있다' },
+  samjichang: { impl: 'ok' },
   daesin_bangul: { impl: 'approx', note: '턴 시작 드로우 뒤 8장을 넘는 카드를 버린다(턴 중 드로우는 10장까지)' },
 };
 

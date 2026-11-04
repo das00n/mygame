@@ -3,14 +3,14 @@
 import type { CSSProperties } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
-import type { HeroId } from '../../../src/core/types.ts';
+import type { CardDef, HeroId } from '../../../src/core/types.ts';
 import { dialogContinue, finishCamp, pickerApply, rewardContinue, setFormation } from '../game/actions.ts';
 import { campActions, doCampAction, type CampAction } from '../game/camp.ts';
 import { COMMISSION_BY_ID, D, HERO_COLOR, RELIC_BY_ID, RELIC_IMPL } from '../game/content.ts';
 import { bondKey, chooseDialog, dialogOptions, dialogSetup, dialogTitle } from '../game/encounters.ts';
 import { TERMS } from '../game/glossary.ts';
 import { FLAG_INFO, pickFlag, pickRare, pickRelic, takeCard } from '../game/rewards.ts';
-import { aliveIdx, effMax, heroName } from '../game/run.ts';
+import { aliveIdx, effMax, heroName, upgradableIdx } from '../game/run.ts';
 import { app, commit, setPanel, ui } from '../game/store.ts';
 import type { Run } from '../game/types.ts';
 import { AutoToggle } from './auto.tsx';
@@ -122,6 +122,10 @@ export function CampScreen() {
       app.picker = { mode: 'remove', title: '덱에서 뺄 카드 (여유 5)', allowed: run.deck.map((_, i) => i), cost: { points: 5 }, from: 'camp' };
       return commit();
     }
+    if (a.pick === 'card-upgrade') {
+      app.picker = { mode: 'upgrade', title: '강화할 카드 (여유 4)', allowed: upgradableIdx(run), cost: { points: 4 }, from: 'camp' };
+      return commit();
+    }
     if (a.pick === 'curse') {
       const allowed = run.deck.map((c, i) => (d.cards[c.d].isCurse ? i : -1)).filter((i) => i >= 0);
       app.picker = { mode: 'purge', title: '정화할 씌임 카드 (여유 3)', allowed, cost: { points: 3 }, from: 'camp' };
@@ -212,7 +216,7 @@ export function ResultScreen() {
         <div class="stat"><div class="v">{r.stats.deaths}</div><div class="k">죽음</div></div>
         <div class="stat"><div class="v">{r.roomsVisited}/{r.roomsTotal}</div><div class="k">밝힌 방</div></div>
         <div class="stat"><div class="v">{r.gold}</div><div class="k">엽전 (재료 {r.materials}{r.chiseong ? ` · 치성 ${r.chiseong}` : ''})</div></div>
-        <div class="stat"><div class="v">{r.stats.cardsTaken}</div><div class="k">얻은 카드 (건너뜀 {r.stats.cardsSkipped}) · 덱 {r.deckSize}</div></div>
+        <div class="stat"><div class="v">{r.stats.cardsTaken}</div><div class="k">얻은 카드 (건너뜀 {r.stats.cardsSkipped}{r.stats.upgrades ? ` · 강화 ${r.stats.upgrades}` : ''}) · 덱 {r.deckSize}</div></div>
         <div class="stat"><div class="v">{r.light}</div><div class="k">남은 넋등 · 촛불 {r.stats.candlesUsed}</div></div>
         <div class="stat"><div class="v">{mins}분</div><div class="k">플레이 시간</div></div>
       </div>
@@ -277,6 +281,23 @@ export function DialogView() {
   );
 }
 
+/** 강화 전후 차이 한 줄 (비용·키워드) */
+function UpgradeDiff({ base, up }: { base: CardDef; up: CardDef }) {
+  const parts: string[] = [];
+  if (up.cost !== base.cost) parts.push(`비용 ${base.cost}→${up.cost}`);
+  for (const k of up.keywords) if (!base.keywords.includes(k) && k !== '받는소리') parts.push(`+${k}`);
+  for (const k of base.keywords) if (!up.keywords.includes(k) && k !== '받는소리') parts.push(`−${k}`);
+  if (up.text !== base.text) {
+    // 숫자만 바뀌었으면 "5→7" 처럼, 문장이 바뀌었으면 "효과 강화"
+    const nums = (t: string) => t.match(/\d+/g) ?? [];
+    const a = nums(base.text);
+    const b = nums(up.text);
+    const diffs = a.length === b.length ? a.map((x, i) => (x !== b[i] ? `${x}→${b[i]}` : '')).filter(Boolean) : [];
+    parts.push(diffs.length ? diffs.slice(0, 3).join(' · ') : '효과 강화');
+  }
+  return <div class="updiff" title={`강화 전: ${base.text}`}>{parts.join(' · ')}</div>;
+}
+
 // ── 고르기 창 ─────────────────────────────────────────────────────────
 export function PickerView() {
   const run = app.run!;
@@ -309,6 +330,23 @@ export function PickerView() {
           ))}
         </div>
         <div class="row" style={{ justifyContent: 'flex-end' }}><button class="btn primary" data-testid="formation-ok" onClick={() => { setFormation(app, order); pickerApply(app, null); commit(); }}>이 진형으로</button></div>
+      </div>
+    );
+  } else if (pk.mode === 'upgrade') {
+    // 강화판 미리 보기: 강화판 카드를 크게, 아래에 바뀌는 점(비용·키워드·문장)
+    const allowed = pk.allowed ?? [];
+    body = (
+      <div class="deck-list">
+        {allowed.map((i) => {
+          const c = run.deck[i];
+          const base = d.cards[c.d];
+          const up = d.cards[base.upIdx];
+          return (
+            <CardView key={i} def={up} inst={{ ...c, d: up.idx }} party={run.party} pickable onClick={() => { pickerApply(app, i); commit(); }} testid={`pick-${i}`}
+              note={<UpgradeDiff base={base} up={up} />} />
+          );
+        })}
+        {!allowed.length && <div class="dim">강화할 카드가 없다.</div>}
       </div>
     );
   } else {

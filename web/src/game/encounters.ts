@@ -6,7 +6,7 @@ import { CURIO_BY_ID, D, ENEMY_EXTRA, EVENT_BY_ID, RELIC_BY_ID, TRAP_BY_ID, type
 import { corridorsOf } from './dungeon.ts';
 import {
   addCurse, aliveIdx, bossEnemyIds, heroName, logRun, partyStress, revealAllRooms, revealHaewon, revealNear, revealRandomHaewon, scoutAround,
-  scoutRooms, supplyUse,
+  scoutRooms, supplyUse, upgradableIdx,
 } from './run.ts';
 import { applyRelicGain, rollCards, rollRelics } from './rewards.ts';
 import type { AppState, Corridor, DialogState, Run } from './types.ts';
@@ -86,16 +86,16 @@ export function dialogOptions(run: Run, dlg: DialogState): DOpt[] {
     out.push({ id: 'bare', label: '맨손', detail: c.bare, kind: 'bare', enabled: true });
     if (c.provision) {
       const item = ITEM_ID[c.provision.item];
-      const upgrade = c.provision.result.includes('강화');
+      const noUpgrade = c.provision.result.includes('강화') && !upgradableIdx(run).length;
       out.push({
         id: 'supply', label: `${c.provision.item} 1`, detail: c.provision.result, kind: 'supply', cost: `${c.provision.item} 1`,
-        enabled: !upgrade && (run.supplies[item] ?? 0) > 0,
-        reason: upgrade ? '카드 강화판 실행 데이터가 아직 없다' : (run.supplies[item] ?? 0) > 0 ? undefined : `${c.provision.item}이(가) 없다`,
+        enabled: !noUpgrade && (run.supplies[item] ?? 0) > 0,
+        reason: noUpgrade ? '강화할 카드가 없다' : (run.supplies[item] ?? 0) > 0 ? undefined : `${c.provision.item}이(가) 없다`,
       });
     } else out.push({ id: 'supply', label: '맞는 보급품 없음', detail: '이 기물에 맞는 보급품은 없다.', kind: 'supply', enabled: false, reason: '해당 없음' });
     const hid = c.hero.archetype;
     out.push({
-      id: 'hero', label: heroName(hid), detail: c.hero.result + (c.hero.result.includes('강화') ? ' (강화는 데이터가 없어 생략)' : ''), kind: 'hero', hero: hid,
+      id: 'hero', label: heroName(hid), detail: c.hero.result, kind: 'hero', hero: hid,
       enabled: hasHero(run, hid), reason: hasHero(run, hid) ? undefined : `파티에 ${heroName(hid)}이(가) 없다`,
     });
     out.push({ id: 'leave', label: '손대지 않는다', detail: '나중에 다시 올 수 있다.', kind: 'leave', enabled: true });
@@ -210,6 +210,10 @@ export function chooseDialog(app: AppState, optId: string): void {
           partyStress(run, 5);
           lines.push('돌이 굴러떨어졌다. 파티 귀기 +5.');
         }
+        break;
+      case 'seonang_dol:supply':
+        lines.push('술을 올려 공양했다. 덱의 카드 한 장을 강화할 수 있다.');
+        then = 'upgrade';
         break;
       case 'seonang_dol:hero':
         lines.push(`만신이 신탁을 받는다 — 방 ${scoutRooms(run, 2)}곳을 정찰했다.`);
@@ -329,7 +333,8 @@ export function chooseDialog(app: AppState, optId: string): void {
         break;
       case 'mangja_botjim:hero':
         run.materials += 1;
-        lines.push('작두박수가 신칼로 매듭을 끊었다. 재료 +1. (카드 강화는 데이터가 없어 생략)');
+        lines.push(`작두박수가 신칼로 매듭을 끊었다. 재료 +1.${upgradableIdx(run, 'baksu').length ? ' 작두박수 카드 한 장을 강화할 수 있다.' : ' (강화할 작두박수 카드가 없다)'}`);
+        if (upgradableIdx(run, 'baksu').length) then = 'upgrade_baksu';
         break;
       default:
         lines.push('아무 일도 없었다.');

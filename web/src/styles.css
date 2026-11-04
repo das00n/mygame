@@ -387,6 +387,22 @@ button { font: inherit; color: inherit; }
 .card .ckw { font-size: 9.5px; color: var(--paper-ink-2); letter-spacing: .04em; }
 .card.rare { box-shadow: 0 3px 10px rgba(0,0,0,.45), inset 0 0 0 3px rgba(255, 244, 205, .35), inset 0 0 0 4px #b8323a, inset 0 0 0 6px rgba(168, 137, 63, .7); }
 .card.uncommon { box-shadow: 0 3px 10px rgba(0,0,0,.45), inset 0 0 0 3px rgba(255, 244, 205, .35), inset 0 0 0 4px #4a6fa0; }
+/* 강화판: 금박 테두리 + 「강」 인장 (v0.3) */
+.card.upgraded {
+  border-color: #d8a93a;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(255, 236, 160, .7), rgba(255,236,160,0) 62%),
+    repeating-linear-gradient(0deg, rgba(120, 90, 30, 0.05) 0 2px, rgba(0,0,0,0) 2px 5px),
+    linear-gradient(180deg, #f6e3a8, var(--paper-2));
+}
+.card.upgraded::after { content: ''; position: absolute; inset: 2px; border: 1px solid rgba(201, 150, 42, .9); pointer-events: none; }
+.card .upseal {
+  position: absolute; right: 4px; bottom: 5px;
+  font-family: var(--font-brush); font-size: 13px; line-height: 1;
+  color: #fff3d6; background: #a8772a; border: 1px solid #6d4a12;
+  padding: 2px 3px 1px; border-radius: 50%; transform: rotate(6deg);
+}
+.card .updiff { font-size: 9.5px; color: #6d4a12; font-weight: 700; border-top: 1px dashed rgba(168, 119, 42, .6); padding-top: 2px; }
 .card.status { background: linear-gradient(180deg, #8f8a7a, #6e6a5c); color: #1b1914; border-color: #555; }
 .card.status .cname { color: #2a2420; }
 .card.curse { background: linear-gradient(180deg, #5a5266, #3f3948); color: #e8e0f0; border-color: #2c2733; }

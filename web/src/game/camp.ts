@@ -4,7 +4,7 @@ import { rand } from '../../../src/core/rng.ts';
 import type { HeroId } from '../../../src/core/types.ts';
 import { CAMP_POINTS, D, NIGHT_RAID } from './content.ts';
 import { addBond } from './encounters.ts';
-import { aliveIdx, effMax, healHero, heroName, logRun, partyStress, addRunStress, revealRandomHaewon, scoutRooms } from './run.ts';
+import { aliveIdx, effMax, healHero, heroName, logRun, partyStress, addRunStress, revealRandomHaewon, scoutRooms, upgradableIdx } from './run.ts';
 import type { AppState, CampState, Run } from './types.ts';
 
 export interface CampAction {
@@ -18,7 +18,7 @@ export interface CampAction {
   reason?: string;
   group: 'meal' | 'common' | 'hero';
   /** 대상 고르기가 필요하면 화면이 처리한다 */
-  pick?: 'card-remove' | 'curse' | 'pair' | 'dead' | 'injured' | 'formation';
+  pick?: 'card-remove' | 'card-upgrade' | 'curse' | 'pair' | 'dead' | 'injured' | 'formation';
 }
 
 interface HeroAct {
@@ -80,7 +80,13 @@ export function campActions(run: Run, camp: CampState): CampAction[] {
   const injured = alive.filter((i) => run.heroes[i].injured).length;
   const deadUnhonored = run.heroes.filter((h, i) => h.dead && run.deck.some((c) => c.o === i && c.d === d.special.mourn)).length;
   const pts = (n: number) => camp.points >= n;
-  out.push({ id: 'upgrade', label: '카드 강화', detail: '카드 1장 강화.', points: 4, group: 'common', enabled: false, reason: '강화판의 실행 데이터가 아직 없다 (카드에 강화 문장만 있다)' });
+  const upgradable = upgradableIdx(run).length;
+  const chain = run.relics.includes('samjichang');
+  out.push({
+    id: 'upgrade', label: '카드 강화', detail: '덱의 카드 1장을 강화판으로 바꾼다(한 장에 한 번).', points: 4, group: 'common',
+    enabled: pts(4) && upgradable > 0 && !chain, pick: 'card-upgrade',
+    reason: chain ? '삼지창 사슬: 길굿에서 강화할 수 없다' : !upgradable ? '강화할 카드가 없다' : pts(4) ? undefined : '여유가 모자라다',
+  });
   out.push({ id: 'remove', label: '카드 제거', detail: '덱에서 카드 1장을 뺀다.', points: 5, group: 'common', enabled: pts(5), reason: pts(5) ? undefined : '여유가 모자라다', pick: 'card-remove' });
   out.push({
     id: 'purge', label: '씌임 정화', detail: '씌임 카드 1장을 정화한다.', points: 3, group: 'common', enabled: pts(3) && curses > 0,

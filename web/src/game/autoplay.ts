@@ -7,7 +7,7 @@ import { D } from './content.ts';
 import { objective, shortestPath } from './dungeon.ts';
 import { chooseDialog, dialogOptions } from './encounters.ts';
 import { pickFlag, pickRare, pickRelic, takeCard } from './rewards.ts';
-import { aliveIdx, effMax } from './run.ts';
+import { aliveIdx, effMax, upgradableIdx } from './run.ts';
 import {
   abandon, campAvailable, dialogContinue, finishCamp, moveTo, openCamp, pickerApply, returnHome, rewardContinue, setFormation, travelTo, useCandleOnMap,
 } from './actions.ts';
@@ -144,6 +144,24 @@ function autoPicker(app: AppState): boolean {
       pickerApply(app, best >= 0 ? best : null);
       return true;
     }
+    case 'upgrade': {
+      // 가치가 가장 많이 오르는 카드 (비용이 내려가면 에너지 1 = 4점), 같으면 시작 카드 아닌 쪽
+      const allowed = pk.allowed ?? [];
+      let best = -1;
+      let bv = -Infinity;
+      for (const i of allowed) {
+        const base = d.cards[run.deck[i].d];
+        const up = d.cards[base.upIdx];
+        if (!up) continue;
+        const v = up.value - base.value + (base.cost - up.cost) * 4 + (base.starter ? 0 : 0.5);
+        if (v > bv) {
+          bv = v;
+          best = i;
+        }
+      }
+      pickerApply(app, best >= 0 ? best : null);
+      return true;
+    }
     case 'sul': {
       let best = aliveIdx(run)[0];
       for (const i of aliveIdx(run)) if (run.heroes[i].stress > run.heroes[best].stress) best = i;
@@ -186,6 +204,10 @@ function autoCamp(app: AppState): boolean {
     if (!HERO_ACTS.some((a) => a.id === id)) continue;
     const a = acts.find((x) => x.id === id);
     if (a?.enabled && camp.points - a.points >= 0) return !!doCampAction(app, id) || true;
+  }
+  if (can('upgrade')) {
+    app.picker = { mode: 'upgrade', title: '강화할 카드', allowed: upgradableIdx(run), cost: { points: 4 }, from: 'camp' };
+    return true;
   }
   if (can('remove')) {
     const allowed = run.deck.map((_, i) => i);
