@@ -115,7 +115,7 @@ export function loadData(): GameData {
     const type = c.type ?? '기술';
     const rarity = c.rarity ?? (isToken ? '부적' : '일반');
     const def: CardDef = {
-      idx: cards.length, id: c.id, name: c.name, set: set, type, rarity, cost: c.cost, ownerKind, heroes, keywords,
+      idx: cards.length, id: c.id, name: c.name, set, type, rarity, cost: c.cost, ownerKind, heroes, keywords,
       exhaust: keywords.includes('소멸') || isToken, ethereal: keywords.includes('휘발'), unplayable: keywords.includes('사용 불가'),
       innate: keywords.includes('선천'), retain: keywords.includes('보존'),
       text: c.text, effects: [], starter: !!c.starter, path: c.path ?? 'core', isToken,

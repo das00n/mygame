@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated": "2026-11-04T03:50:44.078Z",
+  "generated": "2026-11-04T04:18:49.282Z",
   "runs": 200,
   "trios": 56,
-  "runtimeSec": 61.9,
+  "runtimeSec": 43.7,
   "structure": "쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2",
   "rules": {
    "enemyDmgMult": 1,
