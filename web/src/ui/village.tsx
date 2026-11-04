@@ -282,12 +282,12 @@ function PersonSheet({ c, p }: { c: Campaign; p: Person }) {
         {bad && <span class="chip red" title={bad.text}>{bad.name} — {bad.text}</span>}
       </div>
       <div class="stat-grid">
-        <div class="stat"><span class="k">레벨</span><span class="v">{p.level} (경험 {p.xp}{nx !== null ? `/${nx}` : ' · 최고'})</span></div>
-        <div class="stat"><span class="k">최대 체력</span><span class="v">{maxHpOf(p)}{maxHpOf(p) !== baseMaxHp(p) ? ` / ${baseMaxHp(p)}` : ''}</span></div>
-        <div class="stat"><span class="k">귀기</span><span class="v">{p.stress}</span></div>
-        <div class="stat"><span class="k">연속 출전</span><span class="v">{p.sorties}{fatigueFrac(p) > 0 ? ` (피로 −${Math.round(fatigueFrac(p) * 100)}%)` : ''}</span></div>
-        <div class="stat"><span class="k">원정 · 해원</span><span class="v">{p.history.expeditions} · {p.history.haewons}</span></div>
-        <div class="stat"><span class="k">구한 동료</span><span class="v">{p.history.saved}</span></div>
+        <div class="stat"><div class="v">{p.level} (경험 {p.xp}{nx !== null ? `/${nx}` : ' · 최고'})</div><div class="k">레벨</div></div>
+        <div class="stat"><div class="v">{maxHpOf(p)}{maxHpOf(p) !== baseMaxHp(p) ? ` / ${baseMaxHp(p)}` : ''}</div><div class="k">최대 체력</div></div>
+        <div class="stat"><div class="v">{p.stress}</div><div class="k">귀기</div></div>
+        <div class="stat"><div class="v">{p.sorties}{fatigueFrac(p) > 0 ? ` (피로 −${Math.round(fatigueFrac(p) * 100)}%)` : ''}</div><div class="k">연속 출전</div></div>
+        <div class="stat"><div class="v">{p.history.expeditions} · {p.history.haewons}</div><div class="k">원정 · 해원</div></div>
+        <div class="stat"><div class="v">{p.history.saved}</div><div class="k">구한 동료</div></div>
       </div>
       <div class="row">
         {!p.busy && <button class="btn small" disabled={c.gold < CD.economy.restCost} onClick={() => say(bookRest(c, p.uid), '한 절기 쉰다')}>주막 휴식 ({CD.economy.restCost})</button>}
@@ -500,11 +500,11 @@ export function EndingScreen() {
         <div class="dim">{sum.text}</div>
       </div>
       <div class="stat-grid">
-        <div class="stat"><span class="k">걸린 절기</span><span class="v">{sum.seasons} ({seasonName(Math.max(0, sum.seasons - 1))})</span></div>
-        <div class="stat"><span class="k">원정</span><span class="v">{sum.expeditions}회</span></div>
-        <div class="stat"><span class="k">떠난 사람 · 조상신</span><span class="v">{sum.deaths} · {sum.ancestors}</span></div>
-        <div class="stat"><span class="k">가장 오래 함께한 사람</span><span class="v">{sum.longest ? `${sum.longest.name} (${sum.longest.seasons}절기)` : '—'}</span></div>
-        <div class="stat"><span class="k">해원록</span><span class="v">{sum.codex.haewon}/{sum.codex.total}종 ({Math.round((sum.codex.haewon / Math.max(1, sum.codex.total)) * 100)}%)</span></div>
+        <div class="stat"><div class="v">{sum.seasons} ({seasonName(Math.max(0, sum.seasons - 1))})</div><div class="k">걸린 절기</div></div>
+        <div class="stat"><div class="v">{sum.expeditions}회</div><div class="k">원정</div></div>
+        <div class="stat"><div class="v">{sum.deaths} · {sum.ancestors}</div><div class="k">떠난 사람 · 조상신</div></div>
+        <div class="stat"><div class="v">{sum.longest ? `${sum.longest.name} (${sum.longest.seasons}절기)` : '—'}</div><div class="k">가장 오래 함께한 사람</div></div>
+        <div class="stat"><div class="v">{sum.codex.haewon}/{sum.codex.total}종 ({Math.round((sum.codex.haewon / Math.max(1, sum.codex.total)) * 100)}%)</div><div class="k">해원록</div></div>
       </div>
       <div class="section-title" style={{ fontSize: '22px' }}>사당의 계보도</div>
       {!lines.length && <div class="faint small">이어진 계보가 없다.</div>}

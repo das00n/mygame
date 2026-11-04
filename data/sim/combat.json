@@ -1,11 +1,12 @@
 {
  "meta": {
-  "generated": "2026-11-04T03:58:38.618Z",
+  "generated": "2026-11-04T09:22:46.301Z",
+  "region": 1,
   "seeds": 40,
   "trios": 56,
   "encounters": 15,
   "combats": 33600,
-  "runtimeSec": 24.7,
+  "runtimeSec": 19.9,
   "deck": "시작 12장 + 봇 드래프트 8장 (일반 보상 확률)"
  },
  "fidelity": {
@@ -28,8 +29,8 @@
    "stubs": []
   },
   "special": {
-   "total": 24,
-   "exact": 24,
+   "total": 28,
+   "exact": 28,
    "approx": 0,
    "approxList": [],
    "exactList": [
@@ -47,6 +48,10 @@
     "common.curse_heotgeot → heotgeot",
     "common.rescue_neokbureugi → rescue",
     "common.offering_nojatdon → offering",
+    "common.offering_heoju → offering",
+    "common.offering_sajabap → offering",
+    "common.offering_sonnimsang → offering",
+    "common.relic_kkot → nahwa",
     "manshin.buchae_makgi+ → fire_summon",
     "manshin.mubok_garaipgi+ → gangsin_extra",
     "jaebi.baraji+ → baraji",
@@ -60,7 +65,7 @@
    ]
   },
   "cardsWithStub": 0,
-  "cardsTotal": 608
+  "cardsTotal": 613
  },
  "overall": {
   "n": 33600,
@@ -33868,6 +33873,71 @@
    "type": "기술",
    "cost": 0,
    "plays": 2240,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.offering_heoju": {
+   "name": "허주 벗기기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.offering_sajabap": {
+   "name": "사자밥 차리기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.offering_sonnimsang": {
+   "name": "손님상 차리기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.relic_kkot": {
+   "name": "꽃 던지기",
+   "set": "common",
+   "rarity": "공용",
+   "type": "기술",
+   "cost": 0,
+   "plays": 0,
+   "inDeck": 0,
+   "playRate": 0,
+   "offered": 0,
+   "picked": 0,
+   "pickRate": 0
+  },
+  "common.status_sinyeol": {
+   "name": "신열",
+   "set": "common",
+   "rarity": "특수",
+   "type": "상태",
+   "cost": 1,
+   "plays": 0,
    "inDeck": 0,
    "playRate": 0,
    "offered": 0,

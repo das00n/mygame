@@ -1,5 +1,5 @@
 // sim:campaign — 봇이 캠페인을 처음부터 결말까지 N 번 돈다 (docs/09-campaign-spec.md §9).
-// 실행: npm run sim:campaign -- --runs 60 [--workers 4] [--no-rift] [--out campaign]
+// 실행: npm run sim:campaign [-- --runs 100 --workers 4 --no-rift --out campaign]
 // 마을 결정은 src/meta/bot.ts 의 단순 규칙, 원정은 src/sim/expedition.ts (봇 전투).
 
 import { mkdirSync, writeFileSync } from 'node:fs';
@@ -181,7 +181,7 @@ export function summarize(res: CampaignResult[]) {
 }
 
 async function main() {
-  const runs = argNum('runs', 60);
+  const runs = argNum('runs', 100);
   const workers = Math.max(1, Math.min(argNum('workers', 4), availableParallelism()));
   const rift = !process.argv.includes('--no-rift');
   const outName = argStr('out', 'campaign');

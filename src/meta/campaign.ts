@@ -623,12 +623,12 @@ export function settle(c: Campaign, plan: ExpeditionPlan, rep: ExpeditionReport)
     for (const [id, n] of Object.entries(h.plays)) p.history.plays[id] = (p.history.plays[id] ?? 0) + n;
     const top = Object.entries(h.plays).sort((a, b) => b[1] - a[1])[0];
     if (top) p.history.lastCard = top[0];
+    p.history.expeditions++;
+    p.history.haewons += rep.haewons;
     if (h.dead) {
       deadIdx.push(i);
       return;
     }
-    p.history.expeditions++;
-    p.history.haewons += rep.haewons;
     if (rep.bossWon) p.history.bosses++;
     p.stress = Math.max(0, Math.min(99, h.stress - plan.stressAdd[i]));
     p.injured = h.injured;
@@ -817,7 +817,8 @@ export function supplyLine(s: Partial<Supplies>): string {
 /** 계보도: 조상신 → 신딸 → … */
 export function lineage(c: Campaign): { root: Fallen; chain: (Person | Fallen)[] }[] {
   const out: { root: Fallen; chain: (Person | Fallen)[] }[] = [];
-  const roots = c.fallen.filter((f) => f.honored && !c.fallen.some((g) => g.daughter === f.person.uid) && !f.person.mother);
+  // 신딸이 있는 조상신부터 (이어진 계보만)
+  const roots = c.fallen.filter((f) => f.honored && !!f.daughter && !f.person.mother);
   for (const r of roots) {
     const chain: (Person | Fallen)[] = [];
     let cur: string | null = r.daughter;

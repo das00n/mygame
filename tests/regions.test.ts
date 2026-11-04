@@ -340,3 +340,46 @@ test('무구 각인: 각인된 카드를 내면 그 상태 +1 (생산만), 쓰�
   reviveHero(s, o);
   assert.ok(s.draw.some((x) => x.d === j.d && x.g === 5));
 });
+
+test('놀이 싸움(사자 검문): 영웅이 받는 피해는 체력 대신 귀기로, 쓰러지지 않는다', () => {
+  const s = createCombat({ party: (['seungnyeo', 'posu', 'manshin'] as HeroId[]).map((id) => ({ id })), deck: [], encounter: D().encounterById.get('e3')!, seed: 2, record: true, play: true });
+  const f = s.formation[0];
+  const hp = s.heroes[f].hp;
+  s.heroes[f].block = 0;
+  for (let k = 0; k < 20; k++) {
+    for (const e of s.enemies) {
+      e.intent = 0;
+      e.cancelNext = false;
+    }
+    enemyTurn(s);
+  }
+  assert.equal(s.heroes[f].hp, hp, '체력은 그대로');
+  assert.ok(s.heroes[f].stress > 0, '귀기가 오른다');
+  assert.ok(!s.heroes[f].downed);
+});
+
+test('호위: 선두에 방어도가 없으면 선두를 노린 공격을 산 사람이 맞고, 쓰러지면 전투가 끝난다(실패 표시)', () => {
+  const s = createCombat({ party: (['seungnyeo', 'posu', 'manshin'] as HeroId[]).map((id) => ({ id })), deck: [], encounter: D().encounterById.get('e3')!, seed: 2, record: true, ward: { name: '산 사람', hp: 20 } });
+  const f = s.formation[0];
+  const hp = s.heroes[f].hp;
+  s.heroes[f].block = 0;
+  for (const e of s.enemies) e.intent = 0;
+  enemyTurn(s);
+  assert.equal(s.heroes[f].hp, hp, '방어도가 없으면 선두 대신 산 사람이');
+  assert.ok(s.ward!.hp < 20);
+  // 방어도가 있으면 선두가 막아선다
+  const w = s.ward!.hp;
+  startPlayerTurn(s);
+  s.heroes[f].block = 30;
+  for (const e of s.enemies) if (e.alive) e.intent = 0;
+  enemyTurn(s);
+  assert.equal(s.ward!.hp, w);
+  // 쓰러지면 끝
+  s.ward!.hp = 1;
+  startPlayerTurn(s);
+  s.heroes[f].block = 0;
+  for (const e of s.enemies) if (e.alive) e.intent = 0;
+  enemyTurn(s);
+  assert.ok(s.ward!.lost);
+  assert.equal(s.outcome, 1);
+});
