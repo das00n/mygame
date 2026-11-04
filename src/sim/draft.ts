@@ -46,8 +46,8 @@ function rollRarity(rng: Rng, tier: RewardTier, pity: Pity): string {
   return r < rareP + odds.uncommon ? '고급' : '일반';
 }
 
-/** 영웅마다 1장 (살아 있는 영웅만). duoPool 이 있으면 각 슬롯을 10% 확률로 그 쌍의 합기로 바꾼다 */
-export function rollRewards(rng: Rng, heroes: HeroId[], tier: RewardTier, pity: Pity): CardDef[] {
+/** 영웅마다 1장 (살아 있는 영웅만). paths: 내림굿으로 고른 성장의 길 — 그 길의 카드가 두 배로 나온다(캠페인 §1) */
+export function rollRewards(rng: Rng, heroes: HeroId[], tier: RewardTier, pity: Pity, paths?: Partial<Record<HeroId, 'A' | 'B'>>): CardDef[] {
   const d = D();
   const out: CardDef[] = [];
   for (const h of heroes) {
@@ -55,6 +55,8 @@ export function rollRewards(rng: Rng, heroes: HeroId[], tier: RewardTier, pity: 
     const rar = rollRarity(rng, tier, pity);
     let cands = pool.filter((c) => c.rarity === rar && !out.includes(c));
     if (!cands.length) cands = pool.filter((c) => !out.includes(c));
+    const path = paths?.[h];
+    if (path) cands = [...cands, ...cands.filter((c) => c.path === path)];
     out.push(rng.pick(cands));
   }
   return out;

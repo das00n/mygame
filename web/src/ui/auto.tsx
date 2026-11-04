@@ -42,15 +42,25 @@ export function AutoToggle() {
 export function useAutoDriver(): void {
   useEffect(() => {
     if (!settings.auto) return;
-    const active = app.dialog || app.picker || ['map', 'combat', 'reward', 'camp'].includes(app.screen);
+    const active = app.dialog || app.picker || ['map', 'combat', 'reward', 'camp'].includes(app.screen)
+      || (!!app.campaign && (app.screen === 'village' || app.screen === 'settle' || (app.screen === 'result' && !!app.plan)));
     if (!active) return;
     const delay = settings.speed === 'instant' ? 0 : settings.speed === 'fast' ? 90 : app.screen === 'combat' ? 420 : 300;
     const t = setTimeout(() => {
       const t0 = performance.now();
       let did = false;
       do {
+        // 자동 검사용 멈춤 조건 (e2e 가 window.__JSG_STOP 에 둔다): 마을에서 조건이 맞으면 자동 진행을 끈다
+        const stop = (globalThis as unknown as { __JSG_STOP?: (a: typeof app) => boolean }).__JSG_STOP;
+        if (stop && app.screen === 'village' && stop(app)) {
+          settings.auto = false;
+          commitSettings();
+          break;
+        }
         if (!settings.auto || !autoStep(app)) break;
         did = true;
+        // 즉시 모드라도 결산·마을은 한 번 그린다
+        if (app.screen === 'settle' || app.screen === 'village') break;
       } while (settings.speed === 'instant' && performance.now() - t0 < 30 && app.screen !== 'result');
       if (did) commit();
     }, delay);

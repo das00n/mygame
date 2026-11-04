@@ -3,7 +3,7 @@
 import { rand } from '../../../src/core/rng.ts';
 import type { CardDef, HeroId } from '../../../src/core/types.ts';
 import { instFor } from '../../../src/sim/draft.ts';
-import { D, RELICS, bandOf, RELIC_BY_ID } from './content.ts';
+import { D, bandOf, RELIC_BY_ID, regionContent } from './content.ts';
 import { addCurse, aliveIdx, healHero, heroName, logRun } from './run.ts';
 import type { AppState, BattleMeta, FlagColor, RewardState, Run } from './types.ts';
 
@@ -61,7 +61,8 @@ export function rollRares(run: Run): string[] {
 }
 
 export function rollRelics(run: Run, tiers: string[], n: number): string[] {
-  const pool = RELICS.filter((r) => tiers.includes(r.tier) && !run.relics.includes(r.id)).map((r) => r.id);
+  // 그 지역의 가호 (특정 사건으로만 얻는 가호는 빼고)
+  const pool = regionContent(run.region ?? 1).relics.filter((r) => tiers.includes(r.tier) && !run.relics.includes(r.id) && !(r as { source?: string }).source).map((r) => r.id);
   const out: string[] = [];
   while (out.length < n && pool.length) {
     const i = Math.floor(rand(run) * pool.length);
@@ -207,6 +208,13 @@ export function applyRelicGain(run: Run, id: string): void {
   }
   if (id === 'seonang') {
     for (const c of run.dungeon.corridors) for (const t of c.tiles) if (t.content.k === 'trap') t.known = true;
+  }
+  if (id === 'eop_gaho') {
+    const ids = ['candle', 'rice', 'incense', 'jijeon', 'bujeok', 'sul'] as const;
+    run.supplies[ids[((run.seed % ids.length) + ids.length) % ids.length]]++;
+  }
+  if (id === 'eopgyeong_georul') {
+    for (const e of D().enemies) if (e.region === run.region && e.haewon.kind !== 'none' && !run.revealed.includes(e.id)) run.revealed.push(e.id);
   }
 }
 

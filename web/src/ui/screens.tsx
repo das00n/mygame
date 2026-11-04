@@ -6,7 +6,8 @@ import type { JSX } from 'preact';
 import type { CardDef, HeroId } from '../../../src/core/types.ts';
 import { dialogContinue, finishCamp, pickerApply, rewardContinue, setFormation } from '../game/actions.ts';
 import { campActions, doCampAction, type CampAction } from '../game/camp.ts';
-import { COMMISSION_BY_ID, D, HERO_COLOR, RELIC_BY_ID, RELIC_IMPL } from '../game/content.ts';
+import { COMMISSION_BY_ID, D, HERO_COLOR, REGION_JSON, RELIC_BY_ID, RELIC_IMPL } from '../game/content.ts';
+import { settleRun } from '../game/campaign.ts';
 import { bondKey, chooseDialog, dialogOptions, dialogSetup, dialogTitle } from '../game/encounters.ts';
 import { TERMS } from '../game/glossary.ts';
 import { FLAG_INFO, pickFlag, pickRare, pickRelic, takeCard } from '../game/rewards.ts';
@@ -73,12 +74,12 @@ export function RewardScreen() {
           <div class="camp-grid">
             {r.relics.map((id) => {
               const rl = RELIC_BY_ID.get(id)!;
-              const im = RELIC_IMPL[id];
+              const im = (RELIC_IMPL[id] as (typeof RELIC_IMPL)[string] | undefined) ?? { impl: 'ok' as const };
               return (
                 <button key={id} class="relic" onClick={() => { pickRelic(app, id); commit(); }} data-testid={`relic-${id}`}>
                   <span class="rn">{rl.name}</span>
                   <span class="small">{rl.effect}</span>
-                  <span class="tiny dim">{rl.tier}{im.impl !== 'ok' ? ` · ${im.impl === 'stub' ? '미구현' : '근사'}: ${im.note}` : ''}</span>
+                  <span class="tiny dim">{rl.tier}{im.impl !== 'ok' ? ` · ${im.impl === 'stub' ? '미구현' : '근사'}: ${im.note}` : im.note ? ` · ${im.note}` : ''}</span>
                 </button>
               );
             })}
@@ -206,7 +207,7 @@ export function ResultScreen() {
     <div class="screen" data-testid="result">
       <div class={`result-banner ${r.success ? 'ok' : 'fail'}`}>
         <h1>{r.success ? '원정 성공' : '원정 실패'}</h1>
-        <div class="dim">{cm.place} · {cm.name} — {r.reason}</div>
+        <div class="dim">{r.campaign ? `지역 ${r.region} 「${REGION_JSON[r.region].region.name}」` : `${cm.place} · ${cm.name}`} — {r.reason}</div>
       </div>
       <div class="stat-grid">
         <div class="stat"><div class="v">{r.stats.wins}/{r.stats.fights}</div><div class="k">전투 승리 / 전투</div></div>
@@ -237,8 +238,14 @@ export function ResultScreen() {
       </div>
       {r.relics.length > 0 && <div class="row small">{r.relics.map((x) => <span key={x} class="chip lamp">{RELIC_BY_ID.get(x)!.name}</span>)}</div>}
       <div class="row" style={{ justifyContent: 'center' }}>
-        <button class="btn primary" data-testid="to-shrine" onClick={() => { app.result = null; app.run = null; app.screen = 'shrine'; commit(); }}>신당으로</button>
-        <button class="btn" onClick={() => { app.result = null; app.run = null; app.screen = 'title'; commit(); }}>표지</button>
+        {app.campaign && app.plan ? (
+          <button class="btn primary" data-testid="to-settle" onClick={() => { settleRun(app); commit(); }}>마을로 돌아가 결산</button>
+        ) : (
+          <>
+            <button class="btn primary" data-testid="to-shrine" onClick={() => { app.result = null; app.run = null; app.screen = 'shrine'; commit(); }}>신당으로</button>
+            <button class="btn" onClick={() => { app.result = null; app.run = null; app.screen = 'title'; commit(); }}>표지</button>
+          </>
+        )}
       </div>
     </div>
   );

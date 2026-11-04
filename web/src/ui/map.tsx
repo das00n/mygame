@@ -3,10 +3,10 @@
 import type { CSSProperties } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
-import { abandon, campAvailable, isBossStep, moveTo, openBujeokPurge, openCamp, openSul, pendingHere, reopenHere, returnHome, travelTo, useCandleOnMap } from '../game/actions.ts';
-import { COMMISSION_BY_ID, D, ENEMY_EXTRA, HERO_COLOR, RELIC_BY_ID, RELIC_IMPL, bandOf } from '../game/content.ts';
+import { abandon, campAvailable, isBossStep, moveTo, openBujeokPurge, openCamp, openSul, pendingHere, reopenHere, returnHome, travelTo, useCandleOnMap, useHaenggimot } from '../game/actions.ts';
+import { COMMISSION_BY_ID, D, ENEMY_EXTRA, HERO_COLOR, REGION_JSON, RELIC_BY_ID, RELIC_IMPL, bandOf, enemyRegion } from '../game/content.ts';
 import { neighbors, objective, samePos, travelCost } from '../game/dungeon.ts';
-import { effMax, heroName } from '../game/run.ts';
+import { bossName as bossNameOf, effMax, heroName } from '../game/run.ts';
 import { app, commit, setPanel } from '../game/store.ts';
 import type { Content, Pos, Run } from '../game/types.ts';
 import { AutoToggle } from './auto.tsx';
@@ -151,12 +151,26 @@ export function MapScreen() {
   };
   const here = run.pos.kind === 'room' ? run.dungeon.rooms[run.pos.room] : null;
   const curses = run.deck.filter((c) => d.cards[c.d].isCurse).length;
-  const bossName = run.bossEnc ? (run.bossEnc === 'b1' ? '삯 못 받은 뱃사공' : '넘어가지 못한 상여') : null;
+  const bossName = bossNameOf(run);
+  const regionName = REGION_JSON[run.region ?? 1].region.name;
+  const offer = (() => {
+    const enc = run.bossEnc ? d.encounterById.get(run.bossEnc) : undefined;
+    for (const id of enc?.enemies ?? []) {
+      const off = d.enemyById.get(id)?.offering;
+      if (off) {
+        const p = off.pay[0];
+        const NAME: Record<string, string> = { jijeon: '지전', rice: '쌀', sul: '술', bujeok: '부적', incense: '향' };
+        return ` ${d.cards[off.card].name}: ${NAME[p.item]} ${p.n} 필요 (지금 ${run.supplies[p.item as keyof typeof run.supplies]}).`;
+      }
+    }
+    return run.bossEnc === 'b1' ? ` 지전 ${run.supplies.jijeon} (노잣돈 3 필요).` : '';
+  })();
+  const canTunnel = run.relics.includes('haenggimot') && !run.flags.haenggimotUsed && run.pos.kind === 'tile';
   return (
     <div class="screen" data-testid="map-screen">
       <div class="topbar">
-        <span class="title">{cm.place}</span>
-        <span class="sub">{cm.name} · {obj.label} {obj.progress}{bossName ? ` · 보스 굴: ${bossName}` : ''}</span>
+        <span class="title">{run.campaign || (run.region ?? 1) !== 1 ? regionName : cm.place}</span>
+        <span class="sub">{run.campaign ? `${run.campaign.length === 'normal' ? '보통 길' : run.campaign.length === 'final' ? '최종 원정' : '보스 길'}` : cm.name} · {obj.label} {obj.progress}{bossName ? ` · 보스 굴: ${bossName}` : ''}</span>
         <span class="spacer" />
         <AutoToggle />
         <button class="btn small ghost" onClick={() => setPanel('deck')} data-testid="open-deck">덱 {run.deck.length}</button>
@@ -190,7 +204,7 @@ export function MapScreen() {
               )}
               {confirm.kind === 'boss' && (
                 <>
-                  <div><b style={{ color: 'var(--cinnabar-2)' }}>보스 굴</b> — {bossName}. 들어서면 물러날 수 없다.{run.bossEnc === 'b1' ? ` 지전 ${run.supplies.jijeon} (노잣돈 3 필요).` : ''}</div>
+                  <div><b style={{ color: 'var(--cinnabar-2)' }}>보스 굴</b> — {bossName}. 들어서면 물러날 수 없다.{offer}{run.flags.knots ? ' 업경대가 매듭 일부를 미리 풀었다.' : ''}</div>
                   <div class="row"><button class="btn primary small" data-testid="confirm-yes" onClick={() => { const p = { kind: 'room', room: run.dungeon.boss } as Pos; setConfirm(null); moveTo(app, p); commit(); }}>들어간다</button><button class="btn small" onClick={() => setConfirm(null)}>아직</button></div>
                 </>
               )}
@@ -205,6 +219,7 @@ export function MapScreen() {
           <div class="row">
             {campAvailable(run) && <button class="btn lamp" data-testid="open-camp" onClick={() => { openCamp(app); commit(); }}>길굿을 연다</button>}
             {pendingHere(run) && <button class="btn" data-testid="reopen" onClick={() => { reopenHere(app); commit(); }}>다시 살펴본다</button>}
+            {canTunnel && <button class="btn small lamp" data-testid="haenggimot" title="이 길목의 남은 칸을 건너뛰고 다음 방으로 (원정마다 1회)" onClick={() => { useHaenggimot(app); commit(); }}>행기못 물</button>}
             {obj.met && run.commission !== 'boss' && <button class="btn primary" data-testid="return" onClick={() => { returnHome(app); commit(); }}>목표 달성 — 귀환</button>}
             <span class="spacer" />
             <button class="btn small ghost" onClick={() => setConfirm({ kind: 'abandon' })}>원정 포기</button>
@@ -224,18 +239,34 @@ export function MapScreen() {
             <div class="row small">
               {run.relics.map((r) => {
                 const rl = RELIC_BY_ID.get(r)!;
-                const im = RELIC_IMPL[r];
-                return <span key={r} class={`chip ${im.impl === 'stub' ? '' : 'lamp'}`} title={`${rl.effect}${im.note ? ` (${im.note})` : ''}`}>{rl.name}{im.impl === 'stub' ? ' (미구현)' : ''}</span>;
+                const im = RELIC_IMPL[r] as (typeof RELIC_IMPL)[string] | undefined;
+                return <span key={r} class={`chip ${im?.impl === 'stub' ? '' : 'lamp'}`} title={`${rl.effect}${im?.note ? ` (${im.note})` : ''}`}>{rl.name}{im?.impl === 'stub' ? ' (미구현)' : ''}</span>;
               })}
             </div>
           )}
           <NextFight run={run} />
+          <RunFlags run={run} />
           <div class="panel"><div class="log">{run.log.slice(-6).reverse().map((l, i) => <div key={i}>{l}</div>)}</div></div>
-          {run.revealed.length > 0 && <Codex run={run} />}
+          <Codex run={run} />
         </div>
       </div>
     </div>
   );
+}
+
+function RunFlags({ run }: { run: Run }) {
+  const f = run.flags ?? {};
+  const bits: string[] = [];
+  if (f.sonnimPenalty) bits.push('서운한 손님: 전투마다 신열 1');
+  if (f.sealPenalty) bits.push('대문 봉인: 역귀 전투 신열 +1');
+  if (f.crow) bits.push('까마귀: 첫 턴 홀림 1');
+  if (f.sonnimStart) bits.push(`손님 대접 +${f.sonnimStart}로 시작`);
+  if (f.gateFree) bits.push(`대문 통행 무료 ${f.gateFree}`);
+  if (f.eopTier !== undefined) bits.push(`업경대 ${f.eopTier}구간${f.knots ? ` · 매듭 ${f.knots.toString(2).split('1').length - 1}개 풀림` : ''}`);
+  if (f.jangdanFights?.left) bits.push(`첫 턴 장단 +${f.jangdanFights.n} (${f.jangdanFights.left}전투)`);
+  if (f.mealBonus) bits.push(`끼니 +${Math.round(f.mealBonus * 100)}%p`);
+  if (!bits.length) return null;
+  return <div class="row small"><span class="dim">원정:</span>{bits.map((b) => <span key={b} class="chip">{b}</span>)}</div>;
 }
 
 function NextFight({ run }: { run: Run }) {
@@ -252,21 +283,28 @@ function NextFight({ run }: { run: Run }) {
   if (n.aura) bits.push(`오라 ${n.aura}`);
   if (n.talismans) bits.push(`화부 ${n.talismans}`);
   if (n.drawBonus) bits.push(`첫 턴 +${n.drawBonus}장`);
+  if (n.fevers?.length) bits.push(`신열 ${n.fevers.length}장`);
+  if (n.weakAll) bits.push(`파티 약화 ${n.weakAll}`);
+  if (n.chasaBlock) bits.push(`차사 방어도 ${n.chasaBlock}`);
   if (!bits.length) return null;
   return <div class="row small"><span class="dim">다음 전투:</span>{bits.map((b) => <span key={b} class="chip">{b}</span>)}</div>;
 }
 
+/** 해원록 (반복 2: 이 지역의 원귀를 모두 보여 주고, 아는 것·모르는 것을 나눈다) */
 function Codex({ run }: { run: Run }) {
   const [open, setOpen] = useState(false);
+  const all = [...ENEMY_EXTRA.values()].filter((e) => e.haewon && enemyRegion(e.id) === (run.region ?? 1));
+  const known = all.filter((e) => run.revealed.includes(e.id));
   return (
-    <div class="panel small">
-      <button class="btn small ghost" onClick={() => setOpen(!open)}>해원록 {run.revealed.length}종 {open ? '접기' : '펼치기'}</button>
+    <div class="panel small" data-testid="codex">
+      <button class="btn small ghost" onClick={() => setOpen(!open)}>해원록 {known.length}/{all.length}종 {open ? '접기' : '펼치기'}</button>
       {open && (
         <div class="col" style={{ marginTop: '6px' }}>
-          {run.revealed.map((id) => {
-            const e = ENEMY_EXTRA.get(id);
-            if (!e?.haewon) return null;
-            return <div key={id}><b>{e.name}</b> <span class="dim">{e.haewon.rule}</span></div>;
+          <div class="tiny dim">한 번 만난 원귀는 해원 조건이 적힌다. 기물·이벤트(차사·법사·향)로 미리 알 수도 있다.</div>
+          {all.map((e) => {
+            const k = run.revealed.includes(e.id);
+            const n = run.track?.haewonById[e.id] ?? 0;
+            return <div key={e.id} class={k ? '' : 'faint'}><b>{e.name}</b> <span class="dim">{k ? e.haewon!.rule : '— 아직 모른다'}</span>{n ? <span class="chip good">해원 {n}</span> : null}</div>;
           })}
         </div>
       )}

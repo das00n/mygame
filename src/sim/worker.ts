@@ -10,11 +10,12 @@ export interface JobMsg {
   n: number;
   whatIf?: WhatIf;
   duo?: boolean;
+  region?: number;
 }
 
 parentPort!.on('message', (m: JobMsg) => {
   try {
-    const result = m.kind === 'combat' ? runCombatJob(m.trio, m.n, !!m.duo) : runExpeditionJob(m.trio, m.n, m.whatIf);
+    const result = m.kind === 'combat' ? runCombatJob(m.trio, m.n, !!m.duo, m.region ?? 1) : runExpeditionJob(m.trio, m.n, m.whatIf);
     parentPort!.postMessage({ id: m.id, result });
   } catch (err) {
     parentPort!.postMessage({ id: m.id, error: String((err as Error).stack ?? err) });

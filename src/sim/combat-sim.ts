@@ -8,7 +8,7 @@ import { ROOT } from './root.ts';
 import { fidelityReport, opIndex } from '../core/fidelity.ts';
 import { HERO_IDS } from '../core/types.ts';
 import { allTrios, mergeCardAgg, mergeCombatAgg, metrics, newCardAgg, newCombatAgg, type CombatAgg } from './agg.ts';
-import type { CombatJobResult } from './jobs.ts';
+import { combatEncounters, type CombatJobResult } from './jobs.ts';
 import { argFlag, argNum, argStr, runPool } from './pool.ts';
 import { writeReport } from './report.ts';
 import { powerExpectOf } from '../core/value.ts';
@@ -71,17 +71,18 @@ async function main() {
   const seeds = argNum('seeds', 40);
   const workers = argNum('workers', 4);
   const duo = argFlag('duo'); // 합기 3장을 덱에 더한 변형 (기본: 없음)
-  const outName = argStr('out', duo ? 'combat-duo' : 'combat');
-  const d = D();
+  const region = argNum('region', 1);
+  const outName = argStr('out', region !== 1 ? `combat-r${region}${duo ? '-duo' : ''}` : duo ? 'combat-duo' : 'combat');
   const trios = allTrios();
+  const encs = combatEncounters(region);
   const t0 = performance.now();
-  process.stdout.write(`sim:combat — ${trios.length} 조합 × ${d.encounters.length} 전투 × ${seeds} 시드 = ${trios.length * d.encounters.length * seeds} 전투, 워커 ${workers}\n`);
+  process.stdout.write(`sim:combat — 지역 ${region}, ${trios.length} 조합 × ${encs.length} 전투 × ${seeds} 시드 = ${trios.length * encs.length * seeds} 전투, 워커 ${workers}\n`);
   const results = await runPool<CombatJobResult>('combat', trios, seeds, workers, (done, total) => {
     if (done % 8 === 0 || done === total) process.stdout.write(`  ${done}/${total} 조합 (${((performance.now() - t0) / 1000).toFixed(0)}s)\n`);
-  }, undefined, duo);
+  }, undefined, duo, region);
   const cards = newCardAgg();
   const encTotals: Record<string, CombatAgg> = {};
-  for (const e of d.encounters) encTotals[e.id] = newCombatAgg();
+  for (const e of encs) encTotals[e.id] = newCombatAgg();
   const trioRows = results.map((r) => {
     let overall = newCombatAgg();
     const perEnc: Record<string, ReturnType<typeof metrics>> = {};
@@ -105,10 +106,11 @@ async function main() {
   let all = newCombatAgg();
   for (const a of Object.values(encTotals)) all = mergeCombatAgg(all, a);
   const encounters: Record<string, ReturnType<typeof metrics> & { tier: string; enemies: string[] }> = {};
-  for (const e of d.encounters) encounters[e.id] = { ...metrics(encTotals[e.id]), tier: e.tier, enemies: e.enemies };
+  for (const e of encs) encounters[e.id] = { ...metrics(encTotals[e.id]), tier: e.tier, enemies: e.enemies };
   const runtimeSec = Math.round((performance.now() - t0) / 100) / 10;
+  const deckNote = region !== 1 ? `지역 ${region} 전형적인 캠페인 파티(로드아웃·레벨·각인·신물·합기, src/sim/typical.ts) + 봇 드래프트 8장` : duo ? '시작 12장 + 봇 드래프트 8장 + 합기 3장' : '시작 12장 + 봇 드래프트 8장 (일반 보상 확률)';
   const out = {
-    meta: { generated: new Date().toISOString(), seeds, trios: trios.length, encounters: d.encounters.length, combats: all.n, runtimeSec, deck: duo ? '시작 12장 + 봇 드래프트 8장 + 합기 3장' : '시작 12장 + 봇 드래프트 8장 (일반 보상 확률)' },
+    meta: { generated: new Date().toISOString(), region, seeds, trios: trios.length, encounters: encs.length, combats: all.n, runtimeSec, deck: deckNote },
     fidelity: fidelityReport(),
     overall: metrics(all),
     trios: trioRows,
@@ -120,6 +122,14 @@ async function main() {
   mkdirSync(dir, { recursive: true });
   writeFileSync(resolve(dir, `${outName}.json`), JSON.stringify(out, null, 1) + '\n');
   process.stdout.write(`완료: ${all.n} 전투, 전체 승률 ${(metrics(all).winRate * 100).toFixed(1)}%, ${runtimeSec}s → data/sim/${outName}.json\n`);
+  if (region !== 1) {
+    for (const t of ['easy', 'hard', 'elite', 'boss', 'final']) {
+      const es = encs.filter((e) => e.tier === t);
+      if (!es.length) continue;
+      process.stdout.write(`  ${t}: ${es.map((e) => `${e.id} ${(encounters[e.id].winRate * 100).toFixed(0)}%/−${encounters[e.id].hpLost.toFixed(0)}`).join(' · ')}\n`);
+    }
+    return;
+  }
   writeReport();
 }
 

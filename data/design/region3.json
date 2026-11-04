@@ -16,29 +16,29 @@
  "targets": ["선두", "중열", "후열", "전체", "최저 체력", "최고 체력", "무작위", "쓰러진 영웅", "굿상", "자신", "아군 원귀"],
  "statuses": ["점지", "상흔", "명부", "넋흔들림", "장단", "진형", "굿상", "부적"],
  "enemies": [
-  {"id": "julseon_neok", "name": "줄 선 넋", "family": "굶주린 넋", "category": "normal", "hp": [34, 38], "position": "front",
+  {"id": "julseon_neok", "name": "줄 선 넋", "family": "굶주린 넋", "category": "normal", "hp": [32, 36], "position": "front",
    "han": "대문 앞 줄에서 차례를 기다리다 사자밥 한 숟갈 얻어먹지 못했다. 줄이 줄어들지 않는다.",
    "intents": [
     {"id": "a", "name": "밀치기", "kind": "attack", "target": "선두", "damage": 4, "hits": 2},
-    {"id": "b", "name": "새치기", "kind": "move", "target": "후열", "damage": 5, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다"}
+    {"id": "b", "name": "새치기", "kind": "move", "target": "후열", "damage": 4, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P2", "P13"],
    "haewon": {"status": "굿상", "rule": "굿상에 설치물이 있는 상태로 쓰러뜨린다", "story": "밥 한 숟갈 떠 주자 줄을 지키며 제 차례를 기다린다"},
    "drops": {"material": "빈 제기", "gold": [18, 26]}},
-  {"id": "mundudeuri_gaekgwi", "name": "문 두드리는 객귀", "family": "객귀", "category": "normal", "hp": [52, 56], "position": "front",
+  {"id": "mundudeuri_gaekgwi", "name": "문 두드리는 객귀", "family": "객귀", "category": "normal", "hp": [49, 53], "position": "front",
    "han": "객지에서 죽어 집에 들르지도 못하고 곧장 저승에 왔다. 첫째 대문부터 문마다 두드린다.",
    "intents": [
-    {"id": "a", "name": "문 두드리기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1},
-    {"id": "b", "name": "지친 손짓", "kind": "attack_debuff", "target": "무작위", "damage": 6, "hits": 1, "effect": "약화 1"}
+    {"id": "a", "name": "문 두드리기", "kind": "attack", "target": "선두", "damage": 11, "hits": 1},
+    {"id": "b", "name": "지친 손짓", "kind": "attack_debuff", "target": "무작위", "damage": 5, "hits": 1, "effect": "약화 1"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P3"],
    "haewon": {"status": "진형", "rule": "그 턴에 진형이 바뀐 상태로 쓰러뜨린다", "story": "자리를 비켜 문 앞을 내주자, 집 쪽을 한 번 돌아본 뒤 문 안으로 든다"},
    "drops": {"material": "떠돌이 짚신", "gold": [20, 28]}},
-  {"id": "ireumeomneun_gunjol", "name": "이름 없는 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [16, 18], "position": "any",
+  {"id": "ireumeomneun_gunjol", "name": "이름 없는 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [15, 17], "position": "any",
    "han": "싸움터에서 이름도 남기지 못하고 쓰러진 군졸들. 아직 대오를 풀지 못했다.",
    "intents": [
     {"id": "a", "name": "창끝", "kind": "attack", "target": "선두", "damage": 4, "hits": 1}
@@ -48,11 +48,11 @@
    "pressures": ["P7"],
    "haewon": {"status": "부적", "rule": "무리 중 하나라도 부적(토큰) 카드의 마지막 피해로 쓰러지면, 그 전투의 이름 없는 군졸 넋 모두 해원", "story": "부적 한 장에 대오가 풀려 저마다 고향 쪽으로 걷는다"},
    "drops": {"material": "녹슨 투구끈", "gold": [4, 6]}},
-  {"id": "nokseun_chang", "name": "녹슨 창 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [60, 64], "position": "front",
+  {"id": "nokseun_chang", "name": "녹슨 창 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [56, 60], "position": "front",
    "han": "물러나라는 명을 끝내 받지 못해 창을 든 채 서 있었다.",
    "intents": [
-    {"id": "a", "name": "창 찌르기", "kind": "attack", "target": "선두", "damage": 14, "hits": 1},
-    {"id": "b", "name": "대오 정렬", "kind": "defend", "target": "자신", "block": 12},
+    {"id": "a", "name": "창 찌르기", "kind": "attack", "target": "선두", "damage": 13, "hits": 1},
+    {"id": "b", "name": "대오 정렬", "kind": "defend", "target": "자신", "block": 11},
     {"id": "c", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "effect": "공격 +2 (누적)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
@@ -60,32 +60,32 @@
    "pressures": ["P5", "P1"],
    "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "북소리 같은 장단에 맞춰 마지막 행군을 마치고 창을 내려놓는다"},
    "drops": {"material": "녹슨 투구끈", "gold": [22, 30]}},
-  {"id": "bangpae_gunjol", "name": "방패 든 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [58, 62], "position": "front",
+  {"id": "bangpae_gunjol", "name": "방패 든 군졸 넋", "family": "무장 원귀", "category": "normal", "hp": [55, 58], "position": "front",
    "han": "동료들을 방패 뒤에 숨겨 살려 보냈지만 저는 돌아가지 못했다.",
    "intents": [
-    {"id": "a", "name": "방패 밀기", "kind": "attack", "target": "선두", "damage": 10, "hits": 1},
-    {"id": "b", "name": "방패 세우기", "kind": "defend", "target": "자신", "block": 18}
+    {"id": "a", "name": "방패 밀기", "kind": "attack", "target": "선두", "damage": 9, "hits": 1},
+    {"id": "b", "name": "방패 세우기", "kind": "defend", "target": "자신", "block": 17}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P5"],
    "haewon": {"status": "상흔", "rule": "상흔 4 이상인 상태로 쓰러뜨린다", "story": "방패 뒤에 숨겨 온 오랜 상처를 짚어 주자 비로소 방패를 내려놓는다"},
    "drops": {"material": "녹슨 투구끈", "gold": [20, 28]}},
-  {"id": "bitjang_neok", "name": "빗장 지키는 넋", "family": "억울귀", "category": "normal", "hp": [54, 58], "position": "front",
+  {"id": "bitjang_neok", "name": "빗장 지키는 넋", "family": "억울귀", "category": "normal", "hp": [51, 55], "position": "front",
    "han": "대문을 지키라는 명만 받았고, 언제 문을 열어도 되는지는 아무도 일러 주지 않았다.",
    "intents": [
-    {"id": "a", "name": "빗장 내리치기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1},
-    {"id": "b", "name": "문 걸기", "kind": "buff", "target": "자신", "block": 10, "effect": "공격 +1 (누적)"}
+    {"id": "a", "name": "빗장 내리치기", "kind": "attack", "target": "선두", "damage": 11, "hits": 1},
+    {"id": "b", "name": "문 걸기", "kind": "buff", "target": "자신", "block": 9, "effect": "공격 +1 (누적)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
-   "passives": ["빗장 15: 한 플레이어 턴에 잃는 체력이 15를 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다)"],
+   "passives": ["빗장 14: 한 플레이어 턴에 잃는 체력이 14를 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다)"],
    "pressures": ["P5", "P1"],
    "haewon": {"status": "명부", "rule": "명부 6 이상인 상태로 쓰러뜨린다", "story": "문을 지킨 세월을 명부에 올려 주자, 그제야 빗장을 내려놓는다"},
    "drops": {"material": "타다 남은 소지", "gold": [22, 30]}},
-  {"id": "nojatdon_gaekgwi", "name": "노잣돈 잃은 객귀", "family": "객귀", "category": "normal", "hp": [44, 48], "position": "back",
+  {"id": "nojatdon_gaekgwi", "name": "노잣돈 잃은 객귀", "family": "객귀", "category": "normal", "hp": [41, 45], "position": "back",
    "han": "길에서 죽어 노잣돈 한 푼 없이 왔다. 문마다 인정을 쓰지 못해 돌아섰다.",
    "intents": [
-    {"id": "a", "name": "손 벌리기", "kind": "attack", "target": "최저 체력", "damage": 10, "hits": 1},
+    {"id": "a", "name": "손 벌리기", "kind": "attack", "target": "최저 체력", "damage": 9, "hits": 1},
     {"id": "b", "name": "서러운 하소연", "kind": "stress", "target": "전체", "effect": "파티 귀기 +5"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
@@ -93,11 +93,11 @@
    "pressures": ["P3"],
    "haewon": {"status": "진형", "rule": "그 턴에 진형이 바뀐 상태로 쓰러뜨린다", "story": "인정 대신 제 자리를 내어 주자, 노잣돈 없이도 문을 지난다"},
    "drops": {"material": "떠돌이 짚신", "gold": [20, 28]}},
-  {"id": "eopgyeong_ap_neok", "name": "업경대 앞 넋", "family": "억울귀", "category": "normal", "hp": [46, 50], "position": "back",
+  {"id": "eopgyeong_ap_neok", "name": "업경대 앞 넋", "family": "억울귀", "category": "normal", "hp": [43, 47], "position": "back",
    "han": "업경대에 비친 제 모습을 보고 무너졌다. 제 탓이 아닌 일까지 비쳐 보인다며 운다.",
    "intents": [
     {"id": "a", "name": "비친 업", "kind": "stress", "target": "전체", "effect": "파티 귀기 +6"},
-    {"id": "b", "name": "되비추기", "kind": "attack_debuff", "target": "후열", "damage": 9, "hits": 1, "effect": "약화 1"}
+    {"id": "b", "name": "되비추기", "kind": "attack_debuff", "target": "후열", "damage": 8, "hits": 1, "effect": "약화 1"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
@@ -105,22 +105,22 @@
    "haewon": {"status": "넋흔들림", "rule": "넋흔들림 4 이상인 상태로 쓰러뜨린다", "story": "흔들어 깨워 거울 앞에서 돌아서게 하자, 그제야 제 얼굴을 바로 본다"},
    "drops": {"material": "타다 남은 소지", "gold": [20, 28]}},
 
-  {"id": "gisu_neok", "name": "깃발 든 기수 넋", "family": "무장 원귀", "category": "elite", "hp": [112, 118], "position": "back",
+  {"id": "gisu_neok", "name": "깃발 든 기수 넋", "family": "무장 원귀", "category": "elite", "hp": [103, 109], "position": "back",
    "han": "장수가 쓰러진 뒤에도 깃발을 내리지 않았다. 깃발 아래 군졸들이 아직 다음 명을 기다린다.",
    "intents": [
-    {"id": "a", "name": "깃발 세우기", "kind": "buff", "target": "아군 원귀", "effect": "깃발 아래 군졸 전원 방어도 8, 공격 +1 (누적)"},
-    {"id": "b", "name": "진격 북", "kind": "attack", "target": "전체", "damage": 5, "hits": 1},
-    {"id": "c", "name": "깃대 내리치기", "kind": "attack", "target": "선두", "damage": 16, "hits": 1}
+    {"id": "a", "name": "깃발 세우기", "kind": "buff", "target": "아군 원귀", "effect": "깃발 아래 군졸 전원 방어도 7, 공격 +1 (누적)"},
+    {"id": "b", "name": "진격 북", "kind": "attack", "target": "전체", "damage": 4, "hits": 1},
+    {"id": "c", "name": "깃대 내리치기", "kind": "attack", "target": "선두", "damage": 14, "hits": 1}
    ],
    "pattern": {"type": "weighted", "first": "a", "weights": {"a": 30, "b": 35, "c": 35}, "no_repeat": 2},
    "passives": ["깃발 아래 군졸 둘과 함께 나온다"],
    "pressures": ["P1", "P7"],
    "haewon": {"status": "장단", "rule": "장단 4 이상인 턴에 쓰러뜨린다", "story": "마지막 북소리에 맞춰 깃발을 내리자 군졸들도 대오를 풀고 쉰다"},
    "drops": {"material": "녹슨 투구끈", "gold": [50, 65]}},
-  {"id": "gitbal_gunjol", "name": "깃발 아래 군졸", "family": "무장 원귀", "category": "minion", "hp": [20, 24], "position": "front",
+  {"id": "gitbal_gunjol", "name": "깃발 아래 군졸", "family": "무장 원귀", "category": "minion", "hp": [18, 22], "position": "front",
    "han": "깃발만 바라보는 군졸들.",
    "intents": [
-    {"id": "a", "name": "창 찌르기", "kind": "attack", "target": "선두", "damage": 6, "hits": 1},
+    {"id": "a", "name": "창 찌르기", "kind": "attack", "target": "선두", "damage": 5, "hits": 1},
     {"id": "b", "name": "대오 바꾸기", "kind": "move", "target": "후열", "effect": "후열 영웅을 선두로 끌어낸다"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
@@ -128,25 +128,25 @@
    "pressures": ["P13"],
    "haewon": {"status": null, "follows": "gisu_neok", "rule": "깃발 든 기수 넋이 해원되면 함께 대오를 푼다", "story": "깃발이 내려가자 창을 땅에 꽂고 앉는다"},
    "drops": {"material": null, "gold": [0, 0]}},
-  {"id": "sajabap_neok", "name": "사자밥 빼앗긴 넋", "family": "굶주린 넋", "category": "elite", "hp": [150, 158], "position": "front",
+  {"id": "sajabap_neok", "name": "사자밥 빼앗긴 넋", "family": "굶주린 넋", "category": "elite", "hp": [138, 145], "position": "front",
    "han": "숨을 거둔 날 대문 밖에 차린 사자밥을 잡귀에게 빼앗겨 사자를 따라나서지 못했다. 쓰러진 이의 밥그릇부터 노린다.",
    "intents": [
-    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 9, "hits": 2},
-    {"id": "b", "name": "상 엎기", "kind": "attack", "target": "굿상", "damage": 14, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 9 피해 + 자신 체력 12 회복"},
-    {"id": "c", "name": "남의 밥그릇", "kind": "attack", "target": "쓰러진 영웅", "damage": 18, "hits": 1, "effect": "쓰러진 영웅이 없으면 최저 체력 영웅에게"}
+    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 8, "hits": 2},
+    {"id": "b", "name": "상 엎기", "kind": "attack", "target": "굿상", "damage": 12, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 8 피해 + 자신 체력 11 회복"},
+    {"id": "c", "name": "남의 밥그릇", "kind": "attack", "target": "쓰러진 영웅", "damage": 16, "hits": 1, "effect": "쓰러진 영웅이 없으면 최저 체력 영웅에게"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
    "passives": [],
    "pressures": ["P12", "P2"],
    "haewon": {"status": "점지", "rule": "점지 5 이상인 상태로 쓰러뜨린다", "story": "사자 대신 이름을 불러 주자 비로소 길을 따라나선다"},
    "drops": {"material": "빈 제기", "gold": [50, 65]}},
-  {"id": "munseo_ilheun_neok", "name": "문서 잃은 넋", "family": "억울귀", "category": "elite", "hp": [140, 146], "position": "back",
+  {"id": "munseo_ilheun_neok", "name": "문서 잃은 넋", "family": "억울귀", "category": "elite", "hp": [129, 134], "position": "back",
    "han": "까마귀가 적패지를 잘못 떨어뜨려 제 차례가 오기도 전에 끌려왔다. 명부에 이름이 없어 어느 대문도 열리지 않는다.",
    "intents": [
     {"id": "a", "name": "이름 빼앗기", "kind": "possess", "target": "전체", "effect": "모든 영웅을 홀린다(홀림 1)"},
     {"id": "b", "name": "찢긴 문서", "kind": "pollute", "target": "전체", "effect": "덱에 '잡음' 2장(사용 불가·휘발)을 넣는다"},
-    {"id": "c", "name": "원통한 손", "kind": "attack", "target": "후열", "damage": 9, "hits": 2},
-    {"id": "d", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 16, "effect": "공격 +3 (누적)"}
+    {"id": "c", "name": "원통한 손", "kind": "attack", "target": "후열", "damage": 8, "hits": 2},
+    {"id": "d", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 15, "effect": "공격 +3 (누적)"}
    ],
    "pattern": {"type": "weighted", "first": "a", "weights": {"a": 20, "b": 20, "c": 35, "d": 25}, "no_repeat": 2},
    "passives": ["장부 대조(문서 대조): 홀린 영웅이 카드를 낼 때마다 이 원귀 방어도 3"],
@@ -154,7 +154,7 @@
    "haewon": {"status": "명부", "rule": "명부 10 이상인 상태로 쓰러뜨린다", "story": "명부에 제 이름과 제 차례를 바로 적어 주자, 첫째 대문부터 다시 걸어 들어간다"},
    "drops": {"material": "타다 남은 소지", "gold": [50, 65]}},
 
-  {"id": "honbaek_wongwi", "name": "혼백이 갈린 원귀", "family": "객귀", "category": "boss", "hp": [176, 184], "position": "back",
+  {"id": "honbaek_wongwi", "name": "혼백이 갈린 원귀", "family": "객귀", "category": "boss", "hp": [167, 175], "position": "back",
    "han": "객지에서 죽어 혼은 대문 앞까지 끌려왔는데, 백은 장례를 받지 못해 무덤에 눕지 못했다. 혼과 백이 서로를 찾아 대문을 막아선다.",
    "intents": [
     {"id": "a", "name": "혼 부르는 소리", "kind": "stress", "target": "전체", "effect": "파티 귀기 +6", "phase": 1},
@@ -162,35 +162,35 @@
     {"id": "c", "name": "차가운 손", "kind": "attack", "target": "후열", "damage": 8, "hits": 2, "phase": 1},
     {"id": "d", "name": "이름 부르기", "kind": "possess", "target": "전체", "effect": "모든 영웅을 홀린다(홀림 1)", "phase": 2},
     {"id": "e", "name": "울부짖음", "kind": "attack", "target": "전체", "damage": 7, "hits": 1, "phase": 2},
-    {"id": "f", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 18, "effect": "공격 +2 (누적)", "phase": 2}
+    {"id": "f", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 17, "effect": "공격 +2 (누적)", "phase": 2}
    ],
    "pattern": {"type": "phased", "phases": [
      {"until_hp_pct": 50, "type": "cycle", "order": ["a", "b", "c"]},
      {"type": "weighted", "weights": {"d": 25, "e": 40, "f": 35}, "no_repeat": 2}]},
    "passives": ["떠도는 백과 함께 나온다",
-                "빗장 22: 1단계에서 떠도는 백이 서 있는 동안, 한 플레이어 턴에 잃는 체력이 22를 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다). 2단계에서 빗장이 풀린다",
+                "빗장 21: 1단계에서 떠도는 백이 서 있는 동안, 한 플레이어 턴에 잃는 체력이 21을 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다). 2단계에서 빗장이 풀린다",
                 "반회피 규칙: 2단계에서는 쓰러진 영웅을 먼저 노린다"],
    "pressures": ["P5", "P3", "P1"],
    "haewon": {"status": null, "rule": "떠도는 백이 1명 이상 살아 있을 때 혼을 쓰러뜨린다", "story": "혼을 먼저 대문 안으로 보내 주자, 백도 제 무덤으로 돌아가 조용히 눕는다"},
    "drops": {"material": "떠돌이 짚신", "gold": [160, 175], "chiseong": 1}},
-  {"id": "tteodoneun_baek", "name": "떠도는 백", "family": "객귀", "category": "minion", "hp": [50, 54], "position": "front",
+  {"id": "tteodoneun_baek", "name": "떠도는 백", "family": "객귀", "category": "minion", "hp": [46, 50], "position": "front",
    "han": "무덤에 들지 못한 백. 혼을 찾아 대문까지 따라왔다.",
    "intents": [
-    {"id": "a", "name": "흙 끼얹기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1},
-    {"id": "b", "name": "가로막기", "kind": "defend", "target": "자신", "block": 16}
+    {"id": "a", "name": "흙 끼얹기", "kind": "attack", "target": "선두", "damage": 11, "hits": 1},
+    {"id": "b", "name": "가로막기", "kind": "defend", "target": "자신", "block": 15}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P5"],
    "haewon": {"status": null, "follows": "honbaek_wongwi", "rule": "혼이 해원되면 백도 함께 해원된다", "story": "혼이 대문 안으로 드는 것을 보고 무덤 쪽으로 돌아선다"},
    "drops": {"material": null, "gold": [0, 0]}},
-  {"id": "maenap_neok", "name": "맨 앞에 선 굶은 넋", "family": "굶주린 넋", "category": "boss", "hp": [180, 186], "position": "front",
+  {"id": "maenap_neok", "name": "맨 앞에 선 굶은 넋", "family": "굶주린 넋", "category": "boss", "hp": [171, 177], "position": "front",
    "han": "열두 대문 앞에서 가장 오래 기다린 넋. 뒤에 선 넋들의 허기까지 제가 짊어졌다.",
    "intents": [
-    {"id": "a", "name": "밥 내놔라", "kind": "attack", "target": "굿상", "damage": 16, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 10 피해 + 자신 체력 12 회복"},
+    {"id": "a", "name": "밥 내놔라", "kind": "attack", "target": "굿상", "damage": 15, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 9 피해 + 자신 체력 11 회복"},
     {"id": "b", "name": "줄 밀기", "kind": "move", "target": "후열", "damage": 8, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다", "phase": 1},
     {"id": "c", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 7, "hits": 2, "phase": 1},
-    {"id": "d", "name": "굶주림이 깊어짐", "kind": "buff", "target": "자신", "block": 14, "effect": "공격 +3 (누적)", "phase": 2},
+    {"id": "d", "name": "굶주림이 깊어짐", "kind": "buff", "target": "자신", "block": 13, "effect": "공격 +3 (누적)", "phase": 2},
     {"id": "e", "name": "빈 그릇 던지기", "kind": "attack", "target": "무작위", "damage": 6, "hits": 2, "phase": 2}
    ],
    "pattern": {"type": "phased", "phases": [
@@ -202,10 +202,10 @@
    "pressures": ["P12", "P13", "P7"],
    "haewon": {"status": null, "rule": "사자밥 차리기를 바친 뒤 쓰러뜨린다", "story": "사자밥 세 그릇을 차려 주자, 맨 앞의 넋이 뒤에 선 넋들에게 먼저 밥을 돌린다"},
    "drops": {"material": "빈 제기", "gold": [160, 175], "chiseong": 1}},
-  {"id": "dwie_seon_neok", "name": "뒤에 선 넋", "family": "굶주린 넋", "category": "minion", "hp": [26, 30], "position": "front",
+  {"id": "dwie_seon_neok", "name": "뒤에 선 넋", "family": "굶주린 넋", "category": "minion", "hp": [24, 28], "position": "front",
    "han": "줄 끝에서 맨 앞만 바라보는 넋들.",
    "intents": [
-    {"id": "a", "name": "밥그릇 넘보기", "kind": "attack", "target": "선두", "damage": 5, "hits": 1},
+    {"id": "a", "name": "밥그릇 넘보기", "kind": "attack", "target": "선두", "damage": 4, "hits": 1},
     {"id": "b", "name": "배고픈 소리", "kind": "stress", "target": "전체", "effect": "파티 귀기 +3"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
@@ -214,23 +214,23 @@
    "haewon": {"status": null, "follows": "maenap_neok", "rule": "맨 앞에 선 굶은 넋이 해원되면 함께 해원된다", "story": "맨 앞에서 건네준 밥그릇을 받아 들고 줄을 푼다"},
    "drops": {"material": null, "gold": [0, 0]}},
 
-  {"id": "bitjang_janggun", "name": "빗장을 놓지 못한 장수", "family": "무장 원귀", "category": "boss", "final": true, "hp": [340, 348], "position": "front",
+  {"id": "bitjang_janggun", "name": "빗장을 놓지 못한 장수", "family": "무장 원귀", "category": "boss", "final": true, "hp": [286, 292], "position": "front",
    "han": "북쪽 변방 관문을 지키던 장수. 지원군은 끝내 오지 않았고, 그는 성문을 열지 않은 채 쓰러졌다. 죽어서도 열두째 대문의 빗장을 붙들고 놓지 않아, 대문 앞에 넋들이 쌓여 간다.",
    "intents": [
-    {"id": "a", "name": "성문 호령", "kind": "buff", "target": "아군 원귀", "effect": "수문 군졸 전원 방어도 8, 공격 +1 (누적)", "phase": 1},
-    {"id": "b", "name": "빗장 내리치기", "kind": "attack", "target": "선두", "damage": 15, "hits": 1, "phase": 1},
-    {"id": "c", "name": "성벽 화살", "kind": "attack", "target": "후열", "damage": 6, "hits": 2, "phase": 1},
-    {"id": "d", "name": "성문을 닫아라", "kind": "defend", "target": "자신", "block": 24, "phase": 1},
-    {"id": "e", "name": "장수 돌격", "kind": "attack", "target": "선두", "damage": 10, "hits": 2, "phase": 2},
-    {"id": "f", "name": "쓸어 베기", "kind": "attack", "target": "전체", "damage": 8, "hits": 1, "phase": 2},
-    {"id": "g", "name": "낙오자 다그치기", "kind": "attack", "target": "쓰러진 영웅", "damage": 18, "hits": 1, "effect": "쓰러진 영웅이 없으면 최저 체력 영웅에게", "phase": 2},
-    {"id": "h", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 20, "effect": "공격 +2 (누적)", "phase": 2}
+    {"id": "a", "name": "성문 호령", "kind": "buff", "target": "아군 원귀", "effect": "수문 군졸 전원 방어도 7, 공격 +1 (누적)", "phase": 1},
+    {"id": "b", "name": "빗장 내리치기", "kind": "attack", "target": "선두", "damage": 13, "hits": 1, "phase": 1},
+    {"id": "c", "name": "성벽 화살", "kind": "attack", "target": "후열", "damage": 5, "hits": 2, "phase": 1},
+    {"id": "d", "name": "성문을 닫아라", "kind": "defend", "target": "자신", "block": 20, "phase": 1},
+    {"id": "e", "name": "장수 돌격", "kind": "attack", "target": "선두", "damage": 8, "hits": 2, "phase": 2},
+    {"id": "f", "name": "쓸어 베기", "kind": "attack", "target": "전체", "damage": 7, "hits": 1, "phase": 2},
+    {"id": "g", "name": "낙오자 다그치기", "kind": "attack", "target": "쓰러진 영웅", "damage": 15, "hits": 1, "effect": "쓰러진 영웅이 없으면 최저 체력 영웅에게", "phase": 2},
+    {"id": "h", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 17, "effect": "공격 +2 (누적)", "phase": 2}
    ],
    "pattern": {"type": "phased", "phases": [
      {"until_hp_pct": 50, "type": "cycle", "order": ["a", "b", "c", "d"]},
      {"type": "weighted", "weights": {"e": 30, "f": 25, "g": 20, "h": 25}, "no_repeat": 2}]},
    "passives": ["수문 군졸 둘과 함께 나온다",
-                "빗장 16: 1단계에서 수문 군졸이 하나라도 서 있으면, 한 플레이어 턴에 잃는 체력이 16을 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다). 2단계에서 빗장이 풀린다",
+                "빗장 13: 1단계에서 수문 군졸이 하나라도 서 있으면, 한 플레이어 턴에 잃는 체력이 13을 넘지 않는다(상흔·명부·붕괴는 상한을 넘는다). 2단계에서 빗장이 풀린다",
                 "반회피 규칙: 2단계에서는 쓰러진 영웅을 먼저 노린다",
                 "고풀이: 맺힌 매듭 넷을 풀어야 해원 조건이 성립한다. 업경대 비추기 결과에 따라 매듭 일부가 풀린 채 시작한다"],
    "pressures": ["P5", "P1", "P8"],
@@ -240,11 +240,11 @@
                         "장단 3 이상으로 턴을 마침", "굿상에 설치물이 있는 채로 턴을 마침", "부적(토큰) 카드로 장수에게 피해", "진형이 바뀐 채로 턴을 마침"],
               "story": "고풀이처럼 맺힌 매듭을 하나씩 풀어 주자, 장수는 마침내 빗장에서 손을 떼고 스스로 문을 연다. 문 앞에서 기다리던 넋들이 차례로 들어간다"},
    "drops": {"material": "녹슨 투구끈", "gold": [220, 240], "chiseong": 2}},
-  {"id": "sumun_gunjol", "name": "수문 군졸", "family": "무장 원귀", "category": "minion", "hp": [22, 24], "position": "front",
+  {"id": "sumun_gunjol", "name": "수문 군졸", "family": "무장 원귀", "category": "minion", "hp": [20, 22], "position": "front",
    "han": "장수와 함께 관문을 지키던 군졸들. 장수가 문을 열라 하기 전에는 비키지 않는다.",
    "intents": [
-    {"id": "a", "name": "창 세우기", "kind": "attack", "target": "선두", "damage": 6, "hits": 1},
-    {"id": "b", "name": "성문 막기", "kind": "defend", "target": "자신", "block": 8}
+    {"id": "a", "name": "창 세우기", "kind": "attack", "target": "선두", "damage": 5, "hits": 1},
+    {"id": "b", "name": "성문 막기", "kind": "defend", "target": "자신", "block": 7}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],

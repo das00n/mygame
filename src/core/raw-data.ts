@@ -13,6 +13,8 @@ import duo from '../../data/cards/duo.json' with { type: 'json' };
 import common from '../../data/cards/common.json' with { type: 'json' };
 import heroes from '../../data/design/heroes.json' with { type: 'json' };
 import region1 from '../../data/design/region1.json' with { type: 'json' };
+import region2 from '../../data/design/region2.json' with { type: 'json' };
+import region3 from '../../data/design/region3.json' with { type: 'json' };
 import synergy from '../../data/design/synergy.json' with { type: 'json' };
 
 export const RAW_JSON: Readonly<Record<string, unknown>> = {
@@ -28,5 +30,7 @@ export const RAW_JSON: Readonly<Record<string, unknown>> = {
   'data/cards/common.json': common,
   'data/design/heroes.json': heroes,
   'data/design/region1.json': region1,
+  'data/design/region2.json': region2,
+  'data/design/region3.json': region3,
   'data/design/synergy.json': synergy,
 };

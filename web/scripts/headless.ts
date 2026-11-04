@@ -2,6 +2,8 @@
 // 실행: node --import tsx web/scripts/headless.ts [--runs 20] [--commission boss] [--verbose]
 import { HERO_IDS, type HeroId } from '../../src/core/types.ts';
 import { beginExpedition, blankApp } from '../src/game/actions.ts';
+import { exportCode, startCampaign } from '../src/game/campaign.ts';
+import { recruit } from '../../src/meta/campaign.ts';
 import { autoStep } from '../src/game/autoplay.ts';
 import { COMMISSION_BY_ID, SUPPLIES, recommended, type CommissionId } from '../src/game/content.ts';
 import { bossFor } from '../src/game/run.ts';
@@ -16,6 +18,43 @@ const arg = (n: string, d: string) => {
 const runs = Number(arg('runs', '20'));
 const commission = arg('commission', 'boss') as CommissionId;
 const verbose = process.argv.includes('--verbose');
+
+// --campaign: 캠페인 모드를 자동 진행으로 (마을 봇 + 원정 자동 진행). 결말·사망·지역 개방까지 걸린 원정 수
+if (process.argv.includes('--campaign')) {
+  const maxExp = Number(arg('max', '40'));
+  const seed0 = Number(arg('seed', '1'));
+  for (let k = 0; k < runs; k++) {
+    const app = blankApp();
+    startCampaign(app, seed0 + k);
+    if (process.argv.includes('--recruit0')) recruit(app.campaign!, 0, null);
+    let n = 0;
+    let firstDeath = -1;
+    let firstCheondo = -1;
+    let r2 = -1;
+    let firstBuild = -1;
+    const t0 = Date.now();
+    while (!app.campaign!.ending && app.campaign!.expeditions < maxExp && n < 400000) {
+      const c = app.campaign!;
+      if (firstDeath < 0 && c.fallen.length) firstDeath = c.expeditions;
+      if (firstCheondo < 0 && c.fallen.some((f) => f.honored)) firstCheondo = c.expeditions;
+      if (r2 < 0 && c.facilities.sindang >= 2) r2 = c.expeditions;
+      if (firstBuild < 0 && (c.facilities.mugubang > 0 || c.facilities.yakbang > 0 || c.facilities.gaekju > 1 || c.facilities.sindang > 1)) firstBuild = c.expeditions;
+      if (!autoStep(app)) {
+        if (app.screen === 'village') {
+          console.log(`  campaign ${seed0 + k}: village stuck at exp ${c.expeditions}`);
+          break;
+        }
+        console.log(`  stuck on ${app.screen}`, app.dialog, app.picker);
+        break;
+      }
+      n++;
+    }
+    const c = app.campaign!;
+    if (process.argv.includes('--code')) console.log(exportCode(c));
+    console.log(`campaign seed ${seed0 + k}: ending ${c.ending?.kind ?? '-'} exp ${c.expeditions} season ${c.season} deaths ${c.fallen.length} ancestors ${c.fallen.filter((f) => f.honored).length} firstDeath@${firstDeath} cheondo@${firstCheondo} build@${firstBuild} region2@${r2} sindang ${c.facilities.sindang} steps ${n} ${(Date.now() - t0) / 1000}s`);
+  }
+  process.exit(0);
+}
 
 function trio(i: number): HeroId[] {
   const all: HeroId[][] = [];

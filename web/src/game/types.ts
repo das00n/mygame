@@ -1,6 +1,8 @@
 // 플레이어블 원정의 상태 타입. 모두 JSON 으로 저장할 수 있는 순수 데이터다(전투 상태의 Map 은 save.ts 가 처리).
 
 import type { CardInst, CombatState, HeroId } from '../../../src/core/types.ts';
+import type { Settlement } from '../../../src/meta/campaign.ts';
+import type { Campaign, CommissionLength, ExpeditionPlan } from '../../../src/meta/types.ts';
 import type { CommissionId, SupplyId } from './content.ts';
 
 export type ContentKind = 'empty' | 'battle' | 'curio' | 'trap' | 'event' | 'elite' | 'boss' | 'entrance';
@@ -99,10 +101,67 @@ export interface NextFight {
   talismans?: number; // 법사 화부
   drawBonus?: number; // 첫 턴 드로우
   wounds: number[]; // 상처 카드 주인 (hero idx)
+  /** 신열 카드 주인 (hero idx) — 지역 2 덫·기물 */
+  fevers?: number[];
+  /** 첫 턴 파티 약화 */
+  weakAll?: number;
+  /** 첫 턴 무작위 영웅 홀림 */
+  possess?: number;
+  /** 진형을 자유롭게 바꾸고 시작 (싸리말 탈꾼) */
+  freeForm?: boolean;
+  /** 첫 턴 차사 방어도 (서낭 앞 고사 자리) */
+  chasaBlock?: number;
+}
+
+/** 지역 2·3 원정 상태 (손님 배웅·업경대·까마귀 등) */
+export interface RunFlags {
+  sonnimDone?: boolean;
+  /** 손님 배웅 시작 대접 (+4) */
+  sonnimStart?: number;
+  /** 서운한 작별·쫓아냄: 전투 시작 시 신열 1장 */
+  sonnimPenalty?: boolean;
+  /** 대문에 부적: 역귀 전투마다 신열 +1장 */
+  sealPenalty?: boolean;
+  /** 손님의 배웅 가호가 없어도 이번 원정 동안 신열 무료 (가호로만) */
+  crow?: boolean;
+  /** 업경대가 미리 푼 매듭 비트 */
+  knots?: number;
+  eopTier?: number;
+  yaksuUsed?: boolean;
+  /** 다음 대문 방 통행 무료 */
+  gateFree?: number;
+  haenggimotUsed?: boolean;
+  /** 길굿 끼니 회복 +%p (약술) */
+  mealBonus?: number;
+  /** 다음 N전투 첫 턴 장단 */
+  jangdanFights?: { n: number; left: number };
+}
+
+/** 캠페인 결산에 넘길 원정 기록 */
+export interface RunTrack {
+  haewonById: Record<string, number>;
+  haewonByFamily: Record<string, number>;
+  killByFamily: Record<string, number>;
+  met: string[];
+  revived: number[];
+  cheondo: number[];
+  bondPairs: Record<string, number>;
+}
+
+export interface CampaignRunInfo {
+  length: CommissionLength;
+  uids: string[];
+  enemyHpMult: number;
 }
 
 export interface Run {
-  v: 2;
+  v: 3;
+  /** 지역 1~3 */
+  region: number;
+  /** 캠페인 원정이면 출정 계획 요약 */
+  campaign: CampaignRunInfo | null;
+  flags: RunFlags;
+  track: RunTrack;
   seed: number;
   rng: number;
   commission: CommissionId;
@@ -148,7 +207,7 @@ export interface BattleMeta {
   tier: 'easy' | 'hard' | 'elite' | 'boss' | 'event';
   src: BattleSource;
   cardReward: boolean;
-  special: 'none' | 'play' | 'escort';
+  special: 'none' | 'play' | 'escort' | 'sonnim';
   start: 'first' | 'ambush' | 'normal';
   shadows: number;
   enemyDmg: number;
@@ -195,9 +254,11 @@ export interface DialogState {
   /** 결과 문장이 정해지면 선택지 대신 보인다 */
   result: string | null;
   /** 결과 뒤 이어지는 동작 */
-  then: 'none' | 'battle' | 'cards' | 'remove' | 'transform' | 'formation' | 'upgrade' | 'upgrade_baksu';
+  then: 'none' | 'battle' | 'cards' | 'remove' | 'transform' | 'formation' | 'upgrade' | 'upgrade_baksu' | 'upgrade_hero';
   battleEnc?: string;
-  battleSpecial?: 'none' | 'play' | 'escort';
+  battleSpecial?: 'none' | 'play' | 'escort' | 'sonnim';
+  /** upgrade_hero: 이 영웅 카드만 */
+  upgradeHero?: HeroId;
   cardOptions?: string[];
 }
 
@@ -236,9 +297,11 @@ export interface ResultState {
   light: number;
   relics: string[];
   deckSize: number;
+  region: number;
+  campaign: boolean;
 }
 
-export type Screen = 'title' | 'shrine' | 'map' | 'combat' | 'reward' | 'camp' | 'result';
+export type Screen = 'title' | 'shrine' | 'map' | 'combat' | 'reward' | 'camp' | 'result' | 'village' | 'settle' | 'ending';
 
 export interface Settings {
   auto: boolean;
@@ -255,4 +318,8 @@ export interface AppState {
   camp: CampState | null;
   result: ResultState | null;
   toast: string | null;
+  /** 캠페인 (없으면 단판 원정) */
+  campaign: Campaign | null;
+  plan: ExpeditionPlan | null;
+  settlement: Settlement | null;
 }

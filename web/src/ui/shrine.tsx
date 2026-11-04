@@ -4,7 +4,8 @@ import type { CSSProperties } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { defaultFormation } from '../../../src/core/engine.ts';
 import { HERO_IDS, type HeroId, type HeroState } from '../../../src/core/types.ts';
-import { beginExpedition } from '../game/actions.ts';
+import { beginExpedition, blankApp } from '../game/actions.ts';
+import { importCode, startCampaign } from '../game/campaign.ts';
 import { COMMISSIONS, D, ENEMY_EXTRA, HERO_INFO, REGION, SUPPLIES, recommended, type CommissionId, type SupplyId } from '../game/content.ts';
 import { bossFor } from '../game/run.ts';
 import { hasSave, loadApp } from '../game/save.ts';
@@ -13,6 +14,12 @@ import { resetLogCursor } from '../game/combat.ts';
 
 export function TitleScreen() {
   const saved = hasSave();
+  const [imp, setImp] = useState(false);
+  const [code, setCode] = useState('');
+  const [err, setErr] = useState('');
+  const [setup, setSetup] = useState(false);
+  const [cseed, setCseed] = useState(() => randomSeed());
+  const [rift, setRift] = useState(true);
   return (
     <div class="screen title-screen" data-testid="title">
       <div class="title-lamp" />
@@ -21,23 +28,47 @@ export function TitleScreen() {
         <div class="title-seal">一幕</div>
       </div>
       <div class="title-sub">
-        세 사람이 한 판의 굿을 친다. 저승길 첫 구간 「{REGION.name}」 — 넋등을 태우며 방과 길목을 지나, 강을 건너지 못한 넋들을 해원하라.
+        세 사람이 한 판의 굿을 친다. 마을에서 기예인을 들이고, 저승길 세 구간 — 「{REGION.name}」 · 「역병 든 마을」 · 「열두 대문」 — 을 지나 열두째 대문의 빗장을 풀어라. 떠난 동료는 천도굿으로 조상신이 되어 다음 세대를 받친다.
       </div>
       <div class="title-actions">
-        <button class="btn primary" data-testid="new-run" onClick={() => { app.screen = 'shrine'; commit(); }}>새 원정</button>
+        <button class="btn primary" data-testid="new-campaign" onClick={() => setSetup(!setup)}>새 캠페인</button>
+        <button class="btn" data-testid="new-run" onClick={() => { app.screen = 'shrine'; commit(); }}>단판 원정</button>
         {saved && (
           <button class="btn" data-testid="continue" onClick={() => {
             const s = loadApp();
             if (s) {
               resetLogCursor();
-              replaceApp(s);
+              replaceApp({ ...blankApp(), ...s });
               commit();
             }
           }}>이어하기</button>
         )}
+        <button class="btn ghost" data-testid="import" onClick={() => setImp(!imp)}>캠페인 가져오기</button>
         <button class="btn ghost" onClick={() => setPanel('gloss')}>용어 도움말</button>
       </div>
-      <div class="disclaimer">실제 무속 신앙에서 영감을 받은 창작물입니다. 신령·의례의 이름과 사연은 모두 가상이며, 원문 무가를 인용하지 않습니다. Prototype ② — 플레이어블 1막.</div>
+      {setup && (
+        <div class="panel col" style={{ maxWidth: '560px', width: '100%' }} data-testid="campaign-setup">
+          <div class="small dim">엽전 300과 기예인 넷으로 신당에 불을 밝힌다. 첫 절기는 설 — 떠돌이 기예인 하나가 무료로 합류한다.</div>
+          <label class="row small">시드 <input class="search" style={{ width: '120px' }} inputMode="numeric" data-testid="campaign-seed" value={String(cseed)} onInput={(e) => setCseed(Number((e.target as HTMLInputElement).value.replace(/\D/g, '')) || 1)} /></label>
+          <label class="row small"><input type="checkbox" checked={rift} data-testid="campaign-rift" onChange={() => setRift(!rift)} /> 저승문 균열 카운트다운 (끄면 쉬운 난이도)</label>
+          <div class="row"><button class="btn primary" data-testid="start-campaign" onClick={() => { startCampaign(app, cseed, rift); commit(); }}>시작</button></div>
+        </div>
+      )}
+      {imp && (
+        <div class="panel col" style={{ maxWidth: '560px', width: '100%' }}>
+          <div class="small dim">마을의 「내보내기」에서 받은 코드(JSG1:…)를 붙여 넣는다.</div>
+          <textarea class="code" rows={4} value={code} data-testid="import-code" onInput={(e) => setCode((e.target as HTMLTextAreaElement).value)} />
+          <div class="row"><button class="btn small primary" data-testid="import-go" onClick={() => {
+            const c = importCode(code);
+            if (typeof c === 'string') return setErr(c);
+            Object.assign(app, blankApp());
+            app.campaign = c;
+            app.screen = c.ending ? 'ending' : 'village';
+            commit();
+          }}>가져온다</button><span class="small" style={{ color: '#ffb3a3' }}>{err}</span></div>
+        </div>
+      )}
+      <div class="disclaimer">실제 무속 신앙에서 영감을 받은 창작물입니다. 신령·의례의 이름과 사연은 모두 가상이며, 원문 무가를 인용하지 않습니다. Prototype ② — 캠페인 v1 (9단계 반복 2).</div>
     </div>
   );
 }

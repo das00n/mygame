@@ -2,7 +2,7 @@
 
 import { rand } from '../../../src/core/rng.ts';
 import type { HasRng } from '../../../src/core/rng.ts';
-import { CURIOS, EVENTS, ROOM_TABLE, TILE_TABLE, TILES_PER_CORRIDOR, TRAPS, type Commission } from './content.ts';
+import { ROOM_TABLE, TILE_TABLE, TILES_PER_CORRIDOR, regionContent, type Commission } from './content.ts';
 import type { Content, Corridor, Dungeon, Pos, Room, Run, Tile } from './types.ts';
 
 function ri(h: HasRng, lo: number, hi: number): number {
@@ -27,7 +27,23 @@ function shuffleArr<T>(h: HasRng, a: T[]): T[] {
 
 const DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]] as const;
 
-export function generateDungeon(h: HasRng, c: Commission): Dungeon {
+/** 보스 굴 앞 고정 방 (지역마다): 1 나룻배 · 2 서낭 앞 고사 자리 · 3 혼 부르는 등(최종이면 업경대 비추기) */
+export function ferryEvent(region: number, final: boolean): string {
+  if (region === 2) return 'seonang_gosa';
+  if (region === 3) return final ? 'eopgyeong_bichugi' : 'hon_bureuneun_deung';
+  return 'nanutbae';
+}
+
+export function generateDungeon(h: HasRng, c: Commission, region = 1, final = false): Dungeon {
+  const RC = regionContent(region);
+  const CURIOS = RC.curios;
+  const EVENTS = RC.events;
+  const TRAPS = RC.traps;
+  const map = RC.region.map ?? {};
+  // 지역 덫 비율(2지역 11%): 빈 칸에서 덜어 낸다
+  const trapRate = map.trap_rate ?? TILE_TABLE.find(([k]) => k === 'trap')![1];
+  const tileTable: [string, number][] = TILE_TABLE.map(([k, p]) => [k, k === 'trap' ? trapRate : k === 'empty' ? p - (trapRate - 0.08) : p]);
+  const loops = Math.max(0, c.loops + (map.loops_bonus ?? 0));
   const [W, H] = c.grid;
   const nRooms = ri(h, c.rooms[0], c.rooms[1]);
   const isBoss = c.id === 'boss';
@@ -96,7 +112,7 @@ export function generateDungeon(h: HasRng, c: Commission): Dungeon {
     if (o !== undefined && !linked(r.id, o)) loopCands.push([r.id, o]);
   }
   shuffleArr(h, loopCands);
-  for (const e of loopCands.slice(0, c.loops)) edges.push(e);
+  for (const e of loopCands.slice(0, loops)) edges.push(e);
 
   let boss = -1;
   let ferry = -1;
@@ -149,7 +165,7 @@ export function generateDungeon(h: HasRng, c: Commission): Dungeon {
   for (const r of rooms) {
     if (r.kind === 'entrance') r.content = { k: 'entrance', done: true };
     else if (r.kind === 'boss') r.content = { k: 'boss' };
-    else if (r.kind === 'ferry') r.content = { k: 'event', id: 'nanutbae' };
+    else if (r.kind === 'ferry') r.content = { k: 'event', id: ferryEvent(region, final) };
     else if (r.kind === 'normal') {
       let k = pickW(h, ROOM_TABLE);
       if (k === 'event' && !eventBag.length) k = 'curio';
@@ -158,6 +174,12 @@ export function generateDungeon(h: HasRng, c: Commission): Dungeon {
       else if (k === 'event') r.content = { k: 'event', id: eventBag.pop()! };
       else r.content = { k: 'empty' };
     }
+  }
+  // 2지역: 손님 마당 — 마을 한가운데 마당(원정마다 1회 고정)
+  if (region === 2) {
+    const maxD0 = Math.max(...[...d.values()]);
+    const mids = rooms.filter((r) => r.kind === 'normal').sort((a, b) => Math.abs((d.get(a.id) ?? 0) - maxD0 / 2) - Math.abs((d.get(b.id) ?? 0) - maxD0 / 2));
+    if (mids[0]) mids[0].content = { k: 'event', id: 'sonnim_madang' };
   }
   // 길굿 터: 보통 길이는 가운데쯤 방 하나, 보스 길은 + 보스 굴 앞 방
   const campN = isBoss ? 1 : c.camps;
@@ -177,7 +199,7 @@ export function generateDungeon(h: HasRng, c: Commission): Dungeon {
     for (let i = 0; i < TILES_PER_CORRIDOR; i++) {
       let content: Content = { k: 'empty' };
       if (!(a === boss || b === boss)) {
-        const k = pickW(h, TILE_TABLE);
+        const k = pickW(h, tileTable);
         if (k === 'battle') content = { k: 'battle' };
         else if (k === 'curio') content = { k: 'curio', id: nextCurio() };
         else if (k === 'trap') content = { k: 'trap', id: TRAPS[Math.floor(rand(h) * TRAPS.length)].id };

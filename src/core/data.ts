@@ -5,8 +5,8 @@ import { RAW_JSON } from './raw-data.ts';
 import { budgetOf, condP, rawValue, type ValueCtx } from './value.ts';
 import {
   HERO_IDS, HERO_NAMES,
-  type AutoTarget, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef,
-  type HeroId, type Op, type PerMode, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type Trigger,
+  type AutoTarget, type CapRule, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef,
+  type HeroId, type Op, type OfferingRule, type PerMode, type ProvKey, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type Trigger,
 } from './types.ts';
 
 // 데이터는 raw-data.ts 의 정적 JSON import 에서 온다 (Node·브라우저 공통). 저장소 경로(ROOT)는 src/sim/root.ts.
@@ -41,8 +41,26 @@ const SPECIAL_BY_CARD: Record<string, SpecialKind> = {
   'duo.gokkal_tal': 'gokkal_tal',
   'common.rescue_neokbureugi': 'rescue',
   'common.offering_nojatdon': 'offering',
+  'common.offering_heoju': 'offering',
+  'common.offering_sajabap': 'offering',
+  'common.offering_sonnimsang': 'offering',
+  'common.relic_kkot': 'nahwa',
   'common.curse_heotgeot': 'heotgeot',
 };
+
+/** 지역 번호 → 데이터 파일 */
+export const REGION_FILES: Record<number, string> = { 1: 'data/design/region1.json', 2: 'data/design/region2.json', 3: 'data/design/region3.json' };
+export const REGION_IDS = [1, 2, 3] as const;
+
+/** 특수 전투 (손님 배웅) */
+export interface SpecialDef {
+  id: string;
+  name: string;
+  region: number;
+  followers: string[];
+  goal: number;
+  limit: number;
+}
 
 export interface GameData {
   cards: CardDef[];
@@ -57,9 +75,15 @@ export interface GameData {
   starters: Map<HeroId, CardDef[]>;
   pools: Map<HeroId, CardDef[]>; // 보상 풀 26장
   duoFor: Map<string, CardDef>; // 'a+b' (정렬) → 합기
+  /** 지역별 조합 (encounters 는 1지역 — 기존 시뮬·플레이어블 호환) */
+  regionEncounters: Record<number, Encounter[]>;
+  specials: Map<string, SpecialDef>;
   special: {
     rescue: number; mourn: number; offering: number; shadow: number; noise: number; wound: number;
     curses: number[]; // 씌임 4종 (영웅 전용)
+    sinyeol: number; kkot: number; sonnimsang: number;
+    /** 공물 카드 idx → 규칙 */
+    offerings: Map<number, OfferingRule>;
   };
   synergy: { producers: Record<string, number>; consumers: Record<string, number> };
 }
@@ -177,28 +201,55 @@ export function loadData(): GameData {
   const heroes = new Map<HeroId, HeroDef>();
   for (const h of hj.heroes) heroes.set(h.id, { id: h.id, name: h.name, range: h.range, role: h.role, hp: h.hp });
 
-  // 적
-  const rj = readJson<{
-    enemies: { id: string; name: string; family: string; category: EnemyDef['category']; hp: [number, number]; intents: EnemyDef['intents']; pattern: EnemyDef['pattern']; passives: string[]; haewon: { status: string | null; rule: string } | null }[];
+  // 적: 1지역 → 2지역 → 3지역 순서로 붙인다 (1지역 번호는 그대로 — 저장·시뮬 호환)
+  type RawEnemy = {
+    id: string; name: string; family: string; category: EnemyDef['category']; hp: [number, number]; intents: EnemyDef['intents']; pattern: EnemyDef['pattern'];
+    passives: string[]; final?: boolean; haewon: { status: string | null; rule: string; follows?: string; knots?: string[]; knots_needed?: number } | null;
+  };
+  type RawRegion = {
+    enemies: RawEnemy[];
     encounters: Record<string, { id: string; enemies: string[] }[] | string>;
-  }>('data/design/region1.json');
+    specials?: { id: string; name: string; followers: string[]; meter: { goal: number; turn_limit: number } }[];
+  };
   const enemies: EnemyDef[] = [];
   const enemyById = new Map<string, EnemyDef>();
-  for (const e of rj.enemies) {
-    const def: EnemyDef = {
-      idx: enemies.length, id: e.id, name: e.name, category: e.category, hpMin: e.hp[0], hpMax: e.hp[1], intents: e.intents,
-      pattern: e.pattern, passives: e.passives, haewon: parseHaewon(e.haewon?.rule ?? null), family: e.family,
-    };
-    enemies.push(def);
-    enemyById.set(def.id, def);
+  const regionEncounters: Record<number, Encounter[]> = {};
+  const specials = new Map<string, SpecialDef>();
+  const rawByRegion = new Map<number, RawRegion>();
+  for (const rid of REGION_IDS) {
+    const rj = readJson<RawRegion>(REGION_FILES[rid]);
+    rawByRegion.set(rid, rj);
+    for (const e of rj.enemies) {
+      const def: EnemyDef = {
+        idx: enemies.length, id: e.id, name: e.name, category: e.category, hpMin: e.hp[0], hpMax: e.hp[1], intents: e.intents,
+        pattern: e.pattern, passives: e.passives, haewon: parseHaewon(e.haewon?.rule ?? null, e.haewon?.knots_needed), family: e.family,
+        region: rid, cap: null, offering: null, final: !!e.final, follows: e.haewon?.follows ?? null,
+      };
+      enemies.push(def);
+      enemyById.set(def.id, def);
+    }
+    const list: Encounter[] = [];
+    for (const tier of ['easy', 'hard', 'elite', 'boss', 'final'] as const) {
+      const pool = rj.encounters[tier];
+      if (!Array.isArray(pool)) continue;
+      for (const en of pool) list.push({ id: en.id, tier, enemies: en.enemies, region: rid });
+    }
+    regionEncounters[rid] = list;
+    for (const sp of rj.specials ?? []) {
+      specials.set(sp.id, { id: sp.id, name: sp.name, region: rid, followers: sp.followers, goal: sp.meter.goal, limit: sp.meter.turn_limit });
+    }
   }
-  const encounters: Encounter[] = [];
-  for (const tier of ['easy', 'hard', 'elite', 'boss'] as const) {
-    const list = rj.encounters[tier];
-    if (!Array.isArray(list)) continue;
-    for (const en of list) encounters.push({ id: en.id, tier, enemies: en.enemies });
+  // 빗장(이름으로 졸개 찾기)·공물(카드 이름) — 원귀 정의가 다 모인 뒤에
+  const byName = new Map(cards.map((c) => [c.name, c]));
+  for (const def of enemies) {
+    def.cap = parseCap(def, enemies);
+    def.offering = parseOffering(def, byName);
   }
-  const encounterById = new Map(encounters.map((e) => [e.id, e]));
+  // 1지역 조합은 그대로 (기존 sim:combat·sim:expedition·플레이어블이 쓰는 목록). id 에는 지역 번호를 붙이지 않는다
+  const encounters: Encounter[] = regionEncounters[1].map((e) => ({ id: e.id, tier: e.tier, enemies: e.enemies }));
+  const encounterById = new Map<string, Encounter>();
+  for (const rid of REGION_IDS) for (const e of regionEncounters[rid]) encounterById.set(e.id, e);
+  for (const e of encounters) encounterById.set(e.id, e);
 
   // 풀
   const starters = new Map<HeroId, CardDef[]>();
@@ -214,12 +265,18 @@ export function loadData(): GameData {
   const sj = readJson<{ producers: Record<string, number>; consumers: Record<string, number> }>('data/design/synergy.json');
 
   const get = (id: string) => cardById.get(id)!.idx;
+  const offerings = new Map<number, OfferingRule>();
+  offerings.set(get('common.offering_nojatdon'), { card: get('common.offering_nojatdon'), pay: [{ item: 'jijeon', n: 3 }], repeat: false, effect: 'none' });
+  for (const def of enemies) if (def.offering) offerings.set(def.offering.card, def.offering);
+  const sonnimsang = get('common.offering_sonnimsang');
+  offerings.set(sonnimsang, { card: sonnimsang, pay: [{ item: 'sul', n: 1 }, { item: 'rice', n: 1 }], repeat: true, effect: 'entertain' });
   cached = {
-    cards, cardById, summons, summonById, heroes, enemies, enemyById, encounters, encounterById, starters, pools, duoFor,
+    cards, cardById, summons, summonById, heroes, enemies, enemyById, encounters, encounterById, starters, pools, duoFor, regionEncounters, specials,
     special: {
       rescue: get('common.rescue_neokbureugi'), mourn: get('common.mourn_gok'), offering: get('common.offering_nojatdon'),
       shadow: get('common.status_geuneul'), noise: get('common.status_jabeum'), wound: get('common.status_sangcheo'),
       curses: ['common.curse_mangseorim', 'common.curse_heotgeot', 'common.curse_wonmang', 'common.curse_duryeoum'].map(get),
+      sinyeol: get('common.status_sinyeol'), kkot: get('common.relic_kkot'), sonnimsang, offerings,
     },
     synergy: { producers: sj.producers, consumers: sj.consumers },
   };
@@ -508,8 +565,10 @@ function analyseCard(def: CardDef): void {
 }
 
 // ── 해원 조건 ──────────────────────────────────────────────────────────
-function parseHaewon(rule: string | null): HaewonRule {
+export function parseHaewon(rule: string | null, knotsNeeded?: number): HaewonRule {
   if (!rule) return { kind: 'none', text: '' };
+  // 고풀이 (05-region3 §9.3): 매듭 N개를 푼 뒤 — 상태 단어보다 먼저 본다
+  if (knotsNeeded && rule.includes('매듭')) return { kind: 'knots', need: knotsNeeded, text: rule };
   const st = rule.match(/(점지|상흔|명부|넋흔들림)\s*(\d+)\s*이상/);
   if (st) return { kind: 'status', status: st[1] as EnemyStatus, n: Number(st[2]), orCollapse: rule.includes('붕괴'), text: rule };
   const jd = rule.match(/장단\s*(\d+)\s*이상/);
@@ -518,10 +577,52 @@ function parseHaewon(rule: string | null): HaewonRule {
   if (rule.includes('부적')) return { kind: 'token', group: rule.includes('모두') || rule.includes('무리'), text: rule };
   if (rule.includes('진형이 바뀐')) return { kind: 'formation', text: rule };
   if (rule.includes('붕괴')) return { kind: 'collapse', text: rule };
-  if (rule.includes('노잣돈')) return { kind: 'offering', text: rule };
+  if (rule.includes('노잣돈') || rule.includes('바친 뒤')) return { kind: 'offering', text: rule };
   const mn = rule.match(/(\d+)명 이상 살아/);
   if (mn) return { kind: 'minions', n: Number(mn[1]), text: rule };
   return { kind: 'none', text: rule };
+}
+
+/** 빗장 N (05-region3 §9.1): '빗장 15' · '빗장 22: 1단계에서 떠도는 백이 서 있는 동안' */
+function parseCap(def: EnemyDef, all: EnemyDef[]): CapRule | null {
+  for (const p of def.passives) {
+    const m = p.match(/빗장\s*(\d+)/);
+    if (!m) continue;
+    let whileAlive: string | null = null;
+    for (const o of all) if (o.region === def.region && o.id !== def.id && o.category === 'minion' && p.includes(o.name)) whileAlive = o.id;
+    return { n: Number(m[1]), firstPhase: p.includes('1단계'), whileAlive };
+  }
+  return null;
+}
+
+const PROV_BY_NAME: Record<string, ProvKey> = { 지전: 'jijeon', 쌀: 'rice', 술: 'sul', 부적: 'bujeok', 향: 'incense' };
+
+/** 공물 (05-region2 §9.2): "공물: 전투 시작 시 손에 '<카드>'(0코스트, 보급품 <종류> <수> 소모)가 들어온다. …" */
+function parseOffering(def: EnemyDef, byName: Map<string, CardDef>): OfferingRule | null {
+  for (const p of def.passives) {
+    if (!p.startsWith('공물:')) continue;
+    const name = p.match(/'([^']+)'/)?.[1];
+    const pay = p.match(/보급품\s*(\S+)\s*(\d+)\s*소모/);
+    const card = name ? byName.get(name) : undefined;
+    if (!card || !pay || !PROV_BY_NAME[pay[1]]) throw new Error(`공물 해석 실패: ${def.id}: ${p}`);
+    const effect: OfferingRule['effect'] = p.includes('2단계') ? 'phase2' : p.includes('행동하지 않는다') ? 'minionsSkip' : 'none';
+    return { card: card.idx, pay: [{ item: PROV_BY_NAME[pay[1]], n: Number(pay[2]) }], repeat: false, effect };
+  }
+  return null;
+}
+
+/** 지역 데이터 밖의 원귀를 덧붙인다 (플레이어블의 특수 전투: 놀이 사자 등). 이미 있으면 그대로 */
+export function addEnemyDefs(raws: { id: string; name: string; family: string; category: EnemyDef['category']; hp: [number, number]; intents: EnemyDef['intents']; pattern: EnemyDef['pattern']; passives?: string[] }[]): void {
+  const d = loadData();
+  for (const e of raws) {
+    if (d.enemyById.has(e.id)) continue;
+    const def: EnemyDef = {
+      idx: d.enemies.length, id: e.id, name: e.name, category: e.category, hpMin: e.hp[0], hpMax: e.hp[1], intents: e.intents, pattern: e.pattern,
+      passives: e.passives ?? [], haewon: { kind: 'none', text: '' }, family: e.family, region: 0, cap: null, offering: null, final: false, follows: null,
+    };
+    d.enemies.push(def);
+    d.enemyById.set(def.id, def);
+  }
 }
 
 export function condOf(op: Op): Cond | null {

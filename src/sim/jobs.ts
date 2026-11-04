@@ -2,19 +2,20 @@
 
 import { createCombat, D } from '../core/engine.ts';
 import { Rng, seedFrom } from '../core/rng.ts';
-import type { CardInst, HeroId, RuleVariant } from '../core/types.ts';
+import type { CardInst, Encounter, HeroId, RuleVariant } from '../core/types.ts';
 import { deckIdsOf, newCardAgg, newCombatAgg, recordCombat, type CardAgg, type CombatAgg } from './agg.ts';
 import { runCombat } from './bot.ts';
 import { instFor, newPity, pickReward, rollRewards, starterDeck } from './draft.ts';
 import { runExpedition, type ExpeditionResult } from './expedition.ts';
+import { provisionsFor, typicalParty } from './typical.ts';
 
 export const MID_RUN_PICKS = 8;
 
 /** 원정 중반 덱: 시작 12장 + 봇이 고른 풀 카드 8장 (일반 전투 보상 8번, 반드시 고른다) */
-export function midRunDeck(trio: HeroId[], seed: number, cards?: CardAgg, duo = false): CardInst[] {
+export function midRunDeck(trio: HeroId[], seed: number, cards?: CardAgg, duo = false, start?: CardInst[]): CardInst[] {
   const rng = new Rng(seedFrom('draft', trio.join('+'), seed));
   const pity = newPity();
-  const deck = starterDeck(trio);
+  const deck = start ? start.slice() : starterDeck(trio);
   for (let k = 0; k < MID_RUN_PICKS; k++) {
     const opts = rollRewards(rng, trio, 'normal', pity);
     const pick = pickReward(opts, deck, false)!;
@@ -39,19 +40,48 @@ export interface CombatJobResult {
   ms: number;
 }
 
-export function runCombatJob(trio: HeroId[], seeds: number, duo = false): CombatJobResult {
+/** 지역 N 의 전투 목록 (지역 2는 특수 전투 '손님 배웅'을 sonnim 으로 더한다) */
+export function combatEncounters(region: number): Encounter[] {
+  const d = D();
+  if (region === 1) return d.encounters;
+  const list = d.regionEncounters[region].slice();
+  if (region === 2) list.push({ id: 'sonnim', tier: 'elite', enemies: d.specials.get('sonnim_baeung')!.followers, region: 2 });
+  return list;
+}
+
+export function runCombatJob(trio: HeroId[], seeds: number, duo = false, region = 1): CombatJobResult {
   const t0 = performance.now();
   const d = D();
   const cards = newCardAgg();
   const perEnc: Record<string, CombatAgg> = {};
-  for (const enc of d.encounters) perEnc[enc.id] = newCombatAgg();
+  const encs = combatEncounters(region);
+  for (const enc of encs) perEnc[enc.id] = newCombatAgg();
   for (let seed = 1; seed <= seeds; seed++) {
-    const deck = midRunDeck(trio, seed, cards, duo);
+    if (region === 1) {
+      const deck = midRunDeck(trio, seed, cards, duo);
+      const ids = deckIdsOf(deck);
+      for (const enc of encs) {
+        const s = createCombat({ party: trio.map((id) => ({ id })), deck, encounter: enc, seed: seedFrom(trio.join('+'), enc.id, seed), record: true, jijeon: 3 });
+        const startHp = s.heroes.map((h) => h.hp);
+        const { timeout } = runCombat(s);
+        recordCombat(perEnc[enc.id], cards, s, trio, startHp, timeout, ids);
+      }
+      continue;
+    }
+    // 지역 2·3: 전형적인 캠페인 파티(로드아웃·레벨·각인·신물·합기) + 원정 중반 보상 8장
+    const tp = typicalParty(trio, region, seed);
+    const deck = midRunDeck(trio, seed, cards, duo, tp.deck);
     const ids = deckIdsOf(deck);
-    for (const enc of d.encounters) {
-      const s = createCombat({ party: trio.map((id) => ({ id })), deck, encounter: enc, seed: seedFrom(trio.join('+'), enc.id, seed), record: true, jijeon: 3 });
+    const prov = provisionsFor(region, 'boss');
+    for (const enc of encs) {
+      const sp = enc.id === 'sonnim' ? d.specials.get('sonnim_baeung')! : null;
+      const s = createCombat({
+        party: tp.setup.heroes!.map((h) => ({ id: h.id, maxHp: h.maxHp })), deck, encounter: enc, seed: seedFrom(trio.join('+'), enc.id, seed), record: true,
+        jijeon: prov.jijeon, provisions: prov, entertain: sp ? { goal: sp.goal, limit: sp.limit, start: trio.includes('manshin') ? 4 : 0 } : null,
+      });
       const startHp = s.heroes.map((h) => h.hp);
       const { timeout } = runCombat(s);
+      if (sp && s.entertain?.result === 'timeout') s.outcome = -1; // 서운한 작별은 실패로 센다
       recordCombat(perEnc[enc.id], cards, s, trio, startHp, timeout, ids);
     }
   }
@@ -67,6 +97,10 @@ export interface ExpeditionJobResult {
 }
 
 export interface WhatIf {
+  /** 지역 2·3: 전형적인 캠페인 파티로 (기본 1지역 v0.3) */
+  region?: number;
+  /** 3지역 최종 원정 (업경대 + 최종 큰 원귀) */
+  final?: boolean;
   betweenHeal?: number;
   betweenHealFlat?: number;
   betweenHealMissing?: number;
@@ -81,6 +115,13 @@ export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = 
   const agg = newCombatAgg();
   const cards = newCardAgg();
   const out: ExpeditionResult[] = [];
-  for (let r = 1; r <= runs; r++) out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), r), { agg, cards, ...whatIf }));
+  const region = whatIf.region ?? 1;
+  for (let r = 1; r <= runs; r++) {
+    if (region === 1) out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), r), { agg, cards, ...whatIf }));
+    else {
+      const tp = typicalParty(trio, region, r, undefined, whatIf.final ? 'final' : 'boss');
+      out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), region, r), { agg, cards, ...whatIf, setup: tp.setup }));
+    }
+  }
   return { trio: trio.join('+'), runs: out, agg, cards, ms: performance.now() - t0 };
 }

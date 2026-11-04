@@ -1,11 +1,12 @@
 // 기물·방 이벤트·덫 (탐험 §7·§8, 첫 지역 §5): 세 갈래 손대기(맨손 / 맞는 보급품 / 영웅 고유)와 선택지.
 
 import { rand } from '../../../src/core/rng.ts';
+import { eopgyeong, knotPresetBits } from '../../../src/core/regions.ts';
 import type { HeroId } from '../../../src/core/types.ts';
-import { CURIO_BY_ID, D, ENEMY_EXTRA, EVENT_BY_ID, RELIC_BY_ID, TRAP_BY_ID, type SupplyId } from './content.ts';
+import { CURIO_BY_ID, D, ENEMY_EXTRA, EVENT_BY_ID, RELIC_BY_ID, TRAP_BY_ID, enemyRegion, type SupplyId } from './content.ts';
 import { corridorsOf } from './dungeon.ts';
 import {
-  addCurse, aliveIdx, bossEnemyIds, heroName, logRun, partyStress, revealAllRooms, revealHaewon, revealNear, revealRandomHaewon, scoutAround,
+  addCurse, aliveIdx, bossEnemyIds, effMax, healHero, heroName, logRun, partyStress, revealAllRooms, revealHaewon, revealNear, revealRandomHaewon, scoutAround,
   scoutRooms, supplyUse, upgradableIdx,
 } from './run.ts';
 import { applyRelicGain, rollCards, rollRelics } from './rewards.ts';
@@ -26,6 +27,14 @@ export interface DOpt {
 
 function hasHero(run: Run, id: HeroId): boolean {
   return run.heroes.some((h) => h.id === id && !h.dead);
+}
+
+/** 대문 통행(문사재 문답 「인정을 쓴다」): 문신의 가호 지전 −1, 통행패로 무료 */
+function gateCost(run: Run, cost: string | undefined): string | undefined {
+  if (!cost || !cost.startsWith('지전')) return cost;
+  if ((run.flags.gateFree ?? 0) > 0) return undefined;
+  const n = Number(cost.match(/(\d+)/)?.[1] ?? 0) - (run.relics.includes('munsin') ? 1 : 0);
+  return n > 0 ? `지전 ${n}` : undefined;
 }
 
 function costOk(run: Run, cost: string | undefined): boolean {
@@ -61,8 +70,12 @@ export function bondKey(run: Run, a: number, b: number): string {
 }
 
 export function addBond(run: Run, a: number, b: number, n: number): void {
+  if (a < 0 || b < 0 || a === b) return;
   const k = bondKey(run, a, b);
   run.bonds[k] = (run.bonds[k] ?? 0) + n;
+  // 캠페인 결산: 파티 index 쌍으로 넘긴다
+  const pk = [a, b].sort().join('+');
+  if (run.track) run.track.bondPairs[pk] = (run.track.bondPairs[pk] ?? 0) + n;
 }
 
 // ── 선택지 ───────────────────────────────────────────────────────────
@@ -117,9 +130,11 @@ export function dialogOptions(run: Run, dlg: DialogState): DOpt[] {
         }
         return;
       }
+      const cost = dlg.id === 'munsajae_mundap' && i === 0 ? gateCost(run, ch.cost) : ch.cost;
+      const ok2 = reqOk && costOk(run, cost);
       out.push({
-        id: `c${i}`, label: ch.label, detail: simplifiedEventResult(dlg.id, i, ch.result), kind: req ? 'hero' : 'choice', hero: req, cost: ch.cost, enabled: ok,
-        reason: !reqOk ? `파티에 ${heroName(req!)}이(가) 없다` : !ok ? `${ch.cost}이(가) 필요하다` : undefined,
+        id: `c${i}`, label: ch.label, detail: simplifiedEventResult(dlg.id, i, ch.result), kind: req ? 'hero' : 'choice', hero: req, cost, enabled: ok2,
+        reason: !reqOk ? `파티에 ${heroName(req!)}이(가) 없다` : !ok2 ? `${cost}이(가) 필요하다` : undefined,
       });
     });
     return out;
@@ -140,8 +155,9 @@ export function dialogOptions(run: Run, dlg: DialogState): DOpt[] {
 }
 
 function simplifiedEventResult(id: string, i: number, text: string): string {
-  if (id === 'saja_geommun' && i === 2) return '놀이 싸움(간소화): 잡귀 셋과 싸운다. 잃은 체력은 끝나면 되돌리고 그만큼 귀기로 받는다. 이기면 엽전 20, 지면 귀기 +15. 어느 쪽이든 통과.';
-  if (id === 'jalmot_on_saram' && i === 0) return '호위(간소화): 잡귀 무리와 싸운다. 모두 쓰러뜨리거나 세 턴을 버티면 성공(치성 +1). 그 사람은 따로 그리지 않는다.';
+  if (id === 'saja_geommun' && i === 2) return `놀이 싸움: 놀이 사자 셋. 영웅이 받는 피해는 체력 대신 귀기로 들어간다(쓰러지지 않는다). ${'5'}턴 안에 이기면 통과 + 엽전 20, 못 이기면 귀기 +15 후 통과.`;
+  if (id === 'jalmot_on_saram' && i === 0) return '호위: 잘못 끌려온 사람(체력 20)이 파티 뒤를 따른다. 선두에 방어도가 없으면 선두를 노린 공격을 그 사람이 맞는다. 세 턴을 버티거나 잡귀를 모두 쓰러뜨리면 성공(치성 +1), 그 사람이 쓰러지면 실패(귀기 +10).';
+  if (id === 'munsajae_mundap' && i === 0) return text;
   return text;
 }
 
@@ -336,8 +352,11 @@ export function chooseDialog(app: AppState, optId: string): void {
         lines.push(`작두박수가 신칼로 매듭을 끊었다. 재료 +1.${upgradableIdx(run, 'baksu').length ? ' 작두박수 카드 한 장을 강화할 수 있다.' : ' (강화할 작두박수 카드가 없다)'}`);
         if (upgradableIdx(run, 'baksu').length) then = 'upgrade_baksu';
         break;
-      default:
-        lines.push('아무 일도 없었다.');
+      default: {
+        const r = regionCurio(app, run, dlg, optId, rand(run), lines);
+        then = r.then;
+        done = r.done;
+      }
     }
   } else if (dlg.kind === 'event') {
     run.stats.events++;
@@ -345,7 +364,11 @@ export function chooseDialog(app: AppState, optId: string): void {
     let idx = Number(optId.slice(1).split(':')[0]);
     if (Number.isNaN(idx)) idx = 0;
     const ch = ev.choices[idx];
-    payCost(run, ch.cost);
+    if (dlg.id === 'munsajae_mundap' && idx === 0) {
+      const c = gateCost(run, ch.cost);
+      if (!c && (run.flags.gateFree ?? 0) > 0) run.flags.gateFree! -= 1;
+      payCost(run, c);
+    } else payCost(run, ch.cost);
     switch (`${dlg.id}:${idx}`) {
       case 'saja_geommun:0':
         run.next.firstStrike = true;
@@ -415,8 +438,11 @@ export function chooseDialog(app: AppState, optId: string): void {
       case 'nanutbae:1':
         lines.push('배를 지나친다.');
         break;
-      default:
-        lines.push(ch.result);
+      default: {
+        const r = regionEvent(app, run, dlg, idx, optId, lines);
+        then = r.then;
+        done = r.done;
+      }
     }
   } else {
     // 덫
@@ -451,8 +477,560 @@ export function springTrap(run: Run, id: string): string[] {
       partyStress(run, 10);
       lines.push('곡소리 메아리! 파티 귀기 +10.');
       break;
+    // 지역 2
+    case 'yeolgi_golmok': {
+      if (run.relics.includes('ssarimal')) {
+        lines.push('열기 서린 골목 — 싸리말이 열기를 막아 섰다.');
+        break;
+      }
+      const front = frontIdx(run);
+      (run.next.fevers ??= []).push(front);
+      lines.push(`열기 서린 골목! ${heroName(run.heroes[front].id)}: 다음 전투 시작 시 신열 1장.`);
+      break;
+    }
+    case 'muneojin_damjang': {
+      const front = frontIdx(run);
+      run.next.shuffle = true;
+      run.next.wounds.push(front);
+      lines.push(`무너진 담장! 다음 전투 시작 시 진형이 섞이고 ${heroName(run.heroes[front].id)}에게 상처 카드 1장.`);
+      break;
+    }
+    case 'eopeojin_yaksabal':
+      run.next.weakAll = (run.next.weakAll ?? 0) + 1;
+      lines.push('엎어진 약사발! 다음 전투 첫 턴 파티 약화 1.');
+      break;
+    // 지역 3
+    case 'dachineun_daemun':
+      run.next.ambush = true;
+      lines.push('닫히는 대문! 다음 전투는 기습당한다.');
+      break;
+    case 'eopgyeong_papyeon': {
+      const front = frontIdx(run);
+      addRunStressSafe(run, front, 15);
+      lines.push(`업경대 파편에 제 업이 비쳤다. ${heroName(run.heroes[front].id)} 귀기 +15.`);
+      break;
+    }
+    case 'musoe_bitjang_trap': {
+      const front = frontIdx(run);
+      run.next.wounds.push(front);
+      lines.push(`무쇠 빗장! ${heroName(run.heroes[front].id)}: 다음 전투에 상처 카드 1장.`);
+      break;
+    }
   }
   return lines;
+}
+
+function frontIdx(run: Run): number {
+  return run.formation.find((i) => !run.heroes[i].dead) ?? aliveIdx(run)[0];
+}
+
+function addRunStressSafe(run: Run, hi: number, n: number): void {
+  partyStressOne(run, hi, n);
+}
+
+function partyStressOne(run: Run, hi: number, n: number): void {
+  const h = run.heroes[hi];
+  if (!h || h.dead) return;
+  h.stress = Math.max(0, Math.min(100, h.stress + n));
+  if (h.stress >= 50 + run.threshold && h.stress - n < 50 + run.threshold) addCurse(run, hi);
+}
+
+function healAll(run: Run, frac: number): number {
+  let n = 0;
+  for (const h of run.heroes) if (!h.dead) n += healHero(h, h.baseMax * frac);
+  return n;
+}
+
+function revealFamily(run: Run, family: string, n = 99): string[] {
+  const ids = [...ENEMY_EXTRA.values()].filter((e) => e.family === family && e.haewon && enemyRegion(e.id) === run.region && !run.revealed.includes(e.id)).map((e) => e.id);
+  return revealHaewon(run, ids.slice(0, n));
+}
+
+function purgeCurses(run: Run): number {
+  const before = run.deck.length;
+  run.deck = run.deck.filter((c) => !D().cards[c.d].isCurse);
+  return before - run.deck.length;
+}
+
+function bondAll(run: Run, n: number): void {
+  for (const [a, b] of pairs(run)) addBond(run, a, b, n);
+}
+
+const SUPPLY_NAME_KO: Record<SupplyId, string> = { candle: '촛불', rice: '쌀', incense: '향', jijeon: '지전', bujeok: '부적', sul: '술' };
+
+/** 지역 2·3 기물 (05-region2 §5 · 05-region3 §5) */
+function regionCurio(app: AppState, run: Run, dlg: DialogState, optId: string, r: number, lines: string[]): { then: DialogState['then']; done: boolean } {
+  let then: DialogState['then'] = 'none';
+  const key = `${dlg.id}:${optId}`;
+  switch (key) {
+    // ── 지역 2 ──
+    case 'munjeon_bujeok:bare':
+      if (r < 0.5) {
+        run.supplies.bujeok++;
+        lines.push('빛바랜 부적 아래 새 부적이 하나 끼어 있었다. 부적 +1.');
+      } else {
+        (run.next.fevers ??= []).push(frontIdx(run));
+        lines.push('떼어 낸 자리에서 열기가 번진다. 다음 전투 신열 1장.');
+      }
+      break;
+    case 'munjeon_bujeok:supply':
+      for (const c of run.dungeon.corridors) for (const t of c.tiles) if (t.content.k === 'trap' && t.content.id === 'yeolgi_golmok') t.known = true;
+      lines.push('향을 피워 새로 붙였다. 이번 원정의 「열기 서린 골목」을 모두 미리 본다.');
+      break;
+    case 'munjeon_bujeok:hero':
+      run.next.fevers = [];
+      run.next.talismans = (run.next.talismans ?? 0) + 1;
+      lines.push('법사가 부적을 새로 써 붙였다. 다가올 신열을 걷어 내고, 다음 전투 첫 손에 화부 1장.');
+      break;
+    case 'sigeun_yaktang:bare':
+      if (r < 0.5) {
+        partyStress(run, -10);
+        lines.push('남은 약이 아직 따뜻했다. 파티 귀기 −10.');
+      } else {
+        run.next.weakAll = (run.next.weakAll ?? 0) + 1;
+        lines.push('약이 쉬어 있었다. 다음 전투 첫 턴 파티 약화 1.');
+      }
+      break;
+    case 'sigeun_yaktang:supply':
+      run.flags.mealBonus = (run.flags.mealBonus ?? 0) + 0.1;
+      lines.push('약술을 담갔다. 이번 원정 길굿 끼니 회복 +10%p.');
+      break;
+    case 'sigeun_yaktang:hero':
+      run.next.fevers = [];
+      lines.push('만신이 공수로 처방을 받는다. 신열을 걷어 내고 카드 한 장을 강화할 수 있다.');
+      if (upgradableIdx(run).length) then = 'upgrade';
+      break;
+    case 'ssarimal_curio:bare':
+      if (r < 0.5) {
+        run.gold += 15;
+        lines.push('싸리말 안장 밑에서 엽전 15.');
+      } else {
+        partyStress(run, 8);
+        lines.push('싸리말이 삐걱이며 무너졌다. 파티 귀기 +8.');
+      }
+      break;
+    case 'ssarimal_curio:supply':
+      run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
+      lines.push('술을 손님상에 올려 두었다. 이번 원정의 손님 배웅을 대접 +4로 시작한다.');
+      break;
+    case 'ssarimal_curio:hero':
+      run.next.jangdan = (run.next.jangdan ?? 0) + 1;
+      lines.push('탈꾼이 말놀이를 한다. 진형을 자유롭게 바꾸고, 다음 전투 첫 턴 장단 +1.');
+      then = 'formation';
+      break;
+    case 'geumjul_jip:bare':
+      run.materials += 2;
+      partyStress(run, 8);
+      lines.push('금줄을 넘었다. 재료 +2, 파티 귀기 +8.');
+      if (r < 0.3) curse(run, lines);
+      break;
+    case 'geumjul_jip:supply':
+      if (r < 0.3) relicChance(run, lines, 1);
+      else {
+        run.gold += 20;
+        lines.push('금줄을 거두고 부적을 붙였다. 집주인 넋이 엽전 20을 내놓았다.');
+      }
+      break;
+    case 'geumjul_jip:hero':
+      lines.push(`차사가 명부를 확인한다. ${revealText([...revealRandomHaewon(run, 1), ...revealHaewon(run, ['bonghanjip_neok'])])}`);
+      break;
+    case 'maeul_sangyeojip:bare':
+      if (r < 0.5) {
+        run.gold += 25;
+        lines.push('상엿집 구석에서 엽전 25.');
+      } else if (r < 0.8) {
+        lines.push('상엿집에서 상문 잡귀가 곡을 흉내 내며 일어선다!');
+        then = 'battle';
+        dlg.battleEnc = 'ev_sangmun';
+      } else curse(run, lines);
+      break;
+    case 'maeul_sangyeojip:supply':
+      partyStress(run, -10);
+      lines.push('향을 올려 넋을 위로했다. 파티 귀기 −10.');
+      relicChance(run, lines, 0.3);
+      break;
+    case 'maeul_sangyeojip:hero':
+      bondAll(run, 1);
+      run.next.jangdan = (run.next.jangdan ?? 0) + 2;
+      lines.push('잽이가 상엿소리를 메긴다. 파티 모든 쌍 정 +1, 다음 전투 첫 턴 장단 +2.');
+      break;
+    case 'umulga_durebak:bare':
+      if (r < 0.6) lines.push(`맑은 물이다. 체력 +${healAll(run, 0.08)}.`);
+      else {
+        (run.next.fevers ??= []).push(frontIdx(run));
+        lines.push('물이 미지근하다. 다음 전투 신열 1장.');
+      }
+      break;
+    case 'umulga_durebak:supply':
+      lines.push(`부적으로 우물을 정화했다. 체력 +${healAll(run, 0.12)}.`);
+      break;
+    case 'umulga_durebak:hero':
+      partyStress(run, -10);
+      run.next.fevers = [];
+      lines.push('승려가 우물에 염불한다. 파티 귀기 −10, 신열을 걷어 냈다.');
+      break;
+    case 'jangteo_jwapan:bare':
+      if (r < 0.5) {
+        const g = 15 + Math.floor(rand(run) * 16);
+        run.gold += g;
+        lines.push(`좌판 밑에서 엽전 ${g}.`);
+      } else {
+        const ids: SupplyId[] = ['candle', 'rice', 'incense', 'jijeon', 'bujeok', 'sul'];
+        const id = ids[Math.floor(rand(run) * ids.length)];
+        run.supplies[id]++;
+        lines.push(`버려진 좌판에서 ${SUPPLY_NAME_KO[id]} +1.`);
+      }
+      break;
+    case 'jangteo_jwapan:hero': {
+      run.materials += 2;
+      if (run.pos.kind === 'room') for (const c of corridorsOf(run.dungeon, run.pos.room)) for (const t of c.tiles) if (t.content.k === 'trap') t.known = true;
+      lines.push('포수가 덫을 살폈다. 재료 +2, 이웃한 길목의 덫이 드러났다.');
+      break;
+    }
+    case 'alteon_bang:bare':
+      if (r < 0.4) {
+        lines.push('앓던 이가 남긴 물건에서 기억 하나가 떠오른다. 카드 3장 중 1장을 고른다.');
+        then = 'cards';
+        dlg.cardOptions = rollCards(run, 'normal').slice(0, 3);
+      } else {
+        const f = frontIdx(run);
+        (run.next.fevers ??= []).push(f, f);
+        partyStress(run, 5);
+        lines.push('방에 열기가 가득하다. 다음 전투 신열 2장, 파티 귀기 +5.');
+      }
+      break;
+    case 'alteon_bang:supply':
+      lines.push('방을 정화했다. 덱에서 카드 한 장을 뺄 수 있다.');
+      then = 'remove';
+      break;
+    case 'alteon_bang:hero':
+      lines.push(`작두박수가 신칼로 부정을 가른다. ${revealText(revealFamily(run, '역귀', 1))}`);
+      if (upgradableIdx(run, 'baksu').length) then = 'upgrade_baksu';
+      break;
+    // ── 지역 3 ──
+    case 'munsajae_choso:bare':
+      if (r < 0.5) {
+        run.supplies.jijeon += 2;
+        lines.push('통행패 사이에 지전 2.');
+      } else {
+        partyStress(run, 10);
+        lines.push('빈 초소에 사자들의 심술이 남아 있었다. 파티 귀기 +10.');
+      }
+      break;
+    case 'munsajae_choso:supply':
+      run.next.firstStrike = true;
+      lines.push('인정을 놓아 두었다. 다음 전투는 선제.');
+      break;
+    case 'munsajae_choso:hero':
+      run.flags.gateFree = (run.flags.gateFree ?? 0) + 1;
+      lines.push(`차사가 옛 동료의 통행패를 꺼낸다. 다음 대문 통행 무료 + 방 ${scoutRooms(run, 2)}곳 정찰.`);
+      break;
+    case 'sajasang_heunjeok:bare':
+      run.gold += 20;
+      lines.push('사자상 앞에 남은 엽전 20을 주웠다.');
+      if (r < 0.3) curse(run, lines);
+      break;
+    case 'sajasang_heunjeok:supply':
+      bondAll(run, 1);
+      lines.push(`사자밥을 다시 차렸다. 파티 모든 쌍 정 +1. ${revealText(revealHaewon(run, ['maenap_neok']))}`);
+      break;
+    case 'sajasang_heunjeok:hero':
+      partyStress(run, -15);
+      lines.push('탈꾼이 사자상 앞에서 말뚝이 재담을 한다. 파티 귀기 −15.');
+      break;
+    case 'eopgyeong_jogak:bare':
+      if (r < 0.5) lines.push(`조각에 원귀 하나가 비친다. ${revealText(revealRandomHaewon(run, 1))}`);
+      else {
+        partyStress(run, 15);
+        lines.push('조각에 제 업이 비쳤다. 파티 귀기 +15.');
+      }
+      break;
+    case 'eopgyeong_jogak:supply':
+      lines.push('향으로 닦았다. 카드 한 장을 강화할 수 있다.');
+      if (upgradableIdx(run).length) then = 'upgrade';
+      break;
+    case 'eopgyeong_jogak:hero':
+      lines.push(`만신이 비친 업을 공수로 읽는다. ${revealText(revealRandomHaewon(run, 2))}`);
+      break;
+    case 'yaksu_saem:bare':
+      if (r < 0.5) lines.push(`맑은 약수다. 체력 +${healAll(run, 0.12)}.`);
+      else {
+        partyStress(run, 10);
+        lines.push('물이 차갑게 넋을 흔든다. 파티 귀기 +10.');
+      }
+      break;
+    case 'yaksu_saem:supply':
+      lines.push(`정성을 들여 길었다. 체력 +${healAll(run, 0.2)}.`);
+      break;
+    case 'yaksu_saem:hero': {
+      const inj = run.heroes.find((h) => !h.dead && h.injured);
+      if (inj) inj.injured = false;
+      lines.push(`승려가 염불하고 길었다.${inj ? ` ${heroName(inj.id)}의 중상이 나았다.` : ''} 체력 +${healAll(run, 0.15)}.`);
+      break;
+    }
+    case 'muneojin_seongmun:bare':
+      run.materials += 1;
+      run.gold += 15;
+      lines.push('잔해에서 재료 1과 엽전 15.');
+      if (r < 0.3) curse(run, lines);
+      break;
+    case 'muneojin_seongmun:supply':
+      if (r < 0.3) {
+        const id = rollRelics(run, ['고급'], 1)[0];
+        if (id) {
+          run.relics.push(id);
+          applyRelicGain(run, id);
+          lines.push(`봉인이 풀리며 가호 「${RELIC_BY_ID.get(id)!.name}」 — ${RELIC_BY_ID.get(id)!.effect}`);
+        }
+      } else {
+        run.gold += 30;
+        lines.push('봉인을 풀자 엽전 30.');
+      }
+      break;
+    case 'muneojin_seongmun:hero':
+      run.materials += 1;
+      lines.push(`작두박수가 신칼로 녹슨 빗장을 가른다. 재료 +1.${upgradableIdx(run, 'baksu').length ? ' 작두박수 카드 한 장을 강화할 수 있다.' : ''}`);
+      if (upgradableIdx(run, 'baksu').length) then = 'upgrade_baksu';
+      break;
+    case 'beorin_buk:bare':
+      if (r < 0.5) {
+        run.next.jangdan = (run.next.jangdan ?? 0) + 1;
+        lines.push('북소리가 길게 울린다. 다음 전투 첫 턴 장단 +1.');
+      } else {
+        lines.push('북소리에 이름 없는 군졸들이 대오를 갖춘다!');
+        then = 'battle';
+        dlg.battleEnc = 'ev_buk';
+      }
+      break;
+    case 'beorin_buk:supply':
+      partyStress(run, -10);
+      bondAll(run, 1);
+      lines.push('북에 술을 부어 고사를 지냈다. 파티 귀기 −10, 모든 쌍 정 +1.');
+      break;
+    case 'beorin_buk:hero':
+      run.flags.jangdanFights = { n: 2, left: 2 };
+      lines.push('잽이가 북을 울린다. 다음 두 전투 첫 턴 장단 +2.');
+      break;
+    case 'jeokpaeji_deomi:bare':
+      if (r < 0.4) {
+        lines.push('적패지 사이에서 기억 하나가 떠오른다. 카드 3장 중 1장을 고른다.');
+        then = 'cards';
+        dlg.cardOptions = rollCards(run, 'normal').slice(0, 3);
+      } else {
+        partyStress(run, 10);
+        lines.push('흩어진 이름들이 손에 감긴다. 파티 귀기 +10.');
+      }
+      break;
+    case 'jeokpaeji_deomi:supply':
+      lines.push('소지로 태워 보냈다. 덱에서 카드 한 장을 뺄 수 있다.');
+      then = 'remove';
+      break;
+    case 'jeokpaeji_deomi:hero':
+      lines.push(`법사가 해원경으로 문서를 바로 쓴다. 씌임 카드 ${purgeCurses(run)}장 정화. ${revealText(revealFamily(run, '억울귀', 1))}`);
+      break;
+    case 'gaeksa_jipsin:bare':
+      if (r < 0.5) {
+        run.gold += 15;
+        lines.push('짚신 속에서 엽전 15.');
+      } else {
+        run.next.ambush = true;
+        lines.push('짚신을 신자 발이 무거워진다. 다음 전투는 기습당한다.');
+      }
+      break;
+    case 'gaeksa_jipsin:hero':
+      run.materials += 2;
+      lines.push(`포수가 발자국을 쫓는다. 방 ${scoutRooms(run, 2)}곳 정찰, 재료 +2.`);
+      break;
+    default:
+      lines.push('아무 일도 없었다.');
+  }
+  void app;
+  return { then, done: true };
+}
+
+/** 지역 2·3 방 이벤트 */
+function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, optId: string, lines: string[]): { then: DialogState['then']; done: boolean } {
+  let then: DialogState['then'] = 'none';
+  let done = true;
+  const ev = EVENT_BY_ID.get(dlg.id)!;
+  void optId;
+  switch (`${dlg.id}:${idx}`) {
+    // ── 지역 2 ──
+    case 'sonnim_madang:0':
+    case 'sonnim_madang:1':
+      if (idx === 1) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
+      if (run.relics.includes('ssarimal')) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
+      lines.push(idx === 1 ? '만신이 손님을 청해 모신다. 손님상이 한결 정갈하다(대접 +4로 시작).' : '손님상을 다시 차린다. 손님은 싸워 이길 상대가 아니라 잘 대접해 보낼 신령이다.');
+      lines.push(`대접 12를 6턴 안에 채우면 좋게 떠난다. 손님상 차리기(술 1 또는 쌀 1, 턴당 1회) +3 · 굿상 설치물 · 장단 3+ · 부적.${run.flags.sonnimStart ? ` 시작 대접 ${run.flags.sonnimStart}.` : ''}`);
+      then = 'battle';
+      dlg.battleEnc = 'sonnim';
+      dlg.battleSpecial = 'sonnim';
+      done = false;
+      break;
+    case 'sonnim_madang:2':
+      run.flags.sealPenalty = true;
+      run.flags.sonnimDone = true;
+      lines.push('대문에 부적을 붙였다. 손님은 다른 길로 돌아간다 — 이번 원정 동안 역귀 전투마다 신열 +1장.');
+      break;
+    case 'sonnim_madang:3':
+      run.flags.sonnimPenalty = true;
+      run.flags.sonnimDone = true;
+      run.gold += 20;
+      lines.push('손님을 쫓아내려 하자 길잡이 수비들이 막아선다! (손님은 서운하게 떠난다 — 이번 원정 동안 전투 시작 시 신열 1장, 엽전 20)');
+      then = 'battle';
+      dlg.battleEnc = 'ev_sonnim_chase';
+      break;
+    case 'daedong_umul:0':
+      run.next.fevers = [];
+      lines.push(`우물 고사를 지냈다. 체력 +${healAll(run, 0.15)}, 신열을 걷어 냈다.`);
+      break;
+    case 'daedong_umul:1':
+      run.flags.jangdanFights = { n: 1, left: 3 };
+      lines.push('잽이가 고사 장단을 친다. 다음 세 전투 첫 턴 장단 +1.');
+      break;
+    case 'daedong_umul:2':
+      lines.push(`물만 길었다. 체력 +${healAll(run, 0.05)}.`);
+      if (rand(run) < 0.3) {
+        (run.next.fevers ??= []).push(frontIdx(run));
+        lines.push('물이 미지근하다. 다음 전투 신열 1장.');
+      }
+      break;
+    case 'geumjul_mundap:0':
+      partyStress(run, -10);
+      lines.push('탈꾼이 말뚝이 재담으로 받아친다. 문지기가 웃으며 금줄을 들어 올린다. 파티 귀기 −10.');
+      break;
+    case 'geumjul_mundap:1':
+      lines.push('지전을 쥐여 주자 금줄을 들어 올린다.');
+      break;
+    case 'geumjul_mundap:2':
+      lines.push('금줄을 밀고 지나가자 문간 역귀가 막아선다!');
+      then = 'battle';
+      dlg.battleEnc = 'ev_geumjul';
+      break;
+    case 'binjip_jesasang:0':
+      lines.push(`상을 차렸다. ${revealText(revealFamily(run, '굶주린 넋'))}`);
+      relicChance(run, lines, 0.3);
+      break;
+    case 'binjip_jesasang:1':
+      partyStress(run, -15);
+      bondAll(run, 1);
+      lines.push('승려가 시식을 올린다. 파티 귀기 −15, 모든 쌍 정 +1.');
+      break;
+    case 'uiwon_yakbang:0':
+      run.next.fevers = [];
+      lines.push(`법사가 해원경을 읽어 준다. 씌임 카드 ${purgeCurses(run)}장 정화, 신열을 걷어 냈다. ${revealText(revealFamily(run, '억울귀'))}`);
+      break;
+    case 'uiwon_yakbang:1':
+      lines.push(`약장을 닫아 주고 향을 올렸다. 체력 +${healAll(run, 0.1)}.`);
+      break;
+    case 'uiwon_yakbang:2':
+      run.supplies.sul++;
+      lines.push('약재를 챙겼다. 술 +1.');
+      if (rand(run) < 0.4) {
+        partyStress(run, 8);
+        lines.push('주인 허락 없이 가져간 것이 마음에 걸린다. 파티 귀기 +8.');
+      }
+      break;
+    case 'seonang_gosa:0':
+    case 'hon_bureuneun_deung:0':
+      run.next.drawBonus = (run.next.drawBonus ?? 0) + 1;
+      lines.push(`향을 올리고 물었다. ${revealText(revealHaewon(run, bossEnemyIds(run)))} 보스전 첫 턴 드로우 +1.`);
+      break;
+    case 'seonang_gosa:1':
+      run.next.chasaBlock = 8;
+      lines.push(`차사가 명부를 펼친다. ${revealText(revealHaewon(run, bossEnemyIds(run)))} 보스전 첫 턴 차사 방어도 8.`);
+      break;
+    case 'hon_bureuneun_deung:1': {
+      const curses = run.deck.map((c, i) => (D().cards[c.d].isCurse ? i : -1)).filter((i) => i >= 0);
+      if (curses.length) run.deck.splice(curses[0], 1);
+      lines.push(`법사가 해원경을 읽는다. ${revealText(revealHaewon(run, bossEnemyIds(run)))}${curses.length ? ' 씌임 카드 1장 정화.' : ''}`);
+      break;
+    }
+    // ── 지역 3 ──
+    case 'munsajae_mundap:0':
+      run.next.firstStrike = true;
+      lines.push('인정을 쓰자 사자들이 길을 비킨다. 다음 전투는 선제.');
+      break;
+    case 'munsajae_mundap:1':
+      run.flags.gateFree = (run.flags.gateFree ?? 0) + 1;
+      lines.push('차사가 적패지를 내보인다. 무료로 통과하고, 다음 대문 통행도 무료.');
+      break;
+    case 'munsajae_mundap:2':
+      run.next.jangdan = (run.next.jangdan ?? 0) + 2;
+      lines.push('잽이가 장단을 치며 받아넘긴다. 사자들이 어깨를 들썩이며 길을 연다. 다음 전투 첫 턴 장단 +2.');
+      break;
+    case 'munsajae_mundap:3':
+      lines.push('버티자 문 두드리는 객귀와 군졸들이 몰려든다!');
+      then = 'battle';
+      dlg.battleEnc = 'ev_munsajae';
+      break;
+    case 'saemji_noyeok:0': {
+      let best = aliveIdx(run)[0];
+      for (const i of aliveIdx(run)) if (run.heroes[i].hp / effMax(run.heroes[i]) > run.heroes[best].hp / effMax(run.heroes[best])) best = i;
+      const h = run.heroes[best];
+      h.hp = Math.max(1, h.hp - Math.round(h.baseMax * 0.15));
+      if (!run.relics.includes('yaksu_sabal')) {
+        run.relics.push('yaksu_sabal');
+        lines.push(`${heroName(h.id)}이(가) 물을 길었다(체력 −15%). 희귀 가호 「약수 한 사발」 — ${RELIC_BY_ID.get('yaksu_sabal')!.effect}`);
+      } else lines.push(`${heroName(h.id)}이(가) 물을 길었다. 약수 한 사발은 이미 있다.`);
+      break;
+    }
+    case 'saemji_noyeok:1':
+      partyStress(run, 10);
+      lines.push(`나무를 했다. 파티 귀기 +10, 체력 +${healAll(run, 0.25)}.`);
+      break;
+    case 'saemji_noyeok:2':
+      lines.push(`승려가 샘가에서 염불한다. 체력 +${healAll(run, 0.25)}.`);
+      break;
+    case 'eopgyeong_bichugi:0':
+    case 'eopgyeong_bichugi:1':
+    case 'eopgyeong_bichugi:2': {
+      const r = eopgyeong(run.stats.haewons, { incense: idx === 1, manshin: idx === 2 });
+      run.flags.eopTier = r.tier;
+      run.flags.knots = knotPresetBits(run.party, r.knots);
+      if (r.reveal) revealHaewon(run, bossEnemyIds(run));
+      if (r.draw) run.next.drawBonus = (run.next.drawBonus ?? 0) + r.draw;
+      if (r.hpPct) healAll(run, r.hpPct);
+      if (r.stress) partyStress(run, r.stress);
+      lines.push(`업경대는 판결하지 않는다. ${r.text}`);
+      break;
+    }
+    case 'kkamagwi_jeokpaeji:0':
+      lines.push(`쌀을 뿌려 달랬다. 적패지를 받았다. ${revealText(revealHaewon(run, ['munseo_ilheun_neok']))}`);
+      if (upgradableIdx(run).length) then = 'upgrade';
+      break;
+    case 'kkamagwi_jeokpaeji:1':
+      partyStress(run, -10);
+      lines.push('차사가 적패지를 받아 든다. 파티 귀기 −10.');
+      if (upgradableIdx(run, 'chasa').length) {
+        then = 'upgrade_hero';
+        dlg.upgradeHero = 'chasa';
+      }
+      break;
+    case 'kkamagwi_jeokpaeji:2':
+      run.flags.crow = true;
+      lines.push('까마귀를 쫓아냈다. 차례가 어지러워졌다 — 이번 원정 동안 전투 첫 턴 무작위 영웅 하나가 홀림 1.');
+      break;
+    case 'sajabap_jul:0':
+      partyStress(run, -15);
+      lines.push(`밥을 나눴다. 파티 귀기 −15. ${revealText(revealFamily(run, '굶주린 넋'))}`);
+      break;
+    case 'sajabap_jul:1':
+      partyStress(run, -10);
+      run.next.firstStrike = true;
+      lines.push('탈꾼이 줄을 웃긴다. 파티 귀기 −10, 다음 전투는 선제.');
+      break;
+    case 'sajabap_jul:2':
+      partyStress(run, 5);
+      lines.push('새치기하자 줄이 흐트러지며 넋들이 덤벼든다! 파티 귀기 +5.');
+      then = 'battle';
+      dlg.battleEnc = 'ev_sajabap';
+      break;
+    default:
+      lines.push(ev.choices[idx]?.result ?? '아무 일도 없었다.');
+  }
+  void app;
+  return { then, done };
 }
 
 function markHere(run: Run): void {

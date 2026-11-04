@@ -15,7 +15,8 @@
     "web:build": "tsc --noEmit -p web/tsconfig.json && vite build --config web/vite.config.ts",
     "web:artifact": "npm run web:build && node web/scripts/artifact.mjs",
     "web:e2e": "npm run web:artifact && node web/scripts/e2e.mjs",
-    "web:headless": "node --import tsx web/scripts/headless.ts"
+    "web:headless": "node --import tsx web/scripts/headless.ts",
+    "sim:campaign": "node --import tsx src/sim/campaign-sim.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

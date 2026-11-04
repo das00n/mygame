@@ -7,6 +7,7 @@ import { CombatScreen } from './ui/combat.tsx';
 import { MapScreen } from './ui/map.tsx';
 import { CampScreen, DialogView, Panels, PickerView, ResultScreen, RewardScreen } from './ui/screens.tsx';
 import { ShrineScreen, TitleScreen } from './ui/shrine.tsx';
+import { EndingScreen, SettleScreen, VillageScreen } from './ui/village.tsx';
 
 export function App() {
   const a = useStore();
@@ -32,6 +33,9 @@ export function App() {
     case 'reward': body = a.reward ? <RewardScreen /> : <TitleScreen />; break;
     case 'camp': body = a.camp ? <CampScreen /> : <TitleScreen />; break;
     case 'result': body = a.result ? <ResultScreen /> : <TitleScreen />; break;
+    case 'village': body = a.campaign ? <VillageScreen /> : <TitleScreen />; break;
+    case 'settle': body = a.campaign && a.settlement ? <SettleScreen /> : a.campaign ? <VillageScreen /> : <TitleScreen />; break;
+    case 'ending': body = a.campaign?.ending ? <EndingScreen /> : <TitleScreen />; break;
   }
   return (
     <div class="app" data-screen={a.screen}>

@@ -106,11 +106,11 @@
    "haewon": {"status": "부적", "rule": "부적(토큰) 카드의 마지막 피해로 쓰러뜨린다", "story": "대문에 붙은 봉인 부적을 새 부적으로 풀어 주자 원망을 내려놓고 문밖으로 나선다"},
    "drops": {"material": "타다 남은 소지", "gold": [18, 26]}},
 
-  {"id": "geumjul_jonwi", "name": "금줄 친 존위 원귀", "family": "억울귀", "category": "elite", "hp": [124, 130], "position": "back",
+  {"id": "geumjul_jonwi", "name": "금줄 친 존위 원귀", "family": "억울귀", "category": "elite", "hp": [120, 126], "position": "back",
    "han": "마을 어른으로서 돌림병을 막으려 어귀에 금줄을 치고 드나듦을 막았다. 갇힌 이들의 원망을 한 몸에 받다가 죽었다.",
    "intents": [
     {"id": "a", "name": "금줄 치기", "kind": "possess", "target": "전체", "effect": "모든 영웅을 홀린다(홀림 1: 각 영웅의 다음 카드 1장이 효과 없음, 비용은 든다)"},
-    {"id": "b", "name": "꾸짖음", "kind": "attack", "target": "선두", "damage": 17, "hits": 1},
+    {"id": "b", "name": "꾸짖음", "kind": "attack", "target": "선두", "damage": 16, "hits": 1},
     {"id": "c", "name": "마을 봉쇄", "kind": "buff", "target": "자신", "block": 14, "effect": "공격 +2 (누적)"},
     {"id": "d", "name": "회초리", "kind": "attack", "target": "후열", "damage": 6, "hits": 2}
    ],
@@ -119,7 +119,7 @@
    "pressures": ["P3", "P1"],
    "haewon": {"status": "명부", "rule": "명부 8 이상인 상태로 쓰러뜨린다", "story": "원망 대신 마을을 지키려던 뜻을 명부에 바로 적어 주자 스스로 금줄을 거둔다"},
    "drops": {"material": "타다 남은 소지", "gold": [40, 55]}},
-  {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [84, 88], "position": "back",
+  {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [81, 85], "position": "back",
    "han": "돌림병이 한창일 때 장례도 없이 한자리에 서둘러 묻힌 넋들. 서로 엉겨 하나가 되었다.",
    "intents": [
     {"id": "a", "name": "엉킨 열기", "kind": "attack", "target": "전체", "damage": 5, "hits": 1},
@@ -131,7 +131,7 @@
    "pressures": ["P7", "P4"],
    "haewon": {"status": "상흔", "rule": "상흔 6 이상이거나 붕괴 상태에서 쓰러뜨린다", "story": "엉킨 넋들의 앓던 자리를 하나하나 짚어, 한 사람씩 따로 보내 준다"},
    "drops": {"material": "빛바랜 역병 부적", "gold": [40, 55]}},
-  {"id": "pijeop_neok", "name": "피접 가던 넋", "family": "역귀", "category": "elite", "hp": [104, 110], "position": "front",
+  {"id": "pijeop_neok", "name": "피접 가던 넋", "family": "역귀", "category": "elite", "hp": [101, 107], "position": "front",
    "han": "병을 피해 식구를 데리고 마을을 떠나다 어귀에서 쓰러졌다. 이번에는 꼭 빠져나가려 한다.",
    "intents": [
     {"id": "a", "name": "앞을 막는 이 치기", "kind": "attack", "target": "선두", "damage": 9, "hits": 2},

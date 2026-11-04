@@ -49,6 +49,11 @@ export const HERO_ACTS: HeroAct[] = [
   { id: 'chasa_rope', hero: 'chasa', label: '오라 감기', detail: '다음 전투를 오라 2를 채운 채 시작한다.', points: 2 },
 ];
 
+/** 무쇠 약탕관: 끼니 회복이 절반 */
+function mealMult(run: Run): number {
+  return run.relics.includes('musoe_yaktang') ? 0.5 : 1;
+}
+
 export function startCamp(app: AppState, room: number): void {
   const run = app.run!;
   run.dungeon.rooms[room].campUsed = true;
@@ -64,12 +69,14 @@ export function campActions(run: Run, camp: CampState): CampAction[] {
   const alive = aliveIdx(run);
   const jowang = run.relics.includes('jowang');
   const mealUsed = camp.meal;
+  const mm = mealMult(run);
+  const pct = (base: number) => Math.round((base * mm + (run.flags.mealBonus ?? 0) * 100) * (jowang ? 2 : 1));
   out.push({
-    id: 'meal_light', label: '끼니 (보통)', detail: `쌀 2: 파티 체력 ${jowang ? 30 : 15}% 회복, 귀기 −${jowang ? 10 : 5}.`, points: 0, rice: 2, group: 'meal',
+    id: 'meal_light', label: '끼니 (보통)', detail: `쌀 2: 파티 체력 ${pct(15)}% 회복, 귀기 −${jowang ? 10 : 5}.`, points: 0, rice: 2, group: 'meal',
     enabled: !mealUsed && run.supplies.rice >= 2, reason: mealUsed ? '끼니는 한 번' : run.supplies.rice < 2 ? '쌀이 모자라다' : undefined,
   });
   out.push({
-    id: 'meal_full', label: '끼니 (넉넉히)', detail: `쌀 4: 파티 체력 ${jowang ? 60 : 30}% 회복, 귀기 −${jowang ? 20 : 10}.`, points: 0, rice: 4, group: 'meal',
+    id: 'meal_full', label: '끼니 (넉넉히)', detail: `쌀 4: 파티 체력 ${pct(30)}% 회복, 귀기 −${jowang ? 20 : 10}.`, points: 0, rice: 4, group: 'meal',
     enabled: !mealUsed && run.supplies.rice >= 4, reason: mealUsed ? '끼니는 한 번' : run.supplies.rice < 4 ? '쌀이 모자라다' : undefined,
   });
   out.push({
@@ -88,9 +95,10 @@ export function campActions(run: Run, camp: CampState): CampAction[] {
     reason: chain ? '삼지창 사슬: 길굿에서 강화할 수 없다' : !upgradable ? '강화할 카드가 없다' : pts(4) ? undefined : '여유가 모자라다',
   });
   out.push({ id: 'remove', label: '카드 제거', detail: '덱에서 카드 1장을 뺀다.', points: 5, group: 'common', enabled: pts(5), reason: pts(5) ? undefined : '여유가 모자라다', pick: 'card-remove' });
+  const purgeCost = run.relics.includes('ssuk_dabal') ? 2 : 3;
   out.push({
-    id: 'purge', label: '씌임 정화', detail: '씌임 카드 1장을 정화한다.', points: 3, group: 'common', enabled: pts(3) && curses > 0,
-    reason: !curses ? '씌임 카드가 없다' : pts(3) ? undefined : '여유가 모자라다', pick: 'curse',
+    id: 'purge', label: '씌임 정화', detail: `씌임 카드 1장을 정화한다.${purgeCost < 3 ? ' (쑥 다발)' : ''}`, points: purgeCost, group: 'common', enabled: pts(purgeCost) && curses > 0,
+    reason: !curses ? '씌임 카드가 없다' : pts(purgeCost) ? undefined : '여유가 모자라다', pick: 'curse',
   });
   out.push({
     id: 'bond', label: '인연 다지기', detail: '영웅 쌍의 정 +2.', points: 3, group: 'common', enabled: pts(3) && alive.length >= 2,
@@ -135,7 +143,8 @@ export function doCampAction(app: AppState, id: string, arg?: number | [number, 
       const full = id === 'meal_full';
       run.supplies.rice -= full ? 4 : 2;
       let healed = 0;
-      for (const h of run.heroes) if (!h.dead) healed += healHero(h, h.baseMax * (full ? 0.3 : 0.15) * jowang);
+      const frac = ((full ? 0.3 : 0.15) * mealMult(run) + (run.flags.mealBonus ?? 0)) * jowang;
+      for (const h of run.heroes) if (!h.dead) healed += healHero(h, h.baseMax * frac);
       partyStress(run, -(full ? 10 : 5) * jowang);
       camp.meal = true;
       msg = `끼니를 지어 먹었다. 체력 +${healed}, 귀기 −${(full ? 10 : 5) * jowang}.`;
@@ -178,6 +187,7 @@ export function doCampAction(app: AppState, id: string, arg?: number | [number, 
         }
       }
       camp.points -= 4;
+      if (!run.track.cheondo.includes(hi)) run.track.cheondo.push(hi);
       msg = `${heroName(h.id)}의 천도굿을 올렸다. 곡 카드 ${before - run.deck.length}장을 정리했다. 조상신이 되었다.`;
       if (best) {
         const def = d.cardById.get(best)!;

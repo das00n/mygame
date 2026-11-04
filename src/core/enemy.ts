@@ -2,7 +2,7 @@
 // region1.json 의 effect 문장을 해석한다 (§13 대상 확장 포함).
 
 import {
-  addStatusCard, addStress, checkOutcome, D, hitHero, makeEnemy, moveToFront, shuffleFormation, standing,
+  addOwnedStatus, addStatusCard, addStress, checkOutcome, D, hitHero, makeEnemy, moveToFront, shuffleFormation, standing,
 } from './engine.ts';
 import { rand } from './rng.ts';
 import type { CombatState, EnemyDef, EnemyState, RawIntent, RawPattern } from './types.ts';
@@ -168,6 +168,18 @@ export function executeIntent(s: CombatState, ei: number): void {
           const ts = it.target === '전체' ? s.formation.slice() : intentTargets(s, e, it, false).map(([hi]) => hi);
           for (const hi of ts) {
             if (s.outcome !== 0) return;
+            // 호위: 선두를 노린 공격은 선두에 방어도가 없으면 산 사람이 맞는다
+            const w = s.ward;
+            if (w && !w.lost && hi === s.formation[0] && it.target !== '전체' && s.heroes[hi].block <= 0) {
+              w.hp -= per(it.damage);
+              if (w.hp <= 0) {
+                w.hp = 0;
+                w.lost = true;
+                s.outcome = 1;
+                return;
+              }
+              continue;
+            }
             hitHero(s, hi, per(it.damage), ei);
           }
         }
@@ -204,6 +216,19 @@ export function executeIntent(s: CombatState, ei: number): void {
     case 'pollute': {
       const m = eff.match(/(\d+)장/);
       const n = m ? Number(m[1]) : 1;
+      if (eff.includes('신열')) {
+        // 신열 (05-region2 §9.1): 주인 = 의도 대상의 서 있는 영웅. '전체'면 진형 앞에서부터 돌아가며 한 장씩
+        const up = s.formation.filter((hi) => standing(s.heroes[hi]));
+        if (!up.length) break;
+        let owners: number[];
+        if (it.target === '전체') owners = up;
+        else {
+          const t = intentTargets(s, e, it, false).map(([hi]) => hi).find((hi) => standing(s.heroes[hi]));
+          owners = [t ?? up[0]];
+        }
+        for (let k = 0; k < n; k++) addOwnedStatus(s, d.special.sinyeol, owners[k % owners.length]);
+        break;
+      }
       const card = eff.includes('그늘') ? d.special.shadow : d.special.noise;
       for (let k = 0; k < n; k++) addStatusCard(s, card);
       break;

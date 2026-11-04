@@ -4,10 +4,10 @@
 import { loadData, PERSONAL_CAP } from './data.ts';
 import { rand, shuffle } from './rng.ts';
 import { chooseIntent, executeIntent, projectIncoming } from './enemy.ts';
-import { DEFAULT_RULES } from './types.ts';
+import { DEFAULT_RULES, ENGRAVE_STATUS, KNOTS } from './types.ts';
 import type {
-  ActionChoice, AutoTarget, CardDef, CardInst, CombatState, CombatStats, Cond, Encounter, EnemyState, HeroId, HeroState, Op,
-  PowerInst, RuleVariant, Trigger,
+  ActionChoice, AutoTarget, CardDef, CardInst, CombatMods, CombatState, CombatStats, Cond, Encounter, EnemyState, HeroId, HeroState, Op,
+  OfferingRule, PowerInst, ProvKey, RuleVariant, Trigger,
 } from './types.ts';
 
 export const D = loadData;
@@ -40,6 +40,14 @@ export interface HeroSetup {
   injured?: boolean;
   recovering?: boolean;
   dead?: boolean;
+  /** 개체 기질(캠페인 §1): 사망 판정 버틸 확률 보정 (담대함 +0.05 · 덤벙댐 −0.05) */
+  saveBonus?: number;
+  /** 귀기 획득 배율 (침착함 0.8 · 겁 많음 1.2) */
+  stressMult?: number;
+  /** 첫 턴 방어도 (날랜 몸) */
+  startBlock?: number;
+  /** 첫 턴 약화 (잠귀 어두움) */
+  startWeak?: number;
 }
 
 export interface CombatSetup {
@@ -51,6 +59,23 @@ export interface CombatSetup {
   jijeon?: number;
   log?: boolean;
   rules?: RuleVariant;
+  /** 공물·대접에 쓰는 보급품 (05-region2 §9.2) */
+  provisions?: Partial<Record<Exclude<ProvKey, 'jijeon'>, number>>;
+  /** 특수 전투: 손님 배웅 (05-region2 §9.3). start = 시작 대접 */
+  entertain?: { goal: number; limit: number; start: number } | null;
+  /** 고풀이: 업경대가 미리 푼 매듭 비트 (05-region3 §9.2) */
+  knotsPreset?: number;
+  /** 균열 강화 원귀 (캠페인 §5): 체력 배율 */
+  enemyHpMult?: number;
+  mods?: CombatMods;
+  /** 약수 한 사발을 이번 원정에서 이미 썼는가 */
+  yaksuUsed?: boolean;
+  /** 나화 한 송이: 꽃 던지기 카드 */
+  nahwa?: boolean;
+  /** 놀이 싸움: 피해 → 귀기 */
+  play?: boolean;
+  /** 호위: 지켜야 할 산 사람 */
+  ward?: { name: string; hp: number } | null;
 }
 
 export function newStats(): CombatStats {
@@ -58,7 +83,7 @@ export function newStats(): CombatStats {
     plays: new Map(), condEval: new Map(), perCount: new Map(), powerFires: new Map(), specialUse: new Map(),
     dmgTakenHero: [0, 0, 0], dmgTakenSlot: [0, 0, 0], jangdanTurnSum: 0, turnsCounted: 0, respPlays: 0, respEligible: 0, cardPlays: 0,
     downs: 0, deaths: 0, sameTurnDeaths: 0, revives: 0, gangsin: 0, collapses: 0, executions: 0, kills: 0, haewons: 0, haewonEligible: 0, haewonHealed: 0, escapes: 0,
-    enemyHaewon: new Map(), heroDmgDealt: [0, 0, 0],
+    enemyHaewon: new Map(), heroDmgDealt: [0, 0, 0], revived: [], sinyeolPlayed: 0, sinyeolMoved: 0,
   };
 }
 
@@ -73,11 +98,13 @@ export function defaultFormation(heroes: HeroState[]): number[] {
 
 export function makeEnemy(s: CombatState, defIdx: number, hpOverride?: number): EnemyState {
   const def = D().enemies[defIdx];
-  const hp = hpOverride ?? def.hpMin + Math.floor(rand(s) * (def.hpMax - def.hpMin + 1));
+  let hp = hpOverride ?? def.hpMin + Math.floor(rand(s) * (def.hpMax - def.hpMin + 1));
+  if (s.hpMult !== 1) hp = Math.round(hp * s.hpMult);
   return {
     def: defIdx, uid: s.nextUid++, hp, maxHp: hp, block: 0, vuln: 0, weak: 0, mark: 0, bleed: 0, doom: 0, shake: 0,
     endure: endureOf(hp, s.rules.endureFrac ?? 0.35), collapseUntil: -1, cancelNext: false, bound: false, atkBonus: 0, intent: -1, patIdx: 0, last: -1, lastRun: 0,
     phase: 0, turnsActed: 0, alive: true, dead: false, escaped: false, haewon: false, lastHitToken: false, summoned: false,
+    capLost: 0, capOff: -1, knots: 0,
   };
 }
 
@@ -91,13 +118,19 @@ export function createCombat(setup: CombatSetup): CombatState {
       id: p.id, idx, melee: def.range === 'melee', maxHp, hp: Math.min(maxHp, p.hp ?? maxHp), block: 0, downed: false, dead: !!p.dead,
       downs: 0, rescue: 0, rescueNeed: RESCUE_BASE, survived: 0, weak: 0, possess: 0, stress: p.stress ?? 0, personal: 0,
       personalCap: PERSONAL_CAP[p.id], stance: false, recovering: !!p.recovering, injured: !!p.injured, cover: -1, downTurn: -1, endDowned: false,
+      saveBonus: p.saveBonus ?? 0, stressMult: p.stressMult ?? 1,
     };
   });
   const s: CombatState = {
     rng: setup.seed | 0, rules: setup.rules ?? DEFAULT_RULES, turn: 0, heroes, formation: [], enemies: [], nextUid: 1, draw: [], hand: [], discard: [], exhaust: [], powerZone: [],
     energy: 0, nextEnergy: 0, jangdan: 0, prevOwners: null, tokensPlayed: 0, formChanges: 0, talChanges: 0, summons: [], powers: [],
     gangsin: false, gangsinExtra: 0, baraji: 0, talAll: false, garakLocked: false, seokja: false, ajik: false, holdFront: -1,
-    statusAdded: 0, offeringPaid: false, groupHaewon: [], jijeon: setup.jijeon ?? 3, deferredTokens: [], outcome: 0, lastDrawn: null,
+    statusAdded: 0, offeringPaid: false, groupHaewon: [], jijeon: setup.jijeon ?? 3,
+    prov: { rice: setup.provisions?.rice ?? 0, sul: setup.provisions?.sul ?? 0, bujeok: setup.provisions?.bujeok ?? 0, incense: setup.provisions?.incense ?? 0 },
+    offerTurn: -1, entertain: setup.entertain ? { goal: setup.entertain.goal, limit: setup.entertain.limit, value: setup.entertain.start, result: null } : null,
+    mods: setup.mods ?? {}, hpMult: setup.enemyHpMult ?? 1, firstBlockTurn: -1, sinyeolFreeTurn: -1, polluteBlocked: 0, yaksuUsed: !!setup.yaksuUsed, lastOwner: -1,
+    play: !!setup.play, ward: setup.ward ? { name: setup.ward.name, hp: setup.ward.hp, maxHp: setup.ward.hp, lost: false } : null,
+    deferredTokens: [], outcome: 0, lastDrawn: null,
     stats: setup.record ? newStats() : null, newCurses: [], log: setup.log ? [] : null,
   };
   s.formation = defaultFormation(heroes);
@@ -115,7 +148,24 @@ export function createCombat(setup: CombatSetup): CombatState {
   if (s.enemies.some((e) => d.enemies[e.def].passives.some((p) => p.includes('노잣돈')))) {
     s.hand.push({ d: d.special.offering, o: -1, o2: -1, orig: -1, x: -1 });
   }
+  // 공물 일반화 (05-region2 §9.2): 허주 벗기기 · 사자밥 차리기
+  for (const e of s.enemies) {
+    const off = d.enemies[e.def].offering;
+    if (off && !s.hand.some((c) => c.d === off.card)) s.hand.push({ d: off.card, o: -1, o2: -1, orig: -1, x: -1 });
+  }
+  // 손님 배웅: 손님상 차리기 (반복형 공물)
+  if (s.entertain) s.hand.push({ d: d.special.sonnimsang, o: -1, o2: -1, orig: -1, x: -1 });
+  if (setup.nahwa) s.hand.push({ d: d.special.kkot, o: -1, o2: -1, orig: -1, x: -1 });
+  // 고풀이: 업경대가 미리 푼 매듭
+  if (setup.knotsPreset) for (const e of s.enemies) if (d.enemies[e.def].haewon.kind === 'knots') e.knots |= setup.knotsPreset;
   startPlayerTurn(s);
+  // 개체 기질: 첫 턴 방어도·약화
+  setup.party.forEach((p, i) => {
+    const h = s.heroes[i];
+    if (h.dead) return;
+    if (p.startBlock) gainBlock(s, i, p.startBlock);
+    if (p.startWeak) h.weak += p.startWeak;
+  });
   return s;
 }
 
@@ -134,6 +184,9 @@ export function cloneState(s: CombatState): CombatState {
     powers: s.powers.map((p) => ({ ...p })),
     deferredTokens: s.deferredTokens.slice(),
     newCurses: s.newCurses.slice(),
+    prov: { ...s.prov },
+    entertain: s.entertain ? { ...s.entertain } : null,
+    ward: s.ward ? { ...s.ward } : null,
     stats: null,
     log: null,
   };
@@ -265,7 +318,7 @@ export function endPlayerTurn(s: CombatState): void {
   // 작두: 장단 2 미만으로 턴을 마치면 헛디뎌 내려서고 체력 6을 잃는다
   const baksu = heroOf(s, 'baksu');
   if (baksu && standing(baksu) && baksu.stance) {
-    const fall = s.jangdan < 2;
+    const fall = s.jangdan < 2 && !(s.mods.bladeSafeTurn && s.turn <= s.mods.bladeSafeTurn);
     recordCond(s, bladeFallKey(), fall);
     if (fall) {
       baksu.stance = false;
@@ -284,10 +337,36 @@ export function endPlayerTurn(s: CombatState): void {
       killEnemy(s, i);
     }
   }
-  // 손패 정리 (손에 든 채 턴을 마치는 저주 효과 → 휘발 소멸 → 버림)
+  // 고풀이 매듭 ⑤⑥⑧: 턴을 마칠 때의 장단 · 굿상 · 진형 변화 (05-region3 §9.3)
+  for (const e of s.enemies) {
+    if (!e.alive || d.enemies[e.def].haewon.kind !== 'knots') continue;
+    if (s.jangdan >= 3) e.knots |= 1 << 4;
+    if (s.summons.length) e.knots |= 1 << 5;
+    if (s.formChanges > 0) e.knots |= 1 << 7;
+  }
+  // 부군의 가호: 장단 3 이상으로 턴을 마치면 마지막으로 카드를 낸 영웅 방어도 4
+  if (s.mods.bugun && s.jangdan >= 3 && s.lastOwner >= 0 && standing(s.heroes[s.lastOwner])) gainBlock(s, s.lastOwner, 4);
+  // 손님 배웅: 턴을 마칠 때 대접 (굿상 설치물 하나당 +1 최대 2 · 장단 3+ · 부적을 낸 턴)
+  if (s.entertain && !s.entertain.result && s.outcome === 0) {
+    const en = s.entertain;
+    en.value += Math.min(2, s.summons.length) + (s.jangdan >= 3 ? 1 : 0) + (s.tokensPlayed > 0 ? 1 : 0);
+    entertainCheck(s);
+    if (!en.result && s.turn >= en.limit) {
+      en.result = 'timeout';
+      log(s, '손님이 서운하게 떠났다');
+      s.outcome = 1;
+    }
+    if (s.outcome !== 0) return;
+  }
+  // 손패 정리 (손에 든 채 턴을 마치는 저주 효과 → 휘발 소멸 → 버림). 신열은 약화 감소 뒤에 옮긴다
   const keep: CardInst[] = [];
+  const fevers: CardInst[] = [];
   for (const c of s.hand) {
     const def = d.cards[c.d];
+    if (c.d === d.special.sinyeol) {
+      fevers.push(c);
+      continue;
+    }
     for (const op of def.effects) {
       if (op.op === 'stress' && op.when === 'hand_turn_end') {
         if (op.to === 'owner' && c.o >= 0) addStress(s, c.o, op.n);
@@ -308,14 +387,52 @@ export function endPlayerTurn(s: CombatState): void {
   const jaebi = heroOf(s, 'jaebi');
   if (jaebi && !s.garakLocked) jaebi.personal = Math.max(0, jaebi.personal - 1);
   for (const h of s.heroes) if (h.weak > 0) h.weak--;
+  // 신열 옮김 (05-region2 §9.1): 주인 약화 1 → 주인이 바로 뒤 칸(후열이면 바로 앞 칸)의 서 있는 영웅으로 → 버린 더미
+  for (const c of fevers) {
+    if (c.o >= 0 && standing(s.heroes[c.o])) s.heroes[c.o].weak += 1;
+    const next = feverNext(s, c.o);
+    if (next !== c.o && s.stats) s.stats.sinyeolMoved++;
+    s.discard.push({ ...c, o: next });
+  }
   // "이번 턴" 임시 트리거 정리 (피격 반응은 적 턴까지 남긴다)
   s.powers = s.powers.filter((p) => !p.temp || p.trigger === 'on_hit');
   checkOutcome(s);
 }
 
+/** 신열이 옮겨 갈 영웅: 진형에서 바로 뒤 칸의 서 있는 영웅 (주인이 맨 뒤면 바로 앞 칸). 쓰러진 영웅은 건너뛴다 */
+function feverNext(s: CombatState, o: number): number {
+  const f = s.formation;
+  const i = f.indexOf(o);
+  if (i < 0) return f.find((hi) => standing(s.heroes[hi])) ?? o;
+  for (let k = i + 1; k < f.length; k++) if (standing(s.heroes[f[k]])) return f[k];
+  for (let k = i - 1; k >= 0; k--) if (standing(s.heroes[f[k]])) return f[k];
+  return o;
+}
+
+/** 대접이 목표에 닿으면 좋게 배웅: 남은 수비는 물러가고 해원 1회로 친다 */
+function entertainCheck(s: CombatState): void {
+  const en = s.entertain;
+  if (!en || en.result || en.value < en.goal) return;
+  en.result = 'sendoff';
+  for (const e of s.enemies) if (e.alive) {
+    e.alive = false;
+    e.haewon = true;
+  }
+  if (s.stats) {
+    s.stats.haewons++;
+    s.stats.haewonEligible++;
+  }
+  haewonHeal(s);
+  log(s, '손님을 좋게 배웅했다');
+  s.outcome = 1;
+}
+
 export function enemyTurn(s: CombatState): void {
   if (s.outcome !== 0) return;
-  for (const e of s.enemies) if (e.alive) e.block = 0;
+  for (const e of s.enemies) if (e.alive) {
+    e.block = 0;
+    e.capLost = 0; // 빗장: 적 턴이 시작되면 0
+  }
   // 상흔: 적 턴 시작 시 상흔만큼 체력을 잃고 1 감소 (방어도 무시)
   for (let i = 0; i < s.enemies.length; i++) {
     const e = s.enemies[i];
@@ -330,6 +447,13 @@ export function enemyTurn(s: CombatState): void {
     if (!s.enemies[i].alive) continue;
     executeIntent(s, i);
   }
+  // 손님의 차례: 대접이 (지난 턴 수 × 2)보다 적으면 서운함(선두 영웅 덱에 신열 1장), 아니면 흐뭇함(파티 귀기 −2)
+  if (s.entertain && !s.entertain.result && s.outcome === 0) {
+    if (s.entertain.value < s.turn * 2) {
+      const front = s.formation.find((hi) => standing(s.heroes[hi]));
+      if (front !== undefined) addOwnedStatus(s, D().special.sinyeol, front);
+    } else for (const h of s.heroes) if (!h.dead) addStress(s, h.idx, -2);
+  }
   for (const e of s.enemies) {
     if (!e.alive) continue;
     if (e.vuln > 0) e.vuln--;
@@ -341,7 +465,7 @@ export function enemyTurn(s: CombatState): void {
 
 export function checkOutcome(s: CombatState): void {
   if (s.outcome !== 0) return;
-  if (!s.enemies.some((e) => e.alive)) {
+  if (!s.enemies.some((e) => e.alive) && !(s.entertain && !s.entertain.result)) {
     s.outcome = 1;
     return;
   }
@@ -378,14 +502,35 @@ function heotgeotIdx(): number {
   return heotgeot;
 }
 
+/** 이번에 낼 때의 비용 (손님의 배웅: 신열 0, 턴당 1회) */
+export function costOf(s: CombatState, inst: CardInst): number {
+  const def = D().cards[inst.d];
+  if (inst.d === D().special.sinyeol && s.mods.sinyeolFree && s.sinyeolFreeTurn !== s.turn) return 0;
+  return def.cost;
+}
+
+/** 공물을 바칠 수 있는 보급품 (없으면 null) */
+export function offeringPay(s: CombatState, off: OfferingRule): { item: ProvKey; n: number } | null {
+  for (const p of off.pay) {
+    const have = p.item === 'jijeon' ? s.jijeon : s.prov[p.item];
+    if (have >= p.n) return p;
+  }
+  return null;
+}
+
 export function canPlay(s: CombatState, inst: CardInst): boolean {
   if (s.outcome !== 0) return false;
   const def = D().cards[inst.d];
   if (def.unplayable) return false;
-  if (def.cost > s.energy) return false;
+  if (costOf(s, inst) > s.energy) return false;
   if (def.requireGangsin && !s.gangsin) return false;
   const sp = D().special;
   if (inst.d === sp.offering && s.jijeon < 3) return false;
+  const off = sp.offerings.get(inst.d);
+  if (off) {
+    if (!offeringPay(s, off)) return false;
+    if (off.repeat && s.offerTurn === s.turn) return false;
+  }
   if (inst.d === sp.rescue || inst.d === sp.mourn) return true;
   if (inst.o >= 0 && !standing(s.heroes[inst.o])) return false;
   if (inst.o2 >= 0 && !standing(s.heroes[inst.o2])) return false;
@@ -398,7 +543,9 @@ export function playCard(s: CombatState, choice: ActionChoice): void {
   if (!inst || !canPlay(s, inst)) throw new Error('illegal play');
   const def = d.cards[inst.d];
   s.hand.splice(choice.hand, 1);
-  s.energy -= def.cost;
+  const cost = costOf(s, inst);
+  if (inst.d === d.special.sinyeol && cost < def.cost) s.sinyeolFreeTurn = s.turn;
+  s.energy -= cost;
   const owners = ownersOf(inst);
   const owner = owners[0];
 
@@ -462,7 +609,10 @@ export function playCard(s: CombatState, choice: ActionChoice): void {
     for (const e of s.enemies) if (e.alive && d.enemies[e.def].passives.some((p) => p.includes('장부 대조'))) e.block += 3;
   } else {
     execOps(s, def.effects, ctx);
+    if (inst.g && s.outcome === 0) engrave(s, inst, ctx);
   }
+  if (inst.d === d.special.sinyeol && s.stats && !possessed) s.stats.sinyeolPlayed++;
+  if (owner >= 0) s.lastOwner = owner;
 
   // 가락: 잽이 카드를 낼 때마다 한 단계 빨라진다
   const jaebi = heroOf(s, 'jaebi');
@@ -490,11 +640,59 @@ export function playCard(s: CombatState, choice: ActionChoice): void {
     if (s.outcome === 0) firePowers(s, 'on_token_play', -1, ctx);
   }
 
-  // 카드 이동
-  if (def.isPower) s.powerZone.push(inst);
+  // 카드 이동 (홀린 주인의 신열은 소멸하지 않고 버린 더미로 · 반복형 공물은 손에 남는다)
+  const off = d.special.offerings.get(inst.d);
+  if (off?.repeat) s.hand.push(inst);
+  else if (def.isPower) s.powerZone.push(inst);
+  else if (possessed && inst.d === d.special.sinyeol) s.discard.push(inst);
   else if (def.exhaust) s.exhaust.push(inst);
   else s.discard.push(inst);
   checkOutcome(s);
+}
+
+/** 무구 각인 (06-base §5): 카드를 낸 뒤 그 계열 상태 +1 생산. 소비자는 늘리지 않는다(R2) */
+let engraveSummon = -1;
+let engraveToken = -1;
+function engrave(s: CombatState, inst: CardInst, ctx: Ctx): void {
+  const d = D();
+  const st = ENGRAVE_STATUS[(inst.g ?? 0) - 1];
+  if (!st) return;
+  const target = () => {
+    if (ctx.target >= 0 && s.enemies[ctx.target]?.alive) return ctx.target;
+    return autoEnemy(s, 'front');
+  };
+  switch (st) {
+    case '점지':
+    case '상흔':
+    case '명부':
+    case '넋흔들림': {
+      const t = target();
+      if (t >= 0) applyStatus(s, t, st, 1);
+      return;
+    }
+    case '장단':
+      addJangdan(s, 1);
+      return;
+    case '진형': {
+      // 주인이 한 칸 앞으로 (이미 선두면 바로 뒤 영웅과 교대)
+      const o = inst.o;
+      const i = s.formation.indexOf(o);
+      if (o < 0 || i < 0 || s.formation.length < 2) return;
+      swapHeroes(s, o, s.formation[i === 0 ? 1 : i - 1]);
+      return;
+    }
+    case '굿상': {
+      if (engraveSummon < 0) engraveSummon = d.summonById.get('manshin.s_momju')!.idx;
+      if (s.summons.length >= SUMMON_MAX) s.summons.shift();
+      s.summons.push({ s: engraveSummon, left: 1, owner: inst.o });
+      return;
+    }
+    case '부적': {
+      if (engraveToken < 0) engraveToken = d.cardById.get('beopsa.t_hwabu')!.idx;
+      addTokenCard(s, engraveToken, inst.o, -1, -1);
+      return;
+    }
+  }
 }
 
 // ── 효과 실행 ───────────────────────────────────────────────────────
@@ -609,16 +807,38 @@ function heroAttackMult(s: CombatState, ctx: Ctx): number {
   return m;
 }
 
+/** 빗장이 지금 걸려 있는가 (05-region3 §9.1). 붕괴 중이면 풀린다 */
+export function capActive(s: CombatState, e: EnemyState): boolean {
+  const cap = D().enemies[e.def].cap;
+  if (!cap || !e.alive || collapsed(s, e) || e.capOff === s.turn) return false;
+  if (cap.firstPhase && e.phase > 0) return false;
+  if (cap.whileAlive) {
+    const id = cap.whileAlive;
+    if (!s.enemies.some((x) => x.alive && D().enemies[x.def].id === id)) return false;
+  }
+  return true;
+}
+
 export function dealDamage(s: CombatState, ctx: Ctx, ei: number, base: number): number {
   const e = s.enemies[ei];
   if (!e.alive) return 0;
   let dmg = base * heroAttackMult(s, ctx);
   if (e.vuln > 0) dmg *= 1.5;
   if (collapsed(s, e)) dmg *= 1.5;
+  const fam = s.mods.familyDmg;
+  if (fam && D().enemies[e.def].family === fam.family) dmg *= fam.mult;
   dmg = Math.floor(dmg);
   const absorbed = Math.min(e.block, dmg);
   e.block -= absorbed;
-  const dealt = dmg - absorbed;
+  let dealt = dmg - absorbed;
+  // 고풀이 ⑦: 부적 카드의 피해가 들어감 (방어도에 막혀도 인정)
+  if (ctx.isToken && dmg > 0 && D().enemies[e.def].haewon.kind === 'knots') e.knots |= 1 << 6;
+  // 빗장: 이번 플레이어 턴에 잃는 체력 상한
+  if (dealt > 0 && capActive(s, e)) {
+    const cap = D().enemies[e.def].cap!.n;
+    dealt = Math.min(dealt, Math.max(0, cap - e.capLost));
+    e.capLost += dealt;
+  }
   if (dealt > 0) {
     e.hp -= dealt;
     e.lastHitToken = ctx.isToken;
@@ -631,6 +851,10 @@ export function dealDamage(s: CombatState, ctx: Ctx, ei: number, base: number): 
 function applyStatus(s: CombatState, ei: number, st: string, n: number): void {
   const e = s.enemies[ei];
   if (!e.alive || n <= 0) return;
+  if (D().enemies[e.def].haewon.kind === 'knots') {
+    const k = (KNOTS as readonly string[]).indexOf(st);
+    if (k >= 0 && k < 4) e.knots |= 1 << k;
+  }
   switch (st) {
     case '취약': e.vuln += n; break;
     case '약화': e.weak += n; break;
@@ -1206,12 +1430,43 @@ function execSpecial(s: CombatState, op: Extract<Op, { op: 'special' }>, ctx: Ct
       if (o >= 0 && s.heroes[o].downed) addRescue(s, o);
       return;
     }
-    case 'offering':
-      if (s.jijeon >= 3) {
-        s.jijeon -= 3;
-        s.offeringPaid = true;
+    case 'offering': {
+      const inst = ctx.inst;
+      const off = inst ? d.special.offerings.get(inst.d) : undefined;
+      if (!off) return;
+      const pay = offeringPay(s, off);
+      if (!pay) return;
+      if (pay.item === 'jijeon') s.jijeon -= pay.n;
+      else s.prov[pay.item] -= pay.n;
+      if (off.repeat) s.offerTurn = s.turn;
+      if (off.effect === 'entertain') {
+        if (s.entertain) {
+          s.entertain.value += 3;
+          entertainCheck(s);
+        }
+        return;
+      }
+      s.offeringPaid = true;
+      for (const e of s.enemies) {
+        if (!e.alive) continue;
+        if (off.effect === 'phase2' && d.enemies[e.def].offering?.card === off.card && e.phase === 0) {
+          // 가면이 벗겨진다: 곧바로 2단계, 다음 의도를 다시 고른다
+          e.phase = 1;
+          e.patIdx = 0;
+          chooseIntent(s, e);
+        }
+        if (off.effect === 'minionsSkip' && d.enemies[e.def].category === 'minion') e.cancelNext = true;
       }
       return;
+    }
+    case 'nahwa': {
+      const t = oneTarget(s, ctx);
+      if (t >= 0) {
+        s.enemies[t].block = 0;
+        s.enemies[t].capOff = s.turn;
+      }
+      return;
+    }
     case 'sinryeongbu': {
       const x = ctx.inst ? ctx.inst.x : -1;
       if (x >= 0) runSummonEffects(s, x, ctx.owner);
@@ -1251,7 +1506,7 @@ function approxSpecial(s: CombatState, op: Extract<Op, { op: 'special' }>, ctx: 
 // ── 자원·상태 변화 ─────────────────────────────────────────────────
 export function addJangdan(s: CombatState, n: number): void {
   const old = s.jangdan;
-  s.jangdan = Math.min(JANGDAN_MAX, Math.max(0, old + n));
+  s.jangdan = Math.min(s.mods.jangdanMax ?? JANGDAN_MAX, Math.max(0, old + n));
   if (s.jangdan >= JANGDAN_MAX && old < JANGDAN_MAX) {
     const fired = s.powers.filter((p) => p.trigger === 'on_jangdan5');
     if (fired.length) {
@@ -1288,6 +1543,11 @@ export function addPersonal(s: CombatState, hi: number, n: number): void {
 export function gainBlock(s: CombatState, hi: number, n: number): void {
   const h = s.heroes[hi];
   if (h.dead || n <= 0) return;
+  // 신장의 가호: 턴마다 처음 방어도를 얻는 영웅이 방어도를 더 얻는다
+  if (s.mods.firstBlockBonus && s.firstBlockTurn !== s.turn) {
+    s.firstBlockTurn = s.turn;
+    n += s.mods.firstBlockBonus;
+  }
   h.block += n;
   if (h.id === 'seungnyeo' && standing(h)) h.personal = Math.min(h.personalCap, h.personal + 1);
 }
@@ -1311,6 +1571,7 @@ export function loseHp(s: CombatState, hi: number, n: number): void {
 export function addStress(s: CombatState, hi: number, n: number): void {
   const h = s.heroes[hi];
   if (h.dead || n === 0) return;
+  if (n > 0 && h.stressMult !== 1) n = Math.round(n * h.stressMult);
   const old = h.stress;
   h.stress = Math.min(100, Math.max(0, old + n));
   for (const th of [50, 100]) {
@@ -1341,8 +1602,26 @@ function addCurse(s: CombatState, hi: number): void {
 
 export function addStatusCard(s: CombatState, defIdx: number): void {
   if (s.statusAdded >= STATUS_CARD_CAP) return;
+  if (blockedPollute(s, defIdx)) return;
   insertRandom(s, s.draw, { d: defIdx, o: -1, o2: -1, orig: -1, x: -1 });
   s.statusAdded++;
+}
+
+/** 주인 있는 상태 카드 (신열, 05-region2 §9.1): 뽑을 더미 무작위 자리 */
+export function addOwnedStatus(s: CombatState, defIdx: number, owner: number): void {
+  if (s.statusAdded >= STATUS_CARD_CAP) return;
+  if (blockedPollute(s, defIdx)) return;
+  insertRandom(s, s.draw, { d: defIdx, o: owner, o2: -1, orig: -1, x: -1 });
+  s.statusAdded++;
+}
+
+/** 대문 부적: 전투마다 처음 N장의 신열·잡음을 막는다 */
+function blockedPollute(s: CombatState, defIdx: number): boolean {
+  const sp = D().special;
+  if (!s.mods.blockPollute || (defIdx !== sp.sinyeol && defIdx !== sp.noise)) return false;
+  if (s.polluteBlocked >= s.mods.blockPollute) return false;
+  s.polluteBlocked++;
+  return true;
 }
 
 function insertRandom(s: CombatState, pile: CardInst[], c: CardInst): void {
@@ -1390,8 +1669,9 @@ function worstInHand(s: CombatState, preferBad: boolean): number {
 }
 
 export function drawCards(s: CombatState, n: number): void {
+  const max = s.mods.handMax ?? HAND_MAX;
   for (let k = 0; k < n; k++) {
-    if (s.hand.length >= HAND_MAX) return;
+    if (s.hand.length >= max) return;
     if (!s.draw.length) {
       if (!s.discard.length) return;
       s.draw = shuffle(s, s.discard);
@@ -1405,7 +1685,7 @@ export function drawCards(s: CombatState, n: number): void {
 
 function addTokenCard(s: CombatState, tidx: number, o: number, o2: number, x: number): void {
   const c: CardInst = { d: tidx, o, o2, orig: -1, x };
-  if (s.hand.length < HAND_MAX) s.hand.push(c);
+  if (s.hand.length < (s.mods.handMax ?? HAND_MAX)) s.hand.push(c);
   else s.discard.push(c);
 }
 
@@ -1572,6 +1852,12 @@ export function hitHero(s: CombatState, target: number, dmg: number, attacker: n
   const absorbed = Math.min(h.block, dmg);
   h.block -= absorbed;
   const rest = dmg - absorbed;
+  if (s.play) {
+    // 놀이 싸움: 체력 대신 귀기 (쓰러지지 않는다)
+    if (rest > 0) addStress(s, t, rest);
+    if (h.id === 'seungnyeo' && standing(h)) h.personal = Math.min(h.personalCap, h.personal + 1);
+    return;
+  }
   if (h.id === 'seungnyeo' && standing(h)) h.personal = Math.min(h.personalCap, h.personal + 1);
   if (s.stats) {
     s.stats.dmgTakenHero[t] += rest;
@@ -1589,7 +1875,15 @@ export function hitHero(s: CombatState, target: number, dmg: number, attacker: n
 
 function deathCheck(s: CombatState, hi: number): void {
   const h = s.heroes[hi];
-  if (rand(s) < deathSaveChance(h.survived)) h.survived++;
+  // 약수 한 사발: 원정마다 1회, 사망 판정 대신 체력 30%로 일어난다
+  if (s.mods.yaksu && !s.yaksuUsed) {
+    s.yaksuUsed = true;
+    reviveHero(s, hi, 0.3);
+    log(s, `약수 한 사발: ${h.id} 기상`);
+    return;
+  }
+  const bonus = h.saveBonus + (s.mods.deathSave ?? 0);
+  if (rand(s) < Math.min(0.95, deathSaveChance(h.survived) + bonus)) h.survived++;
   else killHero(s, hi);
 }
 
@@ -1619,7 +1913,7 @@ export function downHero(s: CombatState, hi: number): void {
     if (c.o !== hi || c.o2 >= 0) return c;
     const cd = d.cards[c.d];
     if (cd.isCurse || cd.isStatus) return c;
-    return { d: d.special.rescue, o: hi, o2: -1, orig: c.d, x: c.x };
+    return c.g ? { d: d.special.rescue, o: hi, o2: -1, orig: c.d, x: c.x, g: c.g } : { d: d.special.rescue, o: hi, o2: -1, orig: c.d, x: c.x };
   });
   checkOutcome(s);
 }
@@ -1630,18 +1924,24 @@ function addRescue(s: CombatState, hi: number): void {
   if (h.rescue >= h.rescueNeed) reviveHero(s, hi);
 }
 
-export function reviveHero(s: CombatState, hi: number): void {
+export function reviveHero(s: CombatState, hi: number, frac?: number): void {
   const d = D();
   const h = s.heroes[hi];
   if (!h.downed) return;
   h.downed = false;
-  h.hp = Math.max(1, Math.round(h.maxHp * 0.25));
+  h.hp = Math.max(1, Math.round(h.maxHp * (frac ?? s.mods.reviveFrac ?? 0.25)));
   h.recovering = true;
   h.rescue = 0;
   h.survived = 0;
-  if (s.stats) s.stats.revives++;
+  if (s.stats) {
+    s.stats.revives++;
+    s.stats.revived.push(hi);
+  }
   log(s, `${h.id} 기상`);
-  transformCards(s, (c) => (c.o === hi && c.d === d.special.rescue && c.orig >= 0 ? { d: c.orig, o: hi, o2: -1, orig: -1, x: c.x } : c));
+  transformCards(s, (c) => {
+    if (!(c.o === hi && c.d === d.special.rescue && c.orig >= 0)) return c;
+    return c.g ? { d: c.orig, o: hi, o2: -1, orig: -1, x: c.x, g: c.g } : { d: c.orig, o: hi, o2: -1, orig: -1, x: c.x };
+  });
 }
 
 export function killHero(s: CombatState, hi: number): void {
@@ -1678,6 +1978,10 @@ function haewonDone(s: CombatState, e: EnemyState): void {
     v[1]++;
     s.stats.enemyHaewon.set(id, v);
   }
+  haewonHeal(s);
+}
+
+function haewonHeal(s: CombatState): void {
   const n = s.rules.haewonHeal ?? 0;
   if (n > 0) {
     for (const h of s.heroes) {
@@ -1701,6 +2005,7 @@ export function haewonSatisfied(s: CombatState, e: EnemyState): boolean {
     case 'formation': return s.formChanges > 0;
     case 'collapse': return collapsed(s, e);
     case 'offering': return s.offeringPaid;
+    case 'knots': return popcount(e.knots) >= (r.need ?? 4);
     case 'minions': {
       let alive = 0;
       for (const x of s.enemies) if (x !== e && x.alive && d.enemies[x.def].category === 'minion') alive++;
@@ -1708,6 +2013,12 @@ export function haewonSatisfied(s: CombatState, e: EnemyState): boolean {
     }
     default: return false;
   }
+}
+
+export function popcount(x: number): number {
+  let n = 0;
+  for (let v = x; v; v &= v - 1) n++;
+  return n;
 }
 
 export function killEnemy(s: CombatState, ei: number): void {
@@ -1736,6 +2047,24 @@ export function killEnemy(s: CombatState, ei: number): void {
       x.haewon = true;
       haewonDone(s, x);
     }
+  }
+  // 우두머리를 따르는 졸개 (2막부터, haewon.follows): 우두머리가 해원되면 함께 해원되어 물러간다
+  if (e.haewon) {
+    for (const x of s.enemies) {
+      if (x === e || !x.alive || d.enemies[x.def].follows !== def.id) continue;
+      x.alive = false;
+      x.dead = true;
+      x.haewon = true;
+      if (s.stats) {
+        s.stats.haewons++;
+        s.stats.haewonEligible++;
+      }
+    }
+  }
+  // 손님 배웅: 수비가 쓰러지면 뒷전 몫을 받고 물러간다 (대접 +1)
+  if (s.entertain && !s.entertain.result && def.follows && s.entertain && D().specials.has(def.follows)) {
+    s.entertain.value += 1;
+    entertainCheck(s);
   }
   log(s, `${def.name} 쓰러짐${e.haewon ? ' (해원)' : ''}`);
   // 수동 능력: 잡귀 무리, 상여꾼

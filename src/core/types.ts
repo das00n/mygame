@@ -168,7 +168,7 @@ export type Trigger =
 
 export type SpecialKind =
   | 'baraji' | 'samhyeon' | 'fire_summon' | 'gangsin_extra' | 'instant_collapse' | 'tal_all' | 'seokja' | 'ajik'
-  | 'rescue_ally' | 'sinryeongbu' | 'gokkal_tal' | 'rescue' | 'offering' | 'heotgeot' | 'approx';
+  | 'rescue_ally' | 'sinryeongbu' | 'gokkal_tal' | 'rescue' | 'offering' | 'heotgeot' | 'nahwa' | 'approx';
 
 export type Cond =
   | { k: 'resp' }
@@ -224,14 +224,41 @@ export interface RawPattern {
 }
 
 export interface HaewonRule {
-  kind: 'status' | 'jangdan' | 'summons' | 'token' | 'formation' | 'collapse' | 'offering' | 'minions' | 'none';
+  kind: 'status' | 'jangdan' | 'summons' | 'token' | 'formation' | 'collapse' | 'offering' | 'minions' | 'knots' | 'none';
   status?: EnemyStatus;
   n?: number;
   /** 무리 해원: 같은 원귀 하나가 조건을 채우면 그 전투의 같은 원귀 모두 해원 (잡귀, v0.2 S9) */
   group?: boolean;
   orCollapse?: boolean;
+  /** 고풀이(05-region3 §9.3): 풀어야 할 매듭 수 (매듭 8종은 KNOTS 순서) */
+  need?: number;
   text: string;
 }
+
+/** 고풀이 매듭 8종 (05-region3 §9.3 순서). 비트 i = KNOTS[i] */
+export const KNOTS = ['점지', '상흔', '명부', '넋흔들림', '장단', '굿상', '부적', '진형'] as const;
+
+/** 빗장(05-region3 §9.1): 한 플레이어 턴에 잃는 체력 상한 */
+export interface CapRule {
+  n: number;
+  /** 1단계(phase 0)에서만 */
+  firstPhase: boolean;
+  /** 이 원귀(id)가 하나라도 서 있는 동안만 */
+  whileAlive: string | null;
+}
+
+/** 공물 행동(05-region2 §9.2): 전투 시작 시 손에 들어오는 0코스트 카드 */
+export interface OfferingRule {
+  card: number; // CardDef idx
+  /** 바치는 보급품 (앞의 것이 모자라면 다음 것) */
+  pay: { item: ProvKey; n: number }[];
+  /** 턴마다 한 번, 쓴 뒤에도 손에 남는다 (손님상 차리기) */
+  repeat: boolean;
+  effect: 'none' | 'phase2' | 'minionsSkip' | 'entertain';
+}
+
+export type ProvKey = 'jijeon' | 'rice' | 'sul' | 'bujeok' | 'incense';
+export const PROV_NAME: Record<ProvKey, string> = { jijeon: '지전', rice: '쌀', sul: '술', bujeok: '부적', incense: '향' };
 
 export interface EnemyDef {
   idx: number;
@@ -245,12 +272,20 @@ export interface EnemyDef {
   passives: string[];
   haewon: HaewonRule;
   family: string;
+  /** 지역 번호 (1~3) */
+  region: number;
+  cap: CapRule | null;
+  offering: OfferingRule | null;
+  final: boolean;
+  /** 우두머리가 해원되면 함께 해원되어 물러간다 (2막부터 졸개, haewon.follows) */
+  follows: string | null;
 }
 
 export interface Encounter {
   id: string;
-  tier: 'easy' | 'hard' | 'elite' | 'boss';
+  tier: 'easy' | 'hard' | 'elite' | 'boss' | 'final';
   enemies: string[];
+  region?: number;
 }
 
 export interface HeroDef {
@@ -269,7 +304,12 @@ export interface CardInst {
   readonly o2: number; // 합기 두 번째 주인, 없으면 -1
   readonly orig: number; // 구조·애도로 바뀌기 전 카드, 없으면 -1
   readonly x: number; // 부가 정보 (신령부: 담은 설치물 idx), 없으면 -1
+  /** 무구 각인(06-base §3·§5): 낼 때 그 상태 +1 생산. 1..8 = ENGRAVE_STATUS 순서, 없으면 undefined */
+  readonly g?: number;
 }
+
+/** 각인 상태 (g = index + 1). 생산만 더한다(R2) */
+export const ENGRAVE_STATUS = ['점지', '상흔', '명부', '넋흔들림', '장단', '진형', '굿상', '부적'] as const;
 
 export interface HeroState {
   id: HeroId;
@@ -295,6 +335,10 @@ export interface HeroState {
   cover: number; // 이번 턴 엄호하는 아군 idx
   downTurn: number; // 쓰러진 턴 (같은 적 턴 사망 집계)
   endDowned: boolean; // 전투가 끝날 때 쓰러져 있었음 (체력 1·중상으로 일어남)
+  /** 개체 기질(캠페인): 사망 판정 버틸 확률 보정 */
+  saveBonus: number;
+  /** 개체 기질(캠페인): 귀기 획득 배율 */
+  stressMult: number;
 }
 
 export interface EnemyState {
@@ -326,6 +370,12 @@ export interface EnemyState {
   haewon: boolean;
   lastHitToken: boolean;
   summoned: boolean; // 상여가 소환한 넋
+  /** 빗장: 이번 플레이어 턴에 잃은 체력 */
+  capLost: number;
+  /** 빗장을 푼 턴 (나화 한 송이) */
+  capOff: number;
+  /** 고풀이: 풀린 매듭 비트 (KNOTS) */
+  knots: number;
 }
 
 export interface SummonInst {
@@ -376,6 +426,11 @@ export interface CombatStats {
   escapes: number;
   enemyHaewon: Map<string, [number, number]>; // enemy id → [쓰러뜨림, 해원]
   heroDmgDealt: number[];
+  /** 기상한 영웅 idx (인연: 구한 쪽–구해진 쪽) */
+  revived: number[];
+  /** 신열: 낸 장수 · 옮은 장수 · 손에 든 채 턴을 마쳐 걸린 약화 (05-region2 R2-2) */
+  sinyeolPlayed: number;
+  sinyeolMoved: number;
 }
 
 /** 규칙 변형 (what-if 실험용, 기본값 = 설계 문서 그대로) */
@@ -388,6 +443,29 @@ export interface RuleVariant {
   sinbaramV01?: boolean;
   /** 해원할 때 서 있는 영웅 모두 체력 회복 (탐험 §10, v0.2 S1). 0 이면 없음 */
   haewonHeal?: number;
+}
+
+/** 가호·지역 규칙의 엔진 훅 (기본값 = 없음). 웹 원정·캠페인 시뮬이 채운다 */
+export interface CombatMods {
+  reviveFrac?: number; // 기상 체력 비율 (기본 0.25, 삼신 0.35)
+  jangdanMax?: number; // 장단 최대 (기본 5, 대동 깃발 6)
+  handMax?: number; // 손패 최대 (기본 10, 대신방울 8)
+  deathSave?: number; // 사망 판정 버틸 확률 보정 (칠성 +0.15)
+  familyDmg?: { family: string; mult: number } | null; // 용왕: 수귀에게 주는 피해 +25%
+  firstBlockBonus?: number; // 신장: 턴마다 처음 방어도를 얻는 영웅 +3
+  bugun?: boolean; // 부군: 장단 3+ 로 턴을 마치면 마지막 카드 주인 방어도 4
+  sinyeolFree?: boolean; // 손님의 배웅: 신열 비용 0 (턴당 1회)
+  blockPollute?: number; // 대문 부적: 전투마다 처음 N장 신열·잡음을 막는다
+  yaksu?: boolean; // 약수 한 사발: 사망 판정 대신 체력 30%로 기상 (1회)
+  bladeSafeTurn?: number; // 명도 한 닢(작두박수): 이 턴까지 헛디딤 없음
+}
+
+/** 손님 배웅(05-region2 §9.3) 대접 게이지 */
+export interface EntertainState {
+  goal: number;
+  limit: number;
+  value: number;
+  result: 'sendoff' | 'timeout' | null;
 }
 
 /** 규칙 v0.4 기본값 (docs/02-core-rules.md §6·§13·§14) */
@@ -427,6 +505,28 @@ export interface CombatState {
   offeringPaid: boolean;
   groupHaewon: string[]; // 무리 해원이 성립한 원귀 id
   jijeon: number; // 지전
+  /** 공물·대접에 쓰는 보급품 (지전은 jijeon) */
+  prov: { rice: number; sul: number; bujeok: number; incense: number };
+  /** 반복형 공물(손님상 차리기)을 쓴 턴 */
+  offerTurn: number;
+  entertain: EntertainState | null;
+  mods: CombatMods;
+  /** 균열 강화 원귀: 체력 배율 (기본 1) */
+  hpMult: number;
+  /** 신장의 가호: 이번 턴 처음 방어도를 받은 영웅이 나왔는가 */
+  firstBlockTurn: number;
+  /** 손님의 배웅: 신열을 비용 0으로 낸 턴 */
+  sinyeolFreeTurn: number;
+  /** 대문 부적으로 막은 오염 수 */
+  polluteBlocked: number;
+  /** 약수 한 사발을 이미 썼는가 (원정 계층이 넘겨준다) */
+  yaksuUsed: boolean;
+  /** 마지막으로 카드를 낸 영웅 (부군의 가호) */
+  lastOwner: number;
+  /** 놀이 싸움 (사자 검문): 영웅이 받는 피해가 체력 대신 귀기로 들어간다. 쓰러지지 않는다 */
+  play: boolean;
+  /** 호위 (잘못 끌려온 사람): 선두에 방어도가 없으면 선두를 노린 공격을 산 사람이 맞는다 */
+  ward: { name: string; hp: number; maxHp: number; lost: boolean } | null;
   deferredTokens: number[]; // 다음 턴 시작에 만들 부적 (CardDef idx | owner<<16)
   outcome: 0 | 1 | -1;
   lastDrawn: CardInst | null;

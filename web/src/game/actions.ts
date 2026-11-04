@@ -16,11 +16,12 @@ import { clearSave } from './save.ts';
 import type { AppState, BattleSource, Pos, Run } from './types.ts';
 
 export function blankApp(): AppState {
-  return { screen: 'title', run: null, combat: null, reward: null, dialog: null, picker: null, camp: null, result: null, toast: null };
+  return { screen: 'title', run: null, combat: null, reward: null, dialog: null, picker: null, camp: null, result: null, toast: null, campaign: null, plan: null, settlement: null };
 }
 
 export function beginExpedition(app: AppState, o: NewRunOpts): void {
-  Object.assign(app, blankApp());
+  const keep = { campaign: app.campaign, plan: app.plan };
+  Object.assign(app, blankApp(), o.campaign ? keep : {});
   app.run = newRun(o);
   app.screen = 'map';
 }
@@ -73,12 +74,14 @@ export function dialogContinue(app: AppState): void {
   if (!dlg) return;
   app.dialog = null;
   switch (dlg.then) {
-    case 'battle':
+    case 'battle': {
+      const sp = dlg.battleSpecial ?? 'none';
       startBattle(app, {
-        enc: dlg.battleEnc!, tier: 'event', src: dlg.battleSpecial === 'play' ? srcOf(run.pos) : { k: 'event', id: dlg.id },
-        cardReward: dlg.battleSpecial !== 'play', special: dlg.battleSpecial ?? 'none',
+        enc: dlg.battleEnc!, tier: sp === 'sonnim' ? 'elite' : 'event', src: sp === 'play' || sp === 'sonnim' ? srcOf(run.pos) : { k: 'event', id: dlg.id },
+        cardReward: sp === 'none' || sp === 'escort', special: sp,
       });
       break;
+    }
     case 'cards':
       app.picker = { mode: 'offer', title: '카드 3장 중 1장', offer: dlg.cardOptions ?? [], from: 'dialog' };
       break;
@@ -102,6 +105,9 @@ export function dialogContinue(app: AppState): void {
       break;
     case 'upgrade_baksu':
       app.picker = { mode: 'upgrade', title: '강화할 작두박수 카드', allowed: upgradableIdx(run, 'baksu'), from: 'dialog' };
+      break;
+    case 'upgrade_hero':
+      app.picker = { mode: 'upgrade', title: '강화할 카드', allowed: upgradableIdx(run, dlg.upgradeHero), from: 'dialog' };
       break;
   }
 }
@@ -182,6 +188,28 @@ export function setFormation(app: AppState, order: number[]): void {
   run.formation = [...f, ...run.formation.filter((i) => !f.includes(i))];
 }
 
+/** 행기못 물 한 병 (지역 3 가호): 원정마다 1회, 지금 길목의 남은 칸을 건너뛰고 다음 방으로 */
+export function useHaenggimot(app: AppState): boolean {
+  const run = app.run!;
+  if (!run.relics.includes('haenggimot') || run.flags.haenggimotUsed || run.pos.kind !== 'tile') return false;
+  const c = run.dungeon.corridors[run.pos.cor];
+  const toward = run.prevRoom === c.a ? c.b : c.a;
+  for (const t of c.tiles) {
+    t.walked = true;
+    t.known = true;
+    t.content.done = true;
+  }
+  run.flags.haenggimotUsed = true;
+  run.pos = { kind: 'room', room: toward };
+  const r = run.dungeon.rooms[toward];
+  r.visited = true;
+  r.known = true;
+  app.toast = '행기못 물을 마시자 길목이 접혀 다음 방에 닿았다';
+  logRun(run, '행기못 물 — 길목을 건너뛰었다');
+  resolveHere(app);
+  return true;
+}
+
 export function useCandleOnMap(app: AppState): boolean {
   const run = app.run!;
   if (run.supplies.candle <= 0 || run.light >= 100) return false;
@@ -247,7 +275,7 @@ export function endRun(app: AppState, success: boolean, reason: string): void {
   app.picker = null;
   app.camp = null;
   app.screen = 'result';
-  clearSave();
+  if (!app.campaign) clearSave();
 }
 
 export function returnHome(app: AppState): void {

@@ -304,6 +304,75 @@
       "effects": [{"op": "special", "value": 5.2, "note": "전투 안 효과는 없고 해원 조건 성립(재료 2배·파티 귀기 회복·해원록)과 지전 3 소모를 맞바꾼다. 보스 전투에서만 손에 들어오는 공물 행동이라 예산 중앙값으로 둔다"}],
       "tags": {"produce": [], "consume": []},
       "source": "보스 '삯 못 받은 뱃사공' 삯 요구(region1.json enemies.sakkun, 핵심 규칙 §13)"
+    },
+    {
+      "id": "common.offering_heoju",
+      "name": "허주 벗기기",
+      "owner": "파티",
+      "subtype": "공물 행동",
+      "type": "기술",
+      "rarity": "공용",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "보급품 부적 2를 바쳐 허주의 가면을 벗긴다(부적이 2보다 적으면 쓸 수 없다). 해원 조건이 성립하고, 허주는 곧바로 2단계로 넘어간다. 이 카드는 덱에 남지 않는다.",
+      "effects": [{"op": "special", "value": 5.2, "note": "공물 행동(05-region2 §9.2): 부적 2 소모 → 해원 조건 성립 + 허주 즉시 2단계. 노잣돈 바치기와 같은 예산 중앙값"}],
+      "tags": {"produce": [], "consume": []},
+      "source": "보스 '손님 대접을 가로챈 허주' 공물(region2.json enemies.heoju)"
+    },
+    {
+      "id": "common.offering_sajabap",
+      "name": "사자밥 차리기",
+      "owner": "파티",
+      "subtype": "공물 행동",
+      "type": "기술",
+      "rarity": "공용",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "보급품 쌀 3으로 사자밥 세 그릇을 차린다(쌀이 3보다 적으면 쓸 수 없다). 해원 조건이 성립하고, 뒤에 선 넋들이 이번 적 차례에 행동하지 않는다. 이 카드는 덱에 남지 않는다.",
+      "effects": [{"op": "special", "value": 5.2, "note": "공물 행동(05-region2 §9.2 일반화, 05-region3 맨 앞에 선 굶은 넋): 쌀 3 소모 → 해원 조건 성립 + 졸개 다음 행동 취소"}],
+      "tags": {"produce": [], "consume": []},
+      "source": "보스 '맨 앞에 선 굶은 넋' 공물(region3.json enemies.maenap_neok)"
+    },
+    {
+      "id": "common.offering_sonnimsang",
+      "name": "손님상 차리기",
+      "owner": "파티",
+      "subtype": "공물 행동",
+      "type": "기술",
+      "rarity": "공용",
+      "cost": 0,
+      "keywords": ["보존"],
+      "text": "보급품 술 1 또는 쌀 1을 손님상에 올린다(둘 다 없으면 쓸 수 없다). 대접 +3. 턴마다 한 번만 쓸 수 있고, 쓴 뒤에도 손에 남는다. 덱에 남지 않는다.",
+      "effects": [{"op": "special", "value": 4.4, "note": "반복형 공물 행동(05-region2 §9.2·§9.3): 손님 배웅 전용. 술 1 또는 쌀 1 → 대접 +3, 턴당 1회, 소멸하지 않음"}],
+      "tags": {"produce": [], "consume": []},
+      "source": "특수 전투 '손님 배웅'(region2.json specials.sonnim_baeung)"
+    },
+    {
+      "id": "common.relic_kkot",
+      "name": "꽃 던지기",
+      "owner": "파티",
+      "subtype": "가호 행동",
+      "type": "기술",
+      "rarity": "공용",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "원귀 하나에게 꽃을 던진다. 그 원귀의 방어도를 모두 없애고, 이번 턴 그 원귀의 빗장을 푼다.",
+      "effects": [{"op": "special", "value": 5.2, "note": "희귀 가호 '나화 한 송이'(region3.json relics.nahwa): 전투마다 1회 손에 들어온다. 방어도 0 + 이번 턴 빗장 해제"}],
+      "tags": {"produce": [], "consume": []},
+      "source": "가호 '나화 한 송이'(region3.json relics.nahwa)"
+    },
+    {
+      "id": "common.status_sinyeol",
+      "name": "신열",
+      "owner": "해당 영웅",
+      "subtype": "신열",
+      "type": "상태",
+      "rarity": "특수",
+      "cost": 1,
+      "keywords": ["소멸"],
+      "text": "몸에 열이 오른다. 쓰면 땀을 내어 열을 내린다. 손에 든 채로 턴을 마치면 주인이 약화 1을 얻고, 열은 옆 칸 영웅에게 옮는다.",
+      "effects": [],
+      "source": "지역 2 역귀의 열 옮기기·손님의 서운함·덫 '열기 서린 골목'(05-region2 §9.1). 주인 영웅이 홀려 있으면 내도 효과가 없고 버린 더미로 간다"
     }
   ]
 }

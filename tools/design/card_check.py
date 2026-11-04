@@ -59,7 +59,7 @@ UPGRADE_MULT = 1.3  # 강화판 예산 = 기본판 비용의 예산 × 1.3
 UPGRADE_GAIN = (1.15, 1.45)  # 수치 강화: 가치 +15~45%
 UPGRADE_KW_ALLOWED = {("+", "선천"), ("+", "보존"), ("-", "휘발"), ("-", "소멸")}
 UPGRADE_KEYS = {"text", "cost", "keywords", "effects"}
-NO_UPGRADE_SUBTYPES = {"공물 행동"}
+NO_UPGRADE_SUBTYPES = {"공물 행동", "가호 행동"}
 ALIASES = {"붕괴": "넋흔들림", "선두": "진형", "중열": "진형", "후열": "진형"}
 DECLARED_ONLY_MAX = 3
 FORBIDDEN = ["광기", "미친", "발작", "정신병", "악마", "마녀", "지옥불", "선혈", "내장", "피범벅"]

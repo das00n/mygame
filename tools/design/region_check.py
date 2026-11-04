@@ -38,13 +38,13 @@ ACTS = {
         "hp": {"normal": (6, 45), "minion": (6, 25), "elite": (50, 100), "boss": (100, 260)},
         "enc_hp": {"easy": (15, 40), "hard": (35, 65), "elite": (55, 100), "boss": (140, 260)},
         "dmg": {"easy": 13, "hard": 18, "elite": 18, "boss": 26}},
-    2: {"label": "2막 (StS 2막 모양을 눌러 씀 — 조합 체력 상한 1막 대비 어려움 ×1.85 · 엘리트 ×1.6 · 보스 ×1.15, 피해 상한 ×1.45 · ×1.35 · ×1.15)",
-        "hp": {"normal": (8, 70), "minion": (8, 40), "elite": (80, 160), "boss": (150, 300)},
-        "enc_hp": {"easy": (35, 70), "hard": (70, 120), "elite": (100, 160), "boss": (220, 300)},
+    2: {"label": "2막 (StS 2막 모양을 눌러 씀. 반복 2: 원정마다 덱이 리셋되는 캠페인 파티 기준으로 다시 맞춤 — 체력·피해를 0.9배 안팎으로 낮추고 하한을 내림)",
+        "hp": {"normal": (8, 70), "minion": (8, 40), "elite": (70, 160), "boss": (150, 300)},
+        "enc_hp": {"easy": (30, 70), "hard": (60, 120), "elite": (90, 160), "boss": (200, 300)},
         "dmg": {"easy": 20, "hard": 26, "elite": 24, "boss": 30}},
-    3: {"label": "3막 (StS 3막 모양을 눌러 씀 — 조합 체력 상한 1막 대비 어려움 ×2.3 · 엘리트 ×2.0 · 보스 ×1.3, 피해 상한 ×1.65 · ×1.65 · ×1.25, 최종 보스 별도)",
-        "hp": {"normal": (10, 85), "minion": (10, 70), "elite": (110, 190), "boss": (150, 300), "final": (300, 420)},
-        "enc_hp": {"easy": (45, 90), "hard": (90, 150), "elite": (130, 200), "boss": (220, 340), "final": (360, 460)},
+    3: {"label": "3막 (StS 3막 모양을 눌러 씀, 최종 보스 별도. 반복 2: 캠페인 파티 기준으로 다시 맞춤 — 일반·엘리트 0.9배 안팎, 최종 0.84배, 하한을 내림)",
+        "hp": {"normal": (10, 85), "minion": (10, 70), "elite": (100, 190), "boss": (150, 300), "final": (270, 420)},
+        "enc_hp": {"easy": (40, 90), "hard": (80, 150), "elite": (120, 200), "boss": (200, 340), "final": (310, 460)},
         "dmg": {"easy": 22, "hard": 30, "elite": 30, "boss": 32, "final": 36}},
 }
 NEED_POOLS = {"easy": 3, "hard": 5, "elite": 3, "boss": 2}
@@ -61,6 +61,8 @@ ENGINE_KINDS = {"attack", "attack_debuff", "move", "buff", "defend", "escape", "
 ENGINE_TARGETS = HERO_TARGETS | {"굿상", "자신", "아군 원귀"}
 ENGINE_PATTERNS = {"cycle", "weighted", "phased"}
 ENGINE_MAX_PHASES = 2  # chooseIntent 는 0 → 1단계 전환만 한다
+# 반복 2에서 엔진이 구현한 새 메커니즘 (engine_needs 태그). 이 태그의 빈틈은 더 이상 빈틈이 아니다
+IMPLEMENTED = {"신열", "공물", "대접", "빗장", "업경대", "고풀이"}
 # 해원 상태 → 엔진 해원 종류 (parseHaewon 결과와 맞아야 한다)
 STATUS_TO_KIND = {"점지": "status", "상흔": "status", "명부": "status", "넋흔들림": "status",
                   "장단": "jangdan", "굿상": "summons", "부적": "token", "진형": "formation"}
@@ -75,10 +77,12 @@ BANNED_WORDS = ["광기", "발작", "미쳐", "미친", "정신병", "조현", "
                 "변호사", "국선", "변론"]
 
 
-def parse_haewon(rule):
+def parse_haewon(rule, knots_needed=None):
     """src/core/data.ts parseHaewon 과 같은 순서로 읽는다."""
     if not rule:
         return {"kind": "none"}
+    if knots_needed and "매듭" in rule:
+        return {"kind": "knots", "n": knots_needed}
     m = re.search(r"(점지|상흔|명부|넋흔들림)\s*(\d+)\s*이상", rule)
     if m:
         return {"kind": "status", "status": m.group(1), "n": int(m.group(2)), "orCollapse": "붕괴" in rule}
@@ -93,7 +97,7 @@ def parse_haewon(rule):
         return {"kind": "formation"}
     if "붕괴" in rule:
         return {"kind": "collapse"}
-    if "노잣돈" in rule:
+    if "노잣돈" in rule or "바친 뒤" in rule:
         return {"kind": "offering"}
     m = re.search(r"(\d+)명 이상 살아", rule)
     if m:
@@ -106,8 +110,8 @@ def haewon_label(p):
     if k == "status":
         return f"{p['status']} {p['n']}+" + (" 또는 붕괴" if p.get("orCollapse") else "")
     return {"jangdan": f"장단 {p.get('n')}+", "summons": "굿상 설치물", "token": "부적 막타" + (" (무리)" if p.get("group") else ""),
-            "formation": "진형 변화", "collapse": "붕괴", "offering": "공물(노잣돈)", "minions": f"졸개 {p.get('n')}+ 생존",
-            "none": "—"}[k]
+            "formation": "진형 변화", "collapse": "붕괴", "offering": "공물", "minions": f"졸개 {p.get('n')}+ 생존",
+            "knots": f"고풀이 매듭 {p.get('n')}", "none": "—"}[k]
 
 
 def engine_gaps(e, names):
@@ -148,7 +152,7 @@ def engine_gaps(e, names):
             gaps.append(("공물", "공물 행동 카드(노잣돈 이외)"))
     hw = e.get("haewon")
     if hw and not hw.get("follows"):
-        parsed = parse_haewon(hw.get("rule"))
+        parsed = parse_haewon(hw.get("rule"), hw.get("knots_needed"))
         st = hw.get("status")
         if st is not None and parsed["kind"] != STATUS_TO_KIND.get(st):
             errs.append(f"해원 상태 '{st}'인데 엔진은 '{haewon_label(parsed)}'로 읽음: {hw.get('rule')}")
@@ -165,6 +169,7 @@ def engine_gaps(e, names):
                 gaps.append(("고풀이", f"해원 '{rule}'"))
             else:
                 errs.append(f"해원 조건을 엔진이 읽지 못함: {rule}")
+    gaps = [g for g in gaps if g[0] not in IMPLEMENTED]
     return gaps, errs
 
 
@@ -585,13 +590,14 @@ def write_md(R):
         elif hw.get("follows"):
             parsed = f"우두머리를 따름({hw['follows']})"
         else:
-            parsed = haewon_label(parse_haewon(hw.get("rule")))
+            parsed = haewon_label(parse_haewon(hw.get("rule"), hw.get("knots_needed")))
         gaps = ", ".join(sorted({t for t, _ in R["gaps"].get(e["id"], [])})) or "—"
         L.append(f"| {e['name']} | {parsed} | {gaps} |")
     if R["needs"]:
-        L += ["", "| 메커니즘 | 쓰는 곳 | 구현 전 대체 동작 | 명세 |", "|---|---|---|---|"]
+        L += ["", "| 메커니즘 | 쓰는 곳 | 엔진 | 구현 전 대체 동작 | 명세 |", "|---|---|---|---|---|"]
         for n in R["needs"]:
-            L.append(f"| {n['name']}{' (공유)' if n.get('shared_from') else ''} | {', '.join(n['used_by'])} | {n.get('fallback', '')} | {n.get('spec', '')} |")
+            done = "✅ 반복 2 구현" if set(n.get("tags", [])) & IMPLEMENTED else "미구현"
+            L.append(f"| {n['name']}{' (공유)' if n.get('shared_from') else ''} | {', '.join(n['used_by'])} | {done} | {n.get('fallback', '')} | {n.get('spec', '')} |")
     else:
         L += ["", "새 메커니즘 없음 — 모든 행동·해원 조건을 지금 엔진이 읽는다."]
     out = OUT_DIR / (R["path"].stem + "-content.md")
@@ -632,6 +638,7 @@ def main():
         print(f"3인 조합별 해원 가능 원귀 종수: 최소 {vals[0]} · 중앙 {vals[len(vals)//2]} · 최대 {vals[-1]} (해원 조건이 있는 원귀 {n_st}종)")
         own = [n for n in R["needs"] if not n.get("shared_from")]
         print(f"엔진 지원 필요: 새 메커니즘 {len(own)}개" + (f" ({', '.join(n['name'] for n in own)})" if own else "")
+              + f" — 구현 {sum(1 for n in own if set(n.get('tags', [])) & IMPLEMENTED)}/{len(own)}"
               + (f" + 공유 {len(R['needs']) - len(own)}개" if len(R["needs"]) > len(own) else ""))
         print(f"표: {out.relative_to(ROOT)}" if out else "표: (data/design 밖의 파일이라 쓰지 않음)")
         for w in R["warns"]:

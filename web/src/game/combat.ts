@@ -6,19 +6,28 @@ import {
 } from '../../../src/core/engine.ts';
 import { enemyDamageMult, intentTargets, projectIncoming } from '../../../src/core/enemy.ts';
 import { rand } from '../../../src/core/rng.ts';
-import { DEFAULT_RULES, type ActionChoice, type CardInst, type CombatState, type Encounter, type HeroId } from '../../../src/core/types.ts';
+import { DEFAULT_RULES, type ActionChoice, type CardInst, type CombatMods, type CombatState, type Encounter, type HeroId } from '../../../src/core/types.ts';
 import { enumerateActions, evaluate } from '../../../src/sim/bot.ts';
 import { D, ENEMY_EXTRA, bandOf } from './content.ts';
 import { addCurse, addRunStress, afterFightRecovery, aliveIdx, buildResult, effMax, heroName, logRun, revealHaewon } from './run.ts';
+import { swapHeroes } from '../../../src/core/engine.ts';
 import type { AppState, BattleMeta, BattleSource, CombatSession, Run } from './types.ts';
 import { makeReward } from './rewards.ts';
 
 // ── 조합 ─────────────────────────────────────────────────────────────
 export const CUSTOM_ENC: Record<string, Encounter> = {
-  ev_play: { id: 'ev_play', tier: 'easy', enemies: ['japgwi', 'japgwi', 'japgwi'] },
+  ev_play: { id: 'ev_play', tier: 'easy', enemies: ['nori_saja', 'nori_saja', 'nori_saja'] },
   ev_escort: { id: 'ev_escort', tier: 'easy', enemies: ['japgwi', 'japgwi', 'japgwi'] },
   ev_heotgut: { id: 'ev_heotgut', tier: 'easy', enemies: ['japgwi', 'japgwi', 'japgwi', 'japgwi'] },
   ev_goksori: { id: 'ev_goksori', tier: 'easy', enemies: ['goksori_neok'] },
+  // 지역 2·3 방 이벤트·기물의 전투
+  ev_geumjul: { id: 'ev_geumjul', tier: 'hard', enemies: ['mungan_yeokgwi', 'dollim_japgwi', 'dollim_japgwi'] },
+  ev_sonnim_chase: { id: 'ev_sonnim_chase', tier: 'hard', enemies: ['sonnim_subi', 'sonnim_subi', 'sonnim_subi'] },
+  ev_sangmun: { id: 'ev_sangmun', tier: 'easy', enemies: ['sangmun_japgwi'] },
+  ev_munsajae: { id: 'ev_munsajae', tier: 'hard', enemies: ['mundudeuri_gaekgwi', 'ireumeomneun_gunjol', 'ireumeomneun_gunjol'] },
+  ev_sajabap: { id: 'ev_sajabap', tier: 'hard', enemies: ['julseon_neok', 'julseon_neok', 'nojatdon_gaekgwi'] },
+  ev_buk: { id: 'ev_buk', tier: 'easy', enemies: ['ireumeomneun_gunjol', 'ireumeomneun_gunjol', 'ireumeomneun_gunjol'] },
+  sonnim: { id: 'sonnim', tier: 'elite', enemies: ['sonnim_subi', 'sonnim_subi'] },
 };
 
 export function encounterById(id: string): Encounter {
@@ -41,7 +50,8 @@ function bagPick(run: Run, pool: string[], bag: string[], avoid: string | null):
 /** 처음 마주치는 전투의 조합: 원정의 첫 2전투는 쉬움, 이후 어려움(같은 조합은 6종을 다 쓴 뒤에만, 연속 금지) */
 export function rollEncounter(run: Run, kind: 'battle' | 'elite' | 'raid'): string {
   const d = D();
-  const by = (t: string) => d.encounters.filter((e) => e.tier === t).map((e) => e.id);
+  const pool = (run.region ?? 1) === 1 ? d.encounters : d.regionEncounters[run.region];
+  const by = (t: string) => pool.filter((e) => e.tier === t).map((e) => e.id);
   if (kind === 'elite') return bagPick(run, by('elite'), run.bags.elite, null);
   if (kind === 'battle' && run.fightsSeen < 2) {
     const easy = by('easy');
@@ -61,8 +71,28 @@ export interface BattleOpts {
   special?: BattleMeta['special'];
 }
 
+const ENERGY_RELICS = new Set(['cheonsin', 'samjichang', 'daesin_bangul', 'not_sonnimsang', 'musoe_yaktang', 'yeoldu_yeolsoe', 'musoe_jipangi']);
+
 export function energyBonus(run: Run): number {
-  return run.relics.filter((r) => r === 'cheonsin' || r === 'samjichang' || r === 'daesin_bangul').length;
+  return run.relics.filter((r) => ENERGY_RELICS.has(r)).length;
+}
+
+/** 가호 → 엔진 훅 (용왕·칠성·대신방울·삼신·대문 부적·부군·대동 깃발·손님의 배웅·신장·약수 한 사발) */
+export function relicMods(run: Run): CombatMods {
+  const has = (id: string) => run.relics.includes(id);
+  const m: CombatMods = {};
+  if (has('yongwang')) m.familyDmg = { family: '수귀', mult: 1.25 };
+  if (has('chilseong')) m.deathSave = 0.15;
+  if (has('daesin_bangul')) m.handMax = 8;
+  if (has('samsin')) m.reviveFrac = 0.35;
+  if (has('daemun_bujeok')) m.blockPollute = 1;
+  if (has('bugun')) m.bugun = true;
+  if (has('daedong_gi')) m.jangdanMax = 6;
+  if (has('sonnim_baeung_gaho')) m.sinyeolFree = true;
+  if (has('sinjang')) m.firstBlockBonus = 3;
+  if (has('yaksu_sabal')) m.yaksu = true;
+  if (has('myeongdo')) m.bladeSafeTurn = 1;
+  return m;
 }
 
 export function startBattle(app: AppState, o: BattleOpts): CombatSession {
@@ -88,14 +118,30 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
     if (extra.length >= 4) break;
     if (run.heroes[hi] && !run.heroes[hi].dead) extra.push({ d: d.special.wound, o: hi, o2: -1, orig: -1, x: -1 });
   }
+  // 신열 (지역 2): 덫·기물 · 서운한 작별 · 대문 봉인(역귀 전투) · 놋 손님상
+  const frontAlive = run.formation.find((i) => !run.heroes[i].dead) ?? aliveIdx(run)[0];
+  const fevers: number[] = [...(run.next.fevers ?? [])];
+  if (run.flags.sonnimPenalty && o.special !== 'sonnim') fevers.push(frontAlive);
+  if (run.flags.sealPenalty && enc.enemies.some((id) => d.enemyById.get(id)?.family === '역귀')) fevers.push(frontAlive);
+  if (run.relics.includes('not_sonnimsang')) fevers.push(frontAlive);
+  for (const hi of fevers) {
+    if (extra.length >= 4) break;
+    if (run.heroes[hi] && !run.heroes[hi].dead) extra.push({ d: d.special.sinyeol, o: hi, o2: -1, orig: -1, x: -1 });
+  }
   const threshold = run.threshold;
   const stressBefore = run.heroes.map((h) => h.stress);
+  const sp = o.special === 'sonnim' ? d.specials.get('sonnim_baeung')! : null;
   const s = createCombat({
     party: run.heroes.map((h) => ({
       id: h.id, hp: h.hp, maxHp: h.baseMax, stress: Math.max(0, h.stress - threshold), injured: h.injured, recovering: h.recovering, dead: h.dead,
     })),
     deck: [...run.deck, ...extra], encounter: enc, seed: (rand(run) * 4294967296) | 0, record: true, jijeon: run.supplies.jijeon, log: true,
-    rules: { ...DEFAULT_RULES, enemyDmgMult: band.enemyDmg },
+    rules: { ...DEFAULT_RULES, enemyDmgMult: band.enemyDmg, haewonHeal: run.relics.includes('jisin') ? 5 : DEFAULT_RULES.haewonHeal },
+    provisions: { rice: run.supplies.rice, sul: run.supplies.sul, bujeok: run.supplies.bujeok, incense: run.supplies.incense },
+    enemyHpMult: run.campaign?.enemyHpMult ?? 1, mods: relicMods(run), yaksuUsed: !!run.flags.yaksuUsed, nahwa: run.relics.includes('nahwa'),
+    knotsPreset: o.tier === 'boss' ? run.flags.knots ?? 0 : 0,
+    play: o.special === 'play', ward: o.special === 'escort' ? { name: '잘못 끌려온 사람', hp: 20 } : null,
+    entertain: sp ? { goal: sp.goal, limit: sp.limit, start: run.flags.sonnimStart ?? 0 } : null,
   });
   s.statusAdded = extra.length;
   // 진형: 신당에서 정한 기본 진형
@@ -119,9 +165,28 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
     }
   }
   if (run.next.drawBonus) drawCards(s, run.next.drawBonus);
+  // 열두 대문 열쇠: 첫 턴 드로우 −1
+  if (run.relics.includes('yeoldu_yeolsoe')) {
+    let i = s.hand.length - 1;
+    while (i >= 0 && d.special.offerings.has(s.hand[i].d)) i--;
+    if (i >= 0) s.draw.push(s.hand.splice(i, 1)[0]);
+  }
   // 길굿·기물 준비 효과
   const idxOf = (id: HeroId) => s.heroes.findIndex((h) => h.id === id && standing(h));
   if (run.next.jangdan) addJangdan(s, run.next.jangdan);
+  if (run.relics.includes('janggun_bukchae')) addJangdan(s, 1);
+  const jf = run.flags.jangdanFights;
+  if (jf && jf.left > 0) {
+    addJangdan(s, jf.n);
+    jf.left--;
+  }
+  if (run.next.weakAll) for (const h of s.heroes) if (standing(h)) h.weak += run.next.weakAll;
+  const possessN = (run.next.possess ?? 0) + (run.flags.crow ? 1 : 0);
+  if (possessN) {
+    const up = s.heroes.filter((h) => standing(h));
+    if (up.length) up[Math.floor(rand(run) * up.length)].possess += possessN;
+  }
+  if (run.next.chasaBlock && idxOf('chasa') >= 0) gainBlock(s, idxOf('chasa'), run.next.chasaBlock);
   if (run.next.gunpowder && idxOf('posu') >= 0) addPersonal(s, idxOf('posu'), run.next.gunpowder);
   if (run.next.blade && idxOf('baksu') >= 0) addPersonal(s, idxOf('baksu'), 1);
   if (run.next.aura && idxOf('chasa') >= 0) addPersonal(s, idxOf('chasa'), run.next.aura);
@@ -135,17 +200,25 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
   }
   // 가호
   if (run.relics.includes('teoju') && s.formation.length) gainBlock(s, s.formation[0], 5);
+  // 명도 한 닢: 모든 영웅의 개인 자원 +1 — 작두박수는 작두에 오른 채(첫 턴 헛디딤 없음), 탈꾼은 한 칸 앞으로(탈이 바뀜)
   if (run.relics.includes('myeongdo')) {
-    for (const h of s.heroes) if (standing(h) && h.id !== 'baksu' && h.id !== 'talggun') addPersonal(s, h.idx, 1);
+    for (const h of s.heroes) {
+      if (!standing(h)) continue;
+      if (h.id === 'talggun') {
+        const i = s.formation.indexOf(h.idx);
+        if (i > 0) swapHeroes(s, h.idx, s.formation[i - 1]);
+        else if (s.formation.length > 1) swapHeroes(s, h.idx, s.formation[1]);
+      } else addPersonal(s, h.idx, 1);
+    }
   }
   s.energy += energyBonus(run);
-  trimHand(run, s);
   const meta: BattleMeta = {
     enc: enc.id, tier: o.tier, src: o.src, cardReward: o.cardReward, special: o.special ?? 'none', start, shadows, enemyDmg: band.enemyDmg,
     hpBefore: run.heroes.map((h) => h.hp), stressBefore, threshold, fleeTries: 0, jeseokRun: 0, jeseokTurn: -1, sansinTurn: -1, log: [], seenDead: [],
     toasts: [], turnStartedAt: Date.now(),
   };
   run.next = { wounds: [] };
+  for (const id of enc.enemies) if (!run.track.met.includes(id)) run.track.met.push(id);
   const names = enc.enemies.map((id) => d.enemyById.get(id)?.name ?? id);
   meta.log.push(`— 전투: ${[...new Set(names)].join(' · ')}${start === 'first' ? ' (선제! 첫 턴 +2장)' : start === 'ambush' ? ' (기습당함! 첫 턴 −2장)' : ''}${shadows ? ` · 그늘 ${shadows}장` : ''}`);
   if (start !== 'normal') meta.toasts.push({ text: start === 'first' ? '선제! 첫 턴에 2장 더 뽑는다' : '기습당했다! 첫 턴에 2장 덜 뽑는다', tone: start === 'first' ? 'info' : 'bad' });
@@ -157,10 +230,6 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
   return cs;
 }
 
-function trimHand(run: Run, s: CombatState): void {
-  if (!run.relics.includes('daesin_bangul')) return;
-  while (s.hand.length > 8) s.discard.push(s.hand.pop()!);
-}
 
 // ── 로그·알림 ───────────────────────────────────────────────────────
 const HERO_ID_RE = /\b(manshin|jaebi|posu|baksu|seungnyeo|beopsa|talggun|chasa)\b/g;
@@ -325,13 +394,18 @@ export function endTurn(app: AppState): void {
     s.outcome = 1;
     return finishBattle(app);
   }
+  if (cs.meta.special === 'play' && s.turn >= PLAY_TURNS) {
+    cs.meta.log.push(`${PLAY_TURNS}턴이 지나도록 사자들을 이기지 못했다 — 놀이 싸움은 사자들의 승리`);
+    s.outcome = 1;
+    playLost = true;
+    return finishBattle(app);
+  }
   if (s.turn >= TURN_CAP) {
     s.outcome = -1;
     return finishBattle(app);
   }
   s.nextEnergy += energyBonus(run);
   startPlayerTurn(s);
-  trimHand(run, s);
   cs.meta.jeseokRun = 0;
   cs.meta.turnStartedAt = Date.now();
   pullEngineLog(s, cs.meta);
@@ -360,6 +434,10 @@ export function canFlee(app: AppState): boolean {
   const cs = app.combat;
   return !!cs && cs.meta.tier !== 'boss' && cs.meta.special === 'none' && cs.s.outcome === 0;
 }
+
+/** 놀이 싸움 제한 턴 (이 턴의 적 차례가 끝나도 사자가 남으면 진다) */
+export const PLAY_TURNS = 5;
+let playLost = false;
 
 export function fleeChance(app: AppState): number {
   return Math.min(0.95, 0.7 + 0.05 * (app.combat?.meta.fleeTries ?? 0));
@@ -425,7 +503,16 @@ function syncHeroes(app: AppState): boolean[] {
     logRun(run, `${heroName(run.heroes[hi].id)}에게 귀신이 붙었다 — 「${d.cards[cd].name}」`);
   }
   run.supplies.jijeon = s.jijeon;
+  run.supplies.rice = s.prov.rice;
+  run.supplies.sul = s.prov.sul;
+  run.supplies.bujeok = s.prov.bujeok;
+  run.supplies.incense = s.prov.incense;
+  if (s.yaksuUsed) run.flags.yaksuUsed = true;
+  // 진형 유지: 전투가 끝난 자리 그대로 다음 전투를 시작한다
+  const alive = s.formation.filter((i) => !run.heroes[i].dead);
+  run.formation = [...alive, ...run.formation.filter((i) => !alive.includes(i))];
   const st = s.stats!;
+  run.track.revived.push(...st.revived);
   run.stats.downs += st.downs;
   run.stats.revives += st.revives;
   for (const [k, v] of st.plays) run.stats.plays[k] = (run.stats.plays[k] ?? 0) + v;
@@ -438,15 +525,18 @@ export function finishBattle(app: AppState): void {
   const s = cs.s;
   const d = D();
   if (cs.meta.special === 'play') return finishPlayFight(app);
+  if (cs.meta.special === 'escort' && s.ward?.lost) return finishEscortLost(app);
+  if (cs.meta.special === 'sonnim' && s.outcome === 1) return finishSonnim(app);
   finishCombat(s);
   const win = s.outcome === 1;
   const st = s.stats!;
+  for (const [id, [, h]] of st.enemyHaewon) if (h) run.track.haewonById[id] = (run.track.haewonById[id] ?? 0) + h;
   run.stats.haewons += st.haewons;
   run.stats.haewonEligible += st.haewonEligible;
   run.stats.kills += st.kills;
   run.stats.escapes += st.escapes;
-  // 해원록: 한 번 만난 원귀는 해원 조건이 기록된다
-  revealHaewon(run, [...new Set(s.enemies.map((e) => d.enemies[e.def].id))].filter((id) => ENEMY_EXTRA.get(id)?.haewon));
+  // 해원록: 한 번 만난 원귀는 해원 조건이 기록된다 (새로 적은 것은 보상 화면에 알린다)
+  const newly = noteCodex(run, s);
   const endDowned = syncHeroes(app);
   if (!win) {
     // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%)
@@ -469,8 +559,9 @@ export function finishBattle(app: AppState): void {
   run.stats.wins++;
   // 넋 수습: 서 있던 영웅은 잃은 체력의 40%
   const rec = afterFightRecovery(run, endDowned);
-  // 해원 → 파티 귀기 −5 / 해원
-  if (st.haewons) for (const i of aliveIdx(run)) addRunStress(run, i, -5 * st.haewons, false);
+  // 해원 → 파티 귀기 −5 / 해원 (소지 한 장: −3 더)
+  const perHaewon = 5 + (run.relics.includes('soji_hanjang') ? 3 : 0);
+  if (st.haewons) for (const i of aliveIdx(run)) addRunStress(run, i, -perHaewon * st.haewons, false);
   // 엽전·재료
   const band = bandOf(run.light);
   let gold = 0;
@@ -488,6 +579,11 @@ export function finishBattle(app: AppState): void {
     const [lo, hi] = ex.drops.gold;
     gold += lo + Math.floor(rand(run) * (hi - lo + 1));
     if (ex.drops.material) mats += e.haewon ? 2 + (run.relics.includes('eophangari') ? 1 : 0) : 1;
+    const fam = d.enemies[e.def].family;
+    if (ex.drops.material) {
+      const tbl = e.haewon ? run.track.haewonByFamily : run.track.killByFamily;
+      tbl[fam] = (tbl[fam] ?? 0) + 1;
+    }
     if (ex.drops.chiseong) chiseong += ex.drops.chiseong + (e.haewon ? 1 : 0);
   }
   if (gold > 0) gold = Math.round(gold * band.gold * (run.relics.includes('geollip') ? 1.2 : 1));
@@ -501,7 +597,8 @@ export function finishBattle(app: AppState): void {
   if (cs.meta.cardReward) run.fightsSeen++;
   const lines: string[] = [];
   if (rec > 0) lines.push(`넋 수습: 서 있던 영웅이 잃은 체력의 40%를 되찾았다 (+${rec})`);
-  if (st.haewons) lines.push(`해원 ${st.haewons} — 파티 귀기 −${5 * st.haewons}, 재료 두 배`);
+  if (st.haewons) lines.push(`해원 ${st.haewons} — 파티 귀기 −${perHaewon * st.haewons}, 재료 두 배`);
+  if (newly.length) lines.push(`해원록에 새로 적었다: ${newly.join(' · ')}`);
   if (chiseong) lines.push(`치성 +${chiseong}`);
   // 대감의 가호: 2전투마다 쌀 1 공물
   if (run.relics.includes('daegam')) {
@@ -529,23 +626,32 @@ function markDone(run: Run, src: BattleSource): void {
   else if (src.k === 'tile') dg.corridors[src.cor].tiles[src.i].content.done = true;
 }
 
-/** 사자 검문 놀이 싸움: 잃은 체력은 되돌리고 그만큼 귀기로 (사망·중상 없음) */
+/** 해원록: 처음 만난 원귀의 해원 조건이 적힌다 (반복 2: 새로 적은 것을 알린다) */
+function noteCodex(run: Run, s: CombatState): string[] {
+  const d = D();
+  const ids = [...new Set(s.enemies.map((e) => d.enemies[e.def].id))].filter((id) => ENEMY_EXTRA.get(id)?.haewon);
+  return revealHaewon(run, ids).map((id) => d.enemyById.get(id)?.name ?? id);
+}
+
+/** 사자 검문 놀이 싸움 (08 §3.3 → 반복 2): 놀이 사자 셋, 영웅이 받는 피해는 전투 안에서 바로 귀기로 들어간다(쓰러지지 않는다). 이기면 엽전 20, 5턴 안에 못 이기면 귀기 +15. 어느 쪽이든 통과 */
 function finishPlayFight(app: AppState): void {
   const cs = app.combat!;
   const run = app.run!;
   const s = cs.s;
-  const win = s.outcome === 1;
+  const win = s.outcome === 1 && !playLost && s.enemies.every((e) => !e.alive);
+  playLost = false;
   const st = s.stats!;
   for (const [k, v] of st.plays) run.stats.plays[k] = (run.stats.plays[k] ?? 0) + v;
   const lines: string[] = [];
   run.heroes.forEach((p, i) => {
     if (p.dead) return;
     const h = s.heroes[i];
-    const lost = Math.max(0, cs.meta.hpBefore[i] - Math.max(0, h.hp));
-    p.hp = cs.meta.hpBefore[i];
-    if (lost) addRunStress(run, i, lost, false);
-    if (lost) lines.push(`${heroName(p.id)}: 체력 대신 귀기 +${lost}`);
+    const passed = Math.max(0, cs.meta.stressBefore[i] - cs.meta.threshold);
+    const gained = h.stress - passed;
+    if (gained) addRunStress(run, i, gained, false);
+    if (gained > 0) lines.push(`${heroName(p.id)}: 받은 피해만큼 귀기 +${gained}`);
   });
+  for (const [hi, cd] of s.newCurses) run.deck.push({ d: cd, o: hi, o2: -1, orig: -1, x: -1 });
   let gold = 0;
   if (win) {
     gold = 20;
@@ -561,6 +667,56 @@ function finishPlayFight(app: AppState): void {
     title: '사자 검문 — 놀이 싸움', gold, materials: 0, lines, cards: null, cardsTaken: true, flags: null, relics: null, relicPicked: true,
     rareCards: null, rarePicked: true, bossEnd: false,
   };
+  app.combat = null;
+  app.screen = 'reward';
+}
+
+/** 호위 실패: 산 사람이 쓰러졌다 — 귀기 +10 (영웅의 체력·죽음은 그대로 남는다) */
+function finishEscortLost(app: AppState): void {
+  const cs = app.combat!;
+  const run = app.run!;
+  syncHeroes(app);
+  for (const i of aliveIdx(run)) addRunStress(run, i, 10, false);
+  markDone(run, cs.meta.src);
+  app.reward = {
+    title: '호위 실패', gold: 0, materials: 0, lines: ['잡귀가 잘못 끌려온 사람을 놓치지 않았다. 그 사람은 다시 저승 어귀를 헤맨다 — 파티 귀기 +10'], cards: null, cardsTaken: true,
+    flags: null, relics: null, relicPicked: true, rareCards: null, rarePicked: true, bossEnd: false,
+  };
+  logRun(run, '호위 실패 — 귀기 +10');
+  app.combat = null;
+  app.screen = 'reward';
+}
+
+/** 손님 배웅 (05-region2 §9.3): 좋게 배웅 → 엽전 45·치성 1·희귀 가호 「손님의 배웅」·해원록. 서운한 작별 → 이번 원정 동안 전투 시작 시 신열 */
+function finishSonnim(app: AppState): void {
+  const cs = app.combat!;
+  const run = app.run!;
+  const s = cs.s;
+  const ok = s.entertain?.result === 'sendoff';
+  const endDowned = syncHeroes(app);
+  afterFightRecovery(run, endDowned);
+  run.flags.sonnimDone = true;
+  const lines: string[] = [];
+  if (ok) {
+    run.gold += 45;
+    run.chiseong += 1;
+    run.stats.haewons += 1;
+    run.stats.haewonEligible += 1;
+    run.track.haewonById.sonnim_baeung = (run.track.haewonById.sonnim_baeung ?? 0) + 1;
+    if (!run.relics.includes('sonnim_baeung_gaho')) run.relics.push('sonnim_baeung_gaho');
+    lines.push('손님이 흐뭇하게 떠났다 — 엽전 45 · 치성 1 · 희귀 가호 「손님의 배웅」(신열을 내는 데 에너지가 들지 않는다, 턴당 1회)');
+    lines.push('해원록: 손님을 좋게 보냄');
+  } else {
+    run.flags.sonnimPenalty = true;
+    lines.push('대접이 모자라 손님이 서운하게 떠났다 — 이번 원정 동안 전투 시작 시 신열 1장');
+  }
+  run.stats.wins += 1;
+  markDone(run, cs.meta.src);
+  app.reward = {
+    title: ok ? '손님 배웅 — 좋게 보냄' : '손님 배웅 — 서운한 작별', gold: ok ? 45 : 0, materials: 0, lines, cards: null, cardsTaken: true, flags: null, relics: null,
+    relicPicked: true, rareCards: null, rarePicked: true, bossEnd: false,
+  };
+  logRun(run, lines[0]);
   app.combat = null;
   app.screen = 'reward';
 }

@@ -19,7 +19,7 @@ export function argNum(name: string, def: number): number {
   return def;
 }
 
-export async function runPool<R>(kind: JobMsg['kind'], trios: HeroId[][], n: number, workers: number, onDone?: (done: number, total: number) => void, whatIf?: JobMsg['whatIf'], duo?: boolean): Promise<R[]> {
+export async function runPool<R>(kind: JobMsg['kind'], trios: HeroId[][], n: number, workers: number, onDone?: (done: number, total: number) => void, whatIf?: JobMsg['whatIf'], duo?: boolean, region?: number): Promise<R[]> {
   const count = Math.max(1, Math.min(workers, trios.length, availableParallelism()));
   const results: R[] = new Array(trios.length);
   let next = 0;
@@ -32,7 +32,7 @@ export async function runPool<R>(kind: JobMsg['kind'], trios: HeroId[][], n: num
         return;
       }
       const id = next++;
-      w.postMessage({ id, kind, trio: trios[id], n, whatIf, duo } satisfies JobMsg);
+      w.postMessage({ id, kind, trio: trios[id], n, whatIf, duo, region } satisfies JobMsg);
     };
     for (let k = 0; k < count; k++) {
       const w = new Worker(new URL('./worker.ts', import.meta.url), { execArgv: ['--import', 'tsx'] });

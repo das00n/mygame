@@ -4,8 +4,8 @@
 // − 보이는 의도로 예측한 피해(쓰러진 영웅 피격은 사망 위험으로 크게) + 장단·자원·굿상·능력·손패 잠재값.
 
 import {
-  aliveEnemies, canPlay, cloneState, collapsed, D, endPlayerTurn, enemyTurn, finishCombat, haewonSatisfied, playCard,
-  startPlayerTurn, standing, TURN_CAP, deathSaveChance,
+  aliveEnemies, canPlay, capActive, cloneState, collapsed, D, endPlayerTurn, enemyTurn, finishCombat, haewonSatisfied, playCard,
+  popcount, startPlayerTurn, standing, TURN_CAP, deathSaveChance,
 } from '../core/engine.ts';
 import { projectIncoming } from '../core/enemy.ts';
 import type { ActionChoice, CardDef, CombatState, EnemyState, HeroState, Op } from '../core/types.ts';
@@ -28,6 +28,11 @@ export const W = {
   jangdan: 0.5,
   offering: 14,
   stress: 0.15,
+  /** 신열: 손에 든 채 턴을 마치면 약화 + 옮김 · 더미에 남으면 다시 돈다 (05-region2 §9.1) */
+  sinyeolHand: 3,
+  sinyeolDeck: 1,
+  /** 손님 배웅: 대접 1점 (05-region2 §9.3) */
+  entertain: 5,
 };
 
 // ── 정적 추정 캐시 ──────────────────────────────────────────────────
@@ -99,6 +104,7 @@ function haewonProgress(s: CombatState, e: EnemyState): number {
     case 'collapse': return collapsed(s, e) ? 1 : e.shake / e.endure;
     case 'offering': return s.offeringPaid ? 1 : 0;
     case 'minions': return haewonSatisfied(s, e) ? 1 : 0;
+    case 'knots': return Math.min(1, popcount(e.knots) / (r.need ?? 4));
     default: return 0;
   }
 }
@@ -171,7 +177,7 @@ function producesOf(defIdx: number): string[] {
 }
 
 function feasibleHaewon(s: CombatState): Set<string> {
-  const f = new Set<string>(['jangdan', 'offering', 'minions']);
+  const f = new Set<string>(['jangdan', 'offering', 'minions', 'knots']);
   for (const pile of [s.hand, s.draw, s.discard]) for (const c of pile) for (const x of producesOf(c.d)) f.add(x);
   if (f.has('넋흔들림')) f.add('collapse');
   return f;
@@ -256,7 +262,11 @@ export function evaluate(s: CombatState, withPotential = true): number {
     const mult = (e.vuln > 0 ? 1.5 : 1) * (collapsed(s, e) ? 1.5 : 1);
     let hp = e.hp;
     const inc = (te.all + te.random / nA + (i === al[0] ? te.front : 0)) * mult;
-    hp -= Math.max(0, inc - e.block);
+    // 빗장: 턴 종료 피해도 남은 상한까지만 (05-region3 §9.1)
+    const capped = capActive(s, e);
+    let through = Math.max(0, inc - e.block);
+    if (capped) through = Math.min(through, Math.max(0, d.enemies[e.def].cap!.n - e.capLost));
+    hp -= through;
     let dies = hp <= 0;
     if (!dies && e.doom > 0 && e.doom >= (s.seokja && e.bound ? Math.ceil(hp / 2) : hp)) dies = true;
     if (!dies && e.bleed > 0) {
@@ -279,6 +289,8 @@ export function evaluate(s: CombatState, withPotential = true): number {
     st += Math.min(hp, ((e.bleed - 1) * e.bleed) / 2) * 0.6;
     if (collapsed(s, e) && s.turn + 1 <= e.collapseUntil) st += 4;
     if (e.bound) st += 1;
+    // 빗장 원귀 앞에서는 상한을 넘는 상태(상흔·명부·넋흔들림)의 값이 크다
+    if (capped) st *= 1.5;
     score += st * f;
     score -= e.block * 0.3;
     score -= e.atkBonus * 2.5; // 누적된 공격 보너스 = 앞으로 받을 피해
@@ -337,6 +349,19 @@ export function evaluate(s: CombatState, withPotential = true): number {
   for (const c of s.hand) if (usesJangdan(c.d) && canPlay(s, c)) users++;
   score += s.jangdan * (W.jangdan + 1.2 * Math.min(2, users));
   if (s.offeringPaid) score += W.offering;
+  // 신열: 손에 남기면 약화·옮김, 더미에 있으면 다시 손에 온다 → 에너지가 남으면 땀을 낸다
+  const sy = d.special.sinyeol;
+  for (const c of s.hand) if (c.d === sy && c.o >= 0 && standing(s.heroes[c.o])) score -= W.sinyeolHand;
+  for (const pile of [s.draw, s.discard]) for (const c of pile) if (c.d === sy) score -= W.sinyeolDeck;
+  // 손님 배웅: 대접 게이지 (좋게 보내면 전투가 끝난다)
+  if (s.entertain) score += Math.min(s.entertain.value, s.entertain.goal) * W.entertain;
+  // 호위: 선두에 방어도가 없으면 선두를 노린 공격을 산 사람이 맞는다
+  if (s.ward && !s.ward.lost) {
+    const f = s.formation[0];
+    const atFront = f !== undefined ? inc.dmg[f] : 0;
+    const exposed = f !== undefined && s.heroes[f].block <= 0 ? atFront : 0;
+    score += s.ward.hp * 3 - Math.min(s.ward.hp, exposed) * 3 - (exposed >= s.ward.hp ? 200 : 0);
+  }
   const front = s.heroes[s.formation[0]];
   if (front && standing(front)) score += front.hp * 0.05 + front.block * 0.02;
   return score;

@@ -3,10 +3,11 @@
 import type { CSSProperties } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
-import { canPlay, collapsed, deathSaveChance, standing } from '../../../src/core/engine.ts';
+import { canPlay, capActive, collapsed, costOf, deathSaveChance, popcount, standing } from '../../../src/core/engine.ts';
+import { KNOTS } from '../../../src/core/types.ts';
 import type { ActionChoice, CardInst, CombatState, HeroState } from '../../../src/core/types.ts';
 import {
-  canFlee, completeChoice, endTurn, fleeChance, haewonView, incomingByHero, intentView, playChoice, slotName, targetSteps, tryFlee, useCandleInCombat,
+  canFlee, completeChoice, endTurn, fleeChance, haewonView, incomingByHero, intentView, playChoice, PLAY_TURNS, slotName, targetSteps, tryFlee, useCandleInCombat,
   wouldRespond, type TargetStep,
 } from '../game/combat.ts';
 import { D, ENEMY_EXTRA, HERO_COLOR, bandOf } from '../game/content.ts';
@@ -113,8 +114,9 @@ export function CombatScreen() {
         <span class="chip lamp">턴 {s.turn}</span>
         {cs.meta.tier === 'boss' && <span class="chip red">보스</span>}
         {cs.meta.tier === 'elite' && <span class="chip red">수호 방</span>}
-        {cs.meta.special === 'play' && <span class="chip">놀이 싸움 — 피해는 귀기로</span>}
+        {cs.meta.special === 'play' && <span class="chip">놀이 싸움 — 피해는 귀기로 · {Math.min(PLAY_TURNS, s.turn)}/{PLAY_TURNS}턴</span>}
         {cs.meta.special === 'escort' && <span class="chip">호위 — 세 턴을 버텨라 ({Math.min(3, s.turn - 1)}/3)</span>}
+        {s.ward && <span class={`chip ${s.ward.hp <= 8 ? 'red' : ''}`} data-testid="ward" title="선두에 방어도가 없으면 선두를 노린 공격을 이 사람이 맞는다">잘못 끌려온 사람 {s.ward.hp}/{s.ward.maxHp}</span>}
         {s.gangsin && <span class="chip lamp">강신!</span>}
         <span class="spacer" />
         <span class="chip lamp" data-testid="light" title="넋등 — 전투 중 촛불로 +25">넋등 {run.light} · {bandOf(run.light).name}</span>
@@ -123,6 +125,15 @@ export function CombatScreen() {
         <button class="btn small ghost" onClick={() => setPanel('gloss')}>용어</button>
       </div>
 
+      {s.entertain && (
+        <div class="deity" data-testid="deity" title="손님은 원귀가 아니라 신령이다. 공격할 수 없다 — 대접해 좋게 보낸다">
+          <span class="dn">손님</span>
+          <span class="meter"><i style={{ width: `${Math.min(100, (s.entertain.value / s.entertain.goal) * 100)}%` }} /></span>
+          <b>대접 {s.entertain.value}/{s.entertain.goal}</b>
+          <span class="tiny dim">{Math.min(s.turn, s.entertain.limit)}/{s.entertain.limit}턴 · 차례마다 대접이 (지난 턴 × 2)보다 적으면 서운해 선두에 신열, 아니면 흐뭇해 귀기 −2</span>
+          <span class="tiny">손님상 차리기(술·쌀) +3 · 턴 끝 굿상 설치물 +1(최대 2) · 장단 3+ +1 · 부적 낸 턴 +1 · 수비가 물러가면 +1</span>
+        </div>
+      )}
       <div class="field">
         <div class="col" style={{ gap: '6px' }}>
           <div class={`heroes-row`} data-testid="heroes">
@@ -187,7 +198,7 @@ export function CombatScreen() {
             <div class="col" style={{ gap: '4px' }}>
               {selInst && selInst.o >= 0 && s.heroes[selInst.o] && !standing(s.heroes[selInst.o]) && selInst.d !== d.special.rescue && selInst.d !== d.special.mourn && <div class="small" style={{ color: '#ffb3a3' }}>주인이 쓰러져 있어 낼 수 없다.</div>}
               {selDef.requireGangsin && !s.gangsin && <div class="small" style={{ color: '#ffb3a3' }}>강신 중에만 낼 수 있다.</div>}
-              {selDef.cost > s.energy && <div class="small" style={{ color: '#ffb3a3' }}>에너지가 모자라다.</div>}
+              {selInst && costOf(s, selInst) > s.energy && <div class="small" style={{ color: '#ffb3a3' }}>에너지가 모자라다.</div>}
               <TermList text={selDef.text} />
             </div>
           </div>
@@ -269,7 +280,14 @@ function EnemyPanel({ s, run, ei, targetable, onClick }: { s: CombatState; run: 
         {e.bound && <St k="bound" label="묶임" title="다음 행동 피해 −25%" />}
         {e.atkBonus > 0 && <St k="buff" n={`+${e.atkBonus}`} title="누적 공격 보너스" />}
         {executes && <span class="st collapse">처형 예정</span>}
+        {e.alive && def.cap && <span class={`st ${capActive(s, e) ? 'cap' : 'faint'}`} title="빗장: 한 플레이어 턴에 잃는 체력의 상한. 상흔·명부·붕괴는 넘는다">빗장 {capActive(s, e) ? `${Math.max(0, def.cap.n - e.capLost)}/${def.cap.n}` : '풀림'}</span>}
       </div>
+      {e.alive && def.haewon.kind === 'knots' && (
+        <div class="knots" data-testid="knots" title="고풀이: 매듭 넷을 풀고 쓰러뜨리면 해원">
+          {KNOTS.map((k, i) => <span key={k} class={e.knots & (1 << i) ? 'on' : ''} title={k}>{k === '넋흔들림' ? '넋' : k === '장단' ? '장3' : k.slice(0, 2)}</span>)}
+          <b class="tiny">{popcount(e.knots)}/{def.haewon.need}</b>
+        </div>
+      )}
       {!hv.none && <div class={`haewon-line ${hv.ok && e.alive ? 'ok' : ''}`} title={hv.text}>{hv.known ? `해원: ${hv.text}` : hv.text}</div>}
       {!e.alive && <div class={`fate ${e.escaped ? 'escape' : e.haewon ? 'haewon' : 'kill'}`}>{e.escaped ? '달아남' : e.haewon ? '해원' : '처치'}</div>}
     </div>

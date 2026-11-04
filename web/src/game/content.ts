@@ -1,7 +1,10 @@
-// 정적 콘텐츠: 첫 지역 데이터(region1.json)·영웅 정보·보급품·의뢰·넋등 구간.
+// 정적 콘텐츠: 지역 데이터(region1~3.json)·영웅 정보·보급품·의뢰·넋등 구간.
 // 엔진(src/core)이 읽지 않는 부분(드롭·기물·이벤트·덫·가호)은 여기서 JSON 을 직접 읽는다.
 
 import region from '../../../data/design/region1.json' with { type: 'json' };
+import region2 from '../../../data/design/region2.json' with { type: 'json' };
+import region3 from '../../../data/design/region3.json' with { type: 'json' };
+import { addEnemyDefs } from '../../../src/core/data.ts';
 import heroesJson from '../../../data/design/heroes.json' with { type: 'json' };
 import synergyJson from '../../../data/design/synergy.json' with { type: 'json' };
 import { D } from '../../../src/core/engine.ts';
@@ -47,45 +50,60 @@ export interface Relic {
   effect: string;
 }
 
-const R = region as unknown as {
-  region: { name: string; concept: string };
+interface RegionJson {
+  region: { name: string; concept: string; act?: number; map?: { loops_bonus?: number; trap_rate?: number; fixed_rooms?: string[] } };
   enemies: RawEnemyExtra[];
   curios: Curio[];
   events: RoomEvent[];
   traps: Trap[];
   relics: Relic[];
-};
+}
+const R = region as unknown as RegionJson;
+export const REGION_JSON: Record<number, RegionJson> = { 1: R, 2: region2 as unknown as RegionJson, 3: region3 as unknown as RegionJson };
 
 export const REGION = R.region;
-export const ENEMY_EXTRA = new Map(R.enemies.map((e) => [e.id, e]));
+export const ENEMY_EXTRA = new Map([1, 2, 3].flatMap((n) => REGION_JSON[n].enemies.map((e) => [e.id, e] as [string, RawEnemyExtra])));
 export const CURIOS = R.curios;
-export const CURIO_BY_ID = new Map(R.curios.map((c) => [c.id, c]));
+export const CURIO_BY_ID = new Map([1, 2, 3].flatMap((n) => REGION_JSON[n].curios.map((c) => [c.id, c] as [string, Curio])));
 export const EVENTS = R.events;
-export const EVENT_BY_ID = new Map(R.events.map((e) => [e.id, e]));
+export const EVENT_BY_ID = new Map([1, 2, 3].flatMap((n) => REGION_JSON[n].events.map((e) => [e.id, e] as [string, RoomEvent])));
 export const TRAPS = R.traps;
-export const TRAP_BY_ID = new Map(R.traps.map((t) => [t.id, t]));
+export const TRAP_BY_ID = new Map([1, 2, 3].flatMap((n) => REGION_JSON[n].traps.map((t) => [t.id, t] as [string, Trap])));
 export const RELICS = R.relics;
-export const RELIC_BY_ID = new Map(R.relics.map((r) => [r.id, r]));
+export const RELIC_BY_ID = new Map([1, 2, 3].flatMap((n) => REGION_JSON[n].relics.map((r) => [r.id, r] as [string, Relic])));
+
+/** 지역 n 의 기물·이벤트·덫·가호 */
+export function regionContent(n: number): RegionJson {
+  return REGION_JSON[n] ?? R;
+}
+
+/** 원귀가 나오는 지역 (해원록 화면) */
+export function enemyRegion(id: string): number {
+  for (const n of [1, 2, 3]) if (REGION_JSON[n].enemies.some((e) => e.id === id)) return n;
+  return 0;
+}
+
+// 사자 검문 「버틴다」의 놀이 싸움 상대 (군졸 차림의 저승사자 — 원귀가 아니다. 해학, 08 §3.3 → 반복 2 구현)
+addEnemyDefs([
+  {
+    id: 'nori_saja', name: '놀이 사자', family: '사자', category: 'normal', hp: [18, 21],
+    intents: [
+      { id: 'a', name: '오라 휘두르기', kind: 'attack', target: '선두', damage: 5, hits: 1 },
+      { id: 'b', name: '적패지 흔들기', kind: 'attack', target: '무작위', damage: 3, hits: 2 },
+      { id: 'c', name: '심술', kind: 'buff', target: '자신', block: 4, effect: '공격 +1 (누적)' },
+    ],
+    pattern: { type: 'cycle', order: ['a', 'b', 'c'] },
+  },
+]);
+for (const [id, name] of [['nori_saja', '놀이 사자']] as const) {
+  ENEMY_EXTRA.set(id, { id, name, family: '사자', han: '군졸 차림의 저승사자. 심술을 부리지만 놀이가 끝나면 껄껄 웃으며 길을 연다.', position: 'front', category: 'normal', haewon: null, drops: { material: null, gold: [0, 0] } });
+}
 
 /** 가호 구현 상태: 'ok' 그대로 · 'approx' 근사 · 'stub' 효과 없음(엔진에 훅이 없다) */
 export const RELIC_IMPL: Record<string, { impl: 'ok' | 'approx' | 'stub'; note?: string }> = {
-  teoju: { impl: 'ok' },
-  geollip: { impl: 'ok' },
-  jowang: { impl: 'ok' },
-  seongju: { impl: 'ok' },
-  geumjul: { impl: 'ok' },
-  eophangari: { impl: 'ok' },
-  sansin: { impl: 'ok' },
-  yongwang: { impl: 'stub', note: '엔진 피해 계산에 계열 배수 훅이 없어 효과 없음' },
-  seonang: { impl: 'ok' },
-  daegam: { impl: 'ok' },
-  obanggi: { impl: 'ok' },
-  jeseok: { impl: 'ok' },
-  chilseong: { impl: 'stub', note: '사망 판정 확률이 엔진 상수라 효과 없음' },
-  myeongdo: { impl: 'approx', note: '작두박수·탈꾼은 개인 자원 대신 효과 없음' },
-  cheonsin: { impl: 'ok' },
-  samjichang: { impl: 'ok' },
-  daesin_bangul: { impl: 'approx', note: '턴 시작 드로우 뒤 8장을 넘는 카드를 버린다(턴 중 드로우는 10장까지)' },
+  myeongdo: { impl: 'ok', note: '작두박수는 작두에 오른 채(첫 턴 헛디딤 없음), 탈꾼은 한 칸 앞으로 나서며 탈이 바뀐 채 시작' },
+  ssuk_dabal: { impl: 'ok', note: '신열은 전투가 끝나면 사라지므로 정화 비용만 줄어든다' },
+  haenggimot: { impl: 'approx', note: '지도에서 길목 칸에 서 있을 때 한 번, 그 길목의 남은 칸을 건너뛰고 다음 방으로 간다' },
 };
 
 // ── 영웅 ─────────────────────────────────────────────────────────────

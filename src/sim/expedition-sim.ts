@@ -50,11 +50,15 @@ async function main() {
   if (has('pre-boss-camp')) whatIf.preBossCamp = argNum('pre-boss-camp', 1) !== 0;
   if (has('pre-boss-heal')) whatIf.preBossHeal = argNum('pre-boss-heal', 1) !== 0;
   const isWhatIf = Object.keys(whatIf).length > 0;
-  const outName = argStr('out', isWhatIf ? 'expedition-whatif' : 'expedition');
+  const region = argNum('region', 1);
+  const final = has('final');
+  if (region !== 1) whatIf.region = region;
+  if (final) whatIf.final = true;
+  const outName = argStr('out', region !== 1 ? `expedition-r${region}${final ? '-final' : ''}` : isWhatIf ? 'expedition-whatif' : 'expedition');
   const d = D();
   const trios = allTrios();
   const t0 = performance.now();
-  process.stdout.write(`sim:expedition — ${trios.length} 조합 × ${runs} 원정, 워커 ${workers}\n`);
+  process.stdout.write(`sim:expedition — 지역 ${region}${final ? ' 최종 원정' : ''}, ${trios.length} 조합 × ${runs} 원정, 워커 ${workers}\n`);
   const results = await runPool<ExpeditionJobResult>('expedition', trios, runs, workers, (done, total) => {
     if (done % 8 === 0 || done === total) process.stdout.write(`  ${done}/${total} 조합 (${((performance.now() - t0) / 1000).toFixed(0)}s)\n`);
   }, whatIf);
@@ -117,15 +121,28 @@ async function main() {
   }
   const clear = trioRows.map((t) => t.clearRate);
   const runtimeSec = Math.round((performance.now() - t0) / 100) / 10;
+  // 지역 2·3 메커닉 측정 (05-region2 R2-2·R2-3, 05-region3 R3-3·R3-4·R3-5)
+  const allRuns = results.flatMap((r) => r.runs);
+  const regionMetrics = region === 1 ? null : {
+    sonnim: { met: allRuns.filter((x) => x.sonnim).length, sendoff: allRuns.filter((x) => x.sonnim === 'sendoff').length },
+    sinyeolPerExp: { played: r3(allRuns.reduce((a, x) => a + (x.sinyeol?.played ?? 0), 0) / allRuns.length), moved: r3(allRuns.reduce((a, x) => a + (x.sinyeol?.moved ?? 0), 0) / allRuns.length) },
+    haewonsPerExp: r3(allRuns.reduce((a, x) => a + x.haewons, 0) / allRuns.length),
+    eopgyeong: [0, 1, 2, 3].map((t) => allRuns.filter((x) => x.eopgyeongTier === t).length),
+    bossReached: r3(allRuns.filter((x) => x.bossReached).length / allRuns.length),
+    bossWinWhenReached: r3(allRuns.filter((x) => x.bossWon).length / Math.max(1, allRuns.filter((x) => x.bossReached).length)),
+  };
   const out = {
     meta: {
-      generated: new Date().toISOString(), runs, trios: trios.length, runtimeSec, structure: '쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2',
+      generated: new Date().toISOString(), region, final, runs, trios: trios.length, runtimeSec,
+      structure: '쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2' + (region === 2 ? ' + 손님 배웅' : '') + (final ? ' (최종: 업경대 + 빗장을 놓지 못한 장수)' : ''),
+      party: region === 1 ? '시작 덱 12장 · 원형 체력' : `전형적인 캠페인 파티 (src/sim/typical.ts TYPICAL[${region}])`,
       rules: { ...DEFAULT_RULES, afterFightRecoveryMissing: AFTER_FIGHT_RECOVERY_MISSING, preBossCamp: PRE_BOSS_CAMP }, whatIf: isWhatIf ? whatIf : null,
     },
     distribution: { min: Math.min(...clear), median: med, max: Math.max(...clear), mean: r3(clear.reduce((a, b) => a + b, 0) / clear.length) },
     trios: trioRows,
     heroes,
     bosses,
+    regionMetrics,
     wipes: wipeTot,
     combat: metrics(allAgg),
     ...cardTables(cards),
@@ -134,6 +151,14 @@ async function main() {
   mkdirSync(dir, { recursive: true });
   writeFileSync(resolve(dir, `${outName}.json`), JSON.stringify(out, null, 1) + '\n');
   process.stdout.write(`완료: 클리어율 최소 ${(out.distribution.min * 100).toFixed(0)}% · 중앙 ${(med * 100).toFixed(0)}% · 최대 ${(out.distribution.max * 100).toFixed(0)}%, ${runtimeSec}s → data/sim/${outName}.json\n`);
+  if (region !== 1) {
+    const flags = trioRows.filter((t) => t.flag);
+    process.stdout.write(`  지배 ${flags.filter((t) => t.flag === 'dominant').length} · 죽은 ${flags.filter((t) => t.flag === 'dead').length} · 해원 ${(r3(trioRows.reduce((a, t) => a + t.haewonRate, 0) / trioRows.length) * 100).toFixed(0)}% · 사망/원정 ${r3(trioRows.reduce((a, t) => a + t.deathsPerRun, 0) / trioRows.length)}\n`);
+    process.stdout.write(`  보스: ${Object.entries(bosses).map(([k, v]) => `${v.name} ${(v.clearRate * 100).toFixed(0)}% (해원 ${(v.haewonRate * 100).toFixed(0)}%)`).join(' · ')}\n`);
+    process.stdout.write(`  ${JSON.stringify(regionMetrics)}\n`);
+    process.stdout.write(`  전멸 위치: ${Object.entries(wipeTot).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, v]) => `${k} ${v}`).join(' · ')}\n`);
+    return;
+  }
   writeReport();
 }
 

@@ -12,11 +12,11 @@ function playInst(s: ReturnType<typeof mk>, c: CardInst, enemy = 0): void {
   playCard(s, { hand: s.hand.length - 1, enemy, enemy2: -1, ally: -1, pair: null });
 }
 
-test('강화판 정의: 저주·상태·공물 행동을 뺀 카드마다 하나, 보상 풀·시작 덱에는 없다', () => {
+test('강화판 정의: 저주·상태·공물·가호 행동을 뺀 카드마다 하나, 보상 풀·시작 덱에는 없다', () => {
   const d = D();
   const base = d.cards.filter((c) => !c.isToken && !c.upgraded);
   const ups = d.cards.filter((c) => c.upgraded);
-  const want = base.filter((c) => !c.isCurse && !c.isStatus && c.subtype !== '공물 행동');
+  const want = base.filter((c) => !c.isCurse && !c.isStatus && c.subtype !== '공물 행동' && c.subtype !== '가호 행동');
   assert.equal(ups.length, want.length);
   assert.equal(ups.length, 280);
   for (const u of ups) {

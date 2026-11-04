@@ -7,6 +7,9 @@ import type { AppState } from './types.ts';
 
 export const app: AppState = blankApp();
 export const settings: StoredSettings = loadSettings();
+// 자동 검사(e2e)가 상태를 읽을 수 있게 둔다 (읽기 전용으로만 쓴다)
+(globalThis as unknown as { __JSG_APP?: AppState; __JSG_SETTINGS?: StoredSettings }).__JSG_APP = app;
+(globalThis as unknown as { __JSG_SETTINGS?: StoredSettings }).__JSG_SETTINGS = settings;
 
 const listeners = new Set<() => void>();
 

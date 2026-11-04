@@ -5,10 +5,10 @@ import { rand } from '../../../src/core/rng.ts';
 import type { CardInst, HeroId } from '../../../src/core/types.ts';
 import { starterDeck } from '../../../src/sim/draft.ts';
 import {
-  AFTER_FIGHT_RECOVERY_MISSING, COMMISSION_BY_ID, D, ENEMY_EXTRA, bandOf, type CommissionId, type SupplyId,
+  AFTER_FIGHT_RECOVERY_MISSING, COMMISSION_BY_ID, D, ENEMY_EXTRA, REGION_JSON, bandOf, enemyRegion, type CommissionId, type SupplyId,
 } from './content.ts';
 import { contentAt, corridorsOf, generateDungeon, neighbors, objective, otherEnd, samePos, shortestPath, stepCost, travelCost } from './dungeon.ts';
-import type { AppState, PHero, Pos, ResultState, Run, RunStats } from './types.ts';
+import type { AppState, CampaignRunInfo, PHero, Pos, ResultState, Run, RunStats } from './types.ts';
 
 export const CODEX_KEY = 'jeoseunggut.codex.v1';
 
@@ -43,6 +43,13 @@ export function bossFor(seed: number): string {
   return rand(h) < 0.5 ? 'b1' : 'b2';
 }
 
+/** 지역·길이에 따른 보스 조합 id (1지역 b1/b2, 2지역 r2b1/r2b2, 3지역 r3b1/r3b2, 최종 r3f1) */
+export function bossEncFor(region: number, seed: number, final = false): string {
+  if (final) return 'r3f1';
+  const b = bossFor(seed);
+  return region === 1 ? b : `r${region}${b}`;
+}
+
 export interface NewRunOpts {
   seed: number;
   commission: CommissionId;
@@ -51,29 +58,41 @@ export interface NewRunOpts {
   supplies: Record<SupplyId, number>;
   gold: number;
   spent: number;
+  /** 지역 (기본 1) */
+  region?: number;
+  /** 캠페인 원정: 개체의 체력·귀기·중상, 로드아웃 덱 */
+  campaign?: CampaignRunInfo;
+  heroes?: { maxHp: number; stress: number; injured: boolean }[];
+  deck?: CardInst[];
+  codex?: string[];
+  firstJangdan?: number;
 }
 
 export function newRun(o: NewRunOpts): Run {
   const d = D();
+  const region = o.region ?? 1;
   const c = COMMISSION_BY_ID.get(o.commission)!;
   const h = { rng: o.seed | 0 };
-  const dungeon = generateDungeon(h, c);
-  const heroes: PHero[] = o.party.map((id) => {
-    const hp = d.heroes.get(id)!.hp;
-    return { id, hp, baseMax: hp, stress: 0, injured: false, recovering: false, dead: false, downs: 0 };
+  const final = o.campaign?.length === 'final';
+  const dungeon = generateDungeon(h, c, region, final);
+  const heroes: PHero[] = o.party.map((id, i) => {
+    const ex = o.heroes?.[i];
+    const hp = ex ? ex.maxHp : d.heroes.get(id)!.hp;
+    return { id, hp: ex?.injured ? Math.floor(hp * 0.8) : hp, baseMax: hp, stress: ex?.stress ?? 0, injured: !!ex?.injured, recovering: false, dead: false, downs: 0 };
   });
   const run: Run = {
-    v: 2, seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossFor(o.seed) : null,
-    party: o.party.slice(), formation: o.formation.slice(), heroes, deck: starterDeck(o.party), supplies: { ...o.supplies }, gold: o.gold,
+    v: 3, region, campaign: o.campaign ?? null, flags: {}, track: { haewonById: {}, haewonByFamily: {}, killByFamily: {}, met: [], revived: [], cheondo: [], bondPairs: {} },
+    seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossEncFor(region, o.seed, final) : null,
+    party: o.party.slice(), formation: o.formation.slice(), heroes, deck: o.deck ? o.deck.slice() : starterDeck(o.party), supplies: { ...o.supplies }, gold: o.gold,
     goldSpent: o.spent, materials: 0, chiseong: 0, light: 100, relics: [], dungeon, pos: { kind: 'room', room: dungeon.entrance }, prevRoom: dungeon.entrance,
-    next: { wounds: [] }, revealed: loadCodex(), bonds: {}, threshold: 0, noNightRaid: false, fightsSeen: 0, bags: { hard: [], elite: [], lastHard: null },
-    pity: -0.05, daegamCounter: 0, stats: newStats(), log: [], ended: false,
+    next: { wounds: [], jangdan: o.firstJangdan || undefined }, revealed: [...new Set([...loadCodex(), ...(o.codex ?? [])])], bonds: {}, threshold: 0, noNightRaid: false, fightsSeen: 0,
+    bags: { hard: [], elite: [], lastHard: null }, pity: -0.05, daegamCounter: 0, stats: newStats(), log: [], ended: false,
   };
   if (run.bossEnc) {
     const b = dungeon.rooms[dungeon.boss];
     b.content = { k: 'boss', id: run.bossEnc };
   }
-  logRun(run, `${c.place}에 들어섰다. 넋등이 환하다.`);
+  logRun(run, `${region === 1 ? c.place : REGION_JSON[region].region.name}에 들어섰다. 넋등이 환하다.`);
   return run;
 }
 
@@ -152,9 +171,16 @@ export interface StepResult {
 }
 
 /** 한 걸음. 넋등을 쓰고 칸·방을 밝힌다. 내용 처리는 호출한 쪽(actions)이 한다 */
+/** 걸음 넋등: 짚신 세 켤레 −1 · 무쇠 지팡이 +2 (새 칸만) */
+export function stepCostFor(run: Run, to: Pos): number {
+  const base = stepCost(run.dungeon, to);
+  if (to.kind !== 'tile' || run.dungeon.corridors[to.cor].tiles[to.i].walked) return base;
+  return Math.max(0, base - (run.relics.includes('jipsin_se') ? 1 : 0) + (run.relics.includes('musoe_jipangi') ? 2 : 0));
+}
+
 export function stepTo(run: Run, to: Pos): StepResult {
   const dg = run.dungeon;
-  const cost = stepCost(dg, to);
+  const cost = stepCostFor(run, to);
   run.light = Math.max(0, run.light - cost);
   let scouted = false;
   let respawn = false;
@@ -258,7 +284,7 @@ export function revealHaewon(run: Run, ids: string[]): string[] {
 }
 
 export function revealRandomHaewon(run: Run, n: number): string[] {
-  const pool = [...ENEMY_EXTRA.values()].filter((e) => e.haewon && !run.revealed.includes(e.id));
+  const pool = [...ENEMY_EXTRA.values()].filter((e) => e.haewon && !run.revealed.includes(e.id) && enemyRegion(e.id) === run.region);
   const out: string[] = [];
   for (let k = 0; k < n && pool.length; k++) {
     const i = Math.floor(rand(run) * pool.length);
@@ -270,7 +296,14 @@ export function revealRandomHaewon(run: Run, n: number): string[] {
 
 export function bossEnemyIds(run: Run): string[] {
   if (!run.bossEnc) return [];
-  return run.bossEnc === 'b1' ? ['sakkun'] : ['sangyeo'];
+  const enc = D().encounterById.get(run.bossEnc);
+  return enc ? enc.enemies.filter((id) => D().enemyById.get(id)?.category === 'boss') : [];
+}
+
+/** 보스 굴의 큰 원귀 이름 */
+export function bossName(run: Run): string | null {
+  const ids = bossEnemyIds(run);
+  return ids.length ? D().enemyById.get(ids[0])!.name : null;
 }
 
 // ── 전투 사이 회복 (넋 수습) ─────────────────────────────────────────
@@ -298,12 +331,12 @@ export function buildResult(app: AppState, success: boolean, reason: string): Re
   return {
     success, reason, commission: run.commission, party: run.party.slice(), heroes: run.heroes.map((h) => ({ ...h })), stats: { ...run.stats, plays: { ...run.stats.plays } },
     gold: run.gold, materials: run.materials, chiseong: run.chiseong, roomsVisited: dg.rooms.filter((r) => r.visited).length, roomsTotal: dg.rooms.length,
-    light: run.light, relics: run.relics.slice(), deckSize: run.deck.length,
+    light: run.light, relics: run.relics.slice(), deckSize: run.deck.length, region: run.region, campaign: !!run.campaign,
   };
 }
 
 export function lightCostPreview(run: Run, to: Pos): number {
-  return stepCost(run.dungeon, to);
+  return stepCostFor(run, to);
 }
 
 export { travelCost };

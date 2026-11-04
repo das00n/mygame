@@ -12,12 +12,29 @@ import {
   abandon, campAvailable, dialogContinue, finishCamp, moveTo, openCamp, pickerApply, returnHome, rewardContinue, setFormation, travelTo, useCandleOnMap,
 } from './actions.ts';
 import type { AppState, Pos, Run } from './types.ts';
+import { autoCampaignStep } from './campaign.ts';
+import type { SupplyId } from './content.ts';
+
+/** 보스 공물에 남겨 둘 보급품 (뱃사공 지전 3 · 허주 부적 2 · 굶은 넋 쌀 3) */
+function reserved(run: Run): Partial<Record<SupplyId, number>> {
+  const d = D();
+  const out: Partial<Record<SupplyId, number>> = {};
+  const enc = run.bossEnc ? d.encounterById.get(run.bossEnc) : undefined;
+  for (const id of enc?.enemies ?? []) {
+    const off = d.enemyById.get(id)?.offering;
+    const p = off?.pay[0];
+    if (p) out[p.item as SupplyId] = Math.max(out[p.item as SupplyId] ?? 0, p.n);
+  }
+  if (run.bossEnc === 'b1') out.jijeon = 3;
+  return out;
+}
 
 let turnPlays = 0;
 let lastTurn = -1;
 
 /** 한 걸음 둔다. 둘 것이 없으면 false */
 export function autoStep(app: AppState): boolean {
+  if (app.campaign && (app.screen === 'village' || app.screen === 'settle' || (app.screen === 'result' && app.plan))) return autoCampaignStep(app);
   const run = app.run;
   if (!run) return false;
   if (app.picker) return autoPicker(app);
@@ -99,8 +116,17 @@ function autoDialog(app: AppState): boolean {
     return true;
   }
   const opts = dialogOptions(run, dlg).filter((o) => o.enabled);
-  const keepJijeon = run.bossEnc === 'b1' ? 3 : 0;
-  const affordable = (o: (typeof opts)[number]) => !(o.cost?.includes('지전') && run.supplies.jijeon - Number(o.cost.match(/지전\s*(\d+)/)?.[1] ?? 1) < keepJijeon);
+  const keep = reserved(run);
+  const NAME_ID: Record<string, SupplyId> = { 촛불: 'candle', 쌀: 'rice', 향: 'incense', 지전: 'jijeon', 부적: 'bujeok', 술: 'sul' };
+  const affordable = (o: (typeof opts)[number]) => {
+    if (!o.cost) return true;
+    for (const part of o.cost.split(',')) {
+      const m = part.trim().match(/^(\S+)\s*(\d+)$/);
+      const id = m ? NAME_ID[m[1]] : undefined;
+      if (id && run.supplies[id] - Number(m![2]) < (keep[id] ?? 0)) return false;
+    }
+    return true;
+  };
   let pick = opts.find((o) => o.kind === 'hero') ?? opts.find((o) => o.kind === 'supply' && affordable(o));
   if (!pick) {
     if (dlg.kind === 'curio') pick = opts.find((o) => o.kind === 'bare');
