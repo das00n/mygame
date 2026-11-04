@@ -8,7 +8,7 @@
 
 기준 출처:
 - 적 수치 곡선: docs/research/enemy-structure-analysis.md §2 (StS 1·2·3막 중앙값의 모양)
-  1막 수치는 v0.2.1 조정값(07-prototype §11~§12) 그대로. 2·3막은 그 모양을 따르되 덕 22~28장·넋 수습 규칙을 감안해 눌렀다
+  1막 수치는 v0.2.1 조정값(07-prototype §11~§12) 그대로. 2·3막은 그 모양을 따르되 덱 22~28장·넋 수습 규칙을 감안해 눌렀다
   (docs/05-region2.md §8, docs/05-region3.md §8)
 - 원귀당 압박 방식 1~2개, 지역 대표 압박 2개: 같은 문서 §8 E3
 - 파티 전용 동사 가르치기: E4 (+ 지역 2의 번지는 홀림·옮김)
@@ -38,13 +38,13 @@ ACTS = {
         "hp": {"normal": (6, 45), "minion": (6, 25), "elite": (50, 100), "boss": (100, 260)},
         "enc_hp": {"easy": (15, 40), "hard": (35, 65), "elite": (55, 100), "boss": (140, 260)},
         "dmg": {"easy": 13, "hard": 18, "elite": 18, "boss": 26}},
-    2: {"label": "2막 (StS 2막 모양: 일반 ×1.9 · 엘리트 ×1.65 · 보스 ×1.2, 피해 ×1.45/×1.35/×1.15)",
-        "hp": {"normal": (8, 70), "minion": (8, 40), "elite": (90, 160), "boss": (150, 300)},
+    2: {"label": "2막 (StS 2막 모양을 눌러 씀 — 조합 체력 상한 1막 대비 어려움 ×1.85 · 엘리트 ×1.6 · 보스 ×1.15, 피해 상한 ×1.45 · ×1.35 · ×1.15)",
+        "hp": {"normal": (8, 70), "minion": (8, 40), "elite": (80, 160), "boss": (150, 300)},
         "enc_hp": {"easy": (35, 70), "hard": (70, 120), "elite": (100, 160), "boss": (220, 300)},
         "dmg": {"easy": 20, "hard": 26, "elite": 24, "boss": 30}},
-    3: {"label": "3막 (StS 3막 모양: 일반 ×2.4 · 엘리트 ×2.0 · 보스 ×1.25, 피해 ×1.65/×1.65/×1.25, 최종 보스 별도)",
+    3: {"label": "3막 (StS 3막 모양을 눌러 씀 — 조합 체력 상한 1막 대비 어려움 ×2.3 · 엘리트 ×2.0 · 보스 ×1.3, 피해 상한 ×1.65 · ×1.65 · ×1.25, 최종 보스 별도)",
         "hp": {"normal": (10, 85), "minion": (10, 70), "elite": (110, 190), "boss": (150, 300), "final": (300, 420)},
-        "enc_hp": {"easy": (45, 90), "hard": (95, 150), "elite": (130, 200), "boss": (240, 340), "final": (360, 460)},
+        "enc_hp": {"easy": (45, 90), "hard": (90, 150), "elite": (130, 200), "boss": (220, 340), "final": (360, 460)},
         "dmg": {"easy": 22, "hard": 30, "elite": 30, "boss": 32, "final": 36}},
 }
 NEED_POOLS = {"easy": 3, "hard": 5, "elite": 3, "boss": 2}
@@ -129,6 +129,11 @@ def engine_gaps(e, names):
             m = re.match(r"^(.+?)\s*\d+\s*소환", eff)
             if not m or m.group(1).strip() not in names:
                 errs.append(f"{it['name']}: 소환 대상 이름을 엔진이 찾지 못함 ('<원귀 이름> N 소환(최대 N)')")
+        if kind in {"attack", "attack_debuff"} and it.get("target") != "굿상":
+            # enemy.ts 는 공격 문장 속 '끌어'(끌어당김)·'섞'(진형 섞기)·'그늘'(그늘 카드)을 부수 효과로 실행한다
+            for w in ("끌어", "섞", "그늘"):
+                if w in eff:
+                    errs.append(f"{it['name']}: 공격 문장의 '{w}'를 엔진이 부수 효과로 실행함 — 의도라면 move 로, 아니면 단어를 바꾼다")
         if kind in {"buff", "defend"} and it.get("target") == "아군 원귀" and not re.search(r"방어도\s*\d+", eff):
             errs.append(f"{it['name']}: 아군 원귀 방어도('방어도 N')를 엔진이 읽지 못함")
     pat = e["pattern"]
@@ -149,6 +154,9 @@ def engine_gaps(e, names):
             errs.append(f"해원 상태 '{st}'인데 엔진은 '{haewon_label(parsed)}'로 읽음: {hw.get('rule')}")
         if parsed["kind"] == "status" and st is not None and parsed["status"] != st:
             errs.append(f"해원 상태 '{st}'인데 엔진은 '{parsed['status']}'로 읽음")
+        if st is None and parsed["kind"] in set(STATUS_TO_KIND.values()):
+            # 상태 없는 해원(공물·졸개·매듭 등)인데 문장 속 단어 때문에 엔진이 상태 조건으로 잘못 읽는 경우
+            errs.append(f"상태 없는 해원인데 엔진이 '{haewon_label(parsed)}'로 읽음 — 문장에서 상태 단어를 빼거나 별도 필드로: {hw.get('rule')}")
         if parsed["kind"] == "none":
             rule = hw.get("rule") or ""
             if "바친 뒤" in rule:
@@ -535,7 +543,8 @@ def write_md(R):
             if s.get("deity_turn"):
                 L.append(f"- 손님의 차례: {s['deity_turn']}")
             for k, o in s.get("outcomes", {}).items():
-                bits = [f"엽전 {o.get('gold', 0)}"] + ([f"치성 {o['chiseong']}"] if o.get("chiseong") else []) + ([f"가호 {o['relic']}"] if o.get("relic") else [])
+                rel = next((r for r in d["relics"] if r["id"] == o.get("relic")), None)
+                bits = [f"엽전 {o.get('gold', 0)}"] + ([f"치성 {o['chiseong']}"] if o.get("chiseong") else []) + ([f"{rel['tier']} 가호 「{rel['name']}」"] if rel else [])
                 L.append(f"- {k} ({o.get('when', '')}): {', '.join(bits)}" + (f" — {o['effect']}" if o.get("effect") else "") + (f" — 대가: {o['penalty']}" if o.get("penalty") else "")
                          + f" · 가치 {R['special_values'][s['id']][k]}")
             L.append("")
@@ -610,7 +619,8 @@ def main():
         R = check_region(path, heroes_ids, seen)
         results.append(R)
         d = R["d"]
-        out = write_md(R)
+        # data/design 밖의 파일(실험용 사본)은 검사만 하고 표를 덮어쓰지 않는다
+        out = write_md(R) if path.resolve().parent == DESIGN.resolve() else None
         print(f"── {path.name} 「{d['region']['name']}」 {ACTS[R['act']]['label']}")
         print(f"원귀 {len(d['enemies'])} · 조합 {len(R['enc_rows'])} · 특수 {len(d.get('specials', []))} · 기물 {len(d['curios'])} · 이벤트 {len(d['events'])} · 덫 {len(d['traps'])} · 가호 {len(d['relics'])} {dict(R['tiers'])}")
         print(f"해원 조건 분포: {dict(R['haewon'])} → 공용 상태 {len(R['haewon'])}/8종")
@@ -623,7 +633,7 @@ def main():
         own = [n for n in R["needs"] if not n.get("shared_from")]
         print(f"엔진 지원 필요: 새 메커니즘 {len(own)}개" + (f" ({', '.join(n['name'] for n in own)})" if own else "")
               + (f" + 공유 {len(R['needs']) - len(own)}개" if len(R["needs"]) > len(own) else ""))
-        print(f"표: {out.relative_to(ROOT)}")
+        print(f"표: {out.relative_to(ROOT)}" if out else "표: (data/design 밖의 파일이라 쓰지 않음)")
         for w in R["warns"]:
             print("주의:", w)
         if R["errors"]:

@@ -38,11 +38,11 @@
    "pressures": ["P3"],
    "haewon": {"status": "넋흔들림", "rule": "넋흔들림 3 이상인 상태로 쓰러뜨린다", "story": "등을 두드려 흔들어 깨우자 기침이 멎고 숨이 트인다"},
    "drops": {"material": "빛바랜 역병 부적", "gold": [16, 24]}},
-  {"id": "mungan_yeokgwi", "name": "문간 역귀", "family": "역귀", "category": "normal", "hp": [58, 62], "position": "front",
+  {"id": "mungan_yeokgwi", "name": "문간 역귀", "family": "역귀", "category": "normal", "hp": [50, 54], "position": "front",
    "han": "집에 병을 들이지 않으려 대문을 막아섰다가 문지방에서 쓰러졌다. 아직도 문을 지킨다.",
    "intents": [
-    {"id": "a", "name": "대문 밀치기", "kind": "attack", "target": "선두", "damage": 13, "hits": 1},
-    {"id": "b", "name": "문 걸어 잠그기", "kind": "buff", "target": "자신", "block": 10, "effect": "공격 +2 (누적)"}
+    {"id": "a", "name": "대문 밀치기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1},
+    {"id": "b", "name": "문 걸어 잠그기", "kind": "buff", "target": "자신", "block": 10, "effect": "공격 +1 (누적)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
@@ -72,10 +72,10 @@
    "pressures": ["P4", "P3"],
    "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "뒷전 장단에 흥이 나서 상가를 떠난다"},
    "drops": {"material": "잡귀 넋", "gold": [16, 24]}},
-  {"id": "binsang_neok", "name": "빈 상 앞의 넋", "family": "굶주린 넋", "category": "normal", "hp": [46, 50], "position": "front",
+  {"id": "binsang_neok", "name": "빈 상 앞의 넋", "family": "굶주린 넋", "category": "normal", "hp": [42, 46], "position": "front",
    "han": "돌림병 통에 일가가 다 떠나 제삿밥 한 그릇 받지 못했다. 빈 상 앞을 떠나지 못한다.",
    "intents": [
-    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 10, "hits": 1},
+    {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 9, "hits": 1},
     {"id": "b", "name": "상 갉아먹기", "kind": "attack", "target": "굿상", "damage": 12, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 7 피해 + 자신 체력 8 회복"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b"]},
@@ -103,7 +103,7 @@
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P2", "P3"],
-   "haewon": {"status": "명부", "rule": "명부 5 이상인 상태로 쓰러뜨린다", "story": "이름을 불러 봉한 문을 열어 주자 원망을 내려놓는다"},
+   "haewon": {"status": "부적", "rule": "부적(토큰) 카드의 마지막 피해로 쓰러뜨린다", "story": "대문에 붙은 봉인 부적을 새 부적으로 풀어 주자 원망을 내려놓고 문밖으로 나선다"},
    "drops": {"material": "타다 남은 소지", "gold": [18, 26]}},
 
   {"id": "geumjul_jonwi", "name": "금줄 친 존위 원귀", "family": "억울귀", "category": "elite", "hp": [124, 130], "position": "back",
@@ -119,11 +119,11 @@
    "pressures": ["P3", "P1"],
    "haewon": {"status": "명부", "rule": "명부 8 이상인 상태로 쓰러뜨린다", "story": "원망 대신 마을을 지키려던 뜻을 명부에 바로 적어 주자 스스로 금줄을 거둔다"},
    "drops": {"material": "타다 남은 소지", "gold": [40, 55]}},
-  {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [96, 100], "position": "back",
+  {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [84, 88], "position": "back",
    "han": "돌림병이 한창일 때 장례도 없이 한자리에 서둘러 묻힌 넋들. 서로 엉겨 하나가 되었다.",
    "intents": [
-    {"id": "a", "name": "엉킨 열기", "kind": "attack", "target": "전체", "damage": 6, "hits": 1},
-    {"id": "b", "name": "넋 불러내기", "kind": "summon", "target": "아군 원귀", "effect": "열 오른 넋 1 소환(최대 2)"},
+    {"id": "a", "name": "엉킨 열기", "kind": "attack", "target": "전체", "damage": 5, "hits": 1},
+    {"id": "b", "name": "넋 불러내기", "kind": "summon", "target": "아군 원귀", "effect": "열 오른 넋 1 소환(최대 1)"},
     {"id": "c", "name": "열 쏟기", "kind": "pollute", "target": "선두", "effect": "선두 영웅 덱에 '신열' 2장(그 영웅이 주인)"}
    ],
    "pattern": {"type": "cycle", "order": ["a", "b", "c"]},
