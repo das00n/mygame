@@ -23,7 +23,10 @@ function walk(ops: Op[], owner: string, fn: (r: OpRef) => void): void {
   for (const op of ops) {
     fn({ owner, op });
     if (op.op === 'per') walk(op.each, owner, fn);
-    if (op.op === 'cond') walk(op.then, owner, fn);
+    if (op.op === 'cond') {
+      walk(op.then, owner, fn);
+      walk(op.else, owner, fn);
+    }
     if (op.op === 'power') walk(op.effects, owner, fn);
   }
 }

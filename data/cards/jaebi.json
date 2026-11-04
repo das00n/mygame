@@ -1,1153 +1,480 @@
 {
- "hero": "jaebi",
- "version": "0.1",
- "notes": [
-  "가락: 잽이 카드를 쓸 때마다 한 단계 빨라진다(굿거리 → 자진굿거리 → 당악, 영웅 시트). 카드의 '가락 +N'은 그와 별개로 더 빨라진다.",
-  "당악에서는 이번 턴 모든 받는소리 효과가 두 번 발동한다(영웅 시트). 잽이의 받는소리 카드가 그 수혜자다.",
-  "진형은 소비만 한다(수입). 보상 풀에는 진형을 바꾸는 효과가 없다. 시작 카드 「장단 바꿈」만 시트대로 교대한다."
- ],
- "tokens": [
-  {
-   "id": "jaebi.t_eolssu",
-   "name": "얼쑤",
-   "type": "기술",
-   "cost": 0,
-   "keywords": [
-    "소멸"
-   ],
-   "text": "아군 하나에게 방어도 3.",
-   "effects": [
+  "hero": "jaebi",
+  "version": "0.1",
+  "notes": [
+    "가락: 잽이 카드를 쓸 때마다 한 단계 빨라진다(굿거리 → 자진굿거리 → 당악, 영웅 시트). 카드의 '가락 +N'은 그와 별개로 더 빨라진다.",
+    "당악에서는 이번 턴 모든 받는소리 효과가 두 번 발동한다(영웅 시트). 잽이의 받는소리 카드가 그 수혜자다.",
+    "진형은 소비만 한다(수입). 보상 풀에는 진형을 바꾸는 효과가 없다. 시작 카드 「장단 바꿈」만 시트대로 교대한다."
+  ],
+  "tokens": [
     {
-     "op": "block",
-     "n": 3,
-     "to": "ally"
-    }
-   ]
-  },
-  {
-   "id": "jaebi.t_jota",
-   "name": "좋다",
-   "type": "기술",
-   "cost": 0,
-   "keywords": [
-    "소멸"
-   ],
-   "text": "장단 +1. 카드 1장을 뽑는다.",
-   "effects": [
-    {
-     "op": "jangdan",
-     "n": 1
+      "id": "jaebi.t_eolssu",
+      "name": "얼쑤",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "아군 하나에게 방어도 3.",
+      "effects": [{"op": "block", "n": 3, "to": "ally"}]
     },
     {
-     "op": "draw",
-     "n": 1
-    }
-   ]
-  },
-  {
-   "id": "jaebi.t_jalhanda",
-   "name": "잘한다",
-   "type": "공격",
-   "cost": 0,
-   "keywords": [
-    "소멸"
-   ],
-   "text": "피해 5.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 5,
-     "target": "one"
-    }
-   ]
-  }
- ],
- "summons": [
-  {
-   "id": "jaebi.s_akgi",
-   "name": "악기 신장",
-   "trigger": "turn_end",
-   "duration": 3,
-   "text": "턴 종료 시 적 전체에 피해 2.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 2,
-     "target": "all"
-    }
-   ]
-  },
-  {
-   "id": "jaebi.s_geollip",
-   "name": "걸립 신령",
-   "trigger": "turn_end",
-   "duration": 3,
-   "text": "턴 종료 시 남은 장단 1당 무작위 적에게 피해 2.",
-   "effects": [
-    {
-     "op": "per",
-     "source": "장단",
-     "each": [
-      {
-       "op": "dmg",
-       "n": 2,
-       "target": "random"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "jaebi.s_teoju",
-   "name": "터주 신령",
-   "trigger": "turn_end",
-   "duration": 3,
-   "text": "턴 종료 시 체력이 가장 낮은 아군에게 방어도 3.",
-   "effects": [
-    {
-     "op": "block",
-     "n": 3,
-     "to": "ally"
-    }
-   ]
-  },
-  {
-   "id": "jaebi.s_sorigwangdae",
-   "name": "소리광대 신령",
-   "trigger": "turn_start",
-   "duration": 3,
-   "text": "턴 시작 시 장단 +1. 체력이 가장 낮은 아군에게 방어도 2.",
-   "effects": [
-    {
-     "op": "jangdan",
-     "n": 1
+      "id": "jaebi.t_jota",
+      "name": "좋다",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "장단 +1. 카드 1장을 뽑는다.",
+      "effects": [{"op": "jangdan", "n": 1}, {"op": "draw", "n": 1}]
     },
     {
-     "op": "block",
-     "n": 2,
-     "to": "ally"
+      "id": "jaebi.t_jalhanda",
+      "name": "잘한다",
+      "type": "공격",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "피해 5.",
+      "effects": [{"op": "dmg", "n": 5, "target": "one"}]
     }
-   ]
-  },
-  {
-   "id": "jaebi.s_jeseok",
-   "name": "제석 신령",
-   "trigger": "turn_start",
-   "duration": 3,
-   "text": "턴 시작 시 카드 1장을 뽑는다.",
-   "effects": [
+  ],
+  "summons": [
     {
-     "op": "draw",
-     "n": 1
-    }
-   ]
-  }
- ],
- "cards": [
-  {
-   "id": "jaebi.janggu_jangdan",
-   "name": "장구 장단",
-   "type": "기술",
-   "rarity": "기본",
-   "cost": 0,
-   "starter": true,
-   "path": "core",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "장단 +1. 받는소리: 장단 +1 더.",
-   "effects": [
-    {
-     "op": "jangdan",
-     "n": 1
+      "id": "jaebi.s_akgi",
+      "name": "악기 신장",
+      "trigger": "turn_end",
+      "duration": 3,
+      "text": "턴 종료 시 적 전체에 피해 2.",
+      "effects": [{"op": "dmg", "n": 2, "target": "all"}]
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "jangdan",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "장단 +1. 받는소리: 장단 +2 더.",
-   "note": "시트의 '가락 +1'은 잽이 카드를 쓸 때 자동으로 오르는 몫이라 본문에서 뺐다."
-  },
-  {
-   "id": "jaebi.jing_ullim",
-   "name": "징 울림",
-   "type": "공격",
-   "rarity": "기본",
-   "cost": 1,
-   "starter": true,
-   "path": "core",
-   "keywords": [],
-   "text": "적 전체에 피해 4.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 4,
-     "target": "all"
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": []
-   },
-   "upgrade": "적 전체에 피해 5."
-  },
-  {
-   "id": "jaebi.chuimsae",
-   "name": "추임새",
-   "type": "기술",
-   "rarity": "기본",
-   "cost": 1,
-   "starter": true,
-   "path": "core",
-   "keywords": [],
-   "text": "'얼쑤' 부적 2장을 손에 만든다.",
-   "effects": [
-    {
-     "op": "token",
-     "id": "jaebi.t_eolssu",
-     "n": 2
-    }
-   ],
-   "tags": {
-    "produce": [
-     "부적"
-    ],
-    "consume": []
-   },
-   "upgrade": "'얼쑤' 부적 2장을 손에 만든다. 받는소리: 1장 더."
-  },
-  {
-   "id": "jaebi.jangdan_bakkum",
-   "name": "장단 바꿈",
-   "type": "기술",
-   "rarity": "기본",
-   "cost": 1,
-   "starter": true,
-   "path": "core",
-   "keywords": [],
-   "text": "방어도 3. 이번 턴 진형이 바뀔 때마다 장단 +1.",
-   "effects": [
-    {
-     "op": "block",
-     "n": 3,
-     "to": "self"
+      "id": "jaebi.s_geollip",
+      "name": "걸립 신령",
+      "trigger": "turn_end",
+      "duration": 3,
+      "text": "턴 종료 시 남은 장단 1당 무작위 적에게 피해 2.",
+      "effects": [{"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 2, "target": "random"}], "expect": 2.9}]
     },
     {
-     "op": "per",
-     "source": "진형",
-     "each": [
-      {
-       "op": "jangdan",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "방어도 5. 이번 턴 진형이 바뀔 때마다 장단 +1.",
-   "note": "C5: 잽이는 진형을 만들지 않는다. 진형 변화는 동료의 근접 돌격·이동 카드에서 온다(최종 검수에서 교대 제거)."
-  },
-  {
-   "id": "jaebi.chaepyeon",
-   "name": "채편 치기",
-   "type": "공격",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "A",
-   "keywords": [],
-   "text": "피해 7. 장단이 2 이상이면 카드 1장을 뽑는다.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 7,
-     "target": "one"
+      "id": "jaebi.s_teoju",
+      "name": "터주 신령",
+      "trigger": "turn_end",
+      "duration": 3,
+      "text": "턴 종료 시 체력이 가장 낮은 아군에게 방어도 3.",
+      "effects": [{"op": "block", "n": 3, "to": "ally"}]
     },
     {
-     "op": "cond",
-     "if": "장단이 2 이상이면",
-     "then": [
-      {
-       "op": "draw",
-       "n": 1
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "장단"
-    ]
-   },
-   "upgrade": "피해 10. 장단이 2 이상이면 카드 1장을 뽑는다."
-  },
-  {
-   "id": "jaebi.jegeum",
-   "name": "제금 부딪기",
-   "type": "공격",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "A",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "무작위 적에게 피해 3을 2회. 받는소리: 1회 더.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 3,
-     "target": "random",
-     "hits": 2
+      "id": "jaebi.s_sorigwangdae",
+      "name": "소리광대 신령",
+      "trigger": "turn_start",
+      "duration": 3,
+      "text": "턴 시작 시 장단 +1. 체력이 가장 낮은 아군에게 방어도 2.",
+      "effects": [{"op": "jangdan", "n": 1}, {"op": "block", "n": 2, "to": "ally"}]
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "dmg",
-       "n": 3,
-       "target": "random"
-      }
-     ]
+      "id": "jaebi.s_jeseok",
+      "name": "제석 신령",
+      "trigger": "turn_start",
+      "duration": 3,
+      "text": "턴 시작 시 카드 1장을 뽑는다.",
+      "effects": [{"op": "draw", "n": 1}]
     }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": []
-   },
-   "upgrade": "무작위 적에게 피해 4를 2회. 받는소리: 1회 더."
-  },
-  {
-   "id": "jaebi.makjangdan",
-   "name": "막장단",
-   "type": "공격",
-   "rarity": "일반",
-   "cost": 2,
-   "path": "A",
-   "keywords": [],
-   "text": "무작위 적에게 피해 3을 (장단 + 3)회 준다. 가락이 당악이면 2회 더.",
-   "effects": [
+  ],
+  "cards": [
     {
-     "op": "dmg",
-     "n": 3,
-     "target": "random",
-     "hits": 3
+      "id": "jaebi.janggu_jangdan",
+      "name": "장구 장단",
+      "type": "기술",
+      "rarity": "기본",
+      "cost": 0,
+      "starter": true,
+      "path": "core",
+      "keywords": ["받는소리"],
+      "text": "장단 +1. 받는소리: 장단 +1 더.",
+      "effects": [{"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 1}]}],
+      "tags": {"produce": ["장단"], "consume": []},
+      "upgrade": "장단 +1. 받는소리: 장단 +2 더.",
+      "note": "시트의 '가락 +1'은 잽이 카드를 쓸 때 자동으로 오르는 몫이라 본문에서 뺐다."
     },
     {
-     "op": "per",
-     "source": "장단",
-     "each": [
-      {
-       "op": "dmg",
-       "n": 3,
-       "target": "random"
-      }
-     ]
+      "id": "jaebi.jing_ullim",
+      "name": "징 울림",
+      "type": "공격",
+      "rarity": "기본",
+      "cost": 1,
+      "starter": true,
+      "path": "core",
+      "keywords": [],
+      "text": "적 전체에 피해 4.",
+      "effects": [{"op": "dmg", "n": 4, "target": "all"}],
+      "tags": {"produce": [], "consume": []},
+      "upgrade": "적 전체에 피해 5."
     },
     {
-     "op": "cond",
-     "if": "가락이 당악이면",
-     "then": [
-      {
-       "op": "dmg",
-       "n": 3,
-       "target": "random",
-       "hits": 2
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "가락",
-     "장단"
-    ]
-   },
-   "upgrade": "무작위 적에게 피해 4를 (장단 + 3)회 준다. 가락이 당악이면 2회 더."
-  },
-  {
-   "id": "jaebi.jingchae",
-   "name": "징채 내리치기",
-   "type": "공격",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "피해 7. 이번 턴 진형이 바뀌었으면 장단 +2.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 7,
-     "target": "one"
+      "id": "jaebi.chuimsae",
+      "name": "추임새",
+      "type": "기술",
+      "rarity": "기본",
+      "cost": 1,
+      "starter": true,
+      "path": "core",
+      "keywords": [],
+      "text": "'얼쑤' 부적 2장을 손에 만든다.",
+      "effects": [{"op": "token", "id": "jaebi.t_eolssu", "n": 2}],
+      "tags": {"produce": ["부적"], "consume": []},
+      "upgrade": "'얼쑤' 부적 2장을 손에 만든다. 받는소리: 1장 더."
     },
     {
-     "op": "cond",
-     "if": "이번 턴 진형이 바뀌었으면",
-     "then": [
-      {
-       "op": "jangdan",
-       "n": 2
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "피해 10. 이번 턴 진형이 바뀌었으면 장단 +2."
-  },
-  {
-   "id": "jaebi.taepyeongso",
-   "name": "태평소 불기",
-   "type": "공격",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "B",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "적 전체에 피해 3. 받는소리: 아군 하나에게 방어도 4.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 3,
-     "target": "all"
+      "id": "jaebi.jangdan_bakkum",
+      "name": "장단 바꿈",
+      "type": "기술",
+      "rarity": "기본",
+      "cost": 1,
+      "starter": true,
+      "path": "core",
+      "keywords": [],
+      "text": "방어도 3. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "effects": [{"op": "block", "n": 3, "to": "self"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
+      "tags": {"produce": ["장단"], "consume": ["진형"]},
+      "upgrade": "방어도 5. 이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "note": "C5: 잽이는 진형을 만들지 않는다. 진형 변화는 동료의 근접 돌격·이동 카드에서 온다(최종 검수에서 교대 제거)."
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "block",
-       "n": 4,
-       "to": "ally"
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": []
-   },
-   "upgrade": "적 전체에 피해 4. 받는소리: 아군 하나에게 방어도 6."
-  },
-  {
-   "id": "jaebi.deongdeokgungi",
-   "name": "덩덕궁이",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 0,
-   "path": "A",
-   "keywords": [],
-   "text": "장단 +1. 가락 +1.",
-   "effects": [
-    {
-     "op": "jangdan",
-     "n": 1
+      "id": "jaebi.chaepyeon",
+      "name": "채편 치기",
+      "type": "공격",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "A",
+      "keywords": [],
+      "text": "피해 7. 장단이 2 이상이면 카드 1장을 뽑는다.",
+      "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "cond", "if": "장단이 2 이상이면", "then": [{"op": "draw", "n": 1}], "p": 0.35}],
+      "tags": {"produce": [], "consume": ["장단"]},
+      "upgrade": "피해 10. 장단이 2 이상이면 카드 1장을 뽑는다."
     },
     {
-     "op": "personal",
-     "n": 1
-    }
-   ],
-   "tags": {
-    "produce": [
-     "가락",
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "장단 +2. 가락 +1."
-  },
-  {
-   "id": "jaebi.geosang",
-   "name": "거상장단",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "아군 하나에게 방어도 4. 가락을 한 단계 늦추면 그 아군에게 방어도 4 더.",
-   "effects": [
-    {
-     "op": "block",
-     "n": 4,
-     "to": "ally"
+      "id": "jaebi.jegeum",
+      "name": "제금 부딪기",
+      "type": "공격",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "A",
+      "keywords": ["받는소리"],
+      "text": "무작위 적에게 피해 3을 2회. 받는소리: 1회 더.",
+      "effects": [{"op": "dmg", "n": 3, "target": "random", "hits": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "dmg", "n": 3, "target": "random"}]}],
+      "tags": {"produce": [], "consume": []},
+      "upgrade": "무작위 적에게 피해 4를 2회. 받는소리: 1회 더."
     },
     {
-     "op": "cond",
-     "if": "가락을 한 단계 늦추면",
-     "then": [
-      {
-       "op": "block",
-       "n": 4,
-       "to": "ally"
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "가락"
-    ]
-   },
-   "upgrade": "아군 하나에게 방어도 5. 가락을 한 단계 늦추면 그 아군에게 방어도 5 더."
-  },
-  {
-   "id": "jaebi.cheongbae_jangdan",
-   "name": "청배 장단",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "굿상에 악기 신장을 모신다. 장단 +1.",
-   "effects": [
-    {
-     "op": "summon",
-     "id": "jaebi.s_akgi"
+      "id": "jaebi.makjangdan",
+      "name": "막장단",
+      "type": "공격",
+      "rarity": "일반",
+      "cost": 2,
+      "path": "A",
+      "keywords": [],
+      "text": "무작위 적에게 피해 3을 (장단 + 3)회 준다. 가락이 당악이면 2회 더.",
+      "effects": [{"op": "dmg", "n": 3, "target": "random", "hits": 3}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "random"}], "expect": 1.3}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 3, "target": "random", "hits": 2}], "p": 0.2}],
+      "tags": {"produce": [], "consume": ["가락", "장단"]},
+      "upgrade": "무작위 적에게 피해 4를 (장단 + 3)회 준다. 가락이 당악이면 2회 더."
     },
     {
-     "op": "jangdan",
-     "n": 1
-    }
-   ],
-   "tags": {
-    "produce": [
-     "굿상",
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "굿상에 악기 신장을 모신다. 장단 +2."
-  },
-  {
-   "id": "jaebi.heung",
-   "name": "흥 돋우기",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "'좋다' 부적 1장과 '얼쑤' 부적 1장을 손에 만든다.",
-   "effects": [
-    {
-     "op": "token",
-     "id": "jaebi.t_jota",
-     "n": 1
+      "id": "jaebi.jingchae",
+      "name": "징채 내리치기",
+      "type": "공격",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "피해 7. 이번 턴 진형이 바뀌었으면 장단 +2.",
+      "effects": [{"op": "dmg", "n": 7, "target": "one"}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "jangdan", "n": 2}]}],
+      "tags": {"produce": ["장단"], "consume": ["진형"]},
+      "upgrade": "피해 10. 이번 턴 진형이 바뀌었으면 장단 +2."
     },
     {
-     "op": "token",
-     "id": "jaebi.t_eolssu",
-     "n": 1
-    }
-   ],
-   "tags": {
-    "produce": [
-     "부적"
-    ],
-    "consume": []
-   },
-   "upgrade": "'좋다' 부적 1장과 '얼쑤' 부적 2장을 손에 만든다."
-  },
-  {
-   "id": "jaebi.chumsawi",
-   "name": "춤사위 맞추기",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 0,
-   "path": "core",
-   "keywords": [],
-   "text": "이번 턴 진형이 바뀔 때마다 장단 +1.",
-   "effects": [
-    {
-     "op": "per",
-     "source": "진형",
-     "each": [
-      {
-       "op": "jangdan",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "보존. 이번 턴 진형이 바뀔 때마다 장단 +1."
-  },
-  {
-   "id": "jaebi.subu",
-   "name": "수부장단",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "B",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1.",
-   "effects": [
-    {
-     "op": "per",
-     "source": "장단",
-     "each": [
-      {
-       "op": "block",
-       "n": 1,
-       "to": "party"
-      }
-     ]
+      "id": "jaebi.taepyeongso",
+      "name": "태평소 불기",
+      "type": "공격",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "B",
+      "keywords": ["받는소리"],
+      "text": "적 전체에 피해 3. 받는소리: 아군 하나에게 방어도 4.",
+      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "ally"}]}],
+      "tags": {"produce": [], "consume": []},
+      "upgrade": "적 전체에 피해 4. 받는소리: 아군 하나에게 방어도 6."
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "jangdan",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "장단"
-    ]
-   },
-   "upgrade": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1, 카드 1장을 뽑는다."
-  },
-  {
-   "id": "jaebi.sinmyeong_janggu",
-   "name": "신명 장구",
-   "type": "공격",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "피해 4. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 4,
-     "target": "one"
+      "id": "jaebi.deongdeokgungi",
+      "name": "덩덕궁이",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 0,
+      "path": "A",
+      "keywords": [],
+      "text": "장단 +1. 가락 +1.",
+      "effects": [{"op": "jangdan", "n": 1}, {"op": "personal", "n": 1}],
+      "tags": {"produce": ["가락", "장단"], "consume": []},
+      "upgrade": "장단 +2. 가락 +1."
     },
     {
-     "op": "token",
-     "id": "jaebi.t_jalhanda",
-     "n": 1
+      "id": "jaebi.geosang",
+      "name": "거상장단",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "아군 하나에게 방어도 4. 가락을 한 단계 늦추면 그 아군에게 방어도 4 더.",
+      "effects": [{"op": "block", "n": 4, "to": "ally"}, {"op": "cond", "if": "가락을 한 단계 늦추면", "then": [{"op": "block", "n": 4, "to": "ally"}], "p": 0.5}],
+      "tags": {"produce": [], "consume": ["가락"]},
+      "upgrade": "아군 하나에게 방어도 5. 가락을 한 단계 늦추면 그 아군에게 방어도 5 더."
     },
     {
-     "op": "cond",
-     "if": "이번 턴 진형이 바뀌었으면",
-     "then": [
-      {
-       "op": "token",
-       "id": "jaebi.t_jalhanda",
-       "n": 1
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [
-     "부적"
-    ],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "피해 7. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더."
-  },
-  {
-   "id": "jaebi.bujeongnori",
-   "name": "부정놀이 장구",
-   "type": "공격",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "피해 6. 가락이 당악이면 피해 6 더.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 6,
-     "target": "one"
+      "id": "jaebi.cheongbae_jangdan",
+      "name": "청배 장단",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "굿상에 악기 신장을 모신다. 장단 +1.",
+      "effects": [{"op": "summon", "id": "jaebi.s_akgi"}, {"op": "jangdan", "n": 1}],
+      "tags": {"produce": ["굿상", "장단"], "consume": []},
+      "upgrade": "굿상에 악기 신장을 모신다. 장단 +2."
     },
     {
-     "op": "cond",
-     "if": "가락이 당악이면",
-     "then": [
-      {
-       "op": "dmg",
-       "n": 6,
-       "target": "one"
-      }
-     ],
-     "p": 0.4
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "가락"
-    ]
-   },
-   "upgrade": "피해 8. 가락이 당악이면 피해 8 더."
-  },
-  {
-   "id": "jaebi.geollip",
-   "name": "걸립 청하기",
-   "type": "공격",
-   "rarity": "고급",
-   "cost": 2,
-   "path": "A",
-   "keywords": [],
-   "text": "적 전체에 피해 3. 굿상에 걸립 신령을 모신다. 장단 +1.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 3,
-     "target": "all"
+      "id": "jaebi.heung",
+      "name": "흥 돋우기",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "'좋다' 부적 1장과 '얼쑤' 부적 1장을 손에 만든다.",
+      "effects": [{"op": "token", "id": "jaebi.t_jota", "n": 1}, {"op": "token", "id": "jaebi.t_eolssu", "n": 1}],
+      "tags": {"produce": ["부적"], "consume": []},
+      "upgrade": "'좋다' 부적 1장과 '얼쑤' 부적 2장을 손에 만든다."
     },
     {
-     "op": "summon",
-     "id": "jaebi.s_geollip"
+      "id": "jaebi.chumsawi",
+      "name": "춤사위 맞추기",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 0,
+      "path": "core",
+      "keywords": [],
+      "text": "이번 턴 진형이 바뀔 때마다 장단 +1.",
+      "effects": [{"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}]}],
+      "tags": {"produce": ["장단"], "consume": ["진형"]},
+      "upgrade": "보존. 이번 턴 진형이 바뀔 때마다 장단 +1."
     },
     {
-     "op": "jangdan",
-     "n": 1
-    }
-   ],
-   "tags": {
-    "produce": [
-     "굿상",
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "적 전체에 피해 5. 굿상에 걸립 신령을 모신다. 장단 +2."
-  },
-  {
-   "id": "jaebi.teoju",
-   "name": "터주 모시기",
-   "type": "기술",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "B",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 2.",
-   "effects": [
-    {
-     "op": "summon",
-     "id": "jaebi.s_teoju"
+      "id": "jaebi.subu",
+      "name": "수부장단",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "B",
+      "keywords": ["받는소리"],
+      "text": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1.",
+      "effects": [{"op": "per", "source": "장단", "each": [{"op": "block", "n": 1, "to": "party"}], "expect": 3.5}, {"op": "cond", "if": "받는소리", "then": [{"op": "jangdan", "n": 1}], "p": 0.9}],
+      "tags": {"produce": ["장단"], "consume": ["장단"]},
+      "upgrade": "이번 턴 종료 시 남은 장단 1당 파티 방어도 1. 받는소리: 장단 +1, 카드 1장을 뽑는다."
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "block",
-       "n": 2,
-       "to": "ally"
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "굿상"
-    ],
-    "consume": []
-   },
-   "upgrade": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 6."
-  },
-  {
-   "id": "jaebi.sorigwangdae",
-   "name": "소리광대 모시기",
-   "type": "기술",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "굿상에 소리광대 신령을 모신다.",
-   "effects": [
-    {
-     "op": "summon",
-     "id": "jaebi.s_sorigwangdae"
-    }
-   ],
-   "tags": {
-    "produce": [
-     "굿상"
-    ],
-    "consume": []
-   },
-   "upgrade": "굿상에 소리광대 신령을 모신다. 장단 +2."
-  },
-  {
-   "id": "jaebi.jeseok",
-   "name": "제석 맞이",
-   "type": "기술",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "굿상에 제석 신령을 모신다.",
-   "effects": [
-    {
-     "op": "summon",
-     "id": "jaebi.s_jeseok"
-    }
-   ],
-   "tags": {
-    "produce": [
-     "굿상"
-    ],
-    "consume": []
-   },
-   "upgrade": "굿상에 제석 신령을 모신다. 이 신령은 4턴 머문다."
-  },
-  {
-   "id": "jaebi.baldidim",
-   "name": "발디딤 장단",
-   "type": "기술",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "아군 하나에게 방어도 2. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
-   "effects": [
-    {
-     "op": "block",
-     "n": 2,
-     "to": "ally"
+      "id": "jaebi.sinmyeong_janggu",
+      "name": "신명 장구",
+      "type": "공격",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "피해 4. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더.",
+      "effects": [{"op": "dmg", "n": 4, "target": "one"}, {"op": "token", "id": "jaebi.t_jalhanda", "n": 1}, {"op": "cond", "if": "이번 턴 진형이 바뀌었으면", "then": [{"op": "token", "id": "jaebi.t_jalhanda", "n": 1}]}],
+      "tags": {"produce": ["부적"], "consume": ["진형"]},
+      "upgrade": "피해 7. '잘한다' 부적 1장을 손에 만든다. 이번 턴 진형이 바뀌었으면 1장 더."
     },
     {
-     "op": "per",
-     "source": "진형",
-     "each": [
-      {
-       "op": "block",
-       "n": 3,
-       "to": "ally"
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "아군 하나에게 방어도 3. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 4."
-  },
-  {
-   "id": "jaebi.cheongbo",
-   "name": "청보장단",
-   "type": "능력",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "A",
-   "keywords": [],
-   "text": "턴 시작 시 장단 +2.",
-   "effects": [
-    {
-     "op": "power",
-     "effects": [
-      {
-       "op": "jangdan",
-       "n": 2
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "선천. 턴 시작 시 장단 +2."
-  },
-  {
-   "id": "jaebi.chumpan",
-   "name": "춤판 장단",
-   "type": "능력",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "core",
-   "keywords": [],
-   "text": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 2.",
-   "effects": [
-    {
-     "op": "power",
-     "effects": [
-      {
-       "op": "consume",
-       "source": "진형"
-      },
-      {
-       "op": "jangdan",
-       "n": 1
-      },
-      {
-       "op": "dmg",
-       "n": 2,
-       "target": "random"
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "진형"
-    ]
-   },
-   "upgrade": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 3."
-  },
-  {
-   "id": "jaebi.sigimsae",
-   "name": "피리 시김새",
-   "type": "능력",
-   "rarity": "고급",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "턴 시작 시 '얼쑤' 부적 1장을 손에 만든다.",
-   "effects": [
-    {
-     "op": "power",
-     "effects": [
-      {
-       "op": "token",
-       "id": "jaebi.t_eolssu",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "부적"
-    ],
-    "consume": []
-   },
-   "upgrade": "비용 0. 턴 시작 시 '얼쑤' 부적 1장을 손에 만든다."
-  },
-  {
-   "id": "jaebi.cheondung_jing",
-   "name": "천둥 징",
-   "type": "공격",
-   "rarity": "희귀",
-   "cost": 2,
-   "path": "A",
-   "keywords": [],
-   "text": "적 전체에 피해 6. 장단 1당 적 전체에 피해 3 더.",
-   "effects": [
-    {
-     "op": "dmg",
-     "n": 6,
-     "target": "all"
+      "id": "jaebi.bujeongnori",
+      "name": "부정놀이 장구",
+      "type": "공격",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "피해 6. 가락이 당악이면 피해 6 더.",
+      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "가락이 당악이면", "then": [{"op": "dmg", "n": 6, "target": "one"}], "p": 0.25}],
+      "tags": {"produce": [], "consume": ["가락"]},
+      "upgrade": "피해 8. 가락이 당악이면 피해 8 더."
     },
     {
-     "op": "per",
-     "source": "장단",
-     "each": [
-      {
-       "op": "dmg",
-       "n": 3,
-       "target": "all"
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": [
-     "장단"
-    ]
-   },
-   "upgrade": "적 전체에 피해 8. 장단 1당 적 전체에 피해 4 더."
-  },
-  {
-   "id": "jaebi.ojang",
-   "name": "오장 장단",
-   "type": "기술",
-   "rarity": "일반",
-   "cost": 1,
-   "path": "A",
-   "keywords": [],
-   "text": "장단 +2. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
-   "effects": [
-    {
-     "op": "jangdan",
-     "n": 2
+      "id": "jaebi.geollip",
+      "name": "걸립 청하기",
+      "type": "공격",
+      "rarity": "고급",
+      "cost": 2,
+      "path": "A",
+      "keywords": [],
+      "text": "적 전체에 피해 3. 굿상에 걸립 신령을 모신다. 장단 +1.",
+      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "summon", "id": "jaebi.s_geollip"}, {"op": "jangdan", "n": 1}],
+      "tags": {"produce": ["굿상", "장단"], "consume": []},
+      "upgrade": "적 전체에 피해 5. 굿상에 걸립 신령을 모신다. 장단 +2."
     },
     {
-     "op": "cond",
-     "if": "이번 턴 장단이 5가 되면",
-     "then": [
-      {
-       "op": "energy",
-       "n": 1,
-       "when": "now"
-      }
-     ],
-     "p": 0.5
-    }
-   ],
-   "tags": {
-    "produce": [
-     "장단"
-    ],
-    "consume": [
-     "장단"
-    ]
-   },
-   "upgrade": "장단 +3. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
-   "note": "v0.2: 희귀 → 일반(잽이 자신의 장단 소비 보상을 자주 만나게). 일반 예산에 맞춰 드로우를 뺐다."
-  },
-  {
-   "id": "jaebi.sinawi",
-   "name": "시나위",
-   "type": "기술",
-   "rarity": "희귀",
-   "cost": 1,
-   "path": "B",
-   "keywords": [
-    "받는소리"
-   ],
-   "text": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 1장을 뽑는다.",
-   "effects": [
-    {
-     "op": "personal",
-     "n": 2
+      "id": "jaebi.teoju",
+      "name": "터주 모시기",
+      "type": "기술",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "B",
+      "keywords": ["받는소리"],
+      "text": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 2.",
+      "effects": [{"op": "summon", "id": "jaebi.s_teoju"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 2, "to": "ally"}]}],
+      "tags": {"produce": ["굿상"], "consume": []},
+      "upgrade": "굿상에 터주 신령을 모신다. 받는소리: 아군 하나에게 방어도 6."
     },
     {
-     "op": "jangdan",
-     "n": 1
+      "id": "jaebi.sorigwangdae",
+      "name": "소리광대 모시기",
+      "type": "기술",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "굿상에 소리광대 신령을 모신다.",
+      "effects": [{"op": "summon", "id": "jaebi.s_sorigwangdae"}],
+      "tags": {"produce": ["굿상"], "consume": []},
+      "upgrade": "굿상에 소리광대 신령을 모신다. 장단 +2."
     },
     {
-     "op": "cond",
-     "if": "받는소리",
-     "then": [
-      {
-       "op": "draw",
-       "n": 1
-      }
-     ]
-    }
-   ],
-   "tags": {
-    "produce": [
-     "가락",
-     "장단"
-    ],
-    "consume": []
-   },
-   "upgrade": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 2장을 뽑는다.",
-   "note": "'가락을 당악으로' = 굿거리에서 두 단계(가락 +2)로 평가. 당악이 되면 이 카드의 받는소리도 두 번 발동한다."
-  },
-  {
-   "id": "jaebi.baraji",
-   "name": "바라지",
-   "type": "기술",
-   "rarity": "희귀",
-   "cost": 1,
-   "path": "B",
-   "keywords": [],
-   "text": "카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다.",
-   "effects": [
-    {
-     "op": "draw",
-     "n": 1
+      "id": "jaebi.jeseok",
+      "name": "제석 맞이",
+      "type": "기술",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "굿상에 제석 신령을 모신다.",
+      "effects": [{"op": "summon", "id": "jaebi.s_jeseok"}],
+      "tags": {"produce": ["굿상"], "consume": []},
+      "upgrade": "굿상에 제석 신령을 모신다. 이 신령은 4턴 머문다."
     },
     {
-     "op": "special",
-     "value": 5,
-     "note": "받는소리 효과 1회 추가 ≈ 받는소리 효과 원값 평균 5점"
-    }
-   ],
-   "tags": {
-    "produce": [],
-    "consume": []
-   },
-   "upgrade": "비용 0. 카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다."
-  },
-  {
-   "id": "jaebi.samhyeon",
-   "name": "삼현육각",
-   "type": "능력",
-   "rarity": "희귀",
-   "cost": 3,
-   "path": "B",
-   "keywords": [],
-   "text": "가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다.",
-   "effects": [
-    {
-     "op": "personal",
-     "n": 2
+      "id": "jaebi.baldidim",
+      "name": "발디딤 장단",
+      "type": "기술",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "아군 하나에게 방어도 2. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 3.",
+      "effects": [{"op": "block", "n": 2, "to": "ally"}, {"op": "power", "trigger": "on_formation_change", "this_turn": true, "effects": [{"op": "consume", "source": "진형"}, {"op": "block", "n": 3, "to": "ally"}]}],
+      "tags": {"produce": [], "consume": ["진형"]},
+      "upgrade": "아군 하나에게 방어도 3. 이번 턴 진형이 바뀔 때마다 자리를 옮긴 아군 하나에게 방어도 4."
     },
     {
-     "op": "special",
-     "value": 25,
-     "note": "당악 유지 = 매 턴 받는소리 효과 2배. 받는소리 추가분 턴당 약 6점 × 남은 약 4턴"
+      "id": "jaebi.cheongbo",
+      "name": "청보장단",
+      "type": "능력",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "A",
+      "keywords": [],
+      "text": "턴 시작 시 장단 +2.",
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "jangdan", "n": 2}]}],
+      "tags": {"produce": ["장단"], "consume": []},
+      "upgrade": "선천. 턴 시작 시 장단 +2."
+    },
+    {
+      "id": "jaebi.chumpan",
+      "name": "춤판 장단",
+      "type": "능력",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "core",
+      "keywords": [],
+      "text": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 2.",
+      "effects": [{"op": "power", "trigger": "on_formation_change", "effects": [{"op": "consume", "source": "진형"}, {"op": "jangdan", "n": 1}, {"op": "dmg", "n": 2, "target": "random"}]}],
+      "tags": {"produce": ["장단"], "consume": ["진형"]},
+      "upgrade": "진형이 바뀔 때마다 장단 +1, 무작위 적에게 피해 3."
+    },
+    {
+      "id": "jaebi.sigimsae",
+      "name": "피리 시김새",
+      "type": "능력",
+      "rarity": "고급",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "턴 시작 시 '얼쑤' 부적 1장을 손에 만든다.",
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "token", "id": "jaebi.t_eolssu", "n": 1}]}],
+      "tags": {"produce": ["부적"], "consume": []},
+      "upgrade": "비용 0. 턴 시작 시 '얼쑤' 부적 1장을 손에 만든다."
+    },
+    {
+      "id": "jaebi.cheondung_jing",
+      "name": "천둥 징",
+      "type": "공격",
+      "rarity": "희귀",
+      "cost": 2,
+      "path": "A",
+      "keywords": [],
+      "text": "적 전체에 피해 6. 장단 1당 적 전체에 피해 3 더.",
+      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "장단", "each": [{"op": "dmg", "n": 3, "target": "all"}], "expect": 1.5}],
+      "tags": {"produce": [], "consume": ["장단"]},
+      "upgrade": "적 전체에 피해 8. 장단 1당 적 전체에 피해 4 더."
+    },
+    {
+      "id": "jaebi.ojang",
+      "name": "오장 장단",
+      "type": "기술",
+      "rarity": "일반",
+      "cost": 1,
+      "path": "A",
+      "keywords": [],
+      "text": "장단 +2. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
+      "effects": [{"op": "jangdan", "n": 2}, {"op": "cond", "if": "이번 턴 장단이 5가 되면", "then": [{"op": "energy", "n": 1, "when": "now"}]}],
+      "tags": {"produce": ["장단"], "consume": ["장단"]},
+      "upgrade": "장단 +3. 이번 턴 장단이 5가 되면 에너지 1을 얻는다.",
+      "note": "v0.2: 희귀 → 일반(잽이 자신의 장단 소비 보상을 자주 만나게). 일반 예산에 맞춰 드로우를 뺐다."
+    },
+    {
+      "id": "jaebi.sinawi",
+      "name": "시나위",
+      "type": "기술",
+      "rarity": "희귀",
+      "cost": 1,
+      "path": "B",
+      "keywords": ["받는소리"],
+      "text": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 1장을 뽑는다.",
+      "effects": [{"op": "personal", "n": 2}, {"op": "jangdan", "n": 1}, {"op": "cond", "if": "받는소리", "then": [{"op": "draw", "n": 1}]}],
+      "tags": {"produce": ["가락", "장단"], "consume": []},
+      "upgrade": "가락을 당악으로 올린다. 장단 +1. 받는소리: 카드 2장을 뽑는다.",
+      "note": "'가락을 당악으로' = 굿거리에서 두 단계(가락 +2)로 평가. 당악이 되면 이 카드의 받는소리도 두 번 발동한다."
+    },
+    {
+      "id": "jaebi.baraji",
+      "name": "바라지",
+      "type": "기술",
+      "rarity": "희귀",
+      "cost": 1,
+      "path": "B",
+      "keywords": [],
+      "text": "카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다.",
+      "effects": [{"op": "draw", "n": 1}, {"op": "special", "value": 5, "note": "받는소리 효과 1회 추가 ≈ 받는소리 효과 원값 평균 5점"}],
+      "tags": {"produce": [], "consume": []},
+      "upgrade": "비용 0. 카드 1장을 뽑는다. 이번 턴 다음에 쓰는 다른 영웅 카드의 받는소리 효과가 한 번 더 발동한다."
+    },
+    {
+      "id": "jaebi.samhyeon",
+      "name": "삼현육각",
+      "type": "능력",
+      "rarity": "희귀",
+      "cost": 3,
+      "path": "B",
+      "keywords": [],
+      "text": "가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다.",
+      "effects": [{"op": "personal", "n": 2}, {"op": "special", "value": 25, "note": "당악 유지 = 매 턴 받는소리 효과 2배. 받는소리 추가분 턴당 약 6점 × 남은 약 4턴"}],
+      "tags": {"produce": ["가락"], "consume": []},
+      "upgrade": "비용 2. 가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다."
     }
-   ],
-   "tags": {
-    "produce": [
-     "가락"
-    ],
-    "consume": []
-   },
-   "upgrade": "비용 2. 가락을 당악으로 올린다. 이번 전투 동안 가락이 느려지지 않는다."
-  }
- ]
+  ]
 }

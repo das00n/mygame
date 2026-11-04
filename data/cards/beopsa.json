@@ -2,11 +2,51 @@
   "hero": "beopsa",
   "version": "0.1",
   "tokens": [
-    {"id": "beopsa.t_hwabu", "name": "화부", "cost": 0, "keywords": ["소멸"], "text": "불 기운을 그린 부적. 적 하나에 피해 4.", "effects": [{"op": "dmg", "n": 4}]},
-    {"id": "beopsa.t_hwabu_red", "name": "붉은 화부", "cost": 0, "keywords": ["소멸"], "text": "경면주사로 그린 화부. 적 하나에 피해 6.", "effects": [{"op": "dmg", "n": 6}]},
-    {"id": "beopsa.t_suhobu", "name": "수호부", "cost": 0, "keywords": ["소멸"], "text": "몸을 지키는 부적. 아군 하나에 방어도 3.", "effects": [{"op": "block", "n": 3, "to": "ally"}]},
-    {"id": "beopsa.t_chukgwibu", "name": "축귀부", "cost": 0, "keywords": ["소멸"], "text": "잡귀를 쫓는 부적. 적 하나에 피해 2, 넋흔들림 2.", "effects": [{"op": "dmg", "n": 2}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}]},
-    {"id": "beopsa.t_sinryeongbu", "name": "신령부", "cost": 0, "keywords": ["소멸"], "text": "굿상 설치물의 기운을 옮겨 담은 부적. 담아 온 설치물의 발동 효과를 한 번 일으킨다.", "effects": [{"op": "special", "value": 4, "note": "굿상 설치물 한 번 발동 점수의 평균을 4로 본다(작두박수 서릿날 장군 4.1, 칼끝 신장 2.7 등)"}]}
+    {
+      "id": "beopsa.t_hwabu",
+      "name": "화부",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "불 기운을 그린 부적. 적 하나에 피해 4.",
+      "effects": [{"op": "dmg", "n": 4}]
+    },
+    {
+      "id": "beopsa.t_hwabu_red",
+      "name": "붉은 화부",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "경면주사로 그린 화부. 적 하나에 피해 6.",
+      "effects": [{"op": "dmg", "n": 6}]
+    },
+    {
+      "id": "beopsa.t_suhobu",
+      "name": "수호부",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "몸을 지키는 부적. 아군 하나에 방어도 3.",
+      "effects": [{"op": "block", "n": 3, "to": "ally"}]
+    },
+    {
+      "id": "beopsa.t_chukgwibu",
+      "name": "축귀부",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "잡귀를 쫓는 부적. 적 하나에 피해 2, 넋흔들림 2.",
+      "effects": [{"op": "dmg", "n": 2}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}]
+    },
+    {
+      "id": "beopsa.t_sinryeongbu",
+      "name": "신령부",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "굿상 설치물의 기운을 옮겨 담은 부적. 담아 온 설치물의 발동 효과를 한 번 일으킨다.",
+      "effects": [{"op": "special", "value": 4, "note": "굿상 설치물 한 번 발동 점수의 평균을 4로 본다(작두박수 서릿날 장군 4.1, 칼끝 신장 2.7 등)"}]
+    }
   ],
   "summons": [],
   "cards": [
@@ -48,7 +88,7 @@
       "path": "core",
       "keywords": [],
       "text": "아군 하나에 방어도 3. 다음 턴 시작 시 수호부 1장을 만든다.",
-      "effects": [{"op": "block", "n": 3, "to": "ally"}, {"op": "token", "id": "beopsa.t_suhobu", "n": 1}],
+      "effects": [{"op": "block", "n": 3, "to": "ally"}, {"op": "token", "id": "beopsa.t_suhobu", "n": 1, "when": "next_turn"}],
       "tags": {"produce": ["부적"], "consume": []},
       "upgrade": "아군 하나에 방어도 5. 다음 턴 시작 시 수호부 1장을 만든다."
     },
@@ -62,7 +102,7 @@
       "path": "core",
       "keywords": [],
       "text": "굿상의 설치물 하나에서 기운을 덜어(남은 지속 −1) 신령부 2장을 만든다. 굿상이 비었으면 대신 경면주사 1을 써서 붉은 화부 1장을 만든다.",
-      "effects": [{"op": "cond", "if": "굿상에 설치물이 있으면", "then": [{"op": "consume", "status": "굿상", "n": 1}, {"op": "token", "id": "beopsa.t_sinryeongbu", "n": 2}]}, {"op": "cond", "if": "굿상이 비었으면 경면주사 1을 써서", "then": [{"op": "consume", "status": "경면주사", "n": 1}, {"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}]}],
+      "effects": [{"op": "cond", "if": "굿상에 설치물이 있으면", "then": [{"op": "consume", "status": "굿상", "n": 1}, {"op": "token", "id": "beopsa.t_sinryeongbu", "n": 2}], "p": 0.35}, {"op": "cond", "if": "굿상이 비었으면 경면주사 1을 써서", "then": [{"op": "consume", "status": "경면주사", "n": 1}, {"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}], "p": 0.75}],
       "tags": {"produce": ["부적"], "consume": ["굿상", "경면주사"]},
       "upgrade": "신령부 3장을 만든다. 굿상이 비었으면 붉은 화부 1장(경면주사를 쓰지 않는다)."
     },
@@ -127,7 +167,7 @@
       "path": "A",
       "keywords": [],
       "text": "턴 시작 시 화부 1장을 만든다.",
-      "effects": [{"op": "power", "effects": [{"op": "token", "id": "beopsa.t_hwabu", "n": 1}], "trigger": "turn_start"}],
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "token", "id": "beopsa.t_hwabu", "n": 1}], "expect": 4.5}],
       "tags": {"produce": ["부적"], "consume": []},
       "upgrade": "선천."
     },
@@ -153,7 +193,7 @@
       "path": "A",
       "keywords": ["받는소리"],
       "text": "수호부 2장을 만든다. 받는소리: 아군 하나에 방어도 3.",
-      "effects": [{"op": "token", "id": "beopsa.t_suhobu", "n": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3, "to": "ally"}]}],
+      "effects": [{"op": "token", "id": "beopsa.t_suhobu", "n": 2}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3, "to": "ally"}], "p": 0.85}],
       "tags": {"produce": ["부적"], "consume": []},
       "upgrade": "수호부 3장을 만든다. 받는소리: 아군 하나에 방어도 3."
     },
@@ -205,7 +245,7 @@
       "path": "B",
       "keywords": ["받는소리"],
       "text": "경문을 적은 금줄을 친다. 파티 방어도 3. 받는소리: 경면주사 +1.",
-      "effects": [{"op": "block", "n": 3, "to": "party"}, {"op": "cond", "if": "받는소리", "then": [{"op": "personal", "n": 1}]}],
+      "effects": [{"op": "block", "n": 3, "to": "party"}, {"op": "cond", "if": "받는소리", "then": [{"op": "personal", "n": 1}], "p": 0.5}],
       "tags": {"produce": ["경면주사"], "consume": []},
       "upgrade": "파티 방어도 4. 받는소리: 경면주사 +1."
     },
@@ -231,7 +271,7 @@
       "path": "A",
       "keywords": [],
       "text": "경면주사를 모두 쓴다. 1당 붉은 화부 1장을 만든다.",
-      "effects": [{"op": "consume", "status": "경면주사", "n": "all"}, {"op": "per", "source": "경면주사", "each": [{"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}]}],
+      "effects": [{"op": "consume", "status": "경면주사", "n": "all"}, {"op": "per", "source": "경면주사", "each": [{"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}], "expect": 2.6}],
       "tags": {"produce": ["부적"], "consume": ["경면주사"]},
       "upgrade": "경면주사를 모두 쓴다. 1당 붉은 화부 1장, 그리고 화부 1장을 더 만든다."
     },
@@ -244,7 +284,7 @@
       "path": "A",
       "keywords": [],
       "text": "적 전체에 피해 6. 이번 턴 쓴 부적 1당 적 전체에 피해 3 더.",
-      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 3, "target": "all"}]}],
+      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 3, "target": "all"}], "expect": 0.2}],
       "tags": {"produce": [], "consume": ["부적"]},
       "upgrade": "적 전체에 피해 6. 이번 턴 쓴 부적 1당 적 전체에 피해 4 더."
     },
@@ -257,7 +297,7 @@
       "path": "A",
       "keywords": [],
       "text": "파티 방어도 2. 손에 든 부적 1당 파티 방어도 1 더.",
-      "effects": [{"op": "block", "n": 2, "to": "party"}, {"op": "per", "source": "부적", "each": [{"op": "block", "n": 1, "to": "party"}]}],
+      "effects": [{"op": "block", "n": 2, "to": "party"}, {"op": "per", "source": "부적", "each": [{"op": "block", "n": 1, "to": "party"}], "expect": 0.25}],
       "tags": {"produce": [], "consume": ["부적"]},
       "upgrade": "파티 방어도 3. 손에 든 부적 1당 파티 방어도 1 더."
     },
@@ -270,7 +310,7 @@
       "path": "A",
       "keywords": [],
       "text": "손에 든 부적을 모두 태운다(소멸). 1당 적 하나에 피해 4. 그 재를 주사에 섞는다: 경면주사 +1.",
-      "effects": [{"op": "consume", "status": "부적", "n": "all"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 4}]}, {"op": "personal", "n": 1}],
+      "effects": [{"op": "consume", "status": "부적", "n": "all"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 4}], "expect": 0.9}, {"op": "personal", "n": 1}],
       "tags": {"produce": ["경면주사"], "consume": ["부적"]},
       "upgrade": "1당 적 하나에 피해 6. 경면주사 +1."
     },
@@ -296,7 +336,7 @@
       "path": "core",
       "keywords": [],
       "text": "굿상의 설치물이 발동할 때마다 화부 1장을 만든다.",
-      "effects": [{"op": "power", "effects": [{"op": "token", "id": "beopsa.t_hwabu", "n": 1}], "trigger": "on_summon_fire"}],
+      "effects": [{"op": "power", "trigger": "on_summon_fire", "effects": [{"op": "token", "id": "beopsa.t_hwabu", "n": 1}]}],
       "tags": {"produce": ["부적"], "consume": ["굿상"]},
       "upgrade": "굿상의 설치물이 발동할 때마다 붉은 화부 1장을 만든다."
     },
@@ -348,7 +388,7 @@
       "path": "core",
       "keywords": [],
       "text": "적 전체에 피해 6. 굿상의 설치물 1당 적 전체에 피해 5 더.",
-      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 5, "target": "all"}]}],
+      "effects": [{"op": "dmg", "n": 6, "target": "all"}, {"op": "per", "source": "굿상", "each": [{"op": "dmg", "n": 5, "target": "all"}], "expect": 0.5}],
       "tags": {"produce": [], "consume": ["굿상"]},
       "upgrade": "적 전체에 피해 6. 굿상의 설치물 1당 적 전체에 피해 7 더."
     },
@@ -361,7 +401,7 @@
       "path": "A",
       "keywords": [],
       "text": "경면주사를 5까지 쌓을 수 있다. 턴 시작 시 경면주사 +1, 붉은 화부 1장을 만든다.",
-      "effects": [{"op": "power", "effects": [{"op": "personal", "n": 1}, {"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}], "trigger": "turn_start"}],
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "personal", "n": 1}, {"op": "token", "id": "beopsa.t_hwabu_red", "n": 1}], "expect": 4.5}],
       "tags": {"produce": ["경면주사", "부적"], "consume": []},
       "upgrade": "비용 1."
     },
@@ -374,7 +414,7 @@
       "path": "B",
       "keywords": [],
       "text": "턴 종료 시(명부 판정 전에) 체력이 가장 낮은 적에게 명부 5.",
-      "effects": [{"op": "power", "effects": [{"op": "apply", "status": "명부", "n": 5, "target": "one"}], "trigger": "turn_end"}],
+      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "apply", "status": "명부", "n": 5, "target": "one"}]}],
       "tags": {"produce": ["명부"], "consume": []},
       "upgrade": "턴 종료 시 체력이 가장 낮은 적에게 명부 7."
     },
@@ -387,7 +427,7 @@
       "path": "core",
       "keywords": [],
       "text": "파티 방어도 5. 굿상의 설치물 1당 파티 방어도 2 더.",
-      "effects": [{"op": "block", "n": 5, "to": "party"}, {"op": "per", "source": "굿상", "each": [{"op": "block", "n": 2, "to": "party"}]}],
+      "effects": [{"op": "block", "n": 5, "to": "party"}, {"op": "per", "source": "굿상", "each": [{"op": "block", "n": 2, "to": "party"}], "expect": 0.5}],
       "tags": {"produce": [], "consume": ["굿상"]},
       "upgrade": "파티 방어도 7. 굿상의 설치물 1당 파티 방어도 3 더."
     },
@@ -400,7 +440,7 @@
       "path": "A",
       "keywords": [],
       "text": "머리 셋 달린 매가 삼재를 쫓는다. 무작위 적에게 피해 6을 3회. 이번 턴 쓴 부적 1당 1회 더. 경면주사를 모두 쓰고, 1당 1회 더.",
-      "effects": [{"op": "dmg", "n": 6, "hits": 3, "target": "random"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 6, "target": "random"}]}, {"op": "consume", "status": "경면주사", "n": "all"}, {"op": "per", "source": "경면주사", "each": [{"op": "dmg", "n": 6, "target": "random"}]}],
+      "effects": [{"op": "dmg", "n": 6, "hits": 3, "target": "random"}, {"op": "per", "source": "부적", "each": [{"op": "dmg", "n": 6, "target": "random"}], "expect": 0.05}, {"op": "consume", "status": "경면주사", "n": "all"}, {"op": "per", "source": "경면주사", "each": [{"op": "dmg", "n": 6, "target": "random"}], "expect": 2.4}],
       "tags": {"produce": [], "consume": ["부적", "경면주사"]},
       "upgrade": "무작위 적에게 피해 8을 3회. 부적 1당·경면주사 1당 1회 더."
     }

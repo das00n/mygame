@@ -92,7 +92,6 @@ export interface CardDef {
   actorFor: Partial<Record<'전진' | '후퇴' | '엄호' | '방어도', HeroId>>;
   holdFront: boolean; // "선두를 내주지 않는다"
   raisesSinjuCap: boolean; // 경면주사 5까지
-  deferTokens: boolean; // "다음 턴 시작 시" 부적
   /** 'one' 연산을 조건 만족 적 모두에게 (적 전체 카드의 "점지된 적에게는") */
   perEnemyOneConds: boolean;
 }
@@ -125,22 +124,21 @@ export type Op =
   | { op: 'personal'; n: number; hero: HeroId | null }
   | { op: 'move'; kind: '전진' | '후퇴' | '교대' | '엄호'; who: string | null; mode: 'self' | 'ally' | 'pair' | 'owners' | 'downed'; when: string | null }
   | { op: 'summon'; id: string; sidx: number }
-  | { op: 'token'; id: string; tidx: number; n: number }
+  | { op: 'token'; id: string; tidx: number; n: number; nextTurn: boolean }
   | { op: 'heal'; n: number; to: 'ally' | 'party' | 'self' }
   | { op: 'stress'; n: number; to: 'party' | 'owner'; when: string | null }
   | { op: 'cleanse'; n: number }
   | { op: 'exhaust_other'; n: number }
   | { op: 'hp_loss'; n: number }
   | { op: 'per'; source: string; each: Op[]; expect: number | null; max: number | null; mode: PerMode; key: string }
-  | { op: 'cond'; cond: Cond; then: Op[]; p: number; ifText: string; key: string }
-  | { op: 'power'; trigger: Trigger; effects: Op[]; expect: number | null; gate: Gate | null; requireStance: boolean; key: string; autoTarget: AutoTarget }
+  | { op: 'cond'; cond: Cond; then: Op[]; else: Op[]; p: number; ifText: string; key: string; turnEnd: boolean }
+  | { op: 'power'; trigger: Trigger; effects: Op[]; expect: number | null; gate: Gate | null; requireStance: boolean; key: string; autoTarget: AutoTarget; thisTurn: boolean }
   | { op: 'consume'; status: string | null; source: string | null; n: number | 'all' | null }
   | { op: 'special'; value: number; note: string; kind: SpecialKind; key: string };
 
 export type PerMode =
   | 'status' // 대상(또는 적마다)의 상태 스택
   | 'jangdan' | 'summons' | 'tokens_played' | 'tokens_hand' | 'personal' | 'hand' | 'shadow'
-  | 'formation_trigger' // "이번 턴 진형이 바뀔 때마다" → 이번 턴 임시 트리거
   | 'formation_count' // "이번 턴 진형이 바뀐 횟수"
   | 'tal_count'
   | 'turn_end_defer' // "이번 턴 종료 시 남은 장단 1당" → 턴 종료에 처리
@@ -338,6 +336,8 @@ export interface PowerInst {
 export interface CombatStats {
   plays: Map<string, number>;
   condEval: Map<string, [number, number]>; // key → [평가, 성립]
+  /** per 연산 key → [실행, 센 수 합] (가치 모델 기대 스택 교정, S10) */
+  perCount: Map<string, [number, number]>;
   powerFires: Map<string, number>;
   specialUse: Map<string, number>;
   dmgTakenHero: number[]; // hero idx

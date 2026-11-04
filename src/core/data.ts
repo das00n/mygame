@@ -2,7 +2,7 @@
 
 import { parseCond } from './conditions.ts';
 import { RAW_JSON } from './raw-data.ts';
-import { budgetOf, rawValue, type ValueCtx } from './value.ts';
+import { budgetOf, condP, rawValue, type ValueCtx } from './value.ts';
 import {
   HERO_IDS, HERO_NAMES,
   type AutoTarget, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef,
@@ -125,7 +125,7 @@ export function loadData(): GameData {
         value: rawValue(c.effects, vctx), budget: budgetOf(c.cost, rarity, keywords),
         needsEnemy: false, needsEnemy2: false, allyChoice: 'none', requireGangsin: false, dashHero: null, actorFor: {},
         holdFront: c.text.includes('선두를 내주지 않는다'), raisesSinjuCap: c.text.includes('5까지 쌓을 수'),
-        deferTokens: c.text.includes('다음 턴 시작 시'), perEnemyOneConds: false,
+        perEnemyOneConds: false,
       };
       cards.push(def);
       cardById.set(def.id, def);
@@ -278,7 +278,7 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
     case 'summon':
       return { op: 'summon', id: String(r.id), sidx: cc.summonIdx(String(r.id)) };
     case 'token':
-      return { op: 'token', id: String(r.id), tidx: cc.tokenIdx(String(r.id)), n: n0(r.n, 1) };
+      return { op: 'token', id: String(r.id), tidx: cc.tokenIdx(String(r.id)), n: n0(r.n, 1), nextTurn: r.when === 'next_turn' };
     case 'heal':
       return { op: 'heal', n: n0(r.n, 0), to: (r.to as 'ally' | 'party' | 'self') ?? 'self' };
     case 'stress':
@@ -300,9 +300,10 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
     case 'cond': {
       const ifText = String(r.if);
       const cond = parseCond(ifText);
-      const p = typeof r.p === 'number' ? r.p : ifText.includes('받는소리') ? 0.6 : 0.5;
+      const p = condP(r);
       const k = key();
-      return { op: 'cond', cond, then: compileOps(r.then as RawOp[], cc, inDownedCond || cond.k === 'any_downed'), p, ifText, key: k };
+      const then = compileOps(r.then as RawOp[], cc, inDownedCond || cond.k === 'any_downed');
+      return { op: 'cond', cond, then, else: compileOps(r.else as RawOp[] | undefined, cc, inDownedCond), p, ifText, key: k, turnEnd: r.when === 'turn_end' };
     }
     case 'power': {
       const rawEffects = (r.effects as RawOp[]) ?? [];
@@ -323,7 +324,7 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
       const trigger = triggerOf(r.trigger as string | undefined, hint, cc.text);
       return {
         op: 'power', trigger, effects: compileOps(kept, cc, false), expect: typeof r.expect === 'number' ? r.expect : null, gate,
-        requireStance: cc.text.includes('작두 위에서 쓰는 공격'), key: key(), autoTarget: autoTargetOf(cc.text),
+        requireStance: cc.text.includes('작두 위에서 쓰는 공격'), key: key(), autoTarget: autoTargetOf(cc.text), thisTurn: r.this_turn === true,
       };
     }
     case 'consume': {
@@ -353,7 +354,6 @@ function perModeOf(source: string, text: string): PerMode {
     case '손패':
       return 'hand';
     case '진형':
-      if (text.includes('바뀔 때마다')) return 'formation_trigger';
       if (text.includes('바뀐 횟수')) return 'formation_count';
       return 'expect';
     case '탈':
@@ -363,7 +363,14 @@ function perModeOf(source: string, text: string): PerMode {
   }
 }
 
+const TRIGGERS = new Set<Trigger>([
+  'turn_start', 'turn_end', 'on_attack', 'on_hit', 'on_bind', 'on_formation_change', 'on_formation_change_first', 'on_talggun_move',
+  'on_talggun_move_first', 'on_token_play', 'on_gangsin', 'on_consume_mark', 'on_owner_card', 'on_summon_fire',
+]);
+
 function triggerOf(raw: string | undefined, hint: string | null, text: string): Trigger {
+  // v0.3: 데이터의 trigger 는 엔진 이름(card_check.py 가 허용 목록을 검사). 아래 한국어 이름은 옛 데이터 호환
+  if (raw && TRIGGERS.has(raw as Trigger)) return raw as Trigger;
   switch (raw) {
     case 'turn_start':
     case '턴 시작':
@@ -407,7 +414,10 @@ function walkOps(ops: Op[], fn: (op: Op, inTargetCond: boolean) => void, inTarge
   for (const op of ops) {
     fn(op, inTargetCond);
     if (op.op === 'per') walkOps(op.each, fn, inTargetCond);
-    if (op.op === 'cond') walkOps(op.then, fn, inTargetCond || TARGET_CONDS.has(op.cond.k));
+    if (op.op === 'cond') {
+      walkOps(op.then, fn, inTargetCond || TARGET_CONDS.has(op.cond.k));
+      walkOps(op.else, fn, inTargetCond);
+    }
   }
 }
 

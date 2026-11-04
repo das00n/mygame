@@ -1,4 +1,4 @@
-"""카드 데이터 검사 + 목록 생성 (Phase 4). 기준: docs/04-cards.md
+"""카드 데이터 검사 + 목록 생성 (Phase 4, v0.3 반복 1: 강화판 효과 구조 + 가치 모델 교정 S10). 기준: docs/04-cards.md
 
 입력: data/cards/<영웅 id>.json (8개), data/cards/duo.json, data/cards/common.json
       data/design/heroes.json, data/design/synergy.json (자원 배치)
@@ -8,6 +8,7 @@
 """
 import argparse
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -31,7 +32,34 @@ BAND = {"기본": (0.70, 1.15)}
 DEFAULT_BAND = (0.80, 1.20)
 
 APPLY = {"취약": 3.5, "약화": 3.0, "점지": 2.0, "상흔": 1.7, "명부": 1.3, "넋흔들림": 1.1, "그늘": -2.0}
-EXPECT = {"점지": 2.5, "상흔": 4, "명부": 6, "넋흔들림": 6, "장단": 3, "굿상": 1.5, "부적": 2, "그늘": 1, "손패": 4}
+
+# ── 가치 모델 기본값 (v0.3 S10 교정: 원정 시뮬 실측. src/core/value.ts 와 같아야 한다) ──
+# 카드 op 에 p·expect 가 적혀 있으면 그 값을 쓰고, 없으면 아래 기본값.
+EXPECT = {"점지": 4, "상흔": 2, "명부": 5, "넋흔들림": 5, "장단": 2, "굿상": 1, "부적": 0.5, "그늘": 1, "손패": 4}
+EXPECT_OTHER = 2  # 개인 자원·진형 등
+P_DEFAULT = 0.5
+# cond.if 문장 → 기본 성립 확률 (첫 일치). 근거: docs/04-cards.md §2.1
+COND_P = [
+    (r"^받는소리$", 0.65),
+    (r"(경면주사|염주) \d+[을를] 쓰면", 0.95),
+    (r"이번 턴 진형이 바뀌었으면", 0.15),
+    (r"부적.*바치면", 0.1),
+    (r"강신 중", 0.35),
+    (r"붕괴", 0.15),
+]
+POWER_EXPECT_TURN = 5.0  # 턴 시작·턴 종료 능력
+POWER_EXPECT = 3.5  # 그 밖의 트리거
+THIS_TURN_EXPECT = 0.15  # 이번 턴 임시 트리거 (this_turn). 실측: 진형 변화 0.16회/사용
+POWER_FACTOR, THIS_TURN_FACTOR, PER_FACTOR = 0.75, 0.9, 0.9
+TRIGGERS = {"turn_start", "turn_end", "on_attack", "on_hit", "on_bind", "on_formation_change", "on_formation_change_first",
+            "on_talggun_move", "on_talggun_move_first", "on_token_play", "on_gangsin", "on_consume_mark", "on_owner_card", "on_summon_fire"}
+
+# ── 강화 (K1) ──
+UPGRADE_MULT = 1.3  # 강화판 예산 = 기본판 비용의 예산 × 1.3
+UPGRADE_GAIN = (1.15, 1.45)  # 수치 강화: 가치 +15~45%
+UPGRADE_KW_ALLOWED = {("+", "선천"), ("+", "보존"), ("-", "휘발"), ("-", "소멸")}
+UPGRADE_KEYS = {"text", "cost", "keywords", "effects"}
+NO_UPGRADE_SUBTYPES = {"공물 행동"}
 ALIASES = {"붕괴": "넋흔들림", "선두": "진형", "중열": "진형", "후열": "진형"}
 DECLARED_ONLY_MAX = 3
 FORBIDDEN = ["광기", "미친", "발작", "정신병", "악마", "마녀", "지옥불", "선혈", "내장", "피범벅"]
@@ -109,14 +137,15 @@ def op_value(ef, ctx, where):
     if op == "hp_loss":
         return -1 * n
     if op == "per":
-        src = ef.get("source")
-        exp = ef.get("expect", EXPECT.get(src, 2))
-        return value(ef.get("each"), ctx, where) * exp * 0.9
+        return value(ef.get("each"), ctx, where) * per_expect(ef) * PER_FACTOR
     if op == "cond":
-        p = ef.get("p", 0.6 if ef.get("if") == "받는소리" else 0.5)
-        return value(ef.get("then"), ctx, where) * p
+        p = cond_p(ef)
+        return value(ef.get("then"), ctx, where) * p + value(ef.get("else"), ctx, where) * (1 - p)
     if op == "power":
-        return value(ef.get("effects"), ctx, where) * ef.get("expect", 3.5) * 0.75
+        trig = ef.get("trigger")
+        if trig not in TRIGGERS:
+            E(where, f"power: trigger '{trig}' 가 허용 목록에 없음 ({', '.join(sorted(TRIGGERS))})")
+        return value(ef.get("effects"), ctx, where) * power_expect(ef) * (THIS_TURN_FACTOR if ef.get("this_turn") else POWER_FACTOR)
     if op == "consume":
         return 0
     if op == "special":
@@ -125,6 +154,30 @@ def op_value(ef, ctx, where):
         return ef.get("value", 0)
     E(where, f"알 수 없는 op '{op}'")
     return 0
+
+
+def cond_p(ef):
+    if "p" in ef:
+        return ef["p"]
+    text = str(ef.get("if", ""))
+    for pat, p in COND_P:
+        if re.search(pat, text):
+            return p
+    return P_DEFAULT
+
+
+def per_expect(ef):
+    if "expect" in ef:
+        return ef["expect"]
+    return EXPECT.get(ef.get("source"), EXPECT_OTHER)
+
+
+def power_expect(ef):
+    if "expect" in ef:
+        return ef["expect"]
+    if ef.get("this_turn"):
+        return THIS_TURN_EXPECT
+    return POWER_EXPECT_TURN if ef.get("trigger") in ("turn_start", "turn_end") else POWER_EXPECT
 
 
 def budget(card):
@@ -178,6 +231,7 @@ def infer(effects, ctx, personal, out=None):
                 if alias in cond:
                     out["consume"].add(name)
             infer(ef.get("then"), ctx, personal, out)
+            infer(ef.get("else"), ctx, personal, out)
         elif op == "power":
             infer(ef.get("effects"), ctx, personal, out)
     return out
@@ -191,13 +245,82 @@ def check_text(where, *texts):
                 E(where, f"금지어 '{bad}'")
 
 
+def upgraded(c):
+    """강화판 카드(dict). 강화가 없으면 None. 빠진 필드는 기본판을 물려받는다."""
+    u = c.get("upgrade")
+    if not isinstance(u, dict):
+        return None
+    out = dict(c)
+    out["text"] = u["text"]
+    for k in ("cost", "keywords", "effects"):
+        if k in u:
+            out[k] = u[k]
+    return out
+
+
+def check_upgrade(c, ctx, where, v, b):
+    """강화판 검사 (K1). 반환: {v, b, ratio, gain, kind} 또는 None"""
+    u = c.get("upgrade")
+    if c.get("type") in ("저주", "상태") or c.get("subtype") in NO_UPGRADE_SUBTYPES:
+        if u is not None:
+            E(where, "저주·상태·공물 행동은 강화하지 않는다 (upgrade 를 지운다)")
+        return None
+    if not isinstance(u, dict):
+        E(where, "upgrade 는 {text, cost?, keywords?, effects?} 객체여야 함")
+        return None
+    extra = set(u) - UPGRADE_KEYS
+    if extra or not str(u.get("text", "")).strip():
+        E(where, f"upgrade 형식: text 필수, 허용 키 {sorted(UPGRADE_KEYS)} (불필요: {sorted(extra)})")
+    check_text(where + "+", u.get("text"))
+    for k in u.get("keywords", []):
+        if k not in KEYWORDS:
+            E(where + "+", f"허용되지 않은 키워드 '{k}'")
+    uc = upgraded(c)
+    if uc["cost"] == "X" or c["cost"] == "X":
+        dc = 0
+    else:
+        dc = c["cost"] - uc["cost"]
+        if dc < 0 or dc > 1:
+            E(where + "+", f"강화 비용 {c['cost']} → {uc['cost']} (같거나 1 낮아야 함)")
+    v2 = value(uc.get("effects"), ctx, where + "+")
+    if uc["cost"] == "X":
+        v2 *= 3
+    kw_base, kw_up = set(c.get("keywords", [])), set(uc.get("keywords", []))
+    kw_change = {("+", k) for k in kw_up - kw_base} | {("-", k) for k in kw_base - kw_up}
+    bad_kw = kw_change - UPGRADE_KW_ALLOWED
+    if bad_kw:
+        E(where + "+", f"강화 키워드 변경 {sorted(bad_kw)} 은 허용되지 않음 (허용: 선천·보존 얻기, 휘발·소멸 없애기)")
+    # 강화판 예산 = 기본판 비용의 예산(강화판 키워드) × UPGRADE_MULT. 비용 −1 은 예산표의 에너지 1 값(두 비용의 예산 차)으로 친다
+    b_up = budget({**uc, "cost": c["cost"]})
+    credit = (b_up - budget(uc)) if dc else 0.0
+    r2 = (v2 + credit) / (b_up * UPGRADE_MULT)
+    gain = v2 / v if v > 0 else float("inf")
+    if dc:
+        kind = "비용"
+        if v2 < v - 1e-9:
+            E(where + "+", f"비용을 낮춘 강화가 효과를 줄였다 ({v:.1f} → {v2:.1f})")
+    elif kw_change:
+        kind = "키워드"
+        if v2 < v - 1e-9:
+            E(where + "+", f"키워드 강화가 효과를 줄였다 ({v:.1f} → {v2:.1f})")
+    else:
+        kind = "수치"
+        if not (UPGRADE_GAIN[0] - 1e-9 <= gain <= UPGRADE_GAIN[1] + 1e-9):
+            E(where + "+", f"강화 가치 {v:.1f} → {v2:.1f} (+{(gain - 1) * 100:.0f}%, 허용 +{(UPGRADE_GAIN[0] - 1) * 100:.0f}~{(UPGRADE_GAIN[1] - 1) * 100:.0f}% 또는 비용 −1·키워드)")
+    lo, hi = BAND.get(c["rarity"], DEFAULT_BAND)
+    if not (lo <= r2 <= hi):
+        E(where + "+", f"강화판 가치 {v2:.1f}{f' + 비용 {credit:.1f}' if credit else ''} / 강화 예산 {b_up * UPGRADE_MULT:.1f} = {r2:.2f} (허용 {lo}~{hi})")
+    return {"v": v2, "b": b_up * UPGRADE_MULT, "ratio": r2, "gain": gain, "kind": kind, "card": uc}
+
+
 def check_card_common(c, ctx, where, rows, personal=None):
     for k in c.get("keywords", []):
         if k not in KEYWORDS:
             E(where, f"허용되지 않은 키워드 '{k}'")
-    check_text(where, c.get("name"), c.get("text"), c.get("upgrade"))
+    check_text(where, c.get("name"), c.get("text"))
     if c.get("type") in ("저주", "상태"):
-        rows.append((c, None, None))
+        check_upgrade(c, ctx, where, 0, 0)
+        rows.append((c, None, None, None))
         return
     v = value(c.get("effects"), ctx, where)
     if c["cost"] == "X":
@@ -205,15 +328,26 @@ def check_card_common(c, ctx, where, rows, personal=None):
     b = budget(c)
     if b is None:
         E(where, f"비용 '{c['cost']}' 허용 안 됨")
-        rows.append((c, v, None))
+        rows.append((c, v, None, None))
         return
     lo, hi = BAND.get(c["rarity"], DEFAULT_BAND)
     r = v / b if b else 0
     if not (lo <= r <= hi):
         E(where, f"가치 {v:.1f} / 예산 {b:.1f} = {r:.2f} (허용 {lo}~{hi})")
-    if not c.get("upgrade"):
-        W(where, "upgrade 문장 없음")
-    rows.append((c, v, b))
+    up = check_upgrade(c, ctx, where, v, b)
+    rows.append((c, v, b, up))
+
+
+def check_tokens(name, d):
+    """부적(토큰)은 타입(기술·공격)을 갖는다. 능력 트리거는 허용 목록. 문장 금지어."""
+    for t in d.get("tokens", []):
+        check_text(f"{name}/{t.get('id')}", t.get("name"), t.get("text"))
+        if t.get("type") not in ("기술", "공격"):
+            E(f"{name}/{t.get('id')}", f"부적 type '{t.get('type')}' (기술 또는 공격)")
+    for x in d.get("summons", []):
+        check_text(f"{name}/{x.get('id')}", x.get("name"), x.get("text"))
+        if x.get("trigger") not in ("turn_start", "turn_end"):
+            E(f"{name}/{x.get('id')}", f"설치물 trigger '{x.get('trigger')}' (turn_start·turn_end)")
 
 
 def check_hero(hid, res, verbose):
@@ -227,8 +361,7 @@ def check_hero(hid, res, verbose):
     rows, ids = [], set()
     declared_only = []
     tag_count = {"produce": Counter(), "consume": Counter()}
-    for t in d.get("tokens", []):
-        check_text(t["id"], t.get("name"), t.get("text"))
+    check_tokens(hid, d)
     for c in d["cards"]:
         where = f"{hid}/{c.get('name', c.get('id'))}"
         if not c.get("id", "").startswith(hid + "."):
@@ -237,6 +370,9 @@ def check_hero(hid, res, verbose):
             E(where, "id 중복")
         ids.add(c["id"])
         check_card_common(c, ctx, where, rows, personal)
+        uc = upgraded(c)
+        if uc and CODE[res["import"]] in infer(uc.get("effects"), ctx, personal)["produce"]:
+            E(where + "+", f"강화판이 수입 자원 {CODE[res['import']]}을 생산한다 (C5)")
         declared = c.get("tags", {"produce": [], "consume": []})
         inferred = infer(c.get("effects"), ctx, personal)
         for kind in ("produce", "consume"):
@@ -319,7 +455,7 @@ def walk(effects, ctx=None, _seen=None):
     _seen = _seen if _seen is not None else set()
     for ef in effects or []:
         yield ef
-        for k in ("each", "then", "effects"):
+        for k in ("each", "then", "else", "effects"):
             yield from walk(ef.get(k), ctx, _seen)
         if ctx and ef.get("op") in ("token", "summon"):
             ref = ef.get("id")
@@ -339,8 +475,7 @@ def check_extra(name, owners_ok):
     d = json.loads(path.read_text())
     ctx = Ctx({t["id"]: t for t in d.get("tokens", [])}, {s["id"]: s for s in d.get("summons", [])})
     rows = []
-    for t in list(d.get("tokens", [])) + list(d.get("summons", [])):
-        check_text(f"{name}/{t.get('id')}", t.get("name"), t.get("text"))
+    check_tokens(name, d)
     for c in d["cards"]:
         where = f"{name}/{c.get('name')}"
         owners_ok(c, where)
@@ -354,17 +489,38 @@ def fmt_cost(c):
     return str(c["cost"])
 
 
+def upgrade_cell(c, up):
+    """문서 표의 강화 칸: 비용·키워드 변경 + 강화판 문장"""
+    if not up:
+        return "—"
+    uc = up["card"]
+    pre = []
+    if uc["cost"] != c["cost"]:
+        pre.append(f"비용 {c['cost']}→{uc['cost']}")
+    kb, ku = c.get("keywords", []), uc.get("keywords", [])
+    pre += [f"+{k}" for k in ku if k not in kb] + [f"−{k}" for k in kb if k not in ku]
+    return (f"[{' · '.join(pre)}] " if pre else "") + uc["text"]
+
+
+def upgrade_ratio(up):
+    if not up:
+        return "—"
+    g = "" if up["kind"] != "수치" else f" (+{(up['gain'] - 1) * 100:.0f}%)"
+    return f"{up['ratio']:.2f}{g}" if up["kind"] == "수치" else f"{up['ratio']:.2f} ({up['kind']})"
+
+
 def write_hero_md(hid, info, hero_name):
     L = [f"# {hero_name} 카드 (자동 생성)", "", "`tools/design/card_check.py` 가 `data/cards/" + hid + ".json` 에서 만든다. 손으로 고치지 않는다.", "",
          f"- 보상 풀 희귀도: {dict(info['rar'])} · 타입: {dict(info['ty'])} · 방어 수단 {info['defense']}장 · 평균 비용 {info['avg']:.2f} · 길 {dict(info['paths'])}",
          f"- 생산(보상 풀): " + ", ".join(f"{k} {v}" for k, v in info['P'].most_common()),
-         f"- 소비(보상 풀): " + ", ".join(f"{k} {v}" for k, v in info['C'].most_common()), "",
-         "| 카드 | 비용 | 타입 | 희귀도 | 길 | 효과 | 강화 | 가치/예산 |", "|---|---:|---|---|---|---|---|---:|"]
+         f"- 소비(보상 풀): " + ", ".join(f"{k} {v}" for k, v in info['C'].most_common()),
+         "- **강화 가치** = (강화판 가치 + 비용 −1 의 에너지 값) / (기본판 비용의 예산 × 1.3). 괄호는 수치 강화의 가치 증가율 또는 강화 종류(비용·키워드). 기준: [04-cards §3.1](../04-cards.md)", "",
+         "| 카드 | 비용 | 타입 | 희귀도 | 길 | 효과 | 강화 | 가치/예산 | 강화 가치 |", "|---|---:|---|---|---|---|---|---:|---:|"]
     order = {"기본": 0, "일반": 1, "고급": 2, "희귀": 3}
-    for c, v, b in sorted(info["rows"], key=lambda r: (order.get(r[0]["rarity"], 9), str(r[0]["cost"]))):
+    for c, v, b, up in sorted(info["rows"], key=lambda r: (order.get(r[0]["rarity"], 9), str(r[0]["cost"]))):
         kw = (" · " + ", ".join(c.get("keywords", []))) if c.get("keywords") else ""
         ratio = f"{v / b:.2f}" if v is not None and b else "—"
-        L.append(f"| **{c['name']}** | {fmt_cost(c)} | {c['type']}{kw} | {c['rarity']} | {c.get('path', 'core')} | {c['text']} | {c.get('upgrade', '')} | {ratio} |")
+        L.append(f"| **{c['name']}** | {fmt_cost(c)} | {c['type']}{kw} | {c['rarity']} | {c.get('path', 'core')} | {c['text']} | {upgrade_cell(c, up)} | {ratio} | {upgrade_ratio(up)} |")
     (DOCS / f"cards-{hid}.md").write_text("\n".join(L) + "\n")
 
 
@@ -390,11 +546,12 @@ def roster_links(infos, heroes):
 
 def write_overview(infos, extras, heroes, roster=None):
     L = ["# 카드 전체 요약 (자동 생성)", "", "`tools/design/card_check.py` 출력. 기준: [docs/04-cards.md](../04-cards.md)", "",
-         "| 영웅 | 카드 | 일반/고급/희귀 | 공격/기술/능력 | 방어 수단 | 평균 비용 | 가치/예산 범위 | 목록 |", "|---|---:|---|---|---:|---:|---|---|"]
+         "| 영웅 | 카드 | 일반/고급/희귀 | 공격/기술/능력 | 방어 수단 | 평균 비용 | 가치/예산 범위 | 강화 가치 범위 | 목록 |", "|---|---:|---|---|---:|---:|---|---|---|"]
     for info in infos:
-        rs = [v / b for c, v, b in info["rows"] if v is not None and b]
+        rs = [v / b for c, v, b, _ in info["rows"] if v is not None and b]
+        us = [up["ratio"] for *_, up in info["rows"] if up]
         L.append(f"| {heroes[info['hid']]} | {len(info['rows'])} | {info['rar']['일반']}/{info['rar']['고급']}/{info['rar']['희귀']} | "
-                 f"{info['ty']['공격']}/{info['ty']['기술']}/{info['ty']['능력']} | {info['defense']} | {info['avg']:.2f} | {min(rs):.2f}~{max(rs):.2f} | [보기](cards-{info['hid']}.md) |")
+                 f"{info['ty']['공격']}/{info['ty']['기술']}/{info['ty']['능력']} | {info['defense']} | {info['avg']:.2f} | {min(rs):.2f}~{max(rs):.2f} | {min(us):.2f}~{max(us):.2f} | [보기](cards-{info['hid']}.md) |")
     if roster:
         vals = [s for _, s, _ in roster]
         L += ["", "## 로스터 연계 (카드 데이터로 다시 계산)", "",
@@ -403,11 +560,11 @@ def write_overview(infos, extras, heroes, roster=None):
         for pair, st, top in roster:
             L.append(f"| {pair} | {st} | {', '.join(f'{r} {v}' for r, v in top)} |")
     for ex in extras:
-        L += ["", f"## {ex['name']}", "", "| 카드 | 주인 | 비용 | 타입 | 효과 | 가치/예산 |", "|---|---|---:|---|---|---:|"]
-        for c, v, b in ex["rows"]:
+        L += ["", f"## {ex['name']}", "", "| 카드 | 주인 | 비용 | 타입 | 효과 | 강화 | 가치/예산 | 강화 가치 |", "|---|---|---:|---|---|---|---:|---:|"]
+        for c, v, b, up in ex["rows"]:
             owners = " + ".join(heroes.get(o, o) for o in c.get("owners", [])) or c.get("owner", "")
             ratio = f"{v / b:.2f}" if v is not None and b else "—"
-            L.append(f"| **{c['name']}** | {owners} | {c['cost']} | {c['type']} | {c['text']} | {ratio} |")
+            L.append(f"| **{c['name']}** | {owners} | {c['cost']} | {c['type']} | {c['text']} | {upgrade_cell(c, up)} | {ratio} | {upgrade_ratio(up)} |")
     (DOCS / "cards-overview.md").write_text("\n".join(L) + "\n")
 
 
@@ -454,9 +611,9 @@ def main():
     # 이름 중복(전체)
     names = Counter()
     for info in infos:
-        names.update(c["name"] for c, _, _ in info["rows"])
+        names.update(c["name"] for c, *_ in info["rows"])
     for ex in extras:
-        names.update(c["name"] for c, _, _ in ex["rows"])
+        names.update(c["name"] for c, *_ in ex["rows"])
     for n, k in names.items():
         if k > 1:
             E("전체", f"카드 이름 중복: {n} ×{k}")
@@ -480,6 +637,10 @@ def main():
             write_overview(infos, extras, heroes, roster)
     total = sum(len(i["rows"]) for i in infos) + sum(len(e["rows"]) for e in extras)
     print(f"검사한 카드 {total}장 (영웅 {len(infos)}명, 추가 {[e['name'] for e in extras]})")
+    ups = [up for x in infos + extras for *_, up in x["rows"] if up]
+    if ups:
+        kinds = Counter(u["kind"] for u in ups)
+        print(f"강화판 {len(ups)}장 ({', '.join(f'{k} {n}' for k, n in kinds.most_common())}) · 강화 가치 {min(u['ratio'] for u in ups):.2f}~{max(u['ratio'] for u in ups):.2f}")
     if roster:
         vals = [s for _, s, _ in roster]
         print(f"로스터 연계 강도: 최소 {min(vals)} ({roster[0][0]}) · 중앙 {sorted(vals)[len(vals)//2]} · 최대 {max(vals)}")

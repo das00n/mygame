@@ -55,7 +55,7 @@ export interface CombatSetup {
 
 export function newStats(): CombatStats {
   return {
-    plays: new Map(), condEval: new Map(), powerFires: new Map(), specialUse: new Map(),
+    plays: new Map(), condEval: new Map(), perCount: new Map(), powerFires: new Map(), specialUse: new Map(),
     dmgTakenHero: [0, 0, 0], dmgTakenSlot: [0, 0, 0], jangdanTurnSum: 0, turnsCounted: 0, respPlays: 0, respEligible: 0, cardPlays: 0,
     downs: 0, deaths: 0, sameTurnDeaths: 0, revives: 0, gangsin: 0, collapses: 0, executions: 0, kills: 0, haewons: 0, haewonEligible: 0, haewonHealed: 0, escapes: 0,
     enemyHaewon: new Map(), heroDmgDealt: [0, 0, 0],
@@ -195,7 +195,6 @@ export interface Ctx {
   summonCtx: boolean;
   allOverride: number;
   attacker: number;
-  skipConsume: boolean;
   markedAtPlay: boolean[] | null;
   autoTarget: AutoTarget;
   lastSummon: number;
@@ -205,7 +204,7 @@ export interface Ctx {
 function baseCtx(owner: number, owners: number[], card: CardDef | null): Ctx {
   return {
     card, inst: null, owner, owners, target: -1, target2: -1, ally: -1, pair: null, ownerSlot: -1, talSlot: -1, resp: false, respTimes: 0,
-    prevManshin: false, consumed: {}, isToken: false, fromPower: false, summonCtx: false, allOverride: -1, attacker: -1, skipConsume: false,
+    prevManshin: false, consumed: {}, isToken: false, fromPower: false, summonCtx: false, allOverride: -1, attacker: -1,
     markedAtPlay: null, autoTarget: 'front', lastSummon: -1, shadowCtx: false,
   };
 }
@@ -710,7 +709,7 @@ function execOp(s: CombatState, op: Op, ctx: Ctx): void {
       return;
     case 'token': {
       for (let k = 0; k < op.n; k++) {
-        if (ctx.card && ctx.card.deferTokens && !ctx.fromPower) {
+        if (op.nextTurn && !ctx.fromPower) {
           s.deferredTokens.push(op.tidx | ((ctx.owners[0] + 1) << 16) | (((ctx.owners[1] ?? -1) + 1) << 24));
         } else addTokenCard(s, op.tidx, ctx.owners[0] ?? -1, ctx.owners[1] ?? -1, ctx.lastSummon);
       }
@@ -751,6 +750,11 @@ function execOp(s: CombatState, op: Op, ctx: Ctx): void {
       execCond(s, op, ctx);
       return;
     case 'power': {
+      if (op.thisTurn) {
+        // 이번 턴 임시 트리거 ("이번 턴 진형이 바뀔 때마다")
+        addTempPower(s, ctx, op.trigger, op.effects);
+        return;
+      }
       if (op.trigger === 'unknown' && s.stats) bump(s.stats.specialUse, `unknown_power:${ctx.card?.id}`);
       s.powers.push({
         card: ctx.card ? ctx.card.idx : -1, op, owner: ctx.owner, owner2: ctx.owners[1] ?? -1, temp: false, firedTurn: -1,
@@ -836,6 +840,9 @@ function execPer(s: CombatState, op: Extract<Op, { op: 'per' }>, ctx: Ctx): void
       const eachAll = op.each.some((e) => 'target' in e && e.target === 'all');
       if (eachAll && ctx.allOverride < 0 && ctx.consumed[st] === undefined) {
         // 적마다 자기 스택만큼
+        let total = 0;
+        for (const ei of aliveEnemies(s)) total += cap(statusOf(s.enemies[ei], st));
+        recordPer(s, op.key, total);
         for (const ei of aliveEnemies(s)) {
           const count = cap(statusOf(s.enemies[ei], st));
           const sub = { ...ctx, allOverride: ei };
@@ -851,14 +858,12 @@ function execPer(s: CombatState, op: Extract<Op, { op: 'per' }>, ctx: Ctx): void
         count = t >= 0 ? statusOf(s.enemies[t], st) : 0;
       }
       count = cap(count);
+      recordPer(s, op.key, count);
       let sub = ctx;
       if (ctx.card && ctx.card.needsEnemy2 && ctx.target2 >= 0) sub = { ...ctx, target: ctx.target2 };
       for (let k = 0; k < count; k++) execOps(s, op.each, sub);
       return;
     }
-    case 'formation_trigger':
-      addTempPower(s, ctx, 'on_formation_change', op.each);
-      return;
     case 'turn_end_defer':
       addTempPower(s, ctx, 'turn_end', [{ ...op, mode: 'jangdan' }]);
       return;
@@ -890,11 +895,20 @@ function execPer(s: CombatState, op: Extract<Op, { op: 'per' }>, ctx: Ctx): void
     }
   }
   count = cap(count);
+  recordPer(s, op.key, count);
   const sub = op.mode === 'shadow' ? { ...ctx, shadowCtx: true } : ctx;
   for (let k = 0; k < count; k++) {
     execOps(s, op.each, sub);
     if (s.outcome !== 0) return;
   }
+}
+
+function recordPer(s: CombatState, key: string, count: number): void {
+  if (!s.stats) return;
+  const v = s.stats.perCount.get(key) ?? [0, 0];
+  v[0]++;
+  v[1] += count;
+  s.stats.perCount.set(key, v);
 }
 
 function statusOf(e: EnemyState, st: string): number {
@@ -922,7 +936,7 @@ function resourceHero(s: CombatState, res: string): HeroState | null {
 
 function addTempPower(s: CombatState, ctx: Ctx, trigger: Trigger, effects: Op[], againstAttacker = false, owner = ctx.owner): void {
   const op: Extract<Op, { op: 'power' }> = {
-    op: 'power', trigger, effects, expect: null, gate: null, requireStance: false, key: `${ctx.card?.id ?? 'temp'}#temp`, autoTarget: 'front',
+    op: 'power', trigger, effects, expect: null, gate: null, requireStance: false, key: `${ctx.card?.id ?? 'temp'}#temp`, autoTarget: 'front', thisTurn: true,
   };
   s.powers.push({ card: ctx.card ? ctx.card.idx : -1, op, owner, owner2: -1, temp: true, firedTurn: -1, effects, trigger, againstAttacker });
 }
@@ -943,10 +957,13 @@ function execCond(s: CombatState, op: Extract<Op, { op: 'cond' }>, ctx: Ctx): vo
     recordCond(s, op.key, any);
     return;
   }
-  if (c.k === 'blade_fall') return; // 턴 종료 규칙으로 처리 (endPlayerTurn 에서 기록)
+  if (op.turnEnd || c.k === 'blade_fall') return; // 턴 종료 규칙으로 처리 (작두 헛디딤: endPlayerTurn 에서 기록)
   const ok = evalCond(s, c, op, ctx);
   recordCond(s, op.key, ok || c.k === 'attacked_chasa');
-  if (!ok) return;
+  if (!ok) {
+    execOps(s, op.else, ctx); // 숨통 겨누기: 화약을 쓰지 않으면 점지를 모두 없앤다
+    return;
+  }
   if (c.k === 'res' || c.k === 'summons_empty_res') {
     // 자원 소모 조건: then 안에 소모가 없으면 여기서 쓴다
     const hasConsume = op.then.some((e) => e.op === 'consume');
@@ -954,7 +971,6 @@ function execCond(s: CombatState, op: Extract<Op, { op: 'cond' }>, ctx: Ctx): vo
       const h = resourceHero(s, c.res);
       if (h) h.personal = Math.max(0, h.personal - c.n);
     }
-    if (op.then.length === 0) ctx.skipConsume = true; // 숨통 겨누기: 화약을 쓰면 점지를 그대로 둔다
   }
   if (c.k === 'garak_down') {
     const j = heroOf(s, 'jaebi');
@@ -1071,10 +1087,6 @@ function evalCond(s: CombatState, c: Cond, op: Extract<Op, { op: 'cond' }>, ctx:
 function execConsume(s: CombatState, op: Extract<Op, { op: 'consume' }>, ctx: Ctx): void {
   const d = D();
   const name = op.status ?? op.source ?? '';
-  if (ctx.skipConsume && op.status === '점지') {
-    ctx.skipConsume = false;
-    return;
-  }
   if (['점지', '상흔', '명부', '넋흔들림'].includes(name)) {
     const t = oneTarget(s, ctx);
     if (t < 0) return;

@@ -2,8 +2,24 @@
   "hero": "talggun",
   "version": "0.1",
   "tokens": [
-    {"id": "talggun.t_pyojubak", "name": "표주박 부적", "cost": 0, "keywords": ["소멸"], "text": "할미의 표주박을 던진다. 적 하나에 피해 4.", "effects": [{"op": "dmg", "n": 4, "target": "one"}]},
-    {"id": "talggun.t_jwilbuchae", "name": "쥘부채 부적", "cost": 0, "keywords": ["소멸"], "text": "양반의 쥘부채를 펴서 가려 준다. 아군 하나에게 방어도 3.", "effects": [{"op": "block", "n": 3, "to": "ally"}]}
+    {
+      "id": "talggun.t_pyojubak",
+      "name": "표주박 부적",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "할미의 표주박을 던진다. 적 하나에 피해 4.",
+      "effects": [{"op": "dmg", "n": 4, "target": "one"}]
+    },
+    {
+      "id": "talggun.t_jwilbuchae",
+      "name": "쥘부채 부적",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "양반의 쥘부채를 펴서 가려 준다. 아군 하나에게 방어도 3.",
+      "effects": [{"op": "block", "n": 3, "to": "ally"}]
+    }
   ],
   "summons": [],
   "cards": [
@@ -17,7 +33,7 @@
       "path": "core",
       "keywords": [],
       "text": "피해 6. 점지된 적이면 취약 1.",
-      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "점지된 적이면", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "점지된 적이면", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}], "p": 0.35}],
       "tags": {"produce": ["취약"], "consume": ["점지"]},
       "upgrade": "피해 8. 점지된 적이면 취약 2."
     },
@@ -45,7 +61,7 @@
       "path": "core",
       "keywords": [],
       "text": "피해 5. 선두에서: 한 번 더 친다.",
-      "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "dmg", "n": 5, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "dmg", "n": 5, "target": "one"}], "p": 0.6}],
       "tags": {"produce": [], "consume": ["진형"]},
       "upgrade": "피해 6. 선두에서: 한 번 더 친다."
     },
@@ -85,7 +101,7 @@
       "path": "A",
       "keywords": [],
       "text": "피해 5. 점지된 적이면 약화 2.",
-      "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "cond", "if": "점지된 적이면", "then": [{"op": "apply", "status": "약화", "n": 2, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 5, "target": "one"}, {"op": "cond", "if": "점지된 적이면", "then": [{"op": "apply", "status": "약화", "n": 2, "target": "one"}], "p": 0.7}],
       "tags": {"produce": ["약화"], "consume": ["점지"]},
       "upgrade": "피해 7. 점지된 적이면 약화 2."
     },
@@ -98,7 +114,7 @@
       "path": "A",
       "keywords": [],
       "text": "피해 3. 선두에서: 피해 3.",
-      "effects": [{"op": "dmg", "n": 3, "target": "one"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "dmg", "n": 3, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 3, "target": "one"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "dmg", "n": 3, "target": "one"}], "p": 0.6}],
       "tags": {"produce": [], "consume": ["진형"]},
       "upgrade": "피해 4. 선두에서: 피해 4."
     },
@@ -124,7 +140,7 @@
       "path": "A",
       "keywords": [],
       "text": "적 전체에 피해 8. 선두에서: 장단 +2.",
-      "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "jangdan", "n": 2}]}],
+      "effects": [{"op": "dmg", "n": 8, "target": "all"}, {"op": "cond", "if": "진형:선두에서", "then": [{"op": "jangdan", "n": 2}], "p": 0.4}],
       "tags": {"produce": ["장단"], "consume": ["진형"]},
       "upgrade": "적 전체에 피해 11. 선두에서: 장단 +2."
     },
@@ -163,7 +179,7 @@
       "path": "B",
       "keywords": [],
       "text": "장단 +1. 후열에서: 표주박 부적 1장을 만든다.",
-      "effects": [{"op": "jangdan", "n": 1}, {"op": "cond", "if": "진형:후열에서", "then": [{"op": "token", "id": "talggun.t_pyojubak", "n": 1}]}],
+      "effects": [{"op": "jangdan", "n": 1}, {"op": "cond", "if": "진형:후열에서", "then": [{"op": "token", "id": "talggun.t_pyojubak", "n": 1}], "p": 0.3}],
       "tags": {"produce": ["부적", "장단"], "consume": ["진형"]},
       "upgrade": "장단 +1. 후열에서: 표주박 부적 2장을 만든다."
     },
@@ -215,7 +231,7 @@
       "path": "core",
       "keywords": [],
       "text": "쓰고 있는 탈에 따라 — 말뚝이탈: 적 하나에 취약 2. 양반탈: 적 전체에 약화 1. 할미탈: 장단 +2, 아군 하나에게 방어도 4.",
-      "effects": [{"op": "cond", "if": "탈:말뚝이탈(진형:선두)", "then": [{"op": "apply", "status": "취약", "n": 2, "target": "one"}], "p": 0.4}, {"op": "cond", "if": "탈:양반탈(진형:중열)", "then": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}], "p": 0.4}, {"op": "cond", "if": "탈:할미탈(진형:후열)", "then": [{"op": "jangdan", "n": 2}, {"op": "block", "n": 4, "to": "ally"}], "p": 0.4}],
+      "effects": [{"op": "cond", "if": "탈:말뚝이탈(진형:선두)", "then": [{"op": "apply", "status": "취약", "n": 2, "target": "one"}]}, {"op": "cond", "if": "탈:양반탈(진형:중열)", "then": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}], "p": 0.25}, {"op": "cond", "if": "탈:할미탈(진형:후열)", "then": [{"op": "jangdan", "n": 2}, {"op": "block", "n": 4, "to": "ally"}], "p": 0.35}],
       "tags": {"produce": ["약화", "장단", "취약"], "consume": ["진형", "탈"]},
       "upgrade": "말뚝이탈: 취약 3. 양반탈: 적 전체에 약화 2. 할미탈: 장단 +3, 방어도 5."
     },
@@ -254,7 +270,7 @@
       "path": "core",
       "keywords": [],
       "text": "탈이 바뀔 때마다 장단 +1.",
-      "effects": [{"op": "power", "trigger": "탈꾼의 자리가 바뀔 때", "effects": [{"op": "cond", "if": "탈이 바뀔 때마다", "then": [{"op": "jangdan", "n": 1}], "p": 1.0}]}],
+      "effects": [{"op": "power", "trigger": "on_talggun_move", "effects": [{"op": "cond", "if": "탈이 바뀔 때마다", "then": [{"op": "jangdan", "n": 1}], "p": 1.0}], "expect": 6.0}],
       "tags": {"produce": ["장단"], "consume": ["탈"]},
       "upgrade": "선천을 얻는다."
     },
@@ -267,7 +283,7 @@
       "path": "core",
       "keywords": [],
       "text": "중열(양반탈)에서 탈꾼 카드를 쓸 때마다 무작위 적 하나에 취약 1.",
-      "effects": [{"op": "power", "trigger": "중열에서 탈꾼 카드 사용", "effects": [{"op": "cond", "if": "탈:양반탈(진형:중열)에서 탈꾼 카드를 쓸 때마다", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}], "p": 1.0}]}],
+      "effects": [{"op": "power", "trigger": "on_owner_card", "effects": [{"op": "cond", "if": "탈:양반탈(진형:중열)에서 탈꾼 카드를 쓸 때마다", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}], "p": 0.35}], "expect": 8.0}],
       "tags": {"produce": ["취약"], "consume": ["진형", "탈"]},
       "upgrade": "비용 0."
     },
@@ -293,7 +309,7 @@
       "path": "B",
       "keywords": [],
       "text": "피해 6. 후열에서: 아군 하나에게 방어도 5.",
-      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "진형:후열에서", "then": [{"op": "block", "n": 5, "to": "ally"}]}],
+      "effects": [{"op": "dmg", "n": 6, "target": "one"}, {"op": "cond", "if": "진형:후열에서", "then": [{"op": "block", "n": 5, "to": "ally"}], "p": 0.25}],
       "tags": {"produce": [], "consume": ["진형"]},
       "upgrade": "피해 8. 후열에서: 아군 하나에게 방어도 7."
     },
@@ -306,7 +322,7 @@
       "path": "A",
       "keywords": ["받는소리"],
       "text": "전진한다. 받는소리: 방어도 4.",
-      "effects": [{"op": "move", "kind": "전진"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "self"}]}],
+      "effects": [{"op": "move", "kind": "전진"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 4, "to": "self"}], "p": 0.85}],
       "tags": {"produce": ["진형"], "consume": []},
       "upgrade": "전진한다. 받는소리: 방어도 6."
     },
@@ -345,7 +361,7 @@
       "path": "core",
       "keywords": [],
       "text": "아군 하나와 교대한다. 그다음 피해 6을 (이번 턴 탈이 바뀐 횟수 + 1)회 준다.",
-      "effects": [{"op": "move", "kind": "교대"}, {"op": "dmg", "n": 6, "target": "one"}, {"op": "per", "source": "탈", "each": [{"op": "dmg", "n": 6, "target": "one"}], "expect": 2, "note": "이번 턴 탈이 바뀐 횟수. 이 카드의 교대로 최소 1"}],
+      "effects": [{"op": "move", "kind": "교대"}, {"op": "dmg", "n": 6, "target": "one"}, {"op": "per", "source": "탈", "each": [{"op": "dmg", "n": 6, "target": "one"}], "expect": 1.1, "note": "이번 턴 탈이 바뀐 횟수 (실측 1.1 — 이 카드의 교대 포함)"}],
       "tags": {"produce": ["진형"], "consume": ["탈"]},
       "upgrade": "아군 하나와 교대한다. 그다음 피해 8을 (이번 턴 탈이 바뀐 횟수 + 1)회 준다."
     },
@@ -358,7 +374,7 @@
       "path": "A",
       "keywords": [],
       "text": "탈꾼이 점지된 적을 공격할 때마다 그 적에게 취약 1, 약화 1.",
-      "effects": [{"op": "power", "trigger": "점지된 적을 공격", "effects": [{"op": "cond", "if": "점지된 적을 공격할 때마다", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}], "p": 1.0}]}],
+      "effects": [{"op": "power", "trigger": "on_attack", "effects": [{"op": "cond", "if": "점지된 적을 공격할 때마다", "then": [{"op": "apply", "status": "취약", "n": 1, "target": "one"}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}], "p": 0.65}]}],
       "tags": {"produce": ["약화", "취약"], "consume": ["점지"]},
       "upgrade": "비용 1."
     },
@@ -371,7 +387,7 @@
       "path": "B",
       "keywords": [],
       "text": "턴 시작 시 후열(할미탈)에 있으면 장단 +2, 파티 방어도 2.",
-      "effects": [{"op": "power", "trigger": "턴 시작", "effects": [{"op": "cond", "if": "탈:할미탈(진형:후열)에서 턴 시작", "then": [{"op": "jangdan", "n": 2}, {"op": "block", "n": 2, "to": "party"}]}]}],
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "cond", "if": "탈:할미탈(진형:후열)에서 턴 시작", "then": [{"op": "jangdan", "n": 2}, {"op": "block", "n": 2, "to": "party"}], "p": 0.3}]}],
       "tags": {"produce": ["장단"], "consume": ["진형", "탈"]},
       "upgrade": "턴 시작 시 후열(할미탈)에 있으면 장단 +2, 파티 방어도 3."
     },
@@ -384,7 +400,7 @@
       "path": "A",
       "keywords": [],
       "text": "적 전체에 피해 7, 2회. 점지된 적에게는 취약 2, 약화 2.",
-      "effects": [{"op": "dmg", "n": 7, "target": "all", "hits": 2}, {"op": "cond", "if": "점지된 적에게는", "then": [{"op": "apply", "status": "취약", "n": 2, "target": "one"}, {"op": "apply", "status": "약화", "n": 2, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 7, "target": "all", "hits": 2}, {"op": "cond", "if": "점지된 적에게는", "then": [{"op": "apply", "status": "취약", "n": 2, "target": "all"}, {"op": "apply", "status": "약화", "n": 2, "target": "all"}]}],
       "tags": {"produce": ["약화", "취약"], "consume": ["점지"]},
       "upgrade": "적 전체에 피해 9, 2회. 점지된 적에게는 취약 2, 약화 2."
     },

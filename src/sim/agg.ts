@@ -44,13 +44,14 @@ export interface CardAgg {
   offered: Record<string, number>;
   picked: Record<string, number>;
   cond: Record<string, [number, number]>;
+  per: Record<string, [number, number]>;
   powerFires: Record<string, number>;
   special: Record<string, number>;
   enemy: Record<string, [number, number]>;
 }
 
 export function newCardAgg(): CardAgg {
-  return { plays: {}, inDeck: {}, offered: {}, picked: {}, cond: {}, powerFires: {}, special: {}, enemy: {} };
+  return { plays: {}, inDeck: {}, offered: {}, picked: {}, cond: {}, per: {}, powerFires: {}, special: {}, enemy: {} };
 }
 
 function add(rec: Record<string, number>, k: string, v = 1): void {
@@ -97,6 +98,12 @@ export function recordCombat(agg: CombatAgg, cards: CardAgg, s: CombatState, par
     c[1] += v[1];
     cards.cond[k] = c;
   }
+  for (const [k, v] of st.perCount) {
+    const c = cards.per[k] ?? [0, 0];
+    c[0] += v[0];
+    c[1] += v[1];
+    cards.per[k] = c;
+  }
   for (const [k, v] of st.powerFires) add(cards.powerFires, k, v);
   for (const [k, v] of st.specialUse) add(cards.special, k, v);
   for (const [k, v] of st.enemyHaewon) {
@@ -126,7 +133,7 @@ export function mergeCardAgg(into: CardAgg, b: CardAgg): void {
   for (const key of ['plays', 'inDeck', 'offered', 'picked', 'powerFires', 'special'] as const) {
     for (const [k, v] of Object.entries(b[key])) add(into[key], k, v);
   }
-  for (const key of ['cond', 'enemy'] as const) {
+  for (const key of ['cond', 'per', 'enemy'] as const) {
     for (const [k, v] of Object.entries(b[key])) {
       const c = into[key][k] ?? [0, 0];
       c[0] += v[0];

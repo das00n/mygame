@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated": "2026-11-03T16:38:19.119Z",
+  "generated": "2026-11-04T03:20:42.113Z",
   "runs": 200,
   "trios": 56,
-  "runtimeSec": 73.6,
+  "runtimeSec": 60.4,
   "structure": "쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2",
   "rules": {
    "enemyDmgMult": 1,
@@ -8575,6 +8575,456 @@
    "true": 13,
    "rate": 0.591,
    "dataP": 0.4
+  }
+ },
+ "pers": {
+  "posu.geupso#0": {
+   "card": "posu.geupso",
+   "source": "점지",
+   "mode": "status",
+   "evaluated": 31543,
+   "mean": 4.7,
+   "dataExpect": null
+  },
+  "manshin.hongcheollik#0": {
+   "card": "manshin.hongcheollik",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 20011,
+   "mean": 1.16,
+   "dataExpect": null
+  },
+  "manshin.janggun_gongsu#0": {
+   "card": "manshin.janggun_gongsu",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 8861,
+   "mean": 0.97,
+   "dataExpect": null
+  },
+  "manshin.janggun_gongsu#2": {
+   "card": "manshin.janggun_gongsu",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 3228,
+   "mean": 1.06,
+   "dataExpect": null
+  },
+  "jaebi.cheondung_jing#0": {
+   "card": "jaebi.cheondung_jing",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 3570,
+   "mean": 1.46,
+   "dataExpect": null
+  },
+  "manshin.yeoldu_bangul#0": {
+   "card": "manshin.yeoldu_bangul",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 4208,
+   "mean": 0.93,
+   "dataExpect": null
+  },
+  "jaebi.makjangdan#0": {
+   "card": "jaebi.makjangdan",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 8663,
+   "mean": 1.27,
+   "dataExpect": null
+  },
+  "manshin.sinryeong_baeung#0": {
+   "card": "manshin.sinryeong_baeung",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 555,
+   "mean": 1.44,
+   "dataExpect": null
+  },
+  "jaebi.s_geollip#0": {
+   "card": "jaebi.s_geollip",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 12288,
+   "mean": 2.87,
+   "dataExpect": null
+  },
+  "manshin.daegam_gongsu#1": {
+   "card": "manshin.daegam_gongsu",
+   "source": "부적",
+   "mode": "tokens_hand",
+   "evaluated": 330,
+   "mean": 0.1,
+   "dataExpect": null
+  },
+  "posu.hwayaktong#0": {
+   "card": "posu.hwayaktong",
+   "source": "화약",
+   "mode": "personal",
+   "evaluated": 1114,
+   "mean": 0.91,
+   "dataExpect": null
+  },
+  "posu.sumtong#0": {
+   "card": "posu.sumtong",
+   "source": "점지",
+   "mode": "status",
+   "evaluated": 291,
+   "mean": 3.87,
+   "dataExpect": null
+  },
+  "jaebi.subu#0": {
+   "card": "jaebi.subu",
+   "source": "장단",
+   "mode": "turn_end_defer",
+   "evaluated": 1409,
+   "mean": 3.72,
+   "dataExpect": null
+  },
+  "manshin.eonwoldo#0": {
+   "card": "manshin.eonwoldo",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 1529,
+   "mean": 0.77,
+   "dataExpect": null
+  },
+  "posu.oegil#0": {
+   "card": "posu.oegil",
+   "source": "점지",
+   "mode": "status",
+   "evaluated": 1279,
+   "mean": 3.13,
+   "dataExpect": null
+  },
+  "baksu.kalnal#0": {
+   "card": "baksu.kalnal",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 37726,
+   "mean": 1.87,
+   "dataExpect": null
+  },
+  "baksu.dangak#0": {
+   "card": "baksu.dangak",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 2382,
+   "mean": 0.99,
+   "dataExpect": null
+  },
+  "baksu.kaljaguk#0": {
+   "card": "baksu.kaljaguk",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 3321,
+   "mean": 1.3,
+   "dataExpect": null
+  },
+  "baksu.geodugi#0": {
+   "card": "baksu.geodugi",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 1178,
+   "mean": 2.22,
+   "dataExpect": null
+  },
+  "baksu.jangdan_bal#0": {
+   "card": "baksu.jangdan_bal",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 1319,
+   "mean": 2.02,
+   "dataExpect": null
+  },
+  "baksu.ullim#0": {
+   "card": "baksu.ullim",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 1741,
+   "mean": 3.6,
+   "dataExpect": null
+  },
+  "baksu.cheongbo#0": {
+   "card": "baksu.cheongbo",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 4743,
+   "mean": 2.35,
+   "dataExpect": null
+  },
+  "baksu.omgyeo#0": {
+   "card": "baksu.omgyeo",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 2007,
+   "mean": 2.72,
+   "dataExpect": null
+  },
+  "baksu.ssangnal#0": {
+   "card": "baksu.ssangnal",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 265,
+   "mean": 0.88,
+   "dataExpect": null
+  },
+  "baksu.ssangnal#2": {
+   "card": "baksu.ssangnal",
+   "source": "장단",
+   "mode": "jangdan",
+   "evaluated": 101,
+   "mean": 0.7,
+   "dataExpect": null
+  },
+  "seungnyeo.cheondo_yeombul#0": {
+   "card": "seungnyeo.cheondo_yeombul",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 16011,
+   "mean": 4.78,
+   "dataExpect": null
+  },
+  "seungnyeo.neok_geodeo#0": {
+   "card": "seungnyeo.neok_geodeo",
+   "source": "넋흔들림",
+   "mode": "status",
+   "evaluated": 2125,
+   "mean": 5.31,
+   "dataExpect": null
+  },
+  "seungnyeo.wangsaeng_barwon#0": {
+   "card": "seungnyeo.wangsaeng_barwon",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 2528,
+   "mean": 3.92,
+   "dataExpect": null
+  },
+  "seungnyeo.cheondojae#0": {
+   "card": "seungnyeo.cheondojae",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 1765,
+   "mean": 2.7,
+   "dataExpect": null
+  },
+  "seungnyeo.wangsaeng_deungbul#0": {
+   "card": "seungnyeo.wangsaeng_deungbul",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 5973,
+   "mean": 6.59,
+   "dataExpect": null
+  },
+  "seungnyeo.eopgyeongdae#0": {
+   "card": "seungnyeo.eopgyeongdae",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 2467,
+   "mean": 4.05,
+   "dataExpect": null
+  },
+  "seungnyeo.hoehyang#0": {
+   "card": "seungnyeo.hoehyang",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 1469,
+   "mean": 7.12,
+   "dataExpect": null
+  },
+  "seungnyeo.yeomjual#0": {
+   "card": "seungnyeo.yeomjual",
+   "source": "염주",
+   "mode": "personal",
+   "evaluated": 292,
+   "mean": 4.37,
+   "dataExpect": null
+  },
+  "beopsa.sinryeongbu_bonghagi#0": {
+   "card": "beopsa.sinryeongbu_bonghagi",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 1029,
+   "mean": 1.02,
+   "dataExpect": null
+  },
+  "beopsa.bulgeun_bujeok#0": {
+   "card": "beopsa.bulgeun_bujeok",
+   "source": "경면주사",
+   "mode": "personal",
+   "evaluated": 1807,
+   "mean": 2.65,
+   "dataExpect": null
+  },
+  "beopsa.bujeok_nalligi#0": {
+   "card": "beopsa.bujeok_nalligi",
+   "source": "부적",
+   "mode": "tokens_played",
+   "evaluated": 943,
+   "mean": 0.45,
+   "dataExpect": null
+  },
+  "beopsa.sinryeong_ongwi#0": {
+   "card": "beopsa.sinryeong_ongwi",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 973,
+   "mean": 0.5,
+   "dataExpect": null
+  },
+  "beopsa.bujeok_baram#0": {
+   "card": "beopsa.bujeok_baram",
+   "source": "부적",
+   "mode": "tokens_played",
+   "evaluated": 4320,
+   "mean": 0.22,
+   "dataExpect": null
+  },
+  "beopsa.ireum_jeogeun#0": {
+   "card": "beopsa.ireum_jeogeun",
+   "source": "부적",
+   "mode": "tokens_played",
+   "evaluated": 7616,
+   "mean": 0.47,
+   "dataExpect": null
+  },
+  "beopsa.bujeok_sareugi#0": {
+   "card": "beopsa.bujeok_sareugi",
+   "source": "부적",
+   "mode": "tokens_hand",
+   "evaluated": 3522,
+   "mean": 0.89,
+   "dataExpect": null
+  },
+  "beopsa.bujeok_byeongpung#0": {
+   "card": "beopsa.bujeok_byeongpung",
+   "source": "부적",
+   "mode": "tokens_hand",
+   "evaluated": 5845,
+   "mean": 0.27,
+   "dataExpect": null
+  },
+  "beopsa.samdumae#0": {
+   "card": "beopsa.samdumae",
+   "source": "부적",
+   "mode": "tokens_played",
+   "evaluated": 2537,
+   "mean": 0.03,
+   "dataExpect": null
+  },
+  "beopsa.samdumae#1": {
+   "card": "beopsa.samdumae",
+   "source": "경면주사",
+   "mode": "personal",
+   "evaluated": 2537,
+   "mean": 2.36,
+   "dataExpect": null
+  },
+  "beopsa.sinryeong_giun#0": {
+   "card": "beopsa.sinryeong_giun",
+   "source": "굿상",
+   "mode": "summons",
+   "evaluated": 1653,
+   "mean": 0.51,
+   "dataExpect": null
+  },
+  "talggun.tal_set_hanmom#0": {
+   "card": "talggun.tal_set_hanmom",
+   "source": "탈",
+   "mode": "tal_count",
+   "evaluated": 2338,
+   "mean": 1.11,
+   "dataExpect": 2
+  },
+  "chasa.hon_geodugi#0": {
+   "card": "chasa.hon_geodugi",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 34623,
+   "mean": 0.43,
+   "dataExpect": null
+  },
+  "chasa.eodum_sok_ireum#0": {
+   "card": "chasa.eodum_sok_ireum",
+   "source": "그늘",
+   "mode": "shadow",
+   "evaluated": 2026,
+   "mean": 0.05,
+   "dataExpect": null
+  },
+  "chasa.jeoseung_pangyeol#0": {
+   "card": "chasa.jeoseung_pangyeol",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 2178,
+   "mean": 0.51,
+   "dataExpect": null
+  },
+  "chasa.jeoseung_pangyeol#1": {
+   "card": "chasa.jeoseung_pangyeol",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 2178,
+   "mean": 9.94,
+   "dataExpect": null
+  },
+  "chasa.myeongbu_jiphaeng#0": {
+   "card": "chasa.myeongbu_jiphaeng",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 1191,
+   "mean": 5.83,
+   "dataExpect": null
+  },
+  "chasa.sangcheo_jitgi#0": {
+   "card": "chasa.sangcheo_jitgi",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 2073,
+   "mean": 1.35,
+   "dataExpect": null
+  },
+  "chasa.myeongbu_jiphaeng#2": {
+   "card": "chasa.myeongbu_jiphaeng",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 49,
+   "mean": 7.33,
+   "dataExpect": null
+  },
+  "chasa.maethin_han#0": {
+   "card": "chasa.maethin_han",
+   "source": "상흔",
+   "mode": "status",
+   "evaluated": 2243,
+   "mean": 1.73,
+   "dataExpect": null
+  },
+  "chasa.dongmyeong_iin#0": {
+   "card": "chasa.dongmyeong_iin",
+   "source": "명부",
+   "mode": "status",
+   "evaluated": 1701,
+   "mean": 8.52,
+   "dataExpect": 3
+  },
+  "posu.geupso#2": {
+   "card": "posu.geupso",
+   "source": "점지",
+   "mode": "status",
+   "evaluated": 3325,
+   "mean": 4.29,
+   "dataExpect": null
+  },
+  "posu.oegil#2": {
+   "card": "posu.oegil",
+   "source": "점지",
+   "mode": "status",
+   "evaluated": 159,
+   "mean": 2.1,
+   "dataExpect": null
   }
  },
  "powers": {

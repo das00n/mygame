@@ -2,8 +2,24 @@
   "hero": "seungnyeo",
   "version": "0.1",
   "tokens": [
-    {"id": "seungnyeo.t_hosin", "name": "호신 진언", "cost": 0, "keywords": ["소멸"], "text": "몸을 지키는 진언을 새긴 부적. 아군 하나에 방어도 4.", "effects": [{"op": "block", "n": 4, "to": "ally"}]},
-    {"id": "seungnyeo.t_pasa", "name": "파사 진언", "cost": 0, "keywords": ["소멸"], "text": "삿된 것을 깨뜨리는 진언을 새긴 부적. 적 하나에 넋흔들림 3.", "effects": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}]}
+    {
+      "id": "seungnyeo.t_hosin",
+      "name": "호신 진언",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "몸을 지키는 진언을 새긴 부적. 아군 하나에 방어도 4.",
+      "effects": [{"op": "block", "n": 4, "to": "ally"}]
+    },
+    {
+      "id": "seungnyeo.t_pasa",
+      "name": "파사 진언",
+      "type": "기술",
+      "cost": 0,
+      "keywords": ["소멸"],
+      "text": "삿된 것을 깨뜨리는 진언을 새긴 부적. 적 하나에 넋흔들림 3.",
+      "effects": [{"op": "apply", "status": "넋흔들림", "n": 3, "target": "one"}]
+    }
   ],
   "summons": [],
   "cards": [
@@ -111,7 +127,7 @@
       "path": "A",
       "keywords": ["받는소리"],
       "text": "피해 4. 방어도 3. 받는소리: 염주 +1.",
-      "effects": [{"op": "dmg", "n": 4}, {"op": "block", "n": 3}, {"op": "cond", "if": "받는소리", "then": [{"op": "personal", "n": 1}]}],
+      "effects": [{"op": "dmg", "n": 4}, {"op": "block", "n": 3}, {"op": "cond", "if": "받는소리", "then": [{"op": "personal", "n": 1}], "p": 0.45}],
       "tags": {"produce": ["염주"], "consume": []},
       "upgrade": "피해 5. 방어도 5. 받는소리: 염주 +1."
     },
@@ -124,7 +140,7 @@
       "path": "B",
       "keywords": [],
       "text": "피해 6. 대상에 명부가 있으면 넋흔들림 4.",
-      "effects": [{"op": "dmg", "n": 6}, {"op": "cond", "if": "대상에 명부가 있으면", "then": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 6}, {"op": "cond", "if": "대상에 명부가 있으면", "then": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "one"}], "p": 0.65}],
       "tags": {"produce": ["넋흔들림"], "consume": ["명부"]},
       "upgrade": "피해 8. 대상에 명부가 있으면 넋흔들림 6."
     },
@@ -137,7 +153,7 @@
       "path": "B",
       "keywords": ["받는소리"],
       "text": "적 하나에 넋흔들림 1, 그 적의 명부 1당 넋흔들림 1 더(명부는 남는다). 받는소리: 파티 귀기 −4.",
-      "effects": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}]}, {"op": "cond", "if": "받는소리", "then": [{"op": "stress", "n": -4}]}],
+      "effects": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}], "expect": 7.0}, {"op": "cond", "if": "받는소리", "then": [{"op": "stress", "n": -4}]}],
       "tags": {"produce": ["넋흔들림"], "consume": ["명부"]},
       "upgrade": "적 하나에 넋흔들림 2, 명부 1당 넋흔들림 1 더. 받는소리: 파티 귀기 −6."
     },
@@ -163,7 +179,7 @@
       "path": "core",
       "keywords": [],
       "text": "적 전체에 피해 3, 넋흔들림 1. 넋흔들림 4 이상이거나 붕괴 상태인 적에게는 피해 3 더.",
-      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}, {"op": "cond", "if": "넋흔들림 4 이상 또는 붕괴 상태인 적", "then": [{"op": "dmg", "n": 3, "target": "all"}]}],
+      "effects": [{"op": "dmg", "n": 3, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}, {"op": "cond", "if": "넋흔들림 4 이상 또는 붕괴 상태인 적", "then": [{"op": "dmg", "n": 3, "target": "all"}], "p": 0.55}],
       "tags": {"produce": ["넋흔들림"], "consume": ["넋흔들림"]},
       "upgrade": "적 전체에 피해 4, 넋흔들림 1. 넋흔들림 4 이상이거나 붕괴 상태인 적에게는 피해 5 더."
     },
@@ -176,7 +192,7 @@
       "path": "core",
       "keywords": [],
       "text": "피해 5. 대상의 넋흔들림이 4 이상이거나 붕괴 상태면 피해 8 더.",
-      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상의 넋흔들림 4 이상 또는 붕괴", "then": [{"op": "dmg", "n": 8}]}],
+      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상의 넋흔들림 4 이상 또는 붕괴", "then": [{"op": "dmg", "n": 8}], "p": 0.5}],
       "tags": {"produce": [], "consume": ["넋흔들림"]},
       "upgrade": "피해 6. 대상의 넋흔들림이 4 이상이거나 붕괴 상태면 피해 11 더."
     },
@@ -202,7 +218,7 @@
       "path": "core",
       "keywords": [],
       "text": "턴 시작 시 파사 진언 부적 1장을 만든다.",
-      "effects": [{"op": "power", "effects": [{"op": "token", "id": "seungnyeo.t_pasa", "n": 1}], "trigger": "turn_start"}],
+      "effects": [{"op": "power", "trigger": "turn_start", "effects": [{"op": "token", "id": "seungnyeo.t_pasa", "n": 1}]}],
       "tags": {"produce": ["부적"], "consume": []},
       "upgrade": "선천."
     },
@@ -228,7 +244,7 @@
       "path": "A",
       "keywords": [],
       "text": "피격될 때마다 염주 1을 굴려, 공격한 적에게 피해 4를 되돌린다(염주가 없으면 발동하지 않는다).",
-      "effects": [{"op": "power", "effects": [{"op": "consume", "status": "염주", "n": 1}, {"op": "dmg", "n": 4}], "trigger": "on_hit"}],
+      "effects": [{"op": "power", "trigger": "on_hit", "effects": [{"op": "consume", "status": "염주", "n": 1}, {"op": "dmg", "n": 4}], "expect": 3.0}],
       "tags": {"produce": [], "consume": ["염주"]},
       "upgrade": "피격될 때마다 염주 1을 굴려, 공격한 적에게 피해 6을 되돌린다."
     },
@@ -280,7 +296,7 @@
       "path": "B",
       "keywords": [],
       "text": "적 하나의 명부를 모두 거둔다. 거둔 1당 넋흔들림 2. 파티 귀기 −5. 아군 하나의 체력 3 회복.",
-      "effects": [{"op": "consume", "status": "명부", "n": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}]}, {"op": "stress", "n": -5}, {"op": "heal", "n": 3, "to": "ally"}],
+      "effects": [{"op": "consume", "status": "명부", "n": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "one"}], "expect": 4.0}, {"op": "stress", "n": -5}, {"op": "heal", "n": 3, "to": "ally"}],
       "tags": {"produce": ["넋흔들림"], "consume": ["명부"]},
       "upgrade": "거둔 1당 넋흔들림 2. 파티 귀기 −8. 아군 하나의 체력 5 회복."
     },
@@ -293,7 +309,7 @@
       "path": "B",
       "keywords": [],
       "text": "피해 8. 약화 1. 대상의 명부 1당 넋흔들림 1(명부는 남는다).",
-      "effects": [{"op": "dmg", "n": 8}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}]}],
+      "effects": [{"op": "dmg", "n": 8}, {"op": "apply", "status": "약화", "n": 1, "target": "one"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}], "expect": 4.0}],
       "tags": {"produce": ["넋흔들림", "약화"], "consume": ["명부"]},
       "upgrade": "피해 11. 약화 2. 대상의 명부 1당 넋흔들림 1."
     },
@@ -319,7 +335,7 @@
       "path": "core",
       "keywords": ["받는소리"],
       "text": "적 전체에 약화 1, 넋흔들림 2. 받는소리: 적 전체에 넋흔들림 1 더.",
-      "effects": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}]}],
+      "effects": [{"op": "apply", "status": "약화", "n": 1, "target": "all"}, {"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}, {"op": "cond", "if": "받는소리", "then": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "all"}], "p": 0.4}],
       "tags": {"produce": ["약화", "넋흔들림"], "consume": []},
       "upgrade": "적 전체에 약화 2, 넋흔들림 2. 받는소리: 적 전체에 넋흔들림 1 더."
     },
@@ -332,7 +348,7 @@
       "path": "core",
       "keywords": ["받는소리"],
       "text": "두 아군의 자리를 교대한다(승려도 된다). 받는소리: 방어도 3.",
-      "effects": [{"op": "move", "kind": "교대"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3}]}],
+      "effects": [{"op": "move", "kind": "교대"}, {"op": "cond", "if": "받는소리", "then": [{"op": "block", "n": 3}], "p": 0.85}],
       "tags": {"produce": ["진형"], "consume": []},
       "upgrade": "두 아군의 자리를 교대한다. 받는소리: 방어도 5."
     },
@@ -345,7 +361,7 @@
       "path": "A",
       "keywords": [],
       "text": "턴 종료 시 염주가 3 이상이면 3을 굴려 파티 방어도 3.",
-      "effects": [{"op": "power", "effects": [{"op": "consume", "status": "염주", "n": 3}, {"op": "block", "n": 3, "to": "party"}], "trigger": "turn_end"}],
+      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "consume", "status": "염주", "n": 3}, {"op": "block", "n": 3, "to": "party"}], "expect": 4.0}],
       "tags": {"produce": [], "consume": ["염주"]},
       "upgrade": "턴 종료 시 염주가 3 이상이면 3을 굴려 파티 방어도 4."
     },
@@ -358,7 +374,7 @@
       "path": "B",
       "keywords": ["소멸"],
       "text": "적 전체에 넋흔들림 4. 각 적에게 그 적의 명부 1당 넋흔들림 2 더(명부는 남는다). 파티 귀기 −10. 파티 체력 4 회복. 소멸.",
-      "effects": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}]}, {"op": "stress", "n": -10}, {"op": "heal", "n": 4, "to": "party"}],
+      "effects": [{"op": "apply", "status": "넋흔들림", "n": 4, "target": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 2, "target": "all"}], "expect": 2.7}, {"op": "stress", "n": -10}, {"op": "heal", "n": 4, "to": "party"}],
       "tags": {"produce": ["넋흔들림"], "consume": ["명부"]},
       "upgrade": "적 전체에 넋흔들림 6. 명부 1당 넋흔들림 2 더. 파티 귀기 −10. 파티 체력 6 회복. 소멸."
     },
@@ -371,7 +387,7 @@
       "path": "B",
       "keywords": [],
       "text": "턴 종료 시 명부가 가장 많은 적에게 그 적의 명부만큼 넋흔들림(명부는 남는다). 파티 귀기 −2.",
-      "effects": [{"op": "power", "effects": [{"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}]}, {"op": "stress", "n": -2}], "trigger": "turn_end"}],
+      "effects": [{"op": "power", "trigger": "turn_end", "effects": [{"op": "per", "source": "명부", "each": [{"op": "apply", "status": "넋흔들림", "n": 1, "target": "one"}], "expect": 6.5}, {"op": "stress", "n": -2}], "expect": 6.5}],
       "tags": {"produce": ["넋흔들림"], "consume": ["명부"]},
       "upgrade": "비용 1."
     },
@@ -384,7 +400,7 @@
       "path": "core",
       "keywords": ["소멸"],
       "text": "석장으로 치며 크게 꾸짖는다. 피해 5. 대상의 넋흔들림이 4 이상이면 버팀에 닿지 않았어도 즉시 붕괴시킨다. 소멸.",
-      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상의 넋흔들림이 4 이상이면", "then": [{"op": "special", "value": 14, "note": "즉시 붕괴 = 적의 다음 행동 1회 취소(방어도 10 안팎) + 그 턴 받는 피해 +50%(4~6). 쌓인 넋흔들림이 0으로 돌아가고 버팀이 1.5배가 되는 대가를 빼 14로 본다"}]}],
+      "effects": [{"op": "dmg", "n": 5}, {"op": "cond", "if": "대상의 넋흔들림이 4 이상이면", "then": [{"op": "special", "value": 14, "note": "즉시 붕괴 = 적의 다음 행동 1회 취소(방어도 10 안팎) + 그 턴 받는 피해 +50%(4~6). 쌓인 넋흔들림이 0으로 돌아가고 버팀이 1.5배가 되는 대가를 빼 14로 본다"}], "p": 0.3}],
       "tags": {"produce": [], "consume": ["넋흔들림"]},
       "upgrade": "피해 8. 넋흔들림이 2 이상이면 즉시 붕괴시킨다. 소멸."
     },

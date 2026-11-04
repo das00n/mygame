@@ -11,6 +11,7 @@ import { allTrios, mergeCardAgg, mergeCombatAgg, metrics, newCardAgg, newCombatA
 import type { CombatJobResult } from './jobs.ts';
 import { argFlag, argNum, argStr, runPool } from './pool.ts';
 import { writeReport } from './report.ts';
+import { powerExpectOf } from '../core/value.ts';
 
 export function cardTables(cards: ReturnType<typeof newCardAgg>) {
   const d = D();
@@ -38,19 +39,30 @@ export function cardTables(cards: ReturnType<typeof newCardAgg>) {
       dataP: op && op.op === 'cond' ? op.p : null,
     };
   }
+  const pers: Record<string, { card: string; source: string; mode: string; evaluated: number; mean: number; dataExpect: number | null }> = {};
+  for (const [k, [ev, sum]] of Object.entries(cards.per)) {
+    const ref = idx.get(k);
+    const op = ref?.op;
+    pers[k] = {
+      card: ref?.owner ?? k, source: op && op.op === 'per' ? op.source : '', mode: op && op.op === 'per' ? op.mode : '', evaluated: ev,
+      mean: ev ? Math.round((sum / ev) * 100) / 100 : 0, dataExpect: op && op.op === 'per' ? op.expect : null,
+    };
+  }
   const powers: Record<string, { played: number; fires: number; firesPerPlay: number; dataExpect: number }> = {};
   for (const c of d.cards) {
     const pw = c.effects.find((o) => o.op === 'power');
+    // 이번 턴 임시 트리거(this_turn, 진형이 바뀔 때마다)도 같은 표에 (발동/사용)
     if (!pw || pw.op !== 'power') continue;
     const played = cards.plays[c.id] ?? 0;
     const fires = cards.powerFires[c.id] ?? 0;
-    powers[c.id] = { played, fires, firesPerPlay: played ? Math.round((fires / played) * 100) / 100 : 0, dataExpect: pw.expect ?? 3.5 };
+    const dataExpect = powerExpectOf(pw.trigger, pw.thisTurn, pw.expect);
+    powers[c.id] = { played, fires, firesPerPlay: played ? Math.round((fires / played) * 100) / 100 : 0, dataExpect };
   }
   const enemies: Record<string, { name: string; kills: number; haewon: number; rate: number }> = {};
   for (const [k, [kills, h]] of Object.entries(cards.enemy)) {
     enemies[k] = { name: d.enemyById.get(k)?.name ?? k, kills, haewon: h, rate: kills ? Math.round((h / kills) * 1000) / 1000 : 0 };
   }
-  return { cards: cardRows, tokens: tokenPlays, conds, powers, enemies, special: cards.special };
+  return { cards: cardRows, tokens: tokenPlays, conds, pers, powers, enemies, special: cards.special };
 }
 
 async function main() {
