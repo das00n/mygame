@@ -13,6 +13,7 @@ import { addCurse, addRunStress, afterFightRecovery, aliveIdx, buildResult, effM
 import { swapHeroes } from '../../../src/core/engine.ts';
 import type { AppState, BattleMeta, BattleSource, CombatSession, Run } from './types.ts';
 import { makeReward } from './rewards.ts';
+import { CD } from '../../../src/meta/content.ts';
 
 // ── 조합 ─────────────────────────────────────────────────────────────
 export const CUSTOM_ENC: Record<string, Encounter> = {
@@ -27,6 +28,8 @@ export const CUSTOM_ENC: Record<string, Encounter> = {
   ev_munsajae: { id: 'ev_munsajae', tier: 'hard', enemies: ['mundudeuri_gaekgwi', 'ireumeomneun_gunjol', 'ireumeomneun_gunjol'] },
   ev_sajabap: { id: 'ev_sajabap', tier: 'hard', enemies: ['julseon_neok', 'julseon_neok', 'nojatdon_gaekgwi'] },
   ev_buk: { id: 'ev_buk', tier: 'easy', enemies: ['ireumeomneun_gunjol', 'ireumeomneun_gunjol', 'ireumeomneun_gunjol'] },
+  // 대문 방: 문지기와 겨룬다 (⟨반복 3⟩)
+  ev_munjigi: { id: 'ev_munjigi', tier: 'easy', enemies: ['ireumeomneun_gunjol', 'ireumeomneun_gunjol', 'ireumeomneun_gunjol'] },
   sonnim: { id: 'sonnim', tier: 'elite', enemies: ['sonnim_subi', 'sonnim_subi'] },
 };
 
@@ -82,7 +85,9 @@ export function relicMods(run: Run): CombatMods {
   const has = (id: string) => run.relics.includes(id);
   const m: CombatMods = {};
   if (has('yongwang')) m.familyDmg = { family: '수귀', mult: 1.25 };
-  if (has('chilseong')) m.deathSave = 0.15;
+  // 캠페인 처벌 강도(06-base §8 ⟨반복 3⟩): 사망 판정 버틸 확률 +0.1 — 칠성 가호와 더한다
+  const campaignSave = run.campaign ? CD.death.deathSave : 0;
+  if (has('chilseong') || campaignSave) m.deathSave = (has('chilseong') ? 0.15 : 0) + campaignSave;
   if (has('daesin_bangul')) m.handMax = 8;
   if (has('samsin')) m.reviveFrac = 0.35;
   if (has('daemun_bujeok')) m.blockPollute = 1;
@@ -539,10 +544,11 @@ export function finishBattle(app: AppState): void {
   const newly = noteCodex(run, s);
   const endDowned = syncHeroes(app);
   if (!win) {
-    // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%)
+    // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%, 캠페인은 처벌 강도 CD.death.wipeSurvive — 06-base §8 ⟨반복 3⟩)
+    const survive = run.campaign ? CD.death.wipeSurvive : 0.5;
     for (const h of run.heroes) {
       if (h.dead) continue;
-      if (rand(run) >= 0.5) {
+      if (rand(run) >= survive) {
         h.dead = true;
         h.hp = 0;
         run.stats.deaths++;

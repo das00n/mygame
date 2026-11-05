@@ -126,7 +126,8 @@ export interface SummonDef {
 export type AutoTarget = 'front' | 'random' | 'lowestHp' | 'mostDoom';
 
 // ── 컴파일된 op ────────────────────────────────────────────────────────
-export type TargetSel = 'one' | 'all' | 'random';
+/** 효과 대상: one = 고른 적 · all · random · other = 「다른 적 하나」(두 번째 대상, 동명이인의 '옮겨 받은 적') ⟨반복 3⟩ */
+export type TargetSel = 'one' | 'all' | 'random' | 'other';
 
 export type Op =
   | { op: 'dmg'; n: number; hits: number; target: TargetSel }

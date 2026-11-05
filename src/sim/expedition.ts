@@ -69,6 +69,8 @@ export interface ExpeditionSetup {
   mods?: CombatMods;
   /** 내림굿으로 고른 성장의 길 (보상에 그 길의 카드가 두 배) */
   paths?: Partial<Record<HeroId, 'A' | 'B'>>;
+  /** 전멸했을 때 쓰러진 영웅마다 마지막 사망 판정을 버틸 확률 (기본 0.5, 캠페인 CD.death.wipeSurvive) */
+  wipeSurvive?: number;
 }
 
 export interface ExpeditionOptions {
@@ -368,8 +370,9 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       }
     });
     if (s.outcome !== 1) {
-      // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%)
-      for (const h of s.heroes) if (!h.dead && rng.next() >= 0.5) {
+      // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%, 캠페인은 처벌 강도 wipeSurvive — 06-base §8 ⟨반복 3⟩)
+      const survive = campaign ? setup?.wipeSurvive ?? 0.5 : 0.5;
+      for (const h of s.heroes) if (!h.dead && rng.next() >= survive) {
         res.deaths++;
         if (campaign) heroes[h.idx].dead = true;
       }

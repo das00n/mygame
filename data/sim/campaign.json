@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated": "2026-11-04T09:19:56.520Z",
+  "generated": "2026-11-05T02:16:25.161Z",
   "runs": 100,
   "rift": true,
-  "runtimeSec": 23.3,
+  "runtimeSec": 25.5,
   "bot": {
    "restStress": 45,
    "restSorties": 3,
@@ -12,212 +12,778 @@
    "bossLevelBase": 1,
    "bossLevelPerRegion": 0.75,
    "normalLevelGap": 0.4,
-   "retreatBelow": 0.5,
-   "bossRetreatBelow": 0.7,
+   "retreatBelow": 0.45,
+   "bossRetreatBelow": 0.6,
    "riftWorry": 7,
-   "finalLevel": 2.5
+   "finalLevel": 2.5,
+   "learnedReady": 4,
+   "learnedPenalty": 0.25
   },
   "maxExpeditions": 90
  },
  "summary": {
   "runs": 100,
   "endings": {
-   "good": 91,
-   "normal": 0,
-   "fail": 8,
-   "cap": 1,
+   "good": 87,
+   "normal": 11,
+   "fail": 2,
+   "cap": 0,
    "stuck": 0
   },
   "expeditionsToEnding": {
-   "median": 29,
-   "mean": 34.44,
-   "min": 16,
-   "max": 86
+   "median": 31.5,
+   "mean": 34.276,
+   "min": 21,
+   "max": 78
   },
-  "inTarget25to40": 0.31,
+  "inTarget25to40": 0.66,
+  "expeditionsP90": 51,
   "deaths": {
-   "median": 7,
-   "mean": 10.1,
-   "inTarget3to8": 0.33
+   "median": 5,
+   "mean": 6.92,
+   "inTarget3to8": 0.45
   },
-  "rosterAvg": 5.856,
-  "countdownReached": 0.12,
+  "rosterAvg": 5.942,
+  "countdownReached": 0.22,
   "clearRates": {
    "r1-normal": {
-    "n": 822,
-    "clear": 0.889,
-    "retreat": 0.109,
-    "wipe": 0.001,
+    "n": 1111,
+    "clear": 0.964,
+    "retreat": 0.032,
+    "wipe": 0.004,
     "bossHaewon": 0,
-    "deathsPer": 0.021
+    "deathsPer": 0.01
    },
    "r1-boss": {
-    "n": 943,
-    "clear": 0.862,
-    "retreat": 0.029,
-    "wipe": 0.109,
-    "bossHaewon": 0.872,
-    "deathsPer": 0.308
+    "n": 774,
+    "clear": 0.891,
+    "retreat": 0.005,
+    "wipe": 0.103,
+    "bossHaewon": 0.871,
+    "deathsPer": 0.171
    },
    "r2-boss": {
-    "n": 721,
-    "clear": 0.419,
-    "retreat": 0.472,
-    "wipe": 0.11,
-    "bossHaewon": 0.732,
-    "deathsPer": 0.469
+    "n": 609,
+    "clear": 0.494,
+    "retreat": 0.35,
+    "wipe": 0.156,
+    "bossHaewon": 0.664,
+    "deathsPer": 0.388
    },
    "r2-normal": {
-    "n": 250,
-    "clear": 0.548,
-    "retreat": 0.404,
-    "wipe": 0.048,
+    "n": 218,
+    "clear": 0.711,
+    "retreat": 0.248,
+    "wipe": 0.041,
     "bossHaewon": 0,
-    "deathsPer": 0.18
-   },
-   "r3-boss": {
-    "n": 217,
-    "clear": 0.415,
-    "retreat": 0.493,
-    "wipe": 0.092,
-    "bossHaewon": 0.411,
-    "deathsPer": 0.488
-   },
-   "r3-final": {
-    "n": 190,
-    "clear": 0.479,
-    "retreat": 0.363,
-    "wipe": 0.158,
-    "bossHaewon": 1,
-    "deathsPer": 0.668
+    "deathsPer": 0.147
    },
    "r3-normal": {
-    "n": 300,
-    "clear": 0.417,
-    "retreat": 0.577,
-    "wipe": 0.007,
+    "n": 178,
+    "clear": 0.669,
+    "retreat": 0.303,
+    "wipe": 0.028,
     "bossHaewon": 0,
-    "deathsPer": 0.233
+    "deathsPer": 0.197
    },
-   "r1-boss-seal": {
-    "n": 8,
-    "clear": 0.25,
-    "retreat": 0.5,
-    "wipe": 0.25,
-    "bossHaewon": 0.5,
-    "deathsPer": 0.5
+   "r3-boss": {
+    "n": 357,
+    "clear": 0.552,
+    "retreat": 0.311,
+    "wipe": 0.137,
+    "bossHaewon": 0.523,
+    "deathsPer": 0.392
    },
-   "r3-boss-seal": {
-    "n": 19,
-    "clear": 0.105,
-    "retreat": 0.737,
-    "wipe": 0.158,
-    "bossHaewon": 0.5,
-    "deathsPer": 0.579
+   "r3-final": {
+    "n": 163,
+    "clear": 0.601,
+    "retreat": 0.202,
+    "wipe": 0.196,
+    "bossHaewon": 0.888,
+    "deathsPer": 0.601
    },
    "r2-boss-seal": {
+    "n": 3,
+    "clear": 0,
+    "retreat": 0.667,
+    "wipe": 0.333,
+    "bossHaewon": 0,
+    "deathsPer": 0.333
+   },
+   "r1-boss-seal": {
+    "n": 24,
+    "clear": 0.875,
+    "retreat": 0,
+    "wipe": 0.125,
+    "bossHaewon": 0.81,
+    "deathsPer": 0.25
+   },
+   "r3-boss-seal": {
     "n": 3,
     "clear": 0,
     "retreat": 1,
     "wipe": 0,
     "bossHaewon": 0,
-    "deathsPer": 0.667
+    "deathsPer": 0.333
    }
   },
   "finalBoss": {
-   "attempts": 190,
-   "won": 91,
-   "rate": 0.479,
-   "haewon": 91
+   "attempts": 163,
+   "won": 98,
+   "rate": 0.601,
+   "haewon": 87
   },
   "sonnim": {
-   "met": 858,
-   "sendoff": 854
+   "met": 772,
+   "sendoff": 591
   },
   "eopgyeong": [
    0,
-   1,
-   42,
-   75
+   2,
+   40,
+   87
   ],
   "typical": {
    "1": {
-    "level": 0.976,
-    "learned": 2.916,
-    "engraved": 1.682,
-    "sinmul": 0.743,
-    "duo": 0.316,
-    "maxHp": 39.139
+    "level": 0.946,
+    "learned": 3.45,
+    "engraved": 1.399,
+    "sinmul": 0.496,
+    "duo": 0.58,
+    "maxHp": 39.35
    },
    "2": {
-    "level": 1.947,
-    "learned": 5.097,
-    "engraved": 2.945,
-    "sinmul": 1.238,
-    "duo": 0.894,
-    "maxHp": 41.706
+    "level": 2.188,
+    "learned": 6.356,
+    "engraved": 2.996,
+    "sinmul": 0.992,
+    "duo": 1.228,
+    "maxHp": 42.543
    },
    "3": {
-    "level": 2.565,
-    "learned": 7.691,
+    "level": 2.696,
+    "learned": 8.214,
     "engraved": 3,
-    "sinmul": 1.674,
-    "duo": 1.544,
-    "maxHp": 43.172
+    "sinmul": 1.504,
+    "duo": 1.72,
+    "maxHp": 43.657
    }
   },
   "regionOpenAt": {
-   "2": 9,
-   "3": 16
+   "2": 13,
+   "3": 20
   },
   "buildOrder": {
    "gaekju2": {
-    "median": 8,
-    "share": 0.99
-   },
-   "mugubang1": {
-    "median": 7,
-    "share": 0.98
+    "median": 5,
+    "share": 1
    },
    "yakbang1": {
-    "median": 8,
-    "share": 0.98
+    "median": 10,
+    "share": 1
+   },
+   "mugubang1": {
+    "median": 10,
+    "share": 1
    },
    "sindang2": {
-    "median": 9,
-    "share": 0.98
+    "median": 13,
+    "share": 1
    },
    "sindang3": {
-    "median": 16,
-    "share": 0.97
+    "median": 20,
+    "share": 1
    },
    "jeonsucheong1": {
-    "median": 17,
-    "share": 0.95
+    "median": 21,
+    "share": 0.96
    },
    "sadang2": {
-    "median": 18,
-    "share": 0.97
+    "median": 22,
+    "share": 1
    },
    "sadang3": {
-    "median": 22,
-    "share": 0.76
+    "median": 25,
+    "share": 0.92
    }
   },
-  "maxLevel": 2.92,
+  "maxLevel": 2.99,
   "goldEnd": {
-   "median": 906,
-   "mean": 960.23
+   "median": 1252,
+   "mean": 1244.73
   }
  },
  "campaigns": [
   {
    "seed": 1814306152,
    "ending": "good",
+   "expeditions": 46,
+   "seasons": 46,
+   "deaths": 12,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 29
+    }
+   ],
+   "ancestors": 12,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1848302675,
+   "ending": "good",
+   "expeditions": 24,
+   "seasons": 24,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1881710818,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 6,
+   "rosterAvg": 5.941,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1914427413,
+   "ending": "good",
+   "expeditions": 33,
+   "seasons": 33,
+   "deaths": 7,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1813614604,
+   "ending": "good",
+   "expeditions": 38,
+   "seasons": 38,
+   "deaths": 8,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 29
+    }
+   ],
+   "ancestors": 8,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1847611127,
+   "ending": "good",
    "expeditions": 22,
    "seasons": 22,
-   "deaths": 3,
-   "rosterAvg": 5.955,
+   "deaths": 1,
+   "rosterAvg": 5.909,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 17
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 20
+    }
+   ],
+   "ancestors": 1,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1881019270,
+   "ending": "fail",
+   "expeditions": 35,
+   "seasons": 35,
+   "deaths": 17,
+   "rosterAvg": 5.114,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    }
+   ],
+   "ancestors": 17,
+   "maxLevel": 2
+  },
+  {
+   "seed": 1913735865,
+   "ending": "good",
+   "expeditions": 29,
+   "seasons": 29,
+   "deaths": 1,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    }
+   ],
+   "ancestors": 1,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1812923056,
+   "ending": "good",
+   "expeditions": 40,
+   "seasons": 40,
+   "deaths": 9,
+   "rosterAvg": 5.975,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 29
+    }
+   ],
+   "ancestors": 9,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1345415264,
+   "ending": "good",
+   "expeditions": 21,
+   "seasons": 21,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 17
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 20
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1446228073,
+   "ending": "good",
+   "expeditions": 22,
+   "seasons": 22,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1412923098,
+   "ending": "good",
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 4,
+   "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
@@ -238,7 +804,7 @@
     {
      "id": "sindang",
      "tier": 2,
-     "at": 11
+     "at": 10
     },
     {
      "id": "sindang",
@@ -246,85 +812,32 @@
      "at": 16
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
+     "id": "sadang",
+     "tier": 2,
      "at": 17
     },
     {
      "id": "sadang",
-     "tier": 2,
-     "at": 19
+     "tier": 3,
+     "at": 23
     }
    ],
-   "ancestors": 3,
+   "ancestors": 4,
    "maxLevel": 3
   },
   {
-   "seed": 1848302675,
+   "seed": 1379514955,
    "ending": "good",
-   "expeditions": 17,
-   "seasons": 17,
-   "deaths": 1,
+   "expeditions": 25,
+   "seasons": 25,
+   "deaths": 2,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "gaekju",
      "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1881710818,
-   "ending": "good",
-   "expeditions": 66,
-   "seasons": 66,
-   "deaths": 26,
-   "rosterAvg": 5.939,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
+     "at": 5
     },
     {
      "id": "yakbang",
@@ -332,24 +845,29 @@
      "at": 9
     },
     {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
      "id": "sindang",
      "tier": 2,
-     "at": 11
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
      "at": 18
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 20
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
     },
     {
      "id": "sadang",
@@ -357,69 +875,69 @@
      "at": 21
     }
    ],
-   "ancestors": 25,
+   "ancestors": 2,
    "maxLevel": 3
   },
   {
-   "seed": 1914427413,
+   "seed": 1344826884,
    "ending": "good",
-   "expeditions": 19,
-   "seasons": 19,
-   "deaths": 0,
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 5,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
     },
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 7
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
+     "at": 17
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 14
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 17
+     "at": 22
     }
    ],
-   "ancestors": 0,
+   "ancestors": 5,
    "maxLevel": 3
   },
   {
-   "seed": 1813614604,
+   "seed": 1445639693,
    "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 2,
-   "rosterAvg": 5.944,
+   "expeditions": 63,
+   "seasons": 63,
+   "deaths": 27,
+   "rosterAvg": 5.714,
    "countdown": false,
    "builds": [
     {
@@ -428,100 +946,14 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
      "at": 9
     },
     {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    }
-   ],
-   "ancestors": 2,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1847611127,
-   "ending": "good",
-   "expeditions": 25,
-   "seasons": 25,
-   "deaths": 4,
-   "rosterAvg": 5.76,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
      "id": "mugubang",
      "tier": 1,
-     "at": 12
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 24
-    }
-   ],
-   "ancestors": 4,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1881019270,
-   "ending": "good",
-   "expeditions": 38,
-   "seasons": 38,
-   "deaths": 13,
-   "rosterAvg": 5.526,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
+     "at": 9
     },
     {
      "id": "sindang",
@@ -529,90 +961,9 @@
      "at": 13
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 14
-    },
-    {
      "id": "sindang",
      "tier": 3,
-     "at": 22
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 22
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 23
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 26
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 36
-    }
-   ],
-   "ancestors": 13,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1913735865,
-   "ending": "fail",
-   "expeditions": 15,
-   "seasons": 15,
-   "deaths": 6,
-   "rosterAvg": 5,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 2
-  },
-  {
-   "seed": 1812923056,
-   "ending": "fail",
-   "expeditions": 33,
-   "seasons": 33,
-   "deaths": 17,
-   "rosterAvg": 5.394,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 12
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 23
+     "at": 24
     },
     {
      "id": "sadang",
@@ -620,325 +971,17 @@
      "at": 25
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 25
-    }
-   ],
-   "ancestors": 15,
-   "maxLevel": 2
-  },
-  {
-   "seed": 1345415264,
-   "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 4,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
      "id": "sadang",
-     "tier": 2,
-     "at": 16
+     "tier": 3,
+     "at": 27
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
+     "at": 41
     }
    ],
-   "ancestors": 4,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1446228073,
-   "ending": "good",
-   "expeditions": 40,
-   "seasons": 40,
-   "deaths": 15,
-   "rosterAvg": 5.85,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    }
-   ],
-   "ancestors": 14,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1412923098,
-   "ending": "good",
-   "expeditions": 53,
-   "seasons": 53,
-   "deaths": 25,
-   "rosterAvg": 5.774,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 26
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 26
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 28
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 32
-    }
-   ],
-   "ancestors": 24,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1379514955,
-   "ending": "fail",
-   "expeditions": 40,
-   "seasons": 40,
-   "deaths": 21,
-   "rosterAvg": 5.3,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 23
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    }
-   ],
-   "ancestors": 18,
-   "maxLevel": 1
-  },
-  {
-   "seed": 1344826884,
-   "ending": "good",
-   "expeditions": 27,
-   "seasons": 27,
-   "deaths": 4,
-   "rosterAvg": 5.852,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    }
-   ],
-   "ancestors": 4,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1445639693,
-   "ending": "good",
-   "expeditions": 33,
-   "seasons": 33,
-   "deaths": 8,
-   "rosterAvg": 5.909,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 21
-    }
-   ],
-   "ancestors": 8,
+   "ancestors": 26,
    "maxLevel": 3
   },
   {
@@ -946,130 +989,77 @@
    "ending": "good",
    "expeditions": 36,
    "seasons": 36,
-   "deaths": 7,
-   "rosterAvg": 5.944,
+   "deaths": 5,
+   "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
      "id": "gaekju",
      "tier": 2,
-     "at": 5
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
      "at": 6
     },
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 11
     },
     {
-     "id": "sindang",
-     "tier": 2,
+     "id": "mugubang",
+     "tier": 1,
      "at": 11
     },
     {
      "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "sadang",
      "tier": 2,
-     "at": 19
+     "at": 14
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
+     "id": "sindang",
+     "tier": 3,
      "at": 21
     },
     {
      "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
      "tier": 3,
-     "at": 24
+     "at": 25
     }
    ],
-   "ancestors": 7,
+   "ancestors": 5,
    "maxLevel": 3
   },
   {
    "seed": 1378823407,
    "ending": "good",
-   "expeditions": 74,
-   "seasons": 74,
-   "deaths": 20,
+   "expeditions": 29,
+   "seasons": 29,
+   "deaths": 4,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
+     "id": "gaekju",
+     "tier": 2,
      "at": 6
     },
     {
-     "id": "sindang",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
-    }
-   ],
-   "ancestors": 20,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1346695192,
-   "ending": "good",
-   "expeditions": 43,
-   "seasons": 43,
-   "deaths": 13,
-   "rosterAvg": 5.767,
-   "countdown": false,
-   "builds": [
-    {
      "id": "mugubang",
      "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
+     "at": 7
     },
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 8
     },
     {
      "id": "sindang",
@@ -1079,33 +1069,86 @@
     {
      "id": "sindang",
      "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
+     "at": 18
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 22
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 26
+     "at": 23
     }
    ],
-   "ancestors": 13,
+   "ancestors": 4,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1346695192,
+   "ending": "good",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 2,
    "maxLevel": 3
   },
   {
    "seed": 1447611169,
-   "ending": "good",
-   "expeditions": 17,
-   "seasons": 17,
-   "deaths": 0,
+   "ending": "normal",
+   "expeditions": 23,
+   "seasons": 23,
+   "deaths": 2,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
@@ -1115,47 +1158,52 @@
      "at": 5
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 9
     },
     {
-     "id": "sindang",
-     "tier": 2,
+     "id": "mugubang",
+     "tier": 1,
      "at": 9
     },
     {
      "id": "sindang",
-     "tier": 3,
-     "at": 13
+     "tier": 2,
+     "at": 12
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 16
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 17
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
     }
    ],
-   "ancestors": 0,
+   "ancestors": 2,
    "maxLevel": 3
   },
   {
    "seed": -1678291119,
-   "ending": "cap",
-   "expeditions": 90,
-   "seasons": 90,
-   "deaths": 32,
-   "rosterAvg": 5.811,
-   "countdown": false,
+   "ending": "good",
+   "expeditions": 29,
+   "seasons": 29,
+   "deaths": 4,
+   "rosterAvg": 5.931,
+   "countdown": true,
    "builds": [
     {
      "id": "gaekju",
@@ -1163,50 +1211,50 @@
      "at": 3
     },
     {
-     "id": "sindang",
-     "tier": 2,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 6
+     "at": 13
     },
     {
      "id": "mugubang",
      "tier": 1,
-     "at": 18
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 20
+     "at": 21
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 20
+     "at": 22
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 21
+     "at": 23
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 26
+     "at": 28
     }
    ],
-   "ancestors": 32,
+   "ancestors": 4,
    "maxLevel": 3
   },
   {
    "seed": -1779103928,
    "ending": "good",
-   "expeditions": 19,
-   "seasons": 19,
-   "deaths": 1,
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 2,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
@@ -1216,51 +1264,61 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 12
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 10
+     "at": 15
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 15
+     "at": 21
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 16
+     "at": 21
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 17
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
     }
    ],
-   "ancestors": 1,
+   "ancestors": 2,
    "maxLevel": 3
   },
   {
    "seed": -1745004237,
    "ending": "good",
-   "expeditions": 52,
-   "seasons": 52,
-   "deaths": 20,
-   "rosterAvg": 5.865,
-   "countdown": true,
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 4,
+   "rosterAvg": 6,
+   "countdown": false,
    "builds": [
     {
      "id": "gaekju",
      "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
      "at": 9
     },
     {
@@ -1271,22 +1329,123 @@
     {
      "id": "sindang",
      "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 18
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 22
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 25
+    }
+   ],
+   "ancestors": 4,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1711596094,
+   "ending": "good",
+   "expeditions": 71,
+   "seasons": 71,
+   "deaths": 30,
+   "rosterAvg": 5.817,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
      "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 32
+    }
+   ],
+   "ancestors": 30,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1678879499,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 8
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
     },
     {
      "id": "sadang",
@@ -1299,22 +1458,75 @@
      "at": 27
     }
    ],
-   "ancestors": 19,
+   "ancestors": 2,
    "maxLevel": 3
   },
   {
-   "seed": -1711596094,
-   "ending": "fail",
-   "expeditions": 38,
-   "seasons": 38,
-   "deaths": 20,
-   "rosterAvg": 5.342,
-   "countdown": true,
+   "seed": -1779692308,
+   "ending": "good",
+   "expeditions": 36,
+   "seasons": 36,
+   "deaths": 8,
+   "rosterAvg": 5.778,
+   "countdown": false,
    "builds": [
     {
      "id": "gaekju",
      "tier": 2,
-     "at": 9
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 27
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 28
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 31
+    }
+   ],
+   "ancestors": 8,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1745695785,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 5,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
     },
     {
      "id": "yakbang",
@@ -1322,9 +1534,216 @@
      "at": 10
     },
     {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
      "id": "sindang",
      "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1712287642,
+   "ending": "good",
+   "expeditions": 62,
+   "seasons": 62,
+   "deaths": 20,
+   "rosterAvg": 5.887,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 17
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 29
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 30
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 32
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 34
+    }
+   ],
+   "ancestors": 19,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1679571047,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 6,
+   "rosterAvg": 5.941,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 7
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
      "at": 11
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 27
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 29
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 32
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1780383856,
+   "ending": "normal",
+   "expeditions": 24,
+   "seasons": 24,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 761266774,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 9,
+   "rosterAvg": 5.844,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
     },
     {
      "id": "mugubang",
@@ -1339,7 +1758,1698 @@
     {
      "id": "jeonsucheong",
      "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 27
+    }
+   ],
+   "ancestors": 9,
+   "maxLevel": 3
+  },
+  {
+   "seed": 727961799,
+   "ending": "good",
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 3,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 8
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": 693862108,
+   "ending": "good",
+   "expeditions": 33,
+   "seasons": 33,
+   "deaths": 3,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 2
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 27
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": 794674917,
+   "ending": "fail",
+   "expeditions": 46,
+   "seasons": 46,
+   "deaths": 16,
+   "rosterAvg": 5.674,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 15,
+   "maxLevel": 3
+  },
+  {
+   "seed": 761958322,
+   "ending": "good",
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 20
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 728550179,
+   "ending": "normal",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 4,
+   "rosterAvg": 5.962,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 9
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 4,
+   "maxLevel": 3
+  },
+  {
+   "seed": 694553656,
+   "ending": "good",
+   "expeditions": 47,
+   "seasons": 47,
+   "deaths": 15,
+   "rosterAvg": 5.851,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 9
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 14,
+   "maxLevel": 3
+  },
+  {
+   "seed": 795366465,
+   "ending": "good",
+   "expeditions": 28,
+   "seasons": 28,
+   "deaths": 3,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": 759986846,
+   "ending": "good",
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 726578703,
+   "ending": "good",
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 1,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
      "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 25
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 192809831,
+   "ending": "good",
+   "expeditions": 47,
+   "seasons": 47,
+   "deaths": 11,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 8
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 28
+    }
+   ],
+   "ancestors": 11,
+   "maxLevel": 3
+  },
+  {
+   "seed": 226217974,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 7,
+   "rosterAvg": 5.971,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 7,
+   "maxLevel": 3
+  },
+  {
+   "seed": 259522949,
+   "ending": "good",
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 6,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 25
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": 158710140,
+   "ending": "good",
+   "expeditions": 22,
+   "seasons": 22,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 193398211,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 32
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 226806354,
+   "ending": "good",
+   "expeditions": 29,
+   "seasons": 29,
+   "deaths": 3,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 17
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 27
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": 260214497,
+   "ending": "good",
+   "expeditions": 38,
+   "seasons": 38,
+   "deaths": 10,
+   "rosterAvg": 5.789,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 29
+    }
+   ],
+   "ancestors": 10,
+   "maxLevel": 3
+  },
+  {
+   "seed": 159401688,
+   "ending": "good",
+   "expeditions": 28,
+   "seasons": 28,
+   "deaths": 7,
+   "rosterAvg": 5.929,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 7,
+   "maxLevel": 3
+  },
+  {
+   "seed": 191529903,
+   "ending": "good",
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 5,
+   "rosterAvg": 5.967,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": 224834878,
+   "ending": "good",
+   "expeditions": 69,
+   "seasons": 69,
+   "deaths": 26,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 26,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1683387924,
+   "ending": "good",
+   "expeditions": 43,
+   "seasons": 43,
+   "deaths": 14,
+   "rosterAvg": 5.791,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 29
+    }
+   ],
+   "ancestors": 14,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1582575115,
+   "ending": "good",
+   "expeditions": 37,
+   "seasons": 37,
+   "deaths": 14,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 16
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 14,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1615983258,
+   "ending": "normal",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 1,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 1,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1649391401,
+   "ending": "good",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 3,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 25
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1682799544,
+   "ending": "good",
+   "expeditions": 51,
+   "seasons": 51,
+   "deaths": 15,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 14,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1581986735,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 6,
+   "rosterAvg": 5.971,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 27
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 32
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1615291710,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 6,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 17
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1648699853,
+   "ending": "normal",
+   "expeditions": 51,
+   "seasons": 51,
+   "deaths": 14,
+   "rosterAvg": 5.863,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 27
+    }
+   ],
+   "ancestors": 13,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1684667852,
+   "ending": "good",
+   "expeditions": 59,
+   "seasons": 59,
+   "deaths": 10,
+   "rosterAvg": 5.966,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 16
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 30
+    }
+   ],
+   "ancestors": 10,
+   "maxLevel": 3
+  },
+  {
+   "seed": -1583855043,
+   "ending": "good",
+   "expeditions": 78,
+   "seasons": 78,
+   "deaths": 27,
+   "rosterAvg": 5.936,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 27,
+   "maxLevel": 3
+  },
+  {
+   "seed": -396561539,
+   "ending": "good",
+   "expeditions": 29,
+   "seasons": 29,
+   "deaths": 6,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": -497374348,
+   "ending": "good",
+   "expeditions": 24,
+   "seasons": 24,
+   "deaths": 4,
+   "rosterAvg": 5.833,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
+    }
+   ],
+   "ancestors": 4,
+   "maxLevel": 3
+  },
+  {
+   "seed": -463377825,
+   "ending": "normal",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 7,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 17
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 25
     },
     {
      "id": "sadang",
@@ -1352,30 +3462,131 @@
      "at": 30
     }
    ],
-   "ancestors": 17,
-   "maxLevel": 2
+   "ancestors": 6,
+   "maxLevel": 3
   },
   {
-   "seed": -1678879499,
+   "seed": -429969682,
    "ending": "good",
-   "expeditions": 47,
-   "seasons": 47,
-   "deaths": 19,
-   "rosterAvg": 5.915,
+   "expeditions": 33,
+   "seasons": 33,
+   "deaths": 7,
+   "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
      "id": "gaekju",
      "tier": 2,
-     "at": 8
+     "at": 2
     },
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 7
     },
     {
      "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": -395869991,
+   "ending": "good",
+   "expeditions": 25,
+   "seasons": 25,
+   "deaths": 4,
+   "rosterAvg": 5.84,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 12
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 23
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": -496682800,
+   "ending": "good",
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 5,
+   "rosterAvg": 5.933,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
      "tier": 1,
      "at": 9
     },
@@ -1387,17 +3598,17 @@
     {
      "id": "sindang",
      "tier": 3,
-     "at": 17
+     "at": 18
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 18
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 20
+     "at": 21
     },
     {
      "id": "sadang",
@@ -1405,22 +3616,75 @@
      "at": 22
     }
    ],
-   "ancestors": 19,
+   "ancestors": 5,
    "maxLevel": 3
   },
   {
-   "seed": -1779692308,
+   "seed": -462686277,
    "ending": "good",
-   "expeditions": 16,
-   "seasons": 16,
-   "deaths": 0,
+   "expeditions": 46,
+   "seasons": 46,
+   "deaths": 13,
+   "rosterAvg": 5.891,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 25
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 25
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 28
+    }
+   ],
+   "ancestors": 13,
+   "maxLevel": 3
+  },
+  {
+   "seed": -429278134,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 6,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
      "id": "gaekju",
      "tier": 2,
-     "at": 4
+     "at": 6
     },
     {
      "id": "mugubang",
@@ -1430,37 +3694,42 @@
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
      "at": 9
     },
     {
      "id": "sindang",
+     "tier": 2,
+     "at": 10
+    },
+    {
+     "id": "sindang",
      "tier": 3,
-     "at": 13
+     "at": 16
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 14
+     "at": 17
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 15
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
     }
    ],
-   "ancestors": 0,
+   "ancestors": 6,
    "maxLevel": 3
   },
   {
-   "seed": -1745695785,
+   "seed": -395281611,
    "ending": "good",
-   "expeditions": 23,
-   "seasons": 23,
+   "expeditions": 29,
+   "seasons": 29,
    "deaths": 2,
    "rosterAvg": 6,
    "countdown": false,
@@ -1471,135 +3740,77 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 9
+     "at": 15
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 13
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
+     "at": 24
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 22
+     "at": 28
     }
    ],
    "ancestors": 2,
    "maxLevel": 3
   },
   {
-   "seed": -1712287642,
-   "ending": "good",
-   "expeditions": 52,
-   "seasons": 52,
-   "deaths": 22,
-   "rosterAvg": 5.788,
+   "seed": -496094420,
+   "ending": "normal",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 3,
+   "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
      "id": "yakbang",
      "tier": 1,
-     "at": 6
+     "at": 9
     },
     {
      "id": "mugubang",
      "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
      "at": 9
     },
     {
      "id": "sindang",
-     "tier": 3,
+     "tier": 2,
      "at": 13
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 22
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    }
-   ],
-   "ancestors": 20,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1679571047,
-   "ending": "good",
-   "expeditions": 32,
-   "seasons": 32,
-   "deaths": 7,
-   "rosterAvg": 5.906,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 10
-    },
-    {
      "id": "sindang",
      "tier": 3,
-     "at": 18
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 19
+     "at": 20
     },
     {
      "id": "sadang",
@@ -1607,433 +3818,24 @@
      "at": 20
     },
     {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    }
-   ],
-   "ancestors": 6,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1780383856,
-   "ending": "good",
-   "expeditions": 25,
-   "seasons": 25,
-   "deaths": 4,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
-    },
-    {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 14
+     "at": 20
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 19
-    }
-   ],
-   "ancestors": 4,
-   "maxLevel": 3
-  },
-  {
-   "seed": 761266774,
-   "ending": "good",
-   "expeditions": 40,
-   "seasons": 40,
-   "deaths": 10,
-   "rosterAvg": 5.9,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
      "at": 24
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 27
     }
    ],
-   "ancestors": 10,
+   "ancestors": 3,
    "maxLevel": 3
   },
   {
-   "seed": 727961799,
+   "seed": 2048219234,
    "ending": "good",
    "expeditions": 33,
    "seasons": 33,
-   "deaths": 11,
-   "rosterAvg": 5.697,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 13
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 18
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 19
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 24
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 24
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 24
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 24
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 27
-    }
-   ],
-   "ancestors": 11,
-   "maxLevel": 3
-  },
-  {
-   "seed": 693862108,
-   "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 5,
-   "rosterAvg": 5.95,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 2
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 3
-  },
-  {
-   "seed": 794674917,
-   "ending": "good",
-   "expeditions": 34,
-   "seasons": 34,
-   "deaths": 6,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 3
-  },
-  {
-   "seed": 761958322,
-   "ending": "good",
-   "expeditions": 48,
-   "seasons": 48,
-   "deaths": 14,
-   "rosterAvg": 5.813,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 27
-    }
-   ],
-   "ancestors": 14,
-   "maxLevel": 3
-  },
-  {
-   "seed": 728550179,
-   "ending": "good",
-   "expeditions": 66,
-   "seasons": 66,
-   "deaths": 29,
-   "rosterAvg": 5.879,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 10
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 21
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 22
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 25
-    }
-   ],
-   "ancestors": 28,
-   "maxLevel": 3
-  },
-  {
-   "seed": 694553656,
-   "ending": "good",
-   "expeditions": 31,
-   "seasons": 32,
-   "deaths": 12,
-   "rosterAvg": 5.548,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 21
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 24
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 26
-    }
-   ],
-   "ancestors": 12,
-   "maxLevel": 3
-  },
-  {
-   "seed": 795366465,
-   "ending": "good",
-   "expeditions": 29,
-   "seasons": 29,
    "deaths": 7,
    "rosterAvg": 6,
    "countdown": false,
@@ -2041,37 +3843,37 @@
     {
      "id": "gaekju",
      "tier": 2,
-     "at": 6
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
+     "at": 5
     },
     {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 10
     },
     {
-     "id": "sindang",
-     "tier": 2,
+     "id": "mugubang",
+     "tier": 1,
      "at": 10
     },
     {
      "id": "sindang",
-     "tier": 3,
-     "at": 15
+     "tier": 2,
+     "at": 13
     },
     {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
+     "id": "sindang",
+     "tier": 3,
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 23
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
     },
     {
      "id": "sadang",
@@ -2083,1671 +3885,13 @@
    "maxLevel": 3
   },
   {
-   "seed": 759986846,
-   "ending": "good",
-   "expeditions": 25,
-   "seasons": 25,
-   "deaths": 6,
-   "rosterAvg": 5.92,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 12
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 12
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 3
-  },
-  {
-   "seed": 726578703,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 17
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 192809831,
-   "ending": "good",
-   "expeditions": 29,
-   "seasons": 29,
-   "deaths": 6,
-   "rosterAvg": 5.931,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 6,
-   "maxLevel": 3
-  },
-  {
-   "seed": 226217974,
-   "ending": "good",
-   "expeditions": 47,
-   "seasons": 47,
-   "deaths": 18,
-   "rosterAvg": 5.702,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 18
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 22
-    }
-   ],
-   "ancestors": 17,
-   "maxLevel": 3
-  },
-  {
-   "seed": 259522949,
-   "ending": "good",
-   "expeditions": 24,
-   "seasons": 24,
-   "deaths": 2,
-   "rosterAvg": 5.958,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 2,
-   "maxLevel": 3
-  },
-  {
-   "seed": 158710140,
-   "ending": "good",
-   "expeditions": 21,
-   "seasons": 21,
-   "deaths": 1,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 17
-    }
-   ],
-   "ancestors": 1,
-   "maxLevel": 3
-  },
-  {
-   "seed": 193398211,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 17
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 226806354,
-   "ending": "good",
-   "expeditions": 51,
-   "seasons": 51,
-   "deaths": 23,
-   "rosterAvg": 5.706,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    }
-   ],
-   "ancestors": 23,
-   "maxLevel": 3
-  },
-  {
-   "seed": 260214497,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 159401688,
-   "ending": "good",
-   "expeditions": 61,
-   "seasons": 61,
-   "deaths": 25,
-   "rosterAvg": 5.852,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 18
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 21
-    }
-   ],
-   "ancestors": 25,
-   "maxLevel": 3
-  },
-  {
-   "seed": 191529903,
-   "ending": "good",
-   "expeditions": 19,
-   "seasons": 19,
-   "deaths": 4,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 18
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": 224834878,
-   "ending": "fail",
-   "expeditions": 15,
-   "seasons": 15,
-   "deaths": 8,
-   "rosterAvg": 4.867,
-   "countdown": true,
-   "builds": [],
-   "ancestors": 8,
-   "maxLevel": 1
-  },
-  {
-   "seed": -1683387924,
-   "ending": "good",
-   "expeditions": 17,
-   "seasons": 17,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1582575115,
-   "ending": "fail",
-   "expeditions": 43,
-   "seasons": 43,
-   "deaths": 22,
-   "rosterAvg": 5.581,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 22,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1615983258,
-   "ending": "good",
-   "expeditions": 26,
-   "seasons": 26,
-   "deaths": 5,
-   "rosterAvg": 5.923,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 25
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1649391401,
-   "ending": "good",
-   "expeditions": 19,
-   "seasons": 19,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1682799544,
-   "ending": "good",
-   "expeditions": 56,
-   "seasons": 56,
-   "deaths": 18,
-   "rosterAvg": 5.946,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 18,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1581986735,
-   "ending": "good",
-   "expeditions": 71,
-   "seasons": 71,
-   "deaths": 28,
-   "rosterAvg": 5.944,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 5
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 22
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    }
-   ],
-   "ancestors": 27,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1615291710,
-   "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 2,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 6
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    }
-   ],
-   "ancestors": 2,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1648699853,
-   "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 1,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    }
-   ],
-   "ancestors": 1,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1684667852,
-   "ending": "good",
-   "expeditions": 69,
-   "seasons": 69,
-   "deaths": 30,
-   "rosterAvg": 5.522,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 23
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 24
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 28
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 28
-    }
-   ],
-   "ancestors": 30,
-   "maxLevel": 3
-  },
-  {
-   "seed": -1583855043,
-   "ending": "good",
-   "expeditions": 50,
-   "seasons": 50,
-   "deaths": 12,
-   "rosterAvg": 5.98,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 22
-    }
-   ],
-   "ancestors": 12,
-   "maxLevel": 3
-  },
-  {
-   "seed": -396561539,
-   "ending": "good",
-   "expeditions": 40,
-   "seasons": 40,
-   "deaths": 12,
-   "rosterAvg": 5.85,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 25
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 32
-    }
-   ],
-   "ancestors": 12,
-   "maxLevel": 3
-  },
-  {
-   "seed": -497374348,
-   "ending": "fail",
-   "expeditions": 28,
-   "seasons": 28,
-   "deaths": 17,
-   "rosterAvg": 4.679,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 21
-    }
-   ],
-   "ancestors": 13,
-   "maxLevel": 3
-  },
-  {
-   "seed": -463377825,
-   "ending": "good",
-   "expeditions": 39,
-   "seasons": 39,
-   "deaths": 13,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 24
-    }
-   ],
-   "ancestors": 11,
-   "maxLevel": 3
-  },
-  {
-   "seed": -429969682,
-   "ending": "good",
-   "expeditions": 39,
-   "seasons": 39,
-   "deaths": 15,
-   "rosterAvg": 5.667,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 20
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 27
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 28
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 29
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 29
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 37
-    }
-   ],
-   "ancestors": 14,
-   "maxLevel": 3
-  },
-  {
-   "seed": -395869991,
-   "ending": "good",
-   "expeditions": 41,
-   "seasons": 41,
-   "deaths": 10,
-   "rosterAvg": 5.927,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    }
-   ],
-   "ancestors": 10,
-   "maxLevel": 3
-  },
-  {
-   "seed": -496682800,
-   "ending": "good",
-   "expeditions": 33,
-   "seasons": 33,
-   "deaths": 8,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    }
-   ],
-   "ancestors": 8,
-   "maxLevel": 3
-  },
-  {
-   "seed": -462686277,
-   "ending": "good",
-   "expeditions": 17,
-   "seasons": 17,
-   "deaths": 3,
-   "rosterAvg": 5.765,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": -429278134,
-   "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 2,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 19
-    }
-   ],
-   "ancestors": 2,
-   "maxLevel": 3
-  },
-  {
-   "seed": -395281611,
-   "ending": "good",
-   "expeditions": 16,
-   "seasons": 16,
-   "deaths": 1,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 13
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 15
-    }
-   ],
-   "ancestors": 1,
-   "maxLevel": 3
-  },
-  {
-   "seed": -496094420,
-   "ending": "good",
-   "expeditions": 29,
-   "seasons": 29,
-   "deaths": 6,
-   "rosterAvg": 5.931,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
-    }
-   ],
-   "ancestors": 6,
-   "maxLevel": 3
-  },
-  {
-   "seed": 2048219234,
-   "ending": "good",
-   "expeditions": 59,
-   "seasons": 59,
-   "deaths": 19,
-   "rosterAvg": 5.949,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 19
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 26
-    }
-   ],
-   "ancestors": 19,
-   "maxLevel": 3
-  },
-  {
    "seed": 2014811091,
    "ending": "good",
-   "expeditions": 17,
-   "seasons": 17,
-   "deaths": 1,
+   "expeditions": 27,
+   "seasons": 27,
+   "deaths": 3,
    "rosterAvg": 6,
-   "countdown": false,
+   "countdown": true,
    "builds": [
     {
      "id": "gaekju",
@@ -3755,47 +3899,52 @@
      "at": 5
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 9
+     "at": 16
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
+     "at": 21
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 16
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
     }
    ],
-   "ancestors": 1,
+   "ancestors": 3,
    "maxLevel": 3
   },
   {
    "seed": 1980814568,
    "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 5,
+   "expeditions": 28,
+   "seasons": 28,
+   "deaths": 1,
    "rosterAvg": 6,
-   "countdown": false,
+   "countdown": true,
    "builds": [
     {
      "id": "gaekju",
@@ -3803,49 +3952,49 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 10
+     "at": 15
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 14
+     "at": 21
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 15
+     "at": 21
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 17
+     "at": 22
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 19
+     "at": 25
     }
    ],
-   "ancestors": 3,
+   "ancestors": 1,
    "maxLevel": 3
   },
   {
    "seed": 2081627377,
    "ending": "good",
-   "expeditions": 28,
-   "seasons": 28,
+   "expeditions": 29,
+   "seasons": 29,
    "deaths": 3,
    "rosterAvg": 6,
    "countdown": false,
@@ -3856,39 +4005,39 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 7
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 9
+     "at": 14
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 16
+     "at": 19
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 17
+     "at": 20
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 19
+     "at": 22
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 20
+     "at": 25
     }
    ],
    "ancestors": 2,
@@ -3897,8 +4046,740 @@
   {
    "seed": 2047527686,
    "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
+   "expeditions": 24,
+   "seasons": 24,
+   "deaths": 1,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 23
+    }
+   ],
+   "ancestors": 1,
+   "maxLevel": 3
+  },
+  {
+   "seed": 2014119543,
+   "ending": "good",
+   "expeditions": 25,
+   "seasons": 25,
+   "deaths": 1,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 1,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1980123020,
+   "ending": "good",
+   "expeditions": 21,
+   "seasons": 21,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 16
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 2080935829,
+   "ending": "good",
+   "expeditions": 37,
+   "seasons": 37,
+   "deaths": 8,
+   "rosterAvg": 5.973,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 24
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 28
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 31
+    }
+   ],
+   "ancestors": 8,
+   "maxLevel": 3
+  },
+  {
+   "seed": 2046939306,
+   "ending": "good",
+   "expeditions": 39,
+   "seasons": 39,
+   "deaths": 8,
+   "rosterAvg": 5.897,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 22
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 29
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 30
+    }
+   ],
+   "ancestors": 8,
+   "maxLevel": 3
+  },
+  {
+   "seed": 2013531163,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 5,
+   "rosterAvg": 6,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 27
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 27
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 29
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1458870771,
+   "ending": "good",
+   "expeditions": 34,
+   "seasons": 34,
+   "deaths": 5,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 17
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1492278914,
+   "ending": "normal",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1525687057,
+   "ending": "good",
+   "expeditions": 25,
+   "seasons": 25,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 3
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 22
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1424874248,
+   "ending": "good",
+   "expeditions": 57,
+   "seasons": 57,
+   "deaths": 19,
+   "rosterAvg": 5.526,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 32
+    }
+   ],
+   "ancestors": 19,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1458282391,
+   "ending": "good",
+   "expeditions": 26,
+   "seasons": 26,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 20
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 23
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1491587366,
+   "ending": "good",
+   "expeditions": 24,
+   "seasons": 24,
+   "deaths": 2,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 8
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 23
+    }
+   ],
+   "ancestors": 2,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1524995509,
+   "ending": "normal",
+   "expeditions": 30,
+   "seasons": 30,
+   "deaths": 6,
+   "rosterAvg": 5.933,
+   "countdown": true,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 13
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 15
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 22
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 28
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1424182700,
+   "ending": "good",
+   "expeditions": 31,
+   "seasons": 31,
+   "deaths": 6,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 21
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 5,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1457590843,
+   "ending": "good",
+   "expeditions": 28,
+   "seasons": 28,
    "deaths": 3,
    "rosterAvg": 6,
    "countdown": false,
@@ -3921,29 +4802,289 @@
     {
      "id": "sindang",
      "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 24
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 3,
+   "maxLevel": 3
+  },
+  {
+   "seed": 1490998986,
+   "ending": "good",
+   "expeditions": 32,
+   "seasons": 32,
+   "deaths": 6,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 10
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 18
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 26
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 26
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 29
+    }
+   ],
+   "ancestors": 6,
+   "maxLevel": 3
+  },
+  {
+   "seed": -396538632,
+   "ending": "good",
+   "expeditions": 52,
+   "seasons": 52,
+   "deaths": 17,
+   "rosterAvg": 5.808,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 11
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 14
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 21
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 26
+    }
+   ],
+   "ancestors": 16,
+   "maxLevel": 3
+  },
+  {
+   "seed": -295725823,
+   "ending": "good",
+   "expeditions": 52,
+   "seasons": 52,
+   "deaths": 17,
+   "rosterAvg": 5.808,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 9
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 23
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 28
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 45
+    }
+   ],
+   "ancestors": 17,
+   "maxLevel": 3
+  },
+  {
+   "seed": -329133966,
+   "ending": "normal",
+   "expeditions": 23,
+   "seasons": 23,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 6
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 7
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
      "at": 11
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 16
+     "at": 18
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 17
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 18
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
     }
    ],
-   "ancestors": 2,
+   "ancestors": 0,
    "maxLevel": 3
   },
   {
-   "seed": 2014119543,
+   "seed": -362438941,
+   "ending": "good",
+   "expeditions": 37,
+   "seasons": 37,
+   "deaths": 9,
+   "rosterAvg": 5.973,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 4
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 19
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 24
+    }
+   ],
+   "ancestors": 8,
+   "maxLevel": 3
+  },
+  {
+   "seed": -397127012,
    "ending": "good",
    "expeditions": 27,
    "seasons": 27,
@@ -3959,171 +5100,65 @@
     {
      "id": "mugubang",
      "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 22
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1980123020,
-   "ending": "good",
-   "expeditions": 21,
-   "seasons": 21,
-   "deaths": 4,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
      "at": 7
     },
     {
-     "id": "sindang",
-     "tier": 2,
+     "id": "yakbang",
+     "tier": 1,
      "at": 9
     },
     {
      "id": "sindang",
+     "tier": 2,
+     "at": 11
+    },
+    {
+     "id": "sindang",
      "tier": 3,
-     "at": 15
+     "at": 18
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 15
+     "at": 19
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 15
+     "at": 22
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 17
+     "at": 23
     }
    ],
    "ancestors": 4,
    "maxLevel": 3
   },
   {
-   "seed": 2080935829,
+   "seed": -296314203,
    "ending": "good",
-   "expeditions": 20,
-   "seasons": 20,
-   "deaths": 3,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
-    }
-   ],
-   "ancestors": 1,
-   "maxLevel": 3
-  },
-  {
-   "seed": 2046939306,
-   "ending": "good",
-   "expeditions": 33,
-   "seasons": 33,
+   "expeditions": 35,
+   "seasons": 35,
    "deaths": 12,
-   "rosterAvg": 5.697,
+   "rosterAvg": 5.686,
    "countdown": false,
    "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
     {
      "id": "yakbang",
      "tier": 1,
      "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 10
     },
     {
      "id": "sindang",
@@ -4133,6 +5168,11 @@
     {
      "id": "sindang",
      "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
      "at": 19
     },
     {
@@ -4143,916 +5183,25 @@
     {
      "id": "sadang",
      "tier": 3,
-     "at": 22
+     "at": 28
     }
    ],
    "ancestors": 12,
    "maxLevel": 3
   },
   {
-   "seed": 2013531163,
-   "ending": "good",
-   "expeditions": 19,
-   "seasons": 19,
-   "deaths": 1,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1458870771,
-   "ending": "good",
-   "expeditions": 30,
-   "seasons": 30,
-   "deaths": 7,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 21
-    }
-   ],
-   "ancestors": 6,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1492278914,
-   "ending": "good",
-   "expeditions": 85,
-   "seasons": 85,
-   "deaths": 27,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 17
-    }
-   ],
-   "ancestors": 27,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1525687057,
-   "ending": "good",
-   "expeditions": 63,
-   "seasons": 63,
-   "deaths": 19,
-   "rosterAvg": 5.873,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 3
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 17,
-   "maxLevel": 2
-  },
-  {
-   "seed": 1424874248,
-   "ending": "good",
-   "expeditions": 66,
-   "seasons": 66,
-   "deaths": 24,
-   "rosterAvg": 5.848,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 17
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 22
-    }
-   ],
-   "ancestors": 23,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1458282391,
-   "ending": "good",
-   "expeditions": 28,
-   "seasons": 28,
-   "deaths": 3,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 21
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1491587366,
-   "ending": "good",
-   "expeditions": 56,
-   "seasons": 56,
-   "deaths": 18,
-   "rosterAvg": 5.946,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 20
-    }
-   ],
-   "ancestors": 17,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1524995509,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 17
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1424182700,
-   "ending": "good",
-   "expeditions": 29,
-   "seasons": 29,
-   "deaths": 6,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 16
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 18
-    }
-   ],
-   "ancestors": 6,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1457590843,
-   "ending": "good",
-   "expeditions": 22,
-   "seasons": 22,
-   "deaths": 5,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 19
-    }
-   ],
-   "ancestors": 5,
-   "maxLevel": 3
-  },
-  {
-   "seed": 1490998986,
-   "ending": "good",
-   "expeditions": 86,
-   "seasons": 86,
-   "deaths": 33,
-   "rosterAvg": 5.977,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 8
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 11
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 18
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 18
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    }
-   ],
-   "ancestors": 33,
-   "maxLevel": 3
-  },
-  {
-   "seed": -396538632,
-   "ending": "good",
-   "expeditions": 44,
-   "seasons": 44,
-   "deaths": 17,
-   "rosterAvg": 5.841,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 5
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 12
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 16
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 17
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 19
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 22
-    }
-   ],
-   "ancestors": 15,
-   "maxLevel": 3
-  },
-  {
-   "seed": -295725823,
-   "ending": "good",
-   "expeditions": 31,
-   "seasons": 31,
-   "deaths": 11,
-   "rosterAvg": 5.774,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 11
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 12
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 13
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 25
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 25
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 27
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 27
-    }
-   ],
-   "ancestors": 11,
-   "maxLevel": 3
-  },
-  {
-   "seed": -329133966,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 0,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 6
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 13
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    }
-   ],
-   "ancestors": 0,
-   "maxLevel": 3
-  },
-  {
-   "seed": -362438941,
-   "ending": "good",
-   "expeditions": 25,
-   "seasons": 25,
-   "deaths": 3,
-   "rosterAvg": 6,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 4
-    },
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 24
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": -397127012,
-   "ending": "good",
-   "expeditions": 18,
-   "seasons": 18,
-   "deaths": 3,
-   "rosterAvg": 5.778,
-   "countdown": false,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 14
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 14
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 15
-    }
-   ],
-   "ancestors": 3,
-   "maxLevel": 3
-  },
-  {
-   "seed": -296314203,
-   "ending": "fail",
-   "expeditions": 37,
-   "seasons": 38,
-   "deaths": 17,
-   "rosterAvg": 5.73,
-   "countdown": true,
-   "builds": [
-    {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 9
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 9
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 20
-    },
-    {
-     "id": "sadang",
-     "tier": 2,
-     "at": 21
-    },
-    {
-     "id": "sadang",
-     "tier": 3,
-     "at": 23
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 27
-    }
-   ],
-   "ancestors": 17,
-   "maxLevel": 3
-  },
-  {
    "seed": -329722346,
    "ending": "good",
-   "expeditions": 46,
-   "seasons": 46,
-   "deaths": 22,
-   "rosterAvg": 5.348,
+   "expeditions": 41,
+   "seasons": 41,
+   "deaths": 11,
+   "rosterAvg": 6,
    "countdown": false,
    "builds": [
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "gaekju",
      "tier": 2,
-     "at": 9
+     "at": 6
     },
     {
      "id": "yakbang",
@@ -5060,42 +5209,47 @@
      "at": 9
     },
     {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
      "id": "sindang",
      "tier": 2,
-     "at": 11
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 18
+     "at": 17
     },
     {
      "id": "sadang",
      "tier": 2,
+     "at": 19
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
      "at": 19
     },
     {
      "id": "sadang",
      "tier": 3,
      "at": 26
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 27
     }
    ],
-   "ancestors": 21,
+   "ancestors": 10,
    "maxLevel": 3
   },
   {
    "seed": -363130489,
-   "ending": "good",
-   "expeditions": 40,
-   "seasons": 40,
-   "deaths": 9,
-   "rosterAvg": 5.975,
-   "countdown": false,
+   "ending": "normal",
+   "expeditions": 41,
+   "seasons": 41,
+   "deaths": 12,
+   "rosterAvg": 5.805,
+   "countdown": true,
    "builds": [
     {
      "id": "gaekju",
@@ -5103,52 +5257,52 @@
      "at": 5
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 13
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 10
+     "at": 15
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 16
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 17
+     "at": 19
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 17
+     "at": 20
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 18
+     "at": 23
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 20
+     "at": 26
     }
    ],
-   "ancestors": 9,
+   "ancestors": 11,
    "maxLevel": 3
   },
   {
    "seed": -397818560,
    "ending": "good",
-   "expeditions": 21,
-   "seasons": 21,
-   "deaths": 2,
-   "rosterAvg": 6,
-   "countdown": false,
+   "expeditions": 50,
+   "seasons": 50,
+   "deaths": 17,
+   "rosterAvg": 5.86,
+   "countdown": true,
    "builds": [
     {
      "id": "gaekju",
@@ -5156,103 +5310,103 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 9
+     "at": 14
     },
     {
      "id": "sindang",
-     "tier": 2,
-     "at": 10
-    },
-    {
-     "id": "sindang",
-     "tier": 3,
-     "at": 15
-    },
-    {
-     "id": "jeonsucheong",
-     "tier": 1,
-     "at": 15
-    },
-    {
-     "id": "sadang",
      "tier": 2,
      "at": 16
     },
     {
-     "id": "sadang",
-     "tier": 3,
-     "at": 19
-    }
-   ],
-   "ancestors": 2,
-   "maxLevel": 3
-  },
-  {
-   "seed": -297005751,
-   "ending": "good",
-   "expeditions": 47,
-   "seasons": 47,
-   "deaths": 16,
-   "rosterAvg": 5.936,
-   "countdown": false,
-   "builds": [
-    {
      "id": "mugubang",
      "tier": 1,
-     "at": 5
-    },
-    {
-     "id": "yakbang",
-     "tier": 1,
-     "at": 7
-    },
-    {
-     "id": "sindang",
-     "tier": 2,
-     "at": 8
-    },
-    {
-     "id": "gaekju",
-     "tier": 2,
-     "at": 8
+     "at": 19
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 18
+     "at": 27
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 18
+     "at": 27
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 22
+     "at": 31
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 27
+     "at": 38
     }
    ],
    "ancestors": 16,
    "maxLevel": 3
   },
   {
+   "seed": -297005751,
+   "ending": "good",
+   "expeditions": 22,
+   "seasons": 22,
+   "deaths": 0,
+   "rosterAvg": 6,
+   "countdown": false,
+   "builds": [
+    {
+     "id": "gaekju",
+     "tier": 2,
+     "at": 5
+    },
+    {
+     "id": "yakbang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
+    },
+    {
+     "id": "sindang",
+     "tier": 2,
+     "at": 12
+    },
+    {
+     "id": "sindang",
+     "tier": 3,
+     "at": 18
+    },
+    {
+     "id": "jeonsucheong",
+     "tier": 1,
+     "at": 18
+    },
+    {
+     "id": "sadang",
+     "tier": 2,
+     "at": 20
+    },
+    {
+     "id": "sadang",
+     "tier": 3,
+     "at": 21
+    }
+   ],
+   "ancestors": 0,
+   "maxLevel": 3
+  },
+  {
    "seed": 1518623976,
    "ending": "good",
-   "expeditions": 29,
-   "seasons": 29,
-   "deaths": 5,
+   "expeditions": 39,
+   "seasons": 39,
+   "deaths": 8,
    "rosterAvg": 6,
    "countdown": false,
    "builds": [
@@ -5262,42 +5416,42 @@
      "at": 4
     },
     {
-     "id": "mugubang",
-     "tier": 1,
-     "at": 7
-    },
-    {
      "id": "yakbang",
      "tier": 1,
-     "at": 8
+     "at": 9
+    },
+    {
+     "id": "mugubang",
+     "tier": 1,
+     "at": 9
     },
     {
      "id": "sindang",
      "tier": 2,
-     "at": 10
+     "at": 12
     },
     {
      "id": "sindang",
      "tier": 3,
-     "at": 14
+     "at": 17
     },
     {
      "id": "jeonsucheong",
      "tier": 1,
-     "at": 15
+     "at": 18
     },
     {
      "id": "sadang",
      "tier": 2,
-     "at": 16
+     "at": 19
     },
     {
      "id": "sadang",
      "tier": 3,
-     "at": 19
+     "at": 21
     }
    ],
-   "ancestors": 5,
+   "ancestors": 8,
    "maxLevel": 3
   }
  ]

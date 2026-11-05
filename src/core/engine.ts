@@ -7,7 +7,7 @@ import { chooseIntent, executeIntent, projectIncoming } from './enemy.ts';
 import { DEFAULT_RULES, ENGRAVE_STATUS, KNOTS } from './types.ts';
 import type {
   ActionChoice, AutoTarget, CardDef, CardInst, CombatMods, CombatState, CombatStats, Cond, Encounter, EnemyState, HeroId, HeroState, Op,
-  OfferingRule, PowerInst, ProvKey, RuleVariant, Trigger,
+  OfferingRule, PowerInst, ProvKey, RuleVariant, TargetSel, Trigger,
 } from './types.ts';
 
 export const D = loadData;
@@ -741,7 +741,9 @@ export function autoEnemy(s: CombatState, at: AutoTarget): number {
   }
 }
 
-function enemyTargets(s: CombatState, ctx: Ctx, sel: 'one' | 'all' | 'random'): number[] {
+function enemyTargets(s: CombatState, ctx: Ctx, sel: TargetSel): number[] {
+  // 「다른 적 하나」: 두 번째로 고른 적 (없거나 쓰러졌으면 고른 적)
+  if (sel === 'other' && ctx.target2 >= 0 && s.enemies[ctx.target2].alive) return [ctx.target2];
   if (sel === 'all') {
     if (ctx.allOverride >= 0) return s.enemies[ctx.allOverride].alive ? [ctx.allOverride] : [];
     return aliveEnemies(s);

@@ -316,7 +316,7 @@
       "path": "core",
       "keywords": [],
       "text": "적 하나의 명부를 모두 다른 적 하나에게 옮긴다. 옮겨 받은 적에게 점지 2.",
-      "effects": [{"op": "consume", "status": "명부", "n": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "명부", "n": 1, "target": "one"}], "expect": 4, "note": "옮기기는 순증이 아니므로 기대 스택을 실측(옮긴 명부 8.5)의 절반으로 본다"}, {"op": "apply", "status": "점지", "n": 2, "target": "one"}],
+      "effects": [{"op": "consume", "status": "명부", "n": "all"}, {"op": "per", "source": "명부", "each": [{"op": "apply", "status": "명부", "n": 1, "target": "one"}], "expect": 4, "note": "옮기기는 순증이 아니므로 기대 스택을 실측(옮긴 명부 8.5)의 절반으로 본다"}, {"op": "apply", "status": "점지", "n": 2, "target": "other", "note": "옮겨 받은 적(다른 적 하나)에게 — 반복 3에서 대상 모호성 해소"}],
       "tags": {"produce": ["명부", "점지"], "consume": ["명부"]},
       "upgrade": {"text": "적 하나의 명부를 모두 다른 적 하나에게 옮긴다. 옮겨 받은 적에게 점지 2.", "cost": 0}
     },

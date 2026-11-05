@@ -3,6 +3,7 @@
 import { D } from '../core/engine.ts';
 import { seedFrom } from '../core/rng.ts';
 import type { CardInst } from '../core/types.ts';
+import { CD } from '../meta/content.ts';
 import type { ExpeditionPlan, ExpeditionReport } from '../meta/types.ts';
 import { runExpedition, type ExpeditionResult, type ExpeditionSetup, type Provisions } from './expedition.ts';
 
@@ -24,6 +25,7 @@ export function planSetup(plan: ExpeditionPlan, retreat: { below: number; boss: 
       startWeak: h.startWeak, recovery: h.recovery,
     })),
     deck: planDeck(plan), provisions, enemyHpMult: plan.enemyHpMult, retreatBelow: retreat.below, bossRetreatBelow: retreat.boss, firstJangdan: plan.firstJangdan, paths,
+    wipeSurvive: CD.death.wipeSurvive, mods: { deathSave: CD.death.deathSave },
   };
 }
 

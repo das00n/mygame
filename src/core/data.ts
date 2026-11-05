@@ -6,7 +6,7 @@ import { budgetOf, condP, rawValue, type ValueCtx } from './value.ts';
 import {
   HERO_IDS, HERO_NAMES,
   type AutoTarget, type CapRule, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef,
-  type HeroId, type Op, type OfferingRule, type PerMode, type ProvKey, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type Trigger,
+  type HeroId, type Op, type OfferingRule, type PerMode, type ProvKey, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type TargetSel, type Trigger,
 } from './types.ts';
 
 // 데이터는 raw-data.ts 의 정적 JSON import 에서 온다 (Node·브라우저 공통). 저장소 경로(ROOT)는 src/sim/root.ts.
@@ -319,7 +319,7 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
   const key = () => `${cc.cardId}#${cc.keyN++}`;
   switch (r.op) {
     case 'dmg':
-      return { op: 'dmg', n: n0(r.n, 0), hits: n0(r.hits, 1), target: (r.target as 'one' | 'all' | 'random') ?? 'one' };
+      return { op: 'dmg', n: n0(r.n, 0), hits: n0(r.hits, 1), target: (r.target as TargetSel) ?? 'one' };
     case 'block':
       return { op: 'block', n: n0(r.n, 0), to: (r.to as 'self' | 'ally' | 'party') ?? 'self' };
     case 'draw':
@@ -331,7 +331,7 @@ function compileOp(r: RawOp, cc: CompileCtx, inDownedCond: boolean): Op | null {
     case 'apply': {
       const st = String(r.status);
       if (!STATUSES.has(st)) return null;
-      return { op: 'apply', status: st as EnemyStatus, n: n0(r.n, 1), target: (r.target as 'one' | 'all' | 'random') ?? 'one' };
+      return { op: 'apply', status: st as EnemyStatus, n: n0(r.n, 1), target: (r.target as TargetSel) ?? 'one' };
     }
     case 'jangdan':
       return { op: 'jangdan', n: n0(r.n, 1) };

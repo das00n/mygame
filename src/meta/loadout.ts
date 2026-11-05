@@ -38,21 +38,8 @@ function hasDmg(def: CardDef): boolean {
   return walk(def.effects);
 }
 
-/** 로드아웃 묶음 점수의 가중치 (실험용으로 바꿀 수 있게 묶어 둔다) */
-export const LOADOUT_W = {
-  personalNeed: 0.5,
-  sharedNeed: 0.2,
-  noAttack: 1.2,
-  oneAttack: 0.3,
-  perAttack: 0,
-  noDefense: 0.4,
-  extraPower: 0.35,
-  starter: 0.01,
-};
-
 /** 로드아웃 묶음 점수: 카드 점수 합 + 공격·방어 갖춤 + 혼자 도는 엔진(소비하는 자원을 만드는 카드가 묶음 안에 있는가) */
 export function loadoutScore(cards: CardDef[]): number {
-  const W = LOADOUT_W;
   let sc = 0;
   const produce = new Set<string>();
   for (const c of cards) {
@@ -62,16 +49,15 @@ export function loadoutScore(cards: CardDef[]): number {
   }
   for (const c of cards) for (const t of c.tags.consume) {
     if (produce.has(t)) continue;
-    if (PERSONAL_NEED.has(t)) sc -= W.personalNeed;
-    else if (SHARED_NEED.has(t)) sc -= W.sharedNeed;
+    if (PERSONAL_NEED.has(t)) sc -= 0.5;
+    else if (SHARED_NEED.has(t)) sc -= 0.2;
   }
   const atk = cards.filter(hasDmg).length;
-  if (atk === 0) sc -= W.noAttack;
-  else if (atk === 1) sc -= W.oneAttack;
-  sc += atk * W.perAttack;
-  if (!cards.some(isDefensive)) sc -= W.noDefense;
+  if (atk === 0) sc -= 1.2;
+  else if (atk === 1) sc -= 0.3;
+  if (!cards.some(isDefensive)) sc -= 0.4;
   const powers = cards.filter((c) => c.isPower).length;
-  if (powers > 1) sc -= W.extraPower * (powers - 1);
+  if (powers > 1) sc -= 0.35 * (powers - 1);
   return sc;
 }
 
@@ -86,7 +72,7 @@ export function bestLoadout(arch: HeroId, learned: string[]): string[] {
   const n = pool.length;
   for (let a = 0; a < n; a++) for (let b = a + 1; b < n; b++) for (let c = b + 1; c < n; c++) for (let e = c + 1; e < n; e++) {
     const set = [pool[a], pool[b], pool[c], pool[e]];
-    const v = loadoutScore(set) + set.filter((x) => x.starter).length * LOADOUT_W.starter;
+    const v = loadoutScore(set) + set.filter((x) => x.starter).length * 0.01;
     if (v > bv) {
       bv = v;
       best = set;

@@ -57,6 +57,13 @@ export function useAutoDriver(): void {
           commitSettings();
           break;
         }
+        // 원정 안 창(대화)에서 멈추기 (e2e 가 window.__JSG_STOP_DIALOG 에 둔다 — 대문 통행을 손으로 고르게)
+        const stopD = (globalThis as unknown as { __JSG_STOP_DIALOG?: (a: typeof app) => boolean }).__JSG_STOP_DIALOG;
+        if (stopD && app.dialog && stopD(app)) {
+          settings.auto = false;
+          commitSettings();
+          break;
+        }
         if (!settings.auto || !autoStep(app)) break;
         did = true;
         // 즉시 모드라도 결산·마을은 한 번 그린다

@@ -1,5 +1,6 @@
 // web:e2e — 만든 단일 HTML(web/dist/artifact.html)을 호스트처럼 감싸 띄우고, 보스 길 원정을 처음부터 결과 화면까지 자동 진행으로 끝까지 돌린다.
 // 캠페인 판(F·G, 반복 2): 새 캠페인 → 영입 → 시설 건축 → 자동 원정 3회 이상 → 사망과 천도굿 → 지역 2 개방 → 내보내기 → 결말 코드 가져오기.
+// 대문 방 판(H, 반복 3): 지역 3 코드 가져오기 → 지역 3 보통 길 → 대문 방에서 손으로 통행 → 자동 진행으로 마을까지.
 // 파티·시드를 바꿔 여러 번. 콘솔 오류가 없어야 하고, 폰 폭에서 가로 스크롤이 없어야 한다.
 // 스크린숏(deviceScaleFactor 1)을 docs/design/screens/ 에 저장한다 (390×844, 1280×800).
 // 실행: npm run web:artifact && npm run web:e2e   (옵션: --only N, --no-shots)
@@ -74,12 +75,15 @@ const RUNS = [
 ];
 
 const CAMPAIGN_RUNS = [
-  { name: 'F', seed: 1, viewport: { width: 390, height: 844 }, shots: 'phone' },
-  { name: 'G', seed: 6, viewport: { width: 1280, height: 800 }, shots: 'desktop' },
+  { name: 'F', seed: 2, viewport: { width: 390, height: 844 }, shots: 'phone' },
+  { name: 'G', seed: 14, viewport: { width: 1280, height: 800 }, shots: 'desktop' },
 ];
 // 결말 화면: 헤드리스로 끝까지 돈 캠페인의 코드(시드 1, 좋은 결말)를 가져온다
 const ENDING_CODE = execSync('node --import tsx web/scripts/headless.ts --campaign --runs 1 --seed 1 --max 60 --code', { cwd: root }).toString().split('\n').find((l) => l.startsWith('JSG1:'));
 if (!ENDING_CODE) throw new Error('ending code not generated');
+// 대문 방 판(H, 반복 3): 신당 3단계(지역 3)까지 헤드리스로 돈 캠페인 코드
+const R3_CODE = execSync('node --import tsx web/scripts/headless.ts --campaign --runs 1 --seed 3 --max 60 --until-sindang 3 --code', { cwd: root }).toString().split('\n').find((l) => l.startsWith('JSG1:'));
+if (!R3_CODE) throw new Error('region 3 code not generated');
 
 const screenOf = (p) => p.evaluate(() => document.querySelector('.app')?.getAttribute('data-screen') ?? '');
 
@@ -436,6 +440,120 @@ for (const run of CAMPAIGN_RUNS) {
     errors.push(`exception: ${e.message}`);
     await p.screenshot({ path: join(tmpdir(), `jeoseunggut-e2e-fail-${run.name}.png`) }).catch(() => {});
     results.push({ run: run.name, party: `campaign seed ${run.seed}`, seed: run.seed, viewport: size, outcome: 'ERROR', reason: notes.join(' '), sec: Math.round((Date.now() - t0) / 1000), errors });
+  }
+  if (errors.length) failed = true;
+  await ctx.close();
+  const r = results[results.length - 1];
+  console.log(`[${r.run}] ${r.party} ${r.viewport} → ${r.outcome} (${r.reason}) ${r.sec}s${r.errors.length ? `\n   errors:\n   ${r.errors.slice(0, 8).join('\n   ')}` : ''}`);
+}
+
+// ── 대문 방 통행 판 (H, 반복 3): 지역 3 보통 길 → 지도에 대문 방 → 첫 대문에서 손으로 「인정을 쓴다」 → 자동 진행으로 마을까지 ──
+if (only < 0 || only === RUNS.length + CAMPAIGN_RUNS.length) {
+  const t0 = Date.now();
+  const viewport = { width: 390, height: 844 };
+  const size = `${viewport.width}x${viewport.height}`;
+  const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  const p = await ctx.newPage();
+  const errors = [];
+  const notes = [];
+  p.on('console', (m) => {
+    if (m.type() === 'error') errors.push(`console: ${m.text()}`);
+  });
+  p.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
+  await p.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, async (route) => {
+    const req = route.request();
+    const got = await fetchCached(req.url(), req.headers()['user-agent'] ?? 'Mozilla/5.0 Chrome/120');
+    if (got) await route.fulfill({ status: 200, contentType: got.type, body: got.body, headers: { 'access-control-allow-origin': '*' } });
+    else await route.fulfill({ status: 200, contentType: req.url().includes('/css') ? 'text/css' : 'font/woff2', body: '' });
+  });
+  const noHScroll = async (label) => {
+    const [sw, iw] = await p.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]);
+    if (sw > iw + 1) errors.push(`horizontal page scroll on ${label}: ${sw} > ${iw}`);
+  };
+  const runState = () => p.evaluate(() => {
+    const a = globalThis.__JSG_APP;
+    const r = a?.run;
+    return {
+      screen: a?.screen ?? '', auto: !!globalThis.__JSG_SETTINGS?.auto, dialog: a?.dialog?.id ?? null, gates: r?.flags?.gates ?? 0, jijeon: r?.supplies?.jijeon ?? -1,
+      free: r?.flags?.gateFree ?? 0, region: r?.region ?? 0, gateRooms: r ? r.dungeon.rooms.filter((x) => x.gate).length : 0, exp: a?.campaign?.expeditions ?? -1,
+    };
+  });
+  try {
+    await p.goto(url);
+    await p.click('[data-testid=import]');
+    await p.fill('[data-testid=import-code]', R3_CODE);
+    await p.click('[data-testid=import-go]');
+    await p.waitForSelector('[data-testid=village]');
+    const exp0 = (await runState()).exp;
+    await p.click('[data-testid=tab-board]');
+    await p.click('[data-testid=commission-normal-3]');
+    // 서로 다른 원형 셋 (쉬는 사람 제외)
+    const uids = await p.evaluate(() => {
+      const c = globalThis.__JSG_APP.campaign;
+      const out = [];
+      for (const x of c.roster) if (!x.busy && !out.some((y) => y.arch === x.arch) && out.length < 3) out.push(x);
+      return out.map((x) => x.uid);
+    });
+    for (const u of uids) await p.click(`[data-testid=pick-${u}]`);
+    await p.click('[data-testid=buy-rec]');
+    await p.click('[data-testid=depart]');
+    await p.waitForSelector('[data-testid=map-screen]');
+    let st = await runState();
+    if (st.region !== 3) errors.push(`region ${st.region}, expected 3`);
+    const glyphs = await p.$$('[data-testid^=gate-r]');
+    if (st.gateRooms < 2 || glyphs.length !== st.gateRooms) errors.push(`gate rooms ${st.gateRooms}, glyphs ${glyphs.length}`);
+    await noHScroll('map-r3');
+    // 첫 대문 창이 열리면 자동 진행이 멈춘다
+    await p.evaluate(() => { globalThis.__JSG_STOP_DIALOG = (a) => a.dialog?.id === 'daemun_tonghaeng' && a.dialog.result === null; });
+    await p.click('[data-testid=auto-toggle]');
+    for (let i = 0; i < 3; i++) {
+      const sp = (await p.textContent('[data-testid=auto-speed]'))?.trim();
+      if (sp === '즉시') break;
+      await p.click('[data-testid=auto-speed]');
+    }
+    const deadline = Date.now() + 4 * 60 * 1000;
+    while (Date.now() < deadline) {
+      st = await runState();
+      if (!st.auto && st.dialog === 'daemun_tonghaeng') break;
+      if (st.screen === 'result' || st.screen === 'settle' || st.screen === 'village') break;
+      await p.waitForTimeout(100);
+    }
+    if (st.dialog !== 'daemun_tonghaeng') errors.push(`gate dialog never opened (screen ${st.screen})`);
+    else {
+      await p.waitForSelector('[data-testid=dialog]');
+      await noHScroll('gate');
+      if (!noShots) {
+        await p.evaluate(() => document.fonts?.ready);
+        await p.waitForTimeout(250);
+        await p.screenshot({ path: join(shotsDir, `gate-${size}.png`) });
+      }
+      const before = await runState();
+      const pay = await p.$('[data-testid=opt-c0]:not([disabled])');
+      if (pay) await pay.click();
+      else await p.click('[data-testid=opt-c1]');
+      await p.click('[data-testid=dialog-continue]');
+      const after = await runState();
+      if (after.gates !== before.gates + 1) errors.push(`gates ${before.gates} → ${after.gates}`);
+      if (pay && !before.free && after.jijeon > before.jijeon) errors.push(`jijeon ${before.jijeon} → ${after.jijeon}`);
+      notes.push(`gate passed by ${pay ? '인정(지전)' : '문답'} · jijeon ${before.jijeon}→${after.jijeon} · gate rooms ${after.gateRooms}`);
+      if (!(await p.$('[data-testid^=gate-r][data-done="1"]'))) errors.push('passed gate glyph not marked');
+    }
+    // 끝까지: 나머지 대문은 자동 진행이 고르고, 마을로 돌아오면 멈춘다
+    await p.evaluate(() => { globalThis.__JSG_STOP_DIALOG = undefined; globalThis.__JSG_STOP = () => true; });
+    if (!(await runState()).auto) await p.click('[data-testid=auto-toggle]');
+    const deadline2 = Date.now() + 6 * 60 * 1000;
+    while (Date.now() < deadline2) {
+      st = await runState();
+      if (st.screen === 'village' && st.exp > exp0) break;
+      await p.waitForTimeout(150);
+    }
+    if (st.exp <= exp0) errors.push(`expedition did not return (screen ${st.screen})`);
+    notes.push(`back in village after expedition ${st.exp}`);
+    results.push({ run: 'H', party: 'campaign region 3 gate', seed: 3, viewport: size, outcome: 'gate', reason: notes.join(' · '), sec: Math.round((Date.now() - t0) / 1000), errors });
+  } catch (e) {
+    errors.push(`exception: ${e.message}`);
+    await p.screenshot({ path: join(tmpdir(), 'jeoseunggut-e2e-fail-H.png') }).catch(() => {});
+    results.push({ run: 'H', party: 'campaign region 3 gate', seed: 3, viewport: size, outcome: 'ERROR', reason: notes.join(' · '), sec: Math.round((Date.now() - t0) / 1000), errors });
   }
   if (errors.length) failed = true;
   await ctx.close();

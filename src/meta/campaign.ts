@@ -207,7 +207,7 @@ function startSeason(c: Campaign): void {
   c.candidates = [];
   for (let k = 0; k < candidateCount(c) + plus; k++) {
     const p = makePerson(c);
-    // 객주 2단계: 숙련 영입 (06-base §4 객주 업그레이드 트랙) — 후보가 레벨 1로 온다
+    // 객주 2단계: 숙련 영입 (06-base §4 객주 업그레이드 트랙) — 후보가 경험 seasonedXp(레벨 1, 레벨 2 문턱 바로 앞)로 온다 ⟨반복 3: 경험 3 → 7⟩
     if (tier(c, 'gaekju') >= 2) {
       p.xp = CD.levels.seasonedXp;
       p.level = levelForXp(p.xp);
@@ -227,7 +227,13 @@ function payFor(c: Campaign, length: CommissionLength, seal: boolean): number {
 
 /** 최종 원정(아홉째~열두째 대문): 3지역 보스 길(다섯째~여덟째)을 마친 뒤 */
 export function finalUnlocked(c: Campaign): boolean {
-  return regionOpen(c, 3) && (c.bosses[3]?.wins ?? 0) > 0;
+  return regionOpen(c, 3) && (c.bosses[3]?.wins ?? 0) >= CD.finalUnlock.bossWins;
+}
+
+/** 균열 봉합 원정의 지역: 보스를 보낸 적 있는 가장 깊은 지역 (없으면 지역 1) ⟨반복 3: 열린 가장 깊은 지역 → 다녀온 가장 깊은 지역⟩ */
+export function sealRegion(c: Campaign): number {
+  for (let r = deepestRegion(c); r > 1; r--) if ((c.bosses[r]?.wins ?? 0) > 0) return r;
+  return 1;
 }
 
 export function genCommissions(c: Campaign): Commission[] {
@@ -237,12 +243,12 @@ export function genCommissions(c: Campaign): Commission[] {
     const st = rpick(c, CD.commissions[String(region)]);
     const pay = payFor(c, length, seal);
     return {
-      id: `c${c.season}-${out.length}`, region, length, family: st.family, story: seal ? '저승문 균열이 가득 찼다. 가장 깊은 저승 구역의 큰 원귀를 보내 균열을 봉합하라.' : st.story,
+      id: `c${c.season}-${out.length}`, region, length, family: st.family, story: seal ? '저승문 균열이 가득 찼다. 큰 원귀를 보내 본 가장 깊은 저승 구역에서 다시 큰 원귀를 보내 균열을 봉합하라.' : st.story,
       pay, advance: Math.round(pay * CD.economy.advance), seal,
     };
   };
   // 균열 봉합 (카운트다운 중) · 최종 원정 (3지역 보스를 보낸 뒤) · 가장 깊은 지역의 보스 길과 보통 길 · 한 단계 얕은 지역 하나
-  if (c.countdown !== null) out.push(mk(deep, 'boss', true));
+  if (c.countdown !== null) out.push(mk(sealRegion(c), 'boss', true));
   if (finalUnlocked(c)) out.push(mk(3, 'final'));
   out.push(mk(deep, 'boss'));
   out.push(mk(deep, 'normal'));
@@ -618,6 +624,7 @@ export function settle(c: Campaign, plan: ExpeditionPlan, rep: ExpeditionReport)
   for (const [id, n] of Object.entries(rep.haewonById)) c.haewonSeen[id] = (c.haewonSeen[id] ?? 0) + n;
   // 파티
   const deadIdx: number[] = [];
+  const topLevel = Math.max(0, ...c.roster.map((p) => p.level));
   people.forEach((p, i) => {
     const h = rep.heroes[i];
     for (const [id, n] of Object.entries(h.plays)) p.history.plays[id] = (p.history.plays[id] ?? 0) + n;
@@ -633,8 +640,8 @@ export function settle(c: Campaign, plan: ExpeditionPlan, rep: ExpeditionReport)
     p.stress = Math.max(0, Math.min(99, h.stress - plan.stressAdd[i]));
     p.injured = h.injured;
     p.sorties++;
-    // 경험: 원정 +1, 보스 +1 → 레벨 (최대 체력 +3)
-    p.xp += CD.levels.xpExpedition + (rep.bossWon ? CD.levels.xpBoss : 0);
+    // 경험: 원정 +1, 보스 +1 → 레벨 (최대 체력 +3). 따라잡기: 로스터 최고 레벨보다 크게 뒤처진 사람은 고참 곁에서 더 배운다 ⟨반복 3⟩
+    p.xp += CD.levels.xpExpedition + (rep.bossWon ? CD.levels.xpBoss : 0) + (p.level <= topLevel - CD.levels.catchUpGap ? CD.levels.catchUpXp : 0);
     const lv = Math.min(CD.levels.xp.length, levelForXp(p.xp));
     if (lv > p.level) {
       p.level = lv;

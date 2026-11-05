@@ -80,8 +80,8 @@ test('귀환 결산: 경험 → 레벨(최대 체력 +3), 익힌 카드, 정 +1,
   assert.equal(c.materials['잡귀잡신'], 1);
   assert.equal(c.season, before.season + 1);
   assert.ok(c.lots.includes('r1boss'), '지역 1 보스를 처음 보내면 약방·무구방 부지');
-  // 레벨: 경험 3 → 레벨 1, 최대 체력 +3
-  p0.xp = 2;
+  // 레벨: 첫 문턱 경험 → 레벨 1, 최대 체력 +3
+  p0.xp = CD.levels.xp[0] - 1;
   const plan2 = planExpedition(c, c.commissions.find((x) => x.length === 'normal')!.id, trio, {}) as ExpeditionPlan;
   settle(c, plan2, report(plan2));
   assert.equal(p0.level, 1);
@@ -201,13 +201,46 @@ test('영입: 객주 로스터 상한, 비용 40, 세 원형을 못 꾸리면 �
 test('결말: 3지역 최종 큰 원귀를 해원하면 좋은 결말', () => {
   const c = newCampaign(12);
   c.facilities.sindang = 3;
-  c.bosses[3] = { first: 0, wins: 1, haewon: 1 };
+  c.bosses[3] = { first: 0, wins: CD.finalUnlock.bossWins - 1, haewon: 1 };
+  passSeason(c);
+  assert.ok(!c.commissions.some((x) => x.length === 'final'), `최종 원정은 3지역 보스 길을 ${CD.finalUnlock.bossWins}번 마친 뒤`);
+  c.bosses[3].wins = CD.finalUnlock.bossWins;
   passSeason(c);
   const fin = c.commissions.find((x) => x.length === 'final')!;
   assert.ok(fin);
   const plan = planExpedition(c, fin.id, distinctTrio(c), {}) as ExpeditionPlan;
   settle(c, plan, report(plan));
   assert.equal(c.ending?.kind, 'good');
+});
+
+test('⟨반복 3⟩ 따라잡기 경험 · 숙련 영입 · 균열 봉합 지역', () => {
+  const c = newCampaign(21);
+  const trio = distinctTrio(c);
+  const [a, b] = trio.map((u) => c.roster.find((p) => p.uid === u)!);
+  // 로스터에 레벨 3 고참이 있으면 레벨 0 신참은 원정마다 경험 +1 더
+  const vet = c.roster.find((p) => !trio.includes(p.uid))!;
+  vet.level = 3;
+  vet.xp = CD.levels.xp[2];
+  b.level = 2;
+  b.xp = CD.levels.xp[1];
+  const plan = planExpedition(c, c.commissions.find((x) => x.length === 'normal')!.id, trio, {}) as ExpeditionPlan;
+  settle(c, plan, report(plan));
+  assert.equal(a.xp, CD.levels.xpExpedition + CD.levels.catchUpXp, '레벨 0 (최고 3 − 2 이하) → 따라잡기');
+  assert.equal(b.xp, CD.levels.xp[1] + CD.levels.xpExpedition, '레벨 2 는 따라잡기 없음');
+  // 객주 2단계: 숙련 영입은 경험 seasonedXp
+  c.facilities.gaekju = 2;
+  passSeason(c);
+  assert.ok(c.candidates.every((p) => p.xp === CD.levels.seasonedXp && p.level >= 1));
+  // 균열 봉합: 보스를 보낸 적 있는 가장 깊은 지역 (열린 가장 깊은 곳이 아니라)
+  c.facilities.sindang = 3;
+  c.bosses[1] = { first: 0, wins: 1, haewon: 1 };
+  c.countdown = 2;
+  passSeason(c);
+  assert.equal(c.commissions.find((x) => x.seal)!.region, 1);
+  c.bosses[2] = { first: 0, wins: 1, haewon: 0 };
+  c.countdown = 2;
+  passSeason(c);
+  assert.equal(c.commissions.find((x) => x.seal)!.region, 2);
 });
 
 test('캠페인 시뮬: 봇이 한 캠페인을 끝까지 (결정적)', () => {

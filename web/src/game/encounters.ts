@@ -130,7 +130,7 @@ export function dialogOptions(run: Run, dlg: DialogState): DOpt[] {
         }
         return;
       }
-      const cost = dlg.id === 'munsajae_mundap' && i === 0 ? gateCost(run, ch.cost) : ch.cost;
+      const cost = (dlg.id === 'munsajae_mundap' || dlg.id === 'daemun_tonghaeng') && i === 0 ? gateCost(run, ch.cost) : ch.cost;
       const ok2 = reqOk && costOk(run, cost);
       out.push({
         id: `c${i}`, label: ch.label, detail: simplifiedEventResult(dlg.id, i, ch.result), kind: req ? 'hero' : 'choice', hero: req, cost, enabled: ok2,
@@ -364,7 +364,7 @@ export function chooseDialog(app: AppState, optId: string): void {
     let idx = Number(optId.slice(1).split(':')[0]);
     if (Number.isNaN(idx)) idx = 0;
     const ch = ev.choices[idx];
-    if (dlg.id === 'munsajae_mundap' && idx === 0) {
+    if ((dlg.id === 'munsajae_mundap' || dlg.id === 'daemun_tonghaeng') && idx === 0) {
       const c = gateCost(run, ch.cost);
       if (!c && (run.flags.gateFree ?? 0) > 0) run.flags.gateFree! -= 1;
       payCost(run, c);
@@ -964,6 +964,26 @@ function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, opt
       lines.push('버티자 문 두드리는 객귀와 군졸들이 몰려든다!');
       then = 'battle';
       dlg.battleEnc = 'ev_munsajae';
+      break;
+    // 대문 방 통행 (05-region3 §1 ⟨반복 3⟩): 지전 1 · 문답 · 문지기 전투
+    case 'daemun_tonghaeng:0':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      lines.push('인정을 쓰자 문지기가 금줄을 걷는다. 대문을 지난다.');
+      break;
+    case 'daemun_tonghaeng:1':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      partyStress(run, 8);
+      lines.push('어디서 왔으며 무엇을 들고 왔느냐 — 꼬치꼬치 묻는 말에 하나하나 답하고서야 문이 열린다. 파티 귀기 +8.');
+      break;
+    case 'daemun_tonghaeng:2':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      lines.push('차사가 적패지를 펼쳐 옛 동료의 물음에 답한다. 문지기가 웃으며 길을 비킨다.');
+      break;
+    case 'daemun_tonghaeng:3':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      lines.push('문지기가 군졸들을 부른다. 이겨야 대문을 지난다!');
+      then = 'battle';
+      dlg.battleEnc = 'ev_munjigi';
       break;
     case 'saemji_noyeok:0': {
       let best = aliveIdx(run)[0];

@@ -40,11 +40,11 @@
     {"id": "deodin", "name": "더딘 회복", "good": false, "text": "넋 수습 회복 −10%p", "effect": {"recovery": -0.1}},
     {"id": "sseumsseumi", "name": "씀씀이 헤픔", "good": false, "text": "귀환할 때 엽전 −10", "effect": {"gold": -10}}
   ],
-  "levels": {"xp": [3, 7, 12], "seasonedXp": 3, "hpPerLevel": 3, "promoteLevel": 2, "promoteCost": 50, "xpExpedition": 1, "xpBoss": 1},
+  "levels": {"xp": [4, 9, 15], "seasonedXp": 7, "hpPerLevel": 3, "promoteLevel": 2, "promoteCost": 50, "xpExpedition": 1, "xpBoss": 1, "catchUpGap": 2, "catchUpXp": 1},
   "fatigue": {"perSortie": 0.05, "cap": 0.2},
   "idleStressDecay": 10,
   "stressRetire": 100,
-  "death": {"cheondoCost": 60, "deadline": 2, "wanderStress": 10, "bondReact": 3, "grief": 15, "resolve": 2},
+  "death": {"cheondoCost": 60, "deadline": 2, "wanderStress": 10, "bondReact": 3, "grief": 15, "resolve": 2, "wipeSurvive": 0.67, "deathSave": 0.2},
   "bonds": {"together": 1, "rescue": 1, "camp": 2, "duoAt": 5},
   "facilities": [
     {"id": "sindang", "name": "신당", "start": 1, "lot": "start", "tiers": [
@@ -53,7 +53,7 @@
       {"cost": {"chiseong": 10}, "text": "지역 3 「열두 대문」 개방 · 물품 칸 +1"}]},
     {"id": "gaekju", "name": "객주", "start": 1, "lot": "start", "tiers": [
       {"cost": {}, "text": "절기마다 영입 후보 2명 · 로스터 6명"},
-      {"cost": {"gold": 150}, "text": "영입 후보 3명 · 로스터 9명 · 숙련 영입(후보가 레벨 1로 온다)"}]},
+      {"cost": {"gold": 150}, "text": "영입 후보 3명 · 로스터 9명 · 숙련 영입(후보가 레벨 1 · 경험 7로 온다)"}]},
     {"id": "jumak", "name": "주막", "start": 1, "lot": "start", "tiers": [
       {"cost": {}, "text": "휴식 예약: 1절기 쉬면 귀기 −30 · 피로 해소 (엽전 20)"}]},
     {"id": "yakbang", "name": "약방", "start": 0, "lot": "r1boss", "tiers": [
@@ -93,6 +93,7 @@
       {"season": 22, "name": "동지", "kind": "biggut", "text": "동지 큰 굿 — 이번 절기 의뢰 보수가 두 배"}
     ]
   },
+  "finalUnlock": {"bossWins": 2},
   "rift": {"max": 12, "perSeason": 1, "bossHaewon": -3, "bossKill": -2, "strong": [4, 8], "hpMultPerStep": 0.1, "countdown": 3, "sealResetTo": 6},
   "events": [
     {"id": "haengsang", "name": "행상이 들르다", "kind": "good", "text": "보부상이 짐을 풀었다. 다음 원정 보급품 하나가 2개 더 따라온다.", "effect": {"supplyBonus": 2}},

@@ -24,6 +24,8 @@ export interface Room {
   known: boolean; // 내용이 보이는가 (정찰·방문)
   camp: boolean;
   campUsed: boolean;
+  /** 3지역 대문 방: 통행(지전 1 · 문답 · 문지기 전투)을 치러야 지난다 (05-region3 §1 ⟨반복 3⟩) */
+  gate?: boolean;
 }
 
 export interface Tile {
@@ -130,6 +132,8 @@ export interface RunFlags {
   yaksuUsed?: boolean;
   /** 다음 대문 방 통행 무료 */
   gateFree?: number;
+  /** 지난 대문 방 수 (3지역 대문 통행 ⟨반복 3⟩) */
+  gates?: number;
   haenggimotUsed?: boolean;
   /** 길굿 끼니 회복 +%p (약술) */
   mealBonus?: number;

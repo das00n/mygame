@@ -51,7 +51,7 @@ export interface Relic {
 }
 
 interface RegionJson {
-  region: { name: string; concept: string; act?: number; map?: { loops_bonus?: number; trap_rate?: number; fixed_rooms?: string[] } };
+  region: { name: string; concept: string; act?: number; map?: { loops_bonus?: number; trap_rate?: number; fixed_rooms?: string[]; gate_rooms?: number } };
   enemies: RawEnemyExtra[];
   curios: Curio[];
   events: RoomEvent[];

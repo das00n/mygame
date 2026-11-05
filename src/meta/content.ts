@@ -34,11 +34,21 @@ export interface CampaignData {
   paths: Record<HeroId, { A: string; B: string }>;
   origins: Record<HeroId, string[]>;
   quirks: Quirk[];
-  levels: { xp: number[]; seasonedXp: number; hpPerLevel: number; promoteLevel: number; promoteCost: number; xpExpedition: number; xpBoss: number };
+  levels: {
+    xp: number[]; seasonedXp: number; hpPerLevel: number; promoteLevel: number; promoteCost: number; xpExpedition: number; xpBoss: number;
+    /** 따라잡기 (⟨반복 3⟩): 로스터 최고 레벨보다 catchUpGap 이상 낮은 영웅은 원정마다 경험 +catchUpXp 더 */
+    catchUpGap: number; catchUpXp: number;
+  };
   fatigue: { perSortie: number; cap: number };
   idleStressDecay: number;
   stressRetire: number;
-  death: { cheondoCost: number; deadline: number; wanderStress: number; bondReact: number; grief: number; resolve: number };
+  death: {
+    cheondoCost: number; deadline: number; wanderStress: number; bondReact: number; grief: number; resolve: number;
+    /** 캠페인 원정에서 전멸했을 때 쓰러진 영웅마다 마지막 사망 판정을 버틸 확률 (단판 원정은 0.5) ⟨반복 3⟩ */
+    wipeSurvive: number;
+    /** 캠페인 전투의 사망 판정(쓰러진 채 맞을 때) 버틸 확률 보정 — 처벌 강도 ⟨반복 3⟩ */
+    deathSave: number;
+  };
   bonds: { together: number; rescue: number; camp: number; duoAt: number };
   facilities: FacilityDef[];
   economy: {
@@ -54,6 +64,8 @@ export interface CampaignData {
     recommended: Record<string, Partial<Record<CommissionLength, Supplies>>>;
   };
   calendar: { seasons: string[]; festivals: { season: number; name: string; kind: 'wanderer' | 'biggut' | 'market'; text: string }[] };
+  /** 최종 원정이 열리는 조건: 3지역 보스 길을 이만큼 마친 뒤 */
+  finalUnlock: { bossWins: number };
   rift: { max: number; perSeason: number; bossHaewon: number; bossKill: number; strong: number[]; hpMultPerStep: number; countdown: number; sealResetTo: number };
   events: VillageEvent[];
   commissions: Record<string, { family: string; story: string }[]>;

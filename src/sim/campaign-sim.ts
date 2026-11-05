@@ -125,6 +125,11 @@ const median = (xs: number[]) => {
   return s.length ? (s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2) : 0;
 };
 
+const quantile = (xs: number[], q: number) => {
+  const s = xs.slice().sort((a, b) => a - b);
+  return s.length ? s[Math.min(s.length - 1, Math.ceil(q * s.length) - 1)] : 0;
+};
+
 export function summarize(res: CampaignResult[]) {
   const ended = res.filter((r) => r.ending === 'good' || r.ending === 'normal');
   const allRows = res.flatMap((r) => r.rows);
@@ -165,6 +170,8 @@ export function summarize(res: CampaignResult[]) {
     },
     expeditionsToEnding: { median: median(ended.map((r) => r.expeditions)), mean: r3(mean(ended.map((r) => r.expeditions))), min: Math.min(...ended.map((r) => r.expeditions)), max: Math.max(...ended.map((r) => r.expeditions)) },
     inTarget25to40: r3(ended.filter((r) => r.expeditions >= 25 && r.expeditions <= 40).length / Math.max(1, res.length)),
+    /** 원정 수 90번째 백분위 (결말과 관계없이 모든 캠페인) ⟨반복 3⟩ */
+    expeditionsP90: quantile(res.map((r) => r.expeditions), 0.9),
     deaths: { median: median(res.map((r) => r.deaths)), mean: r3(mean(res.map((r) => r.deaths))), inTarget3to8: r3(res.filter((r) => r.deaths >= 3 && r.deaths <= 8).length / res.length) },
     rosterAvg: r3(mean(res.map((r) => r.rosterAvg))),
     countdownReached: r3(res.filter((r) => r.countdown).length / res.length),
@@ -228,7 +235,7 @@ async function main() {
   const s = sum;
   process.stdout.write(
     `결말 ${s.endings.good + s.endings.normal}/${runs} (좋은 ${s.endings.good} · 보통 ${s.endings.normal} · 실패 ${s.endings.fail} · 상한 ${s.endings.cap} · 막힘 ${s.endings.stuck})\n` +
-    `결말까지 원정 중앙 ${s.expeditionsToEnding.median} (평균 ${s.expeditionsToEnding.mean}, ${s.expeditionsToEnding.min}~${s.expeditionsToEnding.max}) · 25~40 안 ${(s.inTarget25to40 * 100).toFixed(0)}%\n` +
+    `결말까지 원정 중앙 ${s.expeditionsToEnding.median} (평균 ${s.expeditionsToEnding.mean}, ${s.expeditionsToEnding.min}~${s.expeditionsToEnding.max}) · 25~40 안 ${(s.inTarget25to40 * 100).toFixed(0)}% · P90 ${s.expeditionsP90}\n` +
     `사망 중앙 ${s.deaths.median} (평균 ${s.deaths.mean}) · 3~8 안 ${(s.deaths.inTarget3to8 * 100).toFixed(0)}% · 로스터 평균 ${s.rosterAvg} · 카운트다운 도달 ${(s.countdownReached * 100).toFixed(0)}%\n` +
     `최종 보스 ${s.finalBoss.won}/${s.finalBoss.attempts} (${(s.finalBoss.rate * 100).toFixed(0)}%, 해원 ${s.finalBoss.haewon}) · 지역 2 개방 원정 ${s.regionOpenAt[2]} · 지역 3 ${s.regionOpenAt[3]}\n` +
     `클리어율: ${Object.entries(s.clearRates).sort().map(([k, v]) => `${k} ${(v.clear * 100).toFixed(0)}%(${v.n})`).join(' · ')}\n` +

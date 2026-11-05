@@ -76,3 +76,14 @@ test('능력 트리거는 데이터에 적힌 엔진 이름 그대로 (빈 트�
   const cheongbo = d.cardById.get('jaebi.cheongbo')!.effects.find((o) => o.op === 'power');
   assert.ok(cheongbo && cheongbo.op === 'power' && cheongbo.trigger === 'turn_start');
 });
+
+test('⟨반복 3⟩ 동명이인: 고른 적의 명부를 모두 다른 적(두 번째 대상)에게 옮기고, 점지 2도 옮겨 받은 적에게', () => {
+  const s = mk(['chasa', 'posu', 'seungnyeo'], 'h1');
+  for (const e of s.enemies) e.hp = e.maxHp = 999;
+  s.enemies[0].doom = 5;
+  play(s, 'chasa.dongmyeong_iin', { enemy: 0, enemy2: 1 });
+  assert.equal(s.enemies[0].doom, 0);
+  assert.equal(s.enemies[1].doom, 5);
+  assert.equal(s.enemies[0].mark, 0, '명부를 빼앗긴 적에게는 점지가 없다');
+  assert.equal(s.enemies[1].mark, 2, '옮겨 받은 적에게 점지 2');
+});

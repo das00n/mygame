@@ -33,8 +33,11 @@ if (process.argv.includes('--campaign')) {
     let r2 = -1;
     let firstBuild = -1;
     const t0 = Date.now();
+    // --until-sindang N: 신당이 N단계가 되어 마을에 돌아오면 멈춘다 (e2e 대문 방 판이 3지역 코드를 얻는다)
+    const untilSindang = Number(arg('until-sindang', '0'));
     while (!app.campaign!.ending && app.campaign!.expeditions < maxExp && n < 400000) {
       const c = app.campaign!;
+      if (untilSindang && c.facilities.sindang >= untilSindang && app.screen === 'village') break;
       if (firstDeath < 0 && c.fallen.length) firstDeath = c.expeditions;
       if (firstCheondo < 0 && c.fallen.some((f) => f.honored)) firstCheondo = c.expeditions;
       if (r2 < 0 && c.facilities.sindang >= 2) r2 = c.expeditions;

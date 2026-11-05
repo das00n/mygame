@@ -28,12 +28,15 @@ export const BOT = {
   /** 보통 길은 보스보다 이만큼 낮은 레벨에서 */
   normalLevelGap: 0.4,
   /** 위험하면 돌아서는 파티 체력 비율 (마지막 전투 앞은 bossRetreatBelow) */
-  retreatBelow: 0.5,
-  bossRetreatBelow: 0.7,
+  retreatBelow: 0.45,
+  bossRetreatBelow: 0.6,
   /** 균열이 이만큼이면 준비된 보스로 균열을 줄인다 */
   riftWorry: 7,
   /** 최종 원정에 나설 파티 평균 레벨 */
   finalLevel: 2.5,
+  /** 익힌 카드가 이만큼 안 되면 준비 레벨을 (모자란 장수 × learnedPenalty)만큼 깎는다 ⟨반복 3⟩ */
+  learnedReady: 4,
+  learnedPenalty: 0.25,
 };
 
 function score(c: Campaign, p: Person): number {
@@ -59,9 +62,14 @@ export function chooseParty(c: Campaign): string[] | null {
   return best ? best.map((p) => p.uid) : null;
 }
 
+/** 준비 정도: 레벨에서, 익힌 카드가 모자라 로드아웃이 시작 카드뿐인 사람은 깎는다 — 사람은 레벨만이 아니라 덱을 보고 깊이 들어간다 ⟨반복 3⟩ */
+function readyLevel(p: Person): number {
+  return p.level - Math.max(0, BOT.learnedReady - p.learned.length) * BOT.learnedPenalty;
+}
+
 function partyLevel(c: Campaign, uids: string[]): number {
   const ps = uids.map((u) => c.roster.find((p) => p.uid === u)!);
-  return ps.reduce((a, p) => a + p.level, 0) / ps.length;
+  return ps.reduce((a, p) => a + readyLevel(p), 0) / ps.length;
 }
 
 /** 지역 r 의 보스 길에 나설 파티 평균 레벨 */
@@ -86,7 +94,8 @@ export function chooseCommission(c: Campaign, uids: string[]): Commission | null
   const deep = deepestRegion(c);
   const bossAt = (r: number) => cs.find((x) => x.length === 'boss' && x.region === r && !x.seal);
   const normalAt = (r: number) => cs.find((x) => x.length === 'normal' && x.region === r);
-  if (c.rift >= BOT.riftWorry) for (let r = deep; r >= 1; r--) if (lv >= bossReady(r) && bossAt(r)) return bossAt(r)!;
+  // 균열이 차오르면 가장 확실한(얕은) 보스로 줄인다 ⟨반복 3: 깊은 보스부터 → 얕은 보스부터⟩
+  if (c.rift >= BOT.riftWorry) for (let r = 1; r <= deep; r++) if (lv >= bossReady(r) && bossAt(r)) return bossAt(r)!;
   const sindangNext = buildOptions(c).find((x) => x.id === 'sindang');
   const needChiseong = !!sindangNext && c.chiseong < (sindangNext.cost.chiseong ?? 0);
   for (let r = deep; r >= 1; r--) {

@@ -112,7 +112,8 @@ export function MapView({ run, onPick }: { run: Run; onPick: (p: Pos) => void })
             <rect class={`room ${rm.visited ? 'visited' : ''} ${rm.kind === 'boss' ? 'boss' : ''} ${rm.camp ? 'camp' : ''} ${r ? 'reach' : ''}`} x={x - s / 2} y={y - s / 2} width={s} height={s} />
             {rm.kind === 'entrance' && <path d={`M${x - 6} ${y + 6}V${y - 5}M${x + 6} ${y + 6}V${y - 5}M${x - 8} ${y - 4}H${x + 8}`} stroke="#e2573f" stroke-width="1.6" fill="none" />}
             {rm.kind === 'ferry' && <path d={`M${x - 7} ${y + 1}h14l-3 4h-8z M${x} ${y + 1}V${y - 6}l5 4`} stroke="#8fb5dc" stroke-width="1.3" fill="none" />}
-            {ic && rm.kind !== 'ferry' && <svg x={x - 6.5} y={y - 6.5} width={13} height={13} viewBox="0 0 16 16" style={{ color: ic.color }}>{iconBody(ic.icon)}</svg>}
+            {ic && rm.kind !== 'ferry' && !rm.gate && <svg x={x - 6.5} y={y - 6.5} width={13} height={13} viewBox="0 0 16 16" style={{ color: ic.color }}>{iconBody(ic.icon)}</svg>}
+            {rm.gate && <text x={x} y={y + 1} class="boss-glyph gate-glyph" data-testid={`gate-r${rm.id}`} data-done={rm.content.done ? '1' : undefined}>{rm.content.done ? '開' : '門'}</text>}
             {rm.kind === 'boss' && <text x={x} y={y + 1} class="boss-glyph">{rm.content.done ? '解' : '恨'}</text>}
             {!rm.known && <text class="q" x={x} y={y}>?</text>}
             {rm.camp && !rm.campUsed && <circle cx={x + s / 2 - 1} cy={y - s / 2 + 1} r={3.2} fill="#ffc964" stroke="#2a1a06" stroke-width=".8" />}
@@ -188,6 +189,7 @@ export function MapScreen() {
               <span><svg width="12" height="12" viewBox="0 0 16 16" style={{ color: '#cfc2ff' }}>{iconBody('doom')}</svg>방 이벤트</span>
               <span><svg width="12" height="12" viewBox="0 0 16 16" style={{ color: '#ff8f78' }}>{iconBody('collapse')}</svg>덫</span>
               <span><i style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#ffc964', display: 'inline-block' }} />길굿 터</span>
+              {run.dungeon.rooms.some((r) => r.gate) && <span>門 대문(통행: 지전 1 · 문답 · 문지기)</span>}
               <span>? 미답 · −N 순간 이동 넋등</span>
             </div>
           </div>
@@ -262,6 +264,7 @@ function RunFlags({ run }: { run: Run }) {
   if (f.crow) bits.push('까마귀: 첫 턴 홀림 1');
   if (f.sonnimStart) bits.push(`손님 대접 +${f.sonnimStart}로 시작`);
   if (f.gateFree) bits.push(`대문 통행 무료 ${f.gateFree}`);
+  if (run.dungeon.rooms.some((r) => r.gate)) bits.push(`대문 ${f.gates ?? 0}/${run.dungeon.rooms.filter((r) => r.gate).length}`);
   if (f.eopTier !== undefined) bits.push(`업경대 ${f.eopTier}구간${f.knots ? ` · 매듭 ${f.knots.toString(2).split('1').length - 1}개 풀림` : ''}`);
   if (f.jangdanFights?.left) bits.push(`첫 턴 장단 +${f.jangdanFights.n} (${f.jangdanFights.left}전투)`);
   if (f.mealBonus) bits.push(`끼니 +${Math.round(f.mealBonus * 100)}%p`);

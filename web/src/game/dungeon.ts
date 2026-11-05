@@ -181,12 +181,21 @@ export function generateDungeon(h: HasRng, c: Commission, region = 1, final = fa
     const mids = rooms.filter((r) => r.kind === 'normal').sort((a, b) => Math.abs((d.get(a.id) ?? 0) - maxD0 / 2) - Math.abs((d.get(b.id) ?? 0) - maxD0 / 2));
     if (mids[0]) mids[0].content = { k: 'event', id: 'sonnim_madang' };
   }
+  // 3지역: 대문 방 — 입구에서 보스 굴 앞(보통 길이면 가장 먼 방)까지의 척추 위 보통 방에 고르게 (05-region3 §1 ⟨반복 3⟩). 난수를 쓰지 않는다
+  const gateN = map.gate_rooms ?? 0;
+  if (gateN > 0) {
+    for (const r of spine(rooms, edges, entrance, ferry >= 0 ? ferry : farthest(rooms, d, entrance), gateN)) {
+      r.content = { k: 'event', id: 'daemun_tonghaeng' };
+      r.gate = true;
+      r.known = true;
+    }
+  }
   // 길굿 터: 보통 길이는 가운데쯤 방 하나, 보스 길은 + 보스 굴 앞 방
   const campN = isBoss ? 1 : c.camps;
   if (campN > 0) {
     const maxD = Math.max(...[...d.values()]);
     const mid = rooms
-      .filter((r) => r.kind === 'normal' || r.kind === 'guard')
+      .filter((r) => (r.kind === 'normal' || r.kind === 'guard') && !r.gate)
       .map((r) => ({ r, sc: -Math.abs((d.get(r.id) ?? 0) - maxD / 2) + (r.kind === 'normal' ? 0.5 : 0) + rand(h) * 0.3 }))
       .sort((a, b) => b.sc - a.sc);
     for (const m of mid.slice(0, campN)) m.r.camp = true;
@@ -213,6 +222,40 @@ export function generateDungeon(h: HasRng, c: Commission, region = 1, final = fa
   if (boss >= 0) rooms[boss].known = true; // 보스 굴은 처음부터 공개 (탐험 §1)
   if (ferry >= 0) rooms[ferry].known = true;
   return { w: W, h: H, rooms, corridors, entrance, boss, ferry };
+}
+
+/** 입구에서 가장 먼 방 (같으면 오른쪽) */
+function farthest(rooms: Room[], d: Map<number, number>, entrance: number): number {
+  let best = entrance;
+  for (const r of rooms) {
+    const dr = d.get(r.id) ?? 0;
+    const db = d.get(best) ?? 0;
+    if (dr > db || (dr === db && r.x > rooms[best].x)) best = r.id;
+  }
+  return best;
+}
+
+/** 대문 방 후보: 입구 → 끝 방 최단 경로 위의 보통 방 중 n개를 고르게 (손님 마당 같은 고정 방은 피한다) */
+function spine(rooms: Room[], edges: [number, number][], from: number, to: number, n: number): Room[] {
+  const adj = new Map<number, number[]>();
+  for (const [a, b] of edges) {
+    (adj.get(a) ?? adj.set(a, []).get(a)!).push(b);
+    (adj.get(b) ?? adj.set(b, []).get(b)!).push(a);
+  }
+  const prev = new Map<number, number>([[from, -1]]);
+  const q = [from];
+  while (q.length) {
+    const x = q.shift()!;
+    for (const y of (adj.get(x) ?? []).slice().sort((p, r) => p - r)) if (!prev.has(y)) {
+      prev.set(y, x);
+      q.push(y);
+    }
+  }
+  const path: number[] = [];
+  for (let x = to; x >= 0 && prev.has(x); x = prev.get(x)!) path.unshift(x);
+  const cands = path.map((id) => rooms[id]).filter((r) => r.kind === 'normal' && !(r.content.k === 'event' && r.content.id === 'sonnim_madang'));
+  if (cands.length <= n) return cands;
+  return Array.from({ length: n }, (_, k) => cands[Math.floor(((k + 0.5) * cands.length) / n)]);
 }
 
 // ── 조회 ──────────────────────────────────────────────────────────────
