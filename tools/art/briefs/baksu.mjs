@@ -52,7 +52,7 @@ export default [
     '굿상 앞에서 신칼을 들어 장군을 청하는 작두박수',
     '굿상 위에 서릿날 장군의 자리가 선다 — 칼날 같은 차가운 빛',
     { bg: 'geumjul', f: '굿상 위 칼빛', a: '장군 신령은 가상 이름·얼굴 없음' }],
-  ['sinkal_goreugi', 'none', '역귀', 'crack', 'insert', 'sinkal',
+  ['sinkal_goreugi', 'none', '역귀', 'crack', 'insert', 'sinkal sinkal',
     '나란히 놓인 신칼 두 자루 클로즈업',
     '고른 칼날의 그림자가 화면 끝 원귀에 금을 긋는다',
     { f: '두 칼날' }],

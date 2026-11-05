@@ -605,16 +605,6 @@ button { font: inherit; color: inherit; }
 .relic .rn { font-family: var(--font-brush); font-size: 24px; color: var(--lamp); line-height: 1; }
 
 /* ── 길굿 ─────────────────────────────────────────── */
-.camp-fire {
-  height: 110px; border-radius: var(--radius); border: 1px solid var(--line);
-  background:
-    radial-gradient(40% 70% at 50% 100%, rgba(255, 170, 70, .55), rgba(255,170,70,0) 70%),
-    radial-gradient(70% 90% at 50% 110%, rgba(195, 52, 39, .35), rgba(0,0,0,0) 70%),
-    var(--ink-1);
-  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px;
-  position: relative; overflow: hidden;
-}
-.camp-fire .flame { width: 26px; height: 40px; background: radial-gradient(50% 60% at 50% 70%, #fff1c0, #ffb347 50%, rgba(255,120,40,0) 75%); border-radius: 50% 50% 45% 45%; animation: flicker 1.3s infinite; }
 .points { display: flex; gap: 3px; flex-wrap: wrap; }
 .points i { width: 12px; height: 12px; border: 1.5px solid var(--lamp-2); transform: rotate(45deg); margin: 3px; }
 .points i.on { background: var(--lamp); box-shadow: 0 0 6px var(--lamp-glow); }
@@ -643,22 +633,6 @@ button { font: inherit; color: inherit; }
 .rift-cells i { width: 12px; height: 14px; border: 1px solid var(--line-2); background: var(--ink-1); display: inline-block; }
 .rift-cells i.mark { border-color: rgba(226, 87, 63, .6); }
 .rift-cells i.on { background: linear-gradient(180deg, #5a2a5e, #8a3a4a); border-color: #b8607a; }
-.scene {
-  position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 6px; align-items: end;
-  padding: 18px 10px 10px; border: 1px solid var(--line); border-radius: var(--radius);
-  background: linear-gradient(180deg, #121830 0%, #1a2240 60%, #2a2a2a 61%, #23201a 100%);
-  min-height: 110px; overflow: hidden;
-}
-.bldg { display: flex; flex-direction: column; align-items: center; gap: 2px; opacity: .35; }
-.bldg.t1, .bldg.t2, .bldg.t3 { opacity: 1; }
-.bldg .roof { width: 52px; height: 20px; background: #3a2f28; clip-path: polygon(0 100%, 12% 25%, 50% 0, 88% 25%, 100% 100%); border-bottom: 3px solid #6a4a2a; }
-.bldg.t2 .roof { background: #5a3b2a; border-bottom-color: var(--cinnabar); }
-.bldg.t3 .roof { background: #7a4a2a; border-bottom-color: var(--lamp); box-shadow: 0 -2px 10px var(--lamp-glow); }
-.bldg .nm { font-size: 12px; color: var(--paper); background: #2b2420; padding: 0 4px; border: 1px solid #4a3a2a; }
-.bldg .tiny { color: var(--lamp); letter-spacing: 2px; }
-.geumjul { position: absolute; left: 8px; right: 8px; top: 8px; height: 2px; background: repeating-linear-gradient(90deg, #d9cfa8 0 10px, transparent 10px 16px); opacity: .7; }
-.sotdae { position: absolute; right: 12px; top: 10px; width: 3px; height: 70px; background: #8a6a3a; }
-.sotdae::after { content: ''; position: absolute; top: -6px; left: -6px; width: 15px; height: 6px; background: #c9a85a; clip-path: polygon(0 50%, 70% 0, 100% 50%, 70% 100%); }
 .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 8px; }
 .fac { background: var(--ink-1); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; text-align: left; color: var(--text); font: inherit; }
 .fac.built { border-color: var(--line-2); }

@@ -160,8 +160,8 @@ export function SpiritParts({ family, tier = 'normal', boss, state = 'idle' }: S
   const bossExtra = boss ? BOSS_EXTRA[boss] : undefined;
   const haewon = state === 'haewon';
   const ash = state === 'cheochi';
-  const fill = haewon ? '#fffaf0' : ash ? '#5a5650' : HANJI;
-  const stroke = ash ? '#3a3732' : '#8f8774';
+  const fill = haewon ? '#fffaf0' : ash ? '#8a857a' : HANJI;
+  const stroke = ash ? '#4a4740' : '#8f8774';
   return (
     <g transform={`scale(${-s} ${s})`}>
       {!ash && <ellipse class="aura" cx="0" cy="-66" rx="40" ry="66" fill={haewon ? '#fff3d0' : tint} opacity=".45" filter="url(#jsg-aura)" />}

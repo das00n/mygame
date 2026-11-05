@@ -1,319 +1,319 @@
 // 자동 생성 — node tools/art/build.mjs. 손으로 고치지 않는다(원본: tools/art/briefs/*.mjs).
-// 카드 id → 'hero|pose|target|count|fx|fx2|framing|props|bg|accent|mask|vs|tier|emblem|boss|downed'
-// 합기는 hero 'a+b', pose 'a/b', props 'a의 것/b의 것'(쉼표로 여럿).
-export const ART_TABLE: Readonly<Record<string, string>> = {
-  'manshin.cheongbae': 'manshin|summon|altar|1|light||medium|bangul,buchae,gutsang|jihwa|h0',
-  'manshin.bangul': 'manshin|strike|억울귀|1|ripple|ledger|close|bangul,buchae|gate|h0',
-  'manshin.gongsu': 'manshin|cast|역귀|1|seal||medium|buchae,bangul|village|h0',
-  'manshin.buchae_makgi': 'manshin|guard|잡귀잡신|2|ward|light|close|buchae,bangul|geumjul|h0',
-  'manshin.yeoldu_bangul': 'manshin|strike|굶주린 넋|1|ripple||insert|bangul|mat|h0',
-  'manshin.wongwi_homyeong': 'manshin|cast|억울귀|1|ledger|thread|medium|buchae|gate|h0',
-  'manshin.buchae_baram': 'manshin|strike|잡귀잡신|3|wind||wide|buchae|geumjul|h0',
-  'manshin.bangul_cheongbae': 'manshin|strike|수귀|1|burst|light|medium|bangul,gutsang|water|h0',
-  'manshin.janggun_cheongbae': 'manshin|summon|altar|1|light||wide|woldo,gutsang|geumjul|h0',
-  'manshin.chilseong_maji': 'manshin|pray|altar|1|light||medium|gutsang|stars|h0',
-  'manshin.yeonpungdae': 'manshin|dance|self|1|swirl||medium|buchae,bangul|mat|h0',
-  'manshin.mubok_yeomigi': 'manshin|pray|self|1|ward||close|mubok|jihwa|h0',
-  'manshin.soji': 'manshin|offer|altar|1|smoke|flame|medium|soji,gutsang|jihwa|h0',
-  'manshin.ssal': 'manshin|throw|객귀|1|scatter|seal|medium|rice|road|h0',
-  'manshin.daegam_nori': 'manshin|dance|altar|1|beat||medium|cup,buchae,gutsang|jihwa|h0',
-  'manshin.janggun_gongsu': 'manshin|strike|무장 원귀|1|slash||close|woldo|gate|h0',
-  'manshin.chilseong_gongsu': 'manshin|cast|억울귀|1|ledger|motes|wide|buchae|stars|h0',
-  'manshin.daegam_gongsu': 'manshin|strike|역귀|1|burst|paper|medium|buchae,cup|village|h0',
-  'manshin.sinryeong_baeung': 'manshin|summon|무장 원귀|2|light|thread|wide|buchae,gutsang|gate|h0',
-  'manshin.myeongdo': 'manshin|cast|억울귀|1|light|seal|close|myeongdo|gate|h0',
-  'manshin.josang_maji': 'manshin|offer|altar|1|light|seal|medium|jijeon,gutsang,wipae|eaves|h0||객귀',
-  'manshin.geumeum_cheongbae': 'manshin|summon|altar|1|light||wide|bangul,gutsang|night|h0',
-  'manshin.jemulsang': 'manshin|offer|altar|1|paper||medium|bujeok,gutsang|mat|h0',
-  'manshin.hongcheollik': 'manshin|dance|잡귀잡신|2|light||close|hongcheollik,bangul|geumjul|h0',
-  'manshin.chilseongdan': 'manshin|pray|altar|1|ledger||insert|gutsang|stars|h0',
-  'manshin.eonwoldo': 'manshin|strike|무장 원귀|3|slash||wide|woldo|hills|h0',
-  'manshin.obanggi': 'manshin|summon|self|1|wind||medium|obanggi|geumjul|h0',
-  'manshin.mubok_garaipgi': 'manshin|dance|self|1|swirl||close|mubok|none|h0',
-  'manshin.myeongjul': 'manshin|offer|party|1|thread|ledger|wide|myeongju|gate|h0||억울귀*2',
-  'manshin.sineomeoni': 'manshin|pray|ally|1|light||medium|bangul|hills|h0',
-  'jaebi.janggu_jangdan': 'jaebi|drum|self|1|beat||medium|janggu,chae|mat|h0',
-  'jaebi.jing_ullim': 'jaebi|strike|잡귀잡신|3|ripple||wide|jingchae,jing|geumjul|h0',
-  'jaebi.chuimsae': 'jaebi|cast|party|1|paper||close|chae,janggu|geumjul|h0',
-  'jaebi.jangdan_bakkum': 'jaebi|drum|ally|1|swap|beat|wide|janggu,chae|hills|h0',
-  'jaebi.chaepyeon': 'jaebi|drum|역귀|1|ripple||close|chae,janggu|village|h0',
-  'jaebi.jegeum': 'jaebi|cast|잡귀잡신|2|burst||medium|jegeum|geumjul|h0',
-  'jaebi.makjangdan': 'jaebi|drum|무장 원귀|3|burst|beat|wide|janggu,chae|gate|h0',
-  'jaebi.jingchae': 'jaebi|strike|무장 원귀|1|burst||medium|jingchae,jing|gate|h0',
-  'jaebi.taepyeongso': 'jaebi|aim|수귀|3|wind|ward|wide|taepyeongso|water|h0',
-  'jaebi.deongdeokgungi': 'jaebi|dance|self|1|beat||medium|janggu,chae|geumjul|h0',
-  'jaebi.geosang': 'jaebi|offer|ally|1|ward||medium|chae,janggu|hills|h0',
-  'jaebi.cheongbae_jangdan': 'jaebi|drum|altar|1|light||medium|janggu,chae,gutsang|jihwa|h0',
-  'jaebi.heung': 'jaebi|dance|party|1|paper|beat|wide|chae|village|h0',
-  'jaebi.chumsawi': 'jaebi|drum|ally|1|beat||medium|janggu,chae|hills|h0',
-  'jaebi.subu': 'jaebi|drum|party|1|ward||wide|janggu,chae|geumjul|h0',
-  'jaebi.sinmyeong_janggu': 'jaebi|drum|객귀|1|paper|burst|medium|janggu,chae|road|h0',
-  'jaebi.bujeongnori': 'jaebi|drum|잡귀잡신|1|burst||close|janggu,chae|geumjul|h0',
-  'jaebi.geollip': 'jaebi|offer|altar|1|scatter||wide|jijeon,gutsang|mat|h0||굶주린 넋*2',
-  'jaebi.teoju': 'jaebi|offer|altar|1|light||medium|bowl,gutsang|village|h0',
-  'jaebi.sorigwangdae': 'jaebi|cast|altar|1|swirl||medium|piri,gutsang|jihwa|h0',
-  'jaebi.jeseok': 'jaebi|pray|altar|1|light||wide|gutsang,jihwa|jihwa|h0',
-  'jaebi.baldidim': 'jaebi|drum|ally|1|ward|swap|close|janggu,chae|hills|h0',
-  'jaebi.cheongbo': 'jaebi|drum|self|1|beat||wide|janggu,chae|hills|h0',
-  'jaebi.chumpan': 'jaebi|drum|party|1|swap|burst|wide|janggu,chae|village|h0||잡귀잡신*2',
-  'jaebi.sigimsae': 'jaebi|cast|self|1|swirl|paper|close|piri|none|h0',
-  'jaebi.cheondung_jing': 'jaebi|strike|무장 원귀|2|ripple||close|jingchae,jing|night|h0',
-  'jaebi.ojang': 'jaebi|drum|self|1|beat||insert|janggu,chae|none|h0',
-  'jaebi.sinawi': 'jaebi|drum|self|1|swirl||wide|janggu,chae|moon|h0',
-  'jaebi.baraji': 'jaebi|drum|ally|1|thread||medium|janggu,chae|hills|h0',
-  'jaebi.samhyeon': 'jaebi|rest|party|1|ripple||wide|piri|geumjul|h0',
-  'jaebi.t_eolssu': 'jaebi|none|ally|1|ward||insert|bujeok|hills|h0',
-  'jaebi.t_jota': 'jaebi|none|self|1|beat||insert|bujeok|none|h0',
-  'jaebi.t_jalhanda': 'jaebi|none|객귀|1|burst||insert|bujeok|road|h0',
-  'posu.jojun': 'posu|aim|객귀|1|seal||medium|gun,hwayaktong|hills|h0',
-  'posu.hwaseungchong': 'posu|aim|무장 원귀|1|shot|crack|medium|gun|gate|h0',
-  'posu.geupso': 'posu|aim|억울귀|1|shot|ripple|close|gun|gate|h0',
-  'posu.eompye': 'posu|retreat|잡귀잡신|1|ward||medium|gun,rock|hills|h0',
-  'posu.ganeumsoe': 'posu|none|객귀|1|seal||insert|gun|road|h0',
-  'posu.kkojildae': 'posu|rest|self|1|smoke||close|kkojildae,gun,hwayaktong|none|h0',
-  'posu.giljabi': 'posu|aim|객귀|2|shot|seal|wide|gun|hills|h0',
-  'posu.santan_jum': 'posu|aim|잡귀잡신|3|scatter|crack|wide|gun,santan|geumjul|h0',
-  'posu.otjarak': 'posu|aim|몽달·손각시|1|shot||medium|gun|moon|h0',
-  'posu.gilteo': 'posu|aim|ally|1|shot|swap|wide|gun|gate|h0||무장 원귀',
-  'posu.deombul': 'posu|rest|역귀|1|ward||wide|gun,hwayaktong,bush|hills|h0',
-  'posu.bawi': 'posu|aim|수귀|1|seal||close|gun,rock|water|h0',
-  'posu.teumsae': 'posu|aim|잡귀잡신|1|shot|ripple|medium|gun|geumjul|h0',
-  'posu.olmu': 'posu|offer|객귀|1|chain|crack|medium|olmu|road|h0',
-  'posu.heutppurim': 'posu|aim|굶주린 넋|3|scatter|crack|wide|gun|road|h0',
-  'posu.sumtong': 'posu|aim|무장 원귀|1|shot|seal|close|gun,hwayaktong|gate|h0',
-  'posu.hwayaktong': 'posu|throw|수귀|3|burst|smoke|wide|hwayaktong|water|h0',
-  'posu.mori': 'posu|cast|party|1|swap|seal|wide|gun|road|h0||객귀*2',
-  'posu.hwayak_jaegi': 'posu|none|self|1|scatter||insert|hwayaktong|none|h0',
-  'posu.hwayak_yeongi': 'posu|throw|party|1|smoke|swap|wide|hwayaktong|geumjul|h0',
-  'posu.nunsseolmi': 'posu|rescue|객귀|1|seal||wide|gun|road|h0',
-  'posu.neok_kkwetturgi': 'posu|aim|수귀|1|shot|ripple|wide|gun|water|h0|||elite',
-  'posu.santan_serye': 'posu|aim|무장 원귀|3|scatter|crack|wide|gun|gate|h0',
-  'posu.deonnan': 'posu|none|역귀|1|crack||insert|santan|village|h0',
-  'posu.yakjeom': 'posu|cast|억울귀|1|seal|crack|medium|gun|gate|h0',
-  'posu.oegil': 'posu|aim|객귀|1|shot||wide|gun|road|h0',
-  'posu.geodun': 'posu|rest|self|1|seal||medium|gun,hwayaktong|none|h0',
-  'posu.beoljip': 'posu|aim|잡귀잡신|3|scatter|crack|medium|gun|village|h0',
-  'posu.sanyanggut': 'posu|dance|party|1|swap||wide|gun|geumjul|h0||객귀*2',
-  'posu.jumeoni': 'posu|throw|굶주린 넋|3|scatter|crack|medium|santan,gun|mat|h0',
-  'baksu.sinkal': 'baksu|strike|무장 원귀|1|slash|crack|medium|sinkal|gate|h0',
-  'baksu.jakdu': 'baksu|summon|self|1|light||medium|jakdu,sinkal|geumjul|h0',
-  'baksu.kalnal': 'baksu|dance|역귀|2|slash|beat|medium|sinkal|village|h0',
-  'baksu.magaseogi': 'baksu|advance|ally|1|ward||medium|sinkal|geumjul|h0||잡귀잡신',
-  'baksu.huinsul': 'baksu|dance|잡귀잡신|3|wind|crack|wide|sinkal|geumjul|h0',
-  'baksu.eonwoldo': 'baksu|strike|무장 원귀|1|slash|ripple|close|woldo|gate|h0',
-  'baksu.nal_sewugi': 'baksu|guard|self|1|light||medium|sinkal|none|h0',
-  'baksu.cheollik': 'baksu|guard|객귀|1|ward||close|cheollik,sinkal|road|h0',
-  'baksu.kaljaguk': 'baksu|strike|억울귀|1|crack|slash|medium|sinkal|gate|h0',
-  'baksu.jangdan_bal': 'baksu|advance|수귀|1|beat|burst|wide|sinkal|water|h0',
-  'baksu.gugunbok': 'baksu|pray|self|1|ward||close|gugunbok|none|h0',
-  'baksu.domu': 'baksu|dance|역귀|1|burst||medium|sinkal|mat|h0',
-  'baksu.janggun_cheong': 'baksu|summon|altar|1|light||medium|sinkal,gutsang|geumjul|h0',
-  'baksu.sinkal_goreugi': 'baksu|none|역귀|1|crack||insert|sinkal|village|h0',
-  'baksu.jeongjeok': 'baksu|pray|self|1|ward||wide|jakdu|night|h0',
-  'baksu.omgyeo': 'baksu|cast|억울귀|2|crack|thread|medium|sinkal|gate|h0',
-  'baksu.janggun_naerim': 'baksu|summon|altar|1|light||wide|jakdu,sinkal,gutsang|geumjul|h0',
-  'baksu.dangak': 'baksu|dance|무장 원귀|3|slash|beat|wide|sinkal|hills|h0',
-  'baksu.samjichang': 'baksu|strike|무장 원귀|1|ripple|burst|close|samjichang|gate|h0|||elite',
-  'baksu.sinjang': 'baksu|offer|altar|1|light||close|sinkal,gutsang|jihwa|h0',
-  'baksu.gongsu': 'baksu|cast|self|1|light||close|jakdu,sinkal|none|h0',
-  'baksu.hwimori': 'baksu|dance|잡귀잡신|3|swirl|crack|medium|sinkal|geumjul|h0',
-  'baksu.byeorak': 'baksu|cast|무장 원귀|3|ripple||wide|sinkal|night|h0',
-  'baksu.cheongbo': 'baksu|dance|self|1|beat|ward|medium|jakdu,sinkal|none|h0',
-  'baksu.beonjineun': 'baksu|pray|역귀|3|crack||wide|sinkal|village|h0',
-  'baksu.ssangnal': 'baksu|dance|무장 원귀|2|slash|crack|wide|jakdu,sinkal|geumjul|h0',
-  'baksu.yeongheom': 'baksu|none|self|1|light||insert|jakdu|none|h0',
-  'baksu.geodugi': 'baksu|throw|억울귀|1|crack|burst|medium|sinkal|gate|h0',
-  'baksu.ullim': 'baksu|cast|잡귀잡신|3|ripple|crack|wide|sinkal|hills|h0',
-  'baksu.naeryeoseogi': 'baksu|retreat|무장 원귀|3|ripple||wide|jakdu,sinkal|night|h0',
-  'seungnyeo.yukhwanjang': 'seungnyeo|strike|무장 원귀|1|burst|ripple|medium|yukhwanjang|gate|h0',
-  'seungnyeo.hapjang': 'seungnyeo|pray|self|1|ward||medium|yeomju|hills|h0',
-  'seungnyeo.gasa': 'seungnyeo|guard|ally|1|ward||medium|yukhwanjang|village|h0||역귀',
-  'seungnyeo.cheondo_yeombul': 'seungnyeo|pray|억울귀|1|ripple|ledger|wide|yeomju,moktak|hills|h0',
-  'seungnyeo.beotigo_seogi': 'seungnyeo|guard|굶주린 넋|2|ward||medium|yukhwanjang|mat|h0',
-  'seungnyeo.deung_dwiro': 'seungnyeo|guard|ally|1|swap|ward|medium|yukhwanjang|gate|h0||무장 원귀',
-  'seungnyeo.yeomjual': 'seungnyeo|throw|잡귀잡신|2|scatter||close|yeomju|geumjul|h0',
-  'seungnyeo.seokjang_badachigi': 'seungnyeo|strike|역귀|1|burst|ward|medium|yukhwanjang|village|h0',
-  'seungnyeo.ireum_bulleo': 'seungnyeo|cast|억울귀|1|ledger|ripple|medium|yeomju|gate|h0',
-  'seungnyeo.hoehyang': 'seungnyeo|pray|party|1|motes|ripple|wide|yeomju|gate|h0||억울귀',
-  'seungnyeo.moktak': 'seungnyeo|drum|잡귀잡신|1|ripple||close|moktak|geumjul|h0',
-  'seungnyeo.gori_sori': 'seungnyeo|strike|잡귀잡신|3|ripple||wide|yukhwanjang|geumjul|h0',
-  'seungnyeo.naerijjikneun': 'seungnyeo|strike|객귀|1|burst||close|yukhwanjang|road|h0',
-  'seungnyeo.jineon_oegi': 'seungnyeo|cast|self|1|paper|ward|medium|yeomju|none|h0',
-  'seungnyeo.saebyeok_yebul': 'seungnyeo|rest|self|1|paper||wide|moktak|eaves|h0',
-  'seungnyeo.apeuro_naseo': 'seungnyeo|advance|ally|1|burst|ward|wide|yukhwanjang|road|h0||객귀',
-  'seungnyeo.geumgang_jase': 'seungnyeo|guard|무장 원귀|1|ward|burst|close|yukhwanjang|gate|h0',
-  'seungnyeo.jineon_yeomsong': 'seungnyeo|pray|self|1|paper||close|yeomju|none|h0',
-  'seungnyeo.buchuk': 'seungnyeo|rescue|ally|1|swap|ward|medium|yukhwanjang|hills|h0||||||1',
-  'seungnyeo.beomjong': 'seungnyeo|strike|잡귀잡신|3|ripple|ward|wide|beomjong|eaves|h0',
-  'seungnyeo.wangsaeng_barwon': 'seungnyeo|pray|억울귀|1|light|motes|medium|yeomju|gate|h0',
-  'seungnyeo.eopgyeongdae': 'seungnyeo|cast|억울귀|1|light|ledger|medium|yukhwanjang,eopgyeongdae|gate|h0',
-  'seungnyeo.neok_geodeo': 'seungnyeo|strike|잡귀잡신|1|swirl||close|yukhwanjang|geumjul|h0',
-  'seungnyeo.sajahu': 'seungnyeo|cast|역귀|3|ripple||wide|yukhwanjang|hills|h0',
-  'seungnyeo.jari_bakkwo': 'seungnyeo|swap|ally|1|swap||wide|yukhwanjang|hills|h0',
-  'seungnyeo.baekpal_yeomju': 'seungnyeo|none|party|1|ward||insert|yeomju|geumjul|h0',
-  'seungnyeo.cheondojae': 'seungnyeo|pray|억울귀|3|light|motes|wide|yeomju|eaves|h0',
-  'seungnyeo.wangsaeng_deungbul': 'seungnyeo|offer|억울귀|1|light||medium|lamp|night|h0',
-  'seungnyeo.banghal': 'seungnyeo|strike|잡귀잡신|1|crack|burst|close|yukhwanjang|geumjul|h0',
-  'seungnyeo.cheongeun_seokjang': 'seungnyeo|strike|무장 원귀|1|burst||wide|yukhwanjang|gate|h0|||elite',
-  'seungnyeo.t_hosin': 'seungnyeo|none|self|1|ward||insert|jineon|none|h0',
-  'seungnyeo.t_pasa': 'seungnyeo|none|잡귀잡신|1|ripple||insert|jineon|geumjul|h0',
-  'beopsa.bujeok_sseugi': 'beopsa|write|self|1|paper||medium|brush,bujeok,jusa|mat|h0',
-  'beopsa.sinjangpyeon': 'beopsa|read|잡귀잡신|1|ripple|burst|medium|scroll|geumjul|h0',
-  'beopsa.hosinbu': 'beopsa|offer|ally|1|ward||medium|bujeok|hills|h0',
-  'beopsa.sinryeong_damgi': 'beopsa|cast|altar|1|paper|light|medium|bujeok,gutsang|jihwa|h0',
-  'beopsa.sinjang_horyeong': 'beopsa|cast|무장 원귀|1|ripple||close|scroll|gate|h0',
-  'beopsa.chukgwigyeong': 'beopsa|read|잡귀잡신|3|paper||wide|scroll|geumjul|h0',
-  'beopsa.sinmyeong_bujeok': 'beopsa|throw|역귀|1|flame|burst|medium|bujeok|village|h0',
-  'beopsa.bujeok_dabal': 'beopsa|offer|self|1|paper||close|bujeok|none|h0',
-  'beopsa.bujeok_jumeoni': 'beopsa|none|self|1|paper|motes|insert|pouch|none|h0',
-  'beopsa.bujeok_nalligi': 'beopsa|throw|객귀|2|paper|burst|wide|bujeok|road|h0',
-  'beopsa.suhobu_sseugi': 'beopsa|write|ally|1|ward||close|brush,bujeok|hills|h0',
-  'beopsa.haewongyeong': 'beopsa|read|억울귀|1|ledger||medium|scroll|gate|h0',
-  'beopsa.kkujitneun_gyeong': 'beopsa|cast|객귀|1|ledger|ripple|close|scroll|road|h0',
-  'beopsa.byeoksagyeong': 'beopsa|read|ally|1|ward|ledger|wide|scroll|geumjul|h0||잡귀잡신',
-  'beopsa.gyeongmun_geumjul': 'beopsa|offer|party|1|ward||wide|scroll,geumjul|geumjul|h0',
-  'beopsa.obang_horyeong': 'beopsa|cast|무장 원귀|3|ripple|light|wide|scroll|hills|h0',
-  'beopsa.bulgeun_bujeok': 'beopsa|write|self|1|paper||close|brush,jusa,bujeok|none|cin',
-  'beopsa.bujeok_baram': 'beopsa|throw|잡귀잡신|3|wind|paper|wide|bujeok|geumjul|h0',
-  'beopsa.bujeok_byeongpung': 'beopsa|guard|party|1|ward|paper|wide|bujeok|geumjul|h0',
-  'beopsa.bujeok_sareugi': 'beopsa|offer|수귀|1|flame|smoke|medium|bujeok|water|h0',
-  'beopsa.sinryeongbu_bonghagi': 'beopsa|write|altar|1|seal||medium|brush,bujeok,gutsang|jihwa|h0',
-  'beopsa.sinryeongkke_chugwon': 'beopsa|pray|altar|1|paper||wide|gutsang|jihwa|h0',
-  'beopsa.haewongyeong_wandok': 'beopsa|read|억울귀|3|ledger|motes|wide|scroll|gate|h0',
-  'beopsa.ireum_jeogeun': 'beopsa|throw|억울귀|1|ledger|paper|close|bujeok|gate|h0',
-  'beopsa.bujeong_ssitneun': 'beopsa|read|ally|1|motes|ward|medium|scroll,jeonghwasu|hills|h0',
-  'beopsa.sinryeong_giun': 'beopsa|summon|무장 원귀|3|light|burst|wide|gutsang|gate|h0',
-  'beopsa.jinsa_geureut': 'beopsa|none|self|1|motes||insert|jusa|none|cin',
-  'beopsa.dokgyeong_sammae': 'beopsa|rest|억울귀|1|ledger||wide|scroll,drum|mat|h0',
-  'beopsa.sinryeong_ongwi': 'beopsa|summon|party|1|ward|light|wide|gutsang|geumjul|h0',
-  'beopsa.samdumae': 'beopsa|throw|잡귀잡신|3|paper|burst|wide|bujeok,hawk|geumjul|h0',
-  'beopsa.t_hwabu': 'beopsa|none|역귀|1|flame||insert|bujeok|village|h0',
-  'beopsa.t_hwabu_red': 'beopsa|none|역귀|1|flame||insert|bujeok,jusa|village|cin',
-  'beopsa.t_suhobu': 'beopsa|none|ally|1|ward||insert|bujeok|hills|h0',
-  'beopsa.t_chukgwibu': 'beopsa|none|잡귀잡신|1|burst|ripple|insert|bujeok|geumjul|h0',
-  'beopsa.t_sinryeongbu': 'beopsa|none|altar|1|light||insert|bujeok|jihwa|h0',
-  'talggun.malttugi_jaedam': 'talggun|strike|객귀|1|burst||medium|whip|village|h0|malttugi',
-  'talggun.tal_bakkwosseugi': 'talggun|swap|ally|1|swap||medium|tal|hills|h0|yangban',
-  'talggun.deotboegi_chum': 'talggun|dance|잡귀잡신|1|burst|beat|medium|hansam|geumjul|h0|malttugi',
-  'talggun.sopum_deonjigi': 'talggun|throw|굶주린 넋|1|paper|ward|medium|gourd|mat|h0|halmi',
-  'talggun.chaejjik_sawi': 'talggun|strike|몽달·손각시|1|slash||close|whip|moon|h0|malttugi',
-  'talggun.yangban_hyungnae': 'talggun|dance|억울귀|1|wind||medium|jwilbuchae|gate|h0|yangban',
-  'talggun.kkaekki_georeum': 'talggun|advance|잡귀잡신|1|burst||close|hansam|geumjul|h0|malttugi',
-  'talggun.eongdeongi_chum': 'talggun|dance|역귀|1|swirl||wide|hansam|village|h0|malttugi',
-  'talggun.malttugi_hwalgae': 'talggun|dance|잡귀잡신|3|wind|beat|wide|hansam,whip|geumjul|h0|malttugi',
-  'talggun.jipangi_jitgi': 'talggun|retreat|self|1|ward||medium|staff|none|h0|halmi',
-  'talggun.halmi_neokduri': 'talggun|cast|ally|1|beat|ward|medium|staff|hills|h0|halmi',
-  'talggun.pyojubak_dudeurigi': 'talggun|drum|self|1|beat|paper|close|gourd|none|h0|halmi',
-  'talggun.madang_dolgi': 'talggun|dance|ally|1|swap|beat|wide|hansam|village|h0|yangban',
-  'talggun.jwilbuchae_pyeogi': 'talggun|guard|ally|1|ward|swap|medium|jwilbuchae|hills|h0|yangban',
-  'talggun.geodeureum_chum': 'talggun|advance|역귀|1|wind||close|jwilbuchae|village|h0|yangban',
-  'talggun.se_tal_noreum': 'talggun|none|none|1|swap||insert|tal3|hills|h0',
-  'talggun.kkujitneun_jaedam': 'talggun|strike|억울귀|1|burst|seal|close|whip|gate|h0|malttugi',
-  'talggun.jaedam_batgi': 'talggun|cast|객귀|1|burst|swap|medium|jwilbuchae|road|h0|malttugi',
-  'talggun.talnoreumpan': 'talggun|dance|party|1|beat||wide|hansam|village|h0|yangban',
-  'talggun.yangban_haengse': 'talggun|rest|억울귀|1|seal||medium|jwilbuchae|gate|h0|yangban',
-  'talggun.halmi_heoteunchum': 'talggun|dance|party|1|ward|beat|wide|staff|geumjul|h0|halmi',
-  'talggun.jipangi_huryeochigi': 'talggun|strike|굶주린 넋|1|burst|ward|medium|staff|mat|h0|halmi',
-  'talggun.malttugi_apjang': 'talggun|advance|self|1|ward||medium|whip|road|h0|malttugi',
-  'talggun.sopum_botari': 'talggun|none|self|1|paper||insert|gourd,jwilbuchae|none|h0',
-  'talggun.halmi_dwitpuri': 'talggun|dance|party|1|motes|beat|wide|staff,gourd|moon|h0|halmi',
-  'talggun.tal_set_hanmom': 'talggun|strike|무장 원귀|1|slash||medium|tal|gate|h0|malttugi',
-  'talggun.nollimgeori': 'talggun|cast|몽달·손각시|1|seal||close|whip|moon|h0|malttugi',
-  'talggun.halmi_madang': 'talggun|rest|self|1|beat|ward|medium|staff|mat|h0|halmi',
-  'talggun.talpan_hanmadang': 'talggun|dance|무장 원귀|3|burst|seal|wide|hansam|village|h0|malttugi',
-  'talggun.tal_taeugi': 'talggun|offer|self|1|flame|smoke|close|tal|none|h0|yangban',
-  'talggun.t_pyojubak': 'talggun|none|잡귀잡신|1|burst||insert|gourd|geumjul|h0',
-  'talggun.t_jwilbuchae': 'talggun|none|ally|1|ward||insert|jwilbuchae|hills|h0',
-  'chasa.ora_jiugi': 'chasa|bind|객귀|1|chain|ledger|medium|ora|road|h0',
-  'chasa.jeokpaeji_pyeolchigi': 'chasa|read|억울귀|1|seal|ledger|medium|jeokpaeji|gate|h0',
-  'chasa.jeoseung_munjigi': 'chasa|guard|self|1|ward||close|bangmangi|none|h0',
-  'chasa.hon_geodugi': 'chasa|cast|무장 원귀|1|ledger|crack|close|ora|gate|h0',
-  'chasa.soesasl_huligi': 'chasa|strike|무장 원귀|1|chain||medium|chain|gate|h0',
-  'chasa.kkamagwi_simbureum': 'chasa|cast|잡귀잡신|3|ledger||wide|jeokpaeji,crow|geumjul|h0',
-  'chasa.yukmo_bangmangi': 'chasa|strike|역귀|1|burst|chain|close|bangmangi|village|h0',
-  'chasa.bulgeun_geulssi': 'chasa|write|억울귀|1|ledger||medium|brush,jeokpaeji|gate|h0',
-  'chasa.daemun_jikigi': 'chasa|guard|self|1|ward||wide|bangmangi|gate|h0',
-  'chasa.oratjul_danggigi': 'chasa|bind|ally|1|swap|ward|medium|ora|hills|h0',
-  'chasa.sangcheo_jitgi': 'chasa|cast|무장 원귀|1|crack|ward|close|ora|gate|h0',
-  'chasa.oratjul_sarigi': 'chasa|strike|수귀|1|chain||wide|ora|water|h0',
-  'chasa.neok_galmuri': 'chasa|cast|역귀|1|crack|ledger|medium|jeokpaeji|village|h0',
-  'chasa.jeokpaeji_daejo': 'chasa|read|객귀|1|seal|ledger|close|jeokpaeji|road|h0',
-  'chasa.bonhyang_mutgi': 'chasa|offer|객귀|1|seal||wide|jeokpaeji|village|h0',
-  'chasa.myeongbu_jiphaeng': 'chasa|strike|억울귀|1|ledger|chain|medium|bangmangi|gate|h0|||elite',
-  'chasa.eodum_sok_ireum': 'chasa|read|억울귀|1|ledger||wide|jeokpaeji,lamp|night|h0',
-  'chasa.mukkin_ireum': 'chasa|none|억울귀|1|ledger||insert|ora|gate|h0',
-  'chasa.gil_magaseogi': 'chasa|guard|ally|1|ward|seal|wide|bangmangi|road|h0||무장 원귀',
-  'chasa.munjigi_seoyak': 'chasa|pray|party|1|ward||wide|bangmangi|gate|h0',
-  'chasa.neokjul_butdeulgi': 'chasa|rescue|ally|1|thread|motes|medium|ora|hills|h0||||||1',
-  'chasa.jeoseunggil_donghaeng': 'chasa|advance|party|1|ward||wide|lamp|road|h0',
-  'chasa.maethin_han': 'chasa|offer|억울귀|1|chain|ledger|close|ora|gate|h0',
-  'chasa.dongmyeong_iin': 'chasa|read|객귀|2|thread|seal|medium|jeokpaeji|road|h0',
-  'chasa.jeoseungmun_dudeurigi': 'chasa|strike|무장 원귀|1|burst|chain|wide|bangmangi|gate|h0',
-  'chasa.jeoseung_pangyeol': 'chasa|read|억울귀|3|ledger|seal|wide|jeokpaeji|gate|h0',
-  'chasa.ireum_seokja': 'chasa|none|억울귀|1|ledger||insert|jeokpaeji|gate|h0',
-  'chasa.ajik_ttaega_anida': 'chasa|guard|ally|1|ward||wide|bangmangi|road|h0||객귀||||1',
-  'chasa.daesin_seoneun_chasa': 'chasa|advance|ally|1|ward|chain|medium|ora|gate|h0||무장 원귀*2',
-  'chasa.jeokpaeji_nangdok': 'chasa|read|잡귀잡신|3|seal|ledger|wide|jeokpaeji|geumjul|h0',
-  'duo.cheongsin_janggu': 'manshin+jaebi|drum/summon|altar|1|light|beat|wide|janggu,chae/bangul,gutsang|jihwa|h1',
-  'duo.gongsu_hanbal': 'manshin+posu|cast/aim|객귀|1|shot|seal|wide|buchae/gun|road|h1',
-  'duo.kalkkeut_cheongbae': 'manshin+baksu|summon/strike|altar|1|light|slash|wide|bangul/sinkal,gutsang|gate|h0||무장 원귀',
-  'duo.gildakkeum_yeombul': 'manshin+seungnyeo|cast/pray|억울귀|1|ledger|paper|wide|buchae/yeomju|road|h1',
-  'duo.jihwa_kkotgi': 'manshin+beopsa|offer/cast|altar|1|petals||medium|flower/bujeok,gutsang|jihwa|h0',
-  'duo.dwitjeon_noreum': 'manshin+talggun|cast/dance|잡귀잡신|2|seal|burst|wide|buchae/whip|geumjul|h1|malttugi',
-  'duo.sajasang_charim': 'manshin+chasa|offer/pray|altar|1|light|ledger|wide|bowls3/ora|gate|h1||억울귀',
-  'duo.hwaseung_jangdan': 'jaebi+posu|drum/aim|무장 원귀|1|shot|swap|wide|janggu,chae/gun|gate|h0',
-  'duo.dangak_jakdutagi': 'jaebi+baksu|drum/dance|역귀|1|slash|beat|wide|janggu,chae/sinkal,jakdu|village|h1',
-  'duo.moktak_baraji': 'jaebi+seungnyeo|drum/guard|none|1|beat|ward|wide|janggu,chae/moktak|hills|h0',
-  'duo.anjeungut_jangdan': 'jaebi+beopsa|rest/read|altar|1|paper||wide|drum/scroll,gutsang|mat|h1',
-  'duo.gillori': 'jaebi+talggun|drum/advance|none|1|beat||wide|janggu,chae/hansam|road|h1|malttugi',
-  'duo.orajul_gutgeori': 'jaebi+chasa|drum/bind|none|1|thread|beat|medium|janggu,chae/ora|hills|h1',
-  'duo.hwaseung_sinkal': 'posu+baksu|aim/strike|무장 원귀|1|shot|slash|wide|gun/sinkal|gate|h1',
-  'duo.beomjong_hanbal': 'posu+seungnyeo|aim/strike|잡귀잡신|1|ripple|shot|wide|gun/beomjong|geumjul|h0',
-  'duo.gyeong_tanhwan': 'posu+beopsa|aim/write|억울귀|1|shot|ripple|wide|gun/brush,bujeok|gate|h0',
-  'duo.sandae_gwanyeok': 'posu+talggun|aim/dance|객귀|1|seal|swap|wide|gun/whip|road|h1|malttugi',
-  'duo.chongseong_myeongbu': 'posu+chasa|aim/read|억울귀|1|shot|ledger|wide|gun/jeokpaeji|gate|h1',
-  'duo.kallal_hapjang': 'baksu+seungnyeo|strike/pray|무장 원귀|1|slash|ripple|wide|sinkal,jakdu/yeomju|gate|h1|||elite',
-  'duo.sinjang_kalbujeok': 'baksu+beopsa|summon/write|altar|1|paper||wide|sinkal/brush,bujeok,gutsang|jihwa|h1',
-  'duo.eokkaechum_jakdu': 'baksu+talggun|dance/retreat|역귀|1|crack|beat|wide|sinkal,jakdu/hansam|village|h0|halmi',
-  'duo.kallo_myeongbu': 'baksu+chasa|strike/read|억울귀|1|slash|ledger|wide|sinkal/jeokpaeji|gate|h1',
-  'duo.gyeongban_yeombulban': 'seungnyeo+beopsa|pray/read|억울귀|1|ledger|ripple|wide|yeomju/scroll|gate|h1',
-  'duo.gokkal_tal': 'seungnyeo+talggun|swap/swap|none|1|swap|ward|wide|yukhwanjang/tal|hills|h1|yangban',
-  'duo.jeoseunggil_baeung': 'seungnyeo+chasa|guard/guard|억울귀|1|ward|ledger|wide|yukhwanjang/bangmangi|gate|h1',
-  'duo.jjokbak_bujeok': 'beopsa+talggun|write/dance|none|1|paper||wide|brush,bujeok/gourd|hills|h0|halmi',
-  'duo.haewon_homyeong': 'beopsa+chasa|read/read|억울귀|3|ledger|chain|wide|scroll/jeokpaeji|gate|h1',
-  'duo.jeokpaeji_jaedam': 'talggun+chasa|strike/read|객귀|1|seal|swap|wide|whip/jeokpaeji|road|h0|malttugi',
-  'duo.t_eolssigu': 'manshin+jaebi|none|self|1|beat|ward|insert|bujeok|none|h1',
-  'duo.t_jihwa': 'manshin+beopsa|none|잡귀잡신|1|petals||insert|flower|geumjul|h1',
-  'duo.t_jineon': 'manshin+seungnyeo|none|잡귀잡신|1|ripple|ward|insert|jineon|geumjul|h1',
-  'duo.t_kalbujeok': 'baksu+beopsa|none|무장 원귀|1|slash|crack|insert|bujeok|gate|h1',
-  'duo.t_gyeongmun': 'jaebi+beopsa|none|억울귀|1|ledger||insert|scroll|gate|h1',
-  'duo.t_buchae': 'beopsa+talggun|none|역귀|1|wind|ward|insert|jwilbuchae|village|h1',
-  'common.jeonghwasu': 'anon|none|none|1|light||insert|jeonghwasu|moon|lamp',
-  'common.soji': 'anon|offer|party|1|smoke|flame|medium|soji|geumjul|lamp',
-  'common.ssaljeom': 'anon|none|none|1|scatter||insert|rice|mat|none',
-  'common.sonppyeok_jangdan': 'anon|drum|self|1|beat||close||none|lamp',
-  'common.daedong_jangdan': 'party|dance|party|1|beat|ward|wide||village|lamp',
-  'common.geumjul': 'anon|offer|party|1|ward||wide|geumjul|geumjul|none',
-  'common.sogeum': 'anon|throw|ally|1|scatter|ward|medium|salt|hills|none',
-  'common.pat': 'anon|throw|잡귀잡신|3|scatter||wide|beans|geumjul|cin',
-  'common.yaksuk': 'anon|rescue|ally|1|smoke|motes|medium|mugwort|hills|lamp||||||1',
-  'common.jari_naeeo': 'anon|swap|ally|1|swap||medium||hills|none',
-  'common.gosure': 'anon|throw|굶주린 넋|1|scatter||medium|bowl|hills|lamp',
-  'common.neokjeon': 'anon|offer|altar|1|motes||medium|neokjeon,gutsang|jihwa|lamp',
-  'common.curse_mangseorim': 'anon|none|잡귀잡신|1|chain||emblem||geumjul|han||||ankle',
-  'common.curse_heotgeot': 'anon|none|잡귀잡신|1|swirl||emblem||geumjul|han||||eyes',
-  'common.curse_wonmang': 'anon|none|억울귀|1|ripple||emblem||gate|han||||shoulder',
-  'common.curse_duryeoum': 'anon|none|객귀|1|none||emblem||road|han||||shadow',
-  'common.curse_daemun': 'anon|none|none|1|ripple||emblem|cup|hills|none||||gate',
-  'common.status_geuneul': 'anon|none|none|1|none||emblem|lamp|hills|lamp||||lamp',
-  'common.status_sangcheo': 'anon|none|none|1|crack||emblem||hills|none||||trap',
-  'common.status_jabeum': 'anon|none|잡귀잡신|1|none||emblem||geumjul|han||||noise',
-  'common.rescue_neokbureugi': 'anon|none|none|1|motes||emblem||hills|lamp||||soul',
-  'common.mourn_gok': 'anon|none|none|1|none||emblem||hills|none||||gok',
-  'common.offering_nojatdon': 'anon|offer|수귀|1|scatter||medium|jijeon|water|han|||boss||sakkun',
-  'common.offering_heoju': 'anon|offer|잡귀잡신|1|paper||medium|bujeok|geumjul|han|||boss||heoju',
-  'common.offering_sajabap': 'anon|offer|굶주린 넋|3|light||wide|bowls3|gate|lamp',
-  'common.offering_sonnimsang': 'anon|offer|altar|1|light||medium|soban|village|lamp',
-  'common.relic_kkot': 'anon|throw|무장 원귀|1|petals||medium|flower|gate|lamp',
-  'common.status_sinyeol': 'anon|none|역귀|1|none||emblem||village|han||||fever',
+// 묶음 → 줄마다 '키=hero|pose|target|count|fx|fx2|framing|props|bg|accent|mask|vs|tier|emblem|boss|downed' (원귀 계열은 draw.ts FAM_CODE 부호)
+// 영웅 묶음(만신~차사)은 hero 칸이 없다(묶음 이름이 곧 영웅). 합기는 hero 'a+b', pose 'a/b', props 'a의 것/b의 것'.
+export const ART_ROWS: Readonly<Record<string, string>> = {
+  manshin: `cheongbae=summon|altar|1|light||medium|bangul,buchae,gutsang|jihwa|h0
+bangul=strike|eok|1|ripple|ledger|close|bangul,buchae|gate|h0
+gongsu=cast|yeok|1|seal||medium|buchae,bangul|village|h0
+buchae_makgi=guard|jap|2|ward|light|close|buchae,bangul|geumjul|h0
+yeoldu_bangul=strike|gul|1|ripple||insert|bangul|mat|h0
+wongwi_homyeong=cast|eok|1|ledger|thread|medium|buchae|gate|h0
+buchae_baram=strike|jap|3|wind||wide|buchae|geumjul|h0
+bangul_cheongbae=strike|su|1|burst|light|medium|bangul,gutsang|water|h0
+janggun_cheongbae=summon|altar|1|light||wide|woldo,gutsang|geumjul|h0
+chilseong_maji=pray|altar|1|light||medium|gutsang|stars|h0
+yeonpungdae=dance|self|1|swirl||medium|buchae,bangul|mat|h0
+mubok_yeomigi=pray|self|1|ward||close|mubok|jihwa|h0
+soji=offer|altar|1|smoke|flame|medium|soji,gutsang|jihwa|h0
+ssal=throw|gaek|1|scatter|seal|medium|rice|road|h0
+daegam_nori=dance|altar|1|beat||medium|cup,buchae,gutsang|jihwa|h0
+janggun_gongsu=strike|mu|1|slash||close|woldo|gate|h0
+chilseong_gongsu=cast|eok|1|ledger|motes|wide|buchae|stars|h0
+daegam_gongsu=strike|yeok|1|burst|paper|medium|buchae,cup|village|h0
+sinryeong_baeung=summon|mu|2|light|thread|wide|buchae,gutsang|gate|h0
+myeongdo=cast|eok|1|light|seal|close|myeongdo|gate|h0
+josang_maji=offer|altar|1|light|seal|medium|jijeon,gutsang,wipae|eaves|h0||gaek
+geumeum_cheongbae=summon|altar|1|light||wide|bangul,gutsang|night|h0
+jemulsang=offer|altar|1|paper||medium|bujeok,gutsang|mat|h0
+hongcheollik=dance|jap|2|light||close|hongcheollik,bangul|geumjul|h0
+chilseongdan=pray|altar|1|ledger||insert|gutsang|stars|h0
+eonwoldo=strike|mu|3|slash||wide|woldo|hills|h0
+obanggi=guard|self|1|wind||medium|obanggi|geumjul|h0
+mubok_garaipgi=dance|self|1|swirl||close|mubok|none|h0
+myeongjul=offer|party|1|thread|ledger|wide|myeongju|gate|h0||eok*2
+sineomeoni=pray|ally|1|light||medium|bangul|hills|h0`,
+  jaebi: `janggu_jangdan=drum|self|1|beat||medium|janggu,chae|mat|h0
+jing_ullim=strike|jap|3|ripple||wide|jingchae,jing|geumjul|h0
+chuimsae=cast|party|1|paper||close|chae,janggu|geumjul|h0
+jangdan_bakkum=drum|ally|1|swap|beat|wide|janggu,chae|hills|h0
+chaepyeon=drum|yeok|1|ripple||close|chae,janggu|village|h0
+jegeum=cast|jap|2|burst||medium|jegeum|geumjul|h0
+makjangdan=drum|mu|3|burst|beat|wide|janggu,chae|gate|h0
+jingchae=strike|mu|1|burst||medium|jingchae,jing|gate|h0
+taepyeongso=aim|su|3|wind|ward|wide|taepyeongso|water|h0
+deongdeokgungi=dance|self|1|beat||medium|janggu,chae|geumjul|h0
+geosang=offer|ally|1|ward||medium|chae,janggu|hills|h0
+cheongbae_jangdan=drum|altar|1|light||medium|janggu,chae,gutsang|jihwa|h0
+heung=dance|party|1|paper|beat|wide|chae|village|h0
+chumsawi=drum|ally|1|beat||medium|janggu,chae|hills|h0
+subu=drum|party|1|ward||wide|janggu,chae|geumjul|h0
+sinmyeong_janggu=drum|gaek|1|paper|burst|medium|janggu,chae|road|h0
+bujeongnori=drum|jap|1|burst||close|janggu,chae|geumjul|h0
+geollip=offer|altar|1|scatter||wide|jijeon,gutsang|mat|h0||gul*2
+teoju=offer|altar|1|light||medium|bowl,gutsang|village|h0
+sorigwangdae=cast|altar|1|swirl||medium|piri,gutsang|jihwa|h0
+jeseok=pray|altar|1|light||wide|gutsang,jihwa|jihwa|h0
+baldidim=drum|ally|1|ward|swap|close|janggu,chae|hills|h0
+cheongbo=drum|self|1|beat||wide|janggu,chae|hills|h0
+chumpan=drum|party|1|swap|burst|wide|janggu,chae|village|h0||jap*2
+sigimsae=cast|self|1|swirl|paper|close|piri|none|h0
+cheondung_jing=strike|mu|2|ripple||close|jingchae,jing|night|h0
+ojang=drum|self|1|beat||insert|janggu,chae|none|h0
+sinawi=drum|self|1|swirl||wide|janggu,chae|moon|h0
+baraji=drum|ally|1|thread||medium|janggu,chae|hills|h0
+samhyeon=rest|party|1|ripple||wide|piri|geumjul|h0
+t_eolssu=none|ally|1|ward||insert|bujeok|hills|cin
+t_jota=none|self|1|beat||insert|bujeok|none|cin
+t_jalhanda=none|gaek|1|burst||insert|bujeok|road|cin`,
+  posu: `jojun=aim|gaek|1|seal||medium|gun,hwayaktong|hills|h0
+hwaseungchong=aim|mu|1|shot|crack|medium|gun|gate|h0
+geupso=aim|eok|1|shot|ripple|close|gun|gate|h0
+eompye=retreat|jap|1|ward||medium|gun,rock|hills|h0
+ganeumsoe=none|gaek|1|seal||insert|gun|road|h0
+kkojildae=rest|self|1|smoke||close|kkojildae,gun,hwayaktong|none|h0
+giljabi=aim|gaek|2|shot|seal|wide|gun|hills|h0
+santan_jum=aim|jap|3|scatter|crack|wide|gun,santan|geumjul|h0
+otjarak=aim|mong|1|shot||medium|gun|moon|h0
+gilteo=aim|ally|1|shot|swap|wide|gun|gate|h0||mu
+deombul=rest|yeok|1|ward||wide|gun,hwayaktong,bush|hills|h0
+bawi=aim|su|1|seal||close|gun,rock|water|h0
+teumsae=aim|jap|1|shot|ripple|medium|gun|geumjul|h0
+olmu=offer|gaek|1|chain|crack|medium|olmu|road|h0
+heutppurim=aim|gul|3|scatter|crack|wide|gun|road|h0
+sumtong=aim|mu|1|shot|seal|close|gun,hwayaktong|gate|h0
+hwayaktong=throw|su|3|burst|smoke|wide|hwayaktong|water|h0
+mori=cast|party|1|swap|seal|wide|gun|road|h0||gaek*2
+hwayak_jaegi=none|self|1|scatter||insert|hwayaktong|none|h0
+hwayak_yeongi=throw|party|1|smoke|swap|wide|hwayaktong|geumjul|h0
+nunsseolmi=rescue|gaek|1|seal||wide|gun|road|h0
+neok_kkwetturgi=aim|su|1|shot|ripple|wide|gun|water|h0|||elite
+santan_serye=aim|mu|3|scatter|crack|wide|gun|gate|h0
+deonnan=none|yeok|1|crack||insert|santan|village|h0
+yakjeom=cast|eok|1|seal|crack|medium|gun|gate|h0
+oegil=aim|gaek|1|shot||wide|gun|road|h0
+geodun=rest|self|1|seal||medium|gun,hwayaktong|none|h0
+beoljip=aim|jap|3|scatter|crack|medium|gun|village|h0
+sanyanggut=dance|party|1|swap||wide|gun|geumjul|h0||gaek*2
+jumeoni=throw|gul|3|scatter|crack|medium|santan,gun|mat|h0`,
+  baksu: `sinkal=strike|mu|1|slash|crack|medium|sinkal|gate|h0
+jakdu=summon|self|1|light||medium|jakdu,sinkal|geumjul|h0
+kalnal=dance|yeok|2|slash|beat|medium|sinkal|village|h0
+magaseogi=advance|ally|1|ward||medium|sinkal|geumjul|h0||jap
+huinsul=dance|jap|3|wind|crack|wide|sinkal|geumjul|h0
+eonwoldo=strike|mu|1|slash|ripple|close|woldo|gate|h0
+nal_sewugi=guard|self|1|light||medium|sinkal|none|h0
+cheollik=guard|gaek|1|ward||close|cheollik,sinkal|road|h0
+kaljaguk=strike|eok|1|crack|slash|medium|sinkal|gate|h0
+jangdan_bal=advance|su|1|beat|burst|wide|sinkal|water|h0
+gugunbok=pray|self|1|ward||close|gugunbok|none|h0
+domu=dance|yeok|1|burst||medium|sinkal|mat|h0
+janggun_cheong=summon|altar|1|light||medium|sinkal,gutsang|geumjul|h0
+sinkal_goreugi=none|yeok|1|crack||insert|sinkal,sinkal|village|h0
+jeongjeok=pray|self|1|ward||wide|jakdu|night|h0
+omgyeo=cast|eok|2|crack|thread|medium|sinkal|gate|h0
+janggun_naerim=summon|altar|1|light||wide|jakdu,sinkal,gutsang|geumjul|h0
+dangak=dance|mu|3|slash|beat|wide|sinkal|hills|h0
+samjichang=strike|mu|1|ripple|burst|close|samjichang|gate|h0|||elite
+sinjang=offer|altar|1|light||close|sinkal,gutsang|jihwa|h0
+gongsu=cast|self|1|light||close|jakdu,sinkal|none|h0
+hwimori=dance|jap|3|swirl|crack|medium|sinkal|geumjul|h0
+byeorak=cast|mu|3|ripple||wide|sinkal|night|h0
+cheongbo=dance|self|1|beat|ward|medium|jakdu,sinkal|none|h0
+beonjineun=pray|yeok|3|crack||wide|sinkal|village|h0
+ssangnal=dance|mu|2|slash|crack|wide|jakdu,sinkal|geumjul|h0
+yeongheom=none|self|1|light||insert|jakdu|none|h0
+geodugi=throw|eok|1|crack|burst|medium|sinkal|gate|h0
+ullim=cast|jap|3|ripple|crack|wide|sinkal|hills|h0
+naeryeoseogi=retreat|mu|3|ripple||wide|jakdu,sinkal|night|h0`,
+  seungnyeo: `yukhwanjang=strike|mu|1|burst|ripple|medium|yukhwanjang|gate|h0
+hapjang=pray|self|1|ward||medium|yeomju|hills|h0
+gasa=guard|ally|1|ward||medium|yukhwanjang|village|h0||yeok
+cheondo_yeombul=pray|eok|1|ripple|ledger|wide|yeomju,moktak|hills|h0
+beotigo_seogi=guard|gul|2|ward||medium|yukhwanjang|mat|h0
+deung_dwiro=guard|ally|1|swap|ward|medium|yukhwanjang|gate|h0||mu
+yeomjual=throw|jap|2|scatter||close|yeomju|geumjul|h0
+seokjang_badachigi=strike|yeok|1|burst|ward|medium|yukhwanjang|village|h0
+ireum_bulleo=cast|eok|1|ledger|ripple|medium|yeomju|gate|h0
+hoehyang=pray|party|1|motes|ripple|wide|yeomju|gate|h0||eok
+moktak=drum|jap|1|ripple||close|moktak|geumjul|h0
+gori_sori=strike|jap|3|ripple||wide|yukhwanjang|geumjul|h0
+naerijjikneun=strike|gaek|1|burst||close|yukhwanjang|road|h0
+jineon_oegi=cast|self|1|paper|ward|medium|yeomju|none|h0
+saebyeok_yebul=rest|self|1|paper||wide|moktak|eaves|h0
+apeuro_naseo=advance|ally|1|burst|ward|wide|yukhwanjang|road|h0||gaek
+geumgang_jase=guard|mu|1|ward|burst|close|yukhwanjang|gate|h0
+jineon_yeomsong=pray|self|1|paper||close|yeomju|none|h0
+buchuk=rescue|ally|1|swap|ward|medium|yukhwanjang|hills|h0||||||1
+beomjong=strike|jap|3|ripple|ward|wide|beomjong|eaves|h0
+wangsaeng_barwon=pray|eok|1|light|motes|medium|yeomju|gate|h0
+eopgyeongdae=cast|eok|1|light|ledger|medium|yukhwanjang,eopgyeongdae|gate|h0
+neok_geodeo=strike|jap|1|swirl||close|yukhwanjang|geumjul|h0
+sajahu=cast|yeok|3|ripple||wide|yukhwanjang|hills|h0
+jari_bakkwo=swap|ally|1|swap||wide|yukhwanjang|hills|h0
+baekpal_yeomju=none|party|1|ward||insert|yeomju|geumjul|h0
+cheondojae=pray|eok|3|light|motes|wide|yeomju|eaves|h0
+wangsaeng_deungbul=offer|eok|1|light||medium|lamp|night|h0
+banghal=strike|jap|1|crack|burst|close|yukhwanjang|geumjul|h0
+cheongeun_seokjang=strike|mu|1|burst||wide|yukhwanjang|gate|h0|||elite
+t_hosin=none|self|1|ward||insert|jineon|none|h0
+t_pasa=none|jap|1|ripple||insert|jineon|geumjul|h0`,
+  beopsa: `bujeok_sseugi=write|self|1|paper||medium|brush,bujeok,jusa|mat|h0
+sinjangpyeon=read|jap|1|ripple|burst|medium|scroll|geumjul|h0
+hosinbu=offer|ally|1|ward||medium|bujeok|hills|h0
+sinryeong_damgi=cast|altar|1|paper|light|medium|bujeok,gutsang|jihwa|h0
+sinjang_horyeong=cast|mu|1|ripple||close|scroll|gate|h0
+chukgwigyeong=read|jap|3|paper||wide|scroll|geumjul|h0
+sinmyeong_bujeok=throw|yeok|1|flame|burst|medium|bujeok|village|h0
+bujeok_dabal=offer|self|1|paper||close|bujeok|none|h0
+bujeok_jumeoni=none|self|1|paper|motes|insert|pouch|none|h0
+bujeok_nalligi=throw|gaek|2|paper|burst|wide|bujeok|road|h0
+suhobu_sseugi=write|ally|1|ward||close|brush,bujeok|hills|h0
+haewongyeong=read|eok|1|ledger||medium|scroll|gate|h0
+kkujitneun_gyeong=cast|gaek|1|ledger|ripple|close|scroll|road|h0
+byeoksagyeong=read|ally|1|ward|ledger|wide|scroll|geumjul|h0||jap
+gyeongmun_geumjul=offer|party|1|ward||wide|scroll,geumjul|geumjul|h0
+obang_horyeong=cast|mu|3|ripple|light|wide|scroll|hills|h0
+bulgeun_bujeok=write|self|1|paper||close|brush,jusa,bujeok|none|cin
+bujeok_baram=throw|jap|3|wind|paper|wide|bujeok|geumjul|h0
+bujeok_byeongpung=guard|party|1|ward|paper|wide|bujeok|geumjul|h0
+bujeok_sareugi=offer|su|1|flame|smoke|medium|bujeok|water|h0
+sinryeongbu_bonghagi=write|altar|1|seal||medium|brush,bujeok,gutsang|jihwa|h0
+sinryeongkke_chugwon=pray|altar|1|paper||wide|gutsang|jihwa|h0
+haewongyeong_wandok=read|eok|3|ledger|motes|wide|scroll|gate|h0
+ireum_jeogeun=throw|eok|1|ledger|paper|close|bujeok|gate|h0
+bujeong_ssitneun=read|ally|1|motes|ward|medium|scroll,jeonghwasu|hills|h0
+sinryeong_giun=summon|mu|3|light|burst|wide|gutsang|gate|h0
+jinsa_geureut=none|self|1|motes||insert|jusa|none|cin
+dokgyeong_sammae=rest|eok|1|ledger||wide|scroll,drum|mat|h0
+sinryeong_ongwi=summon|party|1|ward|light|wide|gutsang|geumjul|h0
+samdumae=throw|jap|3|paper|burst|wide|bujeok,hawk|geumjul|h0
+t_hwabu=none|yeok|1|flame||insert|bujeok|village|cin
+t_hwabu_red=none|yeok|1|flame||insert|bujeok,jusa|village|cin
+t_suhobu=none|ally|1|ward||insert|bujeok|hills|cin
+t_chukgwibu=none|jap|1|burst|ripple|insert|bujeok|geumjul|cin
+t_sinryeongbu=none|altar|1|light||insert|bujeok|jihwa|cin`,
+  talggun: `malttugi_jaedam=strike|gaek|1|burst||medium|whip|village|h0|malttugi
+tal_bakkwosseugi=swap|ally|1|swap||medium|tal|hills|h0|yangban
+deotboegi_chum=dance|jap|1|burst|beat|medium|hansam|geumjul|h0|malttugi
+sopum_deonjigi=throw|gul|1|paper|ward|medium|gourd|mat|h0|halmi
+chaejjik_sawi=strike|mong|1|slash||close|whip|moon|h0|malttugi
+yangban_hyungnae=dance|eok|1|wind||medium|jwilbuchae|gate|h0|yangban
+kkaekki_georeum=advance|jap|1|burst||close|hansam|geumjul|h0|malttugi
+eongdeongi_chum=dance|yeok|1|swirl||wide|hansam|village|h0|malttugi
+malttugi_hwalgae=dance|jap|3|wind|beat|wide|hansam,whip|geumjul|h0|malttugi
+jipangi_jitgi=retreat|self|1|ward||medium|staff|none|h0|halmi
+halmi_neokduri=cast|ally|1|beat|ward|medium|staff|hills|h0|halmi
+pyojubak_dudeurigi=drum|self|1|beat|paper|close|gourd|none|h0|halmi
+madang_dolgi=dance|ally|1|swap|beat|wide|hansam|village|h0|yangban
+jwilbuchae_pyeogi=guard|ally|1|ward|swap|medium|jwilbuchae|hills|h0|yangban
+geodeureum_chum=advance|yeok|1|wind||close|jwilbuchae|village|h0|yangban
+se_tal_noreum=none|none|1|swap||insert|tal3|hills|h0
+kkujitneun_jaedam=strike|eok|1|burst|seal|close|whip|gate|h0|malttugi
+jaedam_batgi=cast|gaek|1|burst|swap|medium|jwilbuchae|road|h0|malttugi
+talnoreumpan=dance|party|1|beat||wide|hansam|village|h0|yangban
+yangban_haengse=rest|eok|1|seal||medium|jwilbuchae|gate|h0|yangban
+halmi_heoteunchum=dance|party|1|ward|beat|wide|staff|geumjul|h0|halmi
+jipangi_huryeochigi=strike|gul|1|burst|ward|medium|staff|mat|h0|halmi
+malttugi_apjang=advance|self|1|ward||medium|whip|road|h0|malttugi
+sopum_botari=none|self|1|paper||insert|gourd,jwilbuchae|none|h0
+halmi_dwitpuri=dance|party|1|motes|beat|wide|staff,gourd|moon|h0|halmi
+tal_set_hanmom=strike|mu|1|slash||medium|tal|gate|h0|malttugi
+nollimgeori=cast|mong|1|seal||close|whip|moon|h0|malttugi
+halmi_madang=rest|self|1|beat|ward|medium|staff|mat|h0|halmi
+talpan_hanmadang=dance|mu|3|burst|seal|wide|hansam|village|h0|malttugi
+tal_taeugi=offer|self|1|flame|smoke|close|tal|none|h0|yangban
+t_pyojubak=none|jap|1|burst||insert|gourd|geumjul|h0
+t_jwilbuchae=none|ally|1|ward||insert|jwilbuchae|hills|h0`,
+  chasa: `ora_jiugi=bind|gaek|1|chain|ledger|medium|ora|road|h0
+jeokpaeji_pyeolchigi=read|eok|1|seal|ledger|medium|jeokpaeji|gate|h0
+jeoseung_munjigi=guard|self|1|ward||close|bangmangi|none|h0
+hon_geodugi=cast|mu|1|ledger|crack|close|ora|gate|h0
+soesasl_huligi=strike|mu|1|chain||medium|chain|gate|h0
+kkamagwi_simbureum=cast|jap|3|ledger||wide|jeokpaeji,crow|geumjul|h0
+yukmo_bangmangi=strike|yeok|1|burst|chain|close|bangmangi|village|h0
+bulgeun_geulssi=write|eok|1|ledger||medium|brush,jeokpaeji|gate|h0
+daemun_jikigi=guard|self|1|ward||wide|bangmangi|gate|h0
+oratjul_danggigi=bind|ally|1|swap|ward|medium|ora|hills|h0
+sangcheo_jitgi=cast|mu|1|crack|ward|close|ora|gate|h0
+oratjul_sarigi=strike|su|1|chain||wide|ora|water|h0
+neok_galmuri=cast|yeok|1|crack|ledger|medium|jeokpaeji|village|h0
+jeokpaeji_daejo=read|gaek|1|seal|ledger|close|jeokpaeji|road|h0
+bonhyang_mutgi=offer|gaek|1|seal||wide|jeokpaeji|village|h0
+myeongbu_jiphaeng=strike|eok|1|ledger|chain|medium|bangmangi|gate|h0|||elite
+eodum_sok_ireum=read|eok|1|ledger||wide|jeokpaeji,lamp|night|h0
+mukkin_ireum=none|eok|1|ledger||insert|ora|gate|h0
+gil_magaseogi=guard|ally|1|ward|seal|wide|bangmangi|road|h0||mu
+munjigi_seoyak=pray|party|1|ward||wide|bangmangi|gate|h0
+neokjul_butdeulgi=rescue|ally|1|thread|motes|medium|ora|hills|h0||||||1
+jeoseunggil_donghaeng=advance|party|1|ward||wide|lamp|road|h0
+maethin_han=offer|eok|1|chain|ledger|close|ora|gate|h0
+dongmyeong_iin=read|gaek|2|thread|seal|medium|jeokpaeji|road|h0
+jeoseungmun_dudeurigi=strike|mu|1|burst|chain|wide|bangmangi|gate|h0
+jeoseung_pangyeol=read|eok|3|ledger|seal|wide|jeokpaeji|gate|h0
+ireum_seokja=none|eok|1|ledger||insert|jeokpaeji|gate|h0
+ajik_ttaega_anida=guard|ally|1|ward||wide|bangmangi|road|h0||gaek||||1
+daesin_seoneun_chasa=advance|ally|1|ward|chain|medium|ora|gate|h0||mu*2
+jeokpaeji_nangdok=read|jap|3|seal|ledger|wide|jeokpaeji|geumjul|h0`,
+  duo: `cheongsin_janggu=manshin+jaebi|drum/summon|altar|1|light|beat|wide|janggu,chae/bangul,gutsang|jihwa|h1
+gongsu_hanbal=manshin+posu|cast/aim|gaek|1|shot|seal|wide|buchae/gun|road|h1
+kalkkeut_cheongbae=manshin+baksu|summon/strike|altar|1|light|slash|wide|bangul/sinkal,gutsang|gate|h0||mu
+gildakkeum_yeombul=manshin+seungnyeo|cast/pray|eok|1|ledger|paper|wide|buchae/yeomju|road|h1
+jihwa_kkotgi=manshin+beopsa|offer/cast|altar|1|petals||medium|flower/bujeok,gutsang|jihwa|h0
+dwitjeon_noreum=manshin+talggun|cast/dance|jap|2|seal|burst|wide|buchae/whip|geumjul|h1|malttugi
+sajasang_charim=manshin+chasa|offer/pray|altar|1|light|ledger|wide|bowls3/ora|gate|h1||eok
+hwaseung_jangdan=jaebi+posu|drum/aim|mu|1|shot|swap|wide|janggu,chae/gun|gate|h0
+dangak_jakdutagi=jaebi+baksu|drum/dance|yeok|1|slash|beat|wide|janggu,chae/sinkal,jakdu|village|h1
+moktak_baraji=jaebi+seungnyeo|drum/guard|none|1|beat|ward|wide|janggu,chae/moktak|hills|h0
+anjeungut_jangdan=jaebi+beopsa|rest/read|altar|1|paper||wide|drum/scroll,gutsang|mat|h1
+gillori=jaebi+talggun|drum/advance|none|1|beat||wide|janggu,chae/hansam|road|h1|malttugi
+orajul_gutgeori=jaebi+chasa|drum/bind|none|1|thread|beat|medium|janggu,chae/ora|hills|h1
+hwaseung_sinkal=posu+baksu|aim/strike|mu|1|shot|slash|wide|gun/sinkal|gate|h1
+beomjong_hanbal=posu+seungnyeo|aim/strike|jap|1|ripple|shot|wide|gun/beomjong|geumjul|h0
+gyeong_tanhwan=posu+beopsa|aim/write|eok|1|shot|ripple|wide|gun/brush,bujeok|gate|h0
+sandae_gwanyeok=posu+talggun|aim/dance|gaek|1|seal|swap|wide|gun/whip|road|h1|malttugi
+chongseong_myeongbu=posu+chasa|aim/read|eok|1|shot|ledger|wide|gun/jeokpaeji|gate|h1
+kallal_hapjang=baksu+seungnyeo|strike/pray|mu|1|slash|ripple|wide|sinkal,jakdu/yeomju|gate|h1|||elite
+sinjang_kalbujeok=baksu+beopsa|summon/write|altar|1|paper||wide|sinkal/brush,bujeok,gutsang|jihwa|h1
+eokkaechum_jakdu=baksu+talggun|dance/retreat|yeok|1|crack|beat|wide|sinkal,jakdu/hansam|village|h0|halmi
+kallo_myeongbu=baksu+chasa|strike/read|eok|1|slash|ledger|wide|sinkal/jeokpaeji|gate|h1
+gyeongban_yeombulban=seungnyeo+beopsa|pray/read|eok|1|ledger|ripple|wide|yeomju/scroll|gate|h1
+gokkal_tal=seungnyeo+talggun|swap/swap|none|1|swap|ward|wide|yukhwanjang/tal|hills|h1|yangban
+jeoseunggil_baeung=seungnyeo+chasa|guard/guard|eok|1|ward|ledger|wide|yukhwanjang/bangmangi|gate|h1
+jjokbak_bujeok=beopsa+talggun|write/dance|none|1|paper||wide|brush,bujeok/gourd|hills|h0|halmi
+haewon_homyeong=beopsa+chasa|read/read|eok|3|ledger|chain|wide|scroll/jeokpaeji|gate|h1
+jeokpaeji_jaedam=talggun+chasa|strike/read|gaek|1|seal|swap|wide|whip/jeokpaeji|road|h0|malttugi
+t_eolssigu=manshin+jaebi|none|self|1|beat|ward|insert|bujeok|none|cin
+t_jihwa=manshin+beopsa|none|jap|1|petals||insert|flower|geumjul|h1
+t_jineon=manshin+seungnyeo|none|jap|1|ripple|ward|insert|jineon|geumjul|h1
+t_kalbujeok=baksu+beopsa|none|mu|1|slash|crack|insert|bujeok|gate|cin
+t_gyeongmun=jaebi+beopsa|none|eok|1|ledger||insert|scroll|gate|h1
+t_buchae=beopsa+talggun|none|yeok|1|wind|ward|insert|jwilbuchae|village|h1`,
+  common: `jeonghwasu=anon|none|none|1|light||insert|jeonghwasu|moon|lamp
+soji=anon|offer|party|1|smoke|flame|medium|soji|geumjul|lamp
+ssaljeom=anon|none|none|1|scatter||insert|rice|mat|none
+sonppyeok_jangdan=anon|pray|self|1|beat||close||none|lamp
+daedong_jangdan=party|dance|party|1|beat|ward|wide||village|lamp
+geumjul=anon|offer|party|1|ward||wide|geumjul|geumjul|none
+sogeum=anon|throw|ally|1|scatter|ward|medium|salt|hills|none
+pat=anon|throw|jap|3|scatter||wide|beans|geumjul|cin
+yaksuk=anon|rescue|ally|1|smoke|motes|medium|mugwort|hills|lamp||||||1
+jari_naeeo=anon|swap|ally|1|swap||medium||hills|none
+gosure=anon|throw|gul|1|scatter||medium|bowl|hills|lamp
+neokjeon=anon|offer|altar|1|motes||medium|neokjeon,gutsang|jihwa|lamp
+curse_mangseorim=anon|none|jap|1|chain||emblem||geumjul|han||||ankle
+curse_heotgeot=anon|none|jap|1|swirl||emblem||geumjul|han||||eyes
+curse_wonmang=anon|none|eok|1|ripple||emblem||gate|han||||shoulder
+curse_duryeoum=anon|none|gaek|1|none||emblem||road|han||||shadow
+curse_daemun=anon|none|none|1|ripple||emblem|cup|hills|none||||gate
+status_geuneul=anon|none|none|1|none||emblem|lamp|hills|lamp||||lamp
+status_sangcheo=anon|none|none|1|crack||emblem||hills|none||||trap
+status_jabeum=anon|none|jap|1|none||emblem||geumjul|han||||noise
+rescue_neokbureugi=anon|none|none|1|motes||emblem||hills|lamp||||soul
+mourn_gok=anon|none|none|1|none||emblem||hills|none||||gok
+offering_nojatdon=anon|offer|su|1|scatter||medium|jijeon|water|han|||boss||sakkun
+offering_heoju=anon|offer|jap|1|paper||medium|bujeok|geumjul|han|||boss||heoju
+offering_sajabap=anon|offer|gul|3|light||wide|bowls3|gate|lamp
+offering_sonnimsang=anon|offer|altar|1|light||medium|soban|village|lamp
+relic_kkot=anon|throw|mu|1|petals||medium|flower|gate|lamp
+status_sinyeol=anon|none|yeok|1|none||emblem||village|han||||fever`,
 };

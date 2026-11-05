@@ -101,7 +101,7 @@
 
 /* 해원: 한의 빛깔이 빠져 하얗게 펴지고 떠오른다(위·빛·길게) / 처치: 잿빛으로 구겨져 주저앉는다(아래·어둠·짧게) */
 .spirit-body.fate-haewon { transform: translateY(-46px); opacity: .62; }
-.spirit-body.fate-cheochi { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .5; }
+.spirit-body.fate-cheochi { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .72; }
 .spirit-body.fate-escape { transform: translateX(80px); opacity: 0; }
 .spirit-body.fate-haewon.play { animation: haewonRise 1.3s ease-out both; }
 .spirit-body.fate-cheochi.play { animation: cheochiFall .65s ease-in both; }
@@ -113,7 +113,7 @@
 @keyframes cheochiFall {
   0% { transform: none; opacity: 1; filter: none; }
   45% { transform: translateY(2px) scale(1.04, .8) rotate(3deg); opacity: .9; filter: grayscale(1) brightness(.6); }
-  100% { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .5; filter: none; }
+  100% { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .72; filter: none; }
 }
 .spirit-body.fate-haewon .petals { animation: petals 1.6s ease-out both; }
 @keyframes petals { from { transform: translateY(40px); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: .85; } }
@@ -181,8 +181,11 @@
 @keyframes walkBob { 50% { transform: translateY(-3px) rotate(1.5deg); } }
 .bust { display: block; flex: none; border-radius: 3px; background: radial-gradient(80% 80% at 50% 30%, rgba(255, 201, 100, .12), rgba(0,0,0,0)); }
 .bust.dim { opacity: .45; filter: grayscale(.6); }
-.person.with-bust, .hero-card.with-bust { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; align-items: start; }
-.person.with-bust .bust, .hero-card.with-bust .bust { grid-row: 1 / span 6; }
+.person.with-bust { padding-left: 72px; min-height: 66px; }
+.person.with-bust .bust { position: absolute; left: 12px; top: 7px; }
+.hero-card.with-bust { padding-left: 86px; }
+.hero-card.with-bust .bust { position: absolute; left: 14px; top: 10px; }
+.psheet .bust { border: 1px solid var(--line); }
 .dialog-art { margin: -4px 0 2px; }
 .dialog-art .stage { border-color: var(--line-2); }
 

@@ -204,7 +204,7 @@ export function CampScene({ run, raid }: { run: Run; raid: number }) {
 }
 
 /** 결과: 꼭두 행렬. 서 있는 영웅이 넋등을 들고 걷고, 해원한 넋이 위로 떠오르고, 떠난 영웅은 위패로 함께 간다 */
-export function Procession({ heroes, region, success, haewons, kills }: { heroes: { id: HeroId; dead: boolean }[]; region: number; success: boolean; haewons: number; kills: number }) {
+export function Procession({ heroes, region, success, haewons, kills }: { heroes: { id: HeroId; dead: boolean; name?: string }[]; region: number; success: boolean; haewons: number; kills: number }) {
   const H = 250;
   const FY = 212;
   const alive = heroes.filter((h) => !h.dead);
@@ -219,22 +219,22 @@ export function Procession({ heroes, region, success, haewons, kills }: { heroes
       {!success && <rect width={W} height={H} fill="#03040a" opacity=".45" />}
       <g class="procession">
         {alive.map((h, k) => (
-          <g key={h.id} transform={`translate(${760 - k * 110} ${FY}) scale(0.85)`}>
+          <g key={`${h.id}${k}`} transform={`translate(${760 - k * 110} ${FY}) scale(0.85)`}>
             <Shadow />
             <g class="walk" style={{ animationDelay: `${k * 0.2}s` }}><HeroParts id={h.id} /></g>
           </g>
         ))}
-        {dead.map((h, k) => <Tablet key={h.id} x={760 - (alive.length + k) * 110} y={FY} s={0.62} name={heroName(h.id)} color={HERO_COLOR[h.id]} />)}
+        {dead.map((h, k) => <Tablet key={`${h.id}${k}`} x={760 - (alive.length + k) * 110} y={FY} s={0.62} name={h.name ?? heroName(h.id)} color={HERO_COLOR[h.id]} />)}
         {alive.length > 0 && <Lantern x={840} y={FY - 150} light={success ? 80 : 30} />}
       </g>
       {Array.from({ length: Math.min(12, haewons) }, (_, i) => <SoulWisp key={`w${i}`} x={900 + (i % 6) * 58} y={FY - 70 - Math.floor(i / 6) * 70 - (i % 2) * 18} s={0.24} />)}
       {Array.from({ length: Math.min(16, kills) }, (_, i) => <circle key={`k${i}`} cx={120 + (i % 8) * 16} cy={FY + 14 + Math.floor(i / 8) * 8} r="2.4" fill="#3a3732" opacity=".7" />)}
     </>
   );
-  const caps = [
+  const caps: JSX.Element[] = [
     <div key="h" class="scene-cap" style={{ left: pctX(900), top: pctY(14, H) }}>↑ 해원 {haewons} — 넋이 풀려 떠난다</div>,
-    <div key="k" class="scene-cap dim" style={{ left: pctX(110), top: pctY(FY - 24, H) }}>↓ 처치 {kills}</div>,
   ];
+  if (kills > 0) caps.push(<div key="k" class="scene-cap dim" style={{ left: pctX(110), top: pctY(FY - 24, H) }}>↓ 처치 {kills}</div>);
   return <Stage W={W} H={H} cls="scene-stage procession-scene" label="꼭두 행렬" svg={svg} overlay={caps} testid="procession" />;
 }
 

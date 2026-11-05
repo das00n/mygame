@@ -20,6 +20,10 @@ import { clearSave } from '../game/save.ts';
 import { app, commit, setPanel } from '../game/store.ts';
 import { AutoToggle } from './auto.tsx';
 import { CardView, Overlay } from './common.tsx';
+import { HeroBust } from './scene/hero.tsx';
+import { hashOf } from './scene/palette.ts';
+import { LineageScene, SadangTablets, VillagePanorama } from './scene/village.tsx';
+import { Procession } from './scene/walk.tsx';
 
 type Tab = 'maeul' | 'board' | 'roster' | 'sadang' | 'gaekju' | 'forge';
 
@@ -81,27 +85,12 @@ export function VillageScreen() {
 }
 
 // ── 마을 ─────────────────────────────────────────────────────────────
-const SCENE: [string, string][] = [['sindang', '신당'], ['gaekju', '객주'], ['jumak', '주막'], ['sadang', '사당'], ['jangteo', '장터'], ['yakbang', '약방'], ['mugubang', '무구방'], ['jeonsucheong', '전수청']];
-
 function MaeulTab({ c }: { c: Campaign }) {
   const opts = buildOptions(c);
   const festival = festivalKind(c);
   return (
     <div class="col">
-      <div class="scene" data-testid="scene" aria-label="마을 풍경">
-        {SCENE.map(([id, name]) => {
-          const t = tier(c, id as never);
-          return (
-            <div key={id} class={`bldg t${t}`} title={t ? `${name} ${t}단계` : `${name} — 아직 없다`}>
-              <span class="roof" />
-              <span class="nm">{name}</span>
-              {t > 1 && <span class="tiny">{'·'.repeat(t)}</span>}
-            </div>
-          );
-        })}
-        {tier(c, 'sindang') >= 2 && <span class="geumjul" title="금줄" />}
-        {tier(c, 'sindang') >= 3 && <span class="sotdae" title="솟대" />}
-      </div>
+      <VillagePanorama c={c} />
       {c.festival && <div class="panel small" data-testid="festival"><b>명절</b> — {c.festival}</div>}
       {c.lastEvent && <div class="panel small" data-testid="event"><b>지난 귀환의 마을 이벤트</b> — {CD.events.find((e) => e.id === c.lastEvent)?.name}: {CD.events.find((e) => e.id === c.lastEvent)?.text}</div>}
       <div class="section-title">시설</div>
@@ -192,8 +181,9 @@ function BoardTab({ c }: { c: Campaign }) {
           const busy = !pool.includes(p);
           const sel = party.includes(p.uid);
           return (
-            <button key={p.uid} class={`person ${sel ? 'sel' : ''}`} disabled={busy} data-testid={`pick-${p.uid}`} style={{ '--hc': HERO_COLOR[p.arch] } as CSSProperties} onClick={() => toggle(p)}>
+            <button key={p.uid} class={`person with-bust ${sel ? 'sel' : ''}`} disabled={busy} data-testid={`pick-${p.uid}`} style={{ '--hc': HERO_COLOR[p.arch] } as CSSProperties} onClick={() => toggle(p)}>
               <span class="band" />
+              <HeroBust id={p.arch} v={hashOf(p.uid)} size={52} dim={busy} />
               <b>{displayName(p)}</b> <span class="small dim">{HERO_NAMES[p.arch]} · 레벨 {p.level}</span>
               <div class="tiny">체력 {maxHpOf(p)}{fatigueFrac(p) > 0 ? ` (피로 −${Math.round(fatigueFrac(p) * 100)}%)` : ''} · 귀기 {p.stress}{p.injured ? ' · 중상' : ''}{busy ? ` · ${p.busy === 'rest' ? '주막에서 쉼' : '약방 치료'}` : ''}</div>
             </button>
@@ -246,8 +236,9 @@ function RosterTab({ c }: { c: Campaign }) {
     <div class="roster-layout">
       <div class="people col" data-testid="roster">
         {c.roster.map((x) => (
-          <button key={x.uid} class={`person ${p?.uid === x.uid ? 'sel' : ''}`} style={{ '--hc': HERO_COLOR[x.arch] } as CSSProperties} data-testid={`person-${x.uid}`} onClick={() => setSel(x.uid)}>
+          <button key={x.uid} class={`person with-bust ${p?.uid === x.uid ? 'sel' : ''}`} style={{ '--hc': HERO_COLOR[x.arch] } as CSSProperties} data-testid={`person-${x.uid}`} onClick={() => setSel(x.uid)}>
             <span class="band" />
+            <HeroBust id={x.arch} v={hashOf(x.uid)} size={48} dim={!!x.busy} />
             <b>{displayName(x)}</b> <span class="small dim">{HERO_NAMES[x.arch]} · 레벨 {x.level}</span>
             <div class="tiny">{x.busy ? (x.busy === 'rest' ? '주막에서 쉬는 중' : '약방 치료 중') : x.injured ? '중상' : '활동'} · 귀기 {x.stress}</div>
           </button>
@@ -272,6 +263,7 @@ function PersonSheet({ c, p }: { c: Campaign; p: Person }) {
   return (
     <div class="psheet col" data-testid="sheet" style={{ '--hc': HERO_COLOR[p.arch] } as CSSProperties}>
       <div class="row">
+        <HeroBust id={p.arch} v={hashOf(p.uid)} size={96} title={`${displayName(p)} — ${info.name}`} />
         <h2 style={{ margin: 0 }}>{displayName(p)}</h2>
         <span class="chip" style={{ borderColor: HERO_COLOR[p.arch] }}>{info.name}</span>
         {p.path && <span class="chip lamp">{CD.paths[p.arch][p.path]}</span>}
@@ -341,6 +333,7 @@ function SadangTab({ c }: { c: Campaign }) {
           ))}
         </div>
       )}
+      <SadangTablets c={c} />
       <div class="section-title" style={{ fontSize: '22px' }}>위패 {anc.length}</div>
       {!anc.length && <div class="faint small">아직 조상신이 없다.</div>}
       <div class="ancestors">
@@ -354,6 +347,7 @@ function SadangTab({ c }: { c: Campaign }) {
         ))}
       </div>
       <div class="section-title" style={{ fontSize: '22px' }}>계보도</div>
+      <LineageScene c={c} />
       {!lines.length && <div class="faint small">신어머니–신딸로 이어진 계보가 아직 없다. 조상신과 같은 원형을 영입할 때 신어머니로 이을 수 있다(객주).</div>}
       {lines.map((l) => (
         <div key={l.root.person.uid} class="lineage" data-testid="lineage">
@@ -384,7 +378,7 @@ function GaekjuTab({ c }: { c: Campaign }) {
           return (
             <div key={p.uid} class="person col" style={{ '--hc': HERO_COLOR[p.arch] } as CSSProperties}>
               <span class="band" />
-              <div><b>{p.name}</b> <span class="small dim">{HERO_NAMES[p.arch]} · 레벨 {p.level} · 체력 {maxHpOf(p)}</span></div>
+              <div class="row" style={{ gap: '8px', flexWrap: 'nowrap' }}><HeroBust id={p.arch} v={hashOf(p.uid)} size={52} /><div><b>{p.name}</b> <span class="small dim">{HERO_NAMES[p.arch]} · 레벨 {p.level} · 체력 {maxHpOf(p)}</span></div></div>
               <div class="tiny dim">{CD.origins[p.arch][p.origin]}</div>
               <div class="row tiny">{good && <span class="chip good">{good.name}</span>}{bad && <span class="chip red">{bad.name}</span>}</div>
               {ms.length > 0 && (
@@ -495,6 +489,8 @@ export function EndingScreen() {
   const title = sum.kind === 'good' ? '배웅의 결말' : sum.kind === 'normal' ? '부서진 빗장' : '닫히지 않은 문';
   return (
     <div class="screen" data-testid="ending">
+      <Procession heroes={[...c.roster.filter((p) => !p.busy).slice(0, 3).map((p) => ({ id: p.arch, dead: false })), ...ancestors(c).slice(0, 4).map((f) => ({ id: f.person.arch, dead: true, name: f.person.name }))]}
+        region={3} success={sum.kind !== 'fail'} haewons={sum.codex.haewon} kills={0} />
       <div class={`result-banner ${sum.kind === 'fail' ? 'fail' : 'ok'}`}>
         <h1>{title}</h1>
         <div class="dim">{sum.text}</div>

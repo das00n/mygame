@@ -11,6 +11,7 @@ import { bossFor } from '../game/run.ts';
 import { hasSave, loadApp } from '../game/save.ts';
 import { app, commit, replaceApp, setPanel } from '../game/store.ts';
 import { resetLogCursor } from '../game/combat.ts';
+import { HeroBust, HeroFigure } from './scene/hero.tsx';
 
 export function TitleScreen() {
   const saved = hasSave();
@@ -182,9 +183,10 @@ export function ShrineScreen() {
           const sel = party.includes(id);
           const starters = d.starters.get(id)!;
           return (
-            <button key={id} class={`hero-card ${sel ? 'sel' : ''}`} style={{ '--hc': hi.color } as CSSProperties} data-testid={`hero-${id}`} onClick={() => toggleHero(id)} aria-pressed={sel}>
+            <button key={id} class={`hero-card with-bust ${sel ? 'sel' : ''}`} style={{ '--hc': hi.color } as CSSProperties} data-testid={`hero-${id}`} onClick={() => toggleHero(id)} aria-pressed={sel}>
               <span class="band" />
               {sel && <span class="order">{party.indexOf(id) + 1}</span>}
+              <HeroBust id={id} size={64} />
               <div class="row" style={{ alignItems: 'baseline' }}>
                 <span class="hname">{hi.name}</span>
                 <span class="small dim">{hi.range} · {hi.role} · 체력 {hi.hp}</span>
@@ -216,6 +218,7 @@ export function ShrineScreen() {
           return (
             <button key={lab} class={`slot ${selSlot === i ? 'sel' : ''}`} onClick={() => h && clickSlot(i)} disabled={!h}>
               <span class="lab">{lab}</span>
+              {h && <svg viewBox="-60 -150 120 160" width="64" height="85" aria-hidden="true"><HeroFigure id={h} look={{ mask: (['malttugi', 'yangban', 'halmi'] as const)[i] }} /></svg>}
               <span class="who" style={{ color: hi?.color }}>{hi ? hi.name : '—'}</span>
               {hi && <span class="tiny dim">{hi.range} · 체력 {hi.hp}</span>}
             </button>

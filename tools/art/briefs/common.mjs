@@ -13,7 +13,7 @@ export default [
     '돗자리 위에 흩어진 쌀알 클로즈업',
     '쌀점 — 흩어진 쌀알의 무늬 속에서 저주 한 장이 집어내진다',
     { bg: 'mat', acc: 'none', f: '쌀알의 무늬', r: ['research/lore/shamanism-primer.md §6 무점구'] }],
-  ['sonppyeok_jangdan', 'drum', 'self', 'beat', 'close', '',
+  ['sonppyeok_jangdan', 'pray', 'self', 'beat', 'close', '',
     '손뼉을 치는 파티원의 상반신',
     '손뼉 소리가 장단 눈금 둘이 된다 — 누구의 카드 사이에 써도 장단이 이어진다',
     { acc: 'lamp', f: '맞부딪친 손바닥' }],

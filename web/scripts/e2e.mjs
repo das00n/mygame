@@ -1,8 +1,9 @@
 // web:e2e — 만든 단일 HTML(web/dist/artifact.html)을 호스트처럼 감싸 띄우고, 보스 길 원정을 처음부터 결과 화면까지 자동 진행으로 끝까지 돌린다.
 // 캠페인 판(F·G, 반복 2): 새 캠페인 → 영입 → 시설 건축 → 자동 원정 3회 이상 → 사망과 천도굿 → 지역 2 개방 → 내보내기 → 결말 코드 가져오기.
 // 대문 방 판(H, 반복 3): 지역 3 코드 가져오기 → 지역 3 보통 길 → 대문 방에서 손으로 통행 → 자동 진행으로 마을까지.
-// 파티·시드를 바꿔 여러 번. 콘솔 오류가 없어야 하고, 폰 폭에서 가로 스크롤이 없어야 한다.
-// 스크린숏(deviceScaleFactor 1)을 docs/design/screens/ 에 저장한다 (390×844, 1280×800).
+// 파티·시드를 바꿔 여러 번. 콘솔 오류가 없어야 하고, 어느 화면에서도 가로 스크롤이 없어야 한다.
+// PC 전용(결정 D8-2): 1280×800(최소) · 1920×1080(큰 화면). 러프 그래픽(안 A) 장면이 화면마다 있는지도 본다. 끝에 900×700 에서 PC 안내·줄이기를 본다.
+// 스크린숏(deviceScaleFactor 1)을 docs/design/screens/ 에 저장한다 (1280×800, 1920×1080).
 // 실행: npm run web:artifact && npm run web:e2e   (옵션: --only N, --no-shots)
 
 import { execFile, execSync } from 'node:child_process';
@@ -65,19 +66,42 @@ function fetchCached(u, ua) {
   });
 }
 
+const PC = { width: 1280, height: 800 };
+const LARGE = { width: 1920, height: 1080 };
 const RUNS = [
-  { name: 'A', party: ['seungnyeo', 'manshin', 'posu'], seed: 101, viewport: { width: 390, height: 844 }, shots: 'phone' },
-  { name: 'B', party: ['chasa', 'beopsa', 'talggun'], seed: 202, viewport: { width: 1280, height: 800 }, shots: 'desktop' },
-  { name: 'C', party: ['jaebi', 'baksu', 'chasa'], seed: 303, viewport: { width: 390, height: 844 }, shots: null },
-  { name: 'D', party: ['seungnyeo', 'jaebi', 'beopsa'], seed: 404, viewport: { width: 1280, height: 800 }, shots: null },
+  { name: 'A', party: ['seungnyeo', 'manshin', 'posu'], seed: 101, viewport: PC, shots: true },
+  { name: 'B', party: ['chasa', 'beopsa', 'talggun'], seed: 202, viewport: LARGE, shots: true },
+  // C 는 움직임을 켠 채(연출 CSS · 상태 비교 코드가 오류 없이 도는지)
+  { name: 'C', party: ['jaebi', 'baksu', 'chasa'], seed: 303, viewport: PC, shots: false, motion: true },
+  { name: 'D', party: ['seungnyeo', 'jaebi', 'beopsa'], seed: 404, viewport: LARGE, shots: false },
   // 손으로: 지도에서 걸어 첫 전투 → 카드 대상 고르기·턴 종료 → 새로고침 후 이어하기 → 용어·더미 창 → 자동 진행으로 끝까지
-  { name: 'E', party: ['talggun', 'posu', 'seungnyeo'], seed: 505, viewport: { width: 390, height: 844 }, shots: null, manual: true },
+  { name: 'E', party: ['talggun', 'posu', 'seungnyeo'], seed: 505, viewport: PC, shots: false, manual: true },
 ];
 
 const CAMPAIGN_RUNS = [
-  { name: 'F', seed: 2, viewport: { width: 390, height: 844 }, shots: 'phone' },
-  { name: 'G', seed: 14, viewport: { width: 1280, height: 800 }, shots: 'desktop' },
+  { name: 'F', seed: 2, viewport: PC, shots: true },
+  { name: 'G', seed: 14, viewport: LARGE, shots: true },
 ];
+
+// 러프 그래픽: 화면마다 있어야 하는 장면
+const SCENE_OF = { map: '[data-testid=corridor-scene]', combat: '[data-testid=stage]', camp: '[data-testid=camp-scene]', result: '[data-testid=procession]' };
+async function sceneCheck(p, screen, errors) {
+  const sel = SCENE_OF[screen];
+  if (!sel) return;
+  // 자동 진행(즉시)은 화면이 바로 바뀐다 → 같은 화면일 때만 한 번에 본다
+  const bad = await p.evaluate(([q, sc]) => {
+    if (document.querySelector('.app')?.getAttribute('data-screen') !== sc) return null;
+    if (!document.querySelector(q)) return `no scene ${q} on ${sc}`;
+    if (sc === 'combat') {
+      const cards = document.querySelectorAll('[data-testid=hand] .card');
+      const arts = document.querySelectorAll('[data-testid=hand] .card .card-art[data-card-id]');
+      if (cards.length !== arts.length) return 'combat: a hand card has no .card-art window';
+    }
+    return null;
+  }, [sel, screen]);
+  if (bad) errors.push(bad);
+}
+
 // 결말 화면: 헤드리스로 끝까지 돈 캠페인의 코드(시드 1, 좋은 결말)를 가져온다
 const ENDING_CODE = execSync('node --import tsx web/scripts/headless.ts --campaign --runs 1 --seed 1 --max 60 --code', { cwd: root }).toString().split('\n').find((l) => l.startsWith('JSG1:'));
 if (!ENDING_CODE) throw new Error('ending code not generated');
@@ -157,7 +181,7 @@ for (let k = 0; k < RUNS.length; k++) {
   if (only >= 0 && only !== k) continue;
   const run = RUNS[k];
   const t0 = Date.now();
-  const ctx = await browser.newContext({ viewport: run.viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  const ctx = await browser.newContext({ viewport: run.viewport, deviceScaleFactor: 1, reducedMotion: run.motion ? 'no-preference' : 'reduce' });
   const p = await ctx.newPage();
   const errors = [];
   p.on('console', (m) => {
@@ -199,14 +223,14 @@ for (let k = 0; k < RUNS.length; k++) {
     await p.click('[data-testid=buy-rec]');
     await noHScroll('shrine');
     if (run.shots) {
-      // 폰: 진형·보급품(권장량), 데스크톱: 고른 파티 카드
-      const anchor = run.viewport.width < 700 ? '[data-testid=formation]' : '.heroes-grid';
-      await p.evaluate((q) => window.scrollTo(0, document.querySelector(q).getBoundingClientRect().top + window.scrollY - 120), anchor);
+      // 고른 파티 카드(상반신)
+      await p.evaluate((q) => window.scrollTo(0, document.querySelector(q).getBoundingClientRect().top + window.scrollY - 120), '.heroes-grid');
       await shot('shrine');
     }
     await p.click('[data-testid=start]');
     await p.waitForSelector('[data-testid=map-screen]');
     await noHScroll('map');
+    await sceneCheck(p, 'map', errors);
     await shot('map');
     if (run.manual) await manualPlay(p, errors);
     // 자동 진행 켬 → 스크린숏을 찍는 판은 '빠름', 나머지는 '즉시'
@@ -231,6 +255,7 @@ for (let k = 0; k < RUNS.length; k++) {
       if (!seen.has(screen)) {
         seen.add(screen);
         await noHScroll(screen);
+        await sceneCheck(p, screen, errors);
       }
       if (want.includes(screen) && !shotDone.has(screen)) {
         // 자동 진행을 잠깐 멈추고 찍는다
@@ -273,6 +298,7 @@ for (let k = 0; k < RUNS.length; k++) {
     }
     if (screen !== 'result') throw new Error(`timeout on screen ${screen}`);
     await noHScroll('result');
+    await sceneCheck(p, 'result', errors);
     await shot('result');
     const summary = await p.evaluate(() => {
       const banner = document.querySelector('.result-banner h1')?.textContent ?? '';
@@ -356,6 +382,7 @@ for (const run of CAMPAIGN_RUNS) {
     await p.click('[data-testid=start-campaign]');
     await p.waitForSelector('[data-testid=village]');
     await noHScroll('village');
+    if (!(await p.$('[data-testid=scene] .stage-svg'))) errors.push('village: no panorama');
     // 영입 (첫 절기는 설: 무료)
     await p.click('[data-testid=tab-gaekju]');
     await noHScroll('gaekju');
@@ -410,6 +437,7 @@ for (const run of CAMPAIGN_RUNS) {
     await shot('roster');
     await p.click('[data-testid=tab-sadang]');
     await p.waitForSelector('[data-testid=ancestor]');
+    if (!(await p.$('[data-testid=sadang-scene]'))) errors.push('sadang: no tablets scene');
     await noHScroll('sadang');
     await shot('sadang');
     // 내보내기 → 코드
@@ -450,7 +478,7 @@ for (const run of CAMPAIGN_RUNS) {
 // ── 대문 방 통행 판 (H, 반복 3): 지역 3 보통 길 → 지도에 대문 방 → 첫 대문에서 손으로 「인정을 쓴다」 → 자동 진행으로 마을까지 ──
 if (only < 0 || only === RUNS.length + CAMPAIGN_RUNS.length) {
   const t0 = Date.now();
-  const viewport = { width: 390, height: 844 };
+  const viewport = PC;
   const size = `${viewport.width}x${viewport.height}`;
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
   const p = await ctx.newPage();
@@ -559,6 +587,38 @@ if (only < 0 || only === RUNS.length + CAMPAIGN_RUNS.length) {
   await ctx.close();
   const r = results[results.length - 1];
   console.log(`[${r.run}] ${r.party} ${r.viewport} → ${r.outcome} (${r.reason}) ${r.sec}s${r.errors.length ? `\n   errors:\n   ${r.errors.slice(0, 8).join('\n   ')}` : ''}`);
+}
+
+// ── 좁은 화면 (PC 안내): 900×700 에서 안내가 뜨고, 줄여서 보여 주며, 가로 스크롤이 없어야 한다 ──
+if (only < 0) {
+  const ctx = await browser.newContext({ viewport: { width: 900, height: 700 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  const p = await ctx.newPage();
+  const errors = [];
+  p.on('console', (m) => { if (m.type() === 'error') errors.push(`console: ${m.text()}`); });
+  p.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
+  await p.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, (route) => route.fulfill({ status: 200, contentType: route.request().url().includes('/css') ? 'text/css' : 'font/woff2', body: '' }));
+  const noH = async (label) => {
+    const [sw, iw] = await p.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]);
+    if (sw > iw + 1) errors.push(`horizontal page scroll on ${label}: ${sw} > ${iw}`);
+  };
+  try {
+    await p.goto(url);
+    if (!(await p.$('[data-testid=pc-notice]'))) errors.push('narrow: no PC notice');
+    await noH('narrow-title');
+    await p.click('[data-testid=new-run]');
+    for (const h of ['seungnyeo', 'manshin', 'posu']) await p.click(`[data-testid=hero-${h}]`);
+    await p.click('[data-testid=start]');
+    await p.waitForSelector('[data-testid=map-screen]');
+    await noH('narrow-map');
+    await p.click('[data-testid=pc-notice] .btn');
+    await noH('narrow-map-unscaled');
+  } catch (e) {
+    errors.push(`exception: ${e.message}`);
+  }
+  results.push({ run: 'N', party: 'narrow 900x700', seed: 0, viewport: '900x700', outcome: 'notice', reason: '', sec: 0, errors });
+  if (errors.length) failed = true;
+  console.log(`[N] narrow 900x700 → PC notice${errors.length ? `\n   errors:\n   ${errors.join('\n   ')}` : ' OK'}`);
+  await ctx.close();
 }
 
 await browser.close();

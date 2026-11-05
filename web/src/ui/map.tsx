@@ -1,4 +1,4 @@
-// 저승길 지도: 방·길목(3칸) SVG, 이동·순간 이동·정찰, 넋등, 파티·보급품·목표·귀환.
+// 저승길 지도: 위에 측면 길목 장면(지금 서 있는 길목 3칸·방), 아래에 방·길목(3칸) 지도 SVG, 이동·순간 이동·정찰, 넋등, 파티·보급품·목표·귀환.
 
 import type { CSSProperties } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
@@ -11,6 +11,8 @@ import { app, commit, setPanel } from '../game/store.ts';
 import type { Content, Pos, Run } from '../game/types.ts';
 import { AutoToggle } from './auto.tsx';
 import { Bar, iconPath, LightBar, Overlay } from './common.tsx';
+import { forgetBattle } from './scene/fx.ts';
+import { CorridorScene } from './scene/walk.tsx';
 
 const U = 40; // 방 사이 간격
 const M = 16; // 여백
@@ -167,6 +169,7 @@ export function MapScreen() {
     return run.bossEnc === 'b1' ? ` 지전 ${run.supplies.jijeon} (노잣돈 3 필요).` : '';
   })();
   const canTunnel = run.relics.includes('haenggimot') && !run.flags.haenggimotUsed && run.pos.kind === 'tile';
+  forgetBattle();
   return (
     <div class="screen" data-testid="map-screen">
       <div class="topbar">
@@ -177,6 +180,7 @@ export function MapScreen() {
         <button class="btn small ghost" onClick={() => setPanel('deck')} data-testid="open-deck">덱 {run.deck.length}</button>
         <button class="btn small ghost" onClick={() => setPanel('gloss')}>용어</button>
       </div>
+      <CorridorScene run={run} />
       <div class="map-layout">
         <div class="col">
           <LightBar light={run.light} />

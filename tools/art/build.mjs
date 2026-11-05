@@ -51,6 +51,8 @@ function heroesOf(card, ex) {
 }
 
 const FAMILY_SET = new Set(Object.keys(V.FAMILIES));
+/** 표(table.ts)에서 원귀 계열을 짧은 영문 부호로 — web/src/art/draw.ts FAM_CODE 와 같다 */
+const FAM_CODE = { 수귀: 'su', 객귀: 'gaek', '굶주린 넋': 'gul', 잡귀잡신: 'jap', 억울귀: 'eok', 역귀: 'yeok', '무장 원귀': 'mu', '몽달·손각시': 'mong' };
 const HIT_FX = new Set(['burst', 'slash', 'shot', 'crack', 'scatter', 'chain', 'flame']);
 const ACC_KEYS = { 0: 'h0', 1: 'h1', hero: 'h0', han: 'han', lamp: 'lamp', cin: 'cin', none: 'none' };
 
@@ -107,7 +109,7 @@ function compose(card, row) {
   const fam = V.FAMILIES[target] ? target : vs ? vs.target : null;
   const bg = ex.bg ?? (V.FAMILIES[target] ? V.FAMILY_BG[target] : vs ? V.FAMILY_BG[vs.target] : target === 'altar' ? 'jihwa' : target === 'party' ? 'geumjul' : target === 'self' ? 'none' : 'hills');
   inEnum('bg', bg, id);
-  const accKey = ex.acc ?? (heroes[0] === 'anon' || heroes[0] === 'party' ? 'lamp' : card.set === 'duo' ? 1 : 'hero');
+  const accKey = ex.acc ?? (card.token && props[0][0] === 'bujeok' ? 'cin' : heroes[0] === 'anon' || heroes[0] === 'party' ? 'lamp' : card.set === 'duo' ? 1 : 'hero');
   const acc = ACC_KEYS[accKey];
   if (!acc) err(`${id}: acc '${accKey}'`);
   if (ex.mask) inEnum('mask', ex.mask, id);
@@ -173,9 +175,10 @@ function compose(card, row) {
     propsText: props.flat().map(propLine),
     motif, mood, avoid, refs,
   };
+  const fc = (t) => FAM_CODE[t.split('*')[0]] ? FAM_CODE[t.split('*')[0]] + (t.includes('*') ? `*${t.split('*')[1]}` : '') : t;
   const row2 = [
-    heroes.join('+'), pose.join('/'), target, count, fx, ex.fx2 ?? '', framing, props.map((p) => p.join(',')).join('/'),
-    bg, acc, ex.mask ?? '', ex.vs ?? '', ex.tier ?? '', ex.em ?? '', ex.boss ?? '', ex.down ? 1 : '',
+    heroes.join('+'), pose.join('/'), fc(target), count, fx, ex.fx2 ?? '', framing, props.map((p) => p.join(',')).join('/'),
+    bg, acc, ex.mask ?? '', ex.vs ? fc(ex.vs) : '', ex.tier ?? '', ex.em ?? '', ex.boss ?? '', ex.down ? 1 : '',
   ].join('|').replace(/\|+$/, '');
   return { brief, row: row2 };
 }
@@ -193,7 +196,7 @@ for (const c of cards) {
 // 구별성 점검: 같은 (영웅·자세·대상·fx·구도·첫 무구) 조합
 const sig = new Map();
 for (const b of out) {
-  const k = [b.hero.join('+'), [].concat(b.pose).join('/'), b.target, b.count, b.fx, b.fx2, b.framing, b.props[0], b.bg, b.mask, b.accent].join('|');
+  const k = [b.hero.join('+'), [].concat(b.pose).join('/'), b.target, b.count, b.fx, b.fx2, b.framing, b.props.join(','), b.bg, b.mask, b.accent].join('|');
   if (sig.has(k)) err(`구별 안 됨: ${sig.get(k)} ↔ ${b.id}`);
   sig.set(k, b.id);
 }
@@ -227,13 +230,24 @@ const doc = {
   enums: V.ENUMS,
   cards: out,
 };
-writeFileSync(join(ROOT, 'data/art/cards.json'), `${JSON.stringify(doc, null, 1)}\n`);
+// 사람이 읽기 좋게: 카드 한 장 = 한 덩어리, 배열은 한 줄
+const J = (v) => JSON.stringify(v);
+const cardBlock = (b) => `    {\n${Object.entries(b).map(([k, v]) => `      ${J(k)}: ${J(v)}`).join(',\n')}\n    }`;
+const head = Object.entries(doc).filter(([k]) => k !== 'cards').map(([k, v]) => `  ${J(k)}: ${J(v)}`).join(',\n');
+writeFileSync(join(ROOT, 'data/art/cards.json'), `{\n${head},\n  "cards": [\n${out.map(cardBlock).join(',\n')}\n  ]\n}\n`);
 
+// 표: 묶음별 한 문자열, 줄마다 '키=행'. 영웅 묶음은 hero 칸을 뺀다(= 묶음 이름).
+const groups = {};
+for (const [id, r] of table) {
+  const [set, key] = id.split('.');
+  const row = HERO_SETS.has(set) ? r.slice(r.indexOf('|') + 1) : r;
+  (groups[set] ??= []).push(`${key}=${row}`);
+}
 const ts = `// 자동 생성 — node tools/art/build.mjs. 손으로 고치지 않는다(원본: tools/art/briefs/*.mjs).
-// 카드 id → 'hero|pose|target|count|fx|fx2|framing|props|bg|accent|mask|vs|tier|emblem|boss|downed'
-// 합기는 hero 'a+b', pose 'a/b', props 'a의 것/b의 것'(쉼표로 여럿).
-export const ART_TABLE: Readonly<Record<string, string>> = {
-${table.map(([id, r]) => `  '${id}': '${r}',`).join('\n')}
+// 묶음 → 줄마다 '키=hero|pose|target|count|fx|fx2|framing|props|bg|accent|mask|vs|tier|emblem|boss|downed' (원귀 계열은 draw.ts FAM_CODE 부호)
+// 영웅 묶음(만신~차사)은 hero 칸이 없다(묶음 이름이 곧 영웅). 합기는 hero 'a+b', pose 'a/b', props 'a의 것/b의 것'.
+export const ART_ROWS: Readonly<Record<string, string>> = {
+${Object.entries(groups).map(([set, rows]) => `  ${set}: \`${rows.join('\n')}\`,`).join('\n')}
 };
 `;
 writeFileSync(join(ROOT, 'web/src/art/table.ts'), ts);

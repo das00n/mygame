@@ -17,6 +17,8 @@ import type { Run } from '../game/types.ts';
 import { AutoToggle } from './auto.tsx';
 import { CardView, Overlay } from './common.tsx';
 import { PartyStrip } from './map.tsx';
+import { recallBattle } from './scene/fx.ts';
+import { Aftermath, CampScene, DialogArt, Procession } from './scene/walk.tsx';
 
 // ── 보상 ─────────────────────────────────────────────────────────────
 export function RewardScreen() {
@@ -24,9 +26,11 @@ export function RewardScreen() {
   const r = app.reward!;
   const d = D();
   const [pick, setPick] = useState<string | null>(null);
+  const last = recallBattle();
   return (
     <div class="screen" data-testid="reward">
       <div class="topbar"><span class="title">보상</span><span class="sub">{r.title}</span><span class="spacer" /><AutoToggle /></div>
+      {last && last.s.outcome !== 0 && <Aftermath b={last} />}
       <div class="banner">{r.title}</div>
       <div class="panel col">
         <div class="row"><span class="chip lamp">엽전 {r.gold >= 0 ? '+' : ''}{r.gold}</span>{r.materials > 0 && <span class="chip">재료 +{r.materials}</span>}<span class="chip">덱 {run.deck.length}장</span></div>
@@ -144,7 +148,7 @@ export function CampScreen() {
   return (
     <div class="screen" data-testid="camp">
       <div class="topbar"><span class="title">길굿</span><span class="sub">길 위에 굿판을 펴고 하룻밤 쉰다.</span><span class="spacer" /><AutoToggle /></div>
-      <div class="camp-fire"><div class="flame" /></div>
+      <CampScene run={run} raid={camp.raid} />
       <div class="row">
         <b>여유</b>
         <span class="points" data-testid="camp-points">{Array.from({ length: 12 }, (_, i) => <i key={i} class={i < camp.points ? 'on' : ''} />)}</span>
@@ -205,6 +209,7 @@ export function ResultScreen() {
   const mins = Math.round(r.stats.playMs / 60000);
   return (
     <div class="screen" data-testid="result">
+      <Procession heroes={r.heroes} region={r.campaign ? r.region : 1} success={r.success} haewons={r.stats.haewons} kills={Math.max(0, r.stats.kills - r.stats.haewons)} />
       <div class={`result-banner ${r.success ? 'ok' : 'fail'}`}>
         <h1>{r.success ? '원정 성공' : '원정 실패'}</h1>
         <div class="dim">{r.campaign ? `지역 ${r.region} 「${REGION_JSON[r.region].region.name}」` : `${cm.place} · ${cm.name}`} — {r.reason}</div>
@@ -259,6 +264,7 @@ export function DialogView() {
   return (
     <Overlay testid="dialog">
       <h2>{dialogTitle(dlg)}</h2>
+      <DialogArt dlg={dlg} run={run} />
       <div class="small dim">{dialogSetup(dlg)}</div>
       {dlg.result === null ? (
         <div class="col">

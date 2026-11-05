@@ -218,8 +218,9 @@ export function CombatStage({ cs, run, inc, enemyTargetable, heroTargetable, onE
   const d = D();
   const fx: CombatFx = useCombatFx(s);
   const region = run.region ?? 1;
-  const srcRoom = cs.meta.src.k === 'room' ? run.dungeon.rooms[cs.meta.src.room] : null;
-  const variant: BackdropVariant = srcRoom?.gate ? 'gate' : cs.meta.tier === 'boss' ? 'boss' : 'room';
+  // 대문 방(3지역): 방 전투든 문지기와 겨루는 창 전투든 파티가 선 방이 대문이면 무대 뒤에 큰 대문
+  const here = run.pos.kind === 'room' ? run.dungeon.rooms[run.pos.room] : null;
+  const variant: BackdropVariant = here?.gate ? 'gate' : cs.meta.tier === 'boss' ? 'boss' : 'room';
   rememberBattle({ s, region, variant: variant as 'room' | 'boss' | 'gate' });
   const p = (n: number) => (n % 2 ? 'p1' : 'p0');
 
