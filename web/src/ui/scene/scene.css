@@ -1,0 +1,192 @@
+/* 러프 그래픽 (안 A · 측면 종이 무대) — 무대 틀 · 이름판 · 의도 배지 · 실 · 연출(CSS 변형만, 10-presentation §4.6) */
+
+/* ── 무대 틀 ─────────────────────────────────────────────────────────
+   .stage-wrap 은 남은 높이를 차지하고(container-type: size), .stage 는 가로세로 비를 지키며 그 안에 꽉 찬다.
+   --u = 무대 좌표 1 의 px. 겹친 HTML 의 글자·칸 크기는 모두 --u 의 배수라 1280 · 1920 에서 같은 비로 보인다. */
+.stage-wrap { flex: 1 1 0; min-height: 260px; min-width: 0; container-type: size; display: flex; justify-content: center; align-items: flex-start; }
+.stage {
+  position: relative; width: 100%; aspect-ratio: var(--sw) / var(--sh);
+  container-type: inline-size; --u: calc(100cqw / var(--sw));
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #0b0d16;
+  line-height: 1.25;
+}
+.stage-wrap > .stage { width: min(100cqw, calc(100cqh * var(--sw) / var(--sh))); }
+.stage-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.stage-ov { position: absolute; inset: 0; font-size: calc(var(--u) * 13); }
+.svg-brush { font-family: var(--font-brush); }
+.stage text { font-family: var(--font-body); }
+.stage text.svg-brush { font-family: var(--font-brush); }
+
+/* ── 전투 무대의 칸(유닛) ────────────────────────────────────────────── */
+.unit { position: absolute; top: 0; bottom: 0; transition: left .3s ease; }
+.unit.targetable { cursor: pointer; }
+.unit.enemy.targetable { box-shadow: inset 0 0 0 2px var(--cinnabar-2), inset 0 0 calc(var(--u) * 26) var(--cinnabar-glow); border-radius: 4px; }
+.unit.hero.targetable { box-shadow: inset 0 0 0 2px var(--lamp), inset 0 0 calc(var(--u) * 26) var(--lamp-glow); border-radius: 4px; }
+.unit.targetable:hover { background: rgba(255, 255, 255, .04); }
+.plate {
+  position: absolute; left: 0; right: 0; top: calc(var(--u) * 338);
+  display: flex; flex-direction: column; gap: calc(var(--u) * 3); padding: calc(var(--u) * 4) calc(var(--u) * 5);
+  background: linear-gradient(180deg, rgba(14, 17, 28, .82), rgba(14, 17, 28, .66));
+  border: 1px solid var(--line); border-radius: 3px;
+}
+.hplate { border-top: calc(var(--u) * 3) solid var(--hc); padding-left: calc(var(--u) * 18); }
+.hplate .slotlab { font-size: .78em; letter-spacing: .1em; color: var(--text-faint); display: flex; justify-content: space-between; gap: 4px; }
+.hplate .hn { font-family: var(--font-brush); font-size: 1.75em; line-height: .9; color: var(--hc); white-space: nowrap; }
+.hplate .res { font-size: .84em; color: var(--text-dim); display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.hplate .res b { color: var(--hc); font-weight: 400; }
+.inc-badge { font-size: 1.05em; font-weight: 800; color: #fff3ea; background: var(--cinnabar); padding: 0 .3em; border-radius: 2px; letter-spacing: 0; }
+.stressbar { position: relative; height: .75em; background: #0b0d16; border: 1px solid rgba(0,0,0,.6); }
+.stressbar i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, #6a5a8e, var(--stress)); }
+.stressbar::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(0,0,0,.8); }
+.stressbar span { position: relative; z-index: 1; display: block; font-size: .62em; line-height: 1.15; text-align: center; color: #fff; text-shadow: 0 1px 1px #000; }
+.downed-box { font-size: .8em; color: #ffd0c4; background: rgba(195, 52, 39, .2); border: 1px solid rgba(226, 87, 63, .45); border-radius: 2px; padding: .15em .3em; }
+.unit.dead .plate { opacity: .55; }
+.htags { position: absolute; left: 0; right: 0; top: calc(var(--u) * 140); display: flex; flex-direction: column; align-items: center; gap: 2px; pointer-events: none; }
+.htags span { font-size: .78em; padding: 0 .4em; border-radius: 2px; background: rgba(30, 40, 80, .88); border: 1px solid var(--intent-stress); color: #cfd8ff; }
+
+.eplate .ename { font-family: var(--font-brush); font-size: 1.45em; line-height: 1; color: var(--text); word-break: keep-all; overflow-wrap: anywhere; }
+.eplate .ename .tiny { font-family: var(--font-body); font-size: .5em; }
+.tag-red { color: var(--cinnabar-2); }
+.unit.enemy.gone .plate { background: rgba(14, 17, 28, .5); }
+.fate-tag { font-family: var(--font-brush); font-size: 1.9em; line-height: 1; text-align: center; padding: .1em 0; }
+.fate-tag.haewon { color: var(--haewon); text-shadow: 0 0 12px rgba(255, 220, 150, .9); }
+.fate-tag.haewon::before { content: '↑ '; font-family: var(--font-body); font-size: .5em; vertical-align: middle; }
+.fate-tag.kill { color: #8a8478; }
+.fate-tag.kill::before { content: '↓ '; font-family: var(--font-body); font-size: .5em; vertical-align: middle; }
+.fate-tag.escape { color: #c8b089; font-size: 1.5em; }
+
+/* 의도 배지: 행동 그림 + 수치(타당×타수) + 이름 + 대상 칸 글자(선·중·후·전·굿·자) */
+.intent-badge {
+  position: absolute; left: 0; right: 0; top: calc(var(--u) * 20);
+  display: flex; flex-direction: column; gap: .1em;
+  padding: .3em .45em; border-radius: 4px;
+  background: rgba(12, 10, 14, .9); border: calc(var(--u) * 1.6) solid var(--intent-attack);
+  box-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+.intent-badge .ib-row { display: flex; align-items: center; gap: .3em; min-width: 0; }
+.intent-badge svg { width: 1.25em; height: 1.25em; flex: none; color: #f3e8d0; }
+.intent-badge .dmg { font-size: 1.45em; line-height: 1; font-weight: 800; color: #fff; white-space: nowrap; }
+.intent-badge .iname { font-size: .9em; color: var(--text); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.intent-badge .tmark { flex: none; font-style: normal; width: 1.45em; height: 1.45em; border-radius: 50%; display: grid; place-items: center; font-size: .8em; font-weight: 800; background: var(--paper); color: #111; }
+.intent-badge .tgt { font-size: .82em; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.intent-badge.k-move { border-color: var(--intent-move); }
+.intent-badge.k-stress { border-color: var(--intent-stress); }
+.intent-badge.k-calm { border-color: rgba(143, 181, 220, .6); }
+.intent-badge.cancel { border-color: var(--line-2); color: var(--text-faint); }
+.intent-badge.cancel .iname { text-decoration: line-through; color: var(--text-faint); }
+
+.altar-plate { position: absolute; display: flex; flex-direction: column; align-items: center; gap: .2em; text-align: center; font-size: .9em; color: var(--lamp); }
+.altar-plate > b { font-family: var(--font-brush); font-weight: 400; font-size: 1.4em; line-height: 1; }
+.ward-tag { position: absolute; text-align: center; font-size: .85em; color: #f0e6c8; }
+
+/* ── 실 ──────────────────────────────────────────────────────────── */
+.thread path { stroke-width: 2.4; stroke-dasharray: 7 5; opacity: .9; }
+.thread.th-all path { stroke-width: 1.6; stroke-dasharray: 3 5; opacity: .75; }
+.thread.th-maybe path { stroke-width: 1.4; stroke-dasharray: 2 6; opacity: .55; }
+.thread.th-altar path { stroke-width: 2; stroke-dasharray: 6 4; }
+.bat-idle { stroke-width: 1.6; stroke-dasharray: 1 6; stroke-linecap: round; opacity: .7; }
+.bat-go { stroke-width: 4; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 0; animation: batGo .28s ease-out both, fadeOut .6s .45s ease-in both; }
+@keyframes batGo { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes fadeOut { to { opacity: 0; } }
+
+/* ── 인형 연출 ──────────────────────────────────────────────────────
+   .pos(자리 — 진형이 바뀌면 미끄러진다) > .act(한 번 도는 연출) > .body(정지 상태: 쓰러짐·해원·처치).
+   SVG 요소의 CSS 변형은 그 요소의 좌표계 원점(= 발 중앙) 기준이다. */
+.stage .pos { transition: transform .3s ease; }
+.stage .body { transition: transform .3s ease-in, filter .3s, opacity .3s; }
+.hero-body.downed { transform: translateY(-26px) rotate(-90deg); filter: saturate(.4) brightness(.8); }
+.hero-body.possessed { filter: drop-shadow(0 0 6px #8e7aa6); }
+.soul-over { animation: soulBob 2.4s ease-in-out infinite; }
+@keyframes soulBob { 50% { transform: translate(-30px, -46px); } }
+
+/* 해원: 한의 빛깔이 빠져 하얗게 펴지고 떠오른다(위·빛·길게) / 처치: 잿빛으로 구겨져 주저앉는다(아래·어둠·짧게) */
+.spirit-body.fate-haewon { transform: translateY(-46px); opacity: .62; }
+.spirit-body.fate-cheochi { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .5; }
+.spirit-body.fate-escape { transform: translateX(80px); opacity: 0; }
+.spirit-body.fate-haewon.play { animation: haewonRise 1.3s ease-out both; }
+.spirit-body.fate-cheochi.play { animation: cheochiFall .65s ease-in both; }
+@keyframes haewonRise {
+  0% { transform: none; opacity: 1; filter: saturate(1) brightness(1); }
+  30% { transform: translateY(-6px) scale(1.04); opacity: 1; filter: saturate(0) brightness(1.5) drop-shadow(0 0 14px #fff3d0); }
+  100% { transform: translateY(-46px); opacity: .62; filter: none; }
+}
+@keyframes cheochiFall {
+  0% { transform: none; opacity: 1; filter: none; }
+  45% { transform: translateY(2px) scale(1.04, .8) rotate(3deg); opacity: .9; filter: grayscale(1) brightness(.6); }
+  100% { transform: translateY(4px) scale(1.06, .5) rotate(6deg); opacity: .5; filter: none; }
+}
+.spirit-body.fate-haewon .petals { animation: petals 1.6s ease-out both; }
+@keyframes petals { from { transform: translateY(40px); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: .85; } }
+
+/* 한 번 도는 연출: 같은 일이 잇달아 나면 p0/p1 이 번갈아 붙어 처음부터 다시 돈다 */
+.act.fx-attack.p0 { animation: heroLunge0 .38s ease-out; }
+.act.fx-attack.p1 { animation: heroLunge1 .38s ease-out; }
+@keyframes heroLunge0 { 40% { transform: translateX(28px) rotate(8deg); } }
+@keyframes heroLunge1 { 40% { transform: translateX(28px) rotate(8deg); } }
+.act.fx-attack-r.p0 { animation: heroRecoil0 .3s ease-out; }
+.act.fx-attack-r.p1 { animation: heroRecoil1 .3s ease-out; }
+@keyframes heroRecoil0 { 30% { transform: translateX(-6px) rotate(-3deg); } }
+@keyframes heroRecoil1 { 30% { transform: translateX(-6px) rotate(-3deg); } }
+.act.fx-cast.p0 { animation: heroCast0 .3s ease-out; }
+.act.fx-cast.p1 { animation: heroCast1 .3s ease-out; }
+@keyframes heroCast0 { 40% { transform: translateY(-8px); } }
+@keyframes heroCast1 { 40% { transform: translateY(-8px); } }
+.act.fx-hit.p0 { animation: heroHit0 .2s ease-out; }
+.act.fx-hit.p1 { animation: heroHit1 .2s ease-out; }
+@keyframes heroHit0 { 40% { transform: translateX(-8px) rotate(-10deg); } }
+@keyframes heroHit1 { 40% { transform: translateX(-8px) rotate(-10deg); } }
+.act .slash { animation: fadeOut .4s .15s both; }
+.act.fx-ehit.p0 { animation: spiritHit0 .24s ease-out; }
+.act.fx-ehit.p1 { animation: spiritHit1 .24s ease-out; }
+@keyframes spiritHit0 { 35% { transform: translateX(10px) rotate(7deg) skewX(4deg); } 70% { transform: skewX(-4deg); } }
+@keyframes spiritHit1 { 35% { transform: translateX(10px) rotate(7deg) skewX(4deg); } 70% { transform: skewX(-4deg); } }
+.act.fx-elunge.p0 { animation: spiritLunge0 .4s ease-out; }
+.act.fx-elunge.p1 { animation: spiritLunge1 .4s ease-out; }
+@keyframes spiritLunge0 { 40% { transform: translateX(-30px) rotate(-8deg); } }
+@keyframes spiritLunge1 { 40% { transform: translateX(-30px) rotate(-8deg); } }
+.summon-pop .altar-spirit.fresh { animation: summonUp .3s ease-out both; }
+@keyframes summonUp { from { transform: translateY(20px); opacity: 0; } }
+.gutsang .flame, .campfire .flame { animation: flicker 1.3s infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+
+/* 넋등 구간 변화: 비네트가 600ms 로 옮겨 간다 */
+.vignette .vig-dark, .vignette .vig-ahead, .vignette .lamp-glow { transition: opacity .6s ease; }
+
+/* 장단 북: 받는소리로 하나 켜지면 크게 한 번 */
+.drum.pop { animation: drumPop .28s ease-out; }
+@keyframes drumPop { 40% { transform: scale(1.35); box-shadow: 0 0 16px var(--cinnabar-glow); } }
+
+/* ── PC 안내 (가로 1024 미만) ─────────────────────────────────────── */
+.pc-notice {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 6px 10px; margin-bottom: 8px; font-size: 13px;
+  border: 1px solid var(--lamp-2); background: rgba(255, 201, 100, .08); border-radius: var(--radius);
+}
+.app.fit { width: 1024px; max-width: none; zoom: var(--fit, 1); }
+
+/* ── 다른 장면 (길목 · 마을 · 길굿 · 결과 · 사당) ───────────────────── */
+.scene-stage { flex: none; }
+.scene-stage .stage-ov { pointer-events: none; }
+.scene-stage .stage-ov .chip, .scene-stage .stage-ov button { pointer-events: auto; }
+.scene-cap { position: absolute; font-size: 1em; color: var(--text); text-shadow: 0 1px 2px #000, 0 0 8px #000; white-space: nowrap; }
+.scene-cap.dim { color: var(--text-dim); }
+.scene-cap.c { transform: translateX(-50%); text-align: center; }
+.scene-cap b { font-family: var(--font-brush); font-weight: 400; font-size: 1.6em; color: var(--paper); }
+.scene-cap.lamp b { color: var(--lamp); }
+.corridor .tiles text { font-size: 13px; }
+.aftermath { margin: 0 auto; width: min(100%, 980px); }
+.aftermath .stage { border-color: var(--line-2); }
+.aftermath .spirit-body.fate-haewon { animation: haewonRise 1.4s .25s ease-out both; }
+.aftermath .spirit-body.fate-cheochi { animation: cheochiFall .7s .25s ease-in both; }
+.procession .walk { animation: walkBob 1.1s ease-in-out infinite; }
+@keyframes walkBob { 50% { transform: translateY(-3px) rotate(1.5deg); } }
+.bust { display: block; flex: none; border-radius: 3px; background: radial-gradient(80% 80% at 50% 30%, rgba(255, 201, 100, .12), rgba(0,0,0,0)); }
+.bust.dim { opacity: .45; filter: grayscale(.6); }
+.person.with-bust, .hero-card.with-bust { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; align-items: start; }
+.person.with-bust .bust, .hero-card.with-bust .bust { grid-row: 1 / span 6; }
+.dialog-art { margin: -4px 0 2px; }
+.dialog-art .stage { border-color: var(--line-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .stage .pos, .stage .body, .unit { transition: none !important; }
+  .soul-over, .procession .walk { animation: none !important; }
+}

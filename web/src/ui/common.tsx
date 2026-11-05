@@ -1,6 +1,7 @@
 // 공용 화면 조각: 상태·의도 표식(SVG), 부적 카드, 넋등 막대, 장단 북, 카드 문장의 낱말 풀이.
 
 import type { CSSProperties } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { ComponentChildren, JSX } from 'preact';
 import type { CardDef, CardInst, HeroId } from '../../../src/core/types.ts';
 import { D, HERO_COLOR, bandOf } from '../game/content.ts';
@@ -141,6 +142,7 @@ export function CardView({ def, inst = null, party, dis, sel, resp, big, pickabl
       data-testid={testid}
       role={onClick ? 'button' : undefined}
       aria-label={`${name}${def.upgraded ? ' (강화)' : ''} 비용 ${def.cost}`}
+      title={`${name}${def.upgraded ? '+' : ''} — ${text}`}
     >
       <div class={`oband ${c2 ? 'duo' : ''}`} />
       <svg class="stroke" viewBox="0 0 28 60" preserveAspectRatio="none" aria-hidden="true">
@@ -150,6 +152,8 @@ export function CardView({ def, inst = null, party, dis, sel, resp, big, pickabl
       {resp && <div class="resp" title="지금 내면 받는소리가 성립한다">받</div>}
       {def.upgraded && <div class="upseal" title="강화한 카드">강</div>}
       <div class="cname">{name}</div>
+      {/* 카드 삽화 창 (D8-1: 카드마다 삽화 — 지금은 자리만, 스케치는 따로 끼운다) */}
+      <div class="card-art" data-card-id={def.id} aria-hidden="true" />
       <div class="ctype">{typeLine}</div>
       <div class="ctext"><KwText text={text} /></div>
       {kws.length > 0 && <div class="ckw">{kws.join(' · ')}</div>}
@@ -183,11 +187,23 @@ export function LightBar({ light, compact }: { light: number; compact?: boolean 
 // ── 장단 북 ──────────────────────────────────────────────────────────
 export function Jangdan({ n }: { n: number }) {
   const beat = [1.4, 1.1, 0.85, 0.62, 0.45, 0.32][n] ?? 1.2;
+  // 장단이 오른 순간: 새로 켜진 북 하나가 크게 한 번 (받는소리)
+  const [pop, setPop] = useState(-1);
+  const prev = useRef(n);
+  useEffect(() => {
+    if (n > prev.current) {
+      setPop(n);
+      const t = setTimeout(() => setPop(-1), 320);
+      prev.current = n;
+      return () => clearTimeout(t);
+    }
+    prev.current = n;
+  }, [n]);
   return (
     <div class="jangdan" title="장단: 주인이 바뀔 때마다 +1, 턴이 끝나면 0" data-testid="jangdan">
       <div class="tiny dim">장단 {n}/5</div>
       <div class="drums" style={{ '--beat': `${beat}s` } as CSSProperties}>
-        {[1, 2, 3, 4, 5].map((i) => <span key={i} class={`drum ${i <= n ? 'on' : ''}`} style={{ animationDelay: `${(i - 1) * 0.06}s` }} />)}
+        {[1, 2, 3, 4, 5].map((i) => <span key={i} class={`drum ${i <= n ? 'on' : ''} ${i === pop ? 'pop' : ''}`} style={{ animationDelay: i === pop ? '0s' : `${(i - 1) * 0.06}s` }} />)}
       </div>
     </div>
   );
