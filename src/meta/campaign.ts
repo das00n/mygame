@@ -188,7 +188,9 @@ export function build(c: Campaign, id: FacilityId): string | null {
   c.gold -= o.cost.gold ?? 0;
   c.chiseong -= o.cost.chiseong ?? 0;
   c.facilities[id] = o.next;
-  note(c, `${o.name} ${o.next === 1 ? '건축' : `${o.next}단계`} — ${o.text}`);
+  // 황우양 집짓기 네 단계 (⟨반복 5⟩ V-11, 연출만): 재목 마련 → 집터 다지기 → 집짓기 → 집치장, 상량
+  const g = FACILITY_BY_ID.get(id)?.guardian?.split(' — ')[0];
+  note(c, `${o.name} ${o.next === 1 ? '건축' : `${o.next}단계`} — ${CD.build.stages.join(' → ')}, ${CD.build.done}${g ? `을 올려 ${g}을(를) 모셨다` : '을 올렸다'}. ${o.text}`);
   if (id === 'sindang' && o.next >= 2) note(c, `지역 ${o.next} 「${REGION_NAMES[o.next]}」이(가) 열렸다`);
   return null;
 }
@@ -208,7 +210,7 @@ export function newCampaign(seed: number, settings: Partial<CampaignSettings> = 
     const a = rpick(c, HERO_IDS);
     if (!archs.includes(a)) archs.push(a);
   }
-  for (const a of archs) c.roster.push(makePerson(c, a));
+  for (const a of archs) joinRoster(c, makePerson(c, a));
   startSeason(c);
   note(c, `신당에 불을 밝혔다. ${c.roster.map((p) => `${p.name}(${heroName(p.arch)})`).join(' · ')}이(가) 함께한다.`);
   return c;
@@ -318,9 +320,30 @@ export function recruit(c: Campaign, idx: number, motherUid: string | null = nul
     }
   }
   p.history.joined = c.season;
-  c.roster.push(p);
+  joinRoster(c, p);
   note(c, `${p.name}(${heroName(p.arch)})을(를) 들였다${cost ? ` (엽전 ${cost})` : ' (무료)'}`);
   return null;
+}
+
+/** 출신 인연 (⟨반복 5⟩ A-01): 이 사람이 들어올 때 로스터의 짝 원형과 인연을 맺고 시작한다 (먼저 온 쪽·나중 온 쪽 모두) */
+export function originBondLines(c: Campaign, p: Person): string[] {
+  const out: string[] = [];
+  for (const r of CD.originBonds ?? []) {
+    const pairs: [Person, Person][] = [];
+    if (p.arch === r.arch && p.origin === r.origin) for (const q of c.roster) if (q !== p && q.arch === r.with) pairs.push([p, q]);
+    if (p.arch === r.with) for (const q of c.roster) if (q !== p && q.arch === r.arch && q.origin === r.origin) pairs.push([q, p]);
+    for (const [a, b] of pairs) {
+      addBond(c, a.uid, b.uid, r.bond);
+      out.push(`${a.name}(${heroName(a.arch)})과 ${b.name}(${heroName(b.arch)})은 옛 인연이 있다 — 정 +${r.bond}`);
+    }
+  }
+  return out;
+}
+
+/** 로스터에 들인다 (출신 인연을 함께 맺는다) */
+function joinRoster(c: Campaign, p: Person): void {
+  c.roster.push(p);
+  for (const l of originBondLines(c, p)) note(c, l);
 }
 
 export function retire(c: Campaign, uid: string): string | null {
@@ -804,10 +827,13 @@ function passTime(c: Campaign, lines: string[]): void {
 }
 
 function villageEvent(c: Campaign, lines: string[]): string | null {
-  const ev = rnd(c) < 0.8 ? rpick(c, CD.events.filter((e) => e.kind === 'good')) : rpick(c, CD.events.filter((e) => e.kind === 'bad'));
+  // ⟨반복 5⟩ requires: 그 원형이 로스터에 있을 때만 (법사 안택)
+  const can = (e: (typeof CD.events)[number]) => !e.requires || c.roster.some((p) => p.arch === e.requires);
+  const ev = rnd(c) < 0.8 ? rpick(c, CD.events.filter((e) => e.kind === 'good' && can(e))) : rpick(c, CD.events.filter((e) => e.kind === 'bad' && can(e)));
   c.lastEvent = ev.id;
   const e = ev.effect;
   if (e.gold) c.gold = Math.max(0, c.gold + e.gold);
+  if (e.chiseong) c.chiseong += e.chiseong;
   if (e.stress) for (const p of c.roster) p.stress = Math.max(0, p.stress + e.stress);
   if (e.stressOne && c.roster.length) {
     const p = rpick(c, c.roster);

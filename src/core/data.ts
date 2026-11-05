@@ -60,6 +60,8 @@ export interface SpecialDef {
   followers: string[];
   goal: number;
   limit: number;
+  /** 만신이 손님을 청해 모시면 시작 대접 (meter.manshin_start, 기본 4) */
+  manshinStart: number;
 }
 
 export interface GameData {
@@ -214,7 +216,7 @@ export function loadData(): GameData {
   type RawRegion = {
     enemies: RawEnemy[];
     encounters: Record<string, { id: string; enemies: string[] }[] | string>;
-    specials?: { id: string; name: string; followers: string[]; meter: { goal: number; turn_limit: number } }[];
+    specials?: { id: string; name: string; followers: string[]; meter: { goal: number; turn_limit: number; manshin_start?: number } }[];
   };
   const enemies: EnemyDef[] = [];
   const enemyById = new Map<string, EnemyDef>();
@@ -241,7 +243,7 @@ export function loadData(): GameData {
     }
     regionEncounters[rid] = list;
     for (const sp of rj.specials ?? []) {
-      specials.set(sp.id, { id: sp.id, name: sp.name, region: rid, followers: sp.followers, goal: sp.meter.goal, limit: sp.meter.turn_limit });
+      specials.set(sp.id, { id: sp.id, name: sp.name, region: rid, followers: sp.followers, goal: sp.meter.goal, limit: sp.meter.turn_limit, manshinStart: sp.meter.manshin_start ?? 4 });
     }
   }
   // 빗장(이름으로 졸개 찾기)·공물(카드 이름) — 원귀 정의가 다 모인 뒤에

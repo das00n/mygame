@@ -1,12 +1,12 @@
 {
  "meta": {
-  "generated": "2026-11-05T04:48:20.647Z",
+  "generated": "2026-11-05T09:58:16.906Z",
   "region": 1,
   "seeds": 40,
   "trios": 56,
   "encounters": 15,
   "combats": 33600,
-  "runtimeSec": 19.5,
+  "runtimeSec": 17.8,
   "deck": "시작 12장 + 봇 드래프트 8장 (일반 보상 확률)"
  },
  "fidelity": {

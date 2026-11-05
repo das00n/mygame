@@ -1,6 +1,7 @@
 // 길굿 (탐험 §9): 여유 12점, 끼니, 공용 행동, 영웅 고유 행동, 밤 습격.
 
 import { rand } from '../../../src/core/rng.ts';
+import { roadStep } from '../../../src/core/regions.ts';
 import type { HeroId } from '../../../src/core/types.ts';
 import { CAMP_POINTS, D, NIGHT_RAID } from './content.ts';
 import { addBond } from './encounters.ts';
@@ -59,6 +60,8 @@ export function startCamp(app: AppState, room: number): void {
   const run = app.run!;
   run.dungeon.rooms[room].campUsed = true;
   run.stats.camps++;
+  // 아홉 단계 길닦기 (⟨반복 5⟩): 길굿을 열 때마다 한 칸
+  if (run.flags.road !== undefined) run.flags.road = roadStep(run.flags.road);
   app.camp = { points: CAMP_POINTS, meal: false, used: [], raid: run.noNightRaid ? 0 : NIGHT_RAID, done: false, room };
   app.screen = 'camp';
   logRun(run, '길굿을 열었다.');
@@ -92,6 +95,14 @@ export function campActions(run: Run, camp: CampState): CampAction[] {
     enabled: !hoek && run.supplies.rice >= 1 && run.supplies.jijeon >= 1,
     reason: hoek === 'ready' ? '이미 차사상을 차렸다' : hoek === 'used' ? '이번 원정의 획 하나는 이미 썼다' : '쌀 1과 지전 1이 필요하다',
   });
+  // 삼천 군병 상 ⟨반복 5⟩: 3지역 — 상을 받지 못한 군졸 넋들에게 늦은 상을 차린다 (singwa-sources §4.2 H-06)
+  if (run.region === 3) {
+    const gb = !!run.flags.gunbyeong;
+    out.push({
+      id: 'gunbyeong_sang', label: '삼천 군병 상', detail: '쌀 2: 싸움터에서 상을 받지 못한 군졸 넋들에게 늦은 상을 차린다 — 이번 원정 동안 이름 없는 군졸 넋을 해원하면 그 자리 회복 +2.',
+      points: 0, rice: 2, group: 'meal', enabled: !gb && run.supplies.rice >= 2, reason: gb ? '이미 군병 상을 차렸다' : '쌀 2가 필요하다',
+    });
+  }
   const curses = run.deck.filter((c) => d.cards[c.d].isCurse).length;
   const injured = alive.filter((i) => run.heroes[i].injured).length;
   const deadUnhonored = run.heroes.filter((h, i) => h.dead && run.deck.some((c) => c.o === i && c.d === d.special.mourn)).length;
@@ -163,6 +174,11 @@ export function doCampAction(app: AppState, id: string, arg?: number | [number, 
       run.supplies.rice -= 2;
       camp.raid = 0;
       msg = '뒷전을 차려 잡귀를 먼저 보냈다. 밤 습격 0%.';
+      break;
+    case 'gunbyeong_sang':
+      run.supplies.rice -= 2;
+      run.flags.gunbyeong = true;
+      msg = '길가에 군병 상을 차렸다. 대오를 풀지 못한 군졸 넋들 몫의 밥 한 그릇씩. 이번 원정 동안 이름 없는 군졸 넋을 해원하면 회복 +2.';
       break;
     case 'chasa_daejeop':
       run.supplies.rice -= 1;

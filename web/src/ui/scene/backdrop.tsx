@@ -1,6 +1,8 @@
 // 지역별 배경 겹(하늘 · 먼 산/담 · 물/마을/회랑 · 바닥과 길베) + 무대 소품 + 넋등 비네트.
-// 지역 1 「건너지 못한 나루」: 밤 강 · 갈대 / 지역 2 「역병 든 마을」: 초가 · 금줄 · 열기 아지랑이 / 지역 3 「열두 대문」: 기와 담 · 늘어선 문 · 돌바닥.
-// 대문 방(지역 3)은 무대 뒤에 큰 대문을 세운다.
+// 지역 1 「건너지 못한 나루」: 밤 강 · 갈대 / 지역 2 「역병 든 마을」: 초가 · 금줄 · 열기 아지랑이 /
+// 지역 3 「열두 대문」 ⟨반복 5⟩: 댓가지를 엮어 세운 굿판의 문이 끝없이 이어진 회랑(질침의 열두 문) · 닦인 길.
+// 대문 방(지역 3)은 무대 뒤에 큰 댓가지 문을, 보스 굴(열두째 대문)은 무쇠 빗장 문을 세운다.
+// 업경대 방은 거울 뒤로 빈 자리 열넷(EopgyeongSeats), 좋은 결말 행렬은 열린 대문 너머 꽃밭(FlowerHill).
 
 import type { ComponentChildren } from 'preact';
 import { LIGHT_BANDS, bandOf } from '../../game/content.ts';
@@ -61,30 +63,100 @@ function ChogaRow({ W, FY }: { W: number; FY: number }) {
   );
 }
 
-function WallRow({ W, FY }: { W: number; FY: number }) {
-  // 기와 담장 + 멀리 늘어선 대문 (열두 대문)
+/** 댓가지 문 하나 (⟨반복 5⟩ 05-region3 §1.1 G-01): 대나무 기둥 둘 · 휘어 엮은 댓가지 아치 · 한지 술 · 금줄. 성문이 아니라 사람 키의 두세 배 */
+export function BambooGate({ x, y, s = 1, open = false, opacity = 1 }: { x: number; y: number; s?: number; open?: boolean; opacity?: number }) {
+  const pole = (px: number) => (
+    <g>
+      <rect x={px - 7} y="-230" width="14" height="230" fill="#6f7a44" stroke="#2c3018" stroke-width="2" />
+      {[-200, -150, -100, -50].map((ny) => <path key={ny} d={`M${px - 7} ${ny} h14`} stroke="#3c4422" stroke-width="2.4" />)}
+    </g>
+  );
   return (
-    <g class="bd-walls">
-      <rect x="0" y={FY - 120} width={W} height="110" fill="#262a36" />
-      <path d={`M-10 ${FY - 122} L${W + 10} ${FY - 122} L${W} ${FY - 136} L0 ${FY - 136} Z`} fill="#1a1d26" stroke="#0c0e14" stroke-width="2" />
-      {Array.from({ length: Math.ceil(W / 18) }, (_, i) => <path key={i} d={`M${i * 18} ${FY - 136} q9 -7 18 0`} stroke="#2e3340" stroke-width="2" fill="none" />)}
-      {[0.16, 0.42, 0.68, 0.9].map((t, i) => {
-        const x = W * t;
-        const s = 0.55 + i * 0.05;
-        return (
-          <g key={t} transform={`translate(${x} ${FY - 12}) scale(${s})`} opacity=".7">
-            <rect x="-50" y="-150" width="100" height="150" fill="#3a1c18" stroke="#120806" stroke-width="3" />
-            <path d="M0 -150 L0 0" stroke="#120806" stroke-width="3" />
-            <path d="M-70 -150 L70 -150 L56 -176 L-56 -176 Z" fill="#1a1d26" />
-            <circle cx="-10" cy="-70" r="4" fill="#a08a5a" /><circle cx="10" cy="-70" r="4" fill="#a08a5a" />
-          </g>
-        );
+    <g transform={`translate(${x} ${y}) scale(${s})`} class="bamboo-gate" opacity={opacity}>
+      {pole(-90)}
+      {pole(90)}
+      {/* 휘어 엮은 댓가지 아치 (세 가닥) */}
+      {[0, 8, 16].map((k) => <path key={k} d={`M-90 ${-222 + k} Q0 ${-300 + k} 90 ${-222 + k}`} stroke="#8a9a5a" stroke-width="4" fill="none" />)}
+      {/* 한지 술 */}
+      {Array.from({ length: 9 }, (_, i) => {
+        const t = (i + 0.5) / 9;
+        const ax = -90 + 180 * t;
+        const ay = -222 - 78 * 4 * t * (1 - t) + 8;
+        return <path key={i} d={`M${ax} ${ay} l4 12 l-4 10 l4 12`} stroke={HANJI} stroke-width="2.6" fill="none" opacity=".85" />;
+      })}
+      {/* 금줄: 닫힌 문에만 */}
+      {!open && (
+        <g>
+          <path d="M-90 -120 Q0 -104 90 -120" stroke="#a08a5a" stroke-width="4" fill="none" />
+          {[-60, -20, 20, 60].map((dx) => <path key={dx} d={`M${dx} -113 l4 8 l-4 6 l4 8`} stroke={HANJI} stroke-width="2.2" fill="none" />)}
+        </g>
+      )}
+    </g>
+  );
+}
+
+/** 끝없이 이어지는 댓가지 문 회랑 (지역 3 배경 ⟨반복 5⟩): 멀수록 작고 흐리다 */
+function BambooRow({ W, FY }: { W: number; FY: number }) {
+  const gates = [0.12, 0.34, 0.56, 0.76, 0.93];
+  return (
+    <g class="bd-bamboo">
+      <Ridge W={W} y={FY - 150} amp={40} fill="#1a1e2a" seed={0.8} />
+      {gates.map((t, i) => (
+        <BambooGate key={t} x={W * t} y={FY - 14} s={0.36 + (i % 2) * 0.06} opacity={0.5 + (i % 2) * 0.15} />
+      ))}
+      {/* 길가의 댓가지 울 */}
+      {Array.from({ length: Math.ceil(W / 26) }, (_, i) => <path key={i} d={`M${i * 26 + 8} ${FY - 14} l${(i % 3) - 1} -${30 + (i % 4) * 6}`} stroke="#4c5630" stroke-width="2" opacity=".7" />)}
+    </g>
+  );
+}
+
+/** 업경대와 빈 자리 열넷 (⟨반복 5⟩ G-04): 방석과 낮은 상만 있고 사람은 없다 — 판결이 없다. 재판정·형벌 구도는 쓰지 않는다 */
+export function EopgyeongSeats({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
+  const seats = Array.from({ length: 14 }, (_, i) => {
+    const row = i < 7 ? 0 : 1;
+    const k = i % 7;
+    return { sx: -330 + k * 110 + row * 55, sy: row ? -150 : -86, sc: row ? 0.78 : 1 };
+  });
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`} class="eopgyeong-seats" aria-label="빈 자리 열넷">
+      {seats.map((p, i) => (
+        <g key={i} transform={`translate(${p.sx} ${p.sy}) scale(${p.sc})`}>
+          <rect x="-36" y="-18" width="72" height="20" rx="7" fill="#5a2a26" stroke="#24100e" stroke-width="2" />
+          <rect x="-24" y="-40" width="48" height="16" rx="2" fill="#3a2a1e" stroke="#1a120c" stroke-width="2" />
+        </g>
+      ))}
+      {/* 업경대: 둥근 거울과 나무 받침 */}
+      <rect x="-8" y="-150" width="16" height="150" fill="#5a3e24" stroke={INK} stroke-width="2" />
+      <path d="M-50 0 L50 0 L36 -18 L-36 -18 Z" fill="#4a3220" stroke={INK} stroke-width="2" />
+      <circle cx="0" cy="-196" r="58" fill="#2a3346" stroke="#a08a5a" stroke-width="7" />
+      <circle cx="0" cy="-196" r="46" fill="#b9c8d8" opacity=".28" />
+      <path d="M-26 -214 q16 -12 34 -6" stroke="#eef3f8" stroke-width="3" fill="none" opacity=".6" />
+    </g>
+  );
+}
+
+/** 열두째 대문 너머 꽃이 핀 산 (⟨반복 5⟩ G-05): 환생꽃·숨살이꽃 — 지옥 풍경 없음 */
+export function FlowerHill({ W, FY, x0 = 0 }: { W: number; FY: number; x0?: number }) {
+  const colors = ['#f2b8c6', '#ebe3cb', '#f4c27a', '#d98aa8'];
+  // 언덕 = 2차 곡선 (x0, FY−10) → 꼭대기 (가운데, FY−150) → (W, FY−30). 꽃은 곡선 아래 비탈에 흩는다
+  const y0 = FY - 10;
+  const yc = FY - 150;
+  const y1 = FY - 30;
+  const topAt = (t: number) => (1 - t) * (1 - t) * y0 + 2 * t * (1 - t) * yc + t * t * y1;
+  return (
+    <g class="flower-hill" aria-label="꽃이 핀 산">
+      <path d={`M${x0} ${y0} Q${(x0 + W) / 2} ${yc} ${W} ${y1} L${W} ${FY} L${x0} ${FY} Z`} fill="#2f4a36" opacity=".92" />
+      {Array.from({ length: 54 }, (_, i) => {
+        const t = 0.04 + (((i * 37) % 54) / 54) * 0.92;
+        const top = topAt(t);
+        const fy = top + 8 + (((i * 13) % 17) / 17) * Math.max(4, FY - 8 - top - 8);
+        return <circle key={i} cx={x0 + t * (W - x0)} cy={fy} r={2.4 + (i % 3)} fill={colors[i % colors.length]} opacity=".9" />;
       })}
     </g>
   );
 }
 
-/** 큰 대문 (대문 방 · 3지역 보스) */
+/** 큰 대문 (3지역 보스 = 열두째 대문, 무쇠 빗장) */
 export function BigGate({ x, y, s = 1, open = false }: { x: number; y: number; s?: number; open?: boolean }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`} class="big-gate">
@@ -158,13 +230,14 @@ export function Backdrop({ region, W, H, FY, variant = 'room', children }: { reg
           <ChogaRow W={W} FY={FY} />
         </>
       )}
-      {r === 3 && <WallRow W={W} FY={FY} />}
-      {variant === 'gate' && <BigGate x={W * 0.74} y={FY - 4} s={Math.min(1, (FY - 20) / 300)} />}
+      {r === 3 && <BambooRow W={W} FY={FY} />}
+      {variant === 'gate' && (r === 3 ? <BambooGate x={W * 0.74} y={FY - 4} s={Math.min(1, (FY - 20) / 300)} /> : <BigGate x={W * 0.74} y={FY - 4} s={Math.min(1, (FY - 20) / 300)} />)}
       {variant === 'boss' && r !== 3 && <circle cx={W * 0.78} cy={FY - 160} r="120" fill="#5a1a1a" opacity=".22" />}
       {variant === 'boss' && r === 3 && <BigGate x={W * 0.74} y={FY - 4} s={Math.min(1.1, (FY - 20) / 290)} />}
       {/* 바닥과 길베(흰 무명길) */}
-      <rect x="0" y={FY - 12} width={W} height={H - FY + 12} fill={r === 3 ? '#24262c' : r === 2 ? '#2a2018' : '#231e16'} />
-      {r === 3 && Array.from({ length: Math.ceil(W / 80) }, (_, i) => <path key={i} d={`M${i * 80} ${FY - 12} L${i * 80 - 30} ${H}`} stroke="#1a1c22" stroke-width="2" />)}
+      <rect x="0" y={FY - 12} width={W} height={H - FY + 12} fill={r === 3 ? '#2a2620' : r === 2 ? '#2a2018' : '#231e16'} />
+      {/* 지역 3: 닦인 흙길 — 비질 자국 */}
+      {r === 3 && Array.from({ length: Math.ceil(W / 60) }, (_, i) => <path key={i} d={`M${i * 60} ${FY - 4 + (i % 3) * 6} q20 -4 40 0`} stroke="#3a342a" stroke-width="2" fill="none" />)}
       <path d={`M0 ${FY + 4} L${W} ${FY - 2} L${W} ${FY + 24} L0 ${FY + 30} Z`} fill={HANJI} opacity=".18" />
       {children}
     </g>

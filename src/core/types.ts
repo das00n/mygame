@@ -482,6 +482,9 @@ export interface CombatMods {
   yaksu?: boolean; // 약수 한 사발: 사망 판정 대신 체력 30%로 기상 (1회)
   hoek?: boolean; // ⟨반복 4⟩ 획 하나(차사 대접): 사망 판정 한 번을 넘긴다 — 명부의 十에 획 하나를 그어 千으로 (원정마다 1회)
   bladeSafeTurn?: number; // 명도 한 닢(작두박수): 이 턴까지 헛디딤 없음
+  sumsari?: boolean; // ⟨반복 5⟩ 숨살이꽃: 원정마다 한 번, 쓰러진 영웅이 그 자리에서 체력 50%로 일어난다
+  eopching?: boolean; // ⟨반복 5⟩ 업칭: 해원 조건의 상태·장단 문턱 −1 (최소 1)
+  gunbyeong?: boolean; // ⟨반복 5⟩ 삼천 군병 상: 이름 없는 군졸 넋 해원 회복 +2
 }
 
 /** 손님 배웅(05-region2 §9.3) 대접 게이지 */
@@ -547,6 +550,8 @@ export interface CombatState {
   yaksuUsed: boolean;
   /** ⟨반복 4⟩ 획 하나를 이 전투에서 썼다 */
   hoekUsed?: boolean;
+  /** 숨살이꽃을 이번 원정에서 썼다 (⟨반복 5⟩) */
+  sumsariUsed?: boolean;
   /** 마지막으로 카드를 낸 영웅 (부군의 가호) */
   lastOwner: number;
   /** 놀이 싸움 (사자 검문): 영웅이 받는 피해가 체력 대신 귀기로 들어간다. 쓰러지지 않는다 */

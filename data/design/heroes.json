@@ -5,7 +5,9 @@
   {"iter": 4, "what": "talggun.guard", "before": "없음", "after": "탈 뒤에 숨기 — move_block, 레벨 × 0.9, 턴당 2번 (0/1/2/3)", "why": "자리를 바꿀 때마다 선두에 노출되던 원형(영웅 평균 52%). 칸 조건·턴 시작 방식보다 칸이 바뀔 때가 맞았다"},
   {"iter": 4, "what": "chasa.guard", "before": "없음", "after": "군졸 자세 — turn_block, 레벨 × 0.45 (0/0/1/1)", "why": "포수·탈꾼을 올리자 차사가 든 조합이 바닥에 남았다. 지역 2 방어도 2 면 차사가 너무 강해져 1"},
   {"iter": 4, "what": "manshin.hp_per_level", "before": 3, "after": 1, "why": "만신은 굿상·회복·명부로 버틴다 — 가장 강한 원형(지역 2 영웅 평균 77%). 회복 카드 하향은 만신 + 작두박수 + 법사 만 무너뜨려 쓰지 않았다"},
-  {"iter": 4, "what": "baksu.hp_per_level · beopsa.hp_per_level", "before": 3, "after": 2, "why": "고유 방어로 오른 2·3막 중앙값을 되돌린다(적 체력으로 내리면 조합 편차가 벌어졌다)"}
+  {"iter": 4, "what": "baksu.hp_per_level · beopsa.hp_per_level", "before": 3, "after": 2, "why": "고유 방어로 오른 2·3막 중앙값을 되돌린다(적 체력으로 내리면 조합 편차가 벌어졌다)"},
+  {"iter": 5, "what": "jaebi.guard", "before": "없음", "after": "북 뒤에 앉기 — turn_block, 레벨 × 0.45 (레벨 0/1/2/3 → 0/0/1/1)", "why": "최종 원정에서 잽이가 든 조합이 장수 앞에서 무너졌다(장수 이김 잽이 58% · 다른 원형 62~73%, 죽은 조합 잽이 + 승려 + 탈꾼 31% · 잽이 + 포수 + 법사 37%). 방어도 1 이면 최종 죽은 2 → 0, 2 면 지역 2 지배·죽은 2/3 (docs/09-iteration.md §7.2)"},
+  {"iter": 5, "what": "talggun.guard.perLevel", "before": 0.9, "after": 1.0, "why": "레벨 2.5 이상(3막 · 최종)에서만 방어도 2 → 3 (지역 2 레벨 2.2 는 그대로 2). 3막 죽은 조합 둘(승려 + 탈꾼 + 차사 29% · 포수 + 탈꾼 + 차사 30%)이 38 · 43% 로 (docs/09-iteration.md §7.2)"}
  ],
  "note": "Phase 3 영웅 자원 배치. resources 키는 docs/02-core-rules.md §5의 공용 상태·매개체. exports_candidates(앞쪽일수록 세계관상 자연스러움) 중 2~3개를 tools/design/synergy.py 가 제약을 만족하도록 고른다. 첫 번째로 고른 것이 주 수출, 나머지는 부 수출.",
  "resources": {
@@ -86,7 +88,13 @@
     "F",
     "T",
     "C"
-   ]
+   ],
+   "guard": {
+    "kind": "turn_block",
+    "name": "북 뒤에 앉기",
+    "block": 0,
+    "perLevel": 0.45
+   }
   },
   {
    "id": "posu",
@@ -189,7 +197,7 @@
     "kind": "move_block",
     "name": "탈 뒤에 숨기",
     "block": 0,
-    "perLevel": 0.9,
+    "perLevel": 1.0,
     "maxPerTurn": 2
    }
   },

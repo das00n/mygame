@@ -23,12 +23,13 @@ export interface TypicalParty {
   duo: number;
 }
 
-/** sim:campaign (봇, 100회) 의 지역별 원정 파티 평균 — 반복 3 보정 기준 (data/sim/campaign.json summary.typical).
- *  반복 2: 1 {0.95, 2.8, 1.7, 0.7, 0.3} · 2 {1.9, 5, 3, 1.3, 0.9} · 3 {2.6, 7.5, 3, 1.6, 1.5} */
+/** sim:campaign (봇, 100회) 의 지역별 원정 파티 평균 — 반복 5 재측정 (data/sim/campaign.json summary.typical).
+ *  반복 2: 1 {0.95, 2.8, 1.7, 0.7, 0.3} · 2 {1.9, 5, 3, 1.3, 0.9} · 3 {2.6, 7.5, 3, 1.6, 1.5}
+ *  반복 3·4: 1 {0.9, 3.4, 1.3, 0.4, 0.6} · 2 {2.2, 6.8, 3, 0.9, 1.3} · 3 {2.7, 8.8, 3, 1.4, 1.75} */
 export const TYPICAL: Record<number, TypicalParty> = {
-  1: { level: 0.9, learned: 3.4, engraved: 1.3, sinmul: 0.4, duo: 0.6 },
-  2: { level: 2.2, learned: 6.8, engraved: 3, sinmul: 0.9, duo: 1.3 },
-  3: { level: 2.7, learned: 8.8, engraved: 3, sinmul: 1.4, duo: 1.75 },
+  1: { level: 0.88, learned: 3.37, engraved: 1.3, sinmul: 0.42, duo: 0.58 },
+  2: { level: 2.24, learned: 6.63, engraved: 3, sinmul: 0.96, duo: 1.27 },
+  3: { level: 2.73, learned: 8.61, engraved: 3, sinmul: 1.43, duo: 1.74 },
 };
 
 const RES_STATUS: Record<string, string> = { M: '점지', B: '상흔', D: '명부', C: '넋흔들림', K: '장단', F: '진형', S: '굿상', T: '부적' };

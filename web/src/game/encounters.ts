@@ -1,7 +1,7 @@
 // 기물·방 이벤트·덫 (탐험 §7·§8, 첫 지역 §5): 세 갈래 손대기(맨손 / 맞는 보급품 / 영웅 고유)와 선택지.
 
 import { rand } from '../../../src/core/rng.ts';
-import { eopgyeong, knotPresetBits } from '../../../src/core/regions.ts';
+import { eopgyeong, knotPresetBits, roadStep } from '../../../src/core/regions.ts';
 import type { HeroId } from '../../../src/core/types.ts';
 import { CURIO_BY_ID, D, ENEMY_EXTRA, EVENT_BY_ID, RELIC_BY_ID, TRAP_BY_ID, enemyRegion, type SupplyId } from './content.ts';
 import { corridorsOf } from './dungeon.ts';
@@ -858,10 +858,10 @@ function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, opt
     // ── 지역 2 ──
     case 'sonnim_madang:0':
     case 'sonnim_madang:1':
-      if (idx === 1) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
-      if (run.relics.includes('ssarimal')) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
-      lines.push(idx === 1 ? '만신이 손님을 청해 모신다. 손님상이 한결 정갈하다(대접 +4로 시작).' : '손님상을 다시 차린다. 손님은 싸워 이길 상대가 아니라 잘 대접해 보낼 신령이다.');
       const sp = D().specials.get('sonnim_baeung')!;
+      if (idx === 1) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, sp.manshinStart);
+      if (run.relics.includes('ssarimal')) run.flags.sonnimStart = Math.max(run.flags.sonnimStart ?? 0, 4);
+      lines.push(idx === 1 ? `만신이 손님을 청해 모신다. 손님상이 한결 정갈하다(대접 +${sp.manshinStart}로 시작).` : '손님상을 다시 차린다. 손님은 싸워 이길 상대가 아니라 잘 대접해 보낼 신령이다.');
       lines.push(`대접 ${sp.goal}을 ${sp.limit}턴 안에 채우면 좋게 떠난다. 손님상 차리기(술 1 또는 쌀 1, 턴당 1회) +3 · 굿상 설치물 · 장단 3+ · 부적.${run.flags.sonnimStart ? ` 시작 대접 ${run.flags.sonnimStart}.` : ''}`);
       then = 'battle';
       dlg.battleEnc = 'sonnim';
@@ -985,6 +985,22 @@ function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, opt
       then = 'battle';
       dlg.battleEnc = 'ev_munjigi';
       break;
+    // ⟨반복 5⟩ 문전상(H-05) · 잽이 질침 장단(A-06) · 탈꾼 문지기 흉내(A-08)
+    case 'daemun_tonghaeng:4':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      run.next.munjeon = true;
+      lines.push('문간에 밥 한 그릇과 인정을 올렸다. 문지기가 금줄을 걷고, 상을 받은 문간이 이 문 너머에서 마주칠 넋의 사연을 일러 준다 — 다음 전투 원귀의 해원 조건이 해원록에 적힌다.');
+      break;
+    case 'daemun_tonghaeng:5':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      if (run.flags.road !== undefined) run.flags.road = roadStep(run.flags.road);
+      lines.push(`잽이가 북과 징으로 길 닦는 장단을 받친다. 문지기가 장단에 맞춰 금줄을 걷는다.${run.flags.road !== undefined ? ` 길닦기 한 칸 (${run.flags.road}/9).` : ''}`);
+      break;
+    case 'daemun_tonghaeng:6':
+      run.flags.gates = (run.flags.gates ?? 0) + 1;
+      partyStress(run, -5);
+      lines.push('탈꾼이 대문에 붙이던 장수 그림처럼 눈을 부릅뜨고 버티어 선다. 문지기들이 웃음을 터뜨리며 길을 비킨다. 파티 귀기 −5.');
+      break;
     case 'saemji_noyeok:0': {
       let best = aliveIdx(run)[0];
       for (const i of aliveIdx(run)) if (run.heroes[i].hp / effMax(run.heroes[i]) > run.heroes[best].hp / effMax(run.heroes[best])) best = i;
@@ -1005,15 +1021,21 @@ function regionEvent(app: AppState, run: Run, dlg: DialogState, idx: number, opt
       break;
     case 'eopgyeong_bichugi:0':
     case 'eopgyeong_bichugi:1':
-    case 'eopgyeong_bichugi:2': {
-      const r = eopgyeong(run.stats.haewons, { incense: idx === 1, manshin: idx === 2 });
+    case 'eopgyeong_bichugi:2':
+    case 'eopgyeong_bichugi:3': {
+      const r = eopgyeong(run.stats.haewons, { incense: idx === 1, manshin: idx === 2, road: run.flags.road });
       run.flags.eopTier = r.tier;
       run.flags.knots = knotPresetBits(run.party, r.knots);
       if (r.reveal) revealHaewon(run, bossEnemyIds(run));
       if (r.draw) run.next.drawBonus = (run.next.drawBonus ?? 0) + r.draw;
       if (r.hpPct) healAll(run, r.hpPct);
       if (r.stress) partyStress(run, r.stress);
-      lines.push(`업경대는 판결하지 않는다. ${r.text}`);
+      lines.push(`업경대는 판결하지 않는다. ${(run.flags.road ?? 0) >= 9 ? '아홉 단계로 닦은 길이 거울까지 이어져 한 단계 위로 비춘다. ' : ''}${r.text}`);
+      // ⟨반복 5⟩ 승려 회심곡 (A-05): 해원 수 그대로, 파티 귀기 −15
+      if (idx === 3) {
+        partyStress(run, -15);
+        lines.push('승려가 거울에 비친 넋들을 위해 회심곡을 부른다. 파티 귀기 −15.');
+      }
       break;
     }
     case 'kkamagwi_jeokpaeji:0':

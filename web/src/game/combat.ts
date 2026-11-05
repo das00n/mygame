@@ -6,6 +6,7 @@ import {
 } from '../../../src/core/engine.ts';
 import { enemyDamageMult, intentTargets, projectIncoming } from '../../../src/core/enemy.ts';
 import { rand } from '../../../src/core/rng.ts';
+import { roadStep } from '../../../src/core/regions.ts';
 import { DEFAULT_RULES, type ActionChoice, type CardInst, type CombatMods, type CombatState, type Encounter, type HeroId } from '../../../src/core/types.ts';
 import { enumerateActions, evaluate } from '../../../src/sim/bot.ts';
 import { D, ENEMY_EXTRA, bandOf } from './content.ts';
@@ -13,7 +14,7 @@ import { addCurse, addRunStress, afterFightRecovery, aliveIdx, buildResult, effM
 import { swapHeroes } from '../../../src/core/engine.ts';
 import type { AppState, BattleMeta, BattleSource, CombatSession, Run } from './types.ts';
 import { keepsakeFor, makeReward } from './rewards.ts';
-import { CD } from '../../../src/meta/content.ts';
+import { CD, deathRules } from '../../../src/meta/content.ts';
 
 // ── 조합 ─────────────────────────────────────────────────────────────
 export const CUSTOM_ENC: Record<string, Encounter> = {
@@ -86,7 +87,7 @@ export function relicMods(run: Run): CombatMods {
   const m: CombatMods = {};
   if (has('yongwang')) m.familyDmg = { family: '수귀', mult: 1.25 };
   // 캠페인 처벌 강도(06-base §8 ⟨반복 3⟩): 사망 판정 버틸 확률 +0.1 — 칠성 가호와 더한다
-  const campaignSave = run.campaign ? CD.death.deathSave : 0;
+  const campaignSave = run.campaign ? deathRules(run.campaign.length).deathSave : 0;
   if (has('chilseong') || campaignSave) m.deathSave = (has('chilseong') ? 0.15 : 0) + campaignSave;
   if (has('daesin_bangul')) m.handMax = 8;
   if (has('samsin')) m.reviveFrac = 0.35;
@@ -98,6 +99,10 @@ export function relicMods(run: Run): CombatMods {
   if (has('yaksu_sabal')) m.yaksu = true;
   if (has('myeongdo')) m.bladeSafeTurn = 1;
   if (run.flags.hoek === 'ready') m.hoek = true;
+  // ⟨반복 5⟩ 숨살이꽃 · 업칭 · 삼천 군병 상
+  if (has('sumsari_kkot')) m.sumsari = true;
+  if (has('eopching')) m.eopching = true;
+  if (run.flags.gunbyeong) m.gunbyeong = true;
   return m;
 }
 
@@ -144,7 +149,7 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
     deck: [...run.deck, ...extra], encounter: enc, seed: (rand(run) * 4294967296) | 0, record: true, jijeon: run.supplies.jijeon, log: true,
     rules: { ...DEFAULT_RULES, enemyDmgMult: band.enemyDmg, haewonHeal: run.relics.includes('jisin') ? 5 : DEFAULT_RULES.haewonHeal },
     provisions: { rice: run.supplies.rice, sul: run.supplies.sul, bujeok: run.supplies.bujeok, incense: run.supplies.incense },
-    enemyHpMult: run.campaign?.enemyHpMult ?? 1, mods: relicMods(run), yaksuUsed: !!run.flags.yaksuUsed, nahwa: run.relics.includes('nahwa'),
+    enemyHpMult: run.campaign?.enemyHpMult ?? 1, mods: relicMods(run), yaksuUsed: !!run.flags.yaksuUsed, sumsariUsed: !!run.flags.sumsariUsed, nahwa: run.relics.includes('nahwa'),
     knotsPreset: o.tier === 'boss' ? run.flags.knots ?? 0 : 0,
     play: o.special === 'play', ward: o.special === 'escort' ? { name: '잘못 끌려온 사람', hp: 20 } : null,
     entertain: sp ? { goal: sp.goal, limit: sp.limit, start: run.flags.sonnimStart ?? 0 } : null,
@@ -223,6 +228,12 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
     hpBefore: run.heroes.map((h) => h.hp), stressBefore, threshold, fleeTries: 0, jeseokRun: 0, jeseokTurn: -1, sansinTurn: -1, log: [], seenDead: [],
     toasts: [], turnStartedAt: Date.now(),
   };
+  // 문전상 (⟨반복 5⟩ H-05): 상을 받은 문간이 이 전투 원귀의 사연을 일러 준다
+  if (run.next.munjeon) {
+    const ids = [...new Set(enc.enemies.filter((id) => d.enemyById.get(id)?.category !== 'minion'))];
+    const fresh = revealHaewon(run, ids);
+    meta.log.push(`— 문전상: ${fresh.length ? fresh.map((id) => d.enemyById.get(id)?.name ?? id).join(' · ') + '의 해원 조건이 해원록에 적혔다' : '이미 해원록에 있는 넋들이다'}`);
+  }
   run.next = { wounds: [] };
   for (const id of enc.enemies) if (!run.track.met.includes(id)) run.track.met.push(id);
   const names = enc.enemies.map((id) => d.enemyById.get(id)?.name ?? id);
@@ -514,6 +525,7 @@ function syncHeroes(app: AppState): boolean[] {
   run.supplies.bujeok = s.prov.bujeok;
   run.supplies.incense = s.prov.incense;
   if (s.yaksuUsed) run.flags.yaksuUsed = true;
+  if (s.sumsariUsed) run.flags.sumsariUsed = true;
   if (s.hoekUsed) run.flags.hoek = 'used';
   // 진형 유지: 전투가 끝난 자리 그대로 다음 전투를 시작한다
   const alive = s.formation.filter((i) => !run.heroes[i].dead);
@@ -547,7 +559,7 @@ export function finishBattle(app: AppState): void {
   const endDowned = syncHeroes(app);
   if (!win) {
     // 전멸: 영웅마다 마지막 사망 판정(버틸 확률 50%, 캠페인은 처벌 강도 CD.death.wipeSurvive — 06-base §8 ⟨반복 3⟩)
-    const survive = run.campaign ? CD.death.wipeSurvive : 0.5;
+    const survive = run.campaign ? deathRules(run.campaign.length).wipeSurvive : 0.5;
     for (const h of run.heroes) {
       if (h.dead) continue;
       if (rand(run) >= survive) {
@@ -565,6 +577,8 @@ export function finishBattle(app: AppState): void {
     return;
   }
   run.stats.wins++;
+  // 아홉 단계 길닦기 (⟨반복 5⟩): 넋을 하나라도 풀어 보낸 싸움을 이기면 한 칸
+  if (run.flags.road !== undefined && st.haewons > 0) run.flags.road = roadStep(run.flags.road);
   // 넋 수습: 서 있던 영웅은 잃은 체력의 40%
   const rec = afterFightRecovery(run, endDowned);
   // 해원 → 파티 귀기 −5 / 해원 (소지 한 장: −3 더)

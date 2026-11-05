@@ -88,6 +88,8 @@ export function VillageScreen() {
 function MaeulTab({ c }: { c: Campaign }) {
   const opts = buildOptions(c);
   const festival = festivalKind(c);
+  // 황우양 집짓기 네 단계 연출 (⟨반복 5⟩ V-11): 방금 지은 시설 칸에 재목 마련 → 집터 다지기 → 집짓기 → 집치장이 차례로 찬다
+  const [justBuilt, setJustBuilt] = useState<string | null>(null);
   return (
     <div class="col">
       <VillagePanorama c={c} />
@@ -107,13 +109,25 @@ function MaeulTab({ c }: { c: Campaign }) {
                 <div class="row">
                   <span class="tiny">{o.next === 1 ? '짓기' : `${o.next}단계`}: {[o.cost.gold ? `엽전 ${o.cost.gold}` : '', o.cost.chiseong ? `치성 ${o.cost.chiseong}` : ''].filter(Boolean).join(' · ') || '무료'}</span>
                   <span class="spacer" />
-                  <button class="btn small lamp" data-testid={`build-${f.id}`} disabled={!o.ok} title={o.why ?? o.text} onClick={() => say(build(c, f.id), `${f.name} ${o.next === 1 ? '건축' : `${o.next}단계`}`)}>{o.next === 1 ? '짓는다' : '올린다'}</button>
+                  <button class="btn small lamp" data-testid={`build-${f.id}`} disabled={!o.ok} title={o.why ?? o.text} onClick={() => {
+                    const err = build(c, f.id);
+                    if (!err) setJustBuilt(f.id);
+                    say(err, `${f.name} ${o.next === 1 ? '건축' : `${o.next}단계`} — ${CD.build.stages.join(' → ')}, ${CD.build.done}`);
+                  }}>{o.next === 1 ? '짓는다' : '올린다'}</button>
                 </div>
               )}
               {o && o.why && <div class="tiny faint">{o.why}</div>}
+              {justBuilt === f.id && <BuildStages guardian={f.guardian} />}
             </div>
           );
         })}
+        {(CD.sites ?? []).map((st) => (
+          <div key={st.id} class="fac site" data-testid={`site-${st.id}`}>
+            <div class="row"><b>{st.name}</b><span class="chip">터</span></div>
+            <div class="tiny"><span class="dim">지키는 신</span> {st.guardian}</div>
+            <div class="tiny dim">{st.text}</div>
+          </div>
+        ))}
       </div>
       <div class="row small">
         <span class="dim">재료</span>
@@ -122,6 +136,17 @@ function MaeulTab({ c }: { c: Campaign }) {
       </div>
       <div class="row small"><span class="dim">창고</span><span>{supplyLine(c.stock)}</span>{festival === 'market' && <span class="chip good">추석 장: 보급품 반값</span>}{festival === 'singugan' && <span class="chip good">신구간: 시설 엽전 반값</span>}</div>
       <div class="panel"><div class="log" data-testid="village-log">{c.log.slice(-10).reverse().map((l, i) => <div key={i}>{l}</div>)}</div></div>
+    </div>
+  );
+}
+
+/** 건축 연출 (⟨반복 5⟩ V-11): 황우양 집짓기 네 단계가 차례로 차고 상량 — 연출만, 규칙은 그대로 */
+function BuildStages({ guardian }: { guardian?: string }) {
+  const g = guardian?.split(' — ')[0];
+  return (
+    <div class="build-stages" data-testid="build-stages" aria-label={`${CD.build.stages.join(' → ')}, ${CD.build.done}`}>
+      {CD.build.stages.map((name, i) => <span key={name} class="build-stage" style={{ animationDelay: `${i * 0.35}s` } as CSSProperties}>{name}</span>)}
+      <span class="build-stage done" style={{ animationDelay: `${CD.build.stages.length * 0.35}s` } as CSSProperties}>{CD.build.done}{g ? ` — ${g}을(를) 모셨다` : ''}</span>
     </div>
   );
 }
@@ -500,7 +525,7 @@ export function EndingScreen() {
   return (
     <div class="screen" data-testid="ending">
       <Procession heroes={[...c.roster.filter((p) => !p.busy).slice(0, 3).map((p) => ({ id: p.arch, dead: false })), ...ancestors(c).slice(0, 4).map((f) => ({ id: f.person.arch, dead: true, name: f.person.name }))]}
-        region={3} success={sum.kind !== 'fail'} haewons={sum.codex.haewon} kills={0} />
+        region={3} success={sum.kind !== 'fail'} haewons={sum.codex.haewon} kills={0} flowers={sum.kind === 'good'} />
       <div class={`result-banner ${sum.kind === 'fail' ? 'fail' : 'ok'}`}>
         <h1>{title}</h1>
         <div class="dim">{sum.text}</div>

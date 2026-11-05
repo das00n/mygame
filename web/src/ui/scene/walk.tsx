@@ -6,7 +6,7 @@ import type { HeroId } from '../../../../src/core/types.ts';
 import { CURIO_BY_ID, D, EVENT_BY_ID, HERO_COLOR, TRAP_BY_ID, bandOf } from '../../game/content.ts';
 import { heroName } from '../../game/run.ts';
 import type { Content, DialogState, Run } from '../../game/types.ts';
-import { Backdrop, BigGate, Hongsalmun, LightVignette, type BackdropVariant } from './backdrop.tsx';
+import { Backdrop, BambooGate, BigGate, EopgyeongSeats, FlowerHill, Hongsalmun, LightVignette, type BackdropVariant } from './backdrop.tsx';
 import type { LastBattle } from './fx.ts';
 import { HeroParts, Shadow } from './hero.tsx';
 import { pctX, pctY } from './palette.ts';
@@ -110,7 +110,7 @@ export function CorridorScene({ run }: { run: Run }) {
             </g>
           ))}
         </g>
-        {to.gate || (to.kind === 'boss' && region === 3) ? <BigGate x={1190} y={FY + 6} s={0.62} open={!!to.content.done} /> : to.kind === 'boss' ? <BossDen x={1190} y={FY + 6} done={!!to.content.done} /> : <RoomPosts x={1190} y={FY + 6} />}
+        {to.gate ? <BambooGate x={1190} y={FY + 6} s={0.62} open={!!to.content.done} /> : to.kind === 'boss' && region === 3 ? <BigGate x={1190} y={FY + 6} s={0.62} open={!!to.content.done} /> : to.kind === 'boss' ? <BossDen x={1190} y={FY + 6} done={!!to.content.done} /> : <RoomPosts x={1190} y={FY + 6} />}
         <LightVignette light={run.light} W={W} H={H} lampX={TX[cur] - 60} lampY={FY - 120} ahead uid="corridor" />
         <Party run={run} frontX={TX[cur] + 40} gap={84} y={FY + 6} scale={0.86} />
         <Lantern x={TX[cur] - 40} y={52} light={run.light} />
@@ -130,7 +130,7 @@ export function CorridorScene({ run }: { run: Run }) {
       <>
         <Backdrop region={region} W={W} H={H} FY={FY} variant={variant} />
         {rm.kind === 'entrance' && <Hongsalmun x={150} y={FY + 4} s={0.85} />}
-        {rm.kind === 'ferry' && <Boat x={820} y={FY + 6} s={1.1} />}
+        {rm.kind === 'ferry' && (region === 3 && run.campaign?.length === 'final' ? <EopgyeongSeats x={820} y={FY + 6} s={0.62} /> : <Boat x={820} y={FY + 6} s={1.1} />)}
         {rm.camp && <Campfire x={700} y={FY + 6} s={0.8} lit={rm.campUsed} />}
         {!rm.camp && rm.kind !== 'ferry' && <ContentProp c={rm.content} x={760} y={FY + 4} s={1.1} region={region} />}
         {Array.from({ length: Math.min(3, exits) }, (_, k) => <RoomPosts key={k} x={1050 + k * 80} y={FY + 6} s={0.7 - k * 0.08} />)}
@@ -204,7 +204,7 @@ export function CampScene({ run, raid }: { run: Run; raid: number }) {
 }
 
 /** 결과: 꼭두 행렬. 서 있는 영웅이 넋등을 들고 걷고, 해원한 넋이 위로 떠오르고, 떠난 영웅은 위패로 함께 간다 */
-export function Procession({ heroes, region, success, haewons, kills }: { heroes: { id: HeroId; dead: boolean; name?: string }[]; region: number; success: boolean; haewons: number; kills: number }) {
+export function Procession({ heroes, region, success, haewons, kills, flowers = false }: { heroes: { id: HeroId; dead: boolean; name?: string }[]; region: number; success: boolean; haewons: number; kills: number; flowers?: boolean }) {
   const H = 250;
   const FY = 212;
   const alive = heroes.filter((h) => !h.dead);
@@ -212,6 +212,9 @@ export function Procession({ heroes, region, success, haewons, kills }: { heroes
   const svg = (
     <>
       <Backdrop region={region} W={W} H={H} FY={FY} variant="path" />
+      {/* 좋은 결말 ⟨반복 5⟩: 열린 열두째 대문 너머 꽃이 핀 산 (환생꽃·숨살이꽃) */}
+      {flowers && <FlowerHill W={W} FY={FY} x0={880} />}
+      {flowers && <BigGate x={980} y={FY + 4} s={0.6} open />}
       {success && <rect width={W} height={H} fill="url(#proc-dawn)" />}
       <defs>
         <linearGradient id="proc-dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4c27a" stop-opacity=".22" /><stop offset=".7" stop-color="#f4c27a" stop-opacity="0" /></linearGradient>
@@ -285,13 +288,14 @@ export function DialogArt({ dlg, run }: { dlg: DialogState; run: Run }) {
   const FY = 176;
   const region = run.region ?? 1;
   const gate = dlg.id === 'daemun_tonghaeng';
+  const mirror = dlg.id === 'eopgyeong_bichugi';
   const svg = (
     <>
       <Backdrop region={region} W={W} H={H} FY={FY} variant="path" />
-      {gate ? <BigGate x={760} y={FY + 4} s={0.62} /> : dlg.kind === 'curio' ? <Cairn x={760} y={FY} s={1} /> : dlg.kind === 'trap' ? <TrapMark x={760} y={FY + 4} s={1.6} /> : <SignPost x={760} y={FY} s={1.2} />}
+      {gate ? <BambooGate x={760} y={FY + 4} s={0.62} /> : mirror ? <EopgyeongSeats x={860} y={FY + 4} s={0.5} /> : dlg.kind === 'curio' ? <Cairn x={760} y={FY} s={1} /> : dlg.kind === 'trap' ? <TrapMark x={760} y={FY + 4} s={1.6} /> : <SignPost x={760} y={FY} s={1.2} />}
       <LightVignette light={run.light} W={W} H={H} lampX={420} lampY={FY - 90} uid="dialog" />
       <Party run={run} frontX={520} gap={90} y={FY} scale={0.66} walk={false} />
     </>
   );
-  return <div class="dialog-art"><Stage W={W} H={H} cls="scene-stage" label={gate ? '닫힌 대문' : '길 위의 기물'} svg={svg} /></div>;
+  return <div class="dialog-art"><Stage W={W} H={H} cls="scene-stage" label={gate ? '닫힌 댓가지 문' : mirror ? '업경대와 빈 자리 열넷' : '길 위의 기물'} svg={svg} /></div>;
 }

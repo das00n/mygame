@@ -77,7 +77,7 @@ export function runCombatJob(trio: HeroId[], seeds: number, duo = false, region 
       const sp = enc.id === 'sonnim' ? d.specials.get('sonnim_baeung')! : null;
       const s = createCombat({
         party: tp.setup.heroes!.map((h) => ({ id: h.id, maxHp: h.maxHp })), deck, encounter: enc, seed: seedFrom(trio.join('+'), enc.id, seed), record: true,
-        jijeon: prov.jijeon, provisions: prov, entertain: sp ? { goal: sp.goal, limit: sp.limit, start: trio.includes('manshin') ? 4 : 0 } : null,
+        jijeon: prov.jijeon, provisions: prov, entertain: sp ? { goal: sp.goal, limit: sp.limit, start: trio.includes('manshin') ? sp.manshinStart : 0 } : null,
       });
       const startHp = s.heroes.map((h) => h.hp);
       const { timeout } = runCombat(s);

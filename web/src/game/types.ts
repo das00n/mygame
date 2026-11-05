@@ -115,6 +115,8 @@ export interface NextFight {
   freeForm?: boolean;
   /** 첫 턴 차사 방어도 (서낭 앞 고사 자리) */
   chasaBlock?: number;
+  /** 문전상 (⟨반복 5⟩ H-05): 다음 전투 원귀의 해원 조건을 해원록에 적는다 */
+  munjeon?: boolean;
 }
 
 /** 지역 2·3 원정 상태 (손님 배웅·업경대·까마귀 등) */
@@ -138,6 +140,12 @@ export interface RunFlags {
   gateFree?: number;
   /** 지난 대문 방 수 (3지역 대문 통행 ⟨반복 3⟩) */
   gates?: number;
+  /** 아홉 단계 길닦기 칸 수 (⟨반복 5⟩ 최종 원정만, 05-region3 §14.1). 없으면 세지 않는다 */
+  road?: number;
+  /** 삼천 군병 상 (⟨반복 5⟩ H-06): 이번 원정 군졸 넋 해원 회복 +2 */
+  gunbyeong?: boolean;
+  /** 숨살이꽃 (⟨반복 5⟩ I-08): 이번 원정에서 썼다 */
+  sumsariUsed?: boolean;
   haenggimotUsed?: boolean;
   /** 길굿 끼니 회복 +%p (약술) */
   mealBonus?: number;

@@ -26,8 +26,19 @@ export interface VillageEvent {
   id: string;
   name: string;
   kind: 'good' | 'bad';
+  /** 이 원형이 로스터에 있을 때만 뽑힌다 (⟨반복 5⟩ 법사 안택) */
+  requires?: HeroId;
   text: string;
-  effect: { supplyBonus?: number; reveal?: number; recruitPlus?: number; gold?: number; stress?: number; bond?: number; heal?: number; incense?: number; stressOne?: number };
+  effect: { supplyBonus?: number; reveal?: number; recruitPlus?: number; gold?: number; stress?: number; bond?: number; heal?: number; incense?: number; stressOne?: number; chiseong?: number };
+}
+
+/** 출신 인연 (⟨반복 5⟩ A-01): arch 의 origin 번째 출신이면 with 원형과 인연 bond 로 시작 */
+export interface OriginBond {
+  arch: HeroId;
+  origin: number;
+  with: HeroId;
+  bond: number;
+  why: string;
 }
 
 export interface CampaignData {
@@ -50,6 +61,8 @@ export interface CampaignData {
     wipeSurvive: number;
     /** 캠페인 전투의 사망 판정(쓰러진 채 맞을 때) 버틸 확률 보정 — 처벌 강도 ⟨반복 3⟩ */
     deathSave: number;
+    /** 최종 원정의 처벌 강도 (⟨반복 5⟩, 없으면 위 값): 열두째 대문 앞에서는 쓰러진 넋을 데려올 길이 짧다 */
+    final?: { wipeSurvive?: number; deathSave?: number };
   };
   bonds: { together: number; rescue: number; camp: number; duoAt: number };
   facilities: FacilityDef[];
@@ -70,6 +83,11 @@ export interface CampaignData {
   finalUnlock: { bossWins: number };
   rift: { max: number; perSeason: number; bossHaewon: number; bossKill: number; strong: number[]; hpMultPerStep: number; countdown: number; sealResetTo: number };
   events: VillageEvent[];
+  originBonds: OriginBond[];
+  /** 건축 연출 (⟨반복 5⟩ V-11 황우양 집짓기): 단계를 오를 때마다 stages → done */
+  build: { stages: string[]; done: string; why: string };
+  /** 아직 짓지 않는 터 (⟨반복 5⟩ V-06 장승·솟대 터 = 문전 + 오방토신) */
+  sites: { id: string; name: string; guardian: string; text: string }[];
   commissions: Record<string, { family: string; story: string }[]>;
   materials: Record<string, string>;
   engrave: Record<string, string>;
@@ -77,6 +95,12 @@ export interface CampaignData {
 }
 
 export const CD = campaignJson as unknown as CampaignData;
+
+/** 원정 길이에 맞는 처벌 강도 (⟨반복 5⟩ 최종 원정은 death.final 로 덮어쓴다) */
+export function deathRules(length: CommissionLength | null | undefined): { wipeSurvive: number; deathSave: number } {
+  const f = length === 'final' ? CD.death.final : undefined;
+  return { wipeSurvive: f?.wipeSurvive ?? CD.death.wipeSurvive, deathSave: f?.deathSave ?? CD.death.deathSave };
+}
 export const QUIRK_BY_ID = new Map(CD.quirks.map((q) => [q.id, q]));
 export const FACILITY_BY_ID = new Map(CD.facilities.map((f) => [f.id, f]));
 export const SUPPLY_IDS: SupplyId[] = ['candle', 'rice', 'incense', 'jijeon', 'bujeok', 'sul'];

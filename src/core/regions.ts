@@ -37,6 +37,17 @@ export function knotPresetBits(party: HeroId[], k: number): number {
   return bits;
 }
 
+/** 아홉 단계 길닦기 (⟨반복 5⟩ 05-region3 §14.1 · 출처 조사 G-02). 질침의 길닦기를 은유로만 빌린다 —
+ *  ① 돌아보기는 들어설 때, 그 뒤로 **길굿을 열 때마다** · **넋을 하나라도 풀어 보낸 싸움을 이길 때마다** 한 칸(잽이 「질침 장단」도 한 칸).
+ *  아홉 칸이 다 차면 열두째 대문 앞 업경대가 한 단계 위로 비춘다 */
+export const ROAD_STEPS = ['돌아보기', '풀 베기', '그루 파기', '흙 고르기', '돌 치우기', '밀대', '비질', '물 뿌리기', '띠 깔기'] as const;
+export const ROAD_FULL = ROAD_STEPS.length;
+
+/** 길닦기 한 칸을 더한다 (아홉에서 멈춘다) */
+export function roadStep(n: number, k = 1): number {
+  return Math.min(ROAD_FULL, n + k);
+}
+
 export interface EopgyeongResult {
   /** 비춘 해원 수 (만신 +2) */
   count: number;
@@ -50,11 +61,13 @@ export interface EopgyeongResult {
   text: string;
 }
 
-/** 업경대 비추기 (05-region3 §9.2): 이번 원정의 해원 수 → 해원 조건 공개 · 매듭 미리 풀기 · 체력. 거울은 판결하지 않는다 */
-export function eopgyeong(haewons: number, opts: { incense?: boolean; manshin?: boolean } = {}): EopgyeongResult {
+/** 업경대 비추기 (05-region3 §9.2): 이번 원정의 해원 수 → 해원 조건 공개 · 매듭 미리 풀기 · 체력. 거울은 판결하지 않는다.
+ *  road = 길닦기 칸 수 (⟨반복 5⟩ 아홉 칸이 다 차면 한 단계 위) */
+export function eopgyeong(haewons: number, opts: { incense?: boolean; manshin?: boolean; road?: number } = {}): EopgyeongResult {
   const count = haewons + (opts.manshin ? 2 : 0);
   let tier = count >= 15 ? 3 : count >= 10 ? 2 : count >= 5 ? 1 : 0;
   if (opts.incense) tier = Math.min(3, tier + 1);
+  if ((opts.road ?? 0) >= ROAD_FULL) tier = Math.min(3, tier + 1);
   const r: EopgyeongResult = { count, tier, knots: 0, hpPct: 0, draw: 0, stress: 0, reveal: false, text: '' };
   if (tier === 0) {
     r.stress = 10;

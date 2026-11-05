@@ -62,7 +62,10 @@ export function rollRares(run: Run): string[] {
 
 export function rollRelics(run: Run, tiers: string[], n: number): string[] {
   // 그 지역의 가호 (특정 사건으로만 얻는 가호는 빼고)
-  const pool = regionContent(run.region ?? 1).relics.filter((r) => tiers.includes(r.tier) && !run.relics.includes(r.id) && !(r as { source?: string }).source).map((r) => r.id);
+  // 숨살이꽃(⟨반복 5⟩ final_reward)은 최종 원정의 수호 방에서만 받는다
+  const pool = regionContent(run.region ?? 1).relics
+    .filter((r) => tiers.includes(r.tier) && !run.relics.includes(r.id) && !(r as { source?: string }).source && !(r as { final_reward?: boolean }).final_reward)
+    .map((r) => r.id);
   const out: string[] = [];
   while (out.length < n && pool.length) {
     const i = Math.floor(rand(run) * pool.length);
@@ -97,6 +100,12 @@ export function makeReward(app: AppState, meta: BattleMeta, gold: number, mats: 
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
     r.flags = { colors: pool.slice(0, 3), peek: run.relics.includes('obanggi') ? 0 : -1, picked: -1 };
+    // 숨살이꽃 (⟨반복 5⟩ I-08): 최종 원정의 수호 방을 지나면 — 열두째 대문 너머 꽃밭의 꽃 한 송이
+    if (run.campaign?.length === 'final' && !run.relics.includes('sumsari_kkot')) {
+      run.relics.push('sumsari_kkot');
+      r.lines.push(`희귀 가호 「숨살이꽃」 — ${RELIC_BY_ID.get('sumsari_kkot')?.effect ?? ''}`);
+      logRun(run, '수호 방 너머에서 숨살이꽃 한 송이를 얻었다.');
+    }
   }
   return r;
 }
@@ -241,6 +250,14 @@ export function applyRelicGain(run: Run, id: string): void {
     for (const h of run.heroes) if (!h.dead) {
       h.baseMax += 4;
       h.hp += 4;
+    }
+  }
+  // 성주 한지 (⟨반복 5⟩ I-04): 중상이 낫고 최대 체력 +2
+  if (id === 'seongju_hanji') {
+    for (const h of run.heroes) if (!h.dead) {
+      h.injured = false;
+      h.baseMax += 2;
+      h.hp += 2;
     }
   }
   if (id === 'seonang') {

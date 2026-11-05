@@ -128,6 +128,11 @@ async function main() {
     sinyeolPerExp: { played: r3(allRuns.reduce((a, x) => a + (x.sinyeol?.played ?? 0), 0) / allRuns.length), moved: r3(allRuns.reduce((a, x) => a + (x.sinyeol?.moved ?? 0), 0) / allRuns.length) },
     haewonsPerExp: r3(allRuns.reduce((a, x) => a + x.haewons, 0) / allRuns.length),
     eopgyeong: [0, 1, 2, 3].map((t) => allRuns.filter((x) => x.eopgyeongTier === t).length),
+    /** 아홉 단계 길닦기 (⟨반복 5⟩): 업경대 앞에서 칸 수 분포 [0..9] · 다 찬 비율 */
+    road: final ? (() => {
+      const at = allRuns.filter((x) => x.road !== undefined);
+      return { dist: Array.from({ length: 10 }, (_, k) => at.filter((x) => x.road === k).length), full: r3(at.filter((x) => (x.road ?? 0) >= 9).length / Math.max(1, at.length)) };
+    })() : null,
     bossReached: r3(allRuns.filter((x) => x.bossReached).length / allRuns.length),
     bossWinWhenReached: r3(allRuns.filter((x) => x.bossWon).length / Math.max(1, allRuns.filter((x) => x.bossReached).length)),
   };

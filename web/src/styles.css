@@ -168,6 +168,11 @@ button { font: inherit; color: inherit; }
 .chip.lamp { border-color: rgba(255, 201, 100, .6); color: var(--lamp); }
 .chip.good { border-color: rgba(111, 191, 143, .6); color: #a9e3bf; }
 .chip.blue { border-color: rgba(143, 181, 220, .6); color: var(--block); }
+/* 아홉 단계 길닦기 (⟨반복 5⟩) */
+.road-meter { align-items: center; }
+.road-steps { display: inline-flex; gap: 3px; }
+.road-step { width: 12px; height: 12px; border: 1px solid rgba(235, 227, 203, .45); border-radius: 2px; background: transparent; }
+.road-step.done { background: var(--hanji, #ebe3cb); border-color: var(--hanji, #ebe3cb); }
 
 .topbar {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
@@ -637,6 +642,13 @@ button { font: inherit; color: inherit; }
 .fac { background: var(--ink-1); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px; display: flex; flex-direction: column; gap: 4px; text-align: left; color: var(--text); font: inherit; }
 .fac.built { border-color: var(--line-2); }
 button.fac:disabled { opacity: .45; }
+.fac.site { border-style: dashed; opacity: .85; }
+/* 황우양 집짓기 네 단계 (⟨반복 5⟩ V-11) */
+.build-stages { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+.build-stage { font-size: 11px; padding: 1px 6px; border-radius: 3px; border: 1px solid var(--line-2); color: var(--text-dim, #b9b2a0); opacity: .25; animation: build-fill .4s ease forwards; }
+.build-stage.done { border-color: var(--lamp); color: var(--lamp); }
+@keyframes build-fill { to { opacity: 1; background: rgba(235, 227, 203, .08); } }
+@media (prefers-reduced-motion: reduce) { .build-stage { animation: none; opacity: 1; } }
 .people { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 8px; }
 .person { position: relative; text-align: left; background: var(--ink-1); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px 8px 14px; color: var(--text); font: inherit; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; gap: 3px; }
 .person .band { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--hc); }

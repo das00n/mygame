@@ -5,7 +5,7 @@
 // 지역 1 + 시작 덱(기본값)은 v0.3 과 같은 난수 순서로 돈다 — 기존 sim:expedition 숫자가 그대로 나온다.
 
 import { createCombat, D, type HeroSetup } from '../core/engine.ts';
-import { eopgyeong, knotPresetBits } from '../core/regions.ts';
+import { eopgyeong, knotPresetBits, roadStep } from '../core/regions.ts';
 import { RAW_JSON } from '../core/raw-data.ts';
 import { Rng, seedFrom } from '../core/rng.ts';
 import type { CardInst, CombatMods, Encounter, HeroId, RuleVariant } from '../core/types.ts';
@@ -135,6 +135,8 @@ export interface ExpeditionResult {
   retreated?: boolean;
   sonnim?: 'sendoff' | 'timeout' | null;
   eopgyeongTier?: number;
+  /** 아홉 단계 길닦기 칸 수 (⟨반복 5⟩ 최종 원정만, 업경대 앞에서) */
+  road?: number;
   provisionsLeft?: Provisions;
   sinyeol?: { played: number; moved: number };
   haewonById?: Record<string, number>;
@@ -245,6 +247,14 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
   let feverStart = 0; // 서운한 작별: 전투 시작 시 신열
   let knotsPreset = 0;
   let eopTier = -1;
+  // 아홉 단계 길닦기 (⟨반복 5⟩ 05-region3 §14.1): 최종 원정만 — ① 들어설 때, 길굿마다, 넋을 풀어 보낸 싸움을 이길 때마다 한 칸
+  let road = length === 'final' ? 1 : -1;
+  let roadAtMirror = -1;
+  // 숨살이꽃 (⟨반복 5⟩ 가호, 플레이어블): 원정마다 한 번 — 시뮬 봇은 가호를 쓰지 않고, mods 로 시험할 때만
+  let sumsariUsed = false;
+  let sumsariHeld = false; // 플레이어블과 같이 수호 방(엘리트)을 지난 뒤부터
+  // ⟨반복 5⟩ 보스 공물에 쓸 쌀(맨 앞에 선 굶은 넋의 사자밥 차리기 쌀 3)은 길굿 끼니에 쓰지 않고 남긴다 — 해원 조건을 아는 사람은 그렇게 둔다
+  const bossRice = boss ? Math.max(0, ...boss.enemies.map((id) => d.enemyById.get(id)?.offering?.pay.find((p) => p.item === 'rice')?.n ?? 0)) : 0;
   let drawFirst = 0;
   const sy = { played: 0, moved: 0 };
   const haewonById: Record<string, number> = {};
@@ -289,7 +299,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
     // 손님 배웅 (지역 2 특수 전투, 05-region2 §9.3)
     if (i === sonnimAt) {
       const sp = d.specials.get('sonnim_baeung')!;
-      const start = party.includes('manshin') ? 4 : 0;
+      const start = party.includes('manshin') ? sp.manshinStart : 0;
       const s = createCombat({
         party: heroSetups(), deck, encounter: { id: 'sonnim', tier: 'elite', enemies: sp.followers }, seed: seedFrom(seed, 'sonnim'), record: true,
         jijeon: prov.jijeon, provisions: prov, rules: opts.rules, entertain: { goal: sp.goal, limit: sp.limit, start }, mods: setup?.mods, enemyHpMult: setup?.enemyHpMult,
@@ -328,7 +338,8 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
     if (isBoss) res.bossReached = true;
     // 업경대 비추기 (3지역 최종 원정, 열두째 대문 바로 앞)
     if (isBoss && length === 'final') {
-      const r = eopgyeong(res.haewons, { incense: prov.incense > 0, manshin: party.includes('manshin') });
+      roadAtMirror = road;
+      const r = eopgyeong(res.haewons, { incense: prov.incense > 0, manshin: party.includes('manshin'), road });
       if (prov.incense > 0) prov.incense--;
       eopTier = r.tier;
       knotsPreset = knotPresetBits(party, r.knots);
@@ -348,7 +359,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
     const s = campaign
       ? createCombat({
         party: heroSetups(), deck: fightDeck, encounter: enc, seed: seedFrom(seed, 'fight', i), record: true, jijeon: prov.jijeon, provisions: prov, rules: opts.rules,
-        enemyHpMult: setup?.enemyHpMult, knotsPreset: isBoss ? knotsPreset : 0, mods: { ...setup?.mods, sinyeolFree: sinyeolFree || undefined },
+        enemyHpMult: setup?.enemyHpMult, knotsPreset: isBoss ? knotsPreset : 0, mods: { ...setup?.mods, sinyeolFree: sinyeolFree || undefined, sumsari: (setup?.mods?.sumsari && sumsariHeld) || undefined }, sumsariUsed,
       })
       : createCombat({
         party: heroes.map((h) => ({ id: h.id, hp: h.hp, maxHp: h.baseMax, stress: h.stress, injured: h.injured, recovering: h.recovering, dead: h.dead })),
@@ -359,6 +370,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       for (let k = 0; k < drawFirst && s.draw.length; k++) s.hand.push(s.draw.pop()!);
     }
     const { timeout } = runCombat(s);
+    if (s.sumsariUsed) sumsariUsed = true;
     recordCombat(scratchAgg, scratchCards, s, party, startHp, timeout, deckIdsOf(deck));
     const st = s.stats!;
     res.haewons += st.haewons;
@@ -390,6 +402,8 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       break;
     }
     res.fightsWon++;
+    if (road >= 0 && st.haewons > 0) road = roadStep(road);
+    if (enc.tier === 'elite') sumsariHeld = true;
     if (campaign) {
       for (const e of s.enemies) {
         const def = d.enemies[e.def];
@@ -436,13 +450,19 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       res.picks++;
     } else res.skips++;
     // 6번째 전투 뒤 길굿 (보통 길은 5번째) + 보스 굴 앞 길굿
-    if (i === (length === 'boss' ? 5 : 4)) res.campChoice = camp(heroes, () => {
-      deck = removeWorstStarter(deck);
-    }, false, campaign ? prov : null);
+    if (i === (length === 'boss' ? 5 : 4)) {
+      res.campChoice = camp(heroes, () => {
+        deck = removeWorstStarter(deck);
+      }, false, campaign ? prov : null, bossRice);
+      if (road >= 0) road = roadStep(road);
+    }
     // 보스 굴 앞 길굿: 보스 앞이라 언제나 끼니(회복)를 고른다
-    if (boss && i === all.length - 2 && (opts.preBossCamp ?? PRE_BOSS_CAMP)) camp(heroes, () => {
-      deck = removeWorstStarter(deck);
-    }, opts.preBossHeal ?? PRE_BOSS_FORCE_HEAL, campaign ? prov : null);
+    if (boss && i === all.length - 2 && (opts.preBossCamp ?? PRE_BOSS_CAMP)) {
+      camp(heroes, () => {
+        deck = removeWorstStarter(deck);
+      }, opts.preBossHeal ?? PRE_BOSS_FORCE_HEAL, campaign ? prov : null, bossRice);
+      if (road >= 0) road = roadStep(road);
+    }
     // 캠페인 봇: 영웅을 잃었거나 파티가 많이 지쳤으면 돌아선다 (마지막 전투 직전은 끝까지 간다)
     if (campaign && setup?.retreatBelow !== undefined && i < all.length - 1) {
       const up = heroes.filter((h) => !h.dead);
@@ -469,6 +489,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
     res.retreated = !!res.retreated;
     res.sonnim = sonnim;
     res.eopgyeongTier = eopTier;
+    if (roadAtMirror >= 0) res.road = roadAtMirror;
     res.provisionsLeft = prov;
     res.sinyeol = sy;
     res.haewonById = haewonById;
@@ -479,13 +500,14 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
 
 /** 길굿: 쌀로 끼니(체력 30%·귀기 −10·중상 치료) 또는 시작 카드 1장 제거.
  *  prov 가 있으면(캠페인·지역 2·3) 쌀을 쓴다: 넉넉히 4 → 30%, 보통 2 → 15%(중상은 그대로), 쌀이 없으면 끼니 없이 카드 제거 (08 §2.5 길굿과 같다) */
-function camp(heroes: PHero[], remove: () => void, forceHeal = false, prov: Provisions | null = null): 'heal' | 'remove' {
+function camp(heroes: PHero[], remove: () => void, forceHeal = false, prov: Provisions | null = null, reserveRice = 0): 'heal' | 'remove' {
   const alive = heroes.filter((h) => !h.dead);
   const needHeal = forceHeal || alive.some((h) => h.injured || h.hp / effMax(h) < 0.6);
   let frac = 0.3;
   if (needHeal && prov) {
-    if (prov.rice >= 4) prov.rice -= 4;
-    else if (prov.rice >= 2) {
+    const rice = prov.rice - reserveRice;
+    if (rice >= 4) prov.rice -= 4;
+    else if (rice >= 2) {
       prov.rice -= 2;
       frac = 0.15;
     } else frac = 0;

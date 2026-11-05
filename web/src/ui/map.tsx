@@ -10,6 +10,7 @@ import { bossName as bossNameOf, effMax, heroName } from '../game/run.ts';
 import { app, commit, setPanel } from '../game/store.ts';
 import type { Content, Pos, Run } from '../game/types.ts';
 import { AutoToggle } from './auto.tsx';
+import { ROAD_FULL, ROAD_STEPS } from '../../../src/core/regions.ts';
 import { Bar, iconPath, LightBar, Overlay } from './common.tsx';
 import { forgetBattle } from './scene/fx.ts';
 import { CorridorScene } from './scene/walk.tsx';
@@ -251,11 +252,28 @@ export function MapScreen() {
             </div>
           )}
           <NextFight run={run} />
+          <RoadMeter run={run} />
           <RunFlags run={run} />
           <div class="panel"><div class="log">{run.log.slice(-6).reverse().map((l, i) => <div key={i}>{l}</div>)}</div></div>
           <Codex run={run} />
         </div>
       </div>
+    </div>
+  );
+}
+
+/** 아홉 단계 길닦기 (⟨반복 5⟩ 05-region3 §14.1): 최종 원정에서만 센다. 다 차면 업경대가 한 단계 위로 비춘다 */
+function RoadMeter({ run }: { run: Run }) {
+  const n = run.flags?.road;
+  if (n === undefined) return null;
+  const full = n >= ROAD_FULL;
+  return (
+    <div class="row small road-meter" data-testid="road" title="아홉 단계 길닦기 — 들어설 때 · 길굿을 열 때 · 넋을 하나라도 풀어 보낸 싸움을 이길 때 한 칸씩 찬다. 다 차면 열두째 대문 앞 업경대가 한 단계 위로 비춘다">
+      <span class="dim">길닦기</span>
+      <span class="road-steps" aria-label={`길닦기 ${n}/${ROAD_FULL}`}>
+        {ROAD_STEPS.map((name, i) => <span key={name} class={`road-step${i < n ? ' done' : ''}`} title={`${i + 1}. ${name}`} />)}
+      </span>
+      <span class={`chip${full ? ' good' : ''}`}>{n}/{ROAD_FULL} · {full ? '다 닦였다 — 업경대 한 단계 위' : `${ROAD_STEPS[n - 1]} → 다음 ${ROAD_STEPS[n]}`}</span>
     </div>
   );
 }

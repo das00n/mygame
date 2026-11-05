@@ -81,7 +81,7 @@ export function newRun(o: NewRunOpts): Run {
     return { id, hp: ex?.injured ? Math.floor(hp * 0.8) : hp, baseMax: hp, stress: ex?.stress ?? 0, injured: !!ex?.injured, recovering: false, dead: false, downs: 0, ...(ex?.level ? { level: ex.level } : {}) };
   });
   const run: Run = {
-    v: 3, region, campaign: o.campaign ?? null, flags: {}, track: { haewonById: {}, haewonByFamily: {}, killByFamily: {}, met: [], revived: [], cheondo: [], bondPairs: {}, keepsakes: [], burned: 0 },
+    v: 3, region, campaign: o.campaign ?? null, flags: final ? { road: 1 } : {}, track: { haewonById: {}, haewonByFamily: {}, killByFamily: {}, met: [], revived: [], cheondo: [], bondPairs: {}, keepsakes: [], burned: 0 },
     seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossEncFor(region, o.seed, final) : null,
     party: o.party.slice(), formation: o.formation.slice(), heroes, deck: o.deck ? o.deck.slice() : starterDeck(o.party), supplies: { ...o.supplies }, gold: o.gold,
     goldSpent: o.spent, materials: 0, chiseong: 0, light: 100, relics: [], dungeon, pos: { kind: 'room', room: dungeon.entrance }, prevRoom: dungeon.entrance,
@@ -324,6 +324,11 @@ export function canReturn(run: Run): boolean {
 
 export function buildResult(app: AppState, success: boolean, reason: string): ResultState {
   const run = app.run!;
+  // 조왕중발 (⟨반복 5⟩ I-03): 귀환할 때 살아 돌아온 영웅마다 귀기 −10
+  if (!run.ended && run.relics.includes('jowang_jungbal')) {
+    for (const h of run.heroes) if (!h.dead) h.stress = Math.max(0, h.stress - JOWANG_JUNGBAL_STRESS);
+    logRun(run, `조왕중발: 부뚜막의 물 한 그릇이 돌아오는 길을 지켰다. 살아 돌아온 영웅 귀기 −${JOWANG_JUNGBAL_STRESS}.`);
+  }
   run.ended = true;
   run.stats.playMs += Date.now() - (run.stats.startedAt || Date.now());
   run.stats.startedAt = Date.now();
@@ -334,6 +339,9 @@ export function buildResult(app: AppState, success: boolean, reason: string): Re
     light: run.light, relics: run.relics.slice(), deckSize: run.deck.length, region: run.region, campaign: !!run.campaign,
   };
 }
+
+/** 조왕중발: 귀환할 때 줄어드는 귀기 */
+export const JOWANG_JUNGBAL_STRESS = 10;
 
 export function lightCostPreview(run: Run, to: Pos): number {
   return stepCostFor(run, to);

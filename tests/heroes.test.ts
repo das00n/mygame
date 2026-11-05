@@ -16,10 +16,12 @@ test('원형 고유 방어: 레벨 0 은 방어 0 (지역 1 단판·시작 덱 �
   assert.deepEqual([0, 1, 2, 3].map((lv) => guardBlockOf('posu', lv)), [0, 1, 3, 4]);
   assert.deepEqual([0, 1, 2, 3].map((lv) => guardBlockOf('talggun', lv)), [0, 1, 2, 3]);
   assert.deepEqual([0, 1, 2, 3].map((lv) => guardBlockOf('chasa', lv)), [0, 0, 1, 1]);
-  for (const h of ['manshin', 'jaebi', 'baksu', 'seungnyeo', 'beopsa'] as HeroId[]) assert.equal(guardBlockOf(h, 3), 0, `${h}: 고유 방어 없음`);
-  // 시뮬 전형 파티의 소수 레벨: 지역 2 (2.2) · 지역 3 (2.7)
-  assert.deepEqual([guardBlockOf('posu', 2.2), guardBlockOf('talggun', 2.2), guardBlockOf('chasa', 2.2)], [3, 2, 1]);
-  assert.deepEqual([guardBlockOf('posu', 2.7), guardBlockOf('talggun', 2.7), guardBlockOf('chasa', 2.7)], [4, 2, 1]);
+  // ⟨반복 5⟩ 잽이 「북 뒤에 앉기」 레벨 × 0.45 · 탈꾼 레벨 × 0.9 → 1.0
+  assert.deepEqual([0, 1, 2, 3].map((lv) => guardBlockOf('jaebi', lv)), [0, 0, 1, 1]);
+  for (const h of ['manshin', 'baksu', 'seungnyeo', 'beopsa'] as HeroId[]) assert.equal(guardBlockOf(h, 3), 0, `${h}: 고유 방어 없음`);
+  // 시뮬 전형 파티의 소수 레벨: 지역 2 (2.24) · 지역 3 (2.73) — 탈꾼은 지역 3 에서만 2 → 3
+  assert.deepEqual([guardBlockOf('posu', 2.24), guardBlockOf('talggun', 2.24), guardBlockOf('chasa', 2.24), guardBlockOf('jaebi', 2.24)], [3, 2, 1, 1]);
+  assert.deepEqual([guardBlockOf('posu', 2.73), guardBlockOf('talggun', 2.73), guardBlockOf('chasa', 2.73), guardBlockOf('jaebi', 2.73)], [4, 3, 1, 1]);
 });
 
 test('포수 「몸 낮추기」·차사 「군졸 자세」: 플레이어 턴을 시작할 때 방어도 (레벨 없으면 0)', () => {

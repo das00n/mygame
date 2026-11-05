@@ -78,6 +78,8 @@ export interface CombatSetup {
   mods?: CombatMods;
   /** 약수 한 사발을 이번 원정에서 이미 썼는가 */
   yaksuUsed?: boolean;
+  /** 숨살이꽃을 이번 원정에서 이미 썼다 (⟨반복 5⟩) */
+  sumsariUsed?: boolean;
   /** 나화 한 송이: 꽃 던지기 카드 */
   nahwa?: boolean;
   /** 놀이 싸움: 피해 → 귀기 */
@@ -136,7 +138,7 @@ export function createCombat(setup: CombatSetup): CombatState {
     statusAdded: 0, offeringPaid: false, groupHaewon: [], jijeon: setup.jijeon ?? 3,
     prov: { rice: setup.provisions?.rice ?? 0, sul: setup.provisions?.sul ?? 0, bujeok: setup.provisions?.bujeok ?? 0, incense: setup.provisions?.incense ?? 0 },
     offerTurn: -1, entertain: setup.entertain ? { goal: setup.entertain.goal, limit: setup.entertain.limit, value: setup.entertain.start, result: null } : null,
-    mods: setup.mods ?? {}, hpMult: setup.enemyHpMult ?? 1, firstBlockTurn: -1, sinyeolFreeTurn: -1, polluteBlocked: 0, yaksuUsed: !!setup.yaksuUsed, lastOwner: -1,
+    mods: setup.mods ?? {}, hpMult: setup.enemyHpMult ?? 1, firstBlockTurn: -1, sinyeolFreeTurn: -1, polluteBlocked: 0, yaksuUsed: !!setup.yaksuUsed, sumsariUsed: !!setup.sumsariUsed, lastOwner: -1,
     play: !!setup.play, ward: setup.ward ? { name: setup.ward.name, hp: setup.ward.hp, maxHp: setup.ward.hp, lost: false } : null,
     deferredTokens: [], outcome: 0, lastDrawn: null,
     stats: setup.record ? newStats() : null, newCurses: [], log: setup.log ? [] : null,
@@ -1945,6 +1947,12 @@ export function downHero(s: CombatState, hi: number): void {
     if (cd.isCurse || cd.isStatus) return c;
     return c.g ? { d: d.special.rescue, o: hi, o2: -1, orig: c.d, x: c.x, g: c.g } : { d: d.special.rescue, o: hi, o2: -1, orig: c.d, x: c.x };
   });
+  // 숨살이꽃 ⟨반복 5⟩ (I-08): 원정마다 한 번, 쓰러진 영웅이 그 자리에서 체력 50%로 일어난다
+  if (s.mods.sumsari && !s.sumsariUsed) {
+    s.sumsariUsed = true;
+    reviveHero(s, hi, 0.5);
+    log(s, `숨살이꽃: ${h.id} 기상`);
+  }
   checkOutcome(s);
 }
 
@@ -2008,11 +2016,15 @@ function haewonDone(s: CombatState, e: EnemyState): void {
     v[1]++;
     s.stats.enemyHaewon.set(id, v);
   }
-  haewonHeal(s);
+  // 삼천 군병 상 ⟨반복 5⟩ (H-06): 상을 받은 군졸 넋은 해원 회복 +2
+  haewonHeal(s, s.mods.gunbyeong && D().enemies[e.def].id === GUNBYEONG_ID ? 2 : 0);
 }
 
-function haewonHeal(s: CombatState): void {
-  const n = s.rules.haewonHeal ?? 0;
+/** 삼천 군병 상을 받는 원귀 (05-region3 §3.1 「이름 없는 군졸 넋」) */
+export const GUNBYEONG_ID = 'ireumeomneun_gunjol';
+
+function haewonHeal(s: CombatState, extra = 0): void {
+  const n = (s.rules.haewonHeal ?? 0) + extra;
   if (n > 0) {
     for (const h of s.heroes) {
       if (!standing(h)) continue;
@@ -2028,8 +2040,9 @@ export function haewonSatisfied(s: CombatState, e: EnemyState): boolean {
   const def = d.enemies[e.def];
   const r = def.haewon;
   switch (r.kind) {
-    case 'status': return statusOf(e, r.status!) >= (r.n ?? 1) || (!!r.orCollapse && collapsed(s, e));
-    case 'jangdan': return s.jangdan >= (r.n ?? 3);
+    // 업칭 ⟨반복 5⟩ (I-09): 죄의 무게를 덜어 준다 — 상태·장단 문턱 −1 (최소 1)
+    case 'status': return statusOf(e, r.status!) >= Math.max(1, (r.n ?? 1) - (s.mods.eopching ? 1 : 0)) || (!!r.orCollapse && collapsed(s, e));
+    case 'jangdan': return s.jangdan >= Math.max(1, (r.n ?? 3) - (s.mods.eopching ? 1 : 0));
     case 'summons': return s.summons.length > 0;
     case 'token': return e.lastHitToken || (!!r.group && s.groupHaewon.includes(def.id));
     case 'formation': return s.formChanges > 0;
