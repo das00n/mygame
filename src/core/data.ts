@@ -5,7 +5,7 @@ import { RAW_JSON } from './raw-data.ts';
 import { budgetOf, condP, rawValue, type ValueCtx } from './value.ts';
 import {
   HERO_IDS, HERO_NAMES,
-  type AutoTarget, type CapRule, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef,
+  type AutoTarget, type CapRule, type CardDef, type Cond, type Encounter, type EnemyDef, type EnemyStatus, type HaewonRule, type HeroDef, type HeroGuard,
   type HeroId, type Op, type OfferingRule, type PerMode, type ProvKey, type RawCard, type RawOp, type RawSummon, type SpecialKind, type SummonDef, type TargetSel, type Trigger,
 } from './types.ts';
 
@@ -197,9 +197,14 @@ export function loadData(): GameData {
   }
 
   // 영웅
-  const hj = readJson<{ heroes: { id: HeroId; name: string; range: 'melee' | 'ranged'; role: string; hp: number }[] }>('data/design/heroes.json');
+  const hj = readJson<{ heroes: { id: HeroId; name: string; range: 'melee' | 'ranged'; role: string; hp: number; hp_per_level?: number; guard?: HeroGuard }[] }>('data/design/heroes.json');
   const heroes = new Map<HeroId, HeroDef>();
-  for (const h of hj.heroes) heroes.set(h.id, { id: h.id, name: h.name, range: h.range, role: h.role, hp: h.hp });
+  for (const h of hj.heroes) {
+    const def: HeroDef = { id: h.id, name: h.name, range: h.range, role: h.role, hp: h.hp };
+    if (h.hp_per_level !== undefined) def.hpPerLevel = h.hp_per_level;
+    if (h.guard) def.guard = { kind: h.guard.kind, name: h.guard.name, block: h.guard.block, perLevel: h.guard.perLevel, maxPerTurn: h.guard.maxPerTurn };
+    heroes.set(h.id, def);
+  }
 
   // 적: 1지역 → 2지역 → 3지역 순서로 붙인다 (1지역 번호는 그대로 — 저장·시뮬 호환)
   type RawEnemy = {

@@ -48,6 +48,14 @@ export interface HeroSetup {
   startBlock?: number;
   /** 첫 턴 약화 (잠귀 어두움) */
   startWeak?: number;
+  /** 캠페인 레벨 (원형 고유 방어가 레벨마다 자란다, ⟨반복 4⟩). 없으면 0 — 단판 원정·시작 덱 */
+  level?: number;
+}
+
+/** 원형 고유 방어의 방어도 (⟨반복 4⟩ 03-heroes §2.1): 기본 + 레벨 × 레벨당 (반올림) */
+export function guardBlockOf(id: HeroId, level = 0): number {
+  const g = D().heroes.get(id)?.guard;
+  return g ? g.block + Math.round(level * (g.perLevel ?? 0)) : 0;
 }
 
 export interface CombatSetup {
@@ -118,7 +126,7 @@ export function createCombat(setup: CombatSetup): CombatState {
       id: p.id, idx, melee: def.range === 'melee', maxHp, hp: Math.min(maxHp, p.hp ?? maxHp), block: 0, downed: false, dead: !!p.dead,
       downs: 0, rescue: 0, rescueNeed: RESCUE_BASE, survived: 0, weak: 0, possess: 0, stress: p.stress ?? 0, personal: 0,
       personalCap: PERSONAL_CAP[p.id], stance: false, recovering: !!p.recovering, injured: !!p.injured, cover: -1, downTurn: -1, endDowned: false,
-      saveBonus: p.saveBonus ?? 0, stressMult: p.stressMult ?? 1,
+      saveBonus: p.saveBonus ?? 0, stressMult: p.stressMult ?? 1, guardBlock: guardBlockOf(p.id, p.level ?? 0), guardUsed: 0,
     };
   });
   const s: CombatState = {
@@ -269,6 +277,7 @@ export function startPlayerTurn(s: CombatState): void {
   for (const h of s.heroes) {
     h.block = 0;
     h.cover = -1;
+    h.guardUsed = 0;
   }
   s.formChanges = 0;
   s.talChanges = 0;
@@ -289,6 +298,11 @@ export function startPlayerTurn(s: CombatState): void {
     for (const packed of list) addTokenCard(s, packed & 0xffff, ((packed >> 16) & 0xff) - 1, ((packed >> 24) & 0xff) - 1, -1);
   }
   drawCards(s, DRAW_PER_TURN);
+  // 원형 고유 방어 ⟨반복 4⟩: 포수 「몸 낮추기」 · 차사 「군졸 자세」 — 턴을 시작할 때 방어도 (레벨마다 자란다)
+  for (const h of s.heroes) {
+    const g = d.heroes.get(h.id)!.guard;
+    if (g?.kind === 'turn_block' && standing(h) && h.guardBlock > 0) gainBlock(s, h.idx, h.guardBlock);
+  }
   // 경면주사: 매 턴 시작 시 +1
   const beopsa = heroOf(s, 'beopsa');
   if (beopsa && standing(beopsa)) beopsa.personal = Math.min(beopsa.personalCap, beopsa.personal + 1);
@@ -1795,6 +1809,14 @@ function setFormation(s: CombatState, order: number[]): void {
   const oldTal = tal ? old.indexOf(tal.idx) : -1;
   s.formation = order;
   s.formChanges++;
+  // 원형 고유 방어 ⟨반복 4⟩: 탈꾼 「탈 뒤에 숨기」 — 칸이 바뀌면(탈이 바뀌면) 방어도, 턴당 maxPerTurn 번
+  for (const h of s.heroes) {
+    const g = D().heroes.get(h.id)!.guard;
+    if (g?.kind !== 'move_block' || !standing(h) || old.indexOf(h.idx) === order.indexOf(h.idx) || old.indexOf(h.idx) < 0) continue;
+    if (h.guardUsed >= (g.maxPerTurn ?? 99)) continue;
+    h.guardUsed++;
+    gainBlock(s, h.idx, h.guardBlock);
+  }
   firePowers(s, 'on_formation_change', -1);
   firePowers(s, 'on_formation_change_first', -1);
   if (tal && !tal.dead && order.indexOf(tal.idx) !== oldTal) {
@@ -1882,6 +1904,12 @@ function deathCheck(s: CombatState, hi: number): void {
     s.yaksuUsed = true;
     reviveHero(s, hi, 0.3);
     log(s, `약수 한 사발: ${h.id} 기상`);
+    return;
+  }
+  // 획 하나 ⟨반복 4⟩: 차사를 대접한 원정에서 한 번, 사망 판정을 넘긴다 (쓰러진 채로 남는다)
+  if (s.mods.hoek && !s.hoekUsed) {
+    s.hoekUsed = true;
+    log(s, `획 하나: ${h.id} 사망 판정을 넘겼다`);
     return;
   }
   const bonus = h.saveBonus + (s.mods.deathSave ?? 0);

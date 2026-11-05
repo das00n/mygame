@@ -13,6 +13,7 @@ export interface CampAction {
   detail: string;
   points: number;
   rice?: number;
+  jijeon?: number;
   hero?: HeroId;
   enabled: boolean;
   reason?: string;
@@ -82,6 +83,14 @@ export function campActions(run: Run, camp: CampState): CampAction[] {
   out.push({
     id: 'dwitjeon', label: '뒷전 차림', detail: '쌀 2: 잡귀를 먼저 대접해 보낸다. 밤 습격 0%.', points: 0, rice: 2, group: 'meal',
     enabled: camp.raid > 0 && run.supplies.rice >= 2, reason: camp.raid <= 0 ? '이미 습격 걱정이 없다' : '쌀이 모자라다',
+  });
+  // 차사 대접 ⟨반복 4⟩: 길에 차사상(밥·짚신·노잣돈)을 차린다 → 획 하나 (singwa-sources §4.2 H-01 · §4.6 I-01)
+  const hoek = run.flags.hoek;
+  out.push({
+    id: 'chasa_daejeop', label: '차사 대접', detail: '쌀 1 · 지전 1: 길에 차사상(밥 한 그릇·짚신·노잣돈)을 차린다. 대접받은 차사가 명부에 획 하나를 그어 준다 — 이번 원정에서 한 번, 영웅 하나의 사망 판정을 넘긴다.',
+    points: 0, rice: 1, jijeon: 1, group: 'meal',
+    enabled: !hoek && run.supplies.rice >= 1 && run.supplies.jijeon >= 1,
+    reason: hoek === 'ready' ? '이미 차사상을 차렸다' : hoek === 'used' ? '이번 원정의 획 하나는 이미 썼다' : '쌀 1과 지전 1이 필요하다',
   });
   const curses = run.deck.filter((c) => d.cards[c.d].isCurse).length;
   const injured = alive.filter((i) => run.heroes[i].injured).length;
@@ -154,6 +163,12 @@ export function doCampAction(app: AppState, id: string, arg?: number | [number, 
       run.supplies.rice -= 2;
       camp.raid = 0;
       msg = '뒷전을 차려 잡귀를 먼저 보냈다. 밤 습격 0%.';
+      break;
+    case 'chasa_daejeop':
+      run.supplies.rice -= 1;
+      run.supplies.jijeon -= 1;
+      run.flags.hoek = 'ready';
+      msg = '길가에 차사상을 차렸다. 밥 한 그릇과 짚신, 노잣돈 한 닢. 대접받은 차사가 명부에 획 하나를 그어 준다 — 이번 원정에서 한 번, 사망 판정을 넘긴다.';
       break;
     case 'bond': {
       const [a, b] = arg as [number, number];

@@ -17,6 +17,8 @@ export interface FacilityDef {
   name: string;
   start: number;
   lot: string;
+  /** 시설을 지키는 가신 (⟨반복 4⟩ 06-base §4.1). 신은 잊혀도 사라지지 않는다 */
+  guardian?: string;
   tiers: { cost: { gold?: number; chiseong?: number }; text: string }[];
 }
 
@@ -63,7 +65,7 @@ export interface CampaignData {
     max: Supplies;
     recommended: Record<string, Partial<Record<CommissionLength, Supplies>>>;
   };
-  calendar: { seasons: string[]; festivals: { season: number; name: string; kind: 'wanderer' | 'biggut' | 'market'; text: string }[] };
+  calendar: { seasons: string[]; festivals: { season: number; name: string; kind: 'wanderer' | 'biggut' | 'market' | 'singugan'; text: string }[] };
   /** 최종 원정이 열리는 조건: 3지역 보스 길을 이만큼 마친 뒤 */
   finalUnlock: { bossWins: number };
   rift: { max: number; perSeason: number; bossHaewon: number; bossKill: number; strong: number[]; hpMultPerStep: number; countdown: number; sealResetTo: number };

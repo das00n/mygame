@@ -297,6 +297,22 @@ export interface HeroDef {
   range: 'melee' | 'ranged';
   role: string;
   hp: number;
+  /** 캠페인 레벨마다 최대 체력 (없으면 campaign.json levels.hpPerLevel) ⟨반복 4⟩ */
+  hpPerLevel?: number;
+  /** 원형 고유 방어 (03-heroes §2.1) ⟨반복 4⟩ */
+  guard?: HeroGuard;
+}
+
+/** 원형 고유 방어 ⟨반복 4⟩ — 포수 「몸 낮추기」 · 탈꾼 「탈 뒤에 숨기」 · 차사 「군졸 자세」 (03-heroes §2.1) */
+export interface HeroGuard {
+  /** turn_block: 플레이어 턴을 시작할 때 방어도 · move_block: 진형에서 칸이 바뀔 때마다 방어도 (턴당 maxPerTurn 번) */
+  kind: 'turn_block' | 'move_block';
+  name: string;
+  /** 레벨 0 의 방어도 (반복 4 데이터는 모두 0 — 지역 1 단판·시작 덱 수치는 그대로) */
+  block: number;
+  /** 레벨마다 더하는 방어도 (기본 + 레벨 × 이 값을 반올림) */
+  perLevel?: number;
+  maxPerTurn?: number;
 }
 
 // ── 전투 상태 ──────────────────────────────────────────────────────────
@@ -342,6 +358,10 @@ export interface HeroState {
   saveBonus: number;
   /** 개체 기질(캠페인): 귀기 획득 배율 */
   stressMult: number;
+  /** 원형 고유 방어의 방어도 (레벨 반영) ⟨반복 4⟩ */
+  guardBlock: number;
+  /** 원형 고유 방어(move_block)를 이번 턴 쓴 횟수 ⟨반복 4⟩ */
+  guardUsed: number;
 }
 
 export interface EnemyState {
@@ -460,6 +480,7 @@ export interface CombatMods {
   sinyeolFree?: boolean; // 손님의 배웅: 신열 비용 0 (턴당 1회)
   blockPollute?: number; // 대문 부적: 전투마다 처음 N장 신열·잡음을 막는다
   yaksu?: boolean; // 약수 한 사발: 사망 판정 대신 체력 30%로 기상 (1회)
+  hoek?: boolean; // ⟨반복 4⟩ 획 하나(차사 대접): 사망 판정 한 번을 넘긴다 — 명부의 十에 획 하나를 그어 千으로 (원정마다 1회)
   bladeSafeTurn?: number; // 명도 한 닢(작두박수): 이 턴까지 헛디딤 없음
 }
 
@@ -524,6 +545,8 @@ export interface CombatState {
   polluteBlocked: number;
   /** 약수 한 사발을 이미 썼는가 (원정 계층이 넘겨준다) */
   yaksuUsed: boolean;
+  /** ⟨반복 4⟩ 획 하나를 이 전투에서 썼다 */
+  hoekUsed?: boolean;
   /** 마지막으로 카드를 낸 영웅 (부군의 가호) */
   lastOwner: number;
   /** 놀이 싸움 (사자 검문): 영웅이 받는 피해가 체력 대신 귀기로 들어간다. 쓰러지지 않는다 */

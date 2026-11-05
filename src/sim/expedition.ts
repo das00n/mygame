@@ -40,6 +40,8 @@ export interface ExpHero {
   startWeak?: number;
   /** 넋 수습 회복 비율 보정 (빠른 회복 +0.1 · 더딘 회복 −0.1) */
   recovery?: number;
+  /** 캠페인 레벨 (원형 고유 방어, ⟨반복 4⟩) */
+  level?: number;
 }
 
 export interface Provisions {
@@ -253,7 +255,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
   const scratchCards = opts.cards ?? newCardAgg();
   const heroSetups = (): HeroSetup[] => heroes.map((h) => ({
     id: h.id, hp: h.hp, maxHp: h.baseMax, stress: h.stress, injured: h.injured, recovering: h.recovering, dead: h.dead,
-    saveBonus: h.ex?.saveBonus, stressMult: h.ex?.stressMult, startBlock: h.ex?.startBlock, startWeak: h.ex?.startWeak,
+    saveBonus: h.ex?.saveBonus, stressMult: h.ex?.stressMult, startBlock: h.ex?.startBlock, startWeak: h.ex?.startWeak, level: h.ex?.level,
   }));
   const syncHeroes = (s: ReturnType<typeof createCombat>) => {
     s.heroes.forEach((h, idx) => {

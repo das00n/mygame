@@ -43,7 +43,7 @@ export function depart(app: AppState, commissionId: string, uids: string[], buy:
   beginExpedition(app, {
     seed: (c.seed ^ Math.imul(c.expeditions + 1, 0x9e3779b1)) | 0, commission: cm.length === 'normal' ? 'normal' : 'boss', party: plan.party,
     formation: formation ?? planFormation(plan), supplies: { ...plan.supplies }, gold: 0, spent: 0, region: cm.region,
-    campaign: { length: cm.length, uids: plan.uids.slice(), enemyHpMult: plan.enemyHpMult }, heroes: plan.heroes.map((h) => ({ maxHp: h.maxHp, stress: h.stress, injured: h.injured })),
+    campaign: { length: cm.length, uids: plan.uids.slice(), enemyHpMult: plan.enemyHpMult }, heroes: plan.heroes.map((h) => ({ maxHp: h.maxHp, stress: h.stress, injured: h.injured, level: h.level })),
     deck: planDeck(plan), codex: c.codex, firstJangdan: plan.firstJangdan,
   });
   return null;
@@ -75,6 +75,7 @@ export function reportFromRun(app: AppState): ExpeditionReport {
     revived: run.track.revived.slice(), haewons: run.stats.haewons, haewonById: { ...run.track.haewonById }, haewonByFamily: { ...run.track.haewonByFamily },
     killByFamily: { ...run.track.killByFamily }, gold: Math.max(0, run.gold), chiseong: run.chiseong, cheondo: run.track.cheondo.slice(), bondsGained: { ...run.track.bondPairs },
     met: run.track.met.slice(), leftover: { ...run.supplies }, sonnim: run.flags.sonnimDone ? ((run.track.haewonById.sonnim_baeung ?? 0) > 0 ? 'sendoff' : 'timeout') : null,
+    keepsakes: (run.track.keepsakes ?? []).slice(),
   };
 }
 

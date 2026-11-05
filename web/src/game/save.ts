@@ -38,7 +38,14 @@ export function loadApp(): AppState | null {
     if (!v) return null;
     if (v.run && v.run.v !== 3) return null;
     if (!v.run && !v.campaign) return null;
-    if (v.combat?.s) v.combat.s.log = [];
+    if (v.combat?.s) {
+      v.combat.s.log = [];
+      // ⟨반복 4⟩ 원형 고유 방어 필드가 없던 저장: 방어 0 으로 이어 간다
+      for (const h of v.combat.s.heroes) {
+        h.guardBlock ??= 0;
+        h.guardUsed ??= 0;
+      }
+    }
     return v;
   } catch {
     return null;

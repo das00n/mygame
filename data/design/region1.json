@@ -3,7 +3,7 @@
  "region": {
   "id": "naru",
   "name": "건너지 못한 나루",
-  "concept": "이승과 저승의 경계. 강을 건너지 못한 넋들이 물가 마을과 나루터를 맴돈다. 저승길의 첫 구간.",
+  "concept": "이승과 저승의 경계. 강을 건너지 못한 넋들이 물가 마을과 나루터를 맴돈다. 물에서 간 넋은 물의 차사가 따로 데리러 온다는데, 이 나루에는 그 차사가 끝내 오지 않았다. 저승길의 첫 구간.",
   "families": ["수귀", "객귀", "굶주린 넋", "잡귀잡신", "억울귀", "몽달·손각시"],
   "pressures": ["P1", "P13"],
   "teaches": ["칸 조준", "진형 교란", "홀림", "쓰러진 영웅 노리기"],
@@ -15,7 +15,7 @@
  "statuses": ["점지", "상흔", "명부", "넋흔들림", "장단", "진형", "굿상", "부적"],
  "enemies": [
   {"id": "jeojeun_neok", "name": "물에 젖은 넋", "family": "수귀", "category": "normal", "hp": [12, 14], "position": "front",
-   "han": "물가에서 발이 미끄러져 그대로 떠내려간 넋. 아직 물이 차다.",
+   "han": "물가에서 발이 미끄러져 그대로 떠내려간 넋. 아직 물이 차다. 데리러 온다던 물의 차사를 강가에서 기다린다.",
    "intents": [
     {"id": "a", "name": "젖은 손", "kind": "attack", "target": "선두", "damage": 3, "hits": 2},
     {"id": "b", "name": "끌어당김", "kind": "move", "target": "후열", "damage": 3, "hits": 1, "effect": "후열 영웅을 선두로 끌어낸다"}
@@ -26,7 +26,7 @@
    "haewon": {"status": "넋흔들림", "rule": "넋흔들림 2 이상인 상태로 쓰러뜨린다", "story": "흔들어 깨워 물 밖으로 건져 낸다"},
    "drops": {"material": "젖은 넋전", "gold": [8, 12]}},
   {"id": "naru_mulgwisin", "name": "나루 물귀신", "family": "수귀", "category": "normal", "hp": [36, 40], "position": "front",
-   "han": "나루에서 배를 기다리다 빠져 죽었다. 지나가는 이의 발목을 잡는다.",
+   "han": "나루에서 배를 기다리다 빠져 죽었다. 물의 차사도 배도 오지 않아, 지나가는 이의 발목을 잡는다.",
    "intents": [
     {"id": "a", "name": "발목 잡기", "kind": "attack", "target": "선두", "damage": 10, "hits": 1},
     {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "block": 6, "effect": "공격 +1 (누적)"}
@@ -105,6 +105,7 @@
 
   {"id": "eogul_ajeon", "name": "누명 쓴 아전 원귀", "family": "억울귀", "category": "elite", "hp": [76, 80], "position": "back",
    "han": "장부를 맞추지 못했다는 누명으로 매를 맞다 죽은 아전. 아직도 장부를 넘긴다.",
+   "keepsake": {"name": "먹이 마른 장부", "text": "끝내 맞추지 못했다던 장부. 이제는 셈을 따질 사람이 없다."},
    "intents": [
     {"id": "a", "name": "장부 내리치기", "kind": "attack", "target": "선두", "damage": 14, "hits": 1},
     {"id": "b", "name": "이름 대조", "kind": "possess", "target": "무작위", "effect": "그 영웅을 홀린다(홀림 2: 그 영웅 카드 2장이 효과 없음, 비용은 든다)"},
@@ -117,6 +118,7 @@
    "drops": {"material": "타다 남은 소지", "gold": [25, 35]}},
   {"id": "mongdal", "name": "혼처 잃은 몽달귀", "family": "몽달·손각시", "category": "elite", "hp": [60, 64], "position": "front",
    "han": "혼례를 사흘 앞두고 죽은 총각. 혼처를 찾아 헤맨다.",
+   "keepsake": {"name": "보내지 못한 사주단자", "text": "혼례 사흘 전에 보내려던 사주단자. 붉은 보자기 빛이 바랬다."},
    "intents": [
     {"id": "a", "name": "옷자락 붙잡기", "kind": "attack", "target": "최고 체력", "damage": 7, "hits": 2},
     {"id": "b", "name": "한이 깊어짐", "kind": "buff", "target": "자신", "effect": "공격 +2 (누적)"}
@@ -127,7 +129,8 @@
    "haewon": {"status": "점지", "rule": "점지 4 이상인 상태로 쓰러뜨린다", "story": "혼처를 점지해 주면 비로소 길을 떠난다"},
    "drops": {"material": "끊어진 댕기", "gold": [25, 35]}},
   {"id": "mulmit_geurimja", "name": "물밑 그림자", "family": "수귀", "category": "elite", "hp": [56, 60], "position": "back",
-   "han": "나루에서 빠져 죽은 이들이 뭉친 그림자. 손을 뻗어 산 사람을 끌어당긴다.",
+   "han": "나루에서 빠져 죽은 이들이 오지 않는 물의 차사를 기다리다 서로를 붙든 채 뭉친 그림자. 손을 뻗어 산 사람을 끌어당긴다.",
+   "keepsake": {"name": "물에 불은 짚신 한 짝", "text": "누구 것인지 모를 짚신. 물의 차사를 기다리며 물가에 벗어 두었다."},
    "intents": [
     {"id": "a", "name": "물밑으로", "kind": "attack", "target": "쓰러진 영웅", "damage": 8, "hits": 1, "effect": "쓰러진 영웅이 없으면 선두에게 8"},
     {"id": "b", "name": "손 다시 뻗기", "kind": "summon", "target": "아군 원귀", "effect": "쓰러진 물밑 손 하나를 되살린다(체력 16)"}
@@ -150,7 +153,8 @@
    "drops": {"material": null, "gold": [0, 0]}},
 
   {"id": "sakkun", "name": "삯 못 받은 뱃사공", "family": "수귀", "category": "boss", "hp": [220, 230], "position": "front",
-   "han": "평생 넋들을 건네주고도 끝내 삯을 받지 못했다. 이제 아무도 건네주지 않는다.",
+   "han": "물의 차사가 오지 않는 나루에서 평생 넋들을 건네주고도 끝내 삯을 받지 못했다. 이제 아무도 건네주지 않는다.",
+   "keepsake": {"name": "닳은 노", "text": "평생 넋들을 건네준 노. 손잡이가 손 모양대로 닳았다."},
    "intents": [
     {"id": "a", "name": "노 내리치기", "kind": "attack", "target": "선두", "damage": 12, "hits": 1, "phase": 1},
     {"id": "b", "name": "노 휘두르기", "kind": "attack", "target": "전체", "damage": 5, "hits": 1, "phase": 1},
@@ -169,6 +173,7 @@
    "drops": {"material": "젖은 넋전", "gold": [95, 105], "chiseong": 1}},
   {"id": "sangyeo", "name": "넘어가지 못한 상여", "family": "억울귀", "category": "boss", "hp": [125, 125], "position": "back",
    "han": "저승 강을 건너다 멈춰 선 상여. 상여꾼들이 아직도 상여소리를 멈추지 못한다.",
+   "keepsake": {"name": "상여 꼭두 하나", "text": "상여 난간에 앉아 넋을 지키던 나무 꼭두. 상여소리가 그치자 고개를 숙였다."},
    "intents": [
     {"id": "a", "name": "상여 흔들기", "kind": "buff", "target": "아군 원귀", "effect": "상여꾼 전원 방어도 5"},
     {"id": "b", "name": "넋 쏟기", "kind": "summon", "target": "아군 원귀", "effect": "물에 젖은 넋 1 소환(최대 1)"},
@@ -264,7 +269,7 @@
     {"label": "넋을 건진다", "cost": "쌀 1, 향 1", "result": "선택한 영웅 쌍 정 +2, 30%: 일반 가호 1"},
     {"label": "지나간다", "result": "없음"}]},
   {"id": "jalmot_on_saram", "name": "잘못 끌려온 사람", "room": true,
-   "setup": "이름이 같아 잘못 끌려온 산 사람이 저승 어귀에서 헤맨다(잘못 데려간 사람 설화).",
+   "setup": "이름이 같아 잘못 끌려온 산 사람이 저승 어귀에서 헤맨다. 차사를 정성껏 대접한 사람의 명부가 고쳐지고, 이름이 같은 다른 사람이 대신 끌려갔다는 옛이야기처럼 — 명부의 한 글자가 사람을 바꿔 놓았다.",
    "choices": [
     {"label": "데려다준다", "result": "호위 특수 전투: 그 사람(체력 20)을 지키며 잡귀 무리를 3턴 버틴다. 성공하면 치성 +1, 실패하면 귀기 +10"},
     {"label": "길만 알려 준다", "cost": "향 1", "result": "엽전 15"}]},

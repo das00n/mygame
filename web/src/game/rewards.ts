@@ -1,10 +1,10 @@
 // 전투 보상 (탐험 §10·§11): 카드 3택(어둠 이하 4택), 수호 방 오방기 뽑기, 보스 희귀 카드·가호.
 
 import { rand } from '../../../src/core/rng.ts';
-import type { CardDef, HeroId } from '../../../src/core/types.ts';
+import type { CardDef, CombatState, HeroId } from '../../../src/core/types.ts';
 import { instFor } from '../../../src/sim/draft.ts';
-import { D, bandOf, RELIC_BY_ID, regionContent } from './content.ts';
-import { addCurse, aliveIdx, healHero, heroName, logRun } from './run.ts';
+import { D, bandOf, ENEMY_EXTRA, RELIC_BY_ID, regionContent } from './content.ts';
+import { addCurse, addRunStress, aliveIdx, healHero, heroName, logRun } from './run.ts';
 import type { AppState, BattleMeta, FlagColor, RewardState, Run } from './types.ts';
 
 const ODDS = { normal: { rare: 0.03, uncommon: 0.37 }, elite: { rare: 0.1, uncommon: 0.4 } };
@@ -99,6 +99,43 @@ export function makeReward(app: AppState, meta: BattleMeta, gold: number, mats: 
     r.flags = { colors: pool.slice(0, 3), peek: run.relics.includes('obanggi') ? 0 : -1, picked: -1 };
   }
   return r;
+}
+
+/** 막방광침 (⟨반복 4⟩ 02-core-rules §13): 이번 전투에서 해원한 원귀 가운데 아끼던 물건이 있는 것(보스 → 엘리트 순) */
+export function keepsakeFor(s: CombatState): RewardState['keepsake'] {
+  const d = D();
+  const order = { final: 0, boss: 0, elite: 1, normal: 2, minion: 3 } as Record<string, number>;
+  const cands = s.enemies
+    .filter((e) => e.haewon && !e.summoned)
+    .map((e) => d.enemies[e.def])
+    .filter((def) => ENEMY_EXTRA.get(def.id)?.keepsake)
+    .sort((a, b) => (order[a.category] ?? 9) - (order[b.category] ?? 9));
+  if (!cands.length) return null;
+  const k = ENEMY_EXTRA.get(cands[0].id)!.keepsake!;
+  return { enemy: cands[0].id, name: k.name, text: k.text, choice: null };
+}
+
+/** 막방광침 귀기 회복: 태워 보내면 서 있는 영웅마다 */
+export const KEEPSAKE_BURN_STRESS = 10;
+
+/** 막방광침: 'burn' 태워서 넋이 가져가게 한다(서 있는 영웅 귀기 −10) · 'keep' 남겨서 골동으로 사당에 둔다 */
+export function chooseKeepsake(app: AppState, choice: 'burn' | 'keep'): void {
+  const run = app.run!;
+  const r = app.reward;
+  const k = r?.keepsake;
+  if (!k || k.choice) return;
+  k.choice = choice;
+  const enemyName = ENEMY_EXTRA.get(k.enemy)?.name ?? k.enemy;
+  if (choice === 'burn') {
+    for (const i of aliveIdx(run)) addRunStress(run, i, -KEEPSAKE_BURN_STRESS, false);
+    run.track.burned = (run.track.burned ?? 0) + 1;
+    r!.lines.push(`막방광침: 「${k.name}」을(를) 태워 ${enemyName}이(가) 가져가게 했다 — 서 있는 영웅 귀기 −${KEEPSAKE_BURN_STRESS}`);
+    logRun(run, `「${k.name}」을(를) 태워 보냈다`);
+  } else {
+    (run.track.keepsakes ??= []).push(k.enemy);
+    r!.lines.push(`막방광침: 「${k.name}」을(를) 남겼다 — ${run.campaign ? '마을 사당에 골동으로 둔다' : '원정 기록에 남는다'}`);
+    logRun(run, `「${k.name}」을(를) 남겼다`);
+  }
 }
 
 export function takeCard(app: AppState, id: string | null): void {

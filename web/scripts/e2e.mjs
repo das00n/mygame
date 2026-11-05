@@ -125,6 +125,12 @@ async function manualPlay(p, errors) {
       continue;
     }
     if ((await screenOf(p)) === 'reward') {
+      // 막방광침(⟨반복 4⟩): 엘리트·보스를 해원했으면 물건을 고른 뒤에야 떠날 수 있다
+      const keep = await p.$('[data-testid=keepsake-keep]');
+      if (keep) {
+        await keep.click();
+        continue;
+      }
       await p.click('[data-testid=reward-continue]');
       continue;
     }

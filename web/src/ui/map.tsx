@@ -272,6 +272,7 @@ function RunFlags({ run }: { run: Run }) {
   if (f.eopTier !== undefined) bits.push(`업경대 ${f.eopTier}구간${f.knots ? ` · 매듭 ${f.knots.toString(2).split('1').length - 1}개 풀림` : ''}`);
   if (f.jangdanFights?.left) bits.push(`첫 턴 장단 +${f.jangdanFights.n} (${f.jangdanFights.left}전투)`);
   if (f.mealBonus) bits.push(`끼니 +${Math.round(f.mealBonus * 100)}%p`);
+  if (f.hoek) bits.push(f.hoek === 'ready' ? '획 하나: 사망 판정 한 번을 넘긴다' : '획 하나: 썼다');
   if (!bits.length) return null;
   return <div class="row small"><span class="dim">원정:</span>{bits.map((b) => <span key={b} class="chip">{b}</span>)}</div>;
 }

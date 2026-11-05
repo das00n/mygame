@@ -62,6 +62,8 @@ export interface PHero {
   recovering: boolean;
   dead: boolean;
   downs: number;
+  /** 캠페인 레벨 (원형 고유 방어가 자란다, ⟨반복 4⟩). 단판 원정·옛 저장은 없음 = 0 */
+  level?: number;
 }
 
 export interface RunStats {
@@ -130,6 +132,8 @@ export interface RunFlags {
   knots?: number;
   eopTier?: number;
   yaksuUsed?: boolean;
+  /** ⟨반복 4⟩ 차사 대접 — 획 하나: ready 면 다음 사망 판정 한 번을 넘긴다 */
+  hoek?: 'ready' | 'used';
   /** 다음 대문 방 통행 무료 */
   gateFree?: number;
   /** 지난 대문 방 수 (3지역 대문 통행 ⟨반복 3⟩) */
@@ -150,6 +154,9 @@ export interface RunTrack {
   revived: number[];
   cheondo: number[];
   bondPairs: Record<string, number>;
+  /** 막방광침에서 남긴 물건 (원귀 id, ⟨반복 4⟩) · 태워 보낸 수. 옛 저장에는 없다 */
+  keepsakes?: string[];
+  burned?: number;
 }
 
 export interface CampaignRunInfo {
@@ -249,6 +256,8 @@ export interface RewardState {
   rareCards: string[] | null; // 파랑 깃발
   rarePicked: boolean;
   bossEnd: boolean;
+  /** 막방광침 (⟨반복 4⟩): 해원한 원귀가 아끼던 물건 — 태워 보낼까, 남길까. 고르기 전에는 떠나지 못한다 */
+  keepsake?: { enemy: string; name: string; text: string; choice: 'burn' | 'keep' | null } | null;
 }
 
 export type DialogKind = 'curio' | 'event' | 'trap';

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { loadData } from '../src/core/data.ts';
 import {
-  baseMaxHp, bondKey, build, cheondo, clearEngraving, engrave, maxHpOf, newCampaign, passSeason, planExpedition, promote, recruit,
+  baseMaxHp, bondKey, build, cheondo, clearEngraving, engrave, hpPerLevelOf, maxHpOf, newCampaign, passSeason, planExpedition, promote, recruit,
   recruitCost, settle, setLoadout, wanderingSpirits,
 } from '../src/meta/campaign.ts';
 import { CD } from '../src/meta/content.ts';
@@ -60,7 +60,7 @@ test('출정 계획: 같은 원형은 한 파티에 한 명, 선금을 받고 �
   assert.equal(typeof planExpedition(c2, c2.commissions[0].id, [dup.uid, c2.roster[1].uid, c2.roster[2].uid], {}), 'string');
 });
 
-test('귀환 결산: 경험 → 레벨(최대 체력 +3), 익힌 카드, 정 +1, 재료(해원 2·처치 1+잡귀 넋 1), 절기·균열 +1', () => {
+test('귀환 결산: 경험 → 레벨(최대 체력 +원형별), 익힌 카드, 정 +1, 재료(해원 2·처치 1+잡귀 넋 1), 절기·균열 +1', () => {
   const c = newCampaign(5);
   const trio = distinctTrio(c);
   const p0 = c.roster.find((p) => p.uid === trio[0])!;
@@ -80,12 +80,12 @@ test('귀환 결산: 경험 → 레벨(최대 체력 +3), 익힌 카드, 정 +1,
   assert.equal(c.materials['잡귀잡신'], 1);
   assert.equal(c.season, before.season + 1);
   assert.ok(c.lots.includes('r1boss'), '지역 1 보스를 처음 보내면 약방·무구방 부지');
-  // 레벨: 첫 문턱 경험 → 레벨 1, 최대 체력 +3
+  // 레벨: 첫 문턱 경험 → 레벨 1, 최대 체력 +원형별 (⟨반복 4⟩ heroes.json hp_per_level)
   p0.xp = CD.levels.xp[0] - 1;
   const plan2 = planExpedition(c, c.commissions.find((x) => x.length === 'normal')!.id, trio, {}) as ExpeditionPlan;
   settle(c, plan2, report(plan2));
   assert.equal(p0.level, 1);
-  assert.equal(baseMaxHp(p0), hp0 + CD.levels.hpPerLevel);
+  assert.equal(baseMaxHp(p0), hp0 + hpPerLevelOf(p0.arch));
   // 피로: 연속 출전 2번 → 최대 체력 −10%
   assert.equal(p0.sorties, 2);
   assert.equal(maxHpOf(p0), Math.round(baseMaxHp(p0) * 0.9));

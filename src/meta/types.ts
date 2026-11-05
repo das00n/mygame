@@ -139,6 +139,8 @@ export interface Campaign {
   /** 해원록: 해원 조건을 아는 원귀 · 해원한 원귀 횟수 */
   codex: string[];
   haewonSeen: Record<string, number>;
+  /** 사당에 둔 골동: 막방광침에서 남긴 원귀의 물건 (⟨반복 4⟩). 옛 저장에는 없다 */
+  keepsakes?: { enemy: string; season: number }[];
   log: string[];
   history: ExpeditionLog[];
   ending: Ending | null;
@@ -174,6 +176,8 @@ export interface ExpeditionReport {
   met: string[];
   leftover: Partial<Supplies>;
   sonnim: 'sendoff' | 'timeout' | null;
+  /** 막방광침에서 남긴 물건 — 해원한 원귀 id (⟨반복 4⟩ 02-core-rules §13). 시뮬 원정은 없다 */
+  keepsakes?: string[];
 }
 
 /** 출정 계획: 원정 계층이 읽는 파티·덱·보급품 */
@@ -183,6 +187,8 @@ export interface ExpeditionPlan {
   party: HeroId[];
   heroes: {
     id: HeroId; maxHp: number; stress: number; injured: boolean; saveBonus: number; stressMult: number; startBlock: number; startWeak: number; recovery: number;
+    /** 레벨 (원형 고유 방어가 자란다, ⟨반복 4⟩) — 옛 저장에는 없다 */
+    level?: number;
   }[];
   /** 덱: 카드 id + 주인(파티 index, 파티 카드 −1) + 각인 */
   deck: { id: string; o: number; o2: number; g?: number }[];

@@ -6,7 +6,7 @@ import { useState } from 'preact/hooks';
 import { HERO_NAMES, type HeroId } from '../../../src/core/types.ts';
 import {
   ancestors, available, baseMaxHp, bondOf, bookRest, bookTreat, build, buildOptions, buyMaterial, cancelBooking, canPromote, cheondo, clearEngraving,
-  displayName, endingSummary, engrave, enemyHpMult, fatigueFrac, festivalKind, lineage, loadoutCost, maxHpOf, motherCandidates, nextXp, promote,
+  displayName, endingSummary, engrave, enemyHpMult, fatigueFrac, festivalKind, guardText, lineage, loadoutCost, maxHpOf, motherCandidates, nextXp, promote,
   quirkOf, recommendedSupplies, recruit, recruitCost, regionOpen, removeBadQuirk, retire, rosterCap, sellMaterial, setLoadout, sinmulCarry, supplyCost,
   supplyLine, supplyMax, supplyPrice, tier, wanderingSpirits,
 } from '../../../src/meta/campaign.ts';
@@ -15,7 +15,7 @@ import { bestLoadout } from '../../../src/meta/loadout.ts';
 import type { Campaign, Commission, Person, Supplies } from '../../../src/meta/types.ts';
 import { blankApp } from '../game/actions.ts';
 import { copyText, depart, exportCode, leaveSettlement } from '../game/campaign.ts';
-import { D, HERO_COLOR, HERO_INFO } from '../game/content.ts';
+import { D, ENEMY_EXTRA, HERO_COLOR, HERO_INFO } from '../game/content.ts';
 import { clearSave } from '../game/save.ts';
 import { app, commit, setPanel } from '../game/store.ts';
 import { AutoToggle } from './auto.tsx';
@@ -101,6 +101,7 @@ function MaeulTab({ c }: { c: Campaign }) {
           return (
             <div key={f.id} class={`fac ${t ? 'built' : ''}`}>
               <div class="row"><b>{f.name}</b><span class="chip">{t ? `${t}단계` : '없음'}</span></div>
+              {f.guardian && <div class="tiny" data-testid={`guardian-${f.id}`}><span class="dim">지키는 신</span> {f.guardian}</div>}
               <div class="tiny dim">{t ? f.tiers[t - 1].text : f.tiers[0].text}</div>
               {o && (
                 <div class="row">
@@ -119,7 +120,7 @@ function MaeulTab({ c }: { c: Campaign }) {
         {Object.entries(c.materials).filter(([, n]) => n > 0).map(([f, n]) => <span key={f} class="chip" title={`${f} → 각인 ${CD.engrave[f]}`}>{CD.materials[f] ?? f} {n}</span>)}
         {!Object.values(c.materials).some((n) => n > 0) && <span class="faint">없음</span>}
       </div>
-      <div class="row small"><span class="dim">창고</span><span>{supplyLine(c.stock)}</span>{festival === 'market' && <span class="chip good">추석 장: 보급품 반값</span>}</div>
+      <div class="row small"><span class="dim">창고</span><span>{supplyLine(c.stock)}</span>{festival === 'market' && <span class="chip good">추석 장: 보급품 반값</span>}{festival === 'singugan' && <span class="chip good">신구간: 시설 엽전 반값</span>}</div>
       <div class="panel"><div class="log" data-testid="village-log">{c.log.slice(-10).reverse().map((l, i) => <div key={i}>{l}</div>)}</div></div>
     </div>
   );
@@ -269,6 +270,7 @@ function PersonSheet({ c, p }: { c: Campaign; p: Person }) {
         {p.path && <span class="chip lamp">{CD.paths[p.arch][p.path]}</span>}
       </div>
       <div class="small dim">{CD.origins[p.arch][p.origin]}{p.mother ? ` 신어머니: ${c.fallen.find((f) => f.person.uid === p.mother)?.person.name ?? '?'}` : ''}</div>
+      {guardText(p.arch, p.level) && <div class="small" data-testid="guard">고유 방어: {guardText(p.arch, p.level)}</div>}
       <div class="row small">
         {good && <span class="chip good" title={good.text}>{good.name} — {good.text}</span>}
         {bad && <span class="chip red" title={bad.text}>{bad.name} — {bad.text}</span>}
@@ -359,6 +361,14 @@ function SadangTab({ c }: { c: Campaign }) {
         </div>
       ))}
       {wanderingSpirits(c).length > 0 && <div class="panel small" style={{ color: '#ffb3a3' }}>떠도는 넋 {wanderingSpirits(c).length} — 원정마다 파티 귀기 +{wanderingSpirits(c).length * CD.death.wanderStress}</div>}
+      <div class="section-title" style={{ fontSize: '22px' }}>골동 {(c.keepsakes ?? []).length} <span class="small dim" style={{ fontFamily: 'var(--font-body)' }}>막방광침에서 남긴, 해원한 넋이 아끼던 물건</span></div>
+      {!(c.keepsakes ?? []).length && <div class="faint small">아직 남긴 물건이 없다. 엘리트·보스를 해원하면 그 넋이 아끼던 물건을 태워 보낼지 남길지 고른다.</div>}
+      <div class="col" data-testid="keepsakes">
+        {(c.keepsakes ?? []).map((k, i) => {
+          const ex = ENEMY_EXTRA.get(k.enemy);
+          return ex?.keepsake ? <div key={i} class="small"><b>「{ex.keepsake.name}」</b> <span class="dim">{ex.name} · {seasonName(k.season)}</span> — {ex.keepsake.text}</div> : null;
+        })}
+      </div>
     </div>
   );
 }

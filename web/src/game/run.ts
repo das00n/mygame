@@ -62,7 +62,7 @@ export interface NewRunOpts {
   region?: number;
   /** 캠페인 원정: 개체의 체력·귀기·중상, 로드아웃 덱 */
   campaign?: CampaignRunInfo;
-  heroes?: { maxHp: number; stress: number; injured: boolean }[];
+  heroes?: { maxHp: number; stress: number; injured: boolean; level?: number }[];
   deck?: CardInst[];
   codex?: string[];
   firstJangdan?: number;
@@ -78,10 +78,10 @@ export function newRun(o: NewRunOpts): Run {
   const heroes: PHero[] = o.party.map((id, i) => {
     const ex = o.heroes?.[i];
     const hp = ex ? ex.maxHp : d.heroes.get(id)!.hp;
-    return { id, hp: ex?.injured ? Math.floor(hp * 0.8) : hp, baseMax: hp, stress: ex?.stress ?? 0, injured: !!ex?.injured, recovering: false, dead: false, downs: 0 };
+    return { id, hp: ex?.injured ? Math.floor(hp * 0.8) : hp, baseMax: hp, stress: ex?.stress ?? 0, injured: !!ex?.injured, recovering: false, dead: false, downs: 0, ...(ex?.level ? { level: ex.level } : {}) };
   });
   const run: Run = {
-    v: 3, region, campaign: o.campaign ?? null, flags: {}, track: { haewonById: {}, haewonByFamily: {}, killByFamily: {}, met: [], revived: [], cheondo: [], bondPairs: {} },
+    v: 3, region, campaign: o.campaign ?? null, flags: {}, track: { haewonById: {}, haewonByFamily: {}, killByFamily: {}, met: [], revived: [], cheondo: [], bondPairs: {}, keepsakes: [], burned: 0 },
     seed: o.seed, rng: h.rng, commission: o.commission, bossEnc: o.commission === 'boss' ? bossEncFor(region, o.seed, final) : null,
     party: o.party.slice(), formation: o.formation.slice(), heroes, deck: o.deck ? o.deck.slice() : starterDeck(o.party), supplies: { ...o.supplies }, gold: o.gold,
     goldSpent: o.spent, materials: 0, chiseong: 0, light: 100, relics: [], dungeon, pos: { kind: 'room', room: dungeon.entrance }, prevRoom: dungeon.entrance,

@@ -6,11 +6,11 @@ import type { JSX } from 'preact';
 import type { CardDef, HeroId } from '../../../src/core/types.ts';
 import { dialogContinue, finishCamp, pickerApply, rewardContinue, setFormation } from '../game/actions.ts';
 import { campActions, doCampAction, type CampAction } from '../game/camp.ts';
-import { COMMISSION_BY_ID, D, HERO_COLOR, REGION_JSON, RELIC_BY_ID, RELIC_IMPL } from '../game/content.ts';
+import { COMMISSION_BY_ID, D, ENEMY_EXTRA, HERO_COLOR, REGION_JSON, RELIC_BY_ID, RELIC_IMPL } from '../game/content.ts';
 import { settleRun } from '../game/campaign.ts';
 import { bondKey, chooseDialog, dialogOptions, dialogSetup, dialogTitle } from '../game/encounters.ts';
 import { TERMS } from '../game/glossary.ts';
-import { FLAG_INFO, pickFlag, pickRare, pickRelic, takeCard } from '../game/rewards.ts';
+import { chooseKeepsake, FLAG_INFO, KEEPSAKE_BURN_STRESS, pickFlag, pickRare, pickRelic, takeCard } from '../game/rewards.ts';
 import { aliveIdx, effMax, heroName, upgradableIdx } from '../game/run.ts';
 import { app, commit, setPanel, ui } from '../game/store.ts';
 import type { Run } from '../game/types.ts';
@@ -91,6 +91,19 @@ export function RewardScreen() {
           <button class="btn small ghost" onClick={() => { pickRelic(app, null); commit(); }}>받지 않는다</button>
         </div>
       )}
+      {r.keepsake && !r.keepsake.choice && (
+        <div class="col" data-testid="keepsake">
+          <div class="section-title" style={{ fontSize: '26px' }}>막방광침 <span class="small dim" style={{ fontFamily: 'var(--font-body)' }}>넋이 아끼던 물건 — 가져가게 할까, 남길까</span></div>
+          <div class="panel col">
+            <div><b>「{r.keepsake.name}」</b> <span class="small dim">{ENEMY_EXTRA.get(r.keepsake.enemy)?.name}</span></div>
+            <div class="small">{r.keepsake.text}</div>
+          </div>
+          <div class="row" style={{ justifyContent: 'center' }}>
+            <button class="btn lamp" data-testid="keepsake-burn" onClick={() => { chooseKeepsake(app, 'burn'); commit(); }}>태워 보낸다 — 넋이 가져간다 (서 있는 영웅 귀기 −{KEEPSAKE_BURN_STRESS})</button>
+            <button class="btn" data-testid="keepsake-keep" onClick={() => { chooseKeepsake(app, 'keep'); commit(); }}>남긴다 — {run.campaign ? '사당에 골동으로 둔다' : '원정 기록에 남긴다'}</button>
+          </div>
+        </div>
+      )}
       {r.rareCards && !r.rarePicked && (
         <div class="col">
           <div class="section-title" style={{ fontSize: '26px' }}>희귀 카드 하나 (파랑 깃발)</div>
@@ -100,7 +113,7 @@ export function RewardScreen() {
         </div>
       )}
       <div class="row" style={{ justifyContent: 'center' }}>
-        <button class="btn primary" data-testid="reward-continue" disabled={!((!r.flags || r.flags.picked >= 0) && r.relicPicked && r.rarePicked)} onClick={() => { rewardContinue(app); commit(); }}>{r.bossEnd ? '원정을 마친다' : '저승길로 돌아간다'}</button>
+        <button class="btn primary" data-testid="reward-continue" disabled={!((!r.flags || r.flags.picked >= 0) && r.relicPicked && r.rarePicked && (!r.keepsake || r.keepsake.choice))} onClick={() => { rewardContinue(app); commit(); }}>{r.bossEnd ? '원정을 마친다' : '저승길로 돌아간다'}</button>
       </div>
       <PartyStrip run={run} />
     </div>
@@ -177,7 +190,7 @@ export function CampScreen() {
           <div class="camp-grid">
             {acts.filter((a) => a.group === g).map((a) => (
               <button key={a.id} class="opt" disabled={!a.enabled} onClick={() => click(a)} data-testid={`camp-${a.id}`}>
-                <span class="ol">{a.label}{a.points > 0 && <span class="chip lamp">여유 {a.points}</span>}{a.rice ? <span class="chip">쌀 {a.rice}</span> : null}</span>
+                <span class="ol">{a.label}{a.points > 0 && <span class="chip lamp">여유 {a.points}</span>}{a.rice ? <span class="chip">쌀 {a.rice}</span> : null}{a.jijeon ? <span class="chip">지전 {a.jijeon}</span> : null}</span>
                 <span class="od">{a.detail}</span>
                 {!a.enabled && a.reason && <span class="why">{a.reason}</span>}
               </button>

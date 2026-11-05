@@ -6,7 +6,7 @@ import { D } from '../core/engine.ts';
 import { RAW_JSON } from '../core/raw-data.ts';
 import { Rng, seedFrom } from '../core/rng.ts';
 import type { CardInst, HeroId } from '../core/types.ts';
-import { engraveCode } from '../meta/campaign.ts';
+import { engraveCode, hpPerLevelOf } from '../meta/campaign.ts';
 import { CD } from '../meta/content.ts';
 import { bestLoadout, cardScore, duoCard, sinmulFor } from '../meta/loadout.ts';
 import { newPity, pickReward, rollRewards, starterDeck } from './draft.ts';
@@ -88,10 +88,9 @@ export function typicalParty(trio: HeroId[], region: number, seed: number, t: Ty
     const id = sinmulFor(h, plays);
     if (id) deck.push({ d: d.cardById.get(id)!.idx, o: -1, o2: -1, orig: -1, x: -1 });
   }
-  const hpBonus = Math.round(CD.levels.hpPerLevel * t.level);
   const setup: ExpeditionSetup = {
     region, length, deck,
-    heroes: trio.map((id) => ({ id, maxHp: d.heroes.get(id)!.hp + hpBonus })),
+    heroes: trio.map((id) => ({ id, maxHp: d.heroes.get(id)!.hp + Math.round(hpPerLevelOf(id) * t.level), level: t.level })),
     provisions: provisionsFor(region, length),
   };
   return { setup, deck };

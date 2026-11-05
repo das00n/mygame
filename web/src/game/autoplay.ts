@@ -6,7 +6,7 @@ import { campActions, doCampAction, HERO_ACTS } from './camp.ts';
 import { D } from './content.ts';
 import { objective, shortestPath } from './dungeon.ts';
 import { chooseDialog, dialogOptions } from './encounters.ts';
-import { pickFlag, pickRare, pickRelic, takeCard } from './rewards.ts';
+import { chooseKeepsake, pickFlag, pickRare, pickRelic, takeCard } from './rewards.ts';
 import { aliveIdx, effMax, upgradableIdx } from './run.ts';
 import {
   abandon, campAvailable, dialogContinue, finishCamp, moveTo, openCamp, pickerApply, returnHome, rewardContinue, setFormation, travelTo, useCandleOnMap,
@@ -95,6 +95,11 @@ function autoReward(app: AppState): boolean {
   }
   if (!r.relicPicked && r.relics) {
     pickRelic(app, r.relics[0] ?? null);
+    return true;
+  }
+  if (r.keepsake && !r.keepsake.choice) {
+    const worst = Math.max(0, ...aliveIdx(run).map((i) => run.heroes[i].stress));
+    chooseKeepsake(app, worst >= 40 ? 'burn' : 'keep');
     return true;
   }
   if (!r.rarePicked && r.rareCards) {
@@ -213,6 +218,8 @@ function autoCamp(app: AppState): boolean {
     if (worst < 0.7 && can('meal_full')) return !!doCampAction(app, 'meal_full') || true;
     if (worst < 0.9 && can('meal_light')) return !!doCampAction(app, 'meal_light') || true;
   }
+  const keep = reserved(run);
+  if (can('chasa_daejeop') && run.supplies.jijeon > (keep.jijeon ?? 0) && run.supplies.rice > (keep.rice ?? 0)) return !!doCampAction(app, 'chasa_daejeop') || true;
   if (camp.raid > 0 && can('posu_watch')) return !!doCampAction(app, 'posu_watch') || true;
   if (camp.raid > 0 && can('dwitjeon') && run.supplies.rice >= 4) return !!doCampAction(app, 'dwitjeon') || true;
   const injured = alive.find((i) => run.heroes[i].injured);

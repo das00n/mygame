@@ -22,7 +22,7 @@ export function planSetup(plan: ExpeditionPlan, retreat: { below: number; boss: 
     region: plan.commission.region, length: plan.commission.length,
     heroes: plan.heroes.map((h) => ({
       id: h.id, maxHp: h.maxHp, stress: h.stress, injured: h.injured, saveBonus: h.saveBonus, stressMult: h.stressMult, startBlock: h.startBlock,
-      startWeak: h.startWeak, recovery: h.recovery,
+      startWeak: h.startWeak, recovery: h.recovery, level: h.level,
     })),
     deck: planDeck(plan), provisions, enemyHpMult: plan.enemyHpMult, retreatBelow: retreat.below, bossRetreatBelow: retreat.boss, firstJangdan: plan.firstJangdan, paths,
     wipeSurvive: CD.death.wipeSurvive, mods: { deathSave: CD.death.deathSave },

@@ -1,7 +1,7 @@
 # 시뮬레이션 보고서 (자동 생성)
 
 > 생성: `npm run sim:combat` / `npm run sim:expedition` (끝나면 이 파일을 다시 쓴다). 해설과 조정 제안은 [Prototype ①](../07-prototype.md).
-> 원자료: `data/sim/combat.json` (2026-11-05T02:13, 시드 40, 33600 전투, 19.9s) · `data/sim/expedition.json` (2026-11-05T02:14, 조합마다 200회, 55.8s)
+> 원자료: `data/sim/combat.json` (2026-11-05T04:48, 시드 40, 33600 전투, 19.5s) · `data/sim/expedition.json` (2026-11-05T04:49, 조합마다 200회, 53.2s)
 > 플래그: **dominant** = 중앙값 + 25%p 초과 · **dead** = 중앙값 − 25%p 미만 또는 5% 미만.
 
 ## 0. 엔진 충실도

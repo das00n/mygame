@@ -4,7 +4,7 @@
   "id": "yeokbyeong",
   "name": "역병 든 마을",
   "act": 2,
-  "concept": "강을 건넌 넋들이 지나는 저승길 어귀의 마을. 돌림병이 휩쓴 뒤 장례도 제사도 받지 못한 넋들이 골목마다 열을 앓으며 남아 있다. 손님(마마를 맡은 신령)이 머무는 마을을, 손님 행세를 하는 허주가 차지했다.",
+  "concept": "강을 건넌 넋들이 지나는 저승길 어귀의 마을. 돌림병이 휩쓴 뒤 장례도 제사도 받지 못한 넋들이 골목마다 열을 앓으며 남아 있다. 집집이 문간에 올리던 상도, 부뚜막에 떠 놓던 물그릇도 끊겼다. 손님(마마를 맡은 신령)이 머무는 마을을, 손님 행세를 하는 허주가 차지했다.",
   "families": ["역귀", "굶주린 넋", "잡귀잡신", "억울귀"],
   "pressures": ["P4", "P3"],
   "teaches": ["칸 조준", "진형 교란", "번지는 홀림", "옮김"],
@@ -73,7 +73,7 @@
    "haewon": {"status": "장단", "rule": "장단 3 이상인 턴에 쓰러뜨린다", "story": "뒷전 장단에 흥이 나서 상가를 떠난다"},
    "drops": {"material": "잡귀 넋", "gold": [16, 24]}},
   {"id": "binsang_neok", "name": "빈 상 앞의 넋", "family": "굶주린 넋", "category": "normal", "hp": [42, 46], "position": "front",
-   "han": "돌림병 통에 일가가 다 떠나 제삿밥 한 그릇 받지 못했다. 빈 상 앞을 떠나지 못한다.",
+   "han": "돌림병 통에 일가가 다 떠나 제삿밥 한 그릇 받지 못했다. 객지에 나간 식구 무사하라고 부뚜막에 떠 놓던 물그릇도 말랐다. 돌아오지 못한 식구를 기다리며 빈 상 앞을 떠나지 못한다.",
    "intents": [
     {"id": "a", "name": "허겁지겁", "kind": "attack", "target": "최저 체력", "damage": 9, "hits": 1},
     {"id": "b", "name": "상 갉아먹기", "kind": "attack", "target": "굿상", "damage": 12, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 7 피해 + 자신 체력 8 회복"}
@@ -95,7 +95,7 @@
    "haewon": {"status": "진형", "rule": "그 턴에 진형이 바뀐 상태로 쓰러뜨린다", "story": "자리를 바꿔 물동이를 받아 주자 비로소 두레박 줄을 놓는다"},
    "drops": {"material": "빛바랜 역병 부적", "gold": [16, 22]}},
   {"id": "bonghanjip_neok", "name": "봉한 집 넋", "family": "억울귀", "category": "normal", "hp": [48, 52], "position": "back",
-   "han": "병이 옮을까 이웃들이 대문에 금줄을 치고 집을 봉했다. 안에서 문을 두드리다 그대로 잠들었다.",
+   "han": "병이 옮을까 이웃들이 대문에 금줄을 치고 집을 봉했다. 안에서 문을 두드리다 그대로 잠들었다. 집안 신 가운데 가장 먼저 대접하던 문간의 상마저 끊겨, 넋이 문지방을 넘지 못한다.",
    "intents": [
     {"id": "a", "name": "문틈으로 뻗는 손", "kind": "attack", "target": "최고 체력", "damage": 6, "hits": 2},
     {"id": "b", "name": "갇힌 원망", "kind": "stress", "target": "전체", "effect": "파티 귀기 +6"}
@@ -103,11 +103,12 @@
    "pattern": {"type": "cycle", "order": ["a", "b"]},
    "passives": [],
    "pressures": ["P2", "P3"],
-   "haewon": {"status": "부적", "rule": "부적(토큰) 카드의 마지막 피해로 쓰러뜨린다", "story": "대문에 붙은 봉인 부적을 새 부적으로 풀어 주자 원망을 내려놓고 문밖으로 나선다"},
+   "haewon": {"status": "부적", "rule": "부적(토큰) 카드의 마지막 피해로 쓰러뜨린다", "story": "대문에 붙은 봉인 부적을 새 부적으로 풀어 문간을 열어 주자, 원망을 내려놓고 문지방을 넘는다"},
    "drops": {"material": "타다 남은 소지", "gold": [18, 26]}},
 
   {"id": "geumjul_jonwi", "name": "금줄 친 존위 원귀", "family": "억울귀", "category": "elite", "hp": [120, 126], "position": "back",
    "han": "마을 어른으로서 돌림병을 막으려 어귀에 금줄을 치고 드나듦을 막았다. 갇힌 이들의 원망을 한 몸에 받다가 죽었다.",
+   "keepsake": {"name": "마을 어귀 금줄 한 토막", "text": "드나듦을 막던 새끼줄. 마을을 지키려던 뜻이 마디마다 남았다."},
    "intents": [
     {"id": "a", "name": "금줄 치기", "kind": "possess", "target": "전체", "effect": "모든 영웅을 홀린다(홀림 1: 각 영웅의 다음 카드 1장이 효과 없음, 비용은 든다)"},
     {"id": "b", "name": "꾸짖음", "kind": "attack", "target": "선두", "damage": 16, "hits": 1},
@@ -121,6 +122,7 @@
    "drops": {"material": "타다 남은 소지", "gold": [40, 55]}},
   {"id": "hamkke_neokdeul", "name": "함께 묻힌 넋들", "family": "역귀", "category": "elite", "hp": [81, 85], "position": "back",
    "han": "돌림병이 한창일 때 장례도 없이 한자리에 서둘러 묻힌 넋들. 서로 엉겨 하나가 되었다.",
+   "keepsake": {"name": "한데 묶인 숟가락", "text": "한자리에 묻힌 이들의 숟가락 묶음. 이제 한 벌씩 나눠 놓을 수 있다."},
    "intents": [
     {"id": "a", "name": "엉킨 열기", "kind": "attack", "target": "전체", "damage": 5, "hits": 1},
     {"id": "b", "name": "넋 불러내기", "kind": "summon", "target": "아군 원귀", "effect": "열 오른 넋 1 소환(최대 1)"},
@@ -133,6 +135,7 @@
    "drops": {"material": "빛바랜 역병 부적", "gold": [40, 55]}},
   {"id": "pijeop_neok", "name": "피접 가던 넋", "family": "역귀", "category": "elite", "hp": [101, 107], "position": "front",
    "han": "병을 피해 식구를 데리고 마을을 떠나다 어귀에서 쓰러졌다. 이번에는 꼭 빠져나가려 한다.",
+   "keepsake": {"name": "피접 보따리", "text": "식구들 옷가지를 싸 둔 보따리. 매듭이 아직 단단하다."},
    "intents": [
     {"id": "a", "name": "앞을 막는 이 치기", "kind": "attack", "target": "선두", "damage": 9, "hits": 2},
     {"id": "b", "name": "짐 꾸리기", "kind": "defend", "target": "자신", "block": 16},
@@ -158,6 +161,7 @@
 
   {"id": "dollimbyeong_neok", "name": "돌림병이 된 넋", "family": "역귀", "category": "boss", "hp": [248, 256], "position": "front",
    "han": "마을에서 처음 앓은 사람. 병이 옮을까 아무도 곁에 오지 못했고, 그 외로움이 열이 되어 집집이 옮겨 다녔다.",
+   "keepsake": {"name": "식은 약사발", "text": "처음 앓던 이가 혼자 들던 약사발. 곁에 아무도 없었다."},
    "intents": [
     {"id": "a", "name": "뜨거운 숨", "kind": "attack", "target": "선두", "damage": 14, "hits": 1, "phase": 1},
     {"id": "b", "name": "집집이 옮기기", "kind": "pollute", "target": "전체", "effect": "덱에 '신열' 2장(선두·중열 영웅이 하나씩 주인)", "phase": 1},
@@ -175,6 +179,7 @@
    "drops": {"material": "빛바랜 역병 부적", "gold": [130, 145], "chiseong": 1}},
   {"id": "heoju", "name": "손님 대접을 가로챈 허주", "family": "잡귀잡신", "category": "boss", "hp": [228, 236], "position": "back",
    "han": "제 굿 한 번 받아 보지 못한 떠돌이 넋이, 손님이 지나간 마을에 눌러앉아 손님 행세를 한다. 마을 사람들은 손님이 아직 머문다고 믿고 상을 차리다 지쳐 쓰러졌다.",
+   "keepsake": {"name": "벗겨진 가면", "text": "신령 흉내를 내던 떠돌이의 가면. 안쪽에 제 이름이 적혀 있다."},
    "intents": [
     {"id": "a", "name": "상을 내놓아라", "kind": "attack", "target": "굿상", "damage": 14, "hits": 1, "effect": "굿상에 설치물이 없으면 선두에게 10 피해 + 자신 체력 10 회복", "phase": 1},
     {"id": "b", "name": "손님 흉내", "kind": "pollute", "target": "전체", "effect": "덱에 '신열' 2장(선두·후열 영웅이 하나씩 주인)", "phase": 1},

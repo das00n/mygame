@@ -2,6 +2,7 @@
 // 원정 자체는 원정 계층(src/sim/campaign-run.ts 또는 web/)이 돌리고, 결과(ExpeditionReport)를 settle() 에 넘긴다.
 
 import { loadData } from '../core/data.ts';
+import { guardBlockOf } from '../core/engine.ts';
 import { rand } from '../core/rng.ts';
 import { HERO_IDS, HERO_NAMES, type HeroId } from '../core/types.ts';
 import { CD, FACILITY_BY_ID, LENGTH_NAMES, QUIRK_BY_ID, REGION_NAMES, SUPPLY_IDS, SUPPLY_NAMES, emptySupplies, seasonName, seasonOfYear, type Quirk } from './content.ts';
@@ -57,9 +58,23 @@ export function quirkEffects(p: Person): Required<Quirk['effect']> {
   return out;
 }
 
-/** 최대 체력 (피로 전): 원형 체력 + 레벨마다 +3 + 기질 */
+/** 원형 고유 방어 문장 (⟨반복 4⟩ 03-heroes §2.1). 없는 원형은 null */
+export function guardText(arch: HeroId, level: number): string | null {
+  const g = loadData().heroes.get(arch)!.guard;
+  if (!g) return null;
+  const n = guardBlockOf(arch, level);
+  const when = g.kind === 'turn_block' ? '턴을 시작할 때' : `칸이 바뀔 때마다(턴당 ${g.maxPerTurn ?? 1}번)`;
+  return n > 0 ? `「${g.name}」 ${when} 방어도 ${n}` : `「${g.name}」 레벨 1부터 ${when} 방어도를 얻는다`;
+}
+
+/** 레벨마다 최대 체력: 원형 값(heroes.json hp_per_level, ⟨반복 4⟩) 또는 공통 값 */
+export function hpPerLevelOf(arch: HeroId): number {
+  return loadData().heroes.get(arch)!.hpPerLevel ?? CD.levels.hpPerLevel;
+}
+
+/** 최대 체력 (피로 전): 원형 체력 + 레벨마다 원형별 체력 + 기질 */
 export function baseMaxHp(p: Person): number {
-  return loadData().heroes.get(p.arch)!.hp + CD.levels.hpPerLevel * p.level + quirkEffects(p).maxHp;
+  return loadData().heroes.get(p.arch)!.hp + hpPerLevelOf(p.arch) * p.level + quirkEffects(p).maxHp;
 }
 
 /** 피로: 연속 출전마다 최대 체력 −5% (상한 −20%) */
@@ -155,11 +170,13 @@ export function buildOptions(c: Campaign): BuildOption[] {
     if (cur >= f.tiers.length) continue;
     const next = cur + 1;
     const t = f.tiers[cur];
+    // 신구간(⟨반복 4⟩ 06-base §1): 신들이 자리를 비운 절기에는 집을 고친다 — 엽전 반값(치성은 그대로)
+    const cost = festivalKind(c) === 'singugan' && t.cost.gold ? { ...t.cost, gold: Math.ceil(t.cost.gold / 2) } : t.cost;
     let why: string | null = null;
     if (cur === 0 && !c.lots.includes(f.lot)) why = f.lot === 'r1boss' ? '지역 1 보스를 처음 보내면 부지가 열린다' : f.lot === 'r2boss' ? '지역 2 보스를 처음 보내면 부지가 열린다' : '부지가 없다';
-    else if ((t.cost.gold ?? 0) > c.gold) why = `엽전 ${t.cost.gold} 필요`;
-    else if ((t.cost.chiseong ?? 0) > c.chiseong) why = `치성 ${t.cost.chiseong} 필요`;
-    out.push({ id: f.id, name: f.name, next, cost: t.cost, text: t.text, ok: !why, why });
+    else if ((cost.gold ?? 0) > c.gold) why = `엽전 ${cost.gold} 필요`;
+    else if ((cost.chiseong ?? 0) > c.chiseong) why = `치성 ${cost.chiseong} 필요`;
+    out.push({ id: f.id, name: f.name, next, cost, text: t.text, ok: !why, why });
   }
   return out;
 }
@@ -216,7 +233,7 @@ function startSeason(c: Campaign): void {
   }
 }
 
-export function festivalKind(c: Campaign): 'wanderer' | 'biggut' | 'market' | null {
+export function festivalKind(c: Campaign): 'wanderer' | 'biggut' | 'market' | 'singugan' | null {
   return CD.calendar.festivals.find((f) => f.season === seasonOfYear(c.season))?.kind ?? null;
 }
 
@@ -566,7 +583,7 @@ export function planExpedition(c: Campaign, commissionId: string, uids: string[]
       const q = quirkEffects(p);
       return {
         id: p.arch, maxHp: maxHpOf(p), stress: Math.min(99, p.stress + wander + (p.grief ? CD.death.grief : 0)), injured: p.injured,
-        saveBonus: q.saveBonus, stressMult: q.stressMult, startBlock: q.startBlock, startWeak: q.startWeak, recovery: q.recovery,
+        saveBonus: q.saveBonus, stressMult: q.stressMult, startBlock: q.startBlock, startWeak: q.startWeak, recovery: q.recovery, level: p.level,
       };
     }),
     deck, supplies, enemyHpMult: enemyHpMult(c), firstJangdan: people.some((p) => p.resolve) ? CD.death.resolve : 0,
@@ -621,6 +638,8 @@ export function settle(c: Campaign, plan: ExpeditionPlan, rep: ExpeditionReport)
   if (Object.keys(mats).length) lines.push(`재료: ${Object.entries(mats).map(([f, n]) => `${CD.materials[f] ?? f} ${n}`).join(' · ')}`);
   // 해원록
   for (const id of rep.met) if (!c.codex.includes(id)) c.codex.push(id);
+  // 막방광침 ⟨반복 4⟩: 남긴 물건은 사당에 골동으로 둔다
+  if (rep.keepsakes?.length) c.keepsakes = [...(c.keepsakes ?? []), ...rep.keepsakes.map((enemy) => ({ enemy, season: c.season }))];
   for (const [id, n] of Object.entries(rep.haewonById)) c.haewonSeen[id] = (c.haewonSeen[id] ?? 0) + n;
   // 파티
   const deadIdx: number[] = [];
@@ -640,13 +659,14 @@ export function settle(c: Campaign, plan: ExpeditionPlan, rep: ExpeditionReport)
     p.stress = Math.max(0, Math.min(99, h.stress - plan.stressAdd[i]));
     p.injured = h.injured;
     p.sorties++;
-    // 경험: 원정 +1, 보스 +1 → 레벨 (최대 체력 +3). 따라잡기: 로스터 최고 레벨보다 크게 뒤처진 사람은 고참 곁에서 더 배운다 ⟨반복 3⟩
+    // 경험: 원정 +1, 보스 +1 → 레벨 (최대 체력 +원형별, ⟨반복 4⟩ 고유 방어도 자란다). 따라잡기: 로스터 최고 레벨보다 크게 뒤처진 사람은 고참 곁에서 더 배운다 ⟨반복 3⟩
     p.xp += CD.levels.xpExpedition + (rep.bossWon ? CD.levels.xpBoss : 0) + (p.level <= topLevel - CD.levels.catchUpGap ? CD.levels.catchUpXp : 0);
     const lv = Math.min(CD.levels.xp.length, levelForXp(p.xp));
     if (lv > p.level) {
       p.level = lv;
       out.levelUps.push({ uid: p.uid, level: lv });
-      lines.push(`${displayName(p)} 레벨 ${lv} (최대 체력 +${CD.levels.hpPerLevel})${lv >= CD.levels.promoteLevel && !p.epithet ? ' — 내림굿을 받을 수 있다' : ''}`);
+      const gd = guardText(p.arch, lv);
+      lines.push(`${displayName(p)} 레벨 ${lv} (최대 체력 +${hpPerLevelOf(p.arch)}${gd ? ` · ${gd}` : ''})${lv >= CD.levels.promoteLevel && !p.epithet ? ' — 내림굿을 받을 수 있다' : ''}`);
     }
     // 익힌 카드
     const card = learnFrom(p.arch, h.plays, p.learned);

@@ -1,5 +1,12 @@
 {
  "version": "0.2",
+ "tuned": [
+  {"iter": 4, "what": "posu.guard", "before": "없음", "after": "몸 낮추기 — turn_block, 레벨 × 1.4 (레벨 0/1/2/3 → 방어도 0/1/3/4)", "why": "2·3막에서 포수가 끌어당김으로 선두에 끌려 나와 쓰러졌다(영웅 평균 41%). 체력 +10 은 +7.8%p, 턴마다 방어도 4 는 +25%p. 레벨 0 은 0 이라 지역 1 수치는 그대로 (docs/03-heroes.md §2.1, docs/09-iteration.md §6)"},
+  {"iter": 4, "what": "talggun.guard", "before": "없음", "after": "탈 뒤에 숨기 — move_block, 레벨 × 0.9, 턴당 2번 (0/1/2/3)", "why": "자리를 바꿀 때마다 선두에 노출되던 원형(영웅 평균 52%). 칸 조건·턴 시작 방식보다 칸이 바뀔 때가 맞았다"},
+  {"iter": 4, "what": "chasa.guard", "before": "없음", "after": "군졸 자세 — turn_block, 레벨 × 0.45 (0/0/1/1)", "why": "포수·탈꾼을 올리자 차사가 든 조합이 바닥에 남았다. 지역 2 방어도 2 면 차사가 너무 강해져 1"},
+  {"iter": 4, "what": "manshin.hp_per_level", "before": 3, "after": 1, "why": "만신은 굿상·회복·명부로 버틴다 — 가장 강한 원형(지역 2 영웅 평균 77%). 회복 카드 하향은 만신 + 작두박수 + 법사 만 무너뜨려 쓰지 않았다"},
+  {"iter": 4, "what": "baksu.hp_per_level · beopsa.hp_per_level", "before": 3, "after": 2, "why": "고유 방어로 오른 2·3막 중앙값을 되돌린다(적 체력으로 내리면 조합 편차가 벌어졌다)"}
+ ],
  "note": "Phase 3 영웅 자원 배치. resources 키는 docs/02-core-rules.md §5의 공용 상태·매개체. exports_candidates(앞쪽일수록 세계관상 자연스러움) 중 2~3개를 tools/design/synergy.py 가 제약을 만족하도록 고른다. 첫 번째로 고른 것이 주 수출, 나머지는 부 수출.",
  "resources": {
   "V": {
@@ -61,7 +68,8 @@
     "K",
     "M",
     "C"
-   ]
+   ],
+   "hp_per_level": 1
   },
   {
    "id": "jaebi",
@@ -96,7 +104,13 @@
     "B",
     "C",
     "F"
-   ]
+   ],
+   "guard": {
+    "kind": "turn_block",
+    "name": "몸 낮추기",
+    "block": 0,
+    "perLevel": 1.4
+   }
   },
   {
    "id": "baksu",
@@ -113,7 +127,8 @@
     "F",
     "D",
     "S"
-   ]
+   ],
+   "hp_per_level": 2
   },
   {
    "id": "seungnyeo",
@@ -149,7 +164,8 @@
     "D",
     "C",
     "F"
-   ]
+   ],
+   "hp_per_level": 2
   },
   {
    "id": "talggun",
@@ -168,7 +184,14 @@
     "M",
     "B",
     "T"
-   ]
+   ],
+   "guard": {
+    "kind": "move_block",
+    "name": "탈 뒤에 숨기",
+    "block": 0,
+    "perLevel": 0.9,
+    "maxPerTurn": 2
+   }
   },
   {
    "id": "chasa",
@@ -184,7 +207,13 @@
     "M",
     "C",
     "F"
-   ]
+   ],
+   "guard": {
+    "kind": "turn_block",
+    "name": "군졸 자세",
+    "block": 0,
+    "perLevel": 0.45
+   }
   }
  ]
 }

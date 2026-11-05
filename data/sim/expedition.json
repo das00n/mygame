@@ -1,11 +1,11 @@
 {
  "meta": {
-  "generated": "2026-11-05T02:14:04.096Z",
+  "generated": "2026-11-05T04:49:14.224Z",
   "region": 1,
   "final": false,
   "runs": 200,
   "trios": 56,
-  "runtimeSec": 55.8,
+  "runtimeSec": 53.2,
   "structure": "쉬움 2 + 어려움 7 + 수호 방 1~2 (6번째 전투 뒤 길굿 + 보스 굴 앞 길굿) + 보스 b1/b2",
   "party": "시작 덱 12장 · 원형 체력",
   "rules": {

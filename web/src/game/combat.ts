@@ -12,7 +12,7 @@ import { D, ENEMY_EXTRA, bandOf } from './content.ts';
 import { addCurse, addRunStress, afterFightRecovery, aliveIdx, buildResult, effMax, heroName, logRun, revealHaewon } from './run.ts';
 import { swapHeroes } from '../../../src/core/engine.ts';
 import type { AppState, BattleMeta, BattleSource, CombatSession, Run } from './types.ts';
-import { makeReward } from './rewards.ts';
+import { keepsakeFor, makeReward } from './rewards.ts';
 import { CD } from '../../../src/meta/content.ts';
 
 // ── 조합 ─────────────────────────────────────────────────────────────
@@ -97,6 +97,7 @@ export function relicMods(run: Run): CombatMods {
   if (has('sinjang')) m.firstBlockBonus = 3;
   if (has('yaksu_sabal')) m.yaksu = true;
   if (has('myeongdo')) m.bladeSafeTurn = 1;
+  if (run.flags.hoek === 'ready') m.hoek = true;
   return m;
 }
 
@@ -138,7 +139,7 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
   const sp = o.special === 'sonnim' ? d.specials.get('sonnim_baeung')! : null;
   const s = createCombat({
     party: run.heroes.map((h) => ({
-      id: h.id, hp: h.hp, maxHp: h.baseMax, stress: Math.max(0, h.stress - threshold), injured: h.injured, recovering: h.recovering, dead: h.dead,
+      id: h.id, hp: h.hp, maxHp: h.baseMax, stress: Math.max(0, h.stress - threshold), injured: h.injured, recovering: h.recovering, dead: h.dead, level: h.level,
     })),
     deck: [...run.deck, ...extra], encounter: enc, seed: (rand(run) * 4294967296) | 0, record: true, jijeon: run.supplies.jijeon, log: true,
     rules: { ...DEFAULT_RULES, enemyDmgMult: band.enemyDmg, haewonHeal: run.relics.includes('jisin') ? 5 : DEFAULT_RULES.haewonHeal },
@@ -513,6 +514,7 @@ function syncHeroes(app: AppState): boolean[] {
   run.supplies.bujeok = s.prov.bujeok;
   run.supplies.incense = s.prov.incense;
   if (s.yaksuUsed) run.flags.yaksuUsed = true;
+  if (s.hoekUsed) run.flags.hoek = 'used';
   // 진형 유지: 전투가 끝난 자리 그대로 다음 전투를 시작한다
   const alive = s.formation.filter((i) => !run.heroes[i].dead);
   run.formation = [...alive, ...run.formation.filter((i) => !alive.includes(i))];
@@ -620,6 +622,7 @@ export function finishBattle(app: AppState): void {
     }
   }
   const reward = makeReward(app, cs.meta, gold, mats, lines);
+  reward.keepsake = keepsakeFor(s);
   app.reward = reward;
   app.combat = null;
   app.screen = 'reward';

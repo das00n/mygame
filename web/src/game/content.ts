@@ -22,6 +22,8 @@ export interface RawEnemyExtra {
   category?: string;
   haewon: { status: string | null; rule: string; story: string } | null;
   drops: { material: string | null; gold: [number, number]; chiseong?: number };
+  /** 막방광침: 해원한 뒤 남는 아끼던 물건 (엘리트·보스, ⟨반복 4⟩) */
+  keepsake?: { name: string; text: string };
 }
 export interface Curio {
   id: string;

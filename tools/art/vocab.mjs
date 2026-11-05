@@ -185,7 +185,7 @@ export const BOSS_KO = { sakkun: '뱃사공(삿갓·노·배)', heoju: '허주(�
 /** 장면 배경 → 브리프 문장 */
 export const BG_KO = {
   geumjul: '위쪽에 금줄과 종이 술', jihwa: '양옆에 지화 다발', moon: '보름달과 구름 띠', stars: '북두칠성 일곱 점', hills: '민화식 겹 산',
-  water: '나루의 물결과 갈대', gate: '닫힌 대문 기둥', road: '흰 길베가 비스듬히 지나는 길', village: '낮은 초가 지붕', mat: '돗자리 바닥',
+  water: '나루의 물결과 갈대', gate: '닫힌 대문 기둥 — 성문이 아니라 댓가지를 엮어 세운 굿판의 문(⟨반복 4⟩ 05-region3 §1)', road: '흰 길베가 비스듬히 지나는 길', village: '낮은 초가 지붕', mat: '돗자리 바닥',
   eaves: '기와 처마 끝', night: '위가 어두운 그믐밤', none: '빈 한지 바탕',
 };
 
