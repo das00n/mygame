@@ -6,6 +6,7 @@ import type { ComponentChildren, JSX } from 'preact';
 import type { CardDef, CardInst, HeroId } from '../../../src/core/types.ts';
 import { D, HERO_COLOR, bandOf } from '../game/content.ts';
 import { splitTerms, termsIn } from '../game/glossary.ts';
+import { CardArt } from '../art/CardArt.tsx';
 
 // ── 표식 ─────────────────────────────────────────────────────────────
 const PATHS: Record<string, JSX.Element> = {
@@ -152,8 +153,10 @@ export function CardView({ def, inst = null, party, dis, sel, resp, big, pickabl
       {resp && <div class="resp" title="지금 내면 받는소리가 성립한다">받</div>}
       {def.upgraded && <div class="upseal" title="강화한 카드">강</div>}
       <div class="cname">{name}</div>
-      {/* 카드 삽화 창 (D8-1: 카드마다 삽화 — 지금은 자리만, 스케치는 따로 끼운다) */}
-      <div class="card-art" data-card-id={def.id} aria-hidden="true" />
+      {/* 카드 삽화 창 (D8-1: 카드마다 삽화 — 지금은 스케치, docs/11-card-art.md) */}
+      <div class="card-art" data-card-id={def.id} aria-hidden="true">
+        <CardArt cardId={def.id} width={big ? 146 : 118} />
+      </div>
       <div class="ctype">{typeLine}</div>
       <div class="ctext"><KwText text={text} /></div>
       {kws.length > 0 && <div class="ckw">{kws.join(' · ')}</div>}

@@ -84,10 +84,11 @@ function staging(b) {
   } else {
     parts.push(`왼쪽 2/5에 ${H[0]}(오른쪽을 본다)`);
   }
-  if (V.FAMILIES[target]) parts.push(`오른쪽에 ${target}${count > 1 ? ` ${count}명(앞에서 뒤로 겹쳐 선다)` : ''}`);
+  if (V.FAMILIES[target] && framing !== 'emblem') parts.push(`오른쪽${framing === 'insert' ? ' 끝에 작게' : '에'} ${target}${count > 1 ? ` ${count}명(앞에서 뒤로 겹쳐 선다)` : ''}`);
+  else if (V.FAMILIES[target]) parts.push(`상징 곁에 작은 ${target}`);
   else if (target === 'altar') parts.push('오른쪽에 굿상');
   else if (target === 'none' && framing !== 'insert' && framing !== 'emblem') parts.push('오른쪽은 효과 글리프가 차지한다');
-  if (vs) parts.push(`오른쪽 끝에 ${vs.replace('*', ' ')}명`);
+  if (vs) parts.push(`오른쪽 끝에 ${vs.split('*')[0]} ${vs.split('*')[1] ?? 1}명`);
   return parts.join(' · ');
 }
 
@@ -123,8 +124,9 @@ function compose(card, row) {
     han: fam ? `${V.FAMILIES[fam].han} ${V.FAMILIES[fam].tint}` : '한의 빛깔', lamp: '넋등 빛 #e0a040', cin: '경면주사 붉은색 #c33427', none: '',
   }[acc];
   const focus = ex.f ?? V.FX_KO[fx][0];
+  const noFigure = framing === 'insert';
   const costume = heroes.filter((h) => h !== 'party').map((h) => {
-    const base = `${V.HEROES[h].name}: ${V.HEROES[h].look}`;
+    const base = `${noFigure ? '(인물 없음 — 주인 참고) ' : ''}${V.HEROES[h].name}: ${V.HEROES[h].look}`;
     return h === 'talggun' && ex.mask ? `${base} — 이 장면은 ${{ malttugi: '말뚝이탈(선두)', yangban: '양반탈(중열)', halmi: '할미탈(후열)' }[ex.mask]}` : base;
   });
 

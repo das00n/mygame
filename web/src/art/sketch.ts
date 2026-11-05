@@ -130,8 +130,8 @@ function emblem(c: Ctx, sp: ArtSpec, gy: number): { svg: string; G: Partial<Geo>
       break;
     }
     case 'shoulder': {
-      const a = anon('idle', 64, gy, 0.56);
-      s += a.svg + smallSoul(c, a.head[0] - 12, a.head[1] + 14, 0.42);
+      const a = anon('idle', 62, gy, 0.62);
+      s += a.svg + smallSoul(c, a.head[0] - 13, a.head[1] + 17, 0.62);
       G.S = [a.head[0] - 6, a.head[1] - 2];
       G.Th = [[a.head[0], a.head[1]]];
       break;

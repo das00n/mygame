@@ -1,10 +1,12 @@
 // 카드 삽화 스케치 밀착 인화(contact sheet) — 영웅별·합기·공용으로 묶어 카드 크기(132px)와 큰 크기(300px) PNG 를 만든다.
-// 실행: node --import tsx tools/art/contact-sheet.mjs [묶음…]   → docs/design/art/sheet-<묶음>-<크기>.png, in-card.png
+// 실행: node --import tsx tools/art/contact-sheet.mjs [묶음… | in-card]   → docs/design/art/sheet-<묶음>-<크기>.png, in-card.png
+// 끝에 tools/art/shrink_png.py(Pillow)로 256색 팔레트 PNG 로 줄인다.
 // 렌더러(web/src/art/sketch.ts)를 그대로 불러 쓰므로 게임 화면과 같은 그림이 나온다.
 import { mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
+import { spawnSync } from 'node:child_process';
 import { lodFor, sketchSvg } from '../../web/src/art/sketch.ts';
 
 const require = createRequire(import.meta.url);
@@ -40,10 +42,12 @@ function cell(b, width) {
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1400, height: 900 }, deviceScaleFactor: 1 });
 const pg = await ctx.newPage();
+const shot = [];
 async function shoot(html, file, width) {
   await pg.setViewportSize({ width: width + 36, height: 900 });
   await pg.setContent(html, { waitUntil: 'load' });
   await pg.screenshot({ path: join(OUT, file), fullPage: true });
+  shot.push(join(OUT, file));
   console.log(`docs/design/art/${file}`);
 }
 
@@ -71,7 +75,12 @@ if (!only.length || only.includes('in-card')) {
     }
     body += '</div>';
   }
-  await shoot(page('카드 틀 안에서 보기 <small>안쪽 너비 = 카드 너비 − 14px</small>', body, 1500), 'in-card.png', 1500);
+  await shoot(page('카드 틀 안에서 보기 <small>삽화 창 = 카드 안쪽 너비(112·132 → −14px, 168 큰 카드 → −22px)</small>', body, 1500), 'in-card.png', 1500);
 }
 
 await browser.close();
+
+// 256색 팔레트로 줄이기(Pillow 가 있을 때만) — 강조색은 남고 파일은 약 70% 작아진다
+const py = spawnSync('python3', [join(ROOT, 'tools/art/shrink_png.py'), ...shot], { encoding: 'utf8' });
+if (py.status !== 0) console.warn('PNG 줄이기 생략:', py.stderr || py.error?.message);
+else process.stdout.write(py.stdout);

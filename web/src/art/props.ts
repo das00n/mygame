@@ -7,7 +7,7 @@ export const SCENE_PROPS = new Set(['gutsang', 'beomjong', 'eopgyeongdae', 'crow
 
 /** 손에서 끝(초점)까지 길이 */
 export const PROP_LEN: Record<string, number> = {
-  bangul: 22, buchae: 34, jwilbuchae: 26, sinkal: 35, woldo: 70, samjichang: 60, obanggi: 58, myeongdo: 24, mubok: 26, cup: 8,
+  bangul: 22, buchae: 34, jwilbuchae: 26, sinkal: 35, woldo: 70, samjichang: 60, obanggi: 48, myeongdo: 24, mubok: 26, cup: 8,
   chae: 24, jingchae: 22, jing: 26, jegeum: 8, taepyeongso: 34, piri: 18, gun: 52, kkojildae: 44, santan: 14, pouch: 14, yukhwanjang: 66,
   yeomju: 4, moktak: 10, scroll: 28, brush: 22, bujeok: 26, jineon: 26, whip: 28, staff: 16, gourd: 10, tal: 16, ora: 6, jeokpaeji: 30,
   bangmangi: 30, chain: 30, flower: 28, soji: 24, bowl: 6, rice: 4, beans: 4, salt: 4, mugwort: 22, neokjeon: 26, jijeon: 4, myeongju: 8,
@@ -133,10 +133,10 @@ export function handProp(c: Ctx, key: string, maskKind = 'yangban'): string {
       const fills = [PAPER, WASH, WASH2, mix(WASH2, INK, 0.3), mix(INK, WASH2, 0.35)];
       let s = '';
       for (let i = 0; i < 5; i++) {
-        const a = -26 + i * 13;
+        const a = -4 + i * 11;
         const r = (a * Math.PI) / 180;
-        const tx = Math.sin(r) * 50;
-        const ty = -Math.cos(r) * 50;
+        const tx = Math.sin(r) * 42;
+        const ty = -Math.cos(r) * 42;
         s += line(c, [[0, 4], [tx, ty]], { w: sw * 0.8, stroke: DARK, amp: 0.4 });
         const fl: P2[] = [[tx, ty], [tx + 13, ty + 1 + jit(c, 2)], [tx + 12, ty + 8], [tx, ty + 7]];
         s += shape(c, fl, fills[i], { amp: 1.2, w: sw * 0.7 });
