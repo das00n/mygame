@@ -67,9 +67,9 @@ test('처벌 강도 ⟨반복 6⟩: 캠페인 사망 판정 보정 0.1 (조상�
   assert.equal(CD.death.wipeSurvive, 0.67);
 });
 
-test('손님 배웅 대접 22 / 5턴 (만신 시작 대접 +2 그대로)', () => {
+test('손님 배웅 대접 22 → ⟨반복 7⟩ 23 / 5턴 (만신 시작 대접 +2 그대로, 반복 7 의 부적·수비 규칙은 tests/iter7.test.ts)', () => {
   const sp = D().specials.get('sonnim_baeung')!;
-  assert.equal(sp.goal, 22);
+  assert.equal(sp.goal, 23);
   assert.equal(sp.limit, 5);
   assert.equal(sp.manshinStart, 2);
 });

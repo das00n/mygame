@@ -137,7 +137,7 @@ export function CombatScreen() {
           <span class="meter"><i style={{ width: `${Math.min(100, (s.entertain.value / s.entertain.goal) * 100)}%` }} /></span>
           <b>대접 {s.entertain.value}/{s.entertain.goal}</b>
           <span class="tiny dim">{Math.min(s.turn, s.entertain.limit)}/{s.entertain.limit}턴 · 차례마다 대접이 (지난 턴 × 2)보다 적으면 서운해 선두에 신열, 아니면 흐뭇해 귀기 −2</span>
-          <span class="tiny">손님상 차리기(술·쌀) +3 · 턴 끝 굿상 설치물 +1(최대 2) · 장단 3+ +1 · 부적 낸 턴 +1 · 수비가 물러가면 +1</span>
+          <span class="tiny">손님상 차리기(술·쌀) +3 · 턴 끝 굿상 설치물 +1(최대 2) · 장단 3+ +1{(s.entertain.token ?? 1) > 0 ? ` · 부적 낸 턴 +${s.entertain.token ?? 1}` : ' · 부적은 손님이 꺼린다(대접 없음)'} · 수비가 뒷전 몫을 받고 물러가면 +{s.entertain.guardDown ?? 1}</span>
         </div>
       )}
       <div class="stage-wrap">

@@ -8,6 +8,7 @@ import { runCombat } from './bot.ts';
 import { instFor, newPity, pickReward, rollRewards, starterDeck } from './draft.ts';
 import { runExpedition, type ExpeditionResult } from './expedition.ts';
 import { provisionsFor, typicalParty } from './typical.ts';
+import { CD } from '../meta/content.ts';
 
 export const MID_RUN_PICKS = 8;
 
@@ -77,7 +78,7 @@ export function runCombatJob(trio: HeroId[], seeds: number, duo = false, region 
       const sp = enc.id === 'sonnim' ? d.specials.get('sonnim_baeung')! : null;
       const s = createCombat({
         party: tp.setup.heroes!.map((h) => ({ id: h.id, maxHp: h.maxHp })), deck, encounter: enc, seed: seedFrom(trio.join('+'), enc.id, seed), record: true,
-        jijeon: prov.jijeon, provisions: prov, entertain: sp ? { goal: sp.goal, limit: sp.limit, start: trio.includes('manshin') ? sp.manshinStart : 0 } : null,
+        jijeon: prov.jijeon, provisions: prov, entertain: sp ? { goal: sp.goal, limit: sp.limit, start: trio.includes('manshin') ? sp.manshinStart : 0, token: sp.tokenTurn, guardDown: sp.guardDown } : null,
       });
       const startHp = s.heroes.map((h) => h.hp);
       const { timeout } = runCombat(s);
@@ -108,8 +109,10 @@ export interface WhatIf {
   boss?: string;
   preBossCamp?: boolean;
   preBossHeal?: boolean;
-  /** 지역 2·3: 권장 쌀 대신 이만큼 들고 간다 (사람이 쌀을 더 사는 경우의 민감도 측정) */
+  /** 지역 2·3: 권장 쌀 대신 이만큼 사서 간다 (사람이 쌀을 더 사는 경우의 민감도 측정). ⟨반복 7⟩ 지역 짐 한도에서 멈춘다 */
   rice?: number;
+  /** ⟨반복 7⟩ 짐 한도 없이 (반복 6 규칙으로 쌀 민감도를 다시 잴 때) */
+  noCarry?: boolean;
 }
 
 export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = {}): ExpeditionJobResult {
@@ -122,7 +125,10 @@ export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = 
     if (region === 1) out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), r), { agg, cards, ...whatIf }));
     else {
       const tp = typicalParty(trio, region, r, undefined, whatIf.final ? 'final' : 'boss');
-      if (whatIf.rice !== undefined) tp.setup.provisions = { ...tp.setup.provisions!, rice: whatIf.rice };
+      if (whatIf.rice !== undefined) {
+        const cap = whatIf.noCarry ? undefined : CD.provisions.carry?.[String(region)]?.limit.rice;
+        tp.setup.provisions = { ...tp.setup.provisions!, rice: cap === undefined ? whatIf.rice : Math.min(cap, whatIf.rice) };
+      }
       out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), region, r), { agg, cards, ...whatIf, setup: tp.setup }));
     }
   }

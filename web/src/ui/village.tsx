@@ -5,7 +5,7 @@ import type { CSSProperties } from 'preact';
 import { useState } from 'preact/hooks';
 import { HERO_NAMES, type HeroId } from '../../../src/core/types.ts';
 import {
-  ancestors, ancestorSave, available, baseMaxHp, bondOf, bookRest, bookTreat, build, buildOptions, buyMaterial, cancelBooking, canPromote, cheondo, clearEngraving,
+  ancestors, ancestorSave, available, baseMaxHp, bondOf, bookRest, bookTreat, build, buildOptions, buyMaterial, cancelBooking, canPromote, carryOf, cheondo, clearEngraving,
   displayName, endingSummary, engrave, enemyHpMult, fatigueFrac, festivalKind, guardText, lineage, loadoutCost, maxHpOf, motherCandidates, nextXp, promote,
   quirkOf, recommendedSupplies, recruit, recruitCost, regionOpen, removeBadQuirk, retire, rosterCap, sellMaterial, setLoadout, sinmulCarry, supplyCost,
   supplyLine, supplyMax, supplyPrice, tier, wanderingSpirits,
@@ -172,7 +172,9 @@ function BoardTab({ c }: { c: Campaign }) {
   const [buy, setBuy] = useState<Supplies>(emptySupplies());
   const cm = c.commissions.find((x) => x.id === cmId) ?? null;
   const pool = available(c);
-  const max = supplyMax(c);
+  // ⟨반복 7⟩ 의뢰를 고르면 그 지역의 짐 한도(2막·3막 쌀)까지만 담는다
+  const max = supplyMax(c, cm?.region);
+  const carry = cm ? carryOf(cm.region) : null;
   const cost = supplyCost(c, buy);
   const ready = !!cm && party.length === 3;
   const toggle = (p: Person) => {
@@ -236,7 +238,10 @@ function BoardTab({ c }: { c: Campaign }) {
       <div class="supplies">
         {SUPPLY_IDS.map((k) => (
           <div key={k} class="supply-row">
-            <div><b>{SUPPLY_NAMES[k]}</b> <span class="small dim">{supplyPrice(c, k)} 엽전 · 최대 {max[k]} · 창고 {c.stock[k]}</span></div>
+            <div>
+              <b>{SUPPLY_NAMES[k]}</b> <span class="small dim">{supplyPrice(c, k)} 엽전 · 최대 {max[k]} · 창고 {c.stock[k]}</span>
+              {carry?.limit[k] !== undefined && <span class="chip lamp" data-testid={`carry-${k}`} title={carry.why}>짐 한도 {carry.limit[k]} — {carry.short}</span>}
+            </div>
             <div class="stepper">
               <button class="btn small" onClick={() => setBuy({ ...buy, [k]: Math.max(0, buy[k] - 1) })} aria-label={`${SUPPLY_NAMES[k]} 빼기`}>−</button>
               <span class="n">{buy[k]}</span>

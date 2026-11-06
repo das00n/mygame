@@ -62,6 +62,10 @@ export interface SpecialDef {
   limit: number;
   /** 만신이 손님을 청해 모시면 시작 대접 (meter.manshin_start, 기본 4) */
   manshinStart: number;
+  /** 수비가 쓰러질 때 대접 (meter.guard_down, 기본 1) */
+  guardDown: number;
+  /** 부적(토큰) 카드를 낸 턴의 대접 (meter.token_turn, 기본 1) */
+  tokenTurn: number;
 }
 
 export interface GameData {
@@ -216,7 +220,7 @@ export function loadData(): GameData {
   type RawRegion = {
     enemies: RawEnemy[];
     encounters: Record<string, { id: string; enemies: string[] }[] | string>;
-    specials?: { id: string; name: string; followers: string[]; meter: { goal: number; turn_limit: number; manshin_start?: number } }[];
+    specials?: { id: string; name: string; followers: string[]; meter: { goal: number; turn_limit: number; manshin_start?: number; guard_down?: number; token_turn?: number } }[];
   };
   const enemies: EnemyDef[] = [];
   const enemyById = new Map<string, EnemyDef>();
@@ -243,7 +247,7 @@ export function loadData(): GameData {
     }
     regionEncounters[rid] = list;
     for (const sp of rj.specials ?? []) {
-      specials.set(sp.id, { id: sp.id, name: sp.name, region: rid, followers: sp.followers, goal: sp.meter.goal, limit: sp.meter.turn_limit, manshinStart: sp.meter.manshin_start ?? 4 });
+      specials.set(sp.id, { id: sp.id, name: sp.name, region: rid, followers: sp.followers, goal: sp.meter.goal, limit: sp.meter.turn_limit, manshinStart: sp.meter.manshin_start ?? 4, guardDown: sp.meter.guard_down ?? 1, tokenTurn: sp.meter.token_turn ?? 1 });
     }
   }
   // 빗장(이름으로 졸개 찾기)·공물(카드 이름) — 원귀 정의가 다 모인 뒤에

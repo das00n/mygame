@@ -1,6 +1,7 @@
 // web:e2e — 만든 단일 HTML(web/dist/artifact.html)을 호스트처럼 감싸 띄우고, 보스 길 원정을 처음부터 결과 화면까지 자동 진행으로 끝까지 돌린다.
 // 캠페인 판(F·G, 반복 2): 새 캠페인 → 영입 → 시설 건축 → 자동 원정 3회 이상 → 사망과 천도굿 → 지역 2 개방 → 내보내기 → 결말 코드 가져오기.
 // 대문 방 판(H, 반복 3): 지역 3 코드 가져오기 → 지역 3 보통 길 → 대문 방에서 손으로 통행 → 자동 진행으로 마을까지.
+// 최종 원정 판(I, 반복 7): 최종 원정 직전 코드 가져오기 → 최종 원정 → 길닦기 아홉 칸 → 업경대 방(빈 자리 열넷) → 숨살이꽃 → 자동 진행으로 끝까지.
 // 파티·시드를 바꿔 여러 번. 콘솔 오류가 없어야 하고, 어느 화면에서도 가로 스크롤이 없어야 한다.
 // PC 전용(결정 D8-2): 1280×800(최소) · 1920×1080(큰 화면). 러프 그래픽(안 A) 장면이 화면마다 있는지도 본다. 끝에 900×700 에서 PC 안내·줄이기를 본다.
 // 스크린숏(deviceScaleFactor 1)을 docs/design/screens/ 에 저장한다 (1280×800, 1920×1080).
@@ -108,6 +109,11 @@ if (!ENDING_CODE) throw new Error('ending code not generated');
 // 대문 방 판(H, 반복 3): 신당 3단계(지역 3)까지 헤드리스로 돈 캠페인 코드
 const R3_CODE = execSync('node --import tsx web/scripts/headless.ts --campaign --runs 1 --seed 3 --max 60 --until-sindang 3 --code', { cwd: root }).toString().split('\n').find((l) => l.startsWith('JSG1:'));
 if (!R3_CODE) throw new Error('region 3 code not generated');
+// 최종 원정 판(I, ⟨반복 7⟩): 최종 원정 의뢰가 의뢰판에 오를 때까지 헤드리스로 돈 캠페인 코드.
+// 시드 9 는 자동 진행이 업경대 앞에서 수호 방을 지나(숨살이꽃) 길닦기 아홉 칸을 다 채우는 판이다 — 규칙이 바뀌어 그렇지 않게 되면 시드를 바꾼다
+const FINAL_SEED = 9;
+const FINAL_CODE = execSync(`node --import tsx web/scripts/headless.ts --campaign --runs 1 --seed ${FINAL_SEED} --max 60 --until-final --code`, { cwd: root }).toString().split('\n').find((l) => l.startsWith('JSG1:'));
+if (!FINAL_CODE) throw new Error('final expedition code not generated');
 
 const screenOf = (p) => p.evaluate(() => document.querySelector('.app')?.getAttribute('data-screen') ?? '');
 
@@ -588,6 +594,146 @@ if (only < 0 || only === RUNS.length + CAMPAIGN_RUNS.length) {
     errors.push(`exception: ${e.message}`);
     await p.screenshot({ path: join(tmpdir(), 'jeoseunggut-e2e-fail-H.png') }).catch(() => {});
     results.push({ run: 'H', party: 'campaign region 3 gate', seed: 3, viewport: size, outcome: 'ERROR', reason: notes.join(' · '), sec: Math.round((Date.now() - t0) / 1000), errors });
+  }
+  if (errors.length) failed = true;
+  await ctx.close();
+  const r = results[results.length - 1];
+  console.log(`[${r.run}] ${r.party} ${r.viewport} → ${r.outcome} (${r.reason}) ${r.sec}s${r.errors.length ? `\n   errors:\n   ${r.errors.slice(0, 8).join('\n   ')}` : ''}`);
+}
+
+// ── 최종 원정 판 (I, ⟨반복 7⟩): 최종 원정 직전 코드 → 최종 원정 출정 → 지도의 길닦기 아홉 칸 → 업경대 방에서 멈춤(빈 자리 열넷) →
+//    수호 방을 지났으면 숨살이꽃 → 업경대 비추기를 손으로 고른 뒤 자동 진행으로 마을(또는 결말)까지 ──
+if (only < 0 || only === RUNS.length + CAMPAIGN_RUNS.length + 1) {
+  const t0 = Date.now();
+  const viewport = PC;
+  const size = `${viewport.width}x${viewport.height}`;
+  const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+  const p = await ctx.newPage();
+  const errors = [];
+  const notes = [];
+  p.on('console', (m) => {
+    if (m.type() === 'error') errors.push(`console: ${m.text()}`);
+  });
+  p.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
+  await p.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, async (route) => {
+    const req = route.request();
+    const got = await fetchCached(req.url(), req.headers()['user-agent'] ?? 'Mozilla/5.0 Chrome/120');
+    if (got) await route.fulfill({ status: 200, contentType: got.type, body: got.body, headers: { 'access-control-allow-origin': '*' } });
+    else await route.fulfill({ status: 200, contentType: req.url().includes('/css') ? 'text/css' : 'font/woff2', body: '' });
+  });
+  const noHScroll = async (label) => {
+    const [sw, iw] = await p.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]);
+    if (sw > iw + 1) errors.push(`horizontal page scroll on ${label}: ${sw} > ${iw}`);
+  };
+  const shotAt = async (label, vp) => {
+    if (noShots) return;
+    if (vp) await p.setViewportSize(vp);
+    await p.evaluate(() => document.fonts?.ready);
+    await p.waitForSelector('[data-testid=toast]', { state: 'detached', timeout: 4000 }).catch(() => {});
+    await p.waitForTimeout(250);
+    if (vp) await noHScroll(`${label} ${vp.width}x${vp.height}`);
+    await p.screenshot({ path: join(shotsDir, `${label}-${(vp ?? viewport).width}x${(vp ?? viewport).height}.png`) });
+  };
+  const runState = () => p.evaluate(() => {
+    const a = globalThis.__JSG_APP;
+    const r = a?.run;
+    return {
+      screen: a?.screen ?? '', auto: !!globalThis.__JSG_SETTINGS?.auto, dialog: a?.dialog?.id ?? null, region: r?.region ?? 0, length: r?.campaign?.length ?? null,
+      road: r?.flags?.road ?? -1, relics: r?.relics ?? [], guardWon: r ? r.dungeon.rooms.some((x) => x.kind === 'guard' && x.content.done) : false,
+      exp: a?.campaign?.expeditions ?? -1, ending: a?.campaign?.ending?.kind ?? null,
+    };
+  });
+  // 지도 위 길닦기 칸: 아홉 칸이 있고 찬 칸 수가 run.flags.road 와 같아야 한다
+  const roadCheck = async (label) => {
+    const st = await runState();
+    const r = await p.evaluate(() => ({ cells: document.querySelectorAll('[data-testid=road] .road-step').length, done: document.querySelectorAll('[data-testid=road] .road-step.done').length }));
+    if (r.cells !== 9) errors.push(`${label}: road cells ${r.cells}, expected 9`);
+    if (r.done !== st.road) errors.push(`${label}: road cells done ${r.done}, run.flags.road ${st.road}`);
+    return r.done;
+  };
+  try {
+    await p.goto(url);
+    await p.click('[data-testid=import]');
+    await p.fill('[data-testid=import-code]', FINAL_CODE);
+    await p.click('[data-testid=import-go]');
+    await p.waitForSelector('[data-testid=village]');
+    const exp0 = (await runState()).exp;
+    await p.click('[data-testid=tab-board]');
+    await p.click('[data-testid=commission-final-3]');
+    // 레벨이 높은 사람부터 서로 다른 원형 셋 (쉬는 사람 제외)
+    const uids = await p.evaluate(() => {
+      const c = globalThis.__JSG_APP.campaign;
+      const out = [];
+      for (const x of [...c.roster].sort((a, b) => b.level - a.level)) if (!x.busy && !out.some((y) => y.arch === x.arch) && out.length < 3) out.push(x);
+      return out.map((x) => x.uid);
+    });
+    for (const u of uids) await p.click(`[data-testid=pick-${u}]`);
+    await p.click('[data-testid=buy-rec]');
+    // ⟨반복 7⟩ 짐 한도: 3막 의뢰를 고르면 쌀 줄에 「짐 한도 6」 칩이 붙는다
+    const carry = await p.textContent('[data-testid=carry-rice]').catch(() => null);
+    if (!carry || !carry.includes('6')) errors.push(`board: carry chip ${carry}`);
+    await noHScroll('board-final');
+    if (!noShots) await p.screenshot({ path: join(tmpdir(), 'jeoseunggut-e2e-board-final.png'), fullPage: true });
+    await p.click('[data-testid=depart]');
+    await p.waitForSelector('[data-testid=map-screen]');
+    let st = await runState();
+    if (st.region !== 3 || st.length !== 'final') errors.push(`region ${st.region} ${st.length}, expected 3 final`);
+    const road0 = await roadCheck('map-final');
+    if (road0 < 1) errors.push(`road ${road0} at the start, expected ≥ 1 (들어설 때 한 칸)`);
+    await noHScroll('map-final');
+    // 업경대 비추기 창이 열리면 자동 진행이 멈춘다
+    await p.evaluate(() => { globalThis.__JSG_STOP_DIALOG = (a) => a.dialog?.id === 'eopgyeong_bichugi' && a.dialog.result === null; });
+    await p.click('[data-testid=auto-toggle]');
+    for (let i = 0; i < 3; i++) {
+      const sp = (await p.textContent('[data-testid=auto-speed]'))?.trim();
+      if (sp === '즉시') break;
+      await p.click('[data-testid=auto-speed]');
+    }
+    const deadline = Date.now() + 6 * 60 * 1000;
+    while (Date.now() < deadline) {
+      st = await runState();
+      if (!st.auto && st.dialog === 'eopgyeong_bichugi') break;
+      if (st.screen === 'result' || st.screen === 'settle' || st.screen === 'village' || st.screen === 'ending') break;
+      await p.waitForTimeout(100);
+    }
+    if (st.dialog !== 'eopgyeong_bichugi') errors.push(`mirror dialog never opened (screen ${st.screen})`);
+    else {
+      await p.waitForSelector('[data-testid=dialog]');
+      await noHScroll('mirror');
+      const roadAt = await roadCheck('mirror');
+      // 업경대 방: 거울 뒤 빈 자리 열넷 (창 그림과 방 장면 모두)
+      const seats = await p.evaluate(() => [...document.querySelectorAll('.eopgyeong-seats')].map((g) => g.querySelectorAll(':scope > g').length));
+      if (!seats.length) errors.push('mirror: no .eopgyeong-seats drawn');
+      else if (seats.some((n) => n !== 14)) errors.push(`mirror: empty seats ${seats.join('/')}, expected 14`);
+      if (!st.guardWon) errors.push(`no guard room cleared before the mirror — 숨살이꽃 not exercised (pick another FINAL_SEED than ${FINAL_SEED})`);
+      else if (!st.relics.includes('sumsari_kkot')) errors.push('guard room cleared in the final but no 숨살이꽃');
+      // 숨살이꽃은 가호 줄에 보인다
+      if (st.relics.includes('sumsari_kkot') && !(await p.evaluate(() => document.body.textContent?.includes('숨살이꽃')))) errors.push('숨살이꽃 held but not shown');
+      notes.push(`road ${road0}→${roadAt}/9 · seats ${seats.join('/')} · guard ${st.guardWon ? 'cleared' : 'not cleared'} · 숨살이꽃 ${st.relics.includes('sumsari_kkot') ? 'held' : 'none'}`);
+      await shotAt('mirror');
+      await shotAt('mirror', LARGE);
+      await p.setViewportSize(viewport);
+      // 비추기: 쓸 수 있는 첫 선택지
+      await p.click('[data-testid=dialog] .opt:not([disabled])');
+      await p.click('[data-testid=dialog-continue]');
+    }
+    // 끝까지: 마을로 돌아오거나 결말이 나면 멈춘다
+    await p.evaluate(() => { globalThis.__JSG_STOP_DIALOG = undefined; globalThis.__JSG_STOP = () => true; });
+    if (!(await runState()).auto) await p.click('[data-testid=auto-toggle]');
+    const deadline2 = Date.now() + 6 * 60 * 1000;
+    while (Date.now() < deadline2) {
+      st = await runState();
+      if ((st.screen === 'village' && st.exp > exp0) || st.screen === 'ending' || st.ending) break;
+      await p.waitForTimeout(150);
+    }
+    if (st.exp <= exp0 && !st.ending) errors.push(`final expedition did not return (screen ${st.screen})`);
+    await noHScroll(st.screen);
+    notes.push(st.ending ? `ending ${st.ending}` : `back in village after expedition ${st.exp}`);
+    results.push({ run: 'I', party: 'campaign final expedition', seed: FINAL_SEED, viewport: size, outcome: 'final', reason: notes.join(' · '), sec: Math.round((Date.now() - t0) / 1000), errors });
+  } catch (e) {
+    errors.push(`exception: ${e.message}`);
+    await p.screenshot({ path: join(tmpdir(), 'jeoseunggut-e2e-fail-I.png') }).catch(() => {});
+    results.push({ run: 'I', party: 'campaign final expedition', seed: FINAL_SEED, viewport: size, outcome: 'ERROR', reason: notes.join(' · '), sec: Math.round((Date.now() - t0) / 1000), errors });
   }
   if (errors.length) failed = true;
   await ctx.close();

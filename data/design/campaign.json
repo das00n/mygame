@@ -81,7 +81,11 @@
     "recommended": {
       "1": {"normal": {"candle": 6, "rice": 4, "incense": 2, "jijeon": 2, "bujeok": 1, "sul": 2}, "boss": {"candle": 6, "rice": 6, "incense": 2, "jijeon": 4, "bujeok": 1, "sul": 2}},
       "2": {"normal": {"candle": 6, "rice": 4, "incense": 2, "jijeon": 2, "bujeok": 2, "sul": 3}, "boss": {"candle": 6, "rice": 4, "incense": 2, "jijeon": 2, "bujeok": 3, "sul": 3}},
-      "3": {"normal": {"candle": 6, "rice": 6, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}, "boss": {"candle": 6, "rice": 6, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}, "final": {"candle": 6, "rice": 7, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}}
+      "3": {"normal": {"candle": 6, "rice": 6, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}, "boss": {"candle": 6, "rice": 6, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}, "final": {"candle": 6, "rice": 6, "incense": 3, "jijeon": 3, "bujeok": 1, "sul": 2}}
+    },
+    "carry": {
+      "2": {"limit": {"rice": 4}, "short": "역병 든 마을은 곡식이 귀하다", "why": "역병이 돈 고을은 곡식이 바닥났다. 굿패가 쌀 짐을 지고 들어서면 마을 어귀에서 굶은 집들이 먼저 청한다 — 무당은 손님상과 끼니 몫 넉 말만 지고 들어가고 나머지는 창고에 남겨 둔다"},
+      "3": {"limit": {"rice": 6}, "short": "댓가지 문 회랑은 좁다", "why": "열두 대문 길은 댓가지 문을 열두 번 지나는 좁은 회랑이다. 등짐을 줄여야 문마다 몸을 숙여 지난다 — 쌀은 여섯 말까지, 사자밥과 넉넉한 끼니를 함께 차릴 수는 없다"}
     }
   },
   "calendar": {
@@ -178,6 +182,10 @@
     "iter6": [
       {"what": "death.ancestorSave (새 규칙 「조상신의 보살핌」)", "before": "없음", "after": "사당의 조상신이 둘을 넘는 하나마다 캠페인 사망 판정 버틸 확률 +0.05 (상한 +0.3)", "why": "캠페인 사망 9명 이상 꼬리(23%)는 고참을 잃은 로스터가 길어진 캠페인에서 계속 잃는 악순환이다. 많이 잃은 로스터만 받는 회복 경로 — 조상신이 넷이면 반복 5 와 같은 0.2 (docs/06-base.md §8, docs/09-iteration.md §8)"},
       {"what": "death.deathSave", "before": 0.2, "after": 0.1, "why": "사망 0~2명 꼬리(32%)는 일찍 끝나는 강한 로스터다. 조상신의 보살핌이 뒤를 맡으므로 처음의 고정 보정을 줄인다 — 둘을 함께 넣어 캠페인 사망 3~8 이 45 → 56%(시드 1~100), 63%(101~200)"}
+    ],
+    "iter7": [
+      {"what": "provisions.carry (새 규칙 「짐 한도」)", "before": "없음 — 권장량만 있어 봇만 묶었다(사람은 엽전으로 묶음 한도 12까지 산다)", "after": "2막 쌀 4 · 3막 쌀 6 — 사람도 봇도 넘게 지고 가지 못한다. 넘게 산 몫은 창고에 남는다", "why": "반복 6 측정: 사람이 반복 4 의 양(2막 보스 길 6 · 3막 8)을 사면 2막 중앙 64 → 68.5% · 3막 59.5 → 65% 로 범위 위. 한도가 있으면 같은 원정이다(민감도 0). 2막 「쌀을 끼니에 쓸까 손님에게 올릴까」 · 3막 「쌀 3 을 끼니에 쓸까 사자밥으로 차릴까」 결정도 사람에게 남는다. 2막 한도 3 은 중앙 60.5% 지만 만신 조합 지배 2 라 4 (docs/09-iteration.md §9)"},
+      {"what": "provisions.recommended 3.final.rice", "before": 7, "after": 6, "why": "3막 짐 한도 6 에 맞춘다. 최종 원정은 길굿이 한 번이라 봇이 쓰는 쌀은 끼니 4 뿐 — 쌀 6 과 7 의 최종 원정 시뮬은 같은 숫자다"}
     ]
   }
 }

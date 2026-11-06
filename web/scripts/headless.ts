@@ -35,9 +35,12 @@ if (process.argv.includes('--campaign')) {
     const t0 = Date.now();
     // --until-sindang N: 신당이 N단계가 되어 마을에 돌아오면 멈춘다 (e2e 대문 방 판이 3지역 코드를 얻는다)
     const untilSindang = Number(arg('until-sindang', '0'));
+    // --until-final: 최종 원정 의뢰가 의뢰판에 오른 채 마을에 있으면 멈춘다 (⟨반복 7⟩ e2e 최종 원정 판이 최종 원정 직전 코드를 얻는다)
+    const untilFinal = process.argv.includes('--until-final');
     while (!app.campaign!.ending && app.campaign!.expeditions < maxExp && n < 400000) {
       const c = app.campaign!;
       if (untilSindang && c.facilities.sindang >= untilSindang && app.screen === 'village') break;
+      if (untilFinal && app.screen === 'village' && c.commissions.some((x) => x.length === 'final')) break;
       if (firstDeath < 0 && c.fallen.length) firstDeath = c.expeditions;
       if (firstCheondo < 0 && c.fallen.some((f) => f.honored)) firstCheondo = c.expeditions;
       if (r2 < 0 && c.facilities.sindang >= 2) r2 = c.expeditions;

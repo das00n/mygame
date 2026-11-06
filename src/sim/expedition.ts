@@ -302,7 +302,7 @@ export function runExpedition(party: HeroId[], seed: number, opts: ExpeditionOpt
       const start = party.includes('manshin') ? sp.manshinStart : 0;
       const s = createCombat({
         party: heroSetups(), deck, encounter: { id: 'sonnim', tier: 'elite', enemies: sp.followers }, seed: seedFrom(seed, 'sonnim'), record: true,
-        jijeon: prov.jijeon, provisions: prov, rules: opts.rules, entertain: { goal: sp.goal, limit: sp.limit, start }, mods: setup?.mods, enemyHpMult: setup?.enemyHpMult,
+        jijeon: prov.jijeon, provisions: prov, rules: opts.rules, entertain: { goal: sp.goal, limit: sp.limit, start, token: sp.tokenTurn, guardDown: sp.guardDown }, mods: setup?.mods, enemyHpMult: setup?.enemyHpMult,
       });
       runCombat(s);
       notePlays(s);

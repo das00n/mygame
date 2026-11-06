@@ -108,7 +108,7 @@ export function chooseCommission(c: Campaign, uids: string[]): Commission | null
 /** 권장량에서 창고를 뺀 만큼 산다 (엽전이 모자라면 줄인다) */
 export function chooseSupplies(c: Campaign, cm: Commission): Partial<Supplies> {
   const rec = recommendedSupplies(cm.region, cm.length);
-  const max = supplyMax(c);
+  const max = supplyMax(c, cm.region);
   const buy: Partial<Supplies> = {};
   for (const k of SUPPLY_IDS) buy[k] = Math.max(0, Math.min(max[k], rec[k]) - c.stock[k] - (c.bonusSupplies[k] ?? 0));
   const budget = c.gold + cm.advance;

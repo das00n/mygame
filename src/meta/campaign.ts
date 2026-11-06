@@ -136,12 +136,19 @@ export function sinmulCarry(c: Campaign): number {
   return tier(c, 'sadang') >= 3 ? 2 : 1;
 }
 
-/** 물품 칸: 신당 단계마다 보급품 묶음 한도 +1 */
-export function supplyMax(c: Campaign): Supplies {
+/** 물품 칸: 신당 단계마다 보급품 묶음 한도 +1. ⟨반복 7⟩ 지역을 주면 그 지역의 짐 한도(2막·3막 쌀)로 줄인다 */
+export function supplyMax(c: Campaign, region?: number): Supplies {
   const bonus = Math.max(0, tier(c, 'sindang') - 1);
   const out = { ...CD.provisions.max };
   for (const k of SUPPLY_IDS) out[k] += bonus;
+  const carry = region === undefined ? undefined : carryOf(region);
+  if (carry) for (const k of SUPPLY_IDS) if (carry.limit[k] !== undefined) out[k] = Math.min(out[k], carry.limit[k]!);
   return out;
+}
+
+/** ⟨반복 7⟩ 지역 짐 한도 (없으면 null) */
+export function carryOf(region: number): { limit: Partial<Supplies>; short: string; why: string } | null {
+  return CD.provisions.carry?.[String(region)] ?? null;
 }
 
 export function regionOpen(c: Campaign, region: number): boolean {
@@ -580,9 +587,12 @@ export function planExpedition(c: Campaign, commissionId: string, uids: string[]
   c.gold += cm.advance - cost;
   const supplies = emptySupplies();
   const max = supplyMax(c);
+  const pack = supplyMax(c, cm.region);
   for (const k of SUPPLY_IDS) {
-    supplies[k] = Math.min(max[k], c.stock[k] + (buy[k] ?? 0) + (c.bonusSupplies[k] ?? 0));
-    c.stock[k] = 0;
+    const total = c.stock[k] + (buy[k] ?? 0) + (c.bonusSupplies[k] ?? 0);
+    supplies[k] = Math.min(pack[k], total);
+    // ⟨반복 7⟩ 지역 짐 한도를 넘는 몫은 창고에 남는다 (묶음 한도를 넘는 몫은 그대로 버린다)
+    c.stock[k] = Math.max(0, Math.min(max[k], total) - supplies[k]);
   }
   c.bonusSupplies = {};
   const party = people.map((p) => p.arch);

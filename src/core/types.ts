@@ -493,6 +493,10 @@ export interface EntertainState {
   limit: number;
   value: number;
   result: 'sendoff' | 'timeout' | null;
+  /** 부적(토큰) 카드를 낸 턴의 대접 (없으면 1 — 반복 6 이전 저장) */
+  token?: number;
+  /** 수비가 쓰러질 때 대접 (없으면 1) */
+  guardDown?: number;
 }
 
 /** 규칙 v0.4 기본값 (docs/02-core-rules.md §6·§13·§14) */

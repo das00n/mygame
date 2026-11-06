@@ -70,7 +70,7 @@ export interface CombatSetup {
   /** 공물·대접에 쓰는 보급품 (05-region2 §9.2) */
   provisions?: Partial<Record<Exclude<ProvKey, 'jijeon'>, number>>;
   /** 특수 전투: 손님 배웅 (05-region2 §9.3). start = 시작 대접 */
-  entertain?: { goal: number; limit: number; start: number } | null;
+  entertain?: { goal: number; limit: number; start: number; token?: number; guardDown?: number } | null;
   /** 고풀이: 업경대가 미리 푼 매듭 비트 (05-region3 §9.2) */
   knotsPreset?: number;
   /** 균열 강화 원귀 (캠페인 §5): 체력 배율 */
@@ -137,7 +137,7 @@ export function createCombat(setup: CombatSetup): CombatState {
     gangsin: false, gangsinExtra: 0, baraji: 0, talAll: false, garakLocked: false, seokja: false, ajik: false, holdFront: -1,
     statusAdded: 0, offeringPaid: false, groupHaewon: [], jijeon: setup.jijeon ?? 3,
     prov: { rice: setup.provisions?.rice ?? 0, sul: setup.provisions?.sul ?? 0, bujeok: setup.provisions?.bujeok ?? 0, incense: setup.provisions?.incense ?? 0 },
-    offerTurn: -1, entertain: setup.entertain ? { goal: setup.entertain.goal, limit: setup.entertain.limit, value: setup.entertain.start, result: null } : null,
+    offerTurn: -1, entertain: setup.entertain ? { goal: setup.entertain.goal, limit: setup.entertain.limit, value: setup.entertain.start, result: null, token: setup.entertain.token ?? 1, guardDown: setup.entertain.guardDown ?? 1 } : null,
     mods: setup.mods ?? {}, hpMult: setup.enemyHpMult ?? 1, firstBlockTurn: -1, sinyeolFreeTurn: -1, polluteBlocked: 0, yaksuUsed: !!setup.yaksuUsed, sumsariUsed: !!setup.sumsariUsed, lastOwner: -1,
     play: !!setup.play, ward: setup.ward ? { name: setup.ward.name, hp: setup.ward.hp, maxHp: setup.ward.hp, lost: false } : null,
     deferredTokens: [], outcome: 0, lastDrawn: null,
@@ -362,10 +362,10 @@ export function endPlayerTurn(s: CombatState): void {
   }
   // 부군의 가호: 장단 3 이상으로 턴을 마치면 마지막으로 카드를 낸 영웅 방어도 4
   if (s.mods.bugun && s.jangdan >= 3 && s.lastOwner >= 0 && standing(s.heroes[s.lastOwner])) gainBlock(s, s.lastOwner, 4);
-  // 손님 배웅: 턴을 마칠 때 대접 (굿상 설치물 하나당 +1 최대 2 · 장단 3+ · 부적을 낸 턴)
+  // 손님 배웅: 턴을 마칠 때 대접 (굿상 설치물 하나당 +1 최대 2 · 장단 3+ · 부적을 낸 턴 entertain.token — ⟨반복 7⟩ 0, 부적은 손님을 막는 것)
   if (s.entertain && !s.entertain.result && s.outcome === 0) {
     const en = s.entertain;
-    en.value += Math.min(2, s.summons.length) + (s.jangdan >= 3 ? 1 : 0) + (s.tokensPlayed > 0 ? 1 : 0);
+    en.value += Math.min(2, s.summons.length) + (s.jangdan >= 3 ? 1 : 0) + (s.tokensPlayed > 0 ? en.token ?? 1 : 0);
     entertainCheck(s);
     if (!en.result && s.turn >= en.limit) {
       en.result = 'timeout';
@@ -2104,9 +2104,9 @@ export function killEnemy(s: CombatState, ei: number): void {
       }
     }
   }
-  // 손님 배웅: 수비가 쓰러지면 뒷전 몫을 받고 물러간다 (대접 +1)
+  // 손님 배웅: 수비가 쓰러지면 뒷전 몫을 받고 물러간다 (대접 entertain.guardDown — ⟨반복 7⟩ +2)
   if (s.entertain && !s.entertain.result && def.follows && s.entertain && D().specials.has(def.follows)) {
-    s.entertain.value += 1;
+    s.entertain.value += s.entertain.guardDown ?? 1;
     entertainCheck(s);
   }
   log(s, `${def.name} 쓰러짐${e.haewon ? ' (해원)' : ''}`);

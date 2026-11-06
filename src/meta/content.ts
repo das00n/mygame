@@ -79,6 +79,8 @@ export interface CampaignData {
     prices: Supplies;
     max: Supplies;
     recommended: Record<string, Partial<Record<CommissionLength, Supplies>>>;
+    /** ⟨반복 7⟩ 지역 짐 한도 — 권장량(봇만 묶는다)과 달리 사람도 봇도 이보다 많이 지고 가지 못한다 */
+    carry?: Record<string, { limit: Partial<Supplies>; short: string; why: string }>;
   };
   calendar: { seasons: string[]; festivals: { season: number; name: string; kind: 'wanderer' | 'biggut' | 'market' | 'singugan'; text: string }[] };
   /** 최종 원정이 열리는 조건: 3지역 보스 길을 이만큼 마친 뒤 */

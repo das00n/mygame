@@ -152,7 +152,7 @@ export function startBattle(app: AppState, o: BattleOpts): CombatSession {
     enemyHpMult: run.campaign?.enemyHpMult ?? 1, mods: relicMods(run), yaksuUsed: !!run.flags.yaksuUsed, sumsariUsed: !!run.flags.sumsariUsed, nahwa: run.relics.includes('nahwa'),
     knotsPreset: o.tier === 'boss' ? run.flags.knots ?? 0 : 0,
     play: o.special === 'play', ward: o.special === 'escort' ? { name: '잘못 끌려온 사람', hp: 20 } : null,
-    entertain: sp ? { goal: sp.goal, limit: sp.limit, start: run.flags.sonnimStart ?? 0 } : null,
+    entertain: sp ? { goal: sp.goal, limit: sp.limit, start: run.flags.sonnimStart ?? 0, token: sp.tokenTurn, guardDown: sp.guardDown } : null,
   });
   s.statusAdded = extra.length;
   // 진형: 신당에서 정한 기본 진형
