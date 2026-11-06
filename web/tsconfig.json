@@ -13,5 +13,5 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": []
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "../src/core/**/*.ts", "../src/sim/bot.ts", "../src/sim/draft.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "slice/src/**/*.ts", "slice/src/**/*.tsx", "../src/core/**/*.ts", "../src/sim/bot.ts", "../src/sim/draft.ts"]
 }

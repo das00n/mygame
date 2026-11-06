@@ -1,0 +1,248 @@
+/* 그래픽 슬라이스 (12-graphic-slice) — 플레이어블 토큰(styles.css) 위에 새 무대 틀 · 이름판 · 카드 틀 · 손패 띠.
+   클래스는 모두 sl- 로 시작해 러프(지금 플레이어블) 스타일과 섞이지 않는다. 러프 보기에서는 러프 클래스를 그대로 쓴다. */
+
+#slice { height: 100%; }
+.sl-app {
+  height: 100vh; min-height: 640px; max-width: 1920px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: max(10px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: 6px; min-width: 0; position: relative;
+}
+.sl-top { flex: none; display: flex; align-items: center; gap: 6px; min-height: 32px; flex-wrap: nowrap; min-width: 0; overflow: hidden; }
+.sl-title { font-family: var(--font-brush); font-weight: 400; font-size: 22px; color: var(--paper); white-space: nowrap; margin-right: 4px; }
+.sl-top .chip { white-space: nowrap; }
+.sl-seg { display: inline-flex; gap: 0; }
+.sl-seg .btn { border-radius: 0; }
+.sl-seg .btn:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.sl-seg .btn:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+/* ── 무대 틀: 남은 높이 안에서 1280 : 480 비를 지킨다 ─────────────────── */
+.sl-stage-wrap { flex: 1 1 0; min-height: 240px; min-width: 0; container-type: size; display: flex; justify-content: center; align-items: flex-start; }
+.sl-stage {
+  position: relative; width: min(100cqw, calc(100cqh * 1280 / 480)); aspect-ratio: 1280 / 480;
+  container-type: inline-size; --u: calc(100cqw / 1280);
+  border: 1px solid var(--line-2); border-radius: 3px; overflow: hidden; background: #05070d; line-height: 1.25;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.sl-host { position: absolute; inset: 0; }
+.sl-host canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; }
+.sl-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--text-dim); font-family: var(--font-brush); font-size: 28px; }
+.sl-rough { position: absolute; inset: 0; }
+.sl-rough .stage { width: 100%; border: 0; border-radius: 0; }
+
+/* ── 무대 위 HTML 층 ─────────────────────────────────────────────── */
+.sl-ov { position: absolute; inset: 0; font-size: calc(var(--u) * 13); pointer-events: none; }
+.sl-unit { position: absolute; top: 0; bottom: 0; pointer-events: auto; transition: left .32s ease; }
+.sl-unit.targetable { cursor: pointer; }
+.sl-unit.enemy.targetable::before, .sl-unit.hero.targetable::before {
+  content: ''; position: absolute; inset: calc(var(--u) * 96) 0 calc(var(--u) * 40);
+  border-radius: 50% / 30%;
+  background: radial-gradient(50% 50% at 50% 55%, rgba(255, 106, 77, .2), rgba(255,106,77,0) 70%);
+  box-shadow: 0 0 0 1px rgba(226, 87, 63, .0);
+  animation: slTarget 1.1s ease-in-out infinite;
+}
+.sl-unit.hero.targetable::before { background: radial-gradient(50% 50% at 50% 55%, rgba(255, 201, 100, .22), rgba(255,201,100,0) 70%); }
+@keyframes slTarget { 50% { opacity: .55; } }
+.sl-unit.targetable:hover .sl-plate { border-color: var(--lamp); }
+
+/* 이름판: 먹빛 한지 띠 */
+.sl-plate {
+  position: absolute; left: 0; right: 0;
+  display: flex; flex-direction: column; gap: calc(var(--u) * 2.5);
+  padding: calc(var(--u) * 4) calc(var(--u) * 6) calc(var(--u) * 5);
+  background:
+    linear-gradient(180deg, rgba(16, 14, 12, .86), rgba(16, 14, 12, .72)),
+    var(--sl-hanji, none);
+  background-size: auto, 160px;
+  background-blend-mode: normal, multiply;
+  border: 1px solid rgba(222, 205, 160, .22); border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.45);
+}
+.sl-hplate { border-top: calc(var(--u) * 3) solid var(--hc); padding-left: calc(var(--u) * 18); }
+.sl-plate .row1 { display: flex; justify-content: space-between; font-size: .76em; letter-spacing: .12em; color: var(--text-faint); }
+.sl-plate .sl-inc { font-size: 1.15em; font-weight: 800; letter-spacing: 0; color: #fff3ea; background: var(--cinnabar); padding: 0 .35em; border-radius: 2px; box-shadow: 0 0 10px var(--cinnabar-glow); }
+.sl-plate .nm { font-family: var(--font-brush); font-size: 1.8em; line-height: .9; white-space: nowrap; color: var(--text); overflow: hidden; text-overflow: ellipsis; }
+.sl-hplate .nm { color: var(--hc); }
+.sl-eplate .nm { font-size: 1.55em; word-break: keep-all; white-space: normal; }
+.sl-plate .tag { font-family: var(--font-body); font-size: .5em; color: var(--cinnabar-2); }
+.sl-plate .res { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; font-size: .82em; color: var(--text-dim); }
+.sl-plate .res b { color: var(--hc, var(--text)); font-weight: 400; }
+.sl-plate .st { font-size: .92em; }
+.sl-plate .hpbar { height: 1.1em; }
+.sl-stress { position: relative; height: .72em; background: #0b0d16; border: 1px solid rgba(0,0,0,.6); }
+.sl-stress i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, #5a4a86, var(--stress)); }
+.sl-stress::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(0,0,0,.8); }
+.sl-stress span { position: relative; z-index: 1; display: block; font-size: .6em; line-height: 1.2; text-align: center; color: #fff; text-shadow: 0 1px 1px #000; }
+.sl-plate .downed { font-size: .78em; color: #ffd0c4; background: rgba(195, 52, 39, .22); border: 1px solid rgba(226, 87, 63, .45); padding: .1em .3em; border-radius: 2px; }
+.sl-plate .hw { font-size: .78em; color: var(--text-dim); line-height: 1.25; border-top: 1px dashed rgba(222, 205, 160, .2); padding-top: .2em; }
+.sl-plate .hw.ok { color: var(--haewon); text-shadow: 0 0 8px rgba(255, 220, 150, .7); }
+.sl-unit.dead .sl-plate { opacity: .5; }
+.sl-unit.enemy.gone .sl-plate { background: rgba(14, 12, 10, .45); }
+.sl-plate .fate { font-family: var(--font-brush); font-size: 2em; line-height: 1; text-align: center; padding: .1em 0; }
+.sl-plate .fate.haewon { color: var(--haewon); text-shadow: 0 0 14px rgba(255, 230, 170, .95); }
+.sl-plate .fate.haewon::before { content: '↑ '; font-family: var(--font-body); font-size: .5em; vertical-align: middle; }
+.sl-plate .fate.kill { color: #85807a; }
+.sl-plate .fate.kill::before { content: '↓ '; font-family: var(--font-body); font-size: .5em; vertical-align: middle; }
+
+/* 의도 배지: 한지 꼬리표 + 오방 테두리(공격 적 · 이동 황 · 귀기 청) */
+.sl-intent {
+  position: absolute; left: 4%; right: 4%; top: calc(var(--u) * 18);
+  display: flex; flex-direction: column; gap: .1em;
+  padding: .3em .5em .35em; border-radius: 3px;
+  background: linear-gradient(180deg, rgba(20, 16, 14, .92), rgba(20, 16, 14, .86));
+  border: calc(var(--u) * 1.8) solid var(--intent-attack);
+  box-shadow: 0 3px 12px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,240,210,.08);
+}
+.sl-intent::after { content: ''; position: absolute; left: 30%; bottom: calc(var(--u) * -7); width: calc(var(--u) * 10); height: calc(var(--u) * 10); background: inherit; border: inherit; border-top: 0; border-left: 0; transform: rotate(45deg); background: rgba(20,16,14,.9); }
+.sl-intent .r1 { display: flex; align-items: center; gap: .3em; min-width: 0; }
+.sl-intent svg { width: 1.3em; height: 1.3em; flex: none; color: #f3e8d0; }
+.sl-intent .dmg { font-family: var(--font-brush); font-weight: 400; font-size: 2.1em; line-height: .8; color: #fff; text-shadow: 0 0 10px rgba(226, 87, 63, .8); white-space: nowrap; }
+.sl-intent .nm { font-size: .92em; color: var(--text); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.sl-intent .mark { flex: none; font-style: normal; width: 1.5em; height: 1.5em; border-radius: 50%; display: grid; place-items: center; font-size: .82em; font-weight: 800; background: var(--paper); color: #111; }
+.sl-intent .tg { font-size: .82em; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sl-intent.k-move { border-color: var(--intent-move); }
+.sl-intent.k-stress { border-color: var(--intent-stress); }
+.sl-intent.k-calm { border-color: rgba(143, 181, 220, .6); }
+.sl-intent.cancel { border-color: var(--line-2); }
+.sl-intent.cancel .nm { text-decoration: line-through; color: var(--text-faint); }
+.sl-altar { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; font-size: .85em; color: var(--lamp); text-shadow: 0 1px 3px #000; }
+.sl-altar > b { font-family: var(--font-brush); font-weight: 400; font-size: 1.5em; line-height: 1; }
+
+/* ── 손패 띠 ─────────────────────────────────────────────────────── */
+.sl-dock { --cw: 128px; flex: none; height: calc(var(--cw) * 1.75 + 22px); display: grid; grid-template-columns: 200px minmax(0, 1fr) 230px; gap: 10px; align-items: end; min-width: 0; }
+.sl-left, .sl-right { display: flex; flex-direction: column; gap: 8px; height: 100%; justify-content: flex-end; min-width: 0; overflow: hidden; }
+.sl-energy {
+  width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; position: relative;
+  font-family: var(--font-brush); font-size: 34px; color: #2a1606; line-height: 1;
+  background: radial-gradient(circle at 40% 35%, #fff4d0, #ffd27a 40%, #e08a3a 75%, #8a4a1a);
+  box-shadow: 0 0 22px rgba(255, 186, 92, .55), inset 0 -4px 8px rgba(90, 40, 10, .45);
+  border: 2px solid #5a3a1a;
+}
+.sl-energy small { position: absolute; right: 6px; bottom: 6px; font-family: var(--font-body); font-size: 11px; font-weight: 700; }
+.sl-jangdan .lab { font-size: 12px; color: var(--text-dim); }
+.sl-jangdan .lab b { color: var(--paper); font-family: var(--font-brush); font-weight: 400; font-size: 18px; }
+.sl-drums { display: flex; gap: 6px; }
+.sl-drum {
+  width: 28px; height: 28px; border-radius: 50%; position: relative; display: grid; place-items: center;
+  background: radial-gradient(circle at 45% 40%, #3b3224, #1b160e 70%);
+  border: 3px solid #4a3a26; box-shadow: inset 0 0 0 1px rgba(0,0,0,.6);
+}
+.sl-drum i { width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #6b5a40, #3a2e1e); }
+.sl-drum::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: repeating-conic-gradient(rgba(214, 166, 64, .8) 0 4deg, rgba(0,0,0,0) 4deg 36deg); mask: radial-gradient(circle, transparent 60%, #000 62%); -webkit-mask: radial-gradient(circle, transparent 60%, #000 62%); }
+.sl-drum.on { border-color: #b23a26; box-shadow: 0 0 14px var(--cinnabar-glow); animation: beat var(--beat) ease-in-out infinite; }
+.sl-drum.on i { background: radial-gradient(circle at 40% 35%, #fff4d6, #f0c47a 55%, #c05a2a); }
+.sl-drum.pop { animation: slDrumPop .36s ease-out; }
+@keyframes slDrumPop { 40% { transform: scale(1.4); box-shadow: 0 0 22px var(--cinnabar-glow); } }
+.sl-last { font-size: 12px; color: var(--text-dim); display: inline-flex; align-items: center; gap: 6px; line-height: 1.3; }
+.sl-last i { width: 22px; height: 3px; flex: none; background: var(--oc); border-radius: 2px; box-shadow: 0 0 6px var(--oc); position: relative; }
+.sl-last i::after { content: ''; position: absolute; right: -3px; top: -3px; width: 8px; height: 8px; border-radius: 50%; background: var(--oc); }
+.sl-piles { display: flex; gap: 6px; font-size: 12px; color: var(--text-dim); }
+.sl-piles span { border: 1px solid var(--line); padding: 2px 7px; border-radius: 2px; }
+.sl-piles b { color: var(--text); }
+.sl-hand-wrap { position: relative; min-width: 0; container-type: inline-size; height: 100%; }
+.sl-hand { position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 2px; }
+.sl-hand > .sl-card + .sl-card { margin-left: clamp(-96px, calc((100cqw - var(--n) * var(--cw)) / max(1, var(--n) - 1)), 8px); }
+.sl-hand.wait .sl-card { filter: grayscale(.4) brightness(.75); }
+.sl-hint { flex: none; font-size: 13px; display: flex; flex-direction: column; gap: 4px; }
+.sl-detail { flex: 0 1 auto; min-height: 0; overflow: auto; font-size: 12.5px; background: rgba(14,17,28,.7); border: 1px solid var(--line); padding: 6px 8px; border-radius: 2px; }
+.sl-detail .dn { font-family: var(--font-brush); font-size: 22px; line-height: 1; color: var(--paper); }
+.sl-end { min-height: 50px; font-size: 18px; font-family: var(--font-brush); letter-spacing: .1em; }
+
+/* ── 새 카드 틀 ─────────────────────────────────────────────────────
+   한지 바탕(코드로 만든 섬유 결) · 붓 테두리(SVG) · 주인 띠 · 먹방울 비용 · 붓글씨 이름 · 삽화 창 + 원형 낙관 · 타입 문양 */
+.sl-card {
+  --cw: inherit; position: relative; flex: none; width: var(--cw); height: calc(var(--cw) * 1.75);
+  color: #2a1d10; cursor: pointer; user-select: none;
+  padding: 11px 9px 7px; display: flex; flex-direction: column; gap: 3px;
+  background:
+    radial-gradient(130% 70% at 50% 0%, rgba(255, 250, 232, .7), rgba(255,250,232,0) 60%),
+    radial-gradient(90% 60% at 50% 100%, rgba(150, 120, 70, .18), rgba(150,120,70,0) 70%),
+    var(--sl-hanji, none),
+    linear-gradient(180deg, #f2e8cc, #e3d4ad);
+  background-size: auto, auto, 160px, auto;
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.2) inset;
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s;
+  overflow: hidden;
+}
+.sl-card .sl-border { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; }
+.sl-card .sl-border path { fill: #1d140c; opacity: .88; }
+.sl-card .sl-band { position: absolute; left: 7px; top: 4px; width: 26px; height: 46px; background: var(--oc); clip-path: polygon(0 0, 100% 0, 100% 86%, 50% 100%, 0 86%); opacity: .95; box-shadow: inset 0 0 0 1px rgba(0,0,0,.3); z-index: 1; }
+.sl-card .sl-cost {
+  position: absolute; left: 6px; top: 6px; width: 28px; height: 28px; z-index: 4;
+  display: grid; place-items: center; border-radius: 50% 50% 50% 48%;
+  background: radial-gradient(circle at 38% 32%, #4a3a2a, #120c06 70%);
+  box-shadow: 0 1px 3px rgba(0,0,0,.5), inset 0 0 0 1.5px rgba(255, 230, 180, .25);
+}
+.sl-card .sl-cost span { font-family: var(--font-brush); font-size: 22px; line-height: 1; color: #f6e7c2; transform: translateY(1px); }
+.sl-card .sl-name { font-family: var(--font-brush); font-size: 21px; line-height: .95; padding-left: 30px; min-height: 22px; color: #1e140a; word-break: keep-all; overflow-wrap: anywhere; z-index: 2; position: relative; }
+.sl-card .sl-name em { font-style: normal; color: #b07a12; margin-left: 2px; }
+.sl-card .sl-art { position: relative; flex: none; width: 100%; aspect-ratio: 16 / 10; margin-top: 3px; z-index: 2; box-shadow: 0 0 0 1px rgba(40, 26, 12, .55), 0 2px 4px rgba(60, 40, 20, .3); background: #e8dcbc; }
+.sl-card .sl-art img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sl-card .sl-art.sketch .ca { width: 100% !important; height: 100% !important; }
+.sl-card .sl-seal {
+  position: absolute; right: 3px; bottom: 3px; width: 17px; height: 17px; display: grid; place-items: center;
+  font-family: var(--font-brush); font-size: 14px; line-height: 1; color: #fbeee0;
+  background: #b5291e; border-radius: 2px; transform: rotate(-4deg);
+  box-shadow: inset 0 0 0 1.5px rgba(251, 238, 224, .85), 0 0 0 1px rgba(120, 20, 10, .5);
+  filter: url(#jsg-soft) opacity(1); opacity: .93;
+}
+.sl-card .sl-type { font-size: 9.5px; color: #6b5432; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; z-index: 2; }
+.sl-card .sl-type::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: 4px; vertical-align: 0; background: var(--oc); transform: rotate(45deg); }
+.sl-card .sl-text { flex: 1; font-size: 11px; line-height: 1.32; overflow: hidden; word-break: keep-all; overflow-wrap: anywhere; position: relative; z-index: 2; padding: 3px 3px 0; border-radius: 1px; }
+.sl-card .sl-text .kw { color: #8a2216; font-weight: 700; }
+.sl-card .sl-text::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .12; pointer-events: none; }
+/* 타입 문양 — 공격 빗살 · 기술 구름 · 능력 칠보 */
+.sl-card.k-atk .sl-text::before { background: repeating-linear-gradient(-55deg, #7a2a18 0 1.2px, transparent 1.2px 6px); }
+.sl-card.k-skl .sl-text::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='16' viewBox='0 0 26 16'%3E%3Cpath d='M2 12 q3-7 8-3 q2-6 7-2 q5-2 6 4' fill='none' stroke='%232a4a6a' stroke-width='1.3'/%3E%3C/svg%3E"); background-size: 26px 16px; }
+.sl-card.k-pow .sl-text::before { background: radial-gradient(circle at 6px 6px, transparent 4.2px, #5a3a7a 4.6px, transparent 5.2px); background-size: 8px 8px; }
+.sl-card .sl-kw { font-size: 9px; color: #6b5432; position: relative; z-index: 2; }
+.sl-card .sl-resp {
+  position: absolute; right: 5px; top: 6px; z-index: 4; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-brush); font-size: 17px; line-height: 1; color: #fff3e0; background: #c0301f;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 240, 220, .8), 0 0 8px rgba(226, 87, 63, .6); transform: rotate(8deg);
+}
+.sl-card .sl-up { position: absolute; right: 6px; bottom: 6px; z-index: 4; width: 18px; height: 18px; display: grid; place-items: center; font-family: var(--font-brush); font-size: 14px; color: #3a2606; background: linear-gradient(135deg, #f6dc8a, #c9962a); border-radius: 2px; box-shadow: 0 0 0 1px #7a5a12; }
+.sl-card.up { box-shadow: 0 4px 12px rgba(0,0,0,.5), inset 0 0 0 3px rgba(214, 166, 64, .75), inset 0 0 0 5px rgba(255, 238, 180, .4); }
+.sl-card.up .sl-border path { fill: #6a4a0e; }
+.sl-card.up::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 20% 70%, rgba(214,166,64,.35) 0 1px, transparent 1.5px), radial-gradient(circle at 75% 85%, rgba(214,166,64,.35) 0 1px, transparent 1.5px), radial-gradient(circle at 60% 60%, rgba(214,166,64,.3) 0 .8px, transparent 1.3px); background-size: 23px 31px, 37px 29px, 19px 27px; }
+.sl-card.dis { filter: grayscale(.55) brightness(.7); cursor: default; }
+.sl-card.sel { transform: translateY(-14px); box-shadow: 0 0 0 2px var(--cinnabar-2), 0 0 26px var(--cinnabar-glow), 0 12px 22px rgba(0,0,0,.55); }
+.sl-card:not(.dis):not(.sel):hover { transform: translateY(-6px); }
+.sl-card.big { --cw: 168px; padding: 13px 11px 9px; }
+.sl-card.big .sl-name { font-size: 27px; padding-left: 36px; }
+.sl-card.big .sl-cost { width: 34px; height: 34px; }
+.sl-card.big .sl-cost span { font-size: 26px; }
+.sl-card.big .sl-band { width: 32px; height: 56px; }
+.sl-card.big .sl-text { font-size: 12.5px; }
+.sl-card.big .sl-type { font-size: 11px; }
+.sl-card.big .sl-seal { width: 21px; height: 21px; font-size: 17px; }
+
+/* ── 끝 · 기록 · 카드 보기 ────────────────────────────────────────── */
+.sl-end-panel {
+  position: absolute; left: 27%; top: 54px; transform: translateX(-50%); z-index: 30;
+  display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 22px;
+  animation: slEndIn .5s 1.6s both;
+  background: rgba(14, 12, 10, .92); border: 1px solid var(--lamp-2); border-radius: 3px; box-shadow: 0 0 40px rgba(0,0,0,.7);
+}
+.sl-end-panel > b { font-family: var(--font-brush); font-weight: 400; font-size: 30px; color: var(--paper); line-height: 1; }
+@keyframes slEndIn { from { opacity: 0; transform: translate(-50%, -8px); } }
+.sl-log { position: absolute; right: 16px; top: 48px; z-index: 25; width: 360px; max-height: 50vh; overflow: auto; font-size: 12px; }
+.sl-gallery { width: min(1500px, 96vw); max-height: 92vh; overflow: auto; }
+.sl-gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 14px; }
+.sl-gal-cell { display: flex; gap: 8px; align-items: flex-end; }
+.sl-gal-rough .card { --cw: 112px; }
+
+@media (min-width: 1600px) and (min-height: 1000px) {
+  .sl-dock { --cw: 150px; grid-template-columns: 250px minmax(0, 1fr) 290px; }
+  .sl-card .sl-name { font-size: 24px; padding-left: 33px; }
+  .sl-card .sl-text { font-size: 12px; }
+  .sl-energy { width: 72px; height: 72px; font-size: 40px; }
+  .sl-drum { width: 34px; height: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sl-unit, .sl-card { transition: none !important; }
+  .sl-unit.targetable::before, .sl-drum.on, .sl-drum.pop, .sl-end-panel { animation: none !important; }
+}

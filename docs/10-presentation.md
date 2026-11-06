@@ -4,6 +4,7 @@
 > 근거: [표현 조사](research/presentation-reference.md) · [핵심 규칙](02-core-rules.md) · [영웅](03-heroes.md) · [탐험 규칙](05-exploration.md) · [지역 1](05-region1.md)·[2](05-region2.md)·[3](05-region3.md) · [본진](06-base.md) · [플레이어블](08-playable.md) · [무속 지식 정리](research/lore/shamanism-primer.md) §6~§8 · [매체 조사](research/lore/media-references.md) §5
 > 목업: `docs/design/presentation/option-*.html` (코드로 그린 SVG·CSS, 외부 자원은 Google Fonts 뿐) → PNG `docs/design/presentation/png/` · 생성 `node tools/presentation/build.mjs && node tools/presentation/render.mjs`
 > 수치(작업일·인일)는 모두 **추정**이다. 러프 단계에서 실제 속도를 재고 고친다.
+> **그래픽 슬라이스**(2026-11-06): 1막 나루 전투 한 부분에 안 A 를 코드 그림 최고 품질로 입히고(PixiJS 무대 · 꼭두 리그 · 넋전 메시 · 새 카드 틀) D9 성능 시험을 겸했다 — 화풍 판정(유지 · 조정 · 재연구)과 성능 결과는 [그래픽 슬라이스](12-graphic-slice.md)
 
 ## 0. 한눈에
 
@@ -523,3 +524,4 @@ D8 = A(2026-11-05). 아래 계획대로 플레이어블에 입혔다 — PC 배�
 | 2026-11-05 | 러프 그래픽 구현: §4.9 PC 배치(안 A × CZN 배치, 1280×800 · 1920×1080 실측 영역, 따른 것 6 · 버린 것 5) · §4.10 결과. R14 를 PC 전용으로. 조사 §2.16(CZN 화면 배치) |
 | 2026-11-05 | 러프 그래픽(안 A, PC)을 플레이어블에 입힘 + 카드 314장 삽화 지시서·스케치 연결(`docs/11-card-art.md`) |
 | 2026-11-05 | ⟨반복 4⟩ 배경 보강의 아트 방향(§4.10 끝): 지역 3 = 댓가지 열두 문, 업경대 뒤 빈 자리 열넷, 결말 너머 꽃밭, 본진 시설의 가신 신체. 카드 어휘 `gate` 배경 문장 |
+| 2026-11-06 | 그래픽 슬라이스(→ [12-graphic-slice](12-graphic-slice.md)): 1막 나루 전투(일반 · 보스)를 PixiJS v8 무대 · 꼭두 목인 리그 3 · 넋전 메시 원귀 · 새 카드 틀 + 시작 카드 12장 완성 삽화로. 러프 견주기 단추, 성능 하한(SwiftShader) · 채움 최적화, 디자이너 판정 체크리스트 |
