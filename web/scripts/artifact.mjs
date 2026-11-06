@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const here = dirname(fileURLToPath(import.meta.url));
 const TARGETS = {
   main: { src: '../dist/index.html', out: '../dist/artifact.html', title: '저승굿' },
-  slice: { src: '../dist/slice/index.html', out: '../dist/slice-artifact.html', title: '저승굿 — 그래픽 슬라이스' },
+  slice: { src: '../dist/slice/index.html', out: '../dist/slice-artifact.html', title: '저승굿 그래픽 슬라이스' },
 };
 const targetName = process.argv[2] ?? 'main';
 const target = TARGETS[targetName];
