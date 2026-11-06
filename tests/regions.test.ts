@@ -171,8 +171,8 @@ test('손님 배웅: 손님상 차리기 +3(턴당 1회, 손에 남는다), 턴 
   assert.equal(s.outcome, 0);
 });
 
-test('손님 배웅: 대접 23 → 좋게 배웅(남은 수비 물러감, 해원 1회). 5턴이 지나면 서운한 작별', () => {
-  assert.equal(D().specials.get('sonnim_baeung')!.goal, 23);
+test('손님 배웅: 대접 22 → 좋게 배웅(남은 수비 물러감, 해원 1회). 5턴이 지나면 서운한 작별', () => {
+  assert.equal(D().specials.get('sonnim_baeung')!.goal, 22);
   assert.equal(D().specials.get('sonnim_baeung')!.limit, 5);
   const s = sonnim(20);
   const i = inHand(s, 'common.offering_sonnimsang');

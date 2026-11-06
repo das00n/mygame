@@ -108,6 +108,8 @@ export interface WhatIf {
   boss?: string;
   preBossCamp?: boolean;
   preBossHeal?: boolean;
+  /** 지역 2·3: 권장 쌀 대신 이만큼 들고 간다 (사람이 쌀을 더 사는 경우의 민감도 측정) */
+  rice?: number;
 }
 
 export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = {}): ExpeditionJobResult {
@@ -120,6 +122,7 @@ export function runExpeditionJob(trio: HeroId[], runs: number, whatIf: WhatIf = 
     if (region === 1) out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), r), { agg, cards, ...whatIf }));
     else {
       const tp = typicalParty(trio, region, r, undefined, whatIf.final ? 'final' : 'boss');
+      if (whatIf.rice !== undefined) tp.setup.provisions = { ...tp.setup.provisions!, rice: whatIf.rice };
       out.push(runExpedition(trio, seedFrom('exp', trio.join('+'), region, r), { agg, cards, ...whatIf, setup: tp.setup }));
     }
   }

@@ -43,7 +43,7 @@ export function depart(app: AppState, commissionId: string, uids: string[], buy:
   beginExpedition(app, {
     seed: (c.seed ^ Math.imul(c.expeditions + 1, 0x9e3779b1)) | 0, commission: cm.length === 'normal' ? 'normal' : 'boss', party: plan.party,
     formation: formation ?? planFormation(plan), supplies: { ...plan.supplies }, gold: 0, spent: 0, region: cm.region,
-    campaign: { length: cm.length, uids: plan.uids.slice(), enemyHpMult: plan.enemyHpMult }, heroes: plan.heroes.map((h) => ({ maxHp: h.maxHp, stress: h.stress, injured: h.injured, level: h.level })),
+    campaign: { length: cm.length, uids: plan.uids.slice(), enemyHpMult: plan.enemyHpMult, ancestorSave: plan.ancestorSave ?? 0 }, heroes: plan.heroes.map((h) => ({ maxHp: h.maxHp, stress: h.stress, injured: h.injured, level: h.level })),
     deck: planDeck(plan), codex: c.codex, firstJangdan: plan.firstJangdan,
   });
   return null;

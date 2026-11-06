@@ -63,6 +63,8 @@ export interface CampaignData {
     deathSave: number;
     /** 최종 원정의 처벌 강도 (⟨반복 5⟩, 없으면 위 값): 열두째 대문 앞에서는 쓰러진 넋을 데려올 길이 짧다 */
     final?: { wipeSurvive?: number; deathSave?: number };
+    /** 조상신의 보살핌 (⟨반복 6⟩): 사당에 모신 조상신이 from 위(넘는 하나마다) per 씩 사망 판정을 버틸 확률을 더한다 (상한 cap) — 많이 잃은 로스터의 회복 경로 */
+    ancestorSave?: { from: number; per: number; cap: number };
   };
   bonds: { together: number; rescue: number; camp: number; duoAt: number };
   facilities: FacilityDef[];

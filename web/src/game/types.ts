@@ -171,6 +171,8 @@ export interface CampaignRunInfo {
   length: CommissionLength;
   uids: string[];
   enemyHpMult: number;
+  /** 조상신의 보살핌 (⟨반복 6⟩) — 옛 저장에는 없다 */
+  ancestorSave?: number;
 }
 
 export interface Run {

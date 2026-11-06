@@ -508,6 +508,13 @@ export function ancestors(c: Campaign): Fallen[] {
   return c.fallen.filter((f) => f.honored);
 }
 
+/** 조상신의 보살핌 (⟨반복 6⟩, 06-base §8): 사당의 조상신이 death.ancestorSave.from 을 넘는 하나마다 사망 판정 버틸 확률 +per (상한 cap) */
+export function ancestorSave(c: Campaign): number {
+  const a = CD.death.ancestorSave;
+  if (!a) return 0;
+  return Math.min(a.cap, Math.max(0, ancestors(c).length - a.from) * a.per);
+}
+
 export function wanderingSpirits(c: Campaign): Fallen[] {
   return c.fallen.filter((f) => f.wandering);
 }
@@ -610,7 +617,7 @@ export function planExpedition(c: Campaign, commissionId: string, uids: string[]
       };
     }),
     deck, supplies, enemyHpMult: enemyHpMult(c), firstJangdan: people.some((p) => p.resolve) ? CD.death.resolve : 0,
-    stressAdd: people.map((p) => wander + (p.grief ? CD.death.grief : 0)), duoCards, sinmul: chosen,
+    stressAdd: people.map((p) => wander + (p.grief ? CD.death.grief : 0)), duoCards, sinmul: chosen, ancestorSave: ancestorSave(c),
   };
   for (const p of people) {
     p.grief = false;

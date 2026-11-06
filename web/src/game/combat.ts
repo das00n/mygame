@@ -86,8 +86,8 @@ export function relicMods(run: Run): CombatMods {
   const has = (id: string) => run.relics.includes(id);
   const m: CombatMods = {};
   if (has('yongwang')) m.familyDmg = { family: '수귀', mult: 1.25 };
-  // 캠페인 처벌 강도(06-base §8 ⟨반복 3⟩): 사망 판정 버틸 확률 +0.1 — 칠성 가호와 더한다
-  const campaignSave = run.campaign ? deathRules(run.campaign.length).deathSave : 0;
+  // 캠페인 처벌 강도(06-base §8 ⟨반복 3⟩): 사망 판정 버틸 확률 보정 + 조상신의 보살핌(⟨반복 6⟩) — 칠성 가호와 더한다
+  const campaignSave = run.campaign ? deathRules(run.campaign.length).deathSave + (run.campaign.ancestorSave ?? 0) : 0;
   if (has('chilseong') || campaignSave) m.deathSave = (has('chilseong') ? 0.15 : 0) + campaignSave;
   if (has('daesin_bangul')) m.handMax = 8;
   if (has('samsin')) m.reviveFrac = 0.35;

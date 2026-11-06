@@ -200,4 +200,6 @@ export interface ExpeditionPlan {
   stressAdd: number[];
   duoCards: string[];
   sinmul: string[];
+  /** 조상신의 보살핌 (⟨반복 6⟩): 사망 판정 버틸 확률 보정 — 옛 저장에는 없다 */
+  ancestorSave?: number;
 }

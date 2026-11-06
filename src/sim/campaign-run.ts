@@ -25,7 +25,7 @@ export function planSetup(plan: ExpeditionPlan, retreat: { below: number; boss: 
       startWeak: h.startWeak, recovery: h.recovery, level: h.level,
     })),
     deck: planDeck(plan), provisions, enemyHpMult: plan.enemyHpMult, retreatBelow: retreat.below, bossRetreatBelow: retreat.boss, firstJangdan: plan.firstJangdan, paths,
-    wipeSurvive: deathRules(plan.commission.length).wipeSurvive, mods: { deathSave: deathRules(plan.commission.length).deathSave },
+    wipeSurvive: deathRules(plan.commission.length).wipeSurvive, mods: { deathSave: deathRules(plan.commission.length).deathSave + (plan.ancestorSave ?? 0) },
   };
 }
 

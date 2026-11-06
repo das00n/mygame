@@ -49,6 +49,7 @@ async function main() {
   if (has('boss')) whatIf.boss = argStr('boss', '');
   if (has('pre-boss-camp')) whatIf.preBossCamp = argNum('pre-boss-camp', 1) !== 0;
   if (has('pre-boss-heal')) whatIf.preBossHeal = argNum('pre-boss-heal', 1) !== 0;
+  if (has('rice')) whatIf.rice = argNum('rice', 0);
   const isWhatIf = Object.keys(whatIf).length > 0;
   const region = argNum('region', 1);
   const final = has('final');

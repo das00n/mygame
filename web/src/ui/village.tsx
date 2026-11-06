@@ -5,7 +5,7 @@ import type { CSSProperties } from 'preact';
 import { useState } from 'preact/hooks';
 import { HERO_NAMES, type HeroId } from '../../../src/core/types.ts';
 import {
-  ancestors, available, baseMaxHp, bondOf, bookRest, bookTreat, build, buildOptions, buyMaterial, cancelBooking, canPromote, cheondo, clearEngraving,
+  ancestors, ancestorSave, available, baseMaxHp, bondOf, bookRest, bookTreat, build, buildOptions, buyMaterial, cancelBooking, canPromote, cheondo, clearEngraving,
   displayName, endingSummary, engrave, enemyHpMult, fatigueFrac, festivalKind, guardText, lineage, loadoutCost, maxHpOf, motherCandidates, nextXp, promote,
   quirkOf, recommendedSupplies, recruit, recruitCost, regionOpen, removeBadQuirk, retire, rosterCap, sellMaterial, setLoadout, sinmulCarry, supplyCost,
   supplyLine, supplyMax, supplyPrice, tier, wanderingSpirits,
@@ -362,6 +362,11 @@ function SadangTab({ c }: { c: Campaign }) {
       )}
       <SadangTablets c={c} />
       <div class="section-title" style={{ fontSize: '22px' }}>위패 {anc.length}</div>
+      {CD.death.ancestorSave && (
+        <div class="small dim" data-testid="ancestor-save">
+          조상신의 보살핌: 위패가 {CD.death.ancestorSave.from}개를 넘으면 하나마다 원정에서 쓰러진 채 맞을 때 버틸 확률 +{Math.round(CD.death.ancestorSave.per * 100)}%(상한 +{Math.round(CD.death.ancestorSave.cap * 100)}%) — 지금 +{Math.round(ancestorSave(c) * 100)}%
+        </div>
+      )}
       {!anc.length && <div class="faint small">아직 조상신이 없다.</div>}
       <div class="ancestors">
         {anc.map((f) => (

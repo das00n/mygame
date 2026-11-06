@@ -44,7 +44,7 @@
   "fatigue": {"perSortie": 0.05, "cap": 0.2},
   "idleStressDecay": 10,
   "stressRetire": 100,
-  "death": {"cheondoCost": 60, "deadline": 2, "wanderStress": 10, "bondReact": 3, "grief": 15, "resolve": 2, "wipeSurvive": 0.67, "deathSave": 0.2},
+  "death": {"cheondoCost": 60, "deadline": 2, "wanderStress": 10, "bondReact": 3, "grief": 15, "resolve": 2, "wipeSurvive": 0.67, "deathSave": 0.1, "ancestorSave": {"from": 2, "per": 0.05, "cap": 0.3}},
   "bonds": {"together": 1, "rescue": 1, "camp": 2, "duoAt": 5},
   "facilities": [
     {"id": "sindang", "guardian": "성주 — 집의 으뜸 신. 신당 단계가 오를 때마다 대들보에 새 한지를 붙여 모신다", "name": "신당", "start": 1, "lot": "start", "tiers": [
@@ -174,6 +174,10 @@
       {"what": "provisions.recommended 2.normal.rice · 2.boss.rice", "before": "5 · 6", "after": "4 · 4", "why": "조합에 고르게 듣는 손잡이로 2막 원정 클리어 중앙을 내린다(68 → 62.5%) — 보스 길 길굿 끼니가 한 번 몫. 적 체력·피해는 조합 편차를 넓혀 쓰지 않았다 (docs/09-iteration.md §7.2)"},
       {"what": "provisions.recommended 3.boss.rice", "before": 8, "after": 6, "why": "같은 손잡이로 3막 중앙을 내린다(64 → 59.5%). 쌀 7 이면 61% 로 범위 위. 최종 원정(7)은 그대로. 봇은 보스 공물(사자밥 쌀 3)에 쓸 쌀을 끼니에 쓰지 않는다 (src/sim/expedition.ts)"},
       {"what": "build.stages · sites.jangseung", "before": "없음", "after": "건축 연출 네 단계(재목 마련 → 집터 다지기 → 집짓기 → 집치장, 상량) · 장승·솟대 터 = 문전 + 오방토신", "why": "배경 보강 V-11 · V-06, 문장·연출만 (docs/06-base.md §4.1)"}
+    ],
+    "iter6": [
+      {"what": "death.ancestorSave (새 규칙 「조상신의 보살핌」)", "before": "없음", "after": "사당의 조상신이 둘을 넘는 하나마다 캠페인 사망 판정 버틸 확률 +0.05 (상한 +0.3)", "why": "캠페인 사망 9명 이상 꼬리(23%)는 고참을 잃은 로스터가 길어진 캠페인에서 계속 잃는 악순환이다. 많이 잃은 로스터만 받는 회복 경로 — 조상신이 넷이면 반복 5 와 같은 0.2 (docs/06-base.md §8, docs/09-iteration.md §8)"},
+      {"what": "death.deathSave", "before": 0.2, "after": 0.1, "why": "사망 0~2명 꼬리(32%)는 일찍 끝나는 강한 로스터다. 조상신의 보살핌이 뒤를 맡으므로 처음의 고정 보정을 줄인다 — 둘을 함께 넣어 캠페인 사망 3~8 이 45 → 56%(시드 1~100), 63%(101~200)"}
     ]
   }
 }
