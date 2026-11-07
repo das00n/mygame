@@ -1130,10 +1130,11 @@ async function main() {
   grade.uniforms.res.value.set(1280, 800);
   grade.uniforms.vig.value = 1.0;
   renderPass.camera = camera;
-  const tr = performance.now();
+  renderer.info.autoReset = false;
+  renderer.info.reset();
   composer.render();
-  renderer.getContext().finish();
-  const renderMs = Math.round(performance.now() - tr);
+  const draw = { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles };
+  renderer.info.autoReset = true;
 
   // 겹 UI
   const ids = ['posu', 'manshin', 'monk'] as const;
@@ -1150,6 +1151,20 @@ async function main() {
   const to = project(camera, new THREE.Vector3(POS.monk.x - 0.05, DOCK_Y + 1.9, POS.monk.z));
   setIntentLine(refs, from, to, 60);
 
-  markReady({ fonts, renderMs, totalMs: Math.round(performance.now() - T0) });
+  markReady({ fonts, draw, buildMs: Math.round(performance.now() - T0) });
 }
+/** 성능 잣대: 본 장면 한 프레임을 n 번 그려(1픽셀 readPixels 로 끝까지 기다림) 가운데값 ms */
+(globalThis as Record<string, unknown>).__BENCH = (n = 7) => {
+  const gl = renderer.getContext();
+  const px = new Uint8Array(4);
+  const t: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = performance.now();
+    composer.render();
+    gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    t.push(performance.now() - a);
+  }
+  t.sort((x, y) => x - y);
+  return Math.round(t[n >> 1]);
+};
 main();

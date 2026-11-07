@@ -1341,9 +1341,11 @@ async function main() {
   // 본 장면
   renderer.setSize(1280, 800, false);
   setMoonX(camera, 1280);
-  const tr = performance.now();
+  renderer.info.autoReset = false;
+  renderer.info.reset();
   renderer.render(scene, camera);
-  const renderMs = Math.round(performance.now() - tr);
+  const draw = { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles };
+  renderer.info.autoReset = true;
 
   // 겹 UI 자리: 3D 좌표를 투영
   const feet = (v: THREE.Vector3) => project(camera, v.clone());
@@ -1357,6 +1359,20 @@ async function main() {
   const al = feet(POS.altar);
   placeAt(refs.altarTag, al.x + 6, al.y + 8, 0.5, 0);
 
-  markReady({ fonts, renderMs, totalMs: Math.round(performance.now() - T0), renderer: renderer.getContext().getParameter(renderer.getContext().VERSION) });
+  markReady({ fonts, draw, buildMs: Math.round(performance.now() - T0) });
 }
+/** 성능 잣대: 본 장면 한 프레임을 n 번 그려(1픽셀 readPixels 로 끝까지 기다림) 가운데값 ms */
+(globalThis as Record<string, unknown>).__BENCH = (n = 7) => {
+  const gl = renderer.getContext();
+  const px = new Uint8Array(4);
+  const t: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = performance.now();
+    renderer.render(scene, camera);
+    gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    t.push(performance.now() - a);
+  }
+  t.sort((x, y) => x - y);
+  return Math.round(t[n >> 1]);
+};
 main();

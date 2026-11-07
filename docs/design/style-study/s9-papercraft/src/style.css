@@ -213,8 +213,7 @@ svg.intent-line {
   top: 1px;
   bottom: 2px;
   max-width: calc(100% - 2px);
-  background-color: #6a9a5a;
-  background-image: var(--fiber);
+  background: linear-gradient(180deg, #7aaa68, #5e8e4e);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
 }
 .plate .bar .dmg {
@@ -222,8 +221,7 @@ svg.intent-line {
   right: 1px;
   top: 1px;
   bottom: 2px;
-  background-color: var(--seal);
-  background-image: var(--fiber);
+  background: linear-gradient(180deg, #d04a3a, #a82a22);
   box-shadow: -1px 0 0 var(--hanji);
 }
 .plate .hp .num {
@@ -276,7 +274,7 @@ svg.intent-line {
   border-radius: 2px;
 }
 .plate.boss .bar .fill {
-  background-color: #b83a30;
+  background: linear-gradient(180deg, #c84a3a, #a8302a);
 }
 .plate.boss .neok {
   display: flex;

@@ -126,6 +126,8 @@ const strip = (x0: number, y0: number, x1: number, y1: number, w: number, w1 = w
 const wedge = (cx: number, cy: number, r: number, a0: number, a1: number) => {
   const s = new THREE.Shape();
   s.moveTo(cx, cy);
+  // absarc 는 첫 곡선일 때 중심에서 잇는 선을 넣지 않는다 — 직접 긋는다
+  s.lineTo(cx + Math.cos(a0) * r, cy + Math.sin(a0) * r);
   s.absarc(cx, cy, r, a0, a1, false);
   s.closePath();
   return s;
@@ -408,7 +410,7 @@ function bossFig() {
   P.push({ s: strip(0.1, 0.55, 1.15, 3.05, 0.06, 0.05), c: '#6a4a30' });
   P.push({ s: shp([[1.05, 2.92], [1.25, 2.86], [1.62, 3.75], [1.36, 3.86]]), c: '#6a4a30' });
   // 넋 안개(얇은 습자지)
-  P.push({ s: fringe(0, 0.55, 0.05, 1.0, 1.3, 9, 0.12, 4), c: '#bff2ff', opacity: 0.45, emissive: '#3a9ab0', ei: 0.8 });
+  P.push({ s: fringe(0, 0.55, 0.05, 1.0, 1.3, 9, 0.12, 4), c: '#bff2ff', opacity: 0.3, emissive: '#2a7a90', ei: 0.5 });
   // 도롱이 세 단
   P.push({ s: fringe(0, 1.15, 0.22, 0.66, 0.96, 13, 0.14, 1), c: '#8f7a4a' });
   for (let i = 0; i < 9; i++) P.push({ s: strip(-0.38 + i * 0.095, 1.08, -0.44 + i * 0.11, 0.3, 0.012), c: '#6e5a32' });
@@ -421,9 +423,9 @@ function bossFig() {
   P.push({ s: ell(0.34, 1.12, 0.065), c: '#cfe8f0', emissive: '#4ab8d0', ei: 0.6 });
   P.push({ s: fringe(0, 2.0, 1.32, 0.34, 0.72, 9, 0.1, 3), c: '#c4ab72' });
   // 그늘진 얼굴(뚫린 눈 뒤로 빛나는 종이)
-  P.push({ s: ell(-0.02, 2.03, 0.17, 0.2), c: '#0d0f1a' });
-  P.push({ s: ell(-0.07, 2.04, 0.032, 0.014), c: '#b8fbff', emissive: '#8ff4ff', ei: 2.2, lift: 0.006 });
-  P.push({ s: ell(-0.16, 2.04, 0.032, 0.014), c: '#b8fbff', emissive: '#8ff4ff', ei: 2.2, lift: 0.006 });
+  P.push({ s: ell(-0.02, 2.03, 0.17, 0.2), c: '#05060b' });
+  P.push({ s: ell(-0.06, 2.04, 0.045, 0.017, 0.12), c: '#b8fbff', emissive: '#8ff4ff', ei: 3, lift: 0.006 });
+  P.push({ s: ell(-0.17, 2.04, 0.045, 0.017, -0.12), c: '#b8fbff', emissive: '#8ff4ff', ei: 3, lift: 0.006 });
   // 삿갓: 넓은 세모 + 살
   P.push({ s: shp([[-0.78, 2.13], [0.74, 2.17], [0.0, 2.55]]), c: '#c9ad70' });
   for (let i = 0; i <= 8; i++) {
@@ -488,9 +490,9 @@ const kraftMat = new THREE.MeshStandardMaterial({ map: kraft, bumpMap: FIBER.bum
   add(box(BOX.w + 0.4, 0.2, BOX.d + 0.2), kraftMat, [0, -0.1, 0]);
   add(box(0.2, BOX.h, BOX.d + 0.2), kraftMat, [-BOX.w / 2 - 0.1, BOX.h / 2, 0]);
   add(box(0.2, BOX.h, BOX.d + 0.2), kraftMat, [BOX.w / 2 + 0.1, BOX.h / 2, 0]);
-  add(box(BOX.w + 0.4, 0.2, BOX.d + 0.2), kraftMat, [0, BOX.h + 0.1, 0]);
+  add(box(BOX.w + 0.4, 0.2, BOX.d + 0.2), kraftMat, [0, BOX.h + 0.1, 0]).castShadow = false;
   // 앞 위 가림막(무대 틀)
-  add(box(BOX.w + 0.4, 0.42, 0.12), kraftMat, [0, BOX.h - 0.21, BOX.d / 2 + 0.04]);
+  add(box(BOX.w + 0.4, 0.42, 0.12), kraftMat, [0, BOX.h - 0.21, BOX.d / 2 + 0.04]).castShadow = false;
   // 탁자
   const table = new THREE.Mesh(new THREE.PlaneGeometry(60, 30), new THREE.MeshStandardMaterial({ color: '#2a1a10', roughness: 0.7 }));
   table.rotation.x = -Math.PI / 2;
@@ -677,24 +679,60 @@ const WATER = { z0: -2.45, z1: 2.9, x0: -BOX.w / 2, x1: BOX.w / 2 };
   (water.geometry as THREE.BufferGeometry).computeVertexNormals();
   water.receiveShadow = true;
   scene.add(water);
-  // 달빛 물그림자: 크림색 종이 띠(달 아래)
-  const r = rng(12);
-  for (let k = 0; k < 9; k++) {
-    const z = -2.1 + k * 0.36;
-    const w = 0.25 + k * 0.08 + r() * 0.1;
-    const piece = new THREE.Mesh(new THREE.ExtrudeGeometry(shp([[-w / 2, -0.04], [w / 2, -0.035], [w / 2 - 0.03, 0.04], [-w / 2 + 0.02, 0.035]]), { depth: THICK, bevelEnabled: false }), paperMat('#f3e2a8', { emissive: '#3a3010', ei: 1 }));
-    piece.rotation.x = -Math.PI / 2 + 0.5;
-    piece.position.set(MOON_WORLD.x + (r() - 0.5) * 0.3 + (k - 4) * 0.05, 0.17, z);
-    piece.receiveShadow = true;
-    scene.add(piece);
+}
+// 세워 놓은 물결 띠: 윗단을 물결 모양으로 오린 종이 여러 줄(앞줄이 뒷줄에 그림자를 드리운다)
+function waveRow(z: number, x0: number, x1: number, h: number, color: string, seed: number, moonX: number) {
+  const r = rng(seed);
+  const pts: Pt[] = [[x0, 0]];
+  const crests = Math.max(2, Math.round((x1 - x0) / 0.5));
+  const steps = crests * 10;
+  const off = r();
+  const P: Piece[] = [];
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    const x = x0 + (x1 - x0) * t;
+    const ph = (t * crests + off) % 1;
+    const crest = ph < 0.72 ? Math.sin((ph / 0.72) * (Math.PI / 2)) : Math.cos(((ph - 0.72) / 0.28) * (Math.PI / 2));
+    pts.push([x, h + 0.1 * crest * (0.8 + 0.2 * Math.sin(x * 1.3 + seed))]);
   }
+  pts.push([x1, 0]);
+  P.push({ s: shp(pts), c: color });
+  // 물마루 흰 종이(드문드문)
+  for (let k = 0; k < crests; k++) {
+    if (r() < 0.55) continue;
+    const xc = x0 + ((k + 0.72 - off + 1) % 1) * ((x1 - x0) / crests) + (k * (x1 - x0)) / crests;
+    if (xc < x0 + 0.1 || xc > x1 - 0.1) continue;
+    P.push({ s: ell(xc - 0.05, h + 0.07, 0.09, 0.025, 0.25), c: '#e6eef8', lift: 0.004 });
+  }
+  // 달빛 물그림자(크림 종이 조각)
+  if (moonX > x0 && moonX < x1) P.push({ s: shp([[moonX - 0.22 - z * 0.04, h * 0.45], [moonX + 0.24 + z * 0.04, h * 0.5], [moonX + 0.18, h * 0.82], [moonX - 0.16, h * 0.78]]), c: '#f3e2a8', emissive: '#4a3a10', ei: 1, lift: 0.004 });
+  const f = paperFigure(P, { bend: 0.002, seed });
+  f.position.z = z;
+  scene.add(f);
+}
+{
+  const xr = -0.45;
+  const L = -BOX.w / 2 + 0.05;
+  const Rr = BOX.w / 2 - 0.05;
+  const mx = -BOX.w / 2 + MOON_UV.x * BOX.w;
+  const rows: [number, number, number, number, string][] = [
+    [-2.3, L, Rr, 0.14, '#1a2a5e'],
+    [-1.85, L, Rr, 0.17, '#203474'],
+    [-1.0, L, Rr, 0.2, '#263e88'],
+    [-0.35, xr, Rr, 0.22, '#2c4898'],
+    [0.45, xr, Rr, 0.23, '#3150a2'],
+    [1.3, xr, Rr, 0.24, '#3658aa'],
+    [2.3, L, Rr, 0.26, '#3a60b2'],
+    [3.0, L, Rr, 0.28, '#4068ba'],
+  ];
+  rows.forEach(([z, x0, x1, h, c], i) => waveRow(z, x0, x1, h, c, 60 + i, mx));
 }
 
 // 나루: 판지 판자 + 말아 만든 종이 기둥
 const DOCK_Y = 0.55;
 const DOCK = { x0: -BOX.w / 2, x1: -0.55, z0: -0.7, z1: 1.95 };
 {
-  const plank = paperMat('#8a6442');
+  const plank = paperMat('#8a6442')[0];
   const r = rng(21);
   for (let x = DOCK.x0 + 0.05; x < DOCK.x1; x += 0.34) {
     const m = new THREE.Mesh(box(0.31, 0.05, DOCK.z1 - DOCK.z0), plank);
@@ -703,7 +741,7 @@ const DOCK = { x0: -BOX.w / 2, x1: -0.55, z0: -0.7, z1: 1.95 };
     m.castShadow = m.receiveShadow = true;
     scene.add(m);
   }
-  const post = paperMat('#5e432c');
+  const post = paperMat('#5e432c')[0];
   for (let x = DOCK.x0 + 0.6; x < DOCK.x1; x += 1.6)
     for (const z of [DOCK.z0 + 0.1, DOCK.z1 - 0.1]) {
       const p = new THREE.Mesh(cyl(0.08, 0.08, DOCK_Y, 16), post);
@@ -759,10 +797,10 @@ reeds(-0.2, -1.8, 6, 0.8, 39, 0.7);
 
 // 인물 세우기(받침 띠)
 const POS = {
-  posu: new THREE.Vector3(-5.35, DOCK_Y, 0.55),
-  manshin: new THREE.Vector3(-3.95, DOCK_Y, 0.7),
+  posu: new THREE.Vector3(-5.75, DOCK_Y, 0.55),
+  manshin: new THREE.Vector3(-4.15, DOCK_Y, 0.7),
   monk: new THREE.Vector3(-2.55, DOCK_Y, 0.85),
-  altar: new THREE.Vector3(-1.3, DOCK_Y, 0.95),
+  altar: new THREE.Vector3(-1.2, DOCK_Y, 0.95),
   boat: new THREE.Vector3(3.5, 0.02, -1.25),
   boss: new THREE.Vector3(3.8, 0.25, -1.32),
 };
@@ -827,7 +865,7 @@ scene.add(bossG);
   const pts: THREE.Vector3[] = [];
   for (let i = 0; i <= 30; i++) {
     const t = i / 30;
-    pts.push(new THREE.Vector3(-BOX.w / 2 + t * BOX.w, BOX.h - 1.2 - Math.sin(t * Math.PI) * 0.3, BOX.d / 2 - 0.4));
+    pts.push(new THREE.Vector3(-BOX.w / 2 + t * BOX.w, BOX.h - 0.95 - Math.sin(t * Math.PI) * 0.3, BOX.d / 2 - 0.4));
   }
   const curve = new THREE.CatmullRomCurve3(pts);
   const str = new THREE.Mesh(new THREE.TubeGeometry(curve, 80, 0.012, 6), paperMat('#e8dcc0')[0]);
@@ -839,6 +877,8 @@ scene.add(bossG);
     const f = paperFigure([{ s: fringe(0, 0, -0.24, 0.15, 0.15, 3, 0.05, i), c: cols[i % 5] }], { bend: 0, seed: i });
     f.position.copy(p);
     f.rotation.set(-0.08, 0, (i % 2 ? 1 : -1) * 0.05);
+    // 술 그림자가 찍힌 달을 덮지 않게 — 줄만 그림자를 드리운다
+    f.traverse((o) => (o.castShadow = false));
     scene.add(f);
   }
 }
@@ -857,25 +897,25 @@ const intent = new THREE.Group();
   const dir = to.clone().sub(tip).normalize();
   const head = paperFigure([{ s: shp([[0, 0], [0.075, -0.16], [-0.075, -0.16]]), c: '#d0202a' }], { bend: 0, seed: 1 });
   head.position.copy(to);
-  head.rotation.z = Math.atan2(dir.y, dir.x) + Math.PI / 2;
+  head.rotation.z = Math.atan2(dir.y, dir.x) - Math.PI / 2;
   intent.add(head);
   scene.add(intent);
 }
 
 // ── 빛: 따뜻한 등(왼쪽 앞 위) · 찬 달빛(오른쪽 앞 위) ───────────────────
-scene.add(new THREE.HemisphereLight('#4a5a90', '#2a2018', 0.55));
-const lamp = new THREE.SpotLight('#ffbe78', 900, 0, 0.62, 0.55, 2);
-lamp.position.set(-8.5, 9.5, 11);
-lamp.target.position.set(-2.4, 0.8, -0.8);
+scene.add(new THREE.HemisphereLight('#4a5a90', '#2a2018', 0.32));
+const lamp = new THREE.SpotLight('#ffbe78', 900, 0, 0.85, 0.85, 2);
+lamp.position.set(-9.5, 5.2, 10);
+lamp.target.position.set(-2.6, 1.3, -1.2);
 lamp.castShadow = true;
 lamp.shadow.mapSize.set(2048, 2048);
 lamp.shadow.bias = -0.0004;
 lamp.shadow.normalBias = 0.01;
 lamp.shadow.radius = 3;
 scene.add(lamp, lamp.target);
-const moonL = new THREE.SpotLight('#9cb6ff', 1100, 0, 0.6, 0.6, 2);
-moonL.position.set(10, 11, 9);
-moonL.target.position.set(2.2, 0.8, -1.2);
+const moonL = new THREE.SpotLight('#9cb6ff', 1100, 0, 0.8, 0.85, 2);
+moonL.position.set(11.5, 6.2, 8.5);
+moonL.target.position.set(1.8, 1.4, -1.8);
 moonL.castShadow = true;
 moonL.shadow.mapSize.set(2048, 2048);
 moonL.shadow.bias = -0.0004;
@@ -885,9 +925,6 @@ scene.add(moonL, moonL.target);
 const candleL = new THREE.PointLight('#ffb060', 1.6, 0, 2);
 candleL.position.set(POS.altar.x, DOCK_Y + 0.85, POS.altar.z + 0.1);
 scene.add(candleL);
-const eyeL = new THREE.PointLight('#7ff0ff', 1.4, 0, 2);
-eyeL.position.set(POS.boss.x - 0.2, POS.boss.y + 2.25, POS.boss.z + 0.5);
-scene.add(eyeL);
 
 // ── 카메라 · 후처리(작은 모형처럼 얕은 피사계 심도) ─────────────────────
 const camera = new THREE.PerspectiveCamera(30, 1280 / 800, 0.1, 200);
@@ -910,7 +947,7 @@ scene.updateMatrixWorld(true);
   for (let i = 0; i < 8; i++) {
     const t = i / 7;
     const f = paperFigure([{ s: ringS(0, 0, 0.11, 0.07), c: '#f3e2b0' }], { bend: 0, seed: i });
-    f.position.set(1.2 + t * 1.6, 1.4 + Math.sin(t * Math.PI) * 0.7, 0.4 - t * 0.6);
+    f.position.set(1.9 + t * 1.3, 1.6 + Math.sin(t * Math.PI) * 0.6, 0.6 - t * 1.4);
     f.rotation.set(0.3 * i, 0.5 * i, 0.2);
     p1.add(f);
   }
@@ -997,7 +1034,7 @@ async function main() {
   const refs = buildUI(document.getElementById('ui')!);
 
   const shots: { from: V3; to: V3; fov: number; focus: number }[] = [
-    { from: [1.0, 2.4, 4.6], to: [3.4, 1.9, -0.6], fov: 40, focus: 0 },
+    { from: [1.7, 2.6, 3.4], to: [3.6, 2.15, -1.3], fov: 42, focus: 0 },
     { from: [-1.7, 2.6, 4.2], to: [-2.35, 2.1, 0.85], fov: 36, focus: 0 },
     { from: [-4.4, 2.3, 4.0], to: [-5.0, 1.75, 0.55], fov: 38, focus: 0 },
     { from: [-3.0, 2.4, 4.2], to: [-3.55, 1.95, 0.7], fov: 38, focus: 0 },
@@ -1039,10 +1076,11 @@ async function main() {
   bu.aspect.value = 1280 / 800;
   bu.nearClip.value = camera.near;
   bu.farClip.value = camera.far;
-  const tr = performance.now();
+  renderer.info.autoReset = false;
+  renderer.info.reset();
   composer.render();
-  renderer.getContext().finish();
-  const renderMs = Math.round(performance.now() - tr);
+  const draw = { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles };
+  renderer.info.autoReset = true;
 
   const ids = ['posu', 'manshin', 'monk'] as const;
   const plateTop = Math.max(...ids.map((id) => project(camera, POS[id].clone().add(new THREE.Vector3(0, 0, 0.15))).y)) + 6;
@@ -1052,8 +1090,22 @@ async function main() {
   const bh = project(camera, new THREE.Vector3(POS.boss.x - 0.1, POS.boss.y + 2.95, POS.boss.z));
   placeAt(refs.intent, bh.x - 40, bh.y - 4, 0.5, 1);
   const al = project(camera, POS.altar.clone().add(new THREE.Vector3(0, 0, 0.3)));
-  placeAt(refs.altarTag, al.x + 4, al.y + 4, 0.5, 0);
+  placeAt(refs.altarTag, al.x + 22, al.y + 4, 0.5, 0);
 
-  markReady({ fonts, renderMs, totalMs: Math.round(performance.now() - T0) });
+  markReady({ fonts, draw, buildMs: Math.round(performance.now() - T0) });
 }
+/** 성능 잣대: 본 장면 한 프레임을 n 번 그려(1픽셀 readPixels 로 끝까지 기다림) 가운데값 ms */
+(globalThis as Record<string, unknown>).__BENCH = (n = 7) => {
+  const gl = renderer.getContext();
+  const px = new Uint8Array(4);
+  const t: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = performance.now();
+    composer.render();
+    gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+    t.push(performance.now() - a);
+  }
+  t.sort((x, y) => x - y);
+  return Math.round(t[n >> 1]);
+};
 main();

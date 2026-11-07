@@ -64,7 +64,9 @@ for (const id of process.argv.slice(2)) {
   const jpg = join(dir, 'shot-1280x800.jpg');
   await page.screenshot({ path: png });
   const q = toJpeg(png, jpg);
-  console.log(`${id}: ready in ${((Date.now() - t0) / 1000).toFixed(1)}s · ${JSON.stringify(info)}`);
+  // 프레임 비용(CPU 렌더 SwiftShader — 실제 GPU 보다 훨씬 느린 하한)
+  const frameMs = await page.evaluate(() => (globalThis.__BENCH ? globalThis.__BENCH(7) : null));
+  console.log(`${id}: ready in ${((Date.now() - t0) / 1000).toFixed(1)}s · frame median ${frameMs} ms · ${JSON.stringify(info)}`);
   console.log(`${id}: png ${(statSync(png).size / 1024).toFixed(0)} KB · jpg ${(statSync(jpg).size / 1024).toFixed(0)} KB (q${q})`);
   if (errors.length) console.log(`${id}: console/errors:\n  ` + errors.join('\n  '));
   await ctx.close();
