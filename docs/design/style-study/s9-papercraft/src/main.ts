@@ -500,7 +500,7 @@ const kraftMat = new THREE.MeshStandardMaterial({ map: kraft, bumpMap: FIBER.bum
 }
 
 // 한지 배경: 쪽물 들인 한지에 목판으로 찍은 달 · 구름
-const MOON_UV = { x: 0.79, y: 0.27, r: 0.088 };
+const MOON_UV = { x: 0.895, y: 0.33, r: 0.07 };
 {
   const W = 2048;
   const H = Math.round((W * BOX.h) / BOX.w);
@@ -654,7 +654,7 @@ const WATER = { z0: -2.45, z1: 2.9, x0: -BOX.w / 2, x1: BOX.w / 2 };
     for (let i = 0; i <= nx; i++) {
       const x = WATER.x0 + ((WATER.x1 - WATER.x0) * i) / nx;
       const z0 = WATER.z0 + ((WATER.z1 - WATER.z0) * j) / nz;
-      const ph = (z0 + 0.12 * Math.sin(x * 0.9) + 0.06 * Math.sin(x * 2.3 + 1)) / period;
+      const ph = (z0 + 0.55 * x + 0.12 * Math.sin(x * 0.9) + 0.06 * Math.sin(x * 2.3 + 1)) / period;
       const tri = Math.abs((ph % 1) + 1) % 1;
       const y = 0.03 + 0.12 * (1 - Math.abs(tri * 2 - 1));
       pos.push(x, y, z0);
@@ -763,8 +763,8 @@ const POS = {
   manshin: new THREE.Vector3(-3.95, DOCK_Y, 0.7),
   monk: new THREE.Vector3(-2.55, DOCK_Y, 0.85),
   altar: new THREE.Vector3(-1.3, DOCK_Y, 0.95),
-  boat: new THREE.Vector3(3.5, 0.02, -0.55),
-  boss: new THREE.Vector3(3.75, 0.25, -0.62),
+  boat: new THREE.Vector3(3.5, 0.02, -1.25),
+  boss: new THREE.Vector3(3.8, 0.25, -1.32),
 };
 function stand(fig: THREE.Group, p: THREE.Vector3, ry: number, s = 1) {
   fig.position.copy(p);
@@ -793,7 +793,7 @@ scene.add(boatG);
 const bossG = bossFig();
 bossG.position.copy(POS.boss);
 bossG.rotation.y = -0.1;
-bossG.scale.setScalar(1.12);
+bossG.scale.setScalar(1.3);
 scene.add(bossG);
 // 배 앞 물보라(오린 흰 종이)
 {
@@ -827,16 +827,16 @@ scene.add(bossG);
   const pts: THREE.Vector3[] = [];
   for (let i = 0; i <= 30; i++) {
     const t = i / 30;
-    pts.push(new THREE.Vector3(-BOX.w / 2 + t * BOX.w, BOX.h - 0.55 - Math.sin(t * Math.PI) * 0.22, BOX.d / 2 - 0.25));
+    pts.push(new THREE.Vector3(-BOX.w / 2 + t * BOX.w, BOX.h - 1.2 - Math.sin(t * Math.PI) * 0.3, BOX.d / 2 - 0.4));
   }
   const curve = new THREE.CatmullRomCurve3(pts);
   const str = new THREE.Mesh(new THREE.TubeGeometry(curve, 80, 0.012, 6), paperMat('#e8dcc0')[0]);
   str.castShadow = true;
   scene.add(str);
-  for (let i = 0; i < 27; i++) {
-    const t = (i + 0.5) / 27;
+  for (let i = 0; i < 20; i++) {
+    const t = (i + 0.5) / 20;
     const p = curve.getPoint(t);
-    const f = paperFigure([{ s: fringe(0, 0, -0.34, 0.2, 0.2, 3, 0.06, i), c: cols[i % 5] }], { bend: 0, seed: i });
+    const f = paperFigure([{ s: fringe(0, 0, -0.24, 0.15, 0.15, 3, 0.05, i), c: cols[i % 5] }], { bend: 0, seed: i });
     f.position.copy(p);
     f.rotation.set(-0.08, 0, (i % 2 ? 1 : -1) * 0.05);
     scene.add(f);
@@ -847,7 +847,7 @@ scene.add(bossG);
 const intent = new THREE.Group();
 {
   const from = new THREE.Vector3(POS.boss.x - 0.35, POS.boss.y + 2.3, POS.boss.z + 0.2);
-  const to = new THREE.Vector3(POS.monk.x + 0.06, DOCK_Y + 1.98, POS.monk.z + 0.12);
+  const to = new THREE.Vector3(POS.monk.x + 0.08, DOCK_Y + 2.12, POS.monk.z + 0.12);
   const ctrl = new THREE.Vector3((from.x + to.x) / 2 + 0.3, Math.max(from.y, to.y) + 1.25, (from.z + to.z) / 2 + 0.3);
   const curve = new THREE.QuadraticBezierCurve3(from, ctrl, to);
   const thread = new THREE.Mesh(new THREE.TubeGeometry(curve, 120, 0.018, 8), new THREE.MeshStandardMaterial({ color: '#d0202a', roughness: 0.75, emissive: new THREE.Color('#5a0806') }));
@@ -855,9 +855,9 @@ const intent = new THREE.Group();
   intent.add(thread);
   const tip = curve.getPoint(0.97);
   const dir = to.clone().sub(tip).normalize();
-  const head = paperFigure([{ s: shp([[0, 0.13], [0.1, -0.06], [-0.1, -0.06]]), c: '#d0202a' }], { bend: 0, seed: 1 });
+  const head = paperFigure([{ s: shp([[0, 0], [0.075, -0.16], [-0.075, -0.16]]), c: '#d0202a' }], { bend: 0, seed: 1 });
   head.position.copy(to);
-  head.rotation.z = Math.atan2(dir.y, dir.x) - Math.PI / 2;
+  head.rotation.z = Math.atan2(dir.y, dir.x) + Math.PI / 2;
   intent.add(head);
   scene.add(intent);
 }
@@ -873,7 +873,7 @@ lamp.shadow.bias = -0.0004;
 lamp.shadow.normalBias = 0.01;
 lamp.shadow.radius = 3;
 scene.add(lamp, lamp.target);
-const moonL = new THREE.SpotLight('#9cb6ff', 820, 0, 0.6, 0.6, 2);
+const moonL = new THREE.SpotLight('#9cb6ff', 1100, 0, 0.6, 0.6, 2);
 moonL.position.set(10, 11, 9);
 moonL.target.position.set(2.2, 0.8, -1.2);
 moonL.castShadow = true;
@@ -891,8 +891,8 @@ scene.add(eyeL);
 
 // ── 카메라 · 후처리(작은 모형처럼 얕은 피사계 심도) ─────────────────────
 const camera = new THREE.PerspectiveCamera(30, 1280 / 800, 0.1, 200);
-camera.position.set(1.6, 4.1, 16.4);
-camera.lookAt(0.15, 2.05, 0);
+camera.position.set(1.4, 4.6, 16.8);
+camera.lookAt(0.1, 0.95, 0);
 camera.updateMatrixWorld();
 const composer = new EffectComposer(renderer, new THREE.WebGLRenderTarget(1280, 800, { type: THREE.HalfFloatType, samples: 4 }));
 const renderPass = new RenderPass(scene, camera);
@@ -1050,7 +1050,7 @@ async function main() {
   const bp = project(camera, new THREE.Vector3(POS.boat.x, 0, POS.boat.z + 0.3));
   placeAt(refs.bossPlate, bp.x + 10, Math.min(bp.y + 8, 556 - 116), 0.5, 0);
   const bh = project(camera, new THREE.Vector3(POS.boss.x - 0.1, POS.boss.y + 2.95, POS.boss.z));
-  placeAt(refs.intent, bh.x - 10, bh.y - 4, 0.5, 1);
+  placeAt(refs.intent, bh.x - 40, bh.y - 4, 0.5, 1);
   const al = project(camera, POS.altar.clone().add(new THREE.Vector3(0, 0, 0.3)));
   placeAt(refs.altarTag, al.x + 4, al.y + 4, 0.5, 0);
 
