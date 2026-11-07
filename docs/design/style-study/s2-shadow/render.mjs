@@ -29,7 +29,7 @@ const target = 400 * 1024;
 const ff = spawnSync('ffmpeg', ['-version']);
 if (ff.status === 0) {
   let best = null;
-  for (let q = 2; q <= 12; q++) {
+  for (let q = 1; q <= 12; q++) {
     const tmp = join(dir, `.q${q}.jpg`);
     spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', png, '-q:v', String(q), tmp]);
     const size = statSync(tmp).size;

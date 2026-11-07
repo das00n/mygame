@@ -1,0 +1,552 @@
+/* s9 — 종이 공예: 한지 꼬리표 · 판지 · 붉은 도장 · 손으로 오린 가장자리 */
+:root {
+  --hanji: #f2e8d0;
+  --hanji2: #e8dcc0;
+  --kraft: #a98258;
+  --kraft2: #8a6640;
+  --ink: #2a2018;
+  --seal: #b8322a;
+  --indigo: #22305e;
+  --fiber: none;
+}
+html,
+body {
+  margin: 0;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  background: #14100c;
+}
+#gl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 800px;
+}
+#ui {
+  position: absolute;
+  inset: 0;
+  font-family: 'Gowun Batang', serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+#ui > * {
+  position: absolute;
+}
+.dot {
+  margin: 0 6px;
+  opacity: 0.6;
+}
+b {
+  font-weight: 700;
+}
+/* 종이 바탕 공통 */
+.hud-top .loc,
+.plate,
+.intent,
+.altar-tag,
+.card,
+.pile {
+  background-color: var(--hanji);
+  background-image: var(--fiber), linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.03));
+}
+
+/* 머리띠: 판지 띠 */
+.hud-top {
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--kraft2);
+  background-image: var(--fiber), linear-gradient(180deg, #9a744a, #7a5834);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.45);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 97% 100%, 91% 90%, 84% 99%, 76% 91%, 69% 100%, 61% 92%, 52% 100%, 44% 91%, 37% 99%, 29% 90%, 21% 100%, 13% 92%, 6% 99%, 0 90%);
+}
+.hud-top .game {
+  font-family: 'Yeon Sung';
+  font-size: 26px;
+  color: #fff6e2;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+.hud-top .loc {
+  font-family: 'Yeon Sung';
+  font-size: 17px;
+  padding: 2px 14px 3px;
+  transform: rotate(-0.8deg);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.35);
+}
+.hud-top .loc .kind {
+  color: var(--seal);
+}
+.hud-top .turn {
+  font-family: 'Yeon Sung';
+  font-size: 16px;
+  width: 44px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #f6d8c8;
+  color: #fff;
+  background: var(--seal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transform: rotate(-6deg);
+  box-shadow: 0 0 0 2px var(--seal);
+}
+
+/* 의도 선은 3D 붉은 실 */
+svg.intent-line {
+  display: none;
+}
+
+/* 의도 꼬리표 */
+.intent {
+  padding: 6px 14px 7px 26px;
+  border-radius: 3px 14px 14px 3px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.45);
+  transform-origin: 50% 100%;
+  white-space: nowrap;
+}
+.intent::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #3a2c20;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+.intent .r1 {
+  display: flex;
+  align-items: center;
+  font-family: 'Yeon Sung';
+  font-size: 20px;
+}
+.intent .arr {
+  color: var(--seal);
+  font-family: 'Gowun Batang';
+  font-weight: 700;
+  margin-right: 3px;
+}
+.intent .dmg {
+  font-family: 'Yeon Sung';
+  font-weight: 400;
+  font-size: 26px;
+  color: #fff;
+  background: var(--seal);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  line-height: 38px;
+  text-align: center;
+  margin: 0 4px;
+  box-shadow: 0 0 0 2px var(--hanji), 0 0 0 3px var(--seal);
+}
+.intent .r2 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--seal);
+  margin-top: 1px;
+}
+
+/* 이름 꼬리표 */
+.plate {
+  box-sizing: border-box;
+  padding: 5px 9px 7px;
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.plate.hero {
+  width: 124px;
+}
+.plate[data-id='posu'] {
+  transform: translate(-50%, 0) rotate(-1.4deg) !important;
+}
+.plate[data-id='manshin'] {
+  transform: translate(-50%, 0) rotate(0.9deg) !important;
+}
+.plate[data-id='monk'] {
+  transform: translate(-50%, 0) rotate(-0.6deg) !important;
+}
+.plate .pl-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.plate .rank {
+  font-family: 'Yeon Sung';
+  font-size: 13px;
+  color: #fff;
+  background: var(--seal);
+  padding: 0 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--hanji), 0 0 0 2px var(--seal);
+}
+.plate .nm {
+  font-family: 'Yeon Sung';
+  font-size: 22px;
+  line-height: 1.1;
+}
+.plate .hp {
+  position: relative;
+  margin-top: 4px;
+}
+.plate .bar {
+  position: relative;
+  height: 14px;
+  background: #5a4a3a;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.plate .bar .fill {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 2px;
+  max-width: calc(100% - 2px);
+  background-color: #6a9a5a;
+  background-image: var(--fiber);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+.plate .bar .dmg {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  bottom: 2px;
+  background-color: var(--seal);
+  background-image: var(--fiber);
+  box-shadow: -1px 0 0 var(--hanji);
+}
+.plate .hp .num {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+.plate .gw {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5a4a3a;
+}
+.plate .incoming {
+  position: absolute;
+  right: -12px;
+  top: -14px;
+  font-family: 'Yeon Sung';
+  font-size: 22px;
+  color: #fff;
+  background-color: var(--seal);
+  background-image: var(--fiber);
+  padding: 0 8px 1px;
+  border-radius: 2px;
+  transform: rotate(8deg);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.45);
+}
+.plate.boss {
+  width: 272px;
+  padding-top: 0;
+  border-top: 8px solid var(--indigo);
+}
+.plate.boss .pl-head {
+  margin-top: 4px;
+}
+.plate.boss .nm {
+  font-size: 21px;
+}
+.plate.boss .tag {
+  font-family: 'Yeon Sung';
+  font-size: 14px;
+  color: #fff;
+  background: var(--seal);
+  padding: 0 6px;
+  border-radius: 2px;
+}
+.plate.boss .bar .fill {
+  background-color: #b83a30;
+}
+.plate.boss .neok {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.plate.boss .neok .lbl {
+  font-family: 'Yeon Sung';
+  font-size: 15px;
+  color: var(--indigo);
+}
+.plate.boss .neok .bar {
+  flex: 1;
+  height: 9px;
+  background: #b8c4d8;
+}
+.plate.boss .neok .num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--indigo);
+}
+.plate.boss .haewon {
+  margin-top: 5px;
+  padding: 2px 6px 3px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--indigo);
+  border: 1px dashed rgba(34, 48, 94, 0.55);
+}
+.altar-tag {
+  font-family: 'Yeon Sung';
+  font-size: 15px;
+  padding: 1px 9px 2px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+  transform: translate(-50%, 0) rotate(2deg) !important;
+}
+.altar-tag b {
+  font-weight: 400;
+  color: var(--seal);
+}
+
+/* 손패 띠: 판지 쟁반 */
+.hand-band {
+  left: 0;
+  top: 560px;
+  width: 1280px;
+  height: 240px;
+  background-color: var(--kraft);
+  background-image: var(--fiber), linear-gradient(180deg, #b28a5e, #946c44);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.55), inset 0 8px 10px -6px rgba(0, 0, 0, 0.45);
+}
+.res {
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  width: 196px;
+}
+.energy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.energy .orb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #f2c230;
+  background-image: var(--fiber), radial-gradient(circle, #f6d050 0 52%, #e0a020 53% 66%, #c47a18 67%);
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.45), inset 0 0 0 3px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Yeon Sung';
+  color: var(--ink);
+}
+.energy .orb b {
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1;
+}
+.energy .orb span {
+  font-size: 17px;
+  margin-top: 12px;
+}
+.energy .lbl {
+  font-family: 'Yeon Sung';
+  font-size: 17px;
+  color: #3a2a18;
+}
+.jangdan {
+  margin-top: 10px;
+}
+.jangdan .lbl {
+  font-family: 'Yeon Sung';
+  font-size: 16px;
+  color: #3a2a18;
+}
+.jangdan .lbl b {
+  font-weight: 400;
+}
+.jangdan .drums {
+  display: flex;
+  gap: 7px;
+  margin-top: 4px;
+}
+.jangdan .drum {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #e8dcc0;
+  background-image: var(--fiber), radial-gradient(circle, #efe4c8 0 48%, #8a3a2a 50% 66%, #5a2216 68%);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  opacity: 0.7;
+}
+.piles {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pile {
+  font-family: 'Yeon Sung';
+  font-size: 16px;
+  padding: 1px 10px 2px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+}
+.pile:first-child {
+  transform: rotate(-2deg);
+}
+.pile:last-child {
+  transform: rotate(1.5deg);
+}
+.pile b {
+  font-weight: 400;
+  color: var(--seal);
+}
+
+.cards {
+  position: absolute;
+  left: 234px;
+  top: 12px;
+  display: flex;
+  gap: 14px;
+}
+.card {
+  position: relative;
+  width: 148px;
+  height: 216px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.5);
+}
+.card:nth-child(1) {
+  transform: rotate(-1.6deg);
+}
+.card:nth-child(2) {
+  transform: rotate(-0.6deg) translateY(2px);
+}
+.card:nth-child(3) {
+  transform: rotate(0.4deg);
+}
+.card:nth-child(4) {
+  transform: rotate(1deg) translateY(2px);
+}
+.card:nth-child(5) {
+  transform: rotate(1.8deg);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid rgba(42, 32, 24, 0.55);
+  outline: 1px solid rgba(42, 32, 24, 0.3);
+  outline-offset: -4px;
+  pointer-events: none;
+}
+.card .cost {
+  position: absolute;
+  left: -8px;
+  top: -9px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--seal);
+  color: #fff;
+  font-family: 'Yeon Sung';
+  font-size: 22px;
+  line-height: 33px;
+  text-align: center;
+  box-shadow: 0 0 0 2px var(--hanji), 0 0 0 3px var(--seal), 1px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.card .name {
+  height: 28px;
+  padding-left: 30px;
+  font-family: 'Yeon Sung';
+  font-size: 19px;
+  line-height: 30px;
+  white-space: nowrap;
+}
+.card .art {
+  height: 78px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(42, 32, 24, 0.6), 1px 2px 3px rgba(0, 0, 0, 0.35);
+}
+.card .art canvas {
+  display: block;
+  width: 138px;
+  height: 78px;
+}
+.card .type {
+  margin: 5px 5px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6a5640;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card .gem {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.k-atk .gem {
+  background: var(--seal);
+}
+.k-skl .gem {
+  background: var(--indigo);
+}
+.card .text {
+  margin: 3px 5px 0;
+  font-size: 13px;
+  line-height: 1.42;
+  word-break: keep-all;
+}
+.card .text .kw {
+  color: var(--seal);
+}
+.o-posu .name {
+  color: #1f5a46;
+}
+.o-manshin .name {
+  color: #a8222a;
+}
+.o-monk .name {
+  color: #5a3a22;
+}
+.o-party .name {
+  color: #8a5a10;
+}
+
+.end-turn {
+  position: absolute;
+  right: 24px;
+  bottom: 26px;
+  width: 200px;
+  height: 66px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--seal);
+  background-image: var(--fiber), linear-gradient(180deg, #c8402e, #a02a20);
+  box-shadow: 0 0 0 3px #f2e8d0, 0 0 0 5px var(--seal), 3px 6px 8px rgba(0, 0, 0, 0.5);
+  font-family: 'Yeon Sung';
+  font-size: 30px;
+  color: #fff6e6;
+  transform: rotate(-1.5deg);
+  cursor: pointer;
+}
