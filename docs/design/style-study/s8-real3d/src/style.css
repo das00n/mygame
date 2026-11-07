@@ -1,0 +1,496 @@
+/* s8 — 사실풍 3D 의 HUD: 얇은 선 · 반투명 검은 판 · 명조 제목 · 작게 절제된 숫자 */
+:root {
+  --ink: #050608;
+  --bone: #e6e0d2;
+  --dim: #9a968c;
+  --line: rgba(230, 224, 210, 0.22);
+  --blood: #c8352c;
+  --ember: #e8a050;
+  --soul: #7fd8e8;
+}
+html,
+body {
+  margin: 0;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  background: #000;
+}
+#gl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 800px;
+}
+#ui {
+  position: absolute;
+  inset: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--bone);
+  -webkit-font-smoothing: antialiased;
+}
+#ui > * {
+  position: absolute;
+}
+.dot {
+  color: var(--dim);
+  margin: 0 7px;
+}
+b {
+  font-weight: 700;
+}
+
+/* 머리띠 */
+.hud-top {
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.hud-top .game {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 6px;
+  color: var(--bone);
+}
+.hud-top .loc {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: var(--bone);
+  padding-left: 22px;
+  border-left: 1px solid var(--line);
+}
+.hud-top .loc .kind {
+  color: #e0675c;
+}
+.hud-top .turn {
+  margin-left: auto;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--dim);
+}
+.hud-top .turn b {
+  color: var(--bone);
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+/* 의도 선(2D 겹 — 3D 좌표에서 투영) */
+svg.intent-line {
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+svg.intent-line .ln-under {
+  fill: none;
+  stroke: rgba(255, 60, 40, 0.28);
+  stroke-width: 7;
+  filter: blur(3px);
+}
+svg.intent-line .ln {
+  fill: none;
+  stroke: #ff6a52;
+  stroke-width: 1.6;
+  stroke-dasharray: 7 5;
+}
+svg.intent-line .ah {
+  fill: #ff6a52;
+}
+
+/* 의도 배지 */
+.intent {
+  padding: 6px 14px 7px 12px;
+  background: linear-gradient(90deg, rgba(40, 6, 4, 0.82), rgba(10, 4, 4, 0.72));
+  border-left: 2px solid var(--blood);
+  white-space: nowrap;
+  box-shadow: 0 0 18px rgba(200, 40, 30, 0.25);
+}
+.intent .r1 {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--bone);
+}
+.intent .arr {
+  color: #ff6a52;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 4px;
+}
+.intent .dmg {
+  font-family: 'Noto Sans KR';
+  font-size: 26px;
+  font-weight: 700;
+  color: #ff7a62;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(255, 60, 40, 0.6);
+}
+.intent .r2 {
+  margin-top: 2px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #e8b0a8;
+}
+
+/* 이름판 */
+.plate {
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(6, 8, 12, 0.78), rgba(6, 8, 12, 0.62));
+  border-top: 1px solid var(--line);
+  padding: 6px 10px 7px;
+}
+.plate.hero {
+  width: 124px;
+}
+.plate .pl-head {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.plate .rank {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--dim);
+}
+.plate .nm {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--bone);
+}
+.plate .hp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+}
+.plate .bar {
+  position: relative;
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.plate .bar .fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #7a1a14, #c43a2a);
+}
+.plate.hero .bar .fill {
+  background: linear-gradient(90deg, #5a7a52, #9ab88a);
+}
+.plate .bar .dmg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #ff5a44;
+  box-shadow: 0 0 6px #ff5a44;
+  animation: none;
+}
+.plate .hp .num {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--bone);
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
+}
+.plate .gw {
+  margin-top: 3px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--dim);
+}
+.plate .gw b {
+  color: var(--bone);
+}
+.plate .incoming {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ff7a62;
+  text-shadow: 0 0 8px rgba(255, 60, 40, 0.7);
+}
+.plate.boss {
+  width: 270px;
+  border-top: 1px solid rgba(200, 53, 44, 0.6);
+}
+.plate.boss .nm {
+  font-size: 18px;
+}
+.plate.boss .tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #e0675c;
+}
+.plate.boss .neok {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.plate.boss .neok .lbl {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--soul);
+}
+.plate.boss .neok .bar {
+  height: 3px;
+}
+.plate.boss .neok .num {
+  font-size: 12px;
+  color: var(--soul);
+}
+.plate.boss .haewon {
+  margin-top: 6px;
+  padding-top: 5px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: #bfe6ee;
+  letter-spacing: 0.3px;
+}
+.plate.boss .haewon .dia {
+  color: var(--soul);
+}
+.altar-tag {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--bone);
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  background: rgba(6, 8, 12, 0.6);
+  white-space: nowrap;
+}
+.altar-tag b {
+  color: var(--ember);
+}
+.altar-tag span:last-child {
+  color: var(--dim);
+}
+
+/* 손패 띠 */
+.hand-band {
+  left: 0;
+  top: 560px;
+  width: 1280px;
+  height: 240px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(2, 3, 5, 0.9) 22%, rgba(2, 3, 5, 0.96));
+}
+.hand-band::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.res {
+  position: absolute;
+  left: 26px;
+  top: 22px;
+  width: 190px;
+}
+.energy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.energy .orb {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 160, 80, 0.6);
+  box-shadow: 0 0 22px rgba(232, 140, 60, 0.35), inset 0 0 18px rgba(232, 140, 60, 0.35);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding-top: 12px;
+  box-sizing: border-box;
+}
+.energy .orb b {
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 34px;
+  color: #ffd9a8;
+  text-shadow: 0 0 12px rgba(255, 160, 70, 0.8);
+}
+.energy .orb span {
+  font-size: 13px;
+  color: var(--dim);
+  margin-left: 2px;
+}
+.energy .lbl {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--dim);
+}
+.jangdan {
+  margin-top: 14px;
+}
+.jangdan .lbl {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--dim);
+}
+.jangdan .lbl b {
+  color: var(--bone);
+}
+.jangdan .drums {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+.jangdan .drum {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 224, 210, 0.35);
+}
+.piles {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--dim);
+}
+.pile b {
+  color: var(--bone);
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+.cards {
+  position: absolute;
+  left: 238px;
+  top: 14px;
+  display: flex;
+  gap: 12px;
+}
+.card {
+  position: relative;
+  width: 150px;
+  height: 212px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #17150f, #0c0b08);
+  border: 1px solid rgba(214, 190, 140, 0.32);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  color: var(--bone);
+}
+.card .cost {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffd9a8;
+  z-index: 2;
+}
+.card .cost::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid rgba(232, 160, 80, 0.75);
+  background: rgba(40, 20, 8, 0.6);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+.card .name {
+  height: 34px;
+  padding-left: 38px;
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 34px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.card .art {
+  height: 78px;
+  margin: 0 6px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 190, 140, 0.18);
+}
+.card .art canvas {
+  display: block;
+  width: 136px;
+  height: 78px;
+}
+.card .type {
+  margin: 6px 10px 0;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card .gem {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+}
+.k-atk .gem {
+  background: var(--blood);
+}
+.k-skl .gem {
+  background: #6a9ad8;
+}
+.card .text {
+  margin: 5px 10px 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #d8d2c4;
+  word-break: keep-all;
+}
+.card .text .kw {
+  color: #f0b070;
+  font-weight: 500;
+}
+.o-party {
+  border-color: rgba(232, 160, 80, 0.5);
+}
+
+.end-turn {
+  position: absolute;
+  right: 28px;
+  bottom: 30px;
+  width: 196px;
+  height: 54px;
+  background: linear-gradient(180deg, rgba(60, 10, 8, 0.85), rgba(24, 4, 4, 0.9));
+  border: 1px solid rgba(232, 90, 70, 0.7);
+  box-shadow: 0 0 20px rgba(200, 40, 30, 0.3), inset 0 0 12px rgba(200, 40, 30, 0.25);
+  font-family: 'Nanum Myeongjo';
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: 6px;
+  color: var(--bone);
+  cursor: pointer;
+}

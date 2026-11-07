@@ -1,0 +1,527 @@
+/* s7 — 3D 툰: 두꺼운 먹선 · 평면 채색 · 아래로 떨어지는 단단한 그림자 */
+:root {
+  --ink: #120f1d;
+  --cream: #fff4dc;
+  --paper: #fbf0d6;
+  --navy: #1c2452;
+  --navy2: #273274;
+  --gold: #f4c24f;
+  --red: #e5463c;
+  --teal: #2f8f7a;
+  --blue: #3b6bd6;
+  --gray: #8e8a96;
+  --pink: #f08cb0;
+}
+html,
+body {
+  margin: 0;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  background: #0b0e22;
+}
+#gl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 800px;
+}
+#ui {
+  position: absolute;
+  inset: 0;
+  font-family: 'Gowun Dodum', 'Jua', sans-serif;
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+#ui > * {
+  position: absolute;
+}
+.dot {
+  opacity: 0.7;
+  margin: 0 5px;
+}
+b {
+  font-weight: 400;
+}
+
+/* 머리띠 */
+.hud-top {
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(180deg, rgba(10, 12, 36, 0.92), rgba(10, 12, 36, 0.55) 70%, rgba(10, 12, 36, 0));
+}
+.hud-top .game {
+  font-family: 'Jua';
+  font-size: 25px;
+  color: var(--gold);
+  -webkit-text-stroke: 1px var(--ink);
+  text-shadow: 0 3px 0 var(--ink);
+  letter-spacing: 1px;
+}
+.hud-top .loc {
+  font-family: 'Jua';
+  font-size: 16px;
+  padding: 3px 14px 4px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--navy2);
+  box-shadow: 0 3px 0 var(--ink);
+}
+.hud-top .loc .kind {
+  color: #ff8f80;
+}
+.hud-top .turn {
+  font-family: 'Jua';
+  font-size: 16px;
+  padding: 3px 12px 4px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  box-shadow: 0 3px 0 var(--ink);
+}
+
+/* 의도 선은 3D 로 그린다 */
+svg.intent-line {
+  display: none;
+}
+
+/* 의도 배지 */
+.intent {
+  padding: 5px 14px 6px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ink);
+  text-align: center;
+  white-space: nowrap;
+}
+.intent::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -13px;
+  width: 16px;
+  height: 16px;
+  background: var(--cream);
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  transform: translateX(-50%) rotate(45deg);
+}
+.intent .r1 {
+  font-family: 'Jua';
+  font-size: 22px;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intent .arr {
+  color: var(--red);
+  font-family: 'Gowun Dodum';
+  font-weight: 700;
+  margin-right: 3px;
+}
+.intent .dmg {
+  color: var(--red);
+  font-size: 28px;
+  -webkit-text-stroke: 1px var(--ink);
+}
+.intent .r2 {
+  font-family: 'Jua';
+  font-size: 15px;
+  color: #b03026;
+}
+
+/* 이름판 */
+.plate {
+  box-sizing: border-box;
+  background: var(--navy);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--ink);
+  padding: 4px 8px 6px;
+}
+.plate.hero {
+  width: 126px;
+}
+.plate .pl-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Jua';
+}
+.plate .rank {
+  font-size: 12px;
+  padding: 1px 7px 2px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+}
+.plate .nm {
+  font-size: 19px;
+  color: var(--cream);
+  text-shadow: 0 2px 0 var(--ink);
+}
+.plate[data-id='posu'] .rank {
+  background: #8fe0c6;
+}
+.plate[data-id='manshin'] .rank {
+  background: #ffb0a8;
+}
+.plate[data-id='monk'] .rank {
+  background: #e7d7b8;
+}
+.plate .hp {
+  position: relative;
+  margin-top: 4px;
+}
+.plate .bar {
+  position: relative;
+  height: 16px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: #3a1520;
+  overflow: hidden;
+}
+.plate .bar .fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #8ef08a 0 40%, #4fbf55 40%);
+}
+.plate .bar .dmg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(135deg, #ff6b5a 0 5px, #ffd0c4 5px 8px);
+  border-left: 2px solid var(--ink);
+}
+.plate .hp .num {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  font-family: 'Jua';
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  -webkit-text-stroke: 0.6px var(--ink);
+  text-shadow: 0 1.5px 0 var(--ink);
+}
+.plate .gw {
+  margin-top: 3px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #c8d0ff;
+}
+.plate .gw b {
+  font-family: 'Jua';
+  color: #fff;
+}
+.plate .incoming {
+  position: absolute;
+  right: -14px;
+  top: -18px;
+  font-family: 'Jua';
+  font-size: 22px;
+  color: #fff;
+  background: var(--red);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 0 7px 1px;
+  box-shadow: 0 3px 0 var(--ink);
+  transform: rotate(6deg);
+}
+.plate.boss {
+  width: 270px;
+  background: #241a3c;
+}
+.plate.boss .nm {
+  font-size: 18px;
+}
+.plate.boss .tag {
+  font-family: 'Jua';
+  font-size: 13px;
+  padding: 1px 8px 2px;
+  border-radius: 999px;
+  background: var(--red);
+  border: 2px solid var(--ink);
+  color: #fff;
+}
+.plate.boss .bar .fill {
+  background: linear-gradient(180deg, #ff8a78 0 40%, #e0463c 40%);
+}
+.plate.boss .neok {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.plate.boss .neok .lbl {
+  font-family: 'Jua';
+  font-size: 14px;
+  color: #9ff3ff;
+}
+.plate.boss .neok .bar {
+  flex: 1;
+  height: 10px;
+  background: #13283a;
+}
+.plate.boss .neok .num {
+  font-family: 'Jua';
+  font-size: 14px;
+  color: #9ff3ff;
+}
+.plate.boss .haewon {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  background: #bff6ff;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 2px 7px 3px;
+}
+.plate.boss .haewon .dia {
+  color: #1b7f95;
+}
+.altar-tag {
+  font-family: 'Jua';
+  font-size: 14px;
+  padding: 2px 10px 3px;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: #3a2a52;
+  box-shadow: 0 3px 0 var(--ink);
+  white-space: nowrap;
+}
+.altar-tag b {
+  color: var(--gold);
+}
+
+/* 손패 띠 */
+.hand-band {
+  left: 0;
+  top: 560px;
+  width: 1280px;
+  height: 240px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(20, 24, 60, 0.82), rgba(14, 16, 42, 0.97) 30%);
+  border-top: 4px solid var(--ink);
+  box-shadow: 0 -3px 0 #3b4796 inset;
+}
+.res {
+  position: absolute;
+  left: 18px;
+  top: 14px;
+  width: 196px;
+}
+.energy {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.energy .orb {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 3.5px solid var(--ink);
+  background: radial-gradient(circle at 35% 30%, #fff3b8 0 12%, #ffcf4a 13% 55%, #e09820 56%);
+  box-shadow: 0 4px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jua';
+  color: var(--ink);
+}
+.energy .orb b {
+  font-size: 40px;
+  line-height: 1;
+}
+.energy .orb span {
+  font-size: 18px;
+  margin-top: 14px;
+}
+.energy .lbl {
+  font-family: 'Jua';
+  font-size: 16px;
+  color: var(--gold);
+}
+.jangdan {
+  margin-top: 12px;
+}
+.jangdan .lbl {
+  font-family: 'Jua';
+  font-size: 15px;
+}
+.jangdan .drums {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.jangdan .drum {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: radial-gradient(circle, #e9dcc0 0 46%, #a33a2c 48% 70%, #6b2216 72%);
+  box-shadow: 0 3px 0 var(--ink);
+  opacity: 0.55;
+}
+.piles {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pile {
+  font-family: 'Jua';
+  font-size: 15px;
+  padding: 2px 10px 3px;
+  border: 2.5px solid var(--ink);
+  border-radius: 10px;
+  background: var(--navy2);
+  box-shadow: 0 3px 0 var(--ink);
+}
+.pile b {
+  color: var(--gold);
+}
+
+.cards {
+  position: absolute;
+  left: 236px;
+  top: 10px;
+  display: flex;
+  gap: 14px;
+}
+.card {
+  position: relative;
+  width: 148px;
+  height: 218px;
+  box-sizing: border-box;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 5px 0 var(--ink);
+  overflow: visible;
+}
+.card .cost {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: radial-gradient(circle at 35% 30%, #fff3b8 0 14%, #ffcf4a 15% 60%, #e09820 61%);
+  font-family: 'Jua';
+  font-size: 22px;
+  line-height: 34px;
+  text-align: center;
+  box-shadow: 0 3px 0 var(--ink);
+  z-index: 2;
+}
+.card .name {
+  height: 30px;
+  border-radius: 10px 10px 0 0;
+  padding-left: 31px;
+  font-family: 'Jua';
+  font-size: 17px;
+  line-height: 31px;
+  color: #fff;
+  text-shadow: 0 2px 0 var(--ink);
+  -webkit-text-stroke: 0.5px var(--ink);
+  border-bottom: 3px solid var(--ink);
+  white-space: nowrap;
+}
+.o-party .name {
+  background: #d29a2a;
+}
+.o-monk .name {
+  background: #8a6a52;
+}
+.o-posu .name {
+  background: var(--teal);
+}
+.o-manshin .name {
+  background: #d23c46;
+}
+.card .art {
+  height: 78px;
+  border-bottom: 3px solid var(--ink);
+  overflow: hidden;
+  background: #1c2452;
+}
+.card .art canvas {
+  display: block;
+  width: 142px;
+  height: 78px;
+  object-fit: cover;
+}
+.card .type {
+  margin: 4px 8px 0;
+  font-family: 'Jua';
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #5a4a62;
+}
+.card .gem {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--ink);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+.k-atk .gem {
+  background: var(--red);
+}
+.k-skl .gem {
+  background: var(--blue);
+}
+.card .text {
+  margin: 3px 9px 0;
+  font-size: 13.5px;
+  line-height: 1.38;
+  font-weight: 700;
+  word-break: keep-all;
+}
+.card .text .kw {
+  font-weight: 700;
+  color: #c0392b;
+}
+.o-manshin .text .kw,
+.o-party .text .kw {
+  color: #b2302a;
+}
+
+.end-turn {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 210px;
+  height: 66px;
+  border: 3.5px solid var(--ink);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ff7a62 0 45%, #e2443a 45%);
+  box-shadow: 0 6px 0 var(--ink);
+  font-family: 'Jua';
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 3px 0 var(--ink);
+  -webkit-text-stroke: 1px var(--ink);
+  cursor: pointer;
+}

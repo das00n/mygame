@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>저승굿 화풍 시안 s1 — 민화·무신도 평면 채색</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Gowun+Batang:wght@400;700&display=block" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #1f3532; }
+  #root { position: relative; width: 1280px; height: 800px; overflow: hidden; font-family: 'Gowun Batang', serif; color: #2b2119; }
+  #scene { position: absolute; left: 0; top: 0; }
+  .ui { position: absolute; }
+  .sm { font-family: 'Song Myung', serif; }
+
+  /* 머리띠 글씨 */
+  .head-title { left: 30px; top: 7px; height: 30px; line-height: 30px; font-family: 'Song Myung', serif; font-size: 20px; color: #2b2119; letter-spacing: .5px; }
+  .head-title b { color: #b8302a; font-weight: 400; }
+  .head-turn { left: 1166px; top: 7px; width: 96px; height: 30px; line-height: 30px; text-align: center; font-family: 'Song Myung', serif; font-size: 19px; color: #f6ead0; }
+
+  /* 현판 이름판 */
+  .plate { background: #f1e5c8; border: 2px solid #2b2119; box-shadow: inset 0 0 0 3px #3e7a68, inset 0 0 0 4.5px #2b2119, inset 0 0 0 6px #c7432f, 0 3px 0 rgba(0,0,0,.35);
+           padding: 8px 10px 7px; box-sizing: border-box; }
+  .plate .r1 { display: flex; align-items: baseline; gap: 6px; height: 21px; }
+  .plate .rank { font-family: 'Song Myung', serif; font-size: 12px; color: #f6ead0; background: #2f6a5e; padding: 0 5px; border-radius: 2px; line-height: 16px; transform: translateY(-2px); }
+  .plate .nm { font-family: 'Song Myung', serif; font-size: 19px; line-height: 21px; }
+  .plate .hp { display: flex; align-items: center; gap: 5px; margin-top: 3px; }
+  .bar { position: relative; flex: 1; height: 9px; background: #e3d2ad; border: 1.4px solid #2b2119; border-radius: 1px; overflow: hidden; }
+  .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: #c23a2c; }
+  .bar i.soul { background: #9fc0cf; }
+  .bar u { position: absolute; top: 0; bottom: 0; right: 0; background: repeating-linear-gradient(135deg, #f1e5c8 0 3px, #c23a2c 3px 6px); }
+  .num { font-family: 'Song Myung', serif; font-size: 14px; min-width: 38px; text-align: right; }
+  .gwi { font-size: 12px; margin-top: 3px; display: flex; align-items: center; gap: 4px; }
+  .gwi svg { width: 13px; height: 13px; }
+  .seal { position: absolute; background: #b8302a; color: #f6ead0; font-family: 'Song Myung', serif; border: 1.5px solid #2b2119; box-shadow: inset 0 0 0 2px #b8302a, inset 0 0 0 3px #f6ead0; }
+
+  .boss-plate { padding: 9px 13px 8px; }
+  .boss-plate .nm { font-size: 21px; }
+  .boss-plate .tag { font-family: 'Song Myung', serif; font-size: 13px; color: #f6ead0; background: #b8302a; padding: 0 6px; border-radius: 2px; line-height: 17px; transform: translateY(-3px); }
+  .boss-plate .cond { font-size: 13px; margin-top: 4px; letter-spacing: -.2px; }
+  .boss-plate .cond em { font-style: normal; color: #2f6a5e; font-weight: 700; }
+
+  /* 의도 번(幡) */
+  .intent { left: 856px; top: 50px; width: 218px; height: 66px; background: #b8302a; border: 2px solid #2b2119;
+            box-shadow: inset 0 0 0 3px #e2b23c, inset 0 0 0 4.5px #2b2119, inset 0 0 0 7px #2f6a5e, inset 0 0 0 8.2px #2b2119, 0 3px 0 rgba(0,0,0,.35);
+            text-align: center; color: #f6ead0; box-sizing: border-box; padding-top: 10px; }
+  .intent .big { font-family: 'Song Myung', serif; font-size: 24px; line-height: 26px; }
+  .intent .big .ar { font-family: 'Gowun Batang', serif; font-weight: 700; }
+  .intent .sub { font-family: 'Song Myung', serif; font-size: 15px; line-height: 20px; color: #f9e3a6; }
+
+  .tagnote { font-size: 13px; background: #f1e5c8; border: 1.5px solid #2b2119; padding: 1px 8px 2px; box-shadow: 0 2px 0 rgba(0,0,0,.35); }
+  .tagnote b { font-family: 'Song Myung', serif; font-weight: 400; font-size: 14px; }
+
+  /* 손패 */
+  .card { position: absolute; top: 576px; width: 156px; height: 214px; box-sizing: border-box; background: #f0e3c4;
+          border: 4px solid #2f6a5e; outline: 1.6px solid #2b2119;
+          box-shadow: inset 0 0 0 1.4px #2b2119, inset 0 0 0 3px #f0e3c4, inset 0 0 0 4.2px #c7432f, 0 7px 10px rgba(0,0,0,.5); }
+  .card .cost { position: absolute; left: -12px; top: -12px; width: 32px; height: 32px; border-radius: 50%; background: #b8302a; border: 1.6px solid #2b2119;
+                box-shadow: inset 0 0 0 2px #b8302a, inset 0 0 0 3.2px #f6ead0; color: #f6ead0; font-family: 'Song Myung', serif; font-size: 20px; line-height: 30px; text-align: center; }
+  .card .name { position: absolute; left: 25px; right: 6px; top: 7px; font-family: 'Song Myung', serif; font-size: 17.5px; line-height: 20px; white-space: nowrap; }
+  .card .art { position: absolute; left: 7px; top: 32px; width: 134px; height: 88px; border: 1.4px solid #2b2119; box-sizing: content-box; background: #22345a; }
+  .card .type { position: absolute; left: 9px; top: 127px; font-size: 12px; line-height: 15px; display: flex; gap: 4px; align-items: center; }
+  .card .type i { font-style: normal; font-family: 'Song Myung', serif; color: #f6ead0; padding: 0 5px; border-radius: 2px; font-size: 12.5px; }
+  .card .type i.atk { background: #b8302a; }
+  .card .type i.skl { background: #2f6a5e; }
+  .card .type .who { font-family: 'Song Myung', serif; font-size: 13px; }
+  .card .txt { position: absolute; left: 9px; right: 8px; top: 146px; font-size: 13px; line-height: 17.5px; letter-spacing: -.3px; }
+  .card .txt b { color: #b8302a; }
+
+  .lbl { font-family: 'Song Myung', serif; color: #f6ead0; }
+  .pile { font-family: 'Song Myung', serif; font-size: 15px; color: #2b2119; background: #f0e3c4; border: 1.5px solid #2b2119; box-shadow: inset 0 0 0 2.5px #f0e3c4, inset 0 0 0 3.5px #2f6a5e; padding: 3px 10px 2px; }
+  .pile b { font-weight: 400; color: #b8302a; font-size: 17px; }
+  .endturn { left: 1076px; top: 712px; width: 188px; height: 70px; background: #b8302a; border: 2px solid #2b2119; box-sizing: border-box;
+             box-shadow: inset 0 0 0 3px #e2b23c, inset 0 0 0 4.5px #2b2119, inset 0 0 0 8px #2f6a5e, inset 0 0 0 9.2px #2b2119, 0 4px 0 rgba(0,0,0,.45);
+             text-align: center; font-family: 'Song Myung', serif; font-size: 27px; line-height: 64px; color: #f6ead0; letter-spacing: 3px; }
+  .tex { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 .5 .55  0 0 0 .5 .5  0 0 0 .5 .44  0 0 0 0 1'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>"); background-blend-mode: multiply; }
+</style>
+</head>
+<body>
+<div id="root">
+  <svg id="scene" width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg"></svg>
+
+  <!-- 머리띠 -->
+  <div class="ui head-title">1막 · 건너지 못한 나루 · <b>보스</b></div>
+  <div class="ui head-turn">턴 1</div>
+
+  <!-- 의도 -->
+  <div class="ui intent"><div class="big"><span class="ar">↗</span> 12 · 노 내리치기</div><div class="sub"><span style="font-family:'Gowun Batang';font-weight:700">→</span> 선두 승려</div></div>
+
+  <!-- 영웅 이름판 -->
+  <div class="ui plate tex" style="left:56px;top:414px;width:128px;height:84px">
+    <div class="r1"><span class="rank">후열</span><span class="nm">포수</span></div>
+    <div class="hp"><div class="bar"><i style="width:100%"></i></div><span class="num">30/30</span></div>
+    <div class="gwi"><svg viewBox="0 0 14 14"><path d="M7 1.5c3 0 5.5 2.3 5.5 5.2 0 2.4-1.9 4.3-4.3 4.3-2 0-3.5-1.5-3.5-3.4 0-1.5 1.2-2.7 2.7-2.7 1.2 0 2.1.9 2.1 2" fill="none" stroke="#2f5c9c" stroke-width="1.8" stroke-linecap="round"/></svg>귀기 0</div>
+  </div>
+  <div class="ui plate tex" style="left:191px;top:414px;width:128px;height:84px">
+    <div class="r1"><span class="rank">중열</span><span class="nm">만신</span></div>
+    <div class="hp"><div class="bar"><i style="width:100%"></i></div><span class="num">35/35</span></div>
+    <div class="gwi"><svg viewBox="0 0 14 14"><path d="M7 1.5c3 0 5.5 2.3 5.5 5.2 0 2.4-1.9 4.3-4.3 4.3-2 0-3.5-1.5-3.5-3.4 0-1.5 1.2-2.7 2.7-2.7 1.2 0 2.1.9 2.1 2" fill="none" stroke="#2f5c9c" stroke-width="1.8" stroke-linecap="round"/></svg>귀기 0</div>
+  </div>
+  <div class="ui plate tex" style="left:326px;top:414px;width:128px;height:84px">
+    <div class="r1"><span class="rank" style="background:#b8302a">선두</span><span class="nm">승려</span></div>
+    <div class="hp"><div class="bar"><i style="width:100%"></i><u style="width:26.7%"></u></div><span class="num">45/45</span></div>
+    <div class="gwi"><svg viewBox="0 0 14 14"><path d="M7 1.5c3 0 5.5 2.3 5.5 5.2 0 2.4-1.9 4.3-4.3 4.3-2 0-3.5-1.5-3.5-3.4 0-1.5 1.2-2.7 2.7-2.7 1.2 0 2.1.9 2.1 2" fill="none" stroke="#2f5c9c" stroke-width="1.8" stroke-linecap="round"/></svg>귀기 0</div>
+  </div>
+  <div class="ui seal" style="left:420px;top:398px;width:48px;height:28px;line-height:27px;text-align:center;font-size:18px;transform:rotate(-5deg)">−12</div>
+
+  <!-- 굿상 꼬리표 -->
+  <div class="ui tagnote tex" style="left:478px;top:416px"><b>굿상</b> · 비었다</div>
+
+  <!-- 보스 이름판 -->
+  <div class="ui plate boss-plate" style="left:826px;top:444px;width:290px;height:106px">
+    <div class="r1"><span class="nm">삯 못 받은 뱃사공</span><span class="tag">보스</span></div>
+    <div class="hp"><div class="bar"><i style="width:100%"></i></div><span class="num" style="min-width:62px">220/220</span></div>
+    <div class="hp"><div class="bar" style="flex:0 0 120px"><i class="soul" style="width:0%"></i></div><span class="num" style="min-width:0;font-size:13.5px">넋 0/40</span></div>
+    <div class="cond"><em>◇ 해원</em> · 노잣돈을 바친 뒤 쓰러뜨린다</div>
+  </div>
+
+  <!-- 아래 왼쪽 -->
+  <div class="ui lbl" style="left:16px;top:610px;width:96px;text-align:center;font-size:27px;line-height:30px;color:#f6ead0">3<span style="font-size:17px">/3</span></div>
+  <div class="ui lbl" style="left:122px;top:612px;font-size:15px;line-height:20px;color:#cfe0d5">장단<br><span style="color:#f6ead0;font-size:22px">0</span>/5</div>
+  <div class="ui pile tex" style="left:16px;top:748px">뽑을 <b>7</b></div>
+  <div class="ui pile tex" style="left:110px;top:748px">버린 <b>0</b></div>
+
+  <div class="ui endturn">턴 종료</div>
+
+  <!-- 손패 -->
+  <div class="card tex" style="left:226px">
+    <div class="cost">0</div><div class="name">노잣돈 바치기</div>
+    <svg class="art" viewBox="0 4 134 80" preserveAspectRatio="xMidYMid slice"><use href="#art1"/></svg>
+    <div class="type"><i class="skl">기술</i><span class="who">· 파티</span></div>
+    <div class="txt"><b>지전</b> 3을 뱃사공에게 바친다. <b>해원</b> 조건이 선다.</div>
+  </div>
+  <div class="card tex" style="left:394px">
+    <div class="cost">1</div><div class="name">육환장</div>
+    <svg class="art" viewBox="0 4 134 80" preserveAspectRatio="xMidYMid slice"><use href="#art2"/></svg>
+    <div class="type"><i class="atk">공격</i><span class="who">· 승려</span></div>
+    <div class="txt">피해 5, <b>넋흔들림</b> 2.</div>
+  </div>
+  <div class="card tex" style="left:562px">
+    <div class="cost">2</div><div class="name">급소 저격</div>
+    <svg class="art" viewBox="0 4 134 80" preserveAspectRatio="xMidYMid slice"><use href="#art3"/></svg>
+    <div class="type"><i class="atk">공격</i><span class="who">· 포수</span></div>
+    <div class="txt">피해 6. <b>점지</b>가 있으면 두 배.</div>
+  </div>
+  <div class="card tex" style="left:730px">
+    <div class="cost">1</div><div class="name">공수</div>
+    <svg class="art" viewBox="0 4 134 80" preserveAspectRatio="xMidYMid slice"><use href="#art4"/></svg>
+    <div class="type"><i class="skl">기술</i><span class="who">· 만신</span></div>
+    <div class="txt">적 하나에 <b>점지</b> 2, <b>약화</b> 1.</div>
+  </div>
+  <div class="card tex" style="left:898px">
+    <div class="cost">1</div><div class="name">청배</div>
+    <svg class="art" viewBox="0 4 134 80" preserveAspectRatio="xMidYMid slice"><use href="#art5"/></svg>
+    <div class="type"><i class="skl">기술</i><span class="who">· 만신</span></div>
+    <div class="txt"><b>굿상</b>에 몸주 신령을 모신다.</div>
+  </div>
+</div>
+
+<script>
+// ───────────────────────── 도우미 ─────────────────────────
+const O = '#2b2119';                 // 먹 윤곽
+const C = {
+  paper: '#eadcbd', night: '#21335a', night2: '#283d68', water: '#1f3e63', water2: '#25496f',
+  teal: '#3f8676', green: '#2f6a5e', sage: '#77a27a', slate: '#4f6c8c', red: '#c23a2c', vermil: '#d0503a',
+  yellow: '#e2b23c', white: '#f4ede0', brown: '#6b4630', wood: '#8f6140', straw: '#b39758', skin: '#f1d3b1',
+  blue: '#2f5c9c', pink: '#e59aa2', black: '#26211e', gold: '#d9a93a'
+};
+let seed = 7;
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const r1 = (v) => Math.round(v * 10) / 10;
+function A(base, extra) {
+  const o = { ...base }; const re = /([\w:-]+)="([^"]*)"/g; let m;
+  while ((m = re.exec(extra))) o[m[1]] = m[2];
+  return Object.entries(o).map(([k, v]) => `${k}="${v}"`).join(' ');
+}
+const P = (d, f, x = '') => `<path ${A({ d, fill: f, stroke: O, 'stroke-width': 1.4, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, x)}/>`;
+const L = (d, c = O, w = 1, x = '') => `<path ${A({ d, fill: 'none', stroke: c, 'stroke-width': w, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, x)}/>`;
+const CI = (x, y, r, f, x2 = '') => `<circle ${A({ cx: r1(x), cy: r1(y), r, fill: f, stroke: O, 'stroke-width': 1.3 }, x2)}/>`;
+const E = (x, y, rx, ry, f, x2 = '') => `<ellipse ${A({ cx: r1(x), cy: r1(y), rx, ry, fill: f, stroke: O, 'stroke-width': 1.3 }, x2)}/>`;
+const cheeks = (x, y, dx) => `<circle cx="${x - dx}" cy="${y}" r="3.4" fill="#d9534a" opacity=".85"/><circle cx="${x + dx}" cy="${y}" r="3.4" fill="#d9534a" opacity=".85"/>`;
+
+// 민화 구름(영지운) — 둥근 덩이 + 소용돌이 + 꼬리
+function cloud(x, y, s, flip = 1, fill = '#d9dbe6', op = 1) {
+  const lobes = [[-1.25, .3, .62], [1.15, .35, .6], [-.45, -.5, .66], [.55, -.45, .6], [0, .15, .85]];
+  let g = `<g transform="translate(${x},${y}) scale(${flip * s},${s})" opacity="${op}">`;
+  g += P('M-1.6,.62 C-2.4,.9 -3.4,.7 -4.2,.2 C-3.4,.95 -2.2,1.25 -1.2,1.1 Z', fill, 'stroke-width="0.05"');
+  for (const [dx, dy, r] of lobes) {
+    g += `<circle cx="${dx}" cy="${dy}" r="${r}" fill="${fill}" stroke="${O}" stroke-width="0.05"/>`;
+    g += `<path d="M${dx - r * .45},${dy + r * .15} a${r * .42},${r * .42} 0 1,1 ${r * .55},${r * .35} a${r * .2},${r * .2} 0 1,1 -${r * .15},-${r * .3}" fill="none" stroke="${O}" stroke-width="0.045" stroke-linecap="round"/>`;
+  }
+  return g + '</g>';
+}
+// 안개 띠 — 위는 둥근 덩이, 아래는 완만, 끝은 말린다
+function mistBand(x, y, w, h, fill = '#cdd3e2', op = .95) {
+  let d = `M${x},${y + h}`;
+  let cx = x; const top = [];
+  while (cx < x + w) { const r = h * (0.45 + rnd() * 0.35); top.push([cx, r]); cx += r * 1.5; }
+  d = `M${x},${y + h * .9}`;
+  for (const [bx, r] of top) d += ` A${r1(r * .78)},${r1(r * .8)} 0 0,1 ${r1(Math.min(bx + r * 1.5, x + w))},${r1(y + h * .9 - (rnd() * h * .2))}`;
+  d += ` C${x + w + h * .6},${y + h * .9} ${x + w + h * .6},${y + h * 1.5} ${x + w},${y + h * 1.35}`;
+  d += ` L${x + h * .2},${y + h * 1.35} C${x - h * .7},${y + h * 1.4} ${x - h * .6},${y + h * .7} ${x},${y + h * .9} Z`;
+  let s = P(d, fill, `opacity="${op}"`);
+  for (let i = 1; i < top.length - 1; i += 2) {
+    const [bx, r] = top[i];
+    s += L(`M${r1(bx + r * .3)},${r1(y + h * .95)} a${r1(r * .35)},${r1(r * .35)} 0 1,1 ${r1(r * .5)},-${r1(r * .25)}`, O, .9, `opacity="${op}"`);
+  }
+  return s;
+}
+// 민화 봉우리 — 종 모양 + 안쪽 능선 + 태점
+function peak(x, base, w, h, fill) {
+  const d = `M${x - w / 2},${base} C${x - w * .3},${base} ${x - w * .2},${base - h} ${x},${base - h} C${x + w * .2},${base - h} ${x + w * .3},${base} ${x + w / 2},${base} Z`;
+  let s = P(d, fill);
+  for (const k of [.7, .42]) {
+    const ww = w * k, hh = h * k, xx = x + w * (1 - k) * .18;
+    s += L(`M${r1(xx - ww / 2)},${base} C${r1(xx - ww * .3)},${base} ${r1(xx - ww * .2)},${r1(base - hh)} ${r1(xx)},${r1(base - hh)} C${r1(xx + ww * .2)},${r1(base - hh)} ${r1(xx + ww * .3)},${base} ${r1(xx + ww / 2)},${base}`, O, .8, 'opacity=".7"');
+  }
+  for (let i = -2; i <= 2; i++) s += `<ellipse cx="${r1(x + i * w * .055)}" cy="${r1(base - h + 4 + Math.abs(i) * 2.2)}" rx="1.7" ry="1" fill="${O}"/>`;
+  return s;
+}
+// 갈대 — 납작한 잎 + 이삭
+function reed(x, y, h, lean, col, plume = true) {
+  const tx = x + lean, ty = y - h;
+  let s = P(`M${x - 2.6},${y} Q${r1(x + lean * .3)},${r1(y - h * .6)} ${r1(tx)},${r1(ty)} Q${r1(x + lean * .35 + 3)},${r1(y - h * .55)} ${x + 2.6},${y} Z`, col, 'stroke-width="1.1"');
+  if (plume) {
+    const ang = Math.atan2(-(h), lean) * 180 / Math.PI;
+    s += `<g transform="translate(${r1(tx)},${r1(ty)}) rotate(${r1(ang + 90 + lean * .25)})">`;
+    s += P('M0,0 C-5,-6 -6,-16 -2,-26 C0,-20 2,-16 3,-12 C4,-18 6,-22 8,-24 C9,-14 6,-5 0,0 Z', '#d8c491', 'stroke-width="1"');
+    s += L('M0,0 C1,-8 2,-16 2,-24', O, .7);
+    s += '</g>';
+  }
+  return s;
+}
+// 들쭉날쭉한 도롱이 단 — 오른쪽→왼쪽 아래 끝
+function capeTier(topL, topR, botL, botR, yTop, yBot, fill, stepW = 7) {
+  let d = `M${topL},${yTop} C${topL - 6},${yTop + (yBot - yTop) * .4} ${botL + 2},${yBot - 10} ${botL},${yBot}`;
+  const tips = [];
+  let i = 0;
+  for (let x = botL; x <= botR; x += stepW / 2, i++) {
+    const y = yBot + (i % 2 ? 9 + rnd() * 6 : 0);
+    d += ` L${r1(x)},${r1(y)}`;
+    if (i % 2) tips.push([x, y]);
+  }
+  d += ` L${botR},${yBot} C${botR - 2},${yBot - 10} ${topR + 6},${yTop + (yBot - yTop) * .4} ${topR},${yTop} Z`;
+  let s = P(d, fill);
+  for (const [x, y] of tips) {
+    const k = (x - botL) / (botR - botL);
+    const xt = topL + (topR - topL) * k;
+    s += L(`M${r1(x)},${r1(y - 2)} L${r1(x * .55 + xt * .45)},${r1(yTop + 6)}`, '#5d4f2c', .7);
+  }
+  return s;
+}
+
+// ───────────────────────── 인물 (정면 · 위계적) ─────────────────────────
+// 원점 = 두 발 사이, 위가 음수.
+function posu() {
+  let s = '';
+  // 화승총 (세운 채로 쥔다)
+  s += P('M-53,-2 L-39,-2 L-40,-58 L-43,-84 L-49,-84 L-52,-58 Z', '#7a4a28');
+  s += P('M-48,-84 L-44,-84 L-44.5,-208 L-47.5,-208 Z', '#3a3634');
+  for (const y of [-104, -150, -192]) s += P(`M-49,${y} L-43,${y} L-43,${y - 4} L-49,${y - 4} Z`, C.gold, 'stroke-width="1"');
+  s += P('M-52,-66 L-56,-70 L-56,-62 Z', '#3a3634', 'stroke-width="1"');
+  // 화승(불 붙은 심지)
+  s += L('M-41,-56 C-30,-58 -30,-46 -41,-44 C-52,-42 -54,-34 -44,-30 C-36,-27 -34,-20 -40,-16', '#b8302a', 2.2);
+  s += `<circle cx="-40" cy="-15" r="2.6" fill="#f0a23a" stroke="${O}" stroke-width=".8"/><circle cx="-40" cy="-15" r="5.5" fill="#f0a23a" opacity=".3"/>`;
+  // 바지 · 행전 · 짚신
+  s += P('M-24,-100 C-31,-86 -33,-66 -28,-50 L-6,-50 L-2,-80 L2,-80 L6,-50 L28,-50 C33,-66 31,-86 24,-100 Z', '#ebdfc5');
+  s += L('M-18,-90 Q-21,-70 -16,-55 M18,-90 Q21,-70 16,-55 M-2,-80 L0,-96', O, .9);
+  s += P('M-26,-50 L-7,-50 L-9,-13 L-22,-13 Z', '#57708c');
+  s += P('M7,-50 L26,-50 L22,-13 L9,-13 Z', '#57708c');
+  s += L('M-25,-42 L-8,-42 M-24,-30 L-9,-30 M8,-42 L25,-42 M9,-30 L24,-30', '#e9dfc9', 1.6);
+  s += P('M-30,-3 C-31,-13 -13,-16 -8,-8 C-8,-1 -27,3 -30,-3 Z', '#c9a964');
+  s += P('M30,-3 C31,-13 13,-16 8,-8 C8,-1 27,3 30,-3 Z', '#c9a964');
+  s += L('M-26,-8 L-12,-6 M-22,-12 L-20,-1 M26,-8 L12,-6 M22,-12 L20,-1', O, .7);
+  // 저고리 + 조끼
+  s += P('M-27,-142 L27,-142 L30,-98 L-30,-98 Z', '#f1e8d6');
+  s += P('M-27,-143 L-9,-144 L0,-118 L9,-144 L27,-143 L30,-99 L-30,-99 Z', '#3f8676');
+  s += L('M-9,-144 L0,-118 L9,-144', '#e8dcc2', 2.6);
+  s += L('M-27,-140 L-29,-101 M27,-140 L29,-101', '#24524a', 2);
+  s += CI(-4, -112, 2, C.gold) + CI(4, -112, 2, C.gold);
+  // 허리띠 · 화약 주머니
+  s += P('M-31,-105 L31,-105 L31,-96 L-31,-96 Z', '#b8302a');
+  s += P('M16,-97 L19,-72 L25,-73 L23,-97 Z', '#b8302a');
+  s += P('M29,-95 C22,-90 22,-73 34,-68 C47,-68 49,-88 40,-95 Z', '#d6a640');
+  s += L('M29,-92 C33,-89 37,-89 41,-92', O, 1.1);
+  s += P('M35,-68 L33,-58 L38,-58 Z', '#b8302a', 'stroke-width="1"');
+  s += L('M30,-84 C34,-81 39,-81 44,-84', '#8a5a1e', .9);
+  // 팔: 왼쪽(화면) 총 쥔 팔, 오른쪽 주머니에 얹은 팔
+  s += P('M-26,-142 C-37,-139 -45,-126 -46,-108 L-35,-103 C-34,-115 -31,-125 -26,-129 Z', '#f1e8d6');
+  s += P('M-50,-116 C-50,-106 -38,-104 -38,-112 C-38,-118 -48,-122 -50,-116 Z', C.skin);
+  s += P('M26,-142 C37,-138 41,-120 41,-101 L31,-99 C31,-112 29,-124 26,-129 Z', '#f1e8d6');
+  s += P('M31,-101 C30,-93 41,-91 42,-98 C42,-103 33,-106 31,-101 Z', C.skin);
+  // 얼굴
+  s += P('M-6,-148 L6,-148 L6,-140 L-6,-140 Z', C.skin);
+  s += P('M-19,-151 C-21,-171 -17,-184 0,-186 C17,-184 21,-171 19,-151 C14,-140 -14,-140 -19,-151 Z', '#ecc6a0');
+  s += L('M-13,-168 Q-8,-171 -3,-168 M3,-168 Q8,-171 13,-168', O, 2.2);
+  s += L('M-12,-162 Q-8,-164.5 -4,-162 M4,-162 Q8,-164.5 12,-162', O, 1.3);
+  s += `<circle cx="-8" cy="-162" r="1.5" fill="${O}"/><circle cx="8" cy="-162" r="1.5" fill="${O}"/>`;
+  s += L('M0,-160 L-1.5,-154 L1,-153', O, .9);
+  s += L('M-8,-150 C-4,-152 -1,-151 0,-150 C1,-151 4,-152 8,-150', O, 1.6);
+  s += L('M-3,-146.5 Q0,-145 3,-146.5', '#a0342c', 1.3);
+  s += cheeks(0, -155, 12);
+  // 털모자 (귀덮개)
+  s += P('M-25,-150 C-30,-172 -29,-200 0,-209 C29,-200 30,-172 25,-150 L18,-148 C19,-158 19,-168 17,-173 C8,-169 -8,-169 -17,-173 C-19,-168 -19,-158 -18,-148 Z', '#6a4a33');
+  s += P('M-19,-176 C-8,-183 8,-183 19,-176 L18,-170 C8,-176 -8,-176 -18,-170 Z', '#9a7552');
+  for (let i = 0; i < 26; i++) { const a = -Math.PI * (i / 25); const x = Math.cos(a) * 25, y = -178 + Math.sin(a) * 28; s += L(`M${r1(x)},${r1(y)} l${r1(Math.cos(a) * 3)},${r1(Math.sin(a) * 3 - 1)}`, O, .9); }
+  for (let i = 0; i < 14; i++) { const x = -18 + rnd() * 36, y = -200 + rnd() * 18; s += L(`M${r1(x)},${r1(y)} q2,-3 4,0`, '#a07e5c', .9); }
+  s += P('M-3,-208 C-4,-214 4,-214 3,-208 Z', '#b8302a', 'stroke-width="1"');
+  return s;
+}
+
+function mansin() {
+  let s = '';
+  // 치마(쪽빛)
+  s += P('M-31,-70 L31,-70 C35,-40 39,-16 41,-4 L-41,-4 C-39,-16 -35,-40 -31,-70 Z', C.blue);
+  for (const x of [-26, -16, -6, 6, 16, 26]) s += L(`M${x * .8},-66 L${x * 1.18},-6`, '#203f73', 1);
+  s += P('M-16,-6 C-16,-11 -6,-11 -4,-5 C-4,-1 -15,0 -16,-6 Z', '#f6f1e6') + P('M16,-6 C16,-11 6,-11 4,-5 C4,-1 15,0 16,-6 Z', '#f6f1e6');
+  // 홍철릭
+  s += P('M-26,-146 L26,-146 L28,-104 C36,-88 42,-72 45,-60 L-45,-60 C-42,-72 -36,-88 -28,-104 Z', '#c23a2c');
+  for (const k of [-.8, -.55, -.3, -.08, .14, .38, .62, .84]) s += L(`M${r1(k * 27)},-102 L${r1(k * 45)},-62`, '#8e2a20', .9);
+  s += L('M-10,-146 L8,-112', '#8e2a20', 1.2);
+  // 금박 구름 무늬
+  for (const [x, y] of [[-34, -70], [-14, -80], [12, -74], [32, -70], [-4, -132], [14, -128]]) s += L(`M${x - 4},${y} a3,3 0 1,1 4,2 a2,2 0 1,1 -1,-2`, C.gold, 1.2);
+  // 띠(황)
+  s += P('M-29,-108 L29,-108 L29,-100 L-29,-100 Z', C.yellow);
+  s += P('M-4,-101 L-9,-72 L-3,-71 L1,-101 Z', C.yellow) + P('M2,-101 L6,-70 L12,-72 L6,-101 Z', C.yellow);
+  // 동정(흰 깃)
+  s += L('M-10,-146 L0,-127 L10,-146', '#f6f1e6', 3.4);
+  s += L('M-12,-146 L0,-124 L12,-146', O, .8);
+  // 넓은 소매(양팔을 든다)
+  s += P('M-24,-146 L-55,-160 L-62,-150 C-65,-130 -60,-114 -50,-106 C-44,-111 -38,-124 -27,-128 Z', '#c23a2c');
+  s += P('M24,-146 L55,-160 L62,-150 C65,-130 60,-114 50,-106 C44,-111 38,-124 27,-128 Z', '#c23a2c');
+  s += P('M-55,-160 L-62,-150 L-58,-148 L-52,-157 Z', C.blue) + P('M55,-160 L62,-150 L58,-148 L52,-157 Z', C.blue);
+  s += L('M-40,-150 C-50,-140 -54,-124 -52,-112 M40,-150 C50,-140 54,-124 52,-112', '#8e2a20', .9);
+  // 오방색 부채 (손: -60,-160)
+  const fx = -60, fy = -160, R = 36, r = 9;
+  const cols = [C.blue, C.red, C.yellow, '#f6f1e6', C.black];
+  const a0 = -175, a1 = -70;
+  for (let i = 0; i < 5; i++) {
+    const t0 = (a0 + (a1 - a0) * i / 5) * Math.PI / 180, t1 = (a0 + (a1 - a0) * (i + 1) / 5) * Math.PI / 180;
+    const p = (rr, t) => `${r1(fx + Math.cos(t) * rr)},${r1(fy + Math.sin(t) * rr)}`;
+    s += P(`M${p(r, t0)} L${p(R, t0)} A${R},${R} 0 0,1 ${p(R, t1)} L${p(r, t1)} A${r},${r} 0 0,0 ${p(r, t0)} Z`, cols[i]);
+  }
+  for (let i = 0; i <= 10; i++) { const t = (a0 + (a1 - a0) * i / 10) * Math.PI / 180; s += L(`M${r1(fx + Math.cos(t) * 3)},${r1(fy + Math.sin(t) * 3)} L${r1(fx + Math.cos(t) * r)},${r1(fy + Math.sin(t) * r)}`, '#7a4a28', 1.2); }
+  s += P(`M${fx - 4},${fy + 2} C${fx - 6},${fy - 4} ${fx + 2},${fy - 6} ${fx + 3},${fy - 1} C${fx + 3},${fy + 4} ${fx - 2},${fy + 5} ${fx - 4},${fy + 2} Z`, C.skin);
+  // 방울 (손: 60,-160) — 일곱 방울 + 오색 천
+  s += L('M60,-160 L60,-180', '#7a4a28', 2.6);
+  for (const [dx, dy] of [[0, -198], [-5, -190], [5, -190], [-9, -182], [-3, -182], [3, -182], [9, -182]]) s += CI(60 + dx, dy, 4.2, C.gold) + L(`M${60 + dx - 2},${dy + 1.5} L${60 + dx + 2},${dy + 1.5}`, O, .8);
+  const rib = [C.blue, C.red, C.yellow, '#f6f1e6', '#3f8676'];
+  rib.forEach((c, i) => { const ox = 56 + i * 2.4; s += P(`M${ox},-156 C${ox + 5 + i * 2},-140 ${ox - 4 + i * 3},-126 ${ox + 4 + i * 3.5},-112 L${ox + 7 + i * 3.5},-113 C${ox - 1 + i * 3},-127 ${ox + 8 + i * 2},-141 ${ox + 3},-156 Z`, c, 'stroke-width="1"'); });
+  s += P('M56,-163 C54,-157 62,-153 65,-158 C66,-163 59,-166 56,-163 Z', C.skin);
+  // 얼굴 · 머리
+  s += P('M-6,-152 L6,-152 L6,-144 L-6,-144 Z', '#f5e1cc');
+  s += P('M-17,-157 C-19,-175 -15,-187 0,-189 C15,-187 19,-175 17,-157 C12,-146 -12,-146 -17,-157 Z', '#f6e3cf');
+  s += P('M-18,-168 C-21,-186 -12,-199 0,-200 C12,-199 21,-186 18,-168 C15,-177 7,-184 0,-180 C-7,-184 -15,-177 -18,-168 Z', '#1f1b1b');
+  s += L('M0,-199 L0,-183', '#4a4242', .8);
+  s += P('M-6,-206 C-6,-212 6,-212 6,-206 C6,-201 -6,-201 -6,-206 Z', C.gold) + CI(0, -206, 2, C.red);
+  s += P('M15,-180 C24,-176 26,-160 22,-148 L19,-149 C21,-160 19,-172 13,-178 Z', '#b8302a', 'stroke-width="1"');
+  s += L('M-12,-172 Q-8,-175 -3,-172 M3,-172 Q8,-175 12,-172', O, 1.2);
+  s += L('M-12,-166 Q-8,-168 -4,-166 M4,-166 Q8,-168 12,-166', O, 1.3);
+  s += `<circle cx="-8" cy="-166" r="1.4" fill="${O}"/><circle cx="8" cy="-166" r="1.4" fill="${O}"/>`;
+  s += L('M0,-163 L-1,-158', O, .8);
+  s += P('M-4,-153 Q0,-155.5 4,-153 Q0,-150 -4,-153 Z', '#c23a2c', 'stroke-width=".8"');
+  s += cheeks(0, -158, 11);
+  return s;
+}
+
+function monk() {
+  let s = '';
+  // 육환장 — 대
+  s += P('M40.5,-2 L43.5,-2 L43.5,-210 L40.5,-210 Z', '#5b2f22');
+  // 장삼(잿빛)
+  s += P('M-28,-146 L28,-146 C32,-110 36,-50 40,-4 L-40,-4 C-36,-50 -32,-110 -28,-146 Z', '#9c9893');
+  s += L('M-14,-100 L-20,-8 M0,-90 L0,-6 M14,-100 L20,-8', '#6d6a66', 1);
+  s += P('M-18,-5 C-18,-10 -6,-10 -5,-4 C-5,0 -17,1 -18,-5 Z', '#5f5a55') + P('M18,-5 C18,-10 6,-10 5,-4 C5,0 17,1 18,-5 Z', '#5f5a55');
+  // 소매
+  s += P('M-26,-146 C-44,-140 -55,-118 -57,-86 C-50,-79 -40,-81 -33,-86 C-31,-100 -26,-110 -18,-114 Z', '#9c9893');
+  s += P('M26,-146 C40,-142 49,-130 51,-110 C53,-94 50,-84 46,-80 C40,-80 34,-84 32,-88 C34,-104 36,-116 37,-122 Z', '#9c9893');
+  s += L('M-44,-128 C-48,-114 -49,-100 -46,-88 M44,-128 C46,-114 46,-100 44,-90', '#6d6a66', .9);
+  // 가사 — 조각보
+  const kasa = 'M8,-147 L27,-146 C31,-120 34,-88 36,-52 C10,-45 -18,-47 -37,-56 C-34,-80 -32,-104 -29,-122 Z';
+  s += `<clipPath id="kasaClip"><path d="${kasa}"/></clipPath>`;
+  s += P(kasa, '#7a4a2c');
+  s += '<g clip-path="url(#kasaClip)">';
+  const browns = ['#7a4a2c', '#91603a', '#6a3f26', '#a2703f', '#83532f', '#5e3822'];
+  let col = 0;
+  for (let x = -40; x < 40; x += 13) {
+    let y = -150; const h0 = 12 + (col % 3) * 4;
+    while (y < -40) { const h = h0 + rnd() * 10; s += `<rect x="${x}" y="${r1(y)}" width="13" height="${r1(h)}" fill="${browns[(col * 3 + Math.floor(y)) & 7 % 6] || browns[col % 6]}" stroke="#3e2416" stroke-width="1.5"/>`; y += h; }
+    col++;
+  }
+  s += '</g>';
+  s += P(kasa, 'none', 'stroke-width="1.6"');
+  s += CI(18, -139, 4, 'none', `stroke="${C.gold}" stroke-width="2.4"`) + CI(18, -139, 5.4, 'none', 'stroke-width=".8"');
+  // 손: 반합장 / 지팡이 잡은 손
+  s += P('M-12,-118 C-14,-130 -10,-140 -6,-140 C-3,-140 -2,-132 -3,-118 C-6,-114 -10,-114 -12,-118 Z', C.skin);
+  s += P('M35,-133 C33,-124 46,-121 48,-128 C49,-134 38,-138 35,-133 Z', C.skin);
+  // 염주
+  for (let i = 0; i <= 16; i++) { const t = Math.PI * (i / 16); const x = -15 * Math.cos(t), y = -147 + 22 * Math.sin(t); s += CI(x, y, 2.6, '#3a2418', 'stroke-width=".8"'); }
+  s += P('M-2,-124 L2,-124 L3,-112 L-3,-112 Z', '#b8302a', 'stroke-width=".9"');
+  // 얼굴(민머리)
+  s += P('M-6,-152 L6,-152 L6,-145 L-6,-145 Z', C.skin);
+  s += P('M-22,-170 C-26,-171 -26,-161 -20,-160 Z', C.skin) + P('M22,-170 C26,-171 26,-161 20,-160 Z', C.skin);
+  s += P('M-19,-160 C-22,-179 -15,-195 0,-196 C15,-195 22,-179 19,-160 C14,-148 -14,-148 -19,-160 Z', C.skin);
+  s += `<path d="M-19.5,-172 C-19,-186 -12,-195 0,-195.5 C12,-195 19,-186 19.5,-172 C12,-178 -12,-178 -19.5,-172 Z" fill="#9aa3b5" opacity=".38"/>`;
+  s += L('M-13,-170 Q-8,-173 -3,-170 M3,-170 Q8,-173 13,-170', O, 1.1);
+  s += L('M-12,-164 Q-8,-161.5 -4,-164 M4,-164 Q8,-161.5 12,-164', O, 1.4);
+  s += L('M0,-162 L-1.5,-156 L1,-155', O, .8);
+  s += L('M-4,-152 Q0,-150.5 4,-152', '#a0342c', 1.3);
+  s += cheeks(0, -157, 12);
+  // 육환장 — 머리 고리와 여섯 고리
+  s += L('M42,-206 C27,-212 25,-236 42,-254 C59,-236 57,-212 42,-206 Z', O, 5.6);
+  s += L('M42,-206 C27,-212 25,-236 42,-254 C59,-236 57,-212 42,-206 Z', C.gold, 3.2);
+  s += P('M38,-254 L46,-254 L42,-266 Z', C.gold, 'stroke-width="1"');
+  for (const [x, y] of [[31, -216], [27.5, -230], [31, -244], [53, -216], [56.5, -230], [53, -244]]) {
+    s += `<circle cx="${x}" cy="${y + 6}" r="6" fill="none" stroke="${O}" stroke-width="4.4"/><circle cx="${x}" cy="${y + 6}" r="6" fill="none" stroke="${C.gold}" stroke-width="2.4"/>`;
+  }
+  return s;
+}
+
+function sang() {
+  let s = '';
+  // 소반(주칠)
+  s += P('M-38,-24 C-40,-14 -44,-6 -40,0 L-34,0 C-34,-8 -30,-16 -28,-24 Z', '#7a3a22');
+  s += P('M38,-24 C40,-14 44,-6 40,0 L34,0 C34,-8 30,-16 28,-24 Z', '#7a3a22');
+  s += P('M-46,-24 L46,-24 L44,-18 L-44,-18 Z', '#7a3a22');
+  s += P('M-48,-38 L48,-38 L54,-28 L-54,-28 Z', '#a8432a');
+  s += P('M-54,-28 L54,-28 L54,-23 L-54,-23 Z', '#7a3a22');
+  // 초 두 자루
+  for (const x of [-38, 38]) {
+    s += P(`M${x - 6},-38 L${x + 6},-38 L${x + 4},-42 L${x - 4},-42 Z`, C.gold, 'stroke-width="1"');
+    s += P(`M${x - 3.5},-42 L${x + 3.5},-42 L${x + 3.5},-70 L${x - 3.5},-70 Z`, '#f4ede0');
+    s += L(`M${x},-70 L${x},-73`, O, 1);
+    s += P(`M${x},-90 C${x + 6},-80 ${x + 5},-73 ${x},-72 C${x - 5},-73 ${x - 6},-80 ${x},-90 Z`, '#d0503a');
+    s += P(`M${x},-84 C${x + 3},-78 ${x + 2.5},-74 ${x},-74 C${x - 2.5},-74 ${x - 3},-78 ${x},-84 Z`, '#f2c94a', 'stroke-width=".8"');
+  }
+  // 정화수 사발
+  s += P('M-24,-52 L2,-52 C1,-42 -5,-38 -11,-38 C-17,-38 -23,-42 -24,-52 Z', '#f6f2ea');
+  s += E(-11, -52, 13, 3, '#9fc0cf', 'stroke-width="1"');
+  s += P('M-15,-39 L-7,-39 L-6,-37 L-16,-37 Z', '#f6f2ea', 'stroke-width="1"');
+  // 지화 한 송이(모란)
+  s += P('M12,-38 L24,-38 L22,-50 L14,-50 Z', '#3f8676');
+  s += L('M18,-50 C17,-60 19,-68 18,-78', '#2f6a5e', 1.8);
+  s += P('M18,-62 C10,-66 8,-58 12,-56 C14,-58 16,-60 18,-62 Z', C.sage, 'stroke-width="1"');
+  s += P('M18,-66 C26,-70 28,-62 24,-60 C22,-62 20,-64 18,-66 Z', C.sage, 'stroke-width="1"');
+  s += P('M6,-84 C4,-94 12,-98 18,-94 C24,-98 32,-94 30,-84 C28,-76 8,-76 6,-84 Z', '#e59aa2');
+  s += P('M10,-86 C10,-94 16,-94 18,-90 C20,-94 26,-94 26,-86 C24,-80 12,-80 10,-86 Z', '#d76a7a');
+  s += P('M14,-88 C15,-92 21,-92 22,-88 C21,-84 15,-84 14,-88 Z', '#f6e7d0', 'stroke-width="1"');
+  return s;
+}
+
+function boss() {
+  let s = '';
+  // 넋 기운(차가운 운기)
+  s += cloud(-92, -92, 13, -1, '#b9cdd6', .6) + cloud(98, -150, 11, 1, '#b9cdd6', .55) + cloud(84, -34, 10, 1, '#b9cdd6', .5);
+  // 넋전처럼 오린 아래 옷 — 배 속까지
+  let hem = 'M-44,-70 L44,-70 C46,-44 49,-16 50,14';
+  for (let x = 50, i = 0; x >= -50; x -= 6.25, i++) hem += ` L${r1(x)},${i % 2 ? 4 : 14}`;
+  hem += ' C-49,-16 -46,-44 -44,-70 Z';
+  s += P(hem, '#e6e8e2');
+  for (let x = -36; x <= 36; x += 12) s += P(`M${x},-30 L${x + 3.5},-24 L${x},-18 L${x - 3.5},-24 Z`, '#21335a', 'stroke-width="1"');
+  for (let x = -30; x <= 30; x += 12) s += `<circle cx="${x}" cy="-8" r="2.2" fill="#21335a" stroke="${O}" stroke-width=".8"/>`;
+  s += L('M-24,-66 L-27,-36 M0,-66 L0,-36 M24,-66 L27,-36', '#a7b1ae', .9);
+  // 도롱이 2단 + 엮은 띠
+  s += capeTier(-50, 50, -70, 70, -122, -64, '#9a8650', 6);
+  s += P('M-52,-122 Q0,-128 52,-122 L54,-114 Q0,-120 -54,-114 Z', '#6f6036');
+  for (let x = -48; x <= 48; x += 8) s += L(`M${x - 2.5},-123 L${x + 2.5},-115 M${x + 2.5},-123 L${x - 2.5},-115`, '#d8c690', .9);
+  s += capeTier(-26, 26, -62, 62, -188, -116, '#b09a5c', 6);
+  s += P('M-28,-186 Q0,-192 28,-186 L32,-176 Q0,-183 -32,-176 Z', '#6f6036');
+  for (let x = -24; x <= 24; x += 8) s += L(`M${x - 2.5},-187 L${x + 2.5},-178 M${x + 2.5},-187 L${x - 2.5},-178`, '#d8c690', .9);
+  // 그늘진 얼굴 — 눈빛만
+  s += E(0, -180, 31, 23, '#121829');
+  s += `<ellipse cx="-12" cy="-181" rx="13" ry="8" fill="#9fe0d8" opacity=".25"/><ellipse cx="12" cy="-181" rx="13" ry="8" fill="#9fe0d8" opacity=".25"/>`;
+  s += P('M-21,-181 Q-12,-188 -3,-181 Q-12,-177 -21,-181 Z', '#e8f8f3', 'stroke-width="1"');
+  s += P('M21,-181 Q12,-188 3,-181 Q12,-177 21,-181 Z', '#e8f8f3', 'stroke-width="1"');
+  s += `<circle cx="-11" cy="-181.5" r="2.2" fill="#123a40"/><circle cx="11" cy="-181.5" r="2.2" fill="#123a40"/>`;
+  s += L('M-13,-176 C-14,-170 -11,-166 -13,-160 M13,-176 C14,-170 11,-166 13,-160', '#9fe0d8', 1.3, 'opacity=".85"');
+  // 삿갓
+  s += P('M-90,-191 L0,-262 L90,-191 Q0,-174 -90,-191 Z', '#c9a15c');
+  for (let i = 0; i <= 26; i++) { const t = i / 26; const x = -90 + 180 * t; s += L(`M0,-260 L${r1(x)},${r1(-190 + 10 * Math.sin(Math.PI * t))}`, '#8a6a36', .8); }
+  s += L('M-60,-215 Q0,-204 60,-215 M-30,-238 Q0,-232 30,-238', '#6b4f26', 1.4);
+  s += P('M-4,-261 L4,-261 L2,-270 L-2,-270 Z', '#8a6a36', 'stroke-width="1"');
+  s += P('M-90,-191 Q0,-174 90,-191 Q0,-181 -90,-191 Z', '#8a6a36', 'stroke-width="1"');
+  // 노 — 왼쪽 위로 치켜든다
+  const ax = 124, ay = -14, bx = -160, by = -226;
+  const len = Math.hypot(bx - ax, by - ay), ux = (bx - ax) / len, uy = (by - ay) / len, nx = -uy, ny = ux;
+  const pt = (t, w) => `${r1(ax + ux * t + nx * w)},${r1(ay + uy * t + ny * w)}`;
+  s += P(`M${pt(0, -4.4)} L${pt(len - 78, -4.4)} L${pt(len - 78, 4.4)} L${pt(0, 4.4)} Z`, '#8a6440');
+  s += P(`M${pt(len - 90, -4.4)} C${pt(len - 76, -15)} ${pt(len - 10, -15)} ${pt(len + 5, -7)} C${pt(len + 11, 0)} ${pt(len + 5, 7)} ${pt(len - 4, 10)} C${pt(len - 22, 14)} ${pt(len - 76, 15)} ${pt(len - 90, 4.4)} Z`, '#a57a4a');
+  s += L(`M${pt(len - 82, 0)} L${pt(len - 2, 0)}`, '#6b4a2c', 1.1);
+  // 팔 · 손 (두 손으로 노를 쥔다)
+  const h1 = [ax + ux * 200, ay + uy * 200], h2 = [ax + ux * 100, ay + uy * 100];
+  s += P(`M-68,-124 C-62,-134 ${r1(h1[0] - 10)},${r1(h1[1] - 10)} ${r1(h1[0] - 3)},${r1(h1[1] - 9)} L${r1(h1[0] + 7)},${r1(h1[1] + 3)} C-44,-122 -48,-110 -50,-98 L-54,-92 L-57,-99 L-61,-91 L-64,-99 L-69,-93 C-73,-104 -72,-116 -68,-124 Z`, '#e6e8e2');
+  s += L('M-60,-120 C-58,-110 -58,-102 -60,-96', '#a7b1ae', .8);
+  s += P(`M70,-112 C68,-100 ${r1(h2[0] + 14)},${r1(h2[1] - 8)} ${r1(h2[0] + 7)},${r1(h2[1] - 1)} L${r1(h2[0] - 5)},${r1(h2[1] - 11)} C50,-96 54,-108 56,-118 Z`, '#e6e8e2');
+  s += P('M70,-112 C74,-100 74,-88 70,-78 L66,-84 L63,-77 L60,-85 L57,-80 C58,-92 60,-104 62,-114 Z', '#e6e8e2');
+  for (const [hx, hy] of [h1, h2]) {
+    s += P(`M${r1(hx - 8)},${r1(hy - 6)} C${r1(hx - 2)},${r1(hy - 13)} ${r1(hx + 9)},${r1(hy - 8)} ${r1(hx + 9)},${r1(hy + 1)} C${r1(hx + 8)},${r1(hy + 9)} ${r1(hx - 5)},${r1(hy + 9)} ${r1(hx - 8)},${r1(hy + 2)} Z`, '#cdd8db', 'stroke-width="1.3"');
+    s += L(`M${r1(hx - 3)},${r1(hy - 5)} L${r1(hx + 1)},${r1(hy + 5)} M${r1(hx + 2)},${r1(hy - 6)} L${r1(hx + 5)},${r1(hy + 3)}`, O, .7);
+  }
+  return s;
+}
+
+// ───────────────────────── 장면 ─────────────────────────
+const svg = document.getElementById('scene');
+let out = '';
+out += `<defs>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 .55 .5  0 0 0 .55 .47  0 0 0 .55 .42  0 0 0 0 1"/>
+  </filter>
+  <filter id="blot" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".007 .012" numOctaves="3" seed="11"/>
+    <feColorMatrix type="matrix" values="0 0 0 .9 .3  0 0 0 .9 .27  0 0 0 .9 .22  0 0 0 0 1"/>
+  </filter>
+  <filter id="wob" x="-2%" y="-2%" width="104%" height="104%">
+    <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="5" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <pattern id="silk" width="64" height="64" patternUnits="userSpaceOnUse">
+    <rect width="64" height="64" fill="#21403b"/>
+    <path d="M10,20 a6,6 0 1,1 9,4 a3,3 0 1,1 -2,-4 M18,24 c6,2 12,0 16,-3" fill="none" stroke="#2b5048" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M42,52 a6,6 0 1,1 9,4 a3,3 0 1,1 -2,-4 M50,56 c6,2 12,0 16,-3 M-14,56 c6,2 12,0 16,-3" fill="none" stroke="#2b5048" stroke-width="1.6" stroke-linecap="round"/>
+  </pattern>
+  <clipPath id="stageClip"><rect x="0" y="44" width="1280" height="512"/></clipPath>
+  <g id="s1-posu">${posu()}</g>
+  <g id="s1-mansin">${mansin()}</g>
+  <g id="s1-monk">${monk()}</g>
+  <g id="s1-sang">${sang()}</g>
+  <g id="s1-boss">${boss()}</g>
+</defs>`;
+
+// ── 무대
+out += '<g clip-path="url(#stageClip)"><g filter="url(#wob)">';
+out += `<rect x="0" y="44" width="1280" height="260" fill="${C.night}"/>`;
+// 칠성(북두) — 작게
+for (const [x, y] of [[96, 78], [128, 72], [158, 80], [184, 92], [214, 88], [232, 108], [208, 118]]) out += `<circle cx="${x}" cy="${y}" r="2.6" fill="#f2e7c3" stroke="${O}" stroke-width=".8"/>`;
+out += L('M96,78 L128,72 L158,80 L184,92 L214,88 L232,108 L208,118 L184,92', '#f2e7c3', .6, 'opacity=".35"');
+// 달
+out += `<circle cx="1150" cy="122" r="58" fill="none" stroke="#e8dcb4" stroke-width="1" stroke-dasharray="2 5" opacity=".7"/>`;
+out += CI(1150, 122, 46, '#f4ecd6', 'stroke-width="1.6"');
+out += `<circle cx="1150" cy="122" r="39" fill="none" stroke="#e2cf96" stroke-width="1.2"/>`;
+// 구름
+out += cloud(330, 112, 14, 1, '#cfd5e4', .97) + cloud(612, 168, 11, -1, '#cfd5e4', .95) + cloud(1196, 172, 12, -1, '#cfd5e4', .97) + cloud(770, 92, 9, 1, '#cfd5e4', .9);
+// 건너편 기슭 — 봉우리 세 겹
+const base = 292;
+for (const [x, w, h] of [[60, 220, 110], [250, 240, 140], [470, 220, 95], [690, 260, 150], [930, 230, 105], [1150, 260, 135], [1320, 200, 100]]) out += peak(x, base, w, h, '#4d6a86');
+for (const [x, w, h] of [[-10, 170, 70], [150, 180, 88], [360, 170, 64], [560, 200, 92], [800, 180, 74], [1030, 190, 86], [1240, 170, 70]]) out += peak(x, base, w, h, '#3f7c72');
+for (const [x, w, h] of [[80, 130, 36], [280, 120, 30], [470, 140, 40], [680, 120, 28], [880, 140, 38], [1100, 120, 30], [1270, 130, 36]]) out += peak(x, base, w, h, '#6f9a70');
+// 기슭 띠 + 초가와 불빛
+out += P(`M-5,${base - 4} L1285,${base - 4} L1285,${base + 6} L-5,${base + 6} Z`, '#8f7444');
+for (const [x, s] of [[560, 1], [612, .8], [1226, .9]]) {
+  out += `<g transform="translate(${x},${base - 4}) scale(${s})">` + P('M-11,0 L-11,-10 L11,-10 L11,0 Z', '#ece2cc') + P('M-15,-9 C-14,-20 14,-20 15,-9 Z', '#b39758') + P('M-3,-1 L3,-1 L3,-7 L-3,-7 Z', '#f2b33a', 'stroke-width="1"') + '</g>';
+  out += `<circle cx="${x}" cy="${base - 8}" r="9" fill="#f2b33a" opacity=".22"/>`;
+}
+for (const x of [700, 742, 1180]) out += `<circle cx="${x}" cy="${base - 1}" r="2.4" fill="#f2b33a" stroke="${O}" stroke-width=".7"/><circle cx="${x}" cy="${base - 1}" r="6" fill="#f2b33a" opacity=".25"/>`;
+// 강 — 민화 물결
+out += `<rect x="0" y="${base + 6}" width="1280" height="270" fill="${C.water}"/>`;
+let row = 0;
+for (let y = base + 14; y < 572; row++) {
+  const k = (y - base) / 260; const Lw = 36 + k * 58, a = 3 + k * 9; const ph = -rnd() * Lw;
+  let d = `M${r1(ph - Lw)},${r1(y)}`;
+  for (let x = ph - Lw; x < 1300; x += Lw) d += ` Q${r1(x + Lw / 2)},${r1(y - 2 * a)} ${r1(x + Lw)},${r1(y)}`;
+  out += `<path d="${d} L1300,${r1(y + 80)} L${r1(ph - Lw)},${r1(y + 80)} Z" fill="${row % 2 ? '#1d3a5e' : '#28507a'}"/>`;
+  out += L(d, '#dfeaea', 1.3);
+  out += L(d, '#7fa3bd', .8, `transform="translate(0,${r1(5 + k * 5)})"`);
+  for (let x = ph - Lw, i = 0; x < 1300; x += Lw, i++) {
+    if ((i + row) % 2) continue;
+    const px = x + Lw / 2, py = y - a;
+    const c = 2.2 + k * 3.4;
+    out += L(`M${r1(px - c)},${r1(py + c * .2)} C${r1(px + c * 1.2)},${r1(py - c * .9)} ${r1(px + c * 2.4)},${r1(py + c * 1.2)} ${r1(px + c * 1.1)},${r1(py + c * 1.7)} C${r1(px + c * .2)},${r1(py + c * 2)} ${r1(px - .1 * c)},${r1(py + c * 1)} ${r1(px + c * .7)},${r1(py + c * .9)}`, '#f2f6f2', 1.3);
+    if (k > .35) for (let f = 0; f < 3; f++) out += L(`M${r1(px + c * (1.8 + f * .7))},${r1(py + c * (.2 + f * .5))} l${r1(c * .9)},${r1(c * .35)}`, '#f2f6f2', 1);
+  }
+  y += 16 + k * 26;
+}
+// 달빛 반사 — 마름모 띠
+for (let i = 0; i < 9; i++) {
+  const y = base + 16 + i * 10 + i * i * 1.3, w = 44 - i * 3.2, h = 3.2 + i * .4;
+  out += P(`M${r1(1150 - w)},${r1(y)} Q1150,${r1(y - h)} ${r1(1150 + w)},${r1(y)} Q1150,${r1(y + h)} ${r1(1150 - w)},${r1(y)} Z`, '#f1e5bc', 'stroke-width="1"');
+}
+// 안개 띠
+seed = 21;
+out += mistBand(-40, 270, 260, 22, '#ccd2e1', .93) + mistBand(400, 280, 210, 18, '#ccd2e1', .9) + mistBand(800, 268, 240, 20, '#ccd2e1', .92) + mistBand(1120, 282, 200, 16, '#ccd2e1', .9);
+// 나루 말뚝 (물속) + 밧줄
+out += P('M683,334 C683,326 697,326 697,334 L697,500 L683,500 Z', '#5e3f2a');
+out += L('M684,346 L696,350 M684,352 L696,356', '#c9b27a', 2.4);
+out += L('M697,350 C720,372 732,378 752,372', '#c9b27a', 2);
+out += E(690, 500, 18, 4, 'none', 'stroke="#d7e5e8" stroke-width="1.2"');
+out += P('M1228,352 C1228,345 1240,345 1240,352 L1240,470 L1228,470 Z', '#5e3f2a');
+out += E(1234, 470, 15, 3.5, 'none', 'stroke="#d7e5e8" stroke-width="1.2"');
+// 나루(잔교)
+for (const x of [24, 166, 308, 450, 592]) { out += P(`M${x - 8},408 L${x + 8},408 L${x + 8},528 L${x - 8},528 Z`, '#5e3f2a'); out += E(x, 528, 20, 4.5, 'none', 'stroke="#d7e5e8" stroke-width="1.2"'); }
+out += P('M-5,378 L598,378 L616,394 L-5,394 Z', '#a7774c');
+for (let x = 18; x < 600; x += 23) out += L(`M${x},378 L${x + 1.5},394`, '#6e4a30', .9);
+out += P('M-5,394 L616,394 L616,409 L-5,409 Z', '#6e4a30');
+for (let x = 10; x < 616; x += 23) out += L(`M${x},396 L${x},407`, '#4a3020', .8);
+// 갈대 — 왼쪽 앞, 말뚝 곁, 오른쪽
+seed = 33;
+for (let i = 0; i < 9; i++) out += reed(4 + i * 6, 562, 80 + rnd() * 50, -10 + rnd() * 26, i % 2 ? '#a38a4a' : '#7d8a52', i % 3 === 0);
+for (let i = 0; i < 7; i++) out += reed(640 + i * 9, 540, 70 + rnd() * 40, -8 + rnd() * 20, i % 2 ? '#a38a4a' : '#7d8a52', i % 2 === 0);
+for (let i = 0; i < 12; i++) out += reed(1186 + i * 8, 562, 110 + rnd() * 70, -22 + rnd() * 20, i % 2 ? '#a38a4a' : '#7d8a52', i % 3 !== 1);
+// 영웅 · 굿상
+out += `<use href="#s1-posu" transform="translate(120,392)"/>`;
+out += `<use href="#s1-mansin" transform="translate(255,392)"/>`;
+out += `<use href="#s1-monk" transform="translate(390,392)"/>`;
+out += `<use href="#s1-sang" transform="translate(536,392)"/>`;
+// 보스 + 나룻배
+out += `<use href="#s1-boss" transform="translate(965,404) scale(1.1)"/>`;
+out += P('M742,364 C754,384 784,408 830,420 C900,436 1030,438 1110,424 C1150,416 1182,400 1208,372 L1196,370 C1172,392 1140,404 1100,408 C1020,416 900,416 840,406 C800,400 770,388 752,366 Z', '#6c4831');
+out += L('M760,388 C800,414 900,428 1000,428 C1080,428 1150,414 1190,392', '#4a3020', 1);
+out += L('M776,400 C820,420 920,432 1000,432 C1070,432 1130,422 1170,404', '#4a3020', .9);
+out += L('M752,366 C770,388 800,400 840,406 C900,416 1020,416 1100,408 C1140,404 1172,392 1196,370', '#b48a5a', 2.2);
+out += P('M736,360 C736,352 748,350 752,358 C754,364 746,368 742,364 Z', '#6c4831');
+// 배 둘레 물보라
+for (const [x, y, f] of [[790, 422, 1], [880, 438, -1], [1060, 438, 1], [1150, 424, -1]]) out += L(`M${x - 18 * f},${y} C${x - 6 * f},${y - 6} ${x + 6 * f},${y - 6} ${x + 10 * f},${y - 1} C${x + 12 * f},${y + 3} ${x + 7 * f},${y + 5} ${x + 5 * f},${y + 2}`, '#eef4f2', 1.3);
+// 의도 선 — 붉은 매듭 끈, 보스 → 선두 승려 머리
+const cord = 'M862,96 C760,44 520,60 400,182';
+out += L(cord, '#f4ede0', 6.5, 'opacity=".9"');
+out += L(cord, '#b8302a', 3.2);
+const cp = document.createElementNS('http://www.w3.org/2000/svg', 'path'); cp.setAttribute('d', cord); svg.appendChild(cp);
+const clen = cp.getTotalLength();
+for (let t = 60; t < clen - 40; t += 70) { const q = cp.getPointAtLength(t); out += CI(q.x, q.y, 4.2, '#b8302a', 'stroke-width="1.2"') + `<circle cx="${r1(q.x)}" cy="${r1(q.y)}" r="1.6" fill="${C.yellow}"/>`; }
+out += P('M390,170 L412,176 L396,194 Z', '#b8302a', 'stroke-width="1.4" transform="rotate(8 400 182)"');
+out += '</g></g>';
+
+// ── 머리띠 (단청)
+out += `<rect x="0" y="0" width="1280" height="44" fill="#3e6f5f"/>`;
+out += `<rect x="0" y="0" width="1280" height="3" fill="${O}"/><rect x="0" y="3" width="1280" height="2" fill="#f1e8d6"/>`;
+out += `<rect x="0" y="38" width="1280" height="2" fill="#f1e8d6"/><rect x="0" y="40" width="1280" height="4" fill="#b8302a"/><rect x="0" y="43.3" width="1280" height="1" fill="${O}"/>`;
+for (let x = 500; x < 1120; x += 86) {
+  out += P(`M${x - 40},22 C${x - 30},12 ${x - 22},12 ${x - 14},22 C${x - 22},32 ${x - 30},32 ${x - 40},22 Z`, '#77a27a', 'stroke-width="1"');
+  out += P(`M${x + 40},22 C${x + 30},12 ${x + 22},12 ${x + 14},22 C${x + 22},32 ${x + 30},32 ${x + 40},22 Z`, '#77a27a', 'stroke-width="1"');
+  out += CI(x, 22, 13, '#2f5c9c', 'stroke-width="1"') + CI(x, 22, 10, '#f1e8d6', 'stroke-width=".8"') + CI(x, 22, 7, '#c23a2c', 'stroke-width=".8"') + CI(x, 22, 3.4, '#e2b23c', 'stroke-width=".8"');
+}
+// 제목 현판
+out += P('M18,8 L430,8 L438,22 L430,36 L18,36 L10,22 Z', '#f1e5c8', 'stroke-width="1.8"');
+out += L('M22,11 L427,11 L434,22 L427,33 L22,33 L15,22 Z', '#c7432f', 1.1);
+out += P('M1160,8 L1262,8 L1270,22 L1262,36 L1160,36 L1152,22 Z', '#b8302a', 'stroke-width="1.8"');
+out += L('M1163,11 L1259,11 L1266,22 L1259,33 L1163,33 L1156,22 Z', '#e2b23c', 1.1);
+
+// ── 무대/손패 사이 단청 띠
+out += `<rect x="0" y="553" width="1280" height="3" fill="${O}"/><rect x="0" y="556" width="1280" height="3" fill="#f1e8d6"/><rect x="0" y="559" width="1280" height="4" fill="#c23a2c"/><rect x="0" y="563" width="1280" height="3" fill="#e2b23c"/><rect x="0" y="566" width="1280" height="2" fill="${O}"/>`;
+// ── 손패 띠 (비단)
+out += `<rect x="0" y="568" width="1280" height="232" fill="url(#silk)"/>`;
+// 기운 — 해(日) 원반
+out += `<g transform="translate(64,626)">`;
+for (let i = 0; i < 16; i++) { const a = i * Math.PI / 8; out += P(`M${r1(Math.cos(a - .14) * 38)},${r1(Math.sin(a - .14) * 38)} L${r1(Math.cos(a) * 50)},${r1(Math.sin(a) * 50)} L${r1(Math.cos(a + .14) * 38)},${r1(Math.sin(a + .14) * 38)} Z`, i % 2 ? C.yellow : C.vermil, 'stroke-width="1"'); }
+out += CI(0, 0, 40, '#e2b23c', 'stroke-width="1.6"') + CI(0, 0, 35, '#c23a2c', 'stroke-width="1.2"');
+out += '</g>';
+// 장단 북 다섯 — 0/5 (빈 북)
+for (let i = 0; i < 5; i++) {
+  const x = 32 + i * 37, y = 704;
+  out += `<g transform="translate(${x},${y})">` + E(0, 0, 16, 16, '#8a3a2a', 'stroke-width="1.4"') + E(0, 0, 12.5, 12.5, '#efe3c6', 'stroke-width="1.1"');
+  for (let k = 0; k < 3; k++) { const a = k * 2.094; out += L(`M0,0 C${r1(Math.cos(a) * 9)},${r1(Math.sin(a) * 9)} ${r1(Math.cos(a + 1) * 8)},${r1(Math.sin(a + 1) * 8)} ${r1(Math.cos(a + 1.3) * 12)},${r1(Math.sin(a + 1.3) * 12)}`, '#b8ab90', 1.1); }
+  for (let k = 0; k < 10; k++) { const a = k * Math.PI / 5; out += `<circle cx="${r1(Math.cos(a) * 14.3)}" cy="${r1(Math.sin(a) * 14.3)}" r="1.1" fill="#e2b23c"/>`; }
+  out += '</g>';
+}
+
+// ── 카드 그림 (민화 소품)
+out += `<defs>`;
+// 1 노잣돈
+let a1 = `<rect width="134" height="80" fill="${C.night}"/>` + CI(112, 16, 9, '#f4ecd6');
+a1 += `<rect y="48" width="134" height="32" fill="${C.water}"/>` + L('M0,52 Q8,46 16,52 T32,52 T48,52 T64,52 T80,52 T96,52 T112,52 T128,52 T144,52', '#d7e5e8', 1);
+a1 += P('M78,46 C84,52 96,54 110,54 C120,54 128,50 132,44 L128,44 C122,48 114,50 104,50 C94,50 86,48 82,46 Z', '#6c4831', 'stroke-width="1"');
+a1 += P('M98,47 L104,26 L110,47 Z', '#dfe3df', 'stroke-width="1"') + P('M92,28 L104,18 L116,28 Q104,31 92,28 Z', '#c9a15c', 'stroke-width="1"') + `<ellipse cx="104" cy="31" rx="6" ry="3" fill="#141a2c"/>`;
+a1 += P('M8,70 L60,70 L56,76 L12,76 Z', '#a8432a', 'stroke-width="1"');
+for (let i = 0; i < 3; i++) { const x = 14 + i * 14; a1 += P(`M${x},70 L${x + 11},70 L${x + 11},38 L${x},38 Z`, '#f6f1e6', 'stroke-width="1"'); for (let k = 0; k < 4; k++) a1 += `<circle cx="${x + 5.5}" cy="${43 + k * 7}" r="2.4" fill="none" stroke="${O}" stroke-width=".8"/>`; }
+for (let i = 0; i < 4; i++) { const x = 58 + i * 7, y = 66 - i * 6; a1 += CI(x, y, 4, C.gold, 'stroke-width=".9"') + `<rect x="${x - 1.2}" y="${y - 1.2}" width="2.4" height="2.4" fill="${O}"/>`; }
+a1 += L('M54,70 C64,62 74,52 86,44', '#b8302a', 1.2, 'stroke-dasharray="2 3"');
+out += `<g id="art1">${a1}</g>`;
+// 2 육환장
+let a2 = `<rect width="134" height="80" fill="#e8d6a8"/>`;
+for (let r = 18; r < 90; r += 12) a2 += `<circle cx="96" cy="22" r="${r}" fill="none" stroke="#c7432f" stroke-width="1" opacity=".5"/>`;
+a2 += `<g transform="translate(38,136) scale(.62)"><use href="#s1-monk"/></g>`;
+a2 += cloud(118, 66, 6, -1, '#b9cdd6', .9);
+out += `<g id="art2">${a2}</g>`;
+// 3 급소 저격
+let a3 = `<rect width="134" height="80" fill="#2f6a5e"/>` + peak(40, 80, 120, 40, '#3f7c72') + peak(110, 80, 110, 30, '#77a27a');
+a3 += `<g transform="translate(26,150) scale(.7)"><use href="#s1-posu"/></g>`;
+a3 += cloud(16, 18, 6, 1, '#efe7d6', 1);
+a3 += CI(104, 34, 15, 'none', 'stroke="#f4ede0" stroke-width="3"') + CI(104, 34, 15, 'none', 'stroke="#b8302a" stroke-width="1.6"') + CI(104, 34, 6, '#b8302a', 'stroke-width="1"');
+a3 += L('M104,14 L104,22 M104,46 L104,54 M84,34 L92,34 M116,34 L124,34', '#f4ede0', 2);
+out += `<g id="art3">${a3}</g>`;
+// 4 공수
+let a4 = `<rect width="134" height="80" fill="#eedcb2"/>`;
+a4 += `<g transform="translate(52,170) scale(.78)"><use href="#s1-mansin"/></g>`;
+for (const [x, y] of [[104, 22], [114, 40], [104, 58]]) a4 += L(`M${x - 6},${y} a6,6 0 1,1 6,6 a3,3 0 1,1 -3,-3`, '#b8302a', 1.6);
+a4 += CI(122, 16, 4, '#b8302a', 'stroke-width="1"') + CI(126, 28, 4, '#b8302a', 'stroke-width="1"');
+out += `<g id="art4">${a4}</g>`;
+// 5 청배
+let a5 = `<rect width="134" height="80" fill="${C.night}"/>`;
+for (let i = 0; i < 9; i++) { const x = 46 + i * 5.5; a5 += L(`M67,10 L${x},70`, '#f2c94a', 1.2, 'opacity=".55"'); }
+a5 += cloud(67, 16, 9, 1, '#f1e5c8', 1);
+a5 += `<g transform="translate(67,80) scale(.78)"><use href="#s1-sang"/></g>`;
+a5 += P('M20,62 C24,50 30,50 34,62 Z', '#f6f1e6', 'stroke-width="1"') + P('M100,62 C104,50 110,50 114,62 Z', '#f6f1e6', 'stroke-width="1"');
+out += `<g id="art5">${a5}</g>`;
+out += `</defs>`;
+
+// ── 종이 결 · 안료 얼룩 (곱하기)
+out += `<rect width="1280" height="800" filter="url(#blot)" style="mix-blend-mode:multiply" opacity=".34"/>`;
+out += `<rect width="1280" height="800" filter="url(#grain)" style="mix-blend-mode:multiply" opacity=".42"/>`;
+svg.innerHTML = out;
+
+document.fonts.ready.then(() => { window.__ready = true; });
+</script>
+</body>
+</html>
