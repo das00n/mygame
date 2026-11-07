@@ -99,7 +99,8 @@ function sprPosu() {
   s.rect(13, 16, 5, 1, 'S');
   s.ell(15.5, 7, 7.2, 5, 'n', 8);
   for (let x = 8; x <= 23; x++) s.px(x, 8, x % 2 ? 'v' : 't');
-  s.px(15, 1, 'n').px(16, 1, 'n').px(16, 2, 't').px(13, 4, 't').px(18, 4, 't');
+  s.px(15, 1, 'n').px(16, 1, 'n').px(16, 2, 't').px(13, 4, 't').px(18, 4, 't').px(11, 5, 'N').px(15, 6, 'N').px(20, 6, 'N').px(13, 7, 'N').px(18, 7, 'N').px(9, 6, 'n').px(22, 6, 'n').px(14, 0, 'n').px(17, 1, 't');
+  for (let x = 8; x <= 23; x += 2) s.px(x, 9, x % 4 ? 't' : '.');
   s.rect(8, 9, 2, 6, 'n');
   // 얼굴 (오른쪽을 본다)
   s.px(16, 11, 'k').px(16, 12, 'k').px(19, 11, 'k').px(19, 12, 'k');
@@ -130,13 +131,13 @@ function sprManshin() {
   s.rect(10, 18, 11, 7, 'r');
   s.line(12, 18, 15, 21, 'w').line(13, 18, 16, 21, 'B');
   // 머리
-  s.ell(10, 8, 2.6, 2.6, 'h');
+  s.ell(9.5, 10, 3.2, 3, 'h');
   s.rect(10, 10, 3, 7, 'h');
   s.ell(16.5, 13, 5.2, 5, 's');
   s.rect(14, 17, 5, 1, 'S');
-  s.ell(16, 10, 6.4, 4.4, 'h', 10);
-  s.line(10, 10, 22, 9, 'r');
-  s.line(6, 6, 10, 8, 'Y');
+  s.ell(16.5, 11, 6, 4, 'h', 10);
+  s.line(11, 9, 22, 8, 'r'); s.line(11, 10, 22, 9, 'r');
+  s.line(6, 9, 11, 11, 'Y');
   s.px(17, 13, 'k').px(18, 13, 'k').px(20, 13, 'k').px(21, 13, 'k');
   s.px(16, 15, 'r').px(22, 15, 'r').px(19, 16, 'R');
   // 오른팔 (부채를 높이)
@@ -198,13 +199,24 @@ function sprBoss() {
   const ux = 21 / 50, uy = -1, ln = Math.hypot(ux, uy), ax = ux / ln, ay = uy / ln, nx = -ay, ny = ax;
   const bx = 63, by = 10, pts = [[bx + nx * 3, by + ny * 3], [bx + ax * 13 + nx * 3, by + ay * 13 + ny * 3], [bx + ax * 15, by + ay * 15], [bx + ax * 13 - nx * 3, by + ay * 13 - ny * 3], [bx - nx * 3, by - ny * 3]];
   s.poly(pts, 'n');
-  // 도롱이
-  s.poly([[24, 24], [41, 24], [50, 40], [55, 60], [9, 60], [14, 40]], 't');
-  for (let x = 9; x <= 55; x++) { const k = (x * 7) % 5; for (let j = 0; j < (k > 2 ? 3 : 1); j++) s.px(x, 60 + j, 't'); }
-  s.map((x, y, c) => (c === 't' && y > 26 && (x % 3 === 0) && ((y + x) % 7 < 4)) ? 'T' : null);
-  [[38, 36], [50, 46]].forEach(([y, hw]) => { for (let x = 32 - hw / 2 - 4; x <= 32 + hw / 2 + 4; x++) if (s.get(x, y) !== '.') s.px(x, y + (x % 4 < 2 ? 0 : 1), 'N'); });
+  // 도롱이: 세 단, 단마다 밝은 짚 끝 + 어두운 술
+  s.poly([[25, 24], [40, 24], [47, 32], [52, 46], [56, 60], [8, 60], [12, 46], [17, 32]], 't');
+  for (let x = 8; x <= 56; x++) { const k = (x * 7) % 5; for (let j = 0; j < (k > 2 ? 3 : 1); j++) if (s.get(x, 59) !== '.') s.px(x, 60 + j, 't'); }
+  s.map((x, y, c) => (c === 't' && y > 25 && (x % 2 === 0) && ((y * 3 + x) % 5 < 3)) ? 'T' : null);
+  s.map((x, y, c) => (c === 't' && y > 25 && x < 26 && ((x + y) % 4 === 0)) ? 'v' : null);
+  [36, 48].forEach((yb) => {
+    for (let x = 0; x < 70; x++) {
+      if (s.get(x, yb) === '.') continue;
+      const d = (x % 3 === 0) ? 1 : 0;
+      s.px(x, yb + d, 'N'); if (s.get(x, yb + d + 1) !== '.') s.px(x, yb + d + 1, 'T');
+      if (s.get(x, yb - 1) !== '.') s.px(x, yb - 1, x < 30 ? 'v' : 't');
+    }
+  });
   s.poly([[22, 22], [42, 22], [45, 28], [19, 28]], 'v');
   for (let x = 19; x <= 45; x += 2) s.px(x, 29, 'v');
+  for (let x = 20; x <= 44; x += 3) s.px(x, 27, 't');
+  // 삿갓 밑으로 흘러내린 흰 머리
+  s.line(24, 22, 19, 35, 'W').line(25, 22, 21, 33, 'p').line(23, 23, 17, 31, 'W');
   // 빈 손 (삯을 청한다)
   s.poly([[18, 29], [5, 33], [5, 37], [19, 35]], 't');
   s.rect(0, 35, 5, 2, 'w').px(0, 34, 'w').px(2, 34, 'w').px(4, 37, 'W');
@@ -335,6 +347,7 @@ const TX = tbuf.getContext('2d');
 const tmp = document.createElement('canvas'); tmp.width = 640; tmp.height = 40;
 const TM = tmp.getContext('2d', { willReadFrequently: true });
 const FONT = { s: '700 11px "Nanum Gothic"', m: '700 12px "Noto Sans KR"', l: '900 16px "Noto Sans KR"', xl: '900 22px "Noto Sans KR"', d: '800 12px "Nanum Gothic"' };
+const THR = { s: 82, m: 100, l: 110, xl: 110, d: 90 };
 // segs: [[글자, 색], ...]  · o.align: left|center|right · o.ol: 외곽선 색 · o.sh: 그림자 색
 function kt(x, y, segs, font, o = {}) {
   if (typeof segs === 'string') segs = [[segs, o.c || 'w']];
@@ -346,7 +359,7 @@ function kt(x, y, segs, font, o = {}) {
   const colOf = [];
   segs.forEach(([t, c], k) => { TM.fillStyle = '#fff'; TM.fillText(t, cx, 2); colOf.push([cx, cx + ws[k], c]); cx += ws[k]; });
   const wpx = Math.ceil(tw) + 4, hpx = 36, d = TM.getImageData(0, 0, wpx, hpx).data;
-  const on = (i, j) => i >= 0 && j >= 0 && i < wpx && j < hpx && d[(j * wpx + i) * 4 + 3] > 118;
+  const th = THR[font] || 100, on = (i, j) => i >= 0 && j >= 0 && i < wpx && j < hpx && d[(j * wpx + i) * 4 + 3] > th;
   const put = (i, j, c) => { TX.fillStyle = PAL[c] || c; TX.fillRect(x0 + i - 2, y + j - 2, 1, 1); };
   if (o.ol) for (let j = 0; j < hpx; j++) for (let i = 0; i < wpx; i++) if (!on(i, j) && (on(i + 1, j) || on(i - 1, j) || on(i, j + 1) || on(i, j - 1) || on(i + 1, j + 1) || on(i - 1, j - 1) || on(i + 1, j - 1) || on(i - 1, j + 1))) put(i, j, o.ol);
   if (o.sh) for (let j = 0; j < hpx; j++) for (let i = 0; i < wpx; i++) if (on(i - 1, j - 1) && !on(i, j)) put(i, j, o.sh);
@@ -365,18 +378,18 @@ function bar(x, y, w, h, frac, col, hi) {
   if (fw > 0) { R(x + 1, y + 1, fw, h - 2, col); R(x + 1, y + 1, fw, 1, hi); }
 }
 function plate(cx, y, rank, name, hp, max, accent, dmg) {
-  const w = 34, x = cx - 17, h = 22;
+  const w = 34, x = cx - 17, h = 24;
   box(x, y, w, h, 'h', 'e', 'x');
-  R(x + 2, y + 2, 9, 5, accent);
-  bar(x + 2, y + 9, 17, 5, hp / max, 'r', 'o');
-  kt((x + 6.5) * 2, (y + 2) * 2 + 1, rank, 's', { align: 'center', c: 'w' });
-  kt((x + 12) * 2 + 1, (y + 2) * 2 - 1, name, 'm', { c: 'm' });
-  kt((x + 20) * 2 + 1, (y + 9) * 2 - 1, `${hp}/${max}`, 's', { c: 'w' });
-  R(x + 3, y + 16, 2, 3, 'c'); P(x + 2, y + 17, 'l'); P(x + 5, y + 17, 'l'); P(x + 3, y + 15, 'l');
-  kt((x + 7) * 2, (y + 15) * 2, [['귀기 ', 'p'], ['0', 'w']], 's');
+  R(x + 2, y + 2, 13, 7, accent); R(x + 2, y + 2, 13, 1, 'k');
+  kt((x + 8.5) * 2, (y + 3) * 2, rank, 's', { align: 'center', c: 'w' });
+  kt((x + 16) * 2 + 1, (y + 2) * 2, name, 'm', { c: 'm' });
+  bar(x + 2, y + 10, 30, 7, hp / max, 'r', 'o');
+  kt((x + 17) * 2, (y + 10) * 2 + 1, `${hp}/${max}`, 's', { align: 'center', c: 'w', ol: 'k' });
+  R(x + 4, y + 19, 2, 3, 'c'); P(x + 3, y + 20, 'l'); P(x + 6, y + 20, 'l'); P(x + 4, y + 18, 'l');
+  kt((x + 8) * 2, (y + 17) * 2 + 1, [['귀기 ', 'p'], ['0', 'w']], 's');
   if (dmg) {
-    box(x + w - 13, y - 6, 15, 8, 'r', 'o');
-    kt((x + w - 5.5) * 2, (y - 5) * 2, dmg, 'd', { align: 'center', c: 'w', ol: 'k' });
+    box(x + w - 14, y - 7, 16, 9, 'r', 'o');
+    kt((x + w - 6) * 2, (y - 6) * 2 + 1, dmg, 'd', { align: 'center', c: 'w', ol: 'k' });
   }
 }
 function bossPlate() {
@@ -427,43 +440,44 @@ const CARDS = [
   { cost: 1, name: '청배', type: '기술 · 만신', fr: 'b', fd: 'B', art: 4, text: [[['굿상에', 'k']], [['몸주 신령', 'B'], ['을', 'k']], [['모신다.', 'k']]] },
 ];
 function cardArt(k, x, y) {
-  // 38×16 창
-  const w = 38, h = 16;
+  // 38×12 창
+  const w = 38, h = 12;
   if (k === 0) {
     dith(x, y, w, h, 'x', 'u', 0.3);
-    for (let j = 0; j < 7; j++) for (let i = -j; i <= j; i++) P(x + 29 + i, y + 2 + j, j === 6 ? 'N' : 'v');
-    R(x + 25, y + 9, 9, 3, 'h'); P(x + 27, y + 10, 'c'); P(x + 31, y + 10, 'c');
-    R(x + 24, y + 12, 11, 4, 't');
-    [[6, 10], [12, 6], [17, 11]].forEach(([a, b]) => { ell(x + a + 0.5, y + b + 0.5, 3, 3, 'y'); P(x + a, y + b, 'T'); P(x + a - 2, y + b + 1, 'Y'); });
-    R(x + 8, y + 2, 5, 3, 'w'); P(x + 9, y + 3, 'W'); P(x + 11, y + 3, 'W');
-    R(x + 15, y + 1, 5, 3, 'w'); P(x + 17, y + 2, 'W');
+    for (let j = 0; j < 5; j++) for (let i = -j - 1; i <= j + 1; i++) P(x + 29 + i, y + 1 + j, j === 4 ? 'N' : (i + j) % 3 ? 'v' : 't');
+    R(x + 25, y + 6, 9, 2, 'h'); P(x + 27, y + 6, 'c'); P(x + 31, y + 6, 'c');
+    R(x + 24, y + 8, 11, 4, 't'); P(x + 26, y + 9, 'T'); P(x + 30, y + 10, 'T');
+    [[6, 8], [12, 5], [17, 8]].forEach(([a, b]) => { ell(x + a + 0.5, y + b + 0.5, 2.6, 2.6, 'y'); P(x + a, y + b, 'T'); P(x + a - 1, y + b + 1, 'Y'); });
+    R(x + 6, y + 1, 5, 3, 'w'); P(x + 7, y + 2, 'W'); P(x + 9, y + 2, 'W');
+    R(x + 14, y + 0, 5, 3, 'w'); P(x + 16, y + 1, 'W');
+    P(x + 21, y + 6, 'Y'); P(x + 22, y + 5, 'Y');
   } else if (k === 1) {
     dith(x, y, w, h, 'R', 'r', 0.35);
-    for (let i = 0; i < 14; i++) P(x + 4 + i * 2, y + 14 - i, 'o');
-    line(x + 8, y + 15, x + 22, y + 3, 'n'); line(x + 9, y + 15, x + 23, y + 3, 'N');
-    ell(x + 25, y + 3, 3, 3.5, 'Y'); P(x + 25, y + 3, 'R'); P(x + 25, y + 2, 'R');
-    [[20, 1], [19, 4], [21, 7], [30, 1], [31, 4], [29, 7]].forEach(([a, b]) => { R(x + a - 1, y + b - 1, 3, 3, 'Y'); P(x + a, y + b, 'R'); });
-    [[4, 3], [6, 6], [3, 8]].forEach(([a, b]) => { P(x + a, y + b, 'w'); P(x + a + 1, y + b, 'w'); });
+    for (let i = 0; i < 11; i++) P(x + 5 + i * 2, y + 11 - i, 'o');
+    line(x + 9, y + 11, x + 21, y + 3, 'n'); line(x + 10, y + 11, x + 22, y + 3, 'N');
+    ell(x + 24, y + 2.5, 2.6, 3, 'Y'); P(x + 24, y + 2, 'R');
+    [[19, 1], [18, 4], [20, 7], [29, 1], [30, 4], [28, 7]].forEach(([a, b]) => { R(x + a - 1, y + b - 1, 3, 3, 'Y'); P(x + a, y + b, 'R'); });
+    [[3, 2], [5, 5], [2, 7]].forEach(([a, b]) => { P(x + a, y + b, 'w'); P(x + a + 1, y + b, 'w'); });
   } else if (k === 2) {
     dith(x, y, w, h, 'G', 'g', 0.25);
-    ell(x + 29.5, y + 7.5, 6, 6, 'w'); ell(x + 29.5, y + 7.5, 4, 4, 'r'); ell(x + 29.5, y + 7.5, 1.6, 1.6, 'w');
-    R(x + 29, y, 1, 2, 'k'); R(x + 29, y + 14, 1, 2, 'k'); R(x + 22, y + 7, 2, 1, 'k'); R(x + 36, y + 7, 2, 1, 'k');
-    line(x + 1, y + 13, x + 8, y + 11, 'n'); line(x + 1, y + 14, x + 8, y + 12, 'N');
-    line(x + 8, y + 11, x + 19, y + 8, 'a'); line(x + 8, y + 12, x + 19, y + 9, 'A');
-    P(x + 20, y + 7, 'y'); P(x + 21, y + 8, 'o'); P(x + 20, y + 9, 'y'); P(x + 22, y + 7, 'y');
+    ell(x + 30, y + 6, 5, 5, 'w'); ell(x + 30, y + 6, 3.4, 3.4, 'r'); ell(x + 30, y + 6, 1.4, 1.4, 'w');
+    P(x + 30, y, 'k'); R(x + 30, y + 11, 1, 1, 'k'); R(x + 23, y + 6, 2, 1, 'k'); R(x + 36, y + 6, 2, 1, 'k');
+    line(x + 1, y + 10, x + 8, y + 8, 'n'); line(x + 1, y + 11, x + 8, y + 9, 'N');
+    line(x + 8, y + 8, x + 20, y + 5, 'a'); line(x + 8, y + 9, x + 20, y + 6, 'A');
+    P(x + 21, y + 4, 'y'); P(x + 22, y + 5, 'o'); P(x + 21, y + 6, 'y'); P(x + 23, y + 4, 'y');
   } else if (k === 3) {
     dith(x, y, w, h, 'u', 'i', 0.3);
     const fc = ['b', 'r', 'y', 'w', 'h'];
-    for (let j = 0; j < 9; j++) for (let i = -9; i <= 9; i++) { const r = Math.hypot(i, j - 8.5); if (r < 8.6 && j < 9) { const a = Math.atan2(j - 8.5, i) + Math.PI; P(x + 10 + i, y + 6 + j, fc[Math.min(4, Math.floor(a / Math.PI * 5))]); } }
-    box(x + 20, y + 1, 16, 10, 'w', 'k'); P(x + 22, y + 11, 'k'); P(x + 23, y + 11, 'w'); P(x + 22, y + 12, 'k');
-    ell(x + 28, y + 6, 3, 3, 'r'); P(x + 27, y + 5, 'w'); P(x + 28, y + 5, 'w'); P(x + 27, y + 6, 'w'); P(x + 28, y + 6, 'w');
+    for (let j = 0; j < 8; j++) for (let i = -8; i <= 8; i++) { const r = Math.hypot(i, j - 7.5); if (r < 7.8) { const a = Math.atan2(j - 7.5, i) + Math.PI; P(x + 10 + i, y + 4 + j, fc[Math.min(4, Math.floor(a / Math.PI * 5))]); } }
+    box(x + 20, y + 0, 16, 9, 'w', 'k'); P(x + 22, y + 9, 'k'); P(x + 23, y + 9, 'k'); P(x + 22, y + 10, 'k');
+    ell(x + 28, y + 4.5, 2.6, 2.6, 'r'); P(x + 27, y + 4, 'w'); P(x + 28, y + 4, 'w');
   } else {
     dith(x, y, w, h, 'G', 'x', 0.45);
-    dots(x + 12, y, 14, 12, 'Y', 0.35);
-    ell(x + 19, y + 5, 3.5, 4.5, 'm'); P(x + 18, y + 4, 'k'); P(x + 20, y + 4, 'k');
-    R(x + 7, y + 11, 24, 2, 'r'); R(x + 7, y + 11, 24, 1, 'o'); R(x + 9, y + 13, 1, 3, 'R'); R(x + 28, y + 13, 1, 3, 'R');
-    R(x + 10, y + 8, 1, 3, 'w'); P(x + 10, y + 7, 'y'); R(x + 27, y + 8, 1, 3, 'w'); P(x + 27, y + 7, 'y');
-    R(x + 16, y + 10, 5, 1, 'w');
+    dots(x + 12, y, 14, 9, 'Y', 0.35);
+    ell(x + 19, y + 3.5, 3.2, 3.6, 'm'); P(x + 18, y + 3, 'k'); P(x + 20, y + 3, 'k');
+    R(x + 7, y + 8, 24, 2, 'r'); R(x + 7, y + 8, 24, 1, 'o'); R(x + 9, y + 10, 1, 2, 'R'); R(x + 28, y + 10, 1, 2, 'R');
+    R(x + 10, y + 5, 1, 3, 'w'); P(x + 10, y + 4, 'y'); R(x + 27, y + 5, 1, 3, 'w'); P(x + 27, y + 4, 'y');
+    R(x + 16, y + 7, 5, 1, 'w');
   }
 }
 function card(c, x, y) {
@@ -477,13 +491,13 @@ function card(c, x, y) {
   kt((x + 5.5) * 2 + 1, (y + 1) * 2 + 3, String(c.cost), 'l', { align: 'center', c: 'y', ol: 'k' });
   kt((x + 27) * 2, (y + 2) * 2 + 1, c.type, 's', { align: 'center', c: 'w', ol: c.fd });
   // 그림
-  R(x + 2, y + 9, w - 4, 18, 'k');
+  R(x + 2, y + 9, w - 4, 14, 'k');
   cardArt(c.art, x + 3, y + 10);
   // 이름
-  R(x + 3, y + 28, w - 6, 8, c.fd); R(x + 3, y + 28, w - 6, 1, c.fr);
-  kt((x + w / 2) * 2, (y + 28) * 2 + 2, c.name, 'm', { align: 'center', c: 'w', ol: 'k' });
-  const n = c.text.length, top = (y + 37) * 2 + (4 - n) * 5;
-  c.text.forEach((segs, i) => kt((x + w / 2) * 2, top + i * 11, segs, 's', { align: 'center' }));
+  R(x + 3, y + 23, w - 6, 8, c.fd); R(x + 3, y + 23, w - 6, 1, c.fr);
+  kt((x + w / 2) * 2, (y + 23) * 2 + 2, c.name, 'm', { align: 'center', c: 'w', ol: 'k' });
+  const n = c.text.length, sp = 12.5, top = Math.round((y + 31) * 2 + 2 + (4 - n) * sp / 2);
+  c.text.forEach((segs, i) => kt((x + w / 2) * 2, Math.round(top + i * sp), segs, 's', { align: 'center' }));
 }
 function hand() {
   for (let y = 140; y < LH; y++) for (let x = 0; x < LW; x++) P(x, y, bay(x, y) < 0.12 ? 'x' : 'h');
@@ -501,11 +515,8 @@ function hand() {
   pile(34, 159, 'A', '버린', 0);
   // 장단 북 0/5
   kt(8, 352, [['장단 ', 'W'], ['0/5', 'm']], 's');
-  for (let i = 0; i < 5; i++) {
-    const x = 3 + i * 10, y = 188;
-    R(x, y, 9, 8, 'k'); R(x + 1, y + 2, 7, 5, 'A'); R(x + 1, y + 1, 7, 1, 'a'); R(x + 2, y + 1, 5, 1, 'p');
-    P(x + 2, y + 4, 'x'); P(x + 4, y + 4, 'x'); P(x + 6, y + 4, 'x'); R(x + 1, y + 6, 7, 1, 'x');
-  }
+  const drum = ['..kkkkk..', '.kpppppk.', 'kapWWWpak', 'kAaaaaaAk', 'kAxAxAxAk', 'kAAAAAAAk', 'kAAuAAAAk', '.kAAAAAk.', '..kkkkk..'];
+  for (let i = 0; i < 5; i++) drum.forEach((row, j) => [...row].forEach((c, k) => P(3 + i * 10 + k, 186 + j, c)));
   // 손패
   CARDS.forEach((c, i) => card(c, 60 + i * 46, 142 + [1, 0, 0, 0, 1][i]));
   // 턴 종료
@@ -518,8 +529,8 @@ function header() {
   R(0, 0, LW, 11, 'h'); R(0, 10, LW, 1, 'k'); R(0, 9, LW, 1, 'u');
   for (let x = 0; x < LW; x += 8) P(x + 3, 4, 'x');
   kt(8, 3, [['1막', 'y'], [' · ', 'p'], ['건너지 못한 나루', 'w'], [' · ', 'p'], ['보스', 'o']], 'm');
-  box(290, 1, 28, 9, 'u', 'Y');
-  kt(608, 3, [['턴 ', 'W'], ['1', 'y']], 'm', { align: 'center' });
+  box(286, 0, 32, 10, 'u', 'Y');
+  kt(604, 4, [['턴 ', 'w'], ['1', 'y']], 'm', { align: 'center' });
 }
 
 // ── 조립 ─────────────────────────────────────────────────────
@@ -540,11 +551,11 @@ function render() {
   gutsang(134, 102);
   reeds(2, 139, 4, 1);
   // 굿상 이름표
-  box(116, 105, 37, 8, 'h', 'e');
-  kt(269, 211, [['굿상', 'y'], [' · 비었다', 'W']], 's', { align: 'center' });
-  plate(31, 113, '후열', '포수', 30, 30, 'G');
-  plate(65, 113, '중열', '만신', 35, 35, 'R');
-  plate(99, 113, '선두', '승려', 45, 45, 'A', '−12');
+  box(121, 103, 34, 9, 'h', 'e');
+  kt(276, 208, [['굿상', 'y'], [' · 비었다', 'W']], 's', { align: 'center' });
+  plate(31, 111, '후열', '포수', 30, 30, 'G');
+  plate(65, 111, '중열', '만신', 35, 35, 'R');
+  plate(99, 111, '선두', '승려', 45, 45, 'A', '−12');
   bossPlate();
   intent();
   header();

@@ -656,6 +656,15 @@ for (let i = 0; i < 5; i++) {
   out += '</g>';
 }
 
+// 비단에 수놓은 모란(장식)
+out += `<g transform="translate(1170,640)" opacity=".55">`;
+out += L('M0,52 C-2,30 4,10 0,-10 M0,20 C-14,10 -26,12 -34,4 M0,28 C14,20 26,22 34,12', '#7fa77c', 2.2);
+for (const [x, y, r] of [[0, -18, 17], [-32, -2, 12], [34, 6, 12]]) {
+  out += CI(x, y, r, '#b8505a', 'stroke="#e9c9a8" stroke-width="1.2"') + CI(x, y, r * .62, '#d98088', 'stroke="#e9c9a8" stroke-width="1"') + CI(x, y, r * .28, '#e2b23c', 'stroke="#e9c9a8" stroke-width=".8"');
+}
+for (const [x, y, a] of [[-14, 18, -30], [16, 30, 30], [-6, 40, -10]]) out += `<ellipse cx="${x}" cy="${y}" rx="11" ry="5" transform="rotate(${a} ${x} ${y})" fill="#4f8a6e" stroke="#e9c9a8" stroke-width="1"/>`;
+out += P('M-22,52 L22,52 L18,72 L-18,72 Z', '#2f5c9c', 'stroke="#e9c9a8" stroke-width="1.2"') + L('M-16,60 L16,60', '#e9c9a8', 1);
+out += '</g>';
 // ── 카드 그림 (민화 소품)
 out += `<defs>`;
 // 1 노잣돈
@@ -671,7 +680,7 @@ out += `<g id="art1">${a1}</g>`;
 // 2 육환장
 let a2 = `<rect width="134" height="80" fill="#e8d6a8"/>`;
 for (let r = 18; r < 90; r += 12) a2 += `<circle cx="96" cy="22" r="${r}" fill="none" stroke="#c7432f" stroke-width="1" opacity=".5"/>`;
-a2 += `<g transform="translate(38,136) scale(.62)"><use href="#s1-monk"/></g>`;
+a2 += `<g transform="translate(46,142) scale(.52)"><use href="#s1-monk"/></g>`;
 a2 += cloud(118, 66, 6, -1, '#b9cdd6', .9);
 out += `<g id="art2">${a2}</g>`;
 // 3 급소 저격

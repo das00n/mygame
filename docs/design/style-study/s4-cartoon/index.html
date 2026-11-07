@@ -97,15 +97,16 @@ function posu() {
   // 털모자 귀덮개
   s += part('M-38,-136 Q-46,-110 -31,-100 Q-20,-106 -22,-134 Z', '#8d5c37', '#5e3a20');
   s += part('M34,-136 Q41,-112 31,-102 Q22,-108 22,-134 Z', '#8d5c37', '#5e3a20');
-  // 털모자: 털뭉치를 겹쳐 바깥만 먹선
+  // 털모자: 매끈한 정수리 + 밝은 털 테두리(털뭉치를 겹쳐 바깥만 먹선)
+  s += part('M-34,-136 Q-38,-178 2,-180 Q40,-178 35,-136 Z', '#7a4a2a', '#4e2c16', {
+    inner: line('M-18,-162 q3,-4 6,0 M0,-170 q3,-4 6,0 M14,-160 q3,-4 6,0 M-6,-152 q3,-4 6,0 M22,-148 q3,-4 6,0 M-24,-148 q3,-4 6,0', 2.2, '#3a200e')
+  });
   const puffs = [];
-  for (let i = 0; i <= 10; i++) { const a = Math.PI * (1.04 + 0.92 * i / 10); puffs.push([31 * Math.cos(a), -140 + 27 * Math.sin(a), 7 + (i % 2) * 1.5]); }
-  for (let i = 0; i <= 9; i++) puffs.push([-31 + i * 6.9, -139 + (i % 2) * 2, 6.5]);
-  puffs.push([0, -152, 21], [3, -176, 7]);
+  for (let i = 0; i <= 11; i++) puffs.push([-36 + i * 6.6, -137 + (i % 2) * 2.5, 7.2]);
+  puffs.push([2, -182, 7.5]);
   s += puffs.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r + 3.2}" fill="${INK}"/>`).join('');
-  s += puffs.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#64402a"/>`).join('');
-  s += puffs.map(([x, y, r]) => `<circle cx="${x + 2.5}" cy="${y - 2.5}" r="${r * 0.82}" fill="#9a6a42"/>`).join('');
-  s += line('M-16,-158 q4,-4 8,0 M4,-164 q4,-4 8,0 M14,-152 q4,-4 8,0', 2.5, '#4a2c16');
+  s += puffs.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#9a6a42"/>`).join('');
+  s += puffs.map(([x, y, r]) => `<circle cx="${x + 2}" cy="${y - 2}" r="${r * 0.78}" fill="#c99a68"/>`).join('');
   // 얼굴 (오른쪽, 보스를 본다)
   s += `<ellipse cx="-1" cy="-127" rx="3.6" ry="5" fill="${INK}"/><ellipse cx="17" cy="-127" rx="3.6" ry="5" fill="${INK}"/>`;
   s += `<circle cx="0" cy="-129" r="1.3" fill="#fff"/><circle cx="18" cy="-129" r="1.3" fill="#fff"/>`;
@@ -599,7 +600,7 @@ function hand() {
   // 바닥 무늬 (구름 띠)
   for (let x = 0; x < 1280; x += 80) s += `<path d="M${x},790 q20,-14 40,0 q20,-14 40,0" fill="none" stroke="#2e2758" stroke-width="4"/>`;
   // 에너지
-  s += `<circle cx="78" cy="640" r="58" fill="#ffb84d" opacity="0.12"/>`;
+  s += `<circle cx="78" cy="640" r="64" fill="url(#orbGlow)"/>`;
   s += part(E(78, 640, 46, 46), '#ffcf5a', '#f08a2c', { L: [6, -6], sw: 4.5 });
   s += `<path d="M78,604 Q100,628 92,648 Q86,664 78,664 Q70,664 64,648 Q56,628 78,604 Z" fill="#fff2bd" opacity="0.55"/>`;
   s += `<ellipse cx="62" cy="618" rx="10" ry="6" fill="#fff" opacity="0.7" transform="rotate(-35 62 618)"/>`;
@@ -663,6 +664,7 @@ function scene() {
   <linearGradient id="handBg" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0" stop-color="#211c44"/><stop offset="1" stop-color="#15122c"/>
   </linearGradient>
+  <radialGradient id="orbGlow"><stop offset="0.6" stop-color="#ffb84d" stop-opacity="0.35"/><stop offset="1" stop-color="#ffb84d" stop-opacity="0"/></radialGradient>
   <radialGradient id="ghostGlow"><stop offset="0" stop-color="#9ff0ff" stop-opacity="0.35"/><stop offset="1" stop-color="#9ff0ff" stop-opacity="0"/></radialGradient>
   <filter id="ol" x="-30%" y="-30%" width="160%" height="160%">
     <feMorphology in="SourceAlpha" operator="dilate" radius="2.4" result="d"/>

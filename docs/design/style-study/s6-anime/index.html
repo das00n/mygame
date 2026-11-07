@@ -357,8 +357,8 @@ function posu() {
   const pT = [[-23, -262], [-14, -276], [-6, -278], [3, -270], [11, -278], [19, -276], [27, -262]];
   s += P(bangs(pR, pT, -300), HAIR, { inner: L('M-10,-292 L-12,-280 M6,-293 L4,-276', '#8fb4ff', 0.9, 'opacity="0.6"') });
   // 털모자: 털 테두리 + 둥근 꼭대기 + 귀덮개
-  s += P(taper([[-28, -288], [-38, -280], [-40, -262], [-34, -248]], 15, 6), FUR, {
-    inner: L('M-34,-280 l-3,4 M-36,-270 l-3,4 M-36,-260 l-3,4', '#2a160a', 0.9)
+  s += P('M-29,-292 C-40,-288 -43,-270 -39,-256 C-36,-250 -29,-252 -27,-260 C-26,-270 -26,-282 -25,-292 Z', FUR, {
+    inner: L('M-36,-282 l-2,4 M-38,-272 l-2,4 M-37,-262 l-2,4', '#2a160a', 0.9)
   });
   const crown = 'M-30,-290 C-34,-312 -16,-326 2,-326 C22,-326 36,-312 33,-290 Z';
   let furl = '';
@@ -738,8 +738,8 @@ function cardArt(c, w, h) {
     s += `<g filter="url(#glowGold)">` + [[22, 92, -16], [42, 80, 10], [30, 64, -6]].map(([x, y, r]) => `<g transform="translate(${x},${y}) rotate(${r})"><circle r="9" fill="#ffd56a" stroke="#7a4a10" stroke-width="1.2"/><rect x="-2.6" y="-2.6" width="5.2" height="5.2" fill="#7a4a10"/></g>`).join('') + `</g>`;
   }
   if (c.art === 'gut') {
-    s += `<g transform="translate(74,104) scale(0.95)"><use href="#chGut"/></g>`;
-    s += `<g filter="url(#glowGold)"><ellipse cx="74" cy="24" rx="12" ry="18" fill="#fff4c8" opacity="0.9"/><circle cx="74" cy="24" r="24" fill="none" stroke="#ffe08a" stroke-width="1.2" opacity="0.8"/></g>`;
+    s += `<g transform="translate(74,128) scale(0.82)"><use href="#chGut"/></g>`;
+    s += `<g filter="url(#glowGold)"><path d="M74,6 C84,14 84,30 78,40 C76,44 72,44 70,40 C64,30 64,14 74,6 Z" fill="#fff4c8" opacity="0.92"/><circle cx="74" cy="26" r="26" fill="none" stroke="#ffe08a" stroke-width="1.2" opacity="0.8"/></g>`;
   }
   // 빛 줄
   s += `<rect width="${w}" height="${h}" fill="url(#cardSheen)"/>`;
